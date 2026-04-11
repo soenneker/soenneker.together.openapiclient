@@ -17,10 +17,10 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Integer array of target tokens</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Together.OpenApiClient.Models.RL_LossTargetTokens_data>? Data { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.UnionBranch>? Data { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Together.OpenApiClient.Models.RL_LossTargetTokens_data> Data { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.UnionBranch> Data { get; set; }
 #endif
         /// <summary>The dtype property</summary>
         public global::Soenneker.Together.OpenApiClient.Models.RL_DType? Dtype { get; set; }
@@ -50,7 +50,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "data", n => { Data = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RL_LossTargetTokens_data>(global::Soenneker.Together.OpenApiClient.Models.RL_LossTargetTokens_data.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "data", n => { Data = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.UnionBranch>(global::Soenneker.Together.OpenApiClient.Models.UnionBranch.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "dtype", n => { Dtype = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.RL_DType>(); } },
             };
         }
@@ -61,7 +61,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RL_LossTargetTokens_data>("data", Data);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.UnionBranch>("data", Data);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.RL_DType>("dtype", Dtype);
             writer.WriteAdditionalData(AdditionalData);
         }

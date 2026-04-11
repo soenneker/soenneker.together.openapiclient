@@ -17,7 +17,13 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>The method property</summary>
         public global::Soenneker.Together.OpenApiClient.Models.TrainingMethodSFT_method? Method { get; set; }
         /// <summary>Whether to mask the user messages in conversational data or prompts in instruction data.</summary>
-        public bool? TrainOnInputs { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Together.OpenApiClient.Models.UnionBranch? TrainOnInputs { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Together.OpenApiClient.Models.UnionBranch TrainOnInputs { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.TrainingMethodSFT"/> and sets the default values.
         /// </summary>
@@ -44,7 +50,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "method", n => { Method = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.TrainingMethodSFT_method>(); } },
-                { "train_on_inputs", n => { TrainOnInputs = n.GetBoolValue(); } },
+                { "train_on_inputs", n => { TrainOnInputs = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.UnionBranch>(global::Soenneker.Together.OpenApiClient.Models.UnionBranch.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -55,7 +61,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.TrainingMethodSFT_method>("method", Method);
-            writer.WriteBoolValue("train_on_inputs", TrainOnInputs);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.UnionBranch>("train_on_inputs", TrainOnInputs);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
