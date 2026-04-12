@@ -49,17 +49,17 @@ namespace Soenneker.Together.OpenApiClient.Rl.TrainingSessions.Item.Operations.I
         /// <summary>
         /// Submits an operation that will asynchronously save the current LoRA adapter as an inference checkpoint and upload it to object storage.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.RL_InferenceCheckpointOperation"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.RLInferenceCheckpointOperation"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.ErrorData">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Together.OpenApiClient.Models.RL_InferenceCheckpointOperation?> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Together.OpenApiClient.Models.RLInferenceCheckpointOperation?> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Together.OpenApiClient.Models.RL_InferenceCheckpointOperation> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Together.OpenApiClient.Models.RLInferenceCheckpointOperation> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToPostRequestInformation(requestConfiguration);
@@ -67,7 +67,7 @@ namespace Soenneker.Together.OpenApiClient.Rl.TrainingSessions.Item.Operations.I
             {
                 { "XXX", global::Soenneker.Together.OpenApiClient.Models.ErrorData.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.RL_InferenceCheckpointOperation>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.RL_InferenceCheckpointOperation.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.RLInferenceCheckpointOperation>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.RLInferenceCheckpointOperation.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Submits an operation that will asynchronously save the current LoRA adapter as an inference checkpoint and upload it to object storage.

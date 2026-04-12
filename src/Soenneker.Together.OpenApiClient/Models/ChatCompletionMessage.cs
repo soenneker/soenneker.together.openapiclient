@@ -26,10 +26,10 @@ namespace Soenneker.Together.OpenApiClient.Models
         [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionMessage_function_call? FunctionCall { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionMessageFunctionCall? FunctionCall { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionMessage_function_call FunctionCall { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionMessageFunctionCall FunctionCall { get; set; }
 #endif
         /// <summary>The reasoning property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -75,7 +75,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "content", n => { Content = n.GetStringValue(); } },
-                { "function_call", n => { FunctionCall = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionMessage_function_call>(global::Soenneker.Together.OpenApiClient.Models.ChatCompletionMessage_function_call.CreateFromDiscriminatorValue); } },
+                { "function_call", n => { FunctionCall = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionMessageFunctionCall>(global::Soenneker.Together.OpenApiClient.Models.ChatCompletionMessageFunctionCall.CreateFromDiscriminatorValue); } },
                 { "reasoning", n => { Reasoning = n.GetStringValue(); } },
                 { "role", n => { Role = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionMessage_role>(); } },
                 { "tool_calls", n => { ToolCalls = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.ToolChoice>(global::Soenneker.Together.OpenApiClient.Models.ToolChoice.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -89,7 +89,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("content", Content);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionMessage_function_call>("function_call", FunctionCall);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionMessageFunctionCall>("function_call", FunctionCall);
             writer.WriteStringValue("reasoning", Reasoning);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionMessage_role>("role", Role);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.ToolChoice>("tool_calls", ToolCalls);

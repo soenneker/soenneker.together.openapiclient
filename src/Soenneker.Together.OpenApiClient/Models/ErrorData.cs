@@ -18,10 +18,10 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>The error property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.ErrorData_error? Error { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.ErrorDataError? Error { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.ErrorData_error Error { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.ErrorDataError Error { get; set; }
 #endif
         /// <summary>The primary error message.</summary>
         public override string Message { get => base.Message; }
@@ -50,7 +50,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "error", n => { Error = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.ErrorData_error>(global::Soenneker.Together.OpenApiClient.Models.ErrorData_error.CreateFromDiscriminatorValue); } },
+                { "error", n => { Error = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.ErrorDataError>(global::Soenneker.Together.OpenApiClient.Models.ErrorDataError.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -60,7 +60,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ErrorData_error>("error", Error);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ErrorDataError>("error", Error);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

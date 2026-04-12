@@ -49,18 +49,18 @@ namespace Soenneker.Together.OpenApiClient.Rl.TrainingSessions.Item.Operations.F
         /// <summary>
         /// Submits a forward-backward pass operation that will asynchronously compute gradients via backpropagation.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.RL_ForwardBackwardOperation"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.RLForwardBackwardOperation"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.ErrorData">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Together.OpenApiClient.Models.RL_ForwardBackwardOperation?> PostAsync(global::Soenneker.Together.OpenApiClient.Models.RL_ForwardBackwardBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Together.OpenApiClient.Models.RLForwardBackwardOperation?> PostAsync(global::Soenneker.Together.OpenApiClient.Models.RLForwardBackwardBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Together.OpenApiClient.Models.RL_ForwardBackwardOperation> PostAsync(global::Soenneker.Together.OpenApiClient.Models.RL_ForwardBackwardBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Together.OpenApiClient.Models.RLForwardBackwardOperation> PostAsync(global::Soenneker.Together.OpenApiClient.Models.RLForwardBackwardBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -69,7 +69,7 @@ namespace Soenneker.Together.OpenApiClient.Rl.TrainingSessions.Item.Operations.F
             {
                 { "XXX", global::Soenneker.Together.OpenApiClient.Models.ErrorData.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.RL_ForwardBackwardOperation>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.RL_ForwardBackwardOperation.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.RLForwardBackwardOperation>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.RLForwardBackwardOperation.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Submits a forward-backward pass operation that will asynchronously compute gradients via backpropagation.
@@ -79,11 +79,11 @@ namespace Soenneker.Together.OpenApiClient.Rl.TrainingSessions.Item.Operations.F
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(global::Soenneker.Together.OpenApiClient.Models.RL_ForwardBackwardBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.Together.OpenApiClient.Models.RLForwardBackwardBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(global::Soenneker.Together.OpenApiClient.Models.RL_ForwardBackwardBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.Together.OpenApiClient.Models.RLForwardBackwardBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
