@@ -7,32 +7,37 @@ using System.IO;
 using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
-    /// <summary>
-    /// Type is the new volume type (currently only &quot;readOnly&quot; is supported)
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class UpdateVolumeRequestType : IAdditionalDataHolder, IParsable
+    #pragma warning disable CS1591
+    public partial class ResponseFormatJsonSchemaJsonSchema_strict : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The value property</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.VolumeType? Value { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Value { get; set; }
+#nullable restore
+#else
+        public string Value { get; set; }
+#endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.UpdateVolumeRequestType"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.ResponseFormatJsonSchemaJsonSchema_strict"/> and sets the default values.
         /// </summary>
-        public UpdateVolumeRequestType()
+        public ResponseFormatJsonSchemaJsonSchema_strict()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.UpdateVolumeRequestType"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.ResponseFormatJsonSchemaJsonSchema_strict"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Together.OpenApiClient.Models.UpdateVolumeRequestType CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Together.OpenApiClient.Models.ResponseFormatJsonSchemaJsonSchema_strict CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.UpdateVolumeRequestType();
+            return new global::Soenneker.Together.OpenApiClient.Models.ResponseFormatJsonSchemaJsonSchema_strict();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -42,7 +47,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "value", n => { Value = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.VolumeType>(); } },
+                { "value", n => { Value = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -52,7 +57,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.VolumeType>("value", Value);
+            writer.WriteStringValue("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

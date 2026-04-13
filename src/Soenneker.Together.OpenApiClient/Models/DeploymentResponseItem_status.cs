@@ -3,26 +3,25 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
+    /// <summary>Status represents the overall status of the deployment (e.g., Updating, Scaling, Ready, Failed)</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
-    public enum CompletionRequestModel_Wrapper_value
-    #pragma warning restore CS1591
+    public enum DeploymentResponseItem_status
     {
-        [EnumMember(Value = "meta-llama/Llama-2-70b-hf")]
+        [EnumMember(Value = "Updating")]
         #pragma warning disable CS1591
-        MetaLlamaLlama270bHf,
+        Updating,
         #pragma warning restore CS1591
-        [EnumMember(Value = "mistralai/Mistral-7B-v0.1")]
+        [EnumMember(Value = "Scaling")]
         #pragma warning disable CS1591
-        MistralaiMistral7BV01,
+        Scaling,
         #pragma warning restore CS1591
-        [EnumMember(Value = "mistralai/Mixtral-8x7B-v0.1")]
+        [EnumMember(Value = "Ready")]
         #pragma warning disable CS1591
-        MistralaiMixtral8x7BV01,
+        Ready,
         #pragma warning restore CS1591
-        [EnumMember(Value = "Meta-Llama/Llama-Guard-7b")]
+        [EnumMember(Value = "Failed")]
         #pragma warning disable CS1591
-        MetaLlamaLlamaGuard7b,
+        Failed,
         #pragma warning restore CS1591
     }
 }

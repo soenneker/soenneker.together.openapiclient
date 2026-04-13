@@ -7,20 +7,21 @@ using System.IO;
 using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
+    /// <summary>
+    /// Content specifies the content configuration for this volume
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
-    public partial class CompletionChunkUsage : global::Soenneker.Together.OpenApiClient.Models.UsageData, IParsable
-    #pragma warning restore CS1591
+    public partial class CreateVolumeRequest_content : global::Soenneker.Together.OpenApiClient.Models.VolumeContentRequest, IParsable
     {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.CompletionChunkUsage"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.CreateVolumeRequest_content"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static new global::Soenneker.Together.OpenApiClient.Models.CompletionChunkUsage CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static new global::Soenneker.Together.OpenApiClient.Models.CreateVolumeRequest_content CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.CompletionChunkUsage();
+            return new global::Soenneker.Together.OpenApiClient.Models.CreateVolumeRequest_content();
         }
         /// <summary>
         /// The deserialization information for the current model

@@ -21,10 +21,10 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>The logprobs property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionChoicesDataItemLogprobs? Logprobs { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionChoicesDataItem_logprobs? Logprobs { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionChoicesDataItemLogprobs Logprobs { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionChoicesDataItem_logprobs Logprobs { get; set; }
 #endif
         /// <summary>The message property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -79,7 +79,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             {
                 { "finish_reason", n => { FinishReason = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.FinishReason>(); } },
                 { "index", n => { Index = n.GetIntValue(); } },
-                { "logprobs", n => { Logprobs = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionChoicesDataItemLogprobs>(global::Soenneker.Together.OpenApiClient.Models.ChatCompletionChoicesDataItemLogprobs.CreateFromDiscriminatorValue); } },
+                { "logprobs", n => { Logprobs = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionChoicesDataItem_logprobs>(global::Soenneker.Together.OpenApiClient.Models.ChatCompletionChoicesDataItem_logprobs.CreateFromDiscriminatorValue); } },
                 { "message", n => { Message = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionMessage>(global::Soenneker.Together.OpenApiClient.Models.ChatCompletionMessage.CreateFromDiscriminatorValue); } },
                 { "seed", n => { Seed = n.GetIntValue(); } },
                 { "text", n => { Text = n.GetStringValue(); } },
@@ -95,7 +95,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.FinishReason>("finish_reason", FinishReason);
             writer.WriteIntValue("index", Index);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionChoicesDataItemLogprobs>("logprobs", Logprobs);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionChoicesDataItem_logprobs>("logprobs", Logprobs);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionMessage>("message", Message);
             writer.WriteIntValue("seed", Seed);
             writer.WriteStringValue("text", Text);

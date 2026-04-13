@@ -9,18 +9,18 @@ namespace Soenneker.Together.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class ChatCompletionChunkUsage : global::Soenneker.Together.OpenApiClient.Models.UsageData, IParsable
+    public partial class ChatCompletionChoicesDataItem_logprobs : global::Soenneker.Together.OpenApiClient.Models.LogprobsPart, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.ChatCompletionChunkUsage"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.ChatCompletionChoicesDataItem_logprobs"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static new global::Soenneker.Together.OpenApiClient.Models.ChatCompletionChunkUsage CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static new global::Soenneker.Together.OpenApiClient.Models.ChatCompletionChoicesDataItem_logprobs CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.ChatCompletionChunkUsage();
+            return new global::Soenneker.Together.OpenApiClient.Models.ChatCompletionChoicesDataItem_logprobs();
         }
         /// <summary>
         /// The deserialization information for the current model

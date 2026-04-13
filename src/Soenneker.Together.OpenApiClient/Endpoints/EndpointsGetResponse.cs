@@ -2,44 +2,45 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
+using Soenneker.Together.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Soenneker.Together.OpenApiClient.Models
+namespace Soenneker.Together.OpenApiClient.Endpoints
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class VideoFrameImageInputFrame_Wrapper : IAdditionalDataHolder, IParsable
+    public partial class EndpointsGetResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The type property</summary>
+        /// <summary>The data property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Type { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.ListEndpoint>? Data { get; set; }
 #nullable restore
 #else
-        public string Type { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.ListEndpoint> Data { get; set; }
 #endif
-        /// <summary>The value property</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.VideoFrameImageInputFrame_Wrapper_value? Value { get; set; }
+        /// <summary>The object type, which is always `list`.</summary>
+        public global::Soenneker.Together.OpenApiClient.Endpoints.EndpointsGetResponse_object? Object { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.VideoFrameImageInputFrame_Wrapper"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Endpoints.EndpointsGetResponse"/> and sets the default values.
         /// </summary>
-        public VideoFrameImageInputFrame_Wrapper()
+        public EndpointsGetResponse()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.VideoFrameImageInputFrame_Wrapper"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Endpoints.EndpointsGetResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Together.OpenApiClient.Models.VideoFrameImageInputFrame_Wrapper CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Together.OpenApiClient.Endpoints.EndpointsGetResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.VideoFrameImageInputFrame_Wrapper();
+            return new global::Soenneker.Together.OpenApiClient.Endpoints.EndpointsGetResponse();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -49,8 +50,8 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "type", n => { Type = n.GetStringValue(); } },
-                { "value", n => { Value = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.VideoFrameImageInputFrame_Wrapper_value>(); } },
+                { "data", n => { Data = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.ListEndpoint>(global::Soenneker.Together.OpenApiClient.Models.ListEndpoint.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Endpoints.EndpointsGetResponse_object>(); } },
             };
         }
         /// <summary>
@@ -60,8 +61,8 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("type", Type);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.VideoFrameImageInputFrame_Wrapper_value>("value", Value);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.ListEndpoint>("data", Data);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Endpoints.EndpointsGetResponse_object>("object", Object);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

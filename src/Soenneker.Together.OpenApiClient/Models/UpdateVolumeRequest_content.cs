@@ -11,17 +11,17 @@ namespace Soenneker.Together.OpenApiClient.Models
     /// Content specifies the new content that will be preloaded to this volume
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class UpdateVolumeRequestContent : global::Soenneker.Together.OpenApiClient.Models.VolumeContentRequest, IParsable
+    public partial class UpdateVolumeRequest_content : global::Soenneker.Together.OpenApiClient.Models.VolumeContentRequest, IParsable
     {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.UpdateVolumeRequestContent"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.UpdateVolumeRequest_content"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static new global::Soenneker.Together.OpenApiClient.Models.UpdateVolumeRequestContent CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static new global::Soenneker.Together.OpenApiClient.Models.UpdateVolumeRequest_content CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.UpdateVolumeRequestContent();
+            return new global::Soenneker.Together.OpenApiClient.Models.UpdateVolumeRequest_content();
         }
         /// <summary>
         /// The deserialization information for the current model
