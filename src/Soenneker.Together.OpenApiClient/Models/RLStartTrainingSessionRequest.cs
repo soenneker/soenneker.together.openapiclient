@@ -38,12 +38,15 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string ResumeFromCheckpointId { get; set; }
 #endif
+        /// <summary>Type of a training session. TRAINER_AND_GENERATOR provisions both trainer and generator; TRAINER_ONLY provisions only the trainer and rejects generator-dependent operations such as sample.</summary>
+        public global::Soenneker.Together.OpenApiClient.Models.RLSessionType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RLStartTrainingSessionRequest"/> and sets the default values.
         /// </summary>
         public RLStartTrainingSessionRequest()
         {
             AdditionalData = new Dictionary<string, object>();
+            Type = global::Soenneker.Together.OpenApiClient.Models.RLSessionType.SESSION_TYPE_UNSPECIFIED;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -66,6 +69,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "base_model", n => { BaseModel = n.GetStringValue(); } },
                 { "lora_config", n => { LoraConfig = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RLLoraConfig>(global::Soenneker.Together.OpenApiClient.Models.RLLoraConfig.CreateFromDiscriminatorValue); } },
                 { "resume_from_checkpoint_id", n => { ResumeFromCheckpointId = n.GetStringValue(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.RLSessionType>(); } },
             };
         }
         /// <summary>
@@ -78,6 +82,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteStringValue("base_model", BaseModel);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RLLoraConfig>("lora_config", LoraConfig);
             writer.WriteStringValue("resume_from_checkpoint_id", ResumeFromCheckpointId);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.RLSessionType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
