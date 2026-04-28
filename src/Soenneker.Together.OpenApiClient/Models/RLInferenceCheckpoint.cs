@@ -36,10 +36,10 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Training step at time of save</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Step { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.UnionBranch? Step { get; set; }
 #nullable restore
 #else
-        public string Step { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.UnionBranch Step { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RLInferenceCheckpoint"/> and sets the default values.
@@ -69,7 +69,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "registration", n => { Registration = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RLInferenceCheckpointRegistration>(global::Soenneker.Together.OpenApiClient.Models.RLInferenceCheckpointRegistration.CreateFromDiscriminatorValue); } },
-                { "step", n => { Step = n.GetStringValue(); } },
+                { "step", n => { Step = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.UnionBranch>(global::Soenneker.Together.OpenApiClient.Models.UnionBranch.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -82,7 +82,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteStringValue("id", Id);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RLInferenceCheckpointRegistration>("registration", Registration);
-            writer.WriteStringValue("step", Step);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.UnionBranch>("step", Step);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

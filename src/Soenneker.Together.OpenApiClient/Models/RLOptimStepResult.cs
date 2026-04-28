@@ -18,10 +18,10 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Step number</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Step { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.UnionBranch? Step { get; set; }
 #nullable restore
 #else
-        public string Step { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.UnionBranch Step { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RLOptimStepResult"/> and sets the default values.
@@ -48,7 +48,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "step", n => { Step = n.GetStringValue(); } },
+                { "step", n => { Step = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.UnionBranch>(global::Soenneker.Together.OpenApiClient.Models.UnionBranch.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -58,7 +58,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("step", Step);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.UnionBranch>("step", Step);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
