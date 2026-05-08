@@ -40,8 +40,6 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public List<global::Soenneker.Together.OpenApiClient.Models.AudioTranscriptionSpeakerSegment> SpeakerSegments { get; set; }
 #endif
-        /// <summary>The task performed</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.AudioTranscriptionVerboseJsonResponse_task? Task { get; set; }
         /// <summary>The transcribed text</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -87,7 +85,6 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "language", n => { Language = n.GetStringValue(); } },
                 { "segments", n => { Segments = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.AudioTranscriptionSegment>(global::Soenneker.Together.OpenApiClient.Models.AudioTranscriptionSegment.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "speaker_segments", n => { SpeakerSegments = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.AudioTranscriptionSpeakerSegment>(global::Soenneker.Together.OpenApiClient.Models.AudioTranscriptionSpeakerSegment.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "task", n => { Task = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.AudioTranscriptionVerboseJsonResponse_task>(); } },
                 { "text", n => { Text = n.GetStringValue(); } },
                 { "words", n => { Words = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.AudioTranscriptionWord>(global::Soenneker.Together.OpenApiClient.Models.AudioTranscriptionWord.CreateFromDiscriminatorValue)?.AsList(); } },
             };
@@ -103,7 +100,6 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteStringValue("language", Language);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.AudioTranscriptionSegment>("segments", Segments);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.AudioTranscriptionSpeakerSegment>("speaker_segments", SpeakerSegments);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.AudioTranscriptionVerboseJsonResponse_task>("task", Task);
             writer.WriteStringValue("text", Text);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.AudioTranscriptionWord>("words", Words);
             writer.WriteAdditionalData(AdditionalData);
