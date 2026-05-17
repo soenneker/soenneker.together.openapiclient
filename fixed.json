@@ -1327,7 +1327,10 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ModelInfoList"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ModelInfo"
+                  }
                 }
               }
             }
@@ -1659,16 +1662,6 @@
               }
             }
           },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorData"
-                }
-              }
-            }
-          },
           "400": {
             "description": "Bad Request",
             "content": {
@@ -1681,6 +1674,16 @@
           },
           "401": {
             "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -1761,22 +1764,22 @@
           }
         },
         "responses": {
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorData"
-                }
-              }
-            }
-          },
           "200": {
             "description": "Price estimated successfully",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/PostFineTunesEstimatePrice200"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
                 }
               }
             }
@@ -3360,7 +3363,10 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetBatches200"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BatchJob"
+                  }
                 }
               }
             }
@@ -3725,7 +3731,10 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetAllEvaluationJobs200"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EvaluationJob"
+                  }
                 }
               }
             }
@@ -6999,10 +7008,16 @@
             "type": "string"
           },
           "choices": {
-            "$ref": "#/components/schemas/CompletionChoicesData"
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CompletionChoicesDataItem"
+            }
           },
           "prompt": {
-            "$ref": "#/components/schemas/PromptPart"
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PromptPartItem"
+            }
           },
           "usage": {
             "$ref": "#/components/schemas/UsageData"
@@ -7818,7 +7833,10 @@
             "type": "string"
           },
           "choices": {
-            "$ref": "#/components/schemas/ChatCompletionChoicesData"
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ChatCompletionChoicesDataItem"
+            }
           },
           "usage": {
             "$ref": "#/components/schemas/UsageData"
@@ -7830,7 +7848,10 @@
             "type": "string"
           },
           "prompt": {
-            "$ref": "#/components/schemas/PromptPart"
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PromptPartItem"
+            }
           },
           "object": {
             "enum": [
@@ -10863,77 +10884,66 @@
       "SessionListResponse": {
         "title": "SessionListResponse",
         "type": "object",
-        "allOf": [
-          {
-            "title": "Response",
-            "type": "object",
-            "properties": {
-              "errors": {
-                "type": "array",
-                "items": {
-                  "title": "Error",
-                  "type": "object",
-                  "oneOf": [
-                    {
-                      "$ref": "#/components/schemas/Error_Wrapper"
-                    },
-                    {
-                      "type": "object"
-                    }
-                  ]
+        "properties": {
+          "errors": {
+            "type": "array",
+            "items": {
+              "title": "Error",
+              "type": "object",
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/Error_Wrapper"
+                },
+                {
+                  "type": "object"
                 }
-              }
+              ]
             }
           },
-          {
+          "data": {
+            "required": [
+              "sessions"
+            ],
             "type": "object",
             "properties": {
-              "data": {
-                "required": [
-                  "sessions"
-                ],
-                "type": "object",
-                "properties": {
-                  "sessions": {
-                    "type": "array",
-                    "items": {
-                      "required": [
-                        "execute_count",
-                        "expires_at",
-                        "id",
-                        "last_execute_at",
-                        "started_at"
-                      ],
-                      "type": "object",
-                      "properties": {
-                        "execute_count": {
-                          "type": "integer"
-                        },
-                        "expires_at": {
-                          "type": "string",
-                          "format": "date-time"
-                        },
-                        "id": {
-                          "type": "string",
-                          "description": "Session Identifier. Used to make follow-up calls.",
-                          "example": "ses_abcDEF123"
-                        },
-                        "last_execute_at": {
-                          "type": "string",
-                          "format": "date-time"
-                        },
-                        "started_at": {
-                          "type": "string",
-                          "format": "date-time"
-                        }
-                      }
+              "sessions": {
+                "type": "array",
+                "items": {
+                  "required": [
+                    "execute_count",
+                    "expires_at",
+                    "id",
+                    "last_execute_at",
+                    "started_at"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "execute_count": {
+                      "type": "integer"
+                    },
+                    "expires_at": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "id": {
+                      "type": "string",
+                      "description": "Session Identifier. Used to make follow-up calls.",
+                      "example": "ses_abcDEF123"
+                    },
+                    "last_execute_at": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "started_at": {
+                      "type": "string",
+                      "format": "date-time"
                     }
                   }
                 }
               }
             }
           }
-        ]
+        }
       },
       "StreamOutput": {
         "title": "StreamOutput",
@@ -11631,11 +11641,38 @@
             "allOf": [
               {
                 "nullable": true
-              },
-              {
-                "$ref": "#/components/schemas/LogprobsPart"
               }
-            ]
+            ],
+            "properties": {
+              "token_ids": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "description": "List of token IDs corresponding to the logprobs"
+              },
+              "tokens": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "List of token strings"
+              },
+              "token_logprobs": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "description": "List of token log probabilities"
+              },
+              "top_logprobs": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "number"
+                },
+                "description": "Top log probabilities for the tokens."
+              }
+            }
           },
           "top_logprobs": {
             "type": "object",
@@ -12119,11 +12156,22 @@
         "properties": {
           "content": {
             "type": "object",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/VolumeContentRequest"
+            "properties": {
+              "source_prefix": {
+                "type": "string",
+                "description": "SourcePrefix is the file path prefix for the content to be preloaded into the volume",
+                "example": "models/"
+              },
+              "type": {
+                "enum": [
+                  "files"
+                ],
+                "type": "string",
+                "additionalProperties": false,
+                "description": "Type is the content type (currently only \"files\" is supported which allows preloading files uploaded via Files API into the volume)",
+                "example": "files"
               }
-            ],
+            },
             "description": "Content specifies the content configuration for this volume"
           },
           "name": {
@@ -12286,18 +12334,21 @@
             "description": "ReplicaEvents is a mapping of replica names or IDs to their status events"
           },
           "status": {
+            "required": [
+              "value"
+            ],
             "enum": [
               "Updating",
               "Scaling",
               "Ready",
               "Failed"
             ],
-            "type": "string",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/DeploymentStatus_Wrapper"
+            "type": "object",
+            "properties": {
+              "value": {
+                "$ref": "#/components/schemas/DeploymentStatus"
               }
-            ],
+            },
             "additionalProperties": false,
             "description": "Status represents the overall status of the deployment (e.g., Updating, Scaling, Ready, Failed)"
           },
@@ -12721,11 +12772,22 @@
         "properties": {
           "content": {
             "type": "object",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/VolumeContentRequest"
+            "properties": {
+              "source_prefix": {
+                "type": "string",
+                "description": "SourcePrefix is the file path prefix for the content to be preloaded into the volume",
+                "example": "models/"
+              },
+              "type": {
+                "enum": [
+                  "files"
+                ],
+                "type": "string",
+                "additionalProperties": false,
+                "description": "Type is the content type (currently only \"files\" is supported which allows preloading files uploaded via Files API into the volume)",
+                "example": "files"
               }
-            ],
+            },
             "description": "Content specifies the new content to preload to this volume."
           },
           "name": {
@@ -13122,8 +13184,8 @@
         },
         "description": "Adjusts the likelihood of specific tokens appearing in the generated output.",
         "example": {
-          "1024": -10.5,
-          "105": 21.4
+          "105": 21.4,
+          "1024": -10.5
         }
       },
       "CompletionChoiceDelta": {
@@ -13221,8 +13283,8 @@
         },
         "description": "Adjusts the likelihood of specific tokens appearing in the generated output.",
         "example": {
-          "1024": -10.5,
-          "105": 21.4
+          "105": 21.4,
+          "1024": -10.5
         }
       },
       "ChatCompletionRequestFunctionCall": {
@@ -14382,7 +14444,152 @@
         "type": "object",
         "properties": {
           "value": {
-            "$ref": "#/components/schemas/ChatCompletionUserMessageContentMultimodal"
+            "type": "array",
+            "items": {
+              "type": "object",
+              "oneOf": [
+                {
+                  "required": [
+                    "type",
+                    "text"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "enum": [
+                        "text"
+                      ],
+                      "type": "string",
+                      "additionalProperties": false
+                    },
+                    "text": {
+                      "type": "string"
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "enum": [
+                        "image_url"
+                      ],
+                      "type": "string",
+                      "additionalProperties": false
+                    },
+                    "image_url": {
+                      "required": [
+                        "url"
+                      ],
+                      "type": "object",
+                      "properties": {
+                        "url": {
+                          "type": "string",
+                          "description": "The URL of the image"
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "title": "Video",
+                  "required": [
+                    "type",
+                    "video_url"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "enum": [
+                        "video_url"
+                      ],
+                      "type": "string",
+                      "additionalProperties": false
+                    },
+                    "video_url": {
+                      "required": [
+                        "url"
+                      ],
+                      "type": "object",
+                      "properties": {
+                        "url": {
+                          "type": "string",
+                          "description": "The URL of the video"
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "title": "Audio",
+                  "required": [
+                    "type",
+                    "audio_url"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "enum": [
+                        "audio_url"
+                      ],
+                      "type": "string",
+                      "additionalProperties": false
+                    },
+                    "audio_url": {
+                      "required": [
+                        "url"
+                      ],
+                      "type": "object",
+                      "properties": {
+                        "url": {
+                          "type": "string",
+                          "description": "The URL of the audio"
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "title": "Input Audio",
+                  "required": [
+                    "type",
+                    "input_audio"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "enum": [
+                        "input_audio"
+                      ],
+                      "type": "string",
+                      "additionalProperties": false
+                    },
+                    "input_audio": {
+                      "required": [
+                        "data",
+                        "format"
+                      ],
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "type": "string",
+                          "description": "The base64 encoded audio data"
+                        },
+                        "format": {
+                          "enum": [
+                            "wav"
+                          ],
+                          "type": "string",
+                          "additionalProperties": false,
+                          "description": "The format of the audio data"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+            "description": "A structured message with mixed content types."
           }
         }
       },

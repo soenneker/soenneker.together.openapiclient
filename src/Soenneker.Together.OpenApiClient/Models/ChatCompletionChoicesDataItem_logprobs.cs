@@ -9,15 +9,56 @@ namespace Soenneker.Together.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class ChatCompletionChoicesDataItem_logprobs : global::Soenneker.Together.OpenApiClient.Models.LogprobsPart, IParsable
+    public partial class ChatCompletionChoicesDataItem_logprobs : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>List of token IDs corresponding to the logprobs</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<double?>? TokenIds { get; set; }
+#nullable restore
+#else
+        public List<double?> TokenIds { get; set; }
+#endif
+        /// <summary>List of token log probabilities</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<double?>? TokenLogprobs { get; set; }
+#nullable restore
+#else
+        public List<double?> TokenLogprobs { get; set; }
+#endif
+        /// <summary>List of token strings</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? Tokens { get; set; }
+#nullable restore
+#else
+        public List<string> Tokens { get; set; }
+#endif
+        /// <summary>Top log probabilities for the tokens.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionChoicesDataItem_logprobs_top_logprobs? TopLogprobs { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionChoicesDataItem_logprobs_top_logprobs TopLogprobs { get; set; }
+#endif
+        /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.ChatCompletionChoicesDataItem_logprobs"/> and sets the default values.
+        /// </summary>
+        public ChatCompletionChoicesDataItem_logprobs()
+        {
+            AdditionalData = new Dictionary<string, object>();
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.ChatCompletionChoicesDataItem_logprobs"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static new global::Soenneker.Together.OpenApiClient.Models.ChatCompletionChoicesDataItem_logprobs CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Together.OpenApiClient.Models.ChatCompletionChoicesDataItem_logprobs CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             return new global::Soenneker.Together.OpenApiClient.Models.ChatCompletionChoicesDataItem_logprobs();
@@ -26,20 +67,28 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public override IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers())
+            return new Dictionary<string, Action<IParseNode>>
             {
+                { "token_ids", n => { TokenIds = n.GetCollectionOfPrimitiveValues<double?>()?.AsList(); } },
+                { "token_logprobs", n => { TokenLogprobs = n.GetCollectionOfPrimitiveValues<double?>()?.AsList(); } },
+                { "tokens", n => { Tokens = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "top_logprobs", n => { TopLogprobs = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionChoicesDataItem_logprobs_top_logprobs>(global::Soenneker.Together.OpenApiClient.Models.ChatCompletionChoicesDataItem_logprobs_top_logprobs.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public override void Serialize(ISerializationWriter writer)
+        public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            base.Serialize(writer);
+            writer.WriteCollectionOfPrimitiveValues<double?>("token_ids", TokenIds);
+            writer.WriteCollectionOfPrimitiveValues<double?>("token_logprobs", TokenLogprobs);
+            writer.WriteCollectionOfPrimitiveValues<string>("tokens", Tokens);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionChoicesDataItem_logprobs_top_logprobs>("top_logprobs", TopLogprobs);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

@@ -5,7 +5,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 {
     /// <summary>Type is the content type (currently only &quot;files&quot; is supported which allows preloading files uploaded via Files API into the volume)</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum VolumeContentRequest_type
+    public enum UpdateVolumeRequest_content_type
     {
         [EnumMember(Value = "files")]
         #pragma warning disable CS1591
