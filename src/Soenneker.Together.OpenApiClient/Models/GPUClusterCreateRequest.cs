@@ -13,9 +13,28 @@ namespace Soenneker.Together.OpenApiClient.Models
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class GPUClusterCreateRequest : IAdditionalDataHolder, IParsable
     {
+        /// <summary>AcceptanceTestsParams groups all GPU acceptance test options when enabled is true.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Together.OpenApiClient.Models.AcceptanceTestsParams? AcceptanceTestsParams { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Together.OpenApiClient.Models.AcceptanceTestsParams AcceptanceTestsParams { get; set; }
+#endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Add-ons to enable on the cluster at creation time.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.Together.OpenApiClient.Models.AddOnCreateRequest>? AddOns { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.Together.OpenApiClient.Models.AddOnCreateRequest> AddOns { get; set; }
+#endif
+        /// <summary>Whether to enable auto-scaling for the cluster. If true, the cluster will automatically scale the number of GPU worker nodes between num_gpus and auto_scale_max_gpus based on the workload.</summary>
+        public bool? AutoScale { get; set; }
         /// <summary>Whether GPU cluster should be auto-scaled based on the workload. By default, it is not auto-scaled.</summary>
+        [Obsolete("")]
         public bool? AutoScaled { get; set; }
         /// <summary>Maximum number of GPUs to which the cluster can be auto-scaled up. This field is required if auto_scaled is true.</summary>
         public int? AutoScaleMaxGpus { get; set; }
@@ -28,6 +47,14 @@ namespace Soenneker.Together.OpenApiClient.Models
 #nullable restore
 #else
         public string CapacityPoolId { get; set; }
+#endif
+        /// <summary>The cluster_config property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Together.OpenApiClient.Models.InstanceClusterConfig? ClusterConfig { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Together.OpenApiClient.Models.InstanceClusterConfig ClusterConfig { get; set; }
 #endif
         /// <summary>Name of the GPU cluster.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -55,8 +82,14 @@ namespace Soenneker.Together.OpenApiClient.Models
         public global::Soenneker.Together.OpenApiClient.Models.GPUClusterCreateRequest_gpu_type? GpuType { get; set; }
         /// <summary>Whether to install Traefik ingress controller in the cluster. This field is only applicable for Kubernetes clusters and is false by default.</summary>
         public bool? InstallTraefik { get; set; }
+        /// <summary>Number of GPUs to allocate from the capacity pool. Must be a multiple of 8 and not exceed num_gpus.</summary>
+        public int? NumCapacityPoolGpus { get; set; }
         /// <summary>Number of GPUs to allocate in the cluster. This must be multiple of 8. For example, 8, 16 or 24</summary>
         public int? NumGpus { get; set; }
+        /// <summary>Number of preemptible GPUs to request alongside on-demand capacity. Must be a multiple of 8. Preemptible nodes are cheaper but may be reclaimed when on-demand capacity is needed elsewhere; the system fulfills this asynchronously and surfaces the actual count in allocated_preemptible_gpus.</summary>
+        public int? NumPreemptibleGpus { get; set; }
+        /// <summary>Number of prepaid (PLG) reserved GPUs for this cluster. When omitted for RESERVED billing on create, the server defaults this to num_gpus.</summary>
+        public int? NumReservedGpus { get; set; }
         /// <summary>Nvidia driver version for this cluster. For example, 550. Only some combination of cuda_version and nvidia_driver_version are supported.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -64,6 +97,22 @@ namespace Soenneker.Together.OpenApiClient.Models
 #nullable restore
 #else
         public string NvidiaDriverVersion { get; set; }
+#endif
+        /// <summary>The oidc_config property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Together.OpenApiClient.Models.OIDCConfig? OidcConfig { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Together.OpenApiClient.Models.OIDCConfig OidcConfig { get; set; }
+#endif
+        /// <summary>Project ID for the cluster. If not set, the project from the request context is used.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ProjectId { get; set; }
+#nullable restore
+#else
+        public string ProjectId { get; set; }
 #endif
         /// <summary>Region to create the GPU cluster in. Usable regions can be found from `client.clusters.list_regions()`</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -128,10 +177,14 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "acceptance_tests_params", n => { AcceptanceTestsParams = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.AcceptanceTestsParams>(global::Soenneker.Together.OpenApiClient.Models.AcceptanceTestsParams.CreateFromDiscriminatorValue); } },
+                { "add_ons", n => { AddOns = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.AddOnCreateRequest>(global::Soenneker.Together.OpenApiClient.Models.AddOnCreateRequest.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "auto_scale", n => { AutoScale = n.GetBoolValue(); } },
                 { "auto_scale_max_gpus", n => { AutoScaleMaxGpus = n.GetIntValue(); } },
                 { "auto_scaled", n => { AutoScaled = n.GetBoolValue(); } },
                 { "billing_type", n => { BillingType = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.GPUClusterCreateRequest_billing_type>(); } },
                 { "capacity_pool_id", n => { CapacityPoolId = n.GetStringValue(); } },
+                { "cluster_config", n => { ClusterConfig = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.InstanceClusterConfig>(global::Soenneker.Together.OpenApiClient.Models.InstanceClusterConfig.CreateFromDiscriminatorValue); } },
                 { "cluster_name", n => { ClusterName = n.GetStringValue(); } },
                 { "cluster_type", n => { ClusterType = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.GPUClusterCreateRequest_cluster_type>(); } },
                 { "cuda_version", n => { CudaVersion = n.GetStringValue(); } },
@@ -139,8 +192,13 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "gpu_node_failover_enabled", n => { GpuNodeFailoverEnabled = n.GetBoolValue(); } },
                 { "gpu_type", n => { GpuType = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.GPUClusterCreateRequest_gpu_type>(); } },
                 { "install_traefik", n => { InstallTraefik = n.GetBoolValue(); } },
+                { "num_capacity_pool_gpus", n => { NumCapacityPoolGpus = n.GetIntValue(); } },
                 { "num_gpus", n => { NumGpus = n.GetIntValue(); } },
+                { "num_preemptible_gpus", n => { NumPreemptibleGpus = n.GetIntValue(); } },
+                { "num_reserved_gpus", n => { NumReservedGpus = n.GetIntValue(); } },
                 { "nvidia_driver_version", n => { NvidiaDriverVersion = n.GetStringValue(); } },
+                { "oidc_config", n => { OidcConfig = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.OIDCConfig>(global::Soenneker.Together.OpenApiClient.Models.OIDCConfig.CreateFromDiscriminatorValue); } },
+                { "project_id", n => { ProjectId = n.GetStringValue(); } },
                 { "region", n => { Region = n.GetStringValue(); } },
                 { "reservation_end_time", n => { ReservationEndTime = n.GetDateTimeOffsetValue(); } },
                 { "reservation_start_time", n => { ReservationStartTime = n.GetDateTimeOffsetValue(); } },
@@ -157,10 +215,14 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.AcceptanceTestsParams>("acceptance_tests_params", AcceptanceTestsParams);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.AddOnCreateRequest>("add_ons", AddOns);
+            writer.WriteBoolValue("auto_scale", AutoScale);
             writer.WriteBoolValue("auto_scaled", AutoScaled);
             writer.WriteIntValue("auto_scale_max_gpus", AutoScaleMaxGpus);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.GPUClusterCreateRequest_billing_type>("billing_type", BillingType);
             writer.WriteStringValue("capacity_pool_id", CapacityPoolId);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.InstanceClusterConfig>("cluster_config", ClusterConfig);
             writer.WriteStringValue("cluster_name", ClusterName);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.GPUClusterCreateRequest_cluster_type>("cluster_type", ClusterType);
             writer.WriteStringValue("cuda_version", CudaVersion);
@@ -168,8 +230,13 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteBoolValue("gpu_node_failover_enabled", GpuNodeFailoverEnabled);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.GPUClusterCreateRequest_gpu_type>("gpu_type", GpuType);
             writer.WriteBoolValue("install_traefik", InstallTraefik);
+            writer.WriteIntValue("num_capacity_pool_gpus", NumCapacityPoolGpus);
             writer.WriteIntValue("num_gpus", NumGpus);
+            writer.WriteIntValue("num_preemptible_gpus", NumPreemptibleGpus);
+            writer.WriteIntValue("num_reserved_gpus", NumReservedGpus);
             writer.WriteStringValue("nvidia_driver_version", NvidiaDriverVersion);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.OIDCConfig>("oidc_config", OidcConfig);
+            writer.WriteStringValue("project_id", ProjectId);
             writer.WriteStringValue("region", Region);
             writer.WriteDateTimeOffsetValue("reservation_end_time", ReservationEndTime);
             writer.WriteDateTimeOffsetValue("reservation_start_time", ReservationStartTime);

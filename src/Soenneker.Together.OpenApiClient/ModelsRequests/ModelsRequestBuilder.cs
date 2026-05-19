@@ -34,7 +34,7 @@ namespace Soenneker.Together.OpenApiClient.ModelsRequests
         {
         }
         /// <summary>
-        /// Lists all of Together&apos;s open-source models
+        /// Lists all of Together&apos;s open-source models and metadata including pricing, chat template, and context.
         /// </summary>
         /// <returns>A List&lt;global::Soenneker.Together.OpenApiClient.Models.ModelInfo&gt;</returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -86,7 +86,7 @@ namespace Soenneker.Together.OpenApiClient.ModelsRequests
             return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.ModelUploadSuccessResponse>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.ModelUploadSuccessResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Lists all of Together&apos;s open-source models
+        /// Lists all of Together&apos;s open-source models and metadata including pricing, chat template, and context.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -136,7 +136,7 @@ namespace Soenneker.Together.OpenApiClient.ModelsRequests
             return new global::Soenneker.Together.OpenApiClient.ModelsRequests.ModelsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Lists all of Together&apos;s open-source models
+        /// Lists all of Together&apos;s open-source models and metadata including pricing, chat template, and context.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class ModelsRequestBuilderGetQueryParameters 

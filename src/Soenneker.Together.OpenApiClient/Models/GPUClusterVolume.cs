@@ -14,9 +14,9 @@ namespace Soenneker.Together.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The size_tib property</summary>
+        /// <summary>Size of the volume in TiB.</summary>
         public int? SizeTib { get; set; }
-        /// <summary>The status property</summary>
+        /// <summary>Current status of the volume.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Status { get; set; }
@@ -24,7 +24,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string Status { get; set; }
 #endif
-        /// <summary>The volume_id property</summary>
+        /// <summary>ID of the volume.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? VolumeId { get; set; }
@@ -32,7 +32,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string VolumeId { get; set; }
 #endif
-        /// <summary>The volume_name property</summary>
+        /// <summary>User provided name of the volume.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? VolumeName { get; set; }

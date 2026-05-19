@@ -22,7 +22,7 @@ namespace Soenneker.Together.OpenApiClient.Deployments.Item.Logs
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public LogsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/deployments/{id}/logs{?replica_id*}", pathParameters)
+        public LogsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/deployments/{id}/logs{?replica_id*,revision*,version*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.Together.OpenApiClient.Deployments.Item.Logs
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public LogsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/deployments/{id}/logs{?replica_id*}", rawUrl)
+        public LogsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/deployments/{id}/logs{?replica_id*,revision*,version*}", rawUrl)
         {
         }
         /// <summary>
@@ -100,6 +100,24 @@ namespace Soenneker.Together.OpenApiClient.Deployments.Item.Logs
 #else
             [QueryParameter("replica_id")]
             public string ReplicaId { get; set; }
+#endif
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("revision")]
+            public string? Revision { get; set; }
+#nullable restore
+#else
+            [QueryParameter("revision")]
+            public string Revision { get; set; }
+#endif
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("version")]
+            public string? Version { get; set; }
+#nullable restore
+#else
+            [QueryParameter("version")]
+            public string Version { get; set; }
 #endif
         }
     }

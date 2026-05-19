@@ -14,9 +14,9 @@ namespace Soenneker.Together.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Size of the volume in whole tebibytes (TiB).</summary>
+        /// <summary>Size of the volume in TiB.</summary>
         public int? SizeTib { get; set; }
-        /// <summary>Deployment status of the volume.</summary>
+        /// <summary>Current status of the shared volume.</summary>
         public global::Soenneker.Together.OpenApiClient.Models.GPUClustersSharedVolume_status? Status { get; set; }
         /// <summary>ID of the volume.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -26,7 +26,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string VolumeId { get; set; }
 #endif
-        /// <summary>Provided name of the volume.</summary>
+        /// <summary>User provided name of the volume.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? VolumeName { get; set; }

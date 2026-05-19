@@ -35,7 +35,7 @@ namespace Soenneker.Together.OpenApiClient.Compute.Clusters.Storage.Volumes
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public VolumesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/compute/clusters/storage/volumes", pathParameters)
+        public VolumesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/compute/clusters/storage/volumes{?project_id*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Soenneker.Together.OpenApiClient.Compute.Clusters.Storage.Volumes
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public VolumesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/compute/clusters/storage/volumes", rawUrl)
+        public VolumesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/compute/clusters/storage/volumes{?project_id*}", rawUrl)
         {
         }
         /// <summary>
@@ -54,11 +54,11 @@ namespace Soenneker.Together.OpenApiClient.Compute.Clusters.Storage.Volumes
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Together.OpenApiClient.Models.GPUClustersSharedVolumes?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Together.OpenApiClient.Models.GPUClustersSharedVolumes?> GetAsync(Action<RequestConfiguration<global::Soenneker.Together.OpenApiClient.Compute.Clusters.Storage.Volumes.VolumesRequestBuilder.VolumesRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Together.OpenApiClient.Models.GPUClustersSharedVolumes> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Together.OpenApiClient.Models.GPUClustersSharedVolumes> GetAsync(Action<RequestConfiguration<global::Soenneker.Together.OpenApiClient.Compute.Clusters.Storage.Volumes.VolumesRequestBuilder.VolumesRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
@@ -111,11 +111,11 @@ namespace Soenneker.Together.OpenApiClient.Compute.Clusters.Storage.Volumes
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Together.OpenApiClient.Compute.Clusters.Storage.Volumes.VolumesRequestBuilder.VolumesRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Together.OpenApiClient.Compute.Clusters.Storage.Volumes.VolumesRequestBuilder.VolumesRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -175,6 +175,22 @@ namespace Soenneker.Together.OpenApiClient.Compute.Clusters.Storage.Volumes
         public global::Soenneker.Together.OpenApiClient.Compute.Clusters.Storage.Volumes.VolumesRequestBuilder WithUrl(string rawUrl)
         {
             return new global::Soenneker.Together.OpenApiClient.Compute.Clusters.Storage.Volumes.VolumesRequestBuilder(rawUrl, RequestAdapter);
+        }
+        /// <summary>
+        /// List all shared volumes.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        public partial class VolumesRequestBuilderGetQueryParameters 
+        {
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("project_id")]
+            public string? ProjectId { get; set; }
+#nullable restore
+#else
+            [QueryParameter("project_id")]
+            public string ProjectId { get; set; }
+#endif
         }
     }
 }

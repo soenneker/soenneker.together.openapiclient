@@ -14,6 +14,18 @@ namespace Soenneker.Together.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Enabled add-ons on this cluster. Only add-ons with enabled=true in their config are returned.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.Together.OpenApiClient.Models.AddOnInfo>? AddOns { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.Together.OpenApiClient.Models.AddOnInfo> AddOns { get; set; }
+#endif
+        /// <summary>Actual number of preemptible GPUs currently allocated to the cluster. Updated asynchronously by the fulfillment and reclamation workers; may be less than desired_preemptible_gpus when capacity is constrained.</summary>
+        public int? AllocatedPreemptibleGpus { get; set; }
+        /// <summary>Billing type for the cluster (RESERVED, ON_DEMAND, or SCHEDULED_CAPACITY).</summary>
+        public global::Soenneker.Together.OpenApiClient.Models.GPUClusterInfo_billing_type? BillingType { get; set; }
         /// <summary>The capacity_pool_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -21,6 +33,14 @@ namespace Soenneker.Together.OpenApiClient.Models
 #nullable restore
 #else
         public string CapacityPoolId { get; set; }
+#endif
+        /// <summary>The cluster_config property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Together.OpenApiClient.Models.InstanceClusterConfig? ClusterConfig { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Together.OpenApiClient.Models.InstanceClusterConfig ClusterConfig { get; set; }
 #endif
         /// <summary>The cluster_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -58,6 +78,8 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string CudaVersion { get; set; }
 #endif
+        /// <summary>Customer&apos;s requested number of preemptible GPUs. Set on cluster create or update; persists until changed.</summary>
+        public int? DesiredPreemptibleGpus { get; set; }
         /// <summary>The duration_hours property</summary>
         public int? DurationHours { get; set; }
         /// <summary>The gpu_type property</summary>
@@ -80,6 +102,8 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string KubeConfig { get; set; }
 #endif
+        /// <summary>Number of CPU-only worker nodes in the cluster.</summary>
+        public int? NumCpuWorkers { get; set; }
         /// <summary>The num_gpus property</summary>
         public int? NumGpus { get; set; }
         /// <summary>The nvidia_driver_version property</summary>
@@ -89,6 +113,30 @@ namespace Soenneker.Together.OpenApiClient.Models
 #nullable restore
 #else
         public string NvidiaDriverVersion { get; set; }
+#endif
+        /// <summary>The oidc_config property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Together.OpenApiClient.Models.OIDCConfig? OidcConfig { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Together.OpenApiClient.Models.OIDCConfig OidcConfig { get; set; }
+#endif
+        /// <summary>Cluster-level phase transition history.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.Together.OpenApiClient.Models.ClusterPhaseTransition>? PhaseTransitions { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.Together.OpenApiClient.Models.ClusterPhaseTransition> PhaseTransitions { get; set; }
+#endif
+        /// <summary>The project_id property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ProjectId { get; set; }
+#nullable restore
+#else
+        public string ProjectId { get; set; }
 #endif
         /// <summary>The region property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -139,20 +187,29 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "add_ons", n => { AddOns = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.AddOnInfo>(global::Soenneker.Together.OpenApiClient.Models.AddOnInfo.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "allocated_preemptible_gpus", n => { AllocatedPreemptibleGpus = n.GetIntValue(); } },
+                { "billing_type", n => { BillingType = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.GPUClusterInfo_billing_type>(); } },
                 { "capacity_pool_id", n => { CapacityPoolId = n.GetStringValue(); } },
+                { "cluster_config", n => { ClusterConfig = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.InstanceClusterConfig>(global::Soenneker.Together.OpenApiClient.Models.InstanceClusterConfig.CreateFromDiscriminatorValue); } },
                 { "cluster_id", n => { ClusterId = n.GetStringValue(); } },
                 { "cluster_name", n => { ClusterName = n.GetStringValue(); } },
                 { "cluster_type", n => { ClusterType = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.GPUClusterInfo_cluster_type>(); } },
                 { "control_plane_nodes", n => { ControlPlaneNodes = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.GPUClusterControlPlaneNode>(global::Soenneker.Together.OpenApiClient.Models.GPUClusterControlPlaneNode.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "cuda_version", n => { CudaVersion = n.GetStringValue(); } },
+                { "desired_preemptible_gpus", n => { DesiredPreemptibleGpus = n.GetIntValue(); } },
                 { "duration_hours", n => { DurationHours = n.GetIntValue(); } },
                 { "gpu_type", n => { GpuType = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.GPUClusterInfo_gpu_type>(); } },
                 { "gpu_worker_nodes", n => { GpuWorkerNodes = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.GPUClusterGPUWorkerNode>(global::Soenneker.Together.OpenApiClient.Models.GPUClusterGPUWorkerNode.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "install_traefik", n => { InstallTraefik = n.GetBoolValue(); } },
                 { "kube_config", n => { KubeConfig = n.GetStringValue(); } },
+                { "num_cpu_workers", n => { NumCpuWorkers = n.GetIntValue(); } },
                 { "num_gpus", n => { NumGpus = n.GetIntValue(); } },
                 { "nvidia_driver_version", n => { NvidiaDriverVersion = n.GetStringValue(); } },
+                { "oidc_config", n => { OidcConfig = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.OIDCConfig>(global::Soenneker.Together.OpenApiClient.Models.OIDCConfig.CreateFromDiscriminatorValue); } },
+                { "phase_transitions", n => { PhaseTransitions = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.ClusterPhaseTransition>(global::Soenneker.Together.OpenApiClient.Models.ClusterPhaseTransition.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "project_id", n => { ProjectId = n.GetStringValue(); } },
                 { "region", n => { Region = n.GetStringValue(); } },
                 { "reservation_end_time", n => { ReservationEndTime = n.GetDateTimeOffsetValue(); } },
                 { "reservation_start_time", n => { ReservationStartTime = n.GetDateTimeOffsetValue(); } },
@@ -168,20 +225,29 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.AddOnInfo>("add_ons", AddOns);
+            writer.WriteIntValue("allocated_preemptible_gpus", AllocatedPreemptibleGpus);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.GPUClusterInfo_billing_type>("billing_type", BillingType);
             writer.WriteStringValue("capacity_pool_id", CapacityPoolId);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.InstanceClusterConfig>("cluster_config", ClusterConfig);
             writer.WriteStringValue("cluster_id", ClusterId);
             writer.WriteStringValue("cluster_name", ClusterName);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.GPUClusterInfo_cluster_type>("cluster_type", ClusterType);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.GPUClusterControlPlaneNode>("control_plane_nodes", ControlPlaneNodes);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteStringValue("cuda_version", CudaVersion);
+            writer.WriteIntValue("desired_preemptible_gpus", DesiredPreemptibleGpus);
             writer.WriteIntValue("duration_hours", DurationHours);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.GPUClusterInfo_gpu_type>("gpu_type", GpuType);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.GPUClusterGPUWorkerNode>("gpu_worker_nodes", GpuWorkerNodes);
             writer.WriteBoolValue("install_traefik", InstallTraefik);
             writer.WriteStringValue("kube_config", KubeConfig);
+            writer.WriteIntValue("num_cpu_workers", NumCpuWorkers);
             writer.WriteIntValue("num_gpus", NumGpus);
             writer.WriteStringValue("nvidia_driver_version", NvidiaDriverVersion);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.OIDCConfig>("oidc_config", OidcConfig);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.ClusterPhaseTransition>("phase_transitions", PhaseTransitions);
+            writer.WriteStringValue("project_id", ProjectId);
             writer.WriteStringValue("region", Region);
             writer.WriteDateTimeOffsetValue("reservation_end_time", ReservationEndTime);
             writer.WriteDateTimeOffsetValue("reservation_start_time", ReservationStartTime);

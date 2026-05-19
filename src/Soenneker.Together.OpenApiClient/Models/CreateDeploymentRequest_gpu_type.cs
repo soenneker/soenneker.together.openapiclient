@@ -15,6 +15,10 @@ namespace Soenneker.Together.OpenApiClient.Models
         #pragma warning disable CS1591
         H10040gbMig,
         #pragma warning restore CS1591
+        [EnumMember(Value = "h200-140gb")]
+        #pragma warning disable CS1591
+        H200140gb,
+        #pragma warning restore CS1591
         [EnumMember(Value = "b200-192gb")]
         #pragma warning disable CS1591
         B200192gb,

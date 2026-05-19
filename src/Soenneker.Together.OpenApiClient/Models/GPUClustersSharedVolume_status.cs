@@ -3,10 +3,14 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
-    /// <summary>Deployment status of the volume.</summary>
+    /// <summary>Current status of the shared volume.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum GPUClustersSharedVolume_status
     {
+        [EnumMember(Value = "scheduled")]
+        #pragma warning disable CS1591
+        Scheduled,
+        #pragma warning restore CS1591
         [EnumMember(Value = "available")]
         #pragma warning disable CS1591
         Available,
@@ -18,6 +22,22 @@ namespace Soenneker.Together.OpenApiClient.Models
         [EnumMember(Value = "provisioning")]
         #pragma warning disable CS1591
         Provisioning,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "deleting")]
+        #pragma warning disable CS1591
+        Deleting,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "failed")]
+        #pragma warning disable CS1591
+        Failed,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "access_revoked")]
+        #pragma warning disable CS1591
+        Access_revoked,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "unknown")]
+        #pragma warning disable CS1591
+        Unknown,
         #pragma warning restore CS1591
     }
 }

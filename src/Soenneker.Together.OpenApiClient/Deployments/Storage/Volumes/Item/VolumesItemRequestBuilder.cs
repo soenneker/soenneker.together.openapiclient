@@ -22,7 +22,7 @@ namespace Soenneker.Together.OpenApiClient.Deployments.Storage.Volumes.Item
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public VolumesItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/deployments/storage/volumes/{id}", pathParameters)
+        public VolumesItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/deployments/storage/volumes/{id}{?version*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.Together.OpenApiClient.Deployments.Storage.Volumes.Item
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public VolumesItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/deployments/storage/volumes/{id}", rawUrl)
+        public VolumesItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/deployments/storage/volumes/{id}{?version*}", rawUrl)
         {
         }
         /// <summary>
@@ -64,20 +64,22 @@ namespace Soenneker.Together.OpenApiClient.Deployments.Storage.Volumes.Item
         /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.VolumeResponseItem"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Together.OpenApiClient.Deployments.Storage.Volumes.Item.VolumeResponseItem400Error">When receiving a 400 status code</exception>
         /// <exception cref="global::Soenneker.Together.OpenApiClient.Deployments.Storage.Volumes.Item.VolumeResponseItem404Error">When receiving a 404 status code</exception>
         /// <exception cref="global::Soenneker.Together.OpenApiClient.Deployments.Storage.Volumes.Item.VolumeResponseItem500Error">When receiving a 500 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Together.OpenApiClient.Models.VolumeResponseItem?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Together.OpenApiClient.Models.VolumeResponseItem?> GetAsync(Action<RequestConfiguration<global::Soenneker.Together.OpenApiClient.Deployments.Storage.Volumes.Item.VolumesItemRequestBuilder.VolumesItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Together.OpenApiClient.Models.VolumeResponseItem> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Together.OpenApiClient.Models.VolumeResponseItem> GetAsync(Action<RequestConfiguration<global::Soenneker.Together.OpenApiClient.Deployments.Storage.Volumes.Item.VolumesItemRequestBuilder.VolumesItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
+                { "400", global::Soenneker.Together.OpenApiClient.Deployments.Storage.Volumes.Item.VolumeResponseItem400Error.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.Together.OpenApiClient.Deployments.Storage.Volumes.Item.VolumeResponseItem404Error.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Together.OpenApiClient.Deployments.Storage.Volumes.Item.VolumeResponseItem500Error.CreateFromDiscriminatorValue },
             };
@@ -138,11 +140,11 @@ namespace Soenneker.Together.OpenApiClient.Deployments.Storage.Volumes.Item
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Together.OpenApiClient.Deployments.Storage.Volumes.Item.VolumesItemRequestBuilder.VolumesItemRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Together.OpenApiClient.Deployments.Storage.Volumes.Item.VolumesItemRequestBuilder.VolumesItemRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -180,6 +182,15 @@ namespace Soenneker.Together.OpenApiClient.Deployments.Storage.Volumes.Item
         public global::Soenneker.Together.OpenApiClient.Deployments.Storage.Volumes.Item.VolumesItemRequestBuilder WithUrl(string rawUrl)
         {
             return new global::Soenneker.Together.OpenApiClient.Deployments.Storage.Volumes.Item.VolumesItemRequestBuilder(rawUrl, RequestAdapter);
+        }
+        /// <summary>
+        /// Retrieve details of a specific volume by its ID or name
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        public partial class VolumesItemRequestBuilderGetQueryParameters 
+        {
+            [QueryParameter("version")]
+            public int? Version { get; set; }
         }
     }
 }

@@ -30,8 +30,16 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string InstanceId { get; set; }
 #endif
+        /// <summary>Remediation represents a node remediation request for an instance.An instance can have multiple remediations over time (e.g., failed attempts followed by retries).</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Together.OpenApiClient.Models.Remediation? LatestRemediation { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Together.OpenApiClient.Models.Remediation LatestRemediation { get; set; }
+#endif
         /// <summary>The memory_gib property</summary>
-        public double? MemoryGib { get; set; }
+        public float? MemoryGib { get; set; }
         /// <summary>The networks property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -60,6 +68,22 @@ namespace Soenneker.Together.OpenApiClient.Models
         public int? NumCpuCores { get; set; }
         /// <summary>The num_gpus property</summary>
         public int? NumGpus { get; set; }
+        /// <summary>Phase transition history for this GPU worker node.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.Together.OpenApiClient.Models.NodePhaseTransition>? PhaseTransitions { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.Together.OpenApiClient.Models.NodePhaseTransition> PhaseTransitions { get; set; }
+#endif
+        /// <summary>The slurm_worker_hostname property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SlurmWorkerHostname { get; set; }
+#nullable restore
+#else
+        public string SlurmWorkerHostname { get; set; }
+#endif
         /// <summary>The status property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -95,12 +119,15 @@ namespace Soenneker.Together.OpenApiClient.Models
             {
                 { "host_name", n => { HostName = n.GetStringValue(); } },
                 { "instance_id", n => { InstanceId = n.GetStringValue(); } },
-                { "memory_gib", n => { MemoryGib = n.GetDoubleValue(); } },
+                { "latest_remediation", n => { LatestRemediation = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.Remediation>(global::Soenneker.Together.OpenApiClient.Models.Remediation.CreateFromDiscriminatorValue); } },
+                { "memory_gib", n => { MemoryGib = n.GetFloatValue(); } },
                 { "networks", n => { Networks = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "node_id", n => { NodeId = n.GetStringValue(); } },
                 { "node_name", n => { NodeName = n.GetStringValue(); } },
                 { "num_cpu_cores", n => { NumCpuCores = n.GetIntValue(); } },
                 { "num_gpus", n => { NumGpus = n.GetIntValue(); } },
+                { "phase_transitions", n => { PhaseTransitions = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.NodePhaseTransition>(global::Soenneker.Together.OpenApiClient.Models.NodePhaseTransition.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "slurm_worker_hostname", n => { SlurmWorkerHostname = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
             };
         }
@@ -113,12 +140,15 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("host_name", HostName);
             writer.WriteStringValue("instance_id", InstanceId);
-            writer.WriteDoubleValue("memory_gib", MemoryGib);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.Remediation>("latest_remediation", LatestRemediation);
+            writer.WriteFloatValue("memory_gib", MemoryGib);
             writer.WriteCollectionOfPrimitiveValues<string>("networks", Networks);
             writer.WriteStringValue("node_id", NodeId);
             writer.WriteStringValue("node_name", NodeName);
             writer.WriteIntValue("num_cpu_cores", NumCpuCores);
             writer.WriteIntValue("num_gpus", NumGpus);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.NodePhaseTransition>("phase_transitions", PhaseTransitions);
+            writer.WriteStringValue("slurm_worker_hostname", SlurmWorkerHostname);
             writer.WriteStringValue("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }

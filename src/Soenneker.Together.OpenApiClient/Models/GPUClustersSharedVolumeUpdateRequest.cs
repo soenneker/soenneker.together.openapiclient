@@ -14,9 +14,9 @@ namespace Soenneker.Together.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Size of the volume in whole tebibytes (TiB).</summary>
+        /// <summary>Size of the volume in TiB.</summary>
         public int? SizeTib { get; set; }
-        /// <summary>ID of the volume to update.</summary>
+        /// <summary>ID of the volume.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? VolumeId { get; set; }

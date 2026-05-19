@@ -14,10 +14,30 @@ namespace Soenneker.Together.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Add-ons to update on the cluster. Each entry identifies an existing add-on by name and provides the new external config to merge.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.Together.OpenApiClient.Models.AddOnUpdateRequest>? AddOns { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.Together.OpenApiClient.Models.AddOnUpdateRequest> AddOns { get; set; }
+#endif
+        /// <summary>The cluster_config property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Together.OpenApiClient.Models.InstanceClusterConfig? ClusterConfig { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Together.OpenApiClient.Models.InstanceClusterConfig ClusterConfig { get; set; }
+#endif
         /// <summary>Type of cluster to update.</summary>
         public global::Soenneker.Together.OpenApiClient.Models.GPUClusterUpdateRequest_cluster_type? ClusterType { get; set; }
-        /// <summary>Number of GPUs to allocate in the cluster. This must be multiple of 8. For example, 8, 16 or 24</summary>
+        /// <summary>Target GPU count for the cluster. When omitted, the server keeps the current GPU count from cluster metadata (use for config-only or decommission-time-only updates).</summary>
         public int? NumGpus { get; set; }
+        /// <summary>Updated desired number of preemptible GPUs for the cluster. When omitted, the current value is preserved. Must be a multiple of 8.</summary>
+        public int? NumPreemptibleGpus { get; set; }
+        /// <summary>Number of reserved GPUs to update to. This field is only applicable for clusters with RESERVED billing type.</summary>
+        public int? NumReservedGpus { get; set; }
         /// <summary>Timestamp at which the cluster should be decommissioned. Only accepted for prepaid clusters.</summary>
         public DateTimeOffset? ReservationEndTime { get; set; }
         /// <summary>
@@ -45,8 +65,12 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "add_ons", n => { AddOns = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.AddOnUpdateRequest>(global::Soenneker.Together.OpenApiClient.Models.AddOnUpdateRequest.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "cluster_config", n => { ClusterConfig = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.InstanceClusterConfig>(global::Soenneker.Together.OpenApiClient.Models.InstanceClusterConfig.CreateFromDiscriminatorValue); } },
                 { "cluster_type", n => { ClusterType = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.GPUClusterUpdateRequest_cluster_type>(); } },
                 { "num_gpus", n => { NumGpus = n.GetIntValue(); } },
+                { "num_preemptible_gpus", n => { NumPreemptibleGpus = n.GetIntValue(); } },
+                { "num_reserved_gpus", n => { NumReservedGpus = n.GetIntValue(); } },
                 { "reservation_end_time", n => { ReservationEndTime = n.GetDateTimeOffsetValue(); } },
             };
         }
@@ -57,8 +81,12 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.AddOnUpdateRequest>("add_ons", AddOns);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.InstanceClusterConfig>("cluster_config", ClusterConfig);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.GPUClusterUpdateRequest_cluster_type>("cluster_type", ClusterType);
             writer.WriteIntValue("num_gpus", NumGpus);
+            writer.WriteIntValue("num_preemptible_gpus", NumPreemptibleGpus);
+            writer.WriteIntValue("num_reserved_gpus", NumReservedGpus);
             writer.WriteDateTimeOffsetValue("reservation_end_time", ReservationEndTime);
             writer.WriteAdditionalData(AdditionalData);
         }

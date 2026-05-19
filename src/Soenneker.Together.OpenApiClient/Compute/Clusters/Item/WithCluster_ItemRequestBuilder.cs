@@ -3,6 +3,8 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.Together.OpenApiClient.Compute.Clusters.Item.Addons;
+using Soenneker.Together.OpenApiClient.Compute.Clusters.Item.Instances;
 using Soenneker.Together.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -17,6 +19,16 @@ namespace Soenneker.Together.OpenApiClient.Compute.Clusters.Item
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class WithCluster_ItemRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The addons property</summary>
+        public global::Soenneker.Together.OpenApiClient.Compute.Clusters.Item.Addons.AddonsRequestBuilder Addons
+        {
+            get => new global::Soenneker.Together.OpenApiClient.Compute.Clusters.Item.Addons.AddonsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The instances property</summary>
+        public global::Soenneker.Together.OpenApiClient.Compute.Clusters.Item.Instances.InstancesRequestBuilder Instances
+        {
+            get => new global::Soenneker.Together.OpenApiClient.Compute.Clusters.Item.Instances.InstancesRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Compute.Clusters.Item.WithCluster_ItemRequestBuilder"/> and sets the default values.
         /// </summary>
@@ -36,20 +48,20 @@ namespace Soenneker.Together.OpenApiClient.Compute.Clusters.Item
         /// <summary>
         /// Delete a GPU cluster by cluster ID.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.GPUClusterServiceDelete200"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.GPUClusterDeleteResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Together.OpenApiClient.Models.GPUClusterServiceDelete200?> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Together.OpenApiClient.Models.GPUClusterDeleteResponse?> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Together.OpenApiClient.Models.GPUClusterServiceDelete200> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Together.OpenApiClient.Models.GPUClusterDeleteResponse> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.GPUClusterServiceDelete200>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.GPUClusterServiceDelete200.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.GPUClusterDeleteResponse>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.GPUClusterDeleteResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Retrieve information about a specific GPU cluster.

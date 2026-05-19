@@ -23,7 +23,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string HostName { get; set; }
 #endif
         /// <summary>The memory_gib property</summary>
-        public double? MemoryGib { get; set; }
+        public float? MemoryGib { get; set; }
         /// <summary>The network property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -50,6 +50,14 @@ namespace Soenneker.Together.OpenApiClient.Models
 #endif
         /// <summary>The num_cpu_cores property</summary>
         public int? NumCpuCores { get; set; }
+        /// <summary>Phase transition history for this control plane node.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.Together.OpenApiClient.Models.NodePhaseTransition>? PhaseTransitions { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.Together.OpenApiClient.Models.NodePhaseTransition> PhaseTransitions { get; set; }
+#endif
         /// <summary>The status property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -84,11 +92,12 @@ namespace Soenneker.Together.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "host_name", n => { HostName = n.GetStringValue(); } },
-                { "memory_gib", n => { MemoryGib = n.GetDoubleValue(); } },
+                { "memory_gib", n => { MemoryGib = n.GetFloatValue(); } },
                 { "network", n => { Network = n.GetStringValue(); } },
                 { "node_id", n => { NodeId = n.GetStringValue(); } },
                 { "node_name", n => { NodeName = n.GetStringValue(); } },
                 { "num_cpu_cores", n => { NumCpuCores = n.GetIntValue(); } },
+                { "phase_transitions", n => { PhaseTransitions = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.NodePhaseTransition>(global::Soenneker.Together.OpenApiClient.Models.NodePhaseTransition.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
             };
         }
@@ -100,11 +109,12 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("host_name", HostName);
-            writer.WriteDoubleValue("memory_gib", MemoryGib);
+            writer.WriteFloatValue("memory_gib", MemoryGib);
             writer.WriteStringValue("network", Network);
             writer.WriteStringValue("node_id", NodeId);
             writer.WriteStringValue("node_name", NodeName);
             writer.WriteIntValue("num_cpu_cores", NumCpuCores);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.NodePhaseTransition>("phase_transitions", PhaseTransitions);
             writer.WriteStringValue("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }

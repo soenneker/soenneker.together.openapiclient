@@ -23,5 +23,9 @@ namespace Soenneker.Together.OpenApiClient.Models
         #pragma warning disable CS1591
         Failed,
         #pragma warning restore CS1591
+        [EnumMember(Value = "ScaledToZero")]
+        #pragma warning disable CS1591
+        ScaledToZero,
+        #pragma warning restore CS1591
     }
 }

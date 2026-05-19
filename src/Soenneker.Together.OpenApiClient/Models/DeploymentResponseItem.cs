@@ -120,6 +120,8 @@ namespace Soenneker.Together.OpenApiClient.Models
         public global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItem_status? Status { get; set; }
         /// <summary>Storage is the amount of storage (in MB or units as defined by the platform) allocated to each replica</summary>
         public int? Storage { get; set; }
+        /// <summary>TerminationGracePeriodSeconds is the time in seconds to wait for graceful shutdown before forcefully terminating the replica</summary>
+        public int? TerminationGracePeriodSeconds { get; set; }
         /// <summary>UpdatedAt is the ISO8601 timestamp when this deployment was last updated</summary>
         public DateTimeOffset? UpdatedAt { get; set; }
         /// <summary>Volumes is a list of volume mounts for this deployment</summary>
@@ -178,6 +180,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "replica_events", n => { ReplicaEvents = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItem_replica_events>(global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItem_replica_events.CreateFromDiscriminatorValue); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItem_status>(); } },
                 { "storage", n => { Storage = n.GetIntValue(); } },
+                { "termination_grace_period_seconds", n => { TerminationGracePeriodSeconds = n.GetIntValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "volumes", n => { Volumes = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.VolumeMount>(global::Soenneker.Together.OpenApiClient.Models.VolumeMount.CreateFromDiscriminatorValue)?.AsList(); } },
             };
@@ -212,6 +215,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItem_replica_events>("replica_events", ReplicaEvents);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItem_status>("status", Status);
             writer.WriteIntValue("storage", Storage);
+            writer.WriteIntValue("termination_grace_period_seconds", TerminationGracePeriodSeconds);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.VolumeMount>("volumes", Volumes);
             writer.WriteAdditionalData(AdditionalData);

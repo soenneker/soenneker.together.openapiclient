@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.Together.OpenApiClient.Deployments.Storage.Item.Url;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -16,6 +17,11 @@ namespace Soenneker.Together.OpenApiClient.Deployments.Storage.Item
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class WithFilenameItemRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The url property</summary>
+        public global::Soenneker.Together.OpenApiClient.Deployments.Storage.Item.Url.UrlRequestBuilder Url
+        {
+            get => new global::Soenneker.Together.OpenApiClient.Deployments.Storage.Item.Url.UrlRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Deployments.Storage.Item.WithFilenameItemRequestBuilder"/> and sets the default values.
         /// </summary>

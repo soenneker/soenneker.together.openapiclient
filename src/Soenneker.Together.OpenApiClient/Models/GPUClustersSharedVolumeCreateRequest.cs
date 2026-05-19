@@ -14,7 +14,9 @@ namespace Soenneker.Together.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Region name. Usable regions can be found from `client.clusters.list_regions()`</summary>
+        /// <summary>When true, the shared volume is not deleted when the cluster is decommissioned.</summary>
+        public bool? IsLifecycleIndependent { get; set; }
+        /// <summary>Region name. Usable regions can be found from `clusters.list_regions()`</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Region { get; set; }
@@ -24,7 +26,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #endif
         /// <summary>Volume size in whole tebibytes (TiB).</summary>
         public int? SizeTib { get; set; }
-        /// <summary>Customizable name of the volume to create.</summary>
+        /// <summary>User provided name of the volume.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? VolumeName { get; set; }
@@ -57,6 +59,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "is_lifecycle_independent", n => { IsLifecycleIndependent = n.GetBoolValue(); } },
                 { "region", n => { Region = n.GetStringValue(); } },
                 { "size_tib", n => { SizeTib = n.GetIntValue(); } },
                 { "volume_name", n => { VolumeName = n.GetStringValue(); } },
@@ -69,6 +72,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteBoolValue("is_lifecycle_independent", IsLifecycleIndependent);
             writer.WriteStringValue("region", Region);
             writer.WriteIntValue("size_tib", SizeTib);
             writer.WriteStringValue("volume_name", VolumeName);
