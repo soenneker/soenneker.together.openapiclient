@@ -1768,16 +1768,6 @@
               }
             }
           },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorData"
-                }
-              }
-            }
-          },
           "400": {
             "description": "Bad Request",
             "content": {
@@ -1790,6 +1780,16 @@
           },
           "401": {
             "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -1870,22 +1870,22 @@
           }
         },
         "responses": {
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorData"
-                }
-              }
-            }
-          },
           "200": {
             "description": "Price estimated successfully",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/PostFineTunesEstimatePrice200"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
                 }
               }
             }
@@ -14600,8 +14600,8 @@
         },
         "description": "Adjusts the likelihood of specific tokens appearing in the generated output.",
         "example": {
-          "1024": -10.5,
-          "105": 21.4
+          "105": 21.4,
+          "1024": -10.5
         }
       },
       "CompletionChoiceDelta": {
@@ -14699,8 +14699,8 @@
         },
         "description": "Adjusts the likelihood of specific tokens appearing in the generated output.",
         "example": {
-          "1024": -10.5,
-          "105": 21.4
+          "105": 21.4,
+          "1024": -10.5
         }
       },
       "ChatCompletionRequestFunctionCall": {
