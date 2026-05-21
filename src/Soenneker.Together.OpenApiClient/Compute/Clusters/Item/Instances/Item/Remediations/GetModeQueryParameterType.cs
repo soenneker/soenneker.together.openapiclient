@@ -3,9 +3,10 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Together.OpenApiClient.Compute.Clusters.Item.Instances.Item.Remediations
 {
-    /// <summary>Filter by remediation mode. Returns only remediations matching the specified mode.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public enum GetModeQueryParameterType
+    #pragma warning restore CS1591
     {
         [EnumMember(Value = "REMEDIATION_MODE_VM_ONLY")]
         #pragma warning disable CS1591

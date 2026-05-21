@@ -15,6 +15,8 @@ namespace Soenneker.Together.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Default gradient accumulation steps used when a fine-tune request omits the value or sets it to 0.</summary>
+        public int? DefaultGradientAccumulationSteps { get; set; }
         /// <summary>Limits for full training.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -80,6 +82,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "default_gradient_accumulation_steps", n => { DefaultGradientAccumulationSteps = n.GetIntValue(); } },
                 { "full_training", n => { FullTraining = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.FineTuneModelLimitsFullTraining>(global::Soenneker.Together.OpenApiClient.Models.FineTuneModelLimitsFullTraining.CreateFromDiscriminatorValue); } },
                 { "lora_training", n => { LoraTraining = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.FineTuneModelLimitsLoraTraining>(global::Soenneker.Together.OpenApiClient.Models.FineTuneModelLimitsLoraTraining.CreateFromDiscriminatorValue); } },
                 { "max_learning_rate", n => { MaxLearningRate = n.GetDoubleValue(); } },
@@ -100,6 +103,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteIntValue("default_gradient_accumulation_steps", DefaultGradientAccumulationSteps);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.FineTuneModelLimitsFullTraining>("full_training", FullTraining);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.FineTuneModelLimitsLoraTraining>("lora_training", LoraTraining);
             writer.WriteDoubleValue("max_learning_rate", MaxLearningRate);

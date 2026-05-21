@@ -8,35 +8,37 @@ using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
     /// <summary>
-    /// Queue job counts for a model.
+    /// Request body for a forward pass.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class QueueMetricsResponse : IAdditionalDataHolder, IParsable
+    public partial class RLForwardBody : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Number of jobs currently being processed</summary>
-        public int? MessagesRunning { get; set; }
-        /// <summary>Number of jobs waiting to be claimed by a worker</summary>
-        public int? MessagesWaiting { get; set; }
-        /// <summary>Total number of active jobs (waiting + running)</summary>
-        public int? TotalJobs { get; set; }
+        /// <summary>Batch of training samples for which to compute per-token log-probabilities</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.Together.OpenApiClient.Models.RLTrainingSample>? Samples { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.Together.OpenApiClient.Models.RLTrainingSample> Samples { get; set; }
+#endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.QueueMetricsResponse"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RLForwardBody"/> and sets the default values.
         /// </summary>
-        public QueueMetricsResponse()
+        public RLForwardBody()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.QueueMetricsResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.RLForwardBody"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Together.OpenApiClient.Models.QueueMetricsResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Together.OpenApiClient.Models.RLForwardBody CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.QueueMetricsResponse();
+            return new global::Soenneker.Together.OpenApiClient.Models.RLForwardBody();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -46,9 +48,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "messages_running", n => { MessagesRunning = n.GetIntValue(); } },
-                { "messages_waiting", n => { MessagesWaiting = n.GetIntValue(); } },
-                { "total_jobs", n => { TotalJobs = n.GetIntValue(); } },
+                { "samples", n => { Samples = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RLTrainingSample>(global::Soenneker.Together.OpenApiClient.Models.RLTrainingSample.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -58,9 +58,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteIntValue("messages_running", MessagesRunning);
-            writer.WriteIntValue("messages_waiting", MessagesWaiting);
-            writer.WriteIntValue("total_jobs", TotalJobs);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RLTrainingSample>("samples", Samples);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

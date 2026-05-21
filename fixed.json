@@ -2546,7 +2546,7 @@
             }
           },
           "400": {
-            "description": "BadRequest",
+            "description": "BadRequest. Possible error codes include `audio_too_long` (audio duration exceeds the 4 hour cap), `file_too_large` (URL-fetched audio exceeds the 1 GB server-side cap), `unsupported_format` (codec or container could not be decoded), and `invalid_params` (request parameters failed validation).",
             "content": {
               "application/json": {
                 "schema": {
@@ -2561,6 +2561,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Payload Too Large. The request body exceeded the 500 MB edge limit. For larger payloads, host the file and submit an HTTPS URL via the `file` field (URL-fetched audio is capped at 1 GB server-side).",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string"
                 }
               }
             }
@@ -2607,7 +2617,7 @@
             }
           },
           "400": {
-            "description": "BadRequest",
+            "description": "BadRequest. Possible error codes include `audio_too_long` (audio duration exceeds the 4 hour cap), `file_too_large` (URL-fetched audio exceeds the 1 GB server-side cap), `unsupported_format` (codec or container could not be decoded), and `invalid_params` (request parameters failed validation).",
             "content": {
               "application/json": {
                 "schema": {
@@ -2622,6 +2632,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Payload Too Large. The request body exceeded the 500 MB edge limit. For larger payloads, host the file and submit an HTTPS URL via the `file` field (URL-fetched audio is capped at 1 GB server-side).",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string"
                 }
               }
             }
@@ -4764,6 +4784,214 @@
         }
       }
     },
+    "/rl/training-sessions/{session_id}/operations/custom-forward-backward": {
+      "post": {
+        "tags": [
+          "RL"
+        ],
+        "summary": "Custom forward-backward pass",
+        "description": "Submits a forward-backward pass driven by externally computed gradients of the loss with respect to per-token log-probabilities.",
+        "operationId": "customForwardBackward",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Training session ID"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RLCustomForwardBackwardBody"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RLCustomForwardBackwardOperation"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/rl/training-sessions/{session_id}/operations/custom-forward-backward/{operation_id}": {
+      "get": {
+        "tags": [
+          "RL"
+        ],
+        "summary": "Get custom forward-backward operation",
+        "description": "Retrieves the current status and result of a custom forward-backward operation.",
+        "operationId": "getCustomForwardBackwardOperation",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Training session ID"
+            }
+          },
+          {
+            "name": "operation_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Operation ID"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Custom forward-backward operation details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RLCustomForwardBackwardOperation"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/rl/training-sessions/{session_id}/operations/forward": {
+      "post": {
+        "tags": [
+          "RL"
+        ],
+        "summary": "Forward pass",
+        "description": "Submits a forward operation that will asynchronously run a no-grad forward pass and return per-token log-probabilities for each sample.",
+        "operationId": "forward",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Training session ID"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RLForwardBody"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RLForwardOperation"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/rl/training-sessions/{session_id}/operations/forward/{operation_id}": {
+      "get": {
+        "tags": [
+          "RL"
+        ],
+        "summary": "Get forward operation",
+        "description": "Retrieves the current status and result of a forward operation.",
+        "operationId": "getForwardOperation",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Training session ID"
+            }
+          },
+          {
+            "name": "operation_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Operation ID"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Forward operation details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RLForwardOperation"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/rl/training-sessions/{session_id}/operations/optim-step": {
       "post": {
         "tags": [
@@ -5374,18 +5602,37 @@
             }
           },
           {
+            "name": "trigger",
+            "in": "query",
+            "schema": {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "REMEDIATION_TRIGGER_MANUAL",
+                  "REMEDIATION_TRIGGER_AUTOMATED"
+                ],
+                "type": "string",
+                "additionalProperties": false
+              },
+              "description": "Filter by trigger type(s). Returns remediations matching any of the specified triggers."
+            }
+          },
+          {
             "name": "mode",
             "in": "query",
             "schema": {
-              "enum": [
-                "REMEDIATION_MODE_VM_ONLY",
-                "REMEDIATION_MODE_HOST_AWARE",
-                "REMEDIATION_MODE_EVICT_WITHOUT_REPLACEMENT",
-                "REMEDIATION_MODE_REBOOT_VM"
-              ],
-              "type": "string",
-              "additionalProperties": false,
-              "description": "Filter by remediation mode. Returns only remediations matching the specified mode."
+              "type": "array",
+              "items": {
+                "enum": [
+                  "REMEDIATION_MODE_VM_ONLY",
+                  "REMEDIATION_MODE_HOST_AWARE",
+                  "REMEDIATION_MODE_EVICT_WITHOUT_REPLACEMENT",
+                  "REMEDIATION_MODE_REBOOT_VM"
+                ],
+                "type": "string",
+                "additionalProperties": false
+              },
+              "description": "Filter by remediation mode(s). Returns remediations matching any of the specified modes."
             }
           }
         ],
@@ -6241,6 +6488,149 @@
         },
         "description": "Result of a forward-backward pass operation"
       },
+      "RLCustomForwardBackwardBody": {
+        "required": [
+          "samples",
+          "gradients"
+        ],
+        "type": "object",
+        "properties": {
+          "samples": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RLTrainingSample"
+            },
+            "description": "Batch of training samples"
+          },
+          "gradients": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RLTargetLogprobGradients"
+            },
+            "description": "Per-sample per-token gradients of the loss with respect to log-probabilities"
+          }
+        },
+        "description": "Request body for a custom forward-backward pass."
+      },
+      "RLCustomForwardBackwardOperation": {
+        "required": [
+          "id",
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Operation ID",
+            "example": "550e8400-e29b-41d4-a716-446655440000"
+          },
+          "status": {
+            "$ref": "#/components/schemas/RLTrainingOperationStatus"
+          },
+          "output": {
+            "type": "object",
+            "description": "Result of a custom forward-backward pass operation"
+          },
+          "error": {
+            "$ref": "#/components/schemas/RLTrainingOperationError"
+          }
+        },
+        "description": "Async custom forward-backward pass operation"
+      },
+      "RLCustomForwardBackwardResult": {
+        "type": "object",
+        "description": "Result of a custom forward-backward pass operation"
+      },
+      "RLForwardBody": {
+        "required": [
+          "samples"
+        ],
+        "type": "object",
+        "properties": {
+          "samples": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RLTrainingSample"
+            },
+            "description": "Batch of training samples for which to compute per-token log-probabilities"
+          }
+        },
+        "description": "Request body for a forward pass."
+      },
+      "RLForwardOperation": {
+        "required": [
+          "id",
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Operation ID",
+            "example": "550e8400-e29b-41d4-a716-446655440000"
+          },
+          "status": {
+            "$ref": "#/components/schemas/RLTrainingOperationStatus"
+          },
+          "output": {
+            "$ref": "#/components/schemas/RLForwardResult"
+          },
+          "error": {
+            "$ref": "#/components/schemas/RLTrainingOperationError"
+          }
+        },
+        "description": "Async forward pass operation"
+      },
+      "RLForwardResult": {
+        "type": "object",
+        "properties": {
+          "logprobs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RLTargetLogprobs"
+            },
+            "description": "Per-sample per-token log-probabilities"
+          }
+        },
+        "description": "Result of a forward pass operation"
+      },
+      "RLTargetLogprobs": {
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "format": "float"
+            },
+            "description": "Float array of per-token log probabilities"
+          }
+        },
+        "description": "Per-token log-probabilities from the target model"
+      },
+      "RLTargetLogprobGradients": {
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "format": "float"
+            },
+            "description": "Float array of per-token gradients (d loss / d log p)"
+          },
+          "dtype": {
+            "$ref": "#/components/schemas/RLDType"
+          }
+        },
+        "description": "Per-token gradients of the loss with respect to target log-probabilities"
+      },
       "RLTrainingOperationError": {
         "type": "object",
         "properties": {
@@ -6728,7 +7118,6 @@
       "GPUClusterControlPlaneNode": {
         "required": [
           "node_id",
-          "node_name",
           "status",
           "host_name",
           "num_cpu_cores",
@@ -6739,9 +7128,6 @@
         "type": "object",
         "properties": {
           "node_id": {
-            "type": "string"
-          },
-          "node_name": {
             "type": "string"
           },
           "status": {
@@ -6933,7 +7319,6 @@
       "GPUClusterGPUWorkerNode": {
         "required": [
           "node_id",
-          "node_name",
           "status",
           "host_name",
           "num_cpu_cores",
@@ -6945,9 +7330,6 @@
         "type": "object",
         "properties": {
           "node_id": {
-            "type": "string"
-          },
-          "node_name": {
             "type": "string"
           },
           "status": {
@@ -7852,6 +8234,11 @@
             "type": "string",
             "description": "When the remediation was last updated.",
             "format": "date-time",
+            "readOnly": true
+          },
+          "instance_name": {
+            "type": "string",
+            "description": "Display name of the targeted instance.",
             "readOnly": true
           }
         },
@@ -9536,7 +9923,7 @@
                 "$ref": "#/components/schemas/UnionBranch"
               }
             ],
-            "description": "Audio file upload or public HTTP/HTTPS URL. Supported formats .wav, .mp3, .m4a, .webm, .flac, .ogg, .opus, .aac."
+            "description": "\"Audio file upload or public HTTP/HTTPS URL. Supported formats: .wav, .mp3, .m4a, .webm, .flac, .ogg, .opus, .aac. Maximum duration 4 hours; longer audio is rejected with `audio_too_long`. Binary uploads are additionally capped at 500 MB (HTTP 413); URL-fetched audio is capped at 1 GB.\""
           },
           "model": {
             "enum": [
@@ -9812,7 +10199,7 @@
                 "$ref": "#/components/schemas/UnionBranch"
               }
             ],
-            "description": "Audio file upload or public HTTP/HTTPS URL. Supported formats .wav, .mp3, .m4a, .webm, .flac, .ogg, .opus, .aac."
+            "description": "\"Audio file upload or public HTTP/HTTPS URL. Supported formats: .wav, .mp3, .m4a, .webm, .flac, .ogg, .opus, .aac. Maximum duration 4 hours; longer audio is rejected with `audio_too_long`. Binary uploads are additionally capped at 500 MB (HTTP 413); URL-fetched audio is capped at 1 GB.\""
           },
           "model": {
             "enum": [
@@ -11003,7 +11390,8 @@
           "supports_vision",
           "supports_tools",
           "supports_reasoning",
-          "merge_output_lora"
+          "merge_output_lora",
+          "default_gradient_accumulation_steps"
         ],
         "type": "object",
         "properties": {
@@ -11048,6 +11436,10 @@
           "merge_output_lora": {
             "type": "boolean",
             "description": "Whether to merge the output LoRA."
+          },
+          "default_gradient_accumulation_steps": {
+            "type": "integer",
+            "description": "Default gradient accumulation steps used when a fine-tune request omits the value or sets it to 0."
           }
         },
         "description": "Model limits for fine-tuning."
@@ -12629,14 +13021,38 @@
             "$ref": "#/components/schemas/EvaluationJudgeModelConfig"
           },
           "model_a": {
-            "$ref": "#/components/schemas/EvaluationModelOrString"
+            "type": "object",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/EvaluationModelRequest"
+              },
+              {
+                "$ref": "#/components/schemas/UnionBranch"
+              }
+            ],
+            "description": "Either an EvaluationModelRequest for generation or a string column name from the dataset (when responses are pre-generated). When both model_a and model_b are EvaluationModelRequest objects, their inference runs execute in parallel to reduce total wall-clock time.\n"
           },
           "model_b": {
-            "$ref": "#/components/schemas/EvaluationModelOrString"
+            "type": "object",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/EvaluationModelRequest"
+              },
+              {
+                "$ref": "#/components/schemas/UnionBranch"
+              }
+            ],
+            "description": "Either an EvaluationModelRequest for generation or a string column name from the dataset (when responses are pre-generated). When both model_a and model_b are EvaluationModelRequest objects, their inference runs execute in parallel to reduce total wall-clock time.\n"
           },
           "input_data_file_path": {
             "type": "string",
-            "description": "Data file name"
+            "description": "Data file ID",
+            "example": "file-01234567890123456789"
+          },
+          "disable_position_bias_correction": {
+            "type": "boolean",
+            "description": "\"When false (default), the judge runs twice per sample: once with model A's response first (original order) and once with model B's response first (flipped order). The two verdicts are reconciled to cancel out position bias. When true, only the original-order pass is run, halving judge cost and latency at the expense of position-bias correction. The result file will not contain flipped-order judge fields when this is true.\n\"",
+            "default": false
           }
         }
       },
@@ -12666,33 +13082,33 @@
             ],
             "type": "string",
             "additionalProperties": false,
-            "description": "Source of the judge model."
+            "description": "\"Source of the judge model inference: - `serverless`: Together's shared serverless inference API. Default concurrency: 25 workers. - `dedicated`: A Together dedicated deployment endpoint. Default concurrency: 5 workers\n  (minimum enforced even if num_workers is set lower).\n- `external`: An external inference API (e.g. OpenAI, Anthropic, Google, OpenRouter).\n  Requires `external_api_token` and `external_base_url`. Default concurrency: 2 workers\n  for first-party APIs, 20 for proxy/aggregator endpoints.\n\""
           },
           "external_api_token": {
             "type": "string",
-            "description": "Bearer/API token for external judge models."
+            "description": "Bearer/API token for the external judge model provider. Required when model_source is 'external'."
           },
           "external_base_url": {
             "type": "string",
-            "description": "Base URL for external judge models. Must be OpenAI-compatible base URL."
+            "description": "Base URL of the external inference API for the judge. Must be OpenAI-compatible. Required when model_source is 'external'."
           },
           "num_workers": {
             "minimum": 1,
             "type": "integer",
-            "description": "Number of concurrent workers for inference requests. Overrides the default concurrency for this model. Useful for tuning throughput when using proxy endpoints (e.g. OpenRouter) or rate-limited external APIs.",
+            "description": "\"Number of concurrent inference workers for the judge. Overrides the source-specific default (serverless: 25, dedicated: 5, external: 2–20). For dedicated endpoints the value is clamped to a minimum of 5 regardless of what is set here.\n\"",
             "example": 5
           },
           "max_tokens": {
             "minimum": 1,
             "type": "integer",
-            "description": "Maximum number of tokens the judge model can generate. Defaults to 32768. Increase for reasoning models (e.g. Gemini, o-series) that consume output token budget for chain-of-thought.",
+            "description": "Maximum number of tokens the judge model may generate. Defaults to 32768 if omitted. Set higher for reasoning judges (e.g. o-series, Gemini) that spend tokens on internal chain-of-thought before emitting the verdict JSON.",
             "example": 8192
           },
           "temperature": {
             "maximum": 2,
             "minimum": 0,
             "type": "number",
-            "description": "Sampling temperature for the judge model. Defaults to 0.05.",
+            "description": "Sampling temperature for the judge model. Defaults to 0.05 if omitted.",
             "format": "float",
             "example": 0
           }
@@ -12744,26 +13160,26 @@
           "max_tokens": {
             "minimum": 1,
             "type": "integer",
-            "description": "Maximum number of tokens to generate",
+            "description": "Maximum number of tokens to generate.",
             "example": 512
           },
           "temperature": {
             "maximum": 2,
             "minimum": 0,
             "type": "number",
-            "description": "Sampling temperature",
+            "description": "Sampling temperature for generation.",
             "format": "float",
             "example": 0.7
           },
           "system_template": {
             "type": "string",
-            "description": "System prompt template",
-            "example": "Imagine you are helpful assistant"
+            "description": "System prompt template. Supports Jinja2 variables referencing dataset columns.",
+            "example": "You are a helpful assistant."
           },
           "input_template": {
             "type": "string",
-            "description": "Input prompt template",
-            "example": "Please classify {{prompt}} based on the labels below"
+            "description": "User message template. Supports Jinja2 variables referencing dataset columns.",
+            "example": "Please answer the following question: {{ question }}"
           },
           "model_source": {
             "enum": [
@@ -12773,20 +13189,20 @@
             ],
             "type": "string",
             "additionalProperties": false,
-            "description": "Source of the model."
+            "description": "\"Source of the model inference: - `serverless`: Together's shared serverless inference API. Default concurrency: 25 workers. - `dedicated`: A Together dedicated deployment endpoint. Default concurrency: 5 workers\n  (minimum enforced even if num_workers is set lower). Authentication uses the requesting\n  user's Together API token automatically.\n- `external`: An external inference API (e.g. OpenAI, Anthropic, Google, OpenRouter).\n  Requires `external_api_token` and `external_base_url`. Default concurrency: 2 workers\n  for first-party APIs (OpenAI, Anthropic, Google), 20 for proxy/aggregator endpoints.\n\""
           },
           "external_api_token": {
             "type": "string",
-            "description": "Bearer/API token for external models."
+            "description": "Bearer/API token for the external model provider. Required when model_source is 'external'."
           },
           "external_base_url": {
             "type": "string",
-            "description": "Base URL for external models. Must be OpenAI-compatible base URL"
+            "description": "Base URL of the external inference API. Must be OpenAI-compatible. Required when model_source is 'external'."
           },
           "num_workers": {
             "minimum": 1,
             "type": "integer",
-            "description": "Number of concurrent workers for inference requests. Overrides the default concurrency for this model. Useful for tuning throughput when using proxy endpoints (e.g. OpenRouter) or rate-limited external APIs.",
+            "description": "\"Number of concurrent inference workers. Overrides the source-specific default (serverless: 25, dedicated: 5, external: 2–20). For dedicated endpoints the value is clamped to a minimum of 5 regardless of what is set here.\n\"",
             "example": 5
           }
         }
@@ -12978,39 +13394,35 @@
       "EvaluationCompareResults": {
         "type": "object",
         "properties": {
-          "num_samples": {
-            "type": "integer",
-            "description": "Total number of samples compared"
-          },
           "A_wins": {
             "type": "integer",
-            "description": "Number of times model A won"
+            "description": "Number of samples where model A was judged the winner"
           },
           "B_wins": {
             "type": "integer",
-            "description": "Number of times model B won"
+            "description": "Number of samples where model B was judged the winner"
           },
           "Ties": {
             "type": "integer",
-            "description": "Number of ties"
+            "description": "Number of samples that resulted in a tie"
           },
           "generation_fail_count": {
             "type": "number",
-            "description": "Number of failed generations.",
+            "description": "Number of generation failures across model A and model B.",
             "format": "integer",
             "nullable": true,
             "example": 0
           },
           "judge_fail_count": {
             "type": "number",
-            "description": "Number of failed judge generations",
+            "description": "Number of judge inference failures. In the default two-pass mode (disable_position_bias_correction=false) this is the combined failure count from both the original-order and flipped-order judge passes.\n",
             "format": "integer",
             "nullable": true,
             "example": 0
           },
           "result_file_id": {
             "type": "string",
-            "description": "Data File ID"
+            "description": "File ID of the detailed output file. Each row contains the original input fields plus judge outputs. In two-pass mode the file includes both original-order and flipped-order judge fields; in single-pass mode (disable_position_bias_correction=true) only original-order fields are present.\n"
           }
         }
       },
@@ -14397,7 +14809,8 @@
             "type": "string",
             "description": "Error category (e.g. \"invalid_request_error\", \"not_found_error\")"
           }
-        }
+        },
+        "description": "Error response returned by queue endpoints."
       },
       "QueueMetricsResponse": {
         "required": [
@@ -14419,7 +14832,8 @@
             "type": "integer",
             "description": "Total number of active jobs (waiting + running)"
           }
-        }
+        },
+        "description": "Queue job counts for a model."
       },
       "QueueCancelRequest": {
         "required": [
@@ -14436,7 +14850,8 @@
             "type": "string",
             "description": "The request ID returned from the submit endpoint"
           }
-        }
+        },
+        "description": "Request to cancel a queued job."
       },
       "QueueCancelResponse": {
         "required": [
@@ -14455,7 +14870,8 @@
             "additionalProperties": false,
             "description": "Job status after the cancel attempt. Only pending jobs can be\ncanceled. If the job is already running, done, or failed, the status\nis returned unchanged.\n"
           }
-        }
+        },
+        "description": "Status returned after a cancel attempt."
       },
       "QueueJobRequest": {
         "required": [
@@ -14466,11 +14882,12 @@
         "properties": {
           "info": {
             "type": "object",
-            "description": "Arbitrary JSON metadata stored with the job and returned in status\nresponses. The model and system may add or update keys during\nprocessing.\n"
+            "description": "Arbitrary JSON metadata stored with the job. Returned in status\nresponses, where the model and system may have added or modified\nkeys (e.g. progress).\n"
           },
           "model": {
             "type": "string",
-            "description": "Required model identifier"
+            "description": "Required model identifier",
+            "example": "my-queue-model"
           },
           "payload": {
             "type": "object",
@@ -14481,19 +14898,21 @@
             "description": "Job priority. Higher values are processed first (strict priority\nordering). Jobs with equal priority are processed in submission\norder (FIFO).\n",
             "default": 0
           }
-        }
+        },
+        "description": "Request to submit a job to the queue."
       },
       "QueueJobResponse": {
+        "required": [
+          "requestId"
+        ],
         "type": "object",
         "properties": {
-          "error": {
-            "$ref": "#/components/schemas/QueueError"
-          },
           "requestId": {
             "type": "string",
             "description": "Unique identifier for the submitted job. Use this to poll status or cancel."
           }
-        }
+        },
+        "description": "Response returned after queueing a job."
       },
       "QueueJobStatusResponse": {
         "required": [
@@ -14565,7 +14984,8 @@
             },
             "description": "Non-fatal messages about the request (e.g. deprecation notices)"
           }
-        }
+        },
+        "description": "Current status and metadata for a queued job."
       },
       "ErrorDataError": {
         "required": [
@@ -15479,9 +15899,9 @@
             "description": "Number of training examples processed together (larger batches use more memory but may train faster). Defaults to \"max\". We use training optimizations like packing, so the effective batch size may be different than the value you set."
           },
           "gradient_accumulation_steps": {
+            "minimum": 0,
             "type": "integer",
-            "description": "Number of steps to accumulate gradients before performing a weight update. Effectively increases the batch size without requiring more memory. For example, with batch_size=4 and gradient_accumulation_steps=8, the effective batch size is 32.",
-            "default": 1
+            "description": "Number of steps to accumulate gradients before performing a weight update. If omitted or set to 0, the model default is used."
           },
           "learning_rate": {
             "type": "number",
@@ -15745,6 +16165,12 @@
       "AudioSpeech200": {
         "type": "string",
         "format": "binary"
+      },
+      "AudioTranscriptions413": {
+        "type": "string"
+      },
+      "AudioTranslations413": {
+        "type": "string"
       },
       "UpdateEndpoint": {
         "type": "object",
@@ -16038,7 +16464,7 @@
         "properties": {
           "value": {
             "type": "string",
-            "description": "Field name in the input data"
+            "description": "Column name in the input dataset containing pre-generated responses"
           }
         }
       },

@@ -14,17 +14,15 @@ namespace Soenneker.Together.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Number of times model A won</summary>
+        /// <summary>Number of samples where model A was judged the winner</summary>
         public int? AWins { get; set; }
-        /// <summary>Number of times model B won</summary>
+        /// <summary>Number of samples where model B was judged the winner</summary>
         public int? BWins { get; set; }
-        /// <summary>Number of failed generations.</summary>
+        /// <summary>Number of generation failures across model A and model B.</summary>
         public double? GenerationFailCount { get; set; }
-        /// <summary>Number of failed judge generations</summary>
+        /// <summary>Number of judge inference failures. In the default two-pass mode (disable_position_bias_correction=false) this is the combined failure count from both the original-order and flipped-order judge passes.</summary>
         public double? JudgeFailCount { get; set; }
-        /// <summary>Total number of samples compared</summary>
-        public int? NumSamples { get; set; }
-        /// <summary>Data File ID</summary>
+        /// <summary>File ID of the detailed output file. Each row contains the original input fields plus judge outputs. In two-pass mode the file includes both original-order and flipped-order judge fields; in single-pass mode (disable_position_bias_correction=true) only original-order fields are present.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ResultFileId { get; set; }
@@ -32,7 +30,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string ResultFileId { get; set; }
 #endif
-        /// <summary>Number of ties</summary>
+        /// <summary>Number of samples that resulted in a tie</summary>
         public int? Ties { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.EvaluationCompareResults"/> and sets the default values.
@@ -63,7 +61,6 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "B_wins", n => { BWins = n.GetIntValue(); } },
                 { "generation_fail_count", n => { GenerationFailCount = n.GetDoubleValue(); } },
                 { "judge_fail_count", n => { JudgeFailCount = n.GetDoubleValue(); } },
-                { "num_samples", n => { NumSamples = n.GetIntValue(); } },
                 { "result_file_id", n => { ResultFileId = n.GetStringValue(); } },
                 { "Ties", n => { Ties = n.GetIntValue(); } },
             };
@@ -79,7 +76,6 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteIntValue("B_wins", BWins);
             writer.WriteDoubleValue("generation_fail_count", GenerationFailCount);
             writer.WriteDoubleValue("judge_fail_count", JudgeFailCount);
-            writer.WriteIntValue("num_samples", NumSamples);
             writer.WriteStringValue("result_file_id", ResultFileId);
             writer.WriteIntValue("Ties", Ties);
             writer.WriteAdditionalData(AdditionalData);

@@ -2,70 +2,51 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
-using Microsoft.Kiota.Abstractions;
 using System.Collections.Generic;
 using System.IO;
 using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
     /// <summary>
-    /// Error response returned by queue endpoints.
+    /// Request body for a custom forward-backward pass.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class QueueError : ApiException, IAdditionalDataHolder, IParsable
+    public partial class RLCustomForwardBackwardBody : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Machine-readable error code</summary>
+        /// <summary>Per-sample per-token gradients of the loss with respect to log-probabilities</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Code { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.RLTargetLogprobGradients>? Gradients { get; set; }
 #nullable restore
 #else
-        public string Code { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.RLTargetLogprobGradients> Gradients { get; set; }
 #endif
-        /// <summary>The primary error message.</summary>
-        public override string Message { get => MessageEscaped ?? string.Empty; }
-        /// <summary>Human-readable error message</summary>
+        /// <summary>Batch of training samples</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MessageEscaped { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.RLTrainingSample>? Samples { get; set; }
 #nullable restore
 #else
-        public string MessageEscaped { get; set; }
-#endif
-        /// <summary>The parameter that caused the error, if applicable</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Param { get; set; }
-#nullable restore
-#else
-        public string Param { get; set; }
-#endif
-        /// <summary>Error category (e.g. &quot;invalid_request_error&quot;, &quot;not_found_error&quot;)</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Type { get; set; }
-#nullable restore
-#else
-        public string Type { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.RLTrainingSample> Samples { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.QueueError"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RLCustomForwardBackwardBody"/> and sets the default values.
         /// </summary>
-        public QueueError()
+        public RLCustomForwardBackwardBody()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.QueueError"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.RLCustomForwardBackwardBody"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Together.OpenApiClient.Models.QueueError CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Together.OpenApiClient.Models.RLCustomForwardBackwardBody CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.QueueError();
+            return new global::Soenneker.Together.OpenApiClient.Models.RLCustomForwardBackwardBody();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -75,10 +56,8 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "code", n => { Code = n.GetStringValue(); } },
-                { "message", n => { MessageEscaped = n.GetStringValue(); } },
-                { "param", n => { Param = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetStringValue(); } },
+                { "gradients", n => { Gradients = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RLTargetLogprobGradients>(global::Soenneker.Together.OpenApiClient.Models.RLTargetLogprobGradients.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "samples", n => { Samples = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RLTrainingSample>(global::Soenneker.Together.OpenApiClient.Models.RLTrainingSample.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -88,10 +67,8 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("code", Code);
-            writer.WriteStringValue("message", MessageEscaped);
-            writer.WriteStringValue("param", Param);
-            writer.WriteStringValue("type", Type);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RLTargetLogprobGradients>("gradients", Gradients);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RLTrainingSample>("samples", Samples);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

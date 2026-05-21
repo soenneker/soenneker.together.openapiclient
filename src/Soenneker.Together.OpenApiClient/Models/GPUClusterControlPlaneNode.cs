@@ -40,14 +40,6 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string NodeId { get; set; }
 #endif
-        /// <summary>The node_name property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? NodeName { get; set; }
-#nullable restore
-#else
-        public string NodeName { get; set; }
-#endif
         /// <summary>The num_cpu_cores property</summary>
         public int? NumCpuCores { get; set; }
         /// <summary>Phase transition history for this control plane node.</summary>
@@ -95,7 +87,6 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "memory_gib", n => { MemoryGib = n.GetFloatValue(); } },
                 { "network", n => { Network = n.GetStringValue(); } },
                 { "node_id", n => { NodeId = n.GetStringValue(); } },
-                { "node_name", n => { NodeName = n.GetStringValue(); } },
                 { "num_cpu_cores", n => { NumCpuCores = n.GetIntValue(); } },
                 { "phase_transitions", n => { PhaseTransitions = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.NodePhaseTransition>(global::Soenneker.Together.OpenApiClient.Models.NodePhaseTransition.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
@@ -112,7 +103,6 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteFloatValue("memory_gib", MemoryGib);
             writer.WriteStringValue("network", Network);
             writer.WriteStringValue("node_id", NodeId);
-            writer.WriteStringValue("node_name", NodeName);
             writer.WriteIntValue("num_cpu_cores", NumCpuCores);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.NodePhaseTransition>("phase_transitions", PhaseTransitions);
             writer.WriteStringValue("status", Status);

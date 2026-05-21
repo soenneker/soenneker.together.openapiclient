@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
     /// <summary>
-    /// Arbitrary JSON metadata stored with the job and returned in statusresponses. The model and system may add or update keys duringprocessing.
+    /// Arbitrary JSON metadata stored with the job. Returned in statusresponses, where the model and system may have added or modifiedkeys (e.g. progress).
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class QueueJobRequest_info : IAdditionalDataHolder, IParsable

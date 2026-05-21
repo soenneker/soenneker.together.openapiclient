@@ -2749,13 +2749,11 @@ paths:
                     set.
                 gradient_accumulation_steps:
                   type: integer
-                  default: 1
+                  minimum: 0
                   description: >-
                     Number of steps to accumulate gradients before performing a
-                    weight update. Effectively increases the batch size without
-                    requiring more memory. For example, with batch_size=4 and
-                    gradient_accumulation_steps=8, the effective batch size is
-                    32.
+                    weight update. If omitted or set to 0, the model default is
+                    used.
                 learning_rate:
                   type: number
                   format: float
@@ -4637,7 +4635,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/AudioTranscriptionResponse'
         '400':
-          description: BadRequest
+          description: >-
+            BadRequest. Possible error codes include `audio_too_long` (audio
+            duration exceeds the 4 hour cap), `file_too_large` (URL-fetched
+            audio exceeds the 1 GB server-side cap), `unsupported_format` (codec
+            or container could not be decoded), and `invalid_params` (request
+            parameters failed validation).
           content:
             application/json:
               schema:
@@ -4648,6 +4651,15 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorData'
+        '413':
+          description: >-
+            Payload Too Large. The request body exceeded the 500 MB edge limit.
+            For larger payloads, host the file and submit an HTTPS URL via the
+            `file` field (URL-fetched audio is capped at 1 GB server-side).
+          content:
+            text/html:
+              schema:
+                type: string
         '429':
           description: RateLimit
           content:
@@ -4785,7 +4797,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/AudioTranslationResponse'
         '400':
-          description: BadRequest
+          description: >-
+            BadRequest. Possible error codes include `audio_too_long` (audio
+            duration exceeds the 4 hour cap), `file_too_large` (URL-fetched
+            audio exceeds the 1 GB server-side cap), `unsupported_format` (codec
+            or container could not be decoded), and `invalid_params` (request
+            parameters failed validation).
           content:
             application/json:
               schema:
@@ -4796,6 +4813,15 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorData'
+        '413':
+          description: >-
+            Payload Too Large. The request body exceeded the 500 MB edge limit.
+            For larger payloads, host the file and submit an HTTPS URL via the
+            `file` field (URL-fetched audio is capped at 1 GB server-side).
+          content:
+            text/html:
+              schema:
+                type: string
         '429':
           description: RateLimit
           content:
@@ -8164,6 +8190,144 @@ paths:
           schema:
             description: Training session ID
             type: string
+  /rl/training-sessions/{session_id}/operations/custom-forward-backward:
+    post:
+      summary: Custom forward-backward pass
+      description: >-
+        Submits a forward-backward pass driven by externally computed gradients
+        of the loss with respect to per-token log-probabilities.
+      operationId: customForwardBackward
+      tags:
+        - RL
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RL.CustomForwardBackwardBody'
+        required: true
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RL.CustomForwardBackwardOperation'
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorData'
+      parameters:
+        - name: session_id
+          in: path
+          required: true
+          schema:
+            description: Training session ID
+            type: string
+  /rl/training-sessions/{session_id}/operations/custom-forward-backward/{operation_id}:
+    get:
+      summary: Get custom forward-backward operation
+      description: >-
+        Retrieves the current status and result of a custom forward-backward
+        operation.
+      operationId: getCustomForwardBackwardOperation
+      tags:
+        - RL
+      responses:
+        '200':
+          description: Custom forward-backward operation details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RL.CustomForwardBackwardOperation'
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorData'
+      parameters:
+        - name: session_id
+          in: path
+          required: true
+          schema:
+            description: Training session ID
+            type: string
+        - name: operation_id
+          in: path
+          required: true
+          schema:
+            description: Operation ID
+            type: string
+  /rl/training-sessions/{session_id}/operations/forward:
+    post:
+      summary: Forward pass
+      description: >-
+        Submits a forward operation that will asynchronously run a no-grad
+        forward pass and return per-token log-probabilities for each sample.
+      operationId: forward
+      tags:
+        - RL
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RL.ForwardBody'
+        required: true
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RL.ForwardOperation'
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorData'
+      parameters:
+        - name: session_id
+          in: path
+          required: true
+          schema:
+            description: Training session ID
+            type: string
+  /rl/training-sessions/{session_id}/operations/forward/{operation_id}:
+    get:
+      summary: Get forward operation
+      description: Retrieves the current status and result of a forward operation.
+      operationId: getForwardOperation
+      tags:
+        - RL
+      responses:
+        '200':
+          description: Forward operation details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RL.ForwardOperation'
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorData'
+      parameters:
+        - name: session_id
+          in: path
+          required: true
+          schema:
+            description: Training session ID
+            type: string
+        - name: operation_id
+          in: path
+          required: true
+          schema:
+            description: Operation ID
+            type: string
   /rl/training-sessions/{session_id}/operations/optim-step:
     post:
       summary: Optimizer step
@@ -8594,18 +8758,32 @@ paths:
           schema:
             description: Order by expression.
             type: string
+        - name: trigger
+          in: query
+          schema:
+            description: >-
+              Filter by trigger type(s). Returns remediations matching any of
+              the specified triggers.
+            type: array
+            items:
+              enum:
+                - REMEDIATION_TRIGGER_MANUAL
+                - REMEDIATION_TRIGGER_AUTOMATED
+              type: string
         - name: mode
           in: query
           schema:
             description: >-
-              Filter by remediation mode. Returns only remediations matching the
-              specified mode.
-            enum:
-              - REMEDIATION_MODE_VM_ONLY
-              - REMEDIATION_MODE_HOST_AWARE
-              - REMEDIATION_MODE_EVICT_WITHOUT_REPLACEMENT
-              - REMEDIATION_MODE_REBOOT_VM
-            type: string
+              Filter by remediation mode(s). Returns remediations matching any
+              of the specified modes.
+            type: array
+            items:
+              enum:
+                - REMEDIATION_MODE_VM_ONLY
+                - REMEDIATION_MODE_HOST_AWARE
+                - REMEDIATION_MODE_EVICT_WITHOUT_REPLACEMENT
+                - REMEDIATION_MODE_REBOOT_VM
+              type: string
       responses:
         '200':
           description: OK
@@ -8613,19 +8791,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListRemediationsResponse'
-      x-codeSamples:
-        - lang: Python
-          label: Together AI SDK (v2)
-          source: |
-            import together
-            client = together.Together(api_key="your_api_key")
-            remediations = client.beta.clusters.remediations.list(
-              cluster_id="cluster_id",
-              instance_id="-",
-            )
-
-            for remediation in remediations:
-              print(remediation)
     post:
       tags:
         - RemediationService
@@ -9301,6 +9466,132 @@ components:
           additionalProperties:
             type: number
             format: double
+    RL.CustomForwardBackwardBody:
+      type: object
+      description: Request body for a custom forward-backward pass.
+      required:
+        - samples
+        - gradients
+      properties:
+        samples:
+          type: array
+          description: Batch of training samples
+          items:
+            $ref: '#/components/schemas/RL.TrainingSample'
+        gradients:
+          type: array
+          description: >-
+            Per-sample per-token gradients of the loss with respect to
+            log-probabilities
+          items:
+            $ref: '#/components/schemas/RL.TargetLogprobGradients'
+    RL.CustomForwardBackwardOperation:
+      type: object
+      description: Async custom forward-backward pass operation
+      required:
+        - id
+        - status
+      properties:
+        id:
+          type: string
+          example: 550e8400-e29b-41d4-a716-446655440000
+          description: Operation ID
+        status:
+          $ref: '#/components/schemas/RL.TrainingOperationStatus'
+          example: TRAINING_OPERATION_STATUS_PENDING
+          description: Operation status
+        output:
+          $ref: '#/components/schemas/RL.CustomForwardBackwardResult'
+          description: Result on success
+        error:
+          $ref: '#/components/schemas/RL.TrainingOperationError'
+          description: Error details on failure
+    RL.CustomForwardBackwardResult:
+      type: object
+      description: Result of a custom forward-backward pass operation
+    RL.ForwardBody:
+      type: object
+      description: Request body for a forward pass.
+      required:
+        - samples
+      properties:
+        samples:
+          type: array
+          description: >-
+            Batch of training samples for which to compute per-token
+            log-probabilities
+          items:
+            $ref: '#/components/schemas/RL.TrainingSample'
+    RL.ForwardOperation:
+      type: object
+      description: Async forward pass operation
+      required:
+        - id
+        - status
+      properties:
+        id:
+          type: string
+          example: 550e8400-e29b-41d4-a716-446655440000
+          description: Operation ID
+        status:
+          $ref: '#/components/schemas/RL.TrainingOperationStatus'
+          example: TRAINING_OPERATION_STATUS_PENDING
+          description: Operation status
+        output:
+          $ref: '#/components/schemas/RL.ForwardResult'
+          description: Result on success
+        error:
+          $ref: '#/components/schemas/RL.TrainingOperationError'
+          description: Error details on failure
+    RL.ForwardResult:
+      type: object
+      description: Result of a forward pass operation
+      properties:
+        logprobs:
+          type: array
+          description: Per-sample per-token log-probabilities
+          items:
+            $ref: '#/components/schemas/RL.TargetLogprobs'
+    RL.TargetLogprobs:
+      type: object
+      description: Per-token log-probabilities from the target model
+      required:
+        - data
+      properties:
+        data:
+          type: array
+          description: Float array of per-token log probabilities
+          example:
+            - -1.2
+            - -0.8
+            - -1.5
+            - -0.9
+            - -1.1
+          items:
+            type: number
+            format: float
+    RL.TargetLogprobGradients:
+      type: object
+      description: Per-token gradients of the loss with respect to target log-probabilities
+      required:
+        - data
+      properties:
+        data:
+          type: array
+          description: Float array of per-token gradients (d loss / d log p)
+          example:
+            - -0.1
+            - 0.05
+            - -0.08
+            - 0.12
+            - -0.03
+          items:
+            type: number
+            format: float
+        dtype:
+          $ref: '#/components/schemas/RL.DType'
+          example: D_TYPE_FLOAT32
+          description: Data type of the float array
     RL.TrainingOperationError:
       type: object
       description: Error details for a failed training operation
@@ -9697,7 +9988,6 @@ components:
       type: object
       required:
         - node_id
-        - node_name
         - status
         - host_name
         - num_cpu_cores
@@ -9706,8 +9996,6 @@ components:
         - phase_transitions
       properties:
         node_id:
-          type: string
-        node_name:
           type: string
         status:
           type: string
@@ -9905,7 +10193,6 @@ components:
       type: object
       required:
         - node_id
-        - node_name
         - status
         - host_name
         - num_cpu_cores
@@ -9915,8 +10202,6 @@ components:
         - phase_transitions
       properties:
         node_id:
-          type: string
-        node_name:
           type: string
         status:
           type: string
@@ -10649,6 +10934,10 @@ components:
           type: string
           description: When the remediation was last updated.
           format: date-time
+        instance_name:
+          readOnly: true
+          type: string
+          description: Display name of the targeted instance.
       description: >-
         Remediation represents a node remediation request for an instance.
 
@@ -12189,8 +12478,11 @@ components:
             - $ref: '#/components/schemas/AudioFileBinary'
             - $ref: '#/components/schemas/AudioFileUrl'
           description: >-
-            Audio file upload or public HTTP/HTTPS URL. Supported formats .wav,
-            .mp3, .m4a, .webm, .flac, .ogg, .opus, .aac.
+            Audio file upload or public HTTP/HTTPS URL. Supported formats: .wav,
+            .mp3, .m4a, .webm, .flac, .ogg, .opus, .aac. Maximum duration 4
+            hours; longer audio is rejected with `audio_too_long`. Binary
+            uploads are additionally capped at 500 MB (HTTP 413); URL-fetched
+            audio is capped at 1 GB.
         model:
           type: string
           description: Model to use for transcription
@@ -12433,13 +12725,22 @@ components:
           oneOf:
             - type: string
               format: binary
-              description: Audio file to translate
+              description: >-
+                Audio file uploaded as binary. Maximum upload size 500 MB
+                (requests above this are rejected at the edge with HTTP 413).
+                For larger payloads, host the file and submit a URL instead.
             - type: string
               format: uri
-              description: Public HTTP/HTTPS URL to audio file
+              description: >-
+                Public HTTPS URL the server fetches the audio from. Server-side
+                fetch limit is 1 GB; downloads exceeding the cap fail with
+                `file_too_large`.
           description: >-
-            Audio file upload or public HTTP/HTTPS URL. Supported formats .wav,
-            .mp3, .m4a, .webm, .flac, .ogg, .opus, .aac.
+            Audio file upload or public HTTP/HTTPS URL. Supported formats: .wav,
+            .mp3, .m4a, .webm, .flac, .ogg, .opus, .aac. Maximum duration 4
+            hours; longer audio is rejected with `audio_too_long`. Binary
+            uploads are additionally capped at 500 MB (HTTP 413); URL-fetched
+            audio is capped at 1 GB.
         model:
           type: string
           description: Model to use for translation
@@ -13378,6 +13679,7 @@ components:
         - supports_tools
         - supports_reasoning
         - merge_output_lora
+        - default_gradient_accumulation_steps
       properties:
         model_name:
           type: string
@@ -13450,6 +13752,11 @@ components:
         merge_output_lora:
           type: boolean
           description: Whether to merge the output LoRA.
+        default_gradient_accumulation_steps:
+          type: integer
+          description: >-
+            Default gradient accumulation steps used when a fine-tune request
+            omits the value or sets it to 0.
     FinetuneJobStatus:
       type: string
       enum:
@@ -14620,12 +14927,40 @@ components:
         judge:
           $ref: '#/components/schemas/EvaluationJudgeModelConfig'
         model_a:
-          $ref: '#/components/schemas/EvaluationModelOrString'
+          description: >
+            Either an EvaluationModelRequest for generation or a string column
+            name from the dataset (when responses are pre-generated). When both
+            model_a and model_b are EvaluationModelRequest objects, their
+            inference runs execute in parallel to reduce total wall-clock time.
+          oneOf:
+            - $ref: '#/components/schemas/EvaluationModelRequest'
+            - type: string
+              description: Column name in the input data containing pre-generated responses
         model_b:
-          $ref: '#/components/schemas/EvaluationModelOrString'
+          description: >
+            Either an EvaluationModelRequest for generation or a string column
+            name from the dataset (when responses are pre-generated). When both
+            model_a and model_b are EvaluationModelRequest objects, their
+            inference runs execute in parallel to reduce total wall-clock time.
+          oneOf:
+            - $ref: '#/components/schemas/EvaluationModelRequest'
+            - type: string
+              description: Column name in the input data containing pre-generated responses
         input_data_file_path:
           type: string
-          description: Data file name
+          description: Data file ID
+          example: file-01234567890123456789
+        disable_position_bias_correction:
+          type: boolean
+          default: false
+          description: >
+            When false (default), the judge runs twice per sample: once with
+            model A's response first (original order) and once with model B's
+            response first (flipped order). The two verdicts are reconciled to
+            cancel out position bias. When true, only the original-order pass is
+            run, halving judge cost and latency at the expense of position-bias
+            correction. The result file will not contain flipped-order judge
+            fields when this is true.
     EvaluationJudgeModelConfig:
       type: object
       required:
@@ -14643,47 +14978,61 @@ components:
           example: Imagine you are a helpful assistant
         model_source:
           type: string
-          description: Source of the judge model.
+          description: >
+            Source of the judge model inference: - `serverless`: Together's
+            shared serverless inference API. Default concurrency: 25 workers. -
+            `dedicated`: A Together dedicated deployment endpoint. Default
+            concurrency: 5 workers
+              (minimum enforced even if num_workers is set lower).
+            - `external`: An external inference API (e.g. OpenAI, Anthropic,
+            Google, OpenRouter).
+              Requires `external_api_token` and `external_base_url`. Default concurrency: 2 workers
+              for first-party APIs, 20 for proxy/aggregator endpoints.
           enum:
             - serverless
             - dedicated
             - external
         external_api_token:
           type: string
-          description: Bearer/API token for external judge models.
+          description: >-
+            Bearer/API token for the external judge model provider. Required
+            when model_source is 'external'.
         external_base_url:
           type: string
           description: >-
-            Base URL for external judge models. Must be OpenAI-compatible base
-            URL.
+            Base URL of the external inference API for the judge. Must be
+            OpenAI-compatible. Required when model_source is 'external'.
         num_workers:
           type: integer
           minimum: 1
-          description: >-
-            Number of concurrent workers for inference requests. Overrides the
-            default concurrency for this model. Useful for tuning throughput
-            when using proxy endpoints (e.g. OpenRouter) or rate-limited
-            external APIs.
+          description: >
+            Number of concurrent inference workers for the judge. Overrides the
+            source-specific default (serverless: 25, dedicated: 5, external:
+            2–20). For dedicated endpoints the value is clamped to a minimum of
+            5 regardless of what is set here.
           example: 5
         max_tokens:
           type: integer
           minimum: 1
           description: >-
-            Maximum number of tokens the judge model can generate. Defaults to
-            32768. Increase for reasoning models (e.g. Gemini, o-series) that
-            consume output token budget for chain-of-thought.
+            Maximum number of tokens the judge model may generate. Defaults to
+            32768 if omitted. Set higher for reasoning judges (e.g. o-series,
+            Gemini) that spend tokens on internal chain-of-thought before
+            emitting the verdict JSON.
           example: 8192
         temperature:
           type: number
           format: float
           minimum: 0
           maximum: 2
-          description: Sampling temperature for the judge model. Defaults to 0.05.
+          description: >-
+            Sampling temperature for the judge model. Defaults to 0.05 if
+            omitted.
           example: 0
     EvaluationModelOrString:
       oneOf:
         - type: string
-          description: Field name in the input data
+          description: Column name in the input dataset containing pre-generated responses
         - $ref: '#/components/schemas/EvaluationModelRequest'
     EvaluationModelRequest:
       type: object
@@ -14702,44 +15051,62 @@ components:
         max_tokens:
           type: integer
           minimum: 1
-          description: Maximum number of tokens to generate
+          description: Maximum number of tokens to generate.
           example: 512
         temperature:
           type: number
           format: float
           minimum: 0
           maximum: 2
-          description: Sampling temperature
+          description: Sampling temperature for generation.
           example: 0.7
         system_template:
           type: string
-          description: System prompt template
-          example: Imagine you are helpful assistant
+          description: >-
+            System prompt template. Supports Jinja2 variables referencing
+            dataset columns.
+          example: You are a helpful assistant.
         input_template:
           type: string
-          description: Input prompt template
-          example: Please classify {{prompt}} based on the labels below
+          description: >-
+            User message template. Supports Jinja2 variables referencing dataset
+            columns.
+          example: 'Please answer the following question: {{ question }}'
         model_source:
           type: string
-          description: Source of the model.
+          description: >
+            Source of the model inference: - `serverless`: Together's shared
+            serverless inference API. Default concurrency: 25 workers. -
+            `dedicated`: A Together dedicated deployment endpoint. Default
+            concurrency: 5 workers
+              (minimum enforced even if num_workers is set lower). Authentication uses the requesting
+              user's Together API token automatically.
+            - `external`: An external inference API (e.g. OpenAI, Anthropic,
+            Google, OpenRouter).
+              Requires `external_api_token` and `external_base_url`. Default concurrency: 2 workers
+              for first-party APIs (OpenAI, Anthropic, Google), 20 for proxy/aggregator endpoints.
           enum:
             - serverless
             - dedicated
             - external
         external_api_token:
           type: string
-          description: Bearer/API token for external models.
+          description: >-
+            Bearer/API token for the external model provider. Required when
+            model_source is 'external'.
         external_base_url:
           type: string
-          description: Base URL for external models. Must be OpenAI-compatible base URL
+          description: >-
+            Base URL of the external inference API. Must be OpenAI-compatible.
+            Required when model_source is 'external'.
         num_workers:
           type: integer
           minimum: 1
-          description: >-
-            Number of concurrent workers for inference requests. Overrides the
-            default concurrency for this model. Useful for tuning throughput
-            when using proxy endpoints (e.g. OpenRouter) or rate-limited
-            external APIs.
+          description: >
+            Number of concurrent inference workers. Overrides the
+            source-specific default (serverless: 25, dedicated: 5, external:
+            2–20). For dedicated endpoints the value is clamped to a minimum of
+            5 regardless of what is set here.
           example: 5
     EvaluationResponse:
       type: object
@@ -14905,41 +15272,52 @@ components:
     EvaluationCompareResults:
       type: object
       properties:
-        num_samples:
-          type: integer
-          description: Total number of samples compared
         A_wins:
           type: integer
-          description: Number of times model A won
+          description: Number of samples where model A was judged the winner
         B_wins:
           type: integer
-          description: Number of times model B won
+          description: Number of samples where model B was judged the winner
         Ties:
           type: integer
-          description: Number of ties
+          description: Number of samples that resulted in a tie
         generation_fail_count:
           type: number
           format: integer
           nullable: true
-          description: Number of failed generations.
+          description: Number of generation failures across model A and model B.
           example: 0
         judge_fail_count:
           type: number
           format: integer
           nullable: true
-          description: Number of failed judge generations
+          description: >
+            Number of judge inference failures. In the default two-pass mode
+            (disable_position_bias_correction=false) this is the combined
+            failure count from both the original-order and flipped-order judge
+            passes.
           example: 0
         result_file_id:
           type: string
-          description: Data File ID
+          description: >
+            File ID of the detailed output file. Each row contains the original
+            input fields plus judge outputs. In two-pass mode the file includes
+            both original-order and flipped-order judge fields; in single-pass
+            mode (disable_position_bias_correction=true) only original-order
+            fields are present.
     AudioFileBinary:
       type: string
       format: binary
-      description: Audio file to transcribe
+      description: >-
+        Audio file uploaded as binary. Maximum upload size 500 MB (requests
+        above this are rejected at the edge with HTTP 413). For larger payloads,
+        host the file and submit a URL instead.
     AudioFileUrl:
       type: string
       format: uri
-      description: Public HTTPS URL to audio file
+      description: >-
+        Public HTTPS URL the server fetches the audio from. Server-side fetch
+        limit is 1 GB; downloads exceeding the cap fail with `file_too_large`.
     CreateVideoBody:
       title: Create video request
       description: Parameters for creating a new video generation job.
@@ -16060,6 +16438,7 @@ components:
       x-enum-varnames:
         - VolumeTypeReadOnly
     QueueError:
+      description: Error response returned by queue endpoints.
       properties:
         code:
           description: Machine-readable error code
@@ -16075,6 +16454,7 @@ components:
           type: string
       type: object
     QueueMetricsResponse:
+      description: Queue job counts for a model.
       type: object
       required:
         - messages_running
@@ -16091,6 +16471,7 @@ components:
           description: Total number of active jobs (waiting + running)
           type: integer
     QueueCancelRequest:
+      description: Request to cancel a queued job.
       properties:
         model:
           description: Model identifier the job was submitted to
@@ -16103,6 +16484,7 @@ components:
         - request_id
       type: object
     QueueCancelResponse:
+      description: Status returned after a cancel attempt.
       type: object
       required:
         - status
@@ -16119,16 +16501,18 @@ components:
             - done
             - failed
     QueueJobRequest:
+      description: Request to submit a job to the queue.
       properties:
         info:
           description: |
-            Arbitrary JSON metadata stored with the job and returned in status
-            responses. The model and system may add or update keys during
-            processing.
+            Arbitrary JSON metadata stored with the job. Returned in status
+            responses, where the model and system may have added or modified
+            keys (e.g. progress).
           additionalProperties: true
           type: object
         model:
           description: Required model identifier
+          example: my-queue-model
           type: string
         payload:
           description: >-
@@ -16148,16 +16532,18 @@ components:
         - payload
       type: object
     QueueJobResponse:
+      description: Response returned after queueing a job.
       properties:
-        error:
-          $ref: '#/components/schemas/QueueError'
         requestId:
           description: >-
             Unique identifier for the submitted job. Use this to poll status or
             cancel.
           type: string
+      required:
+        - requestId
       type: object
     QueueJobStatusResponse:
+      description: Current status and metadata for a queued job.
       required:
         - request_id
         - model

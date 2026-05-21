@@ -38,7 +38,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string FromHfModel { get; set; }
 #endif
-        /// <summary>Number of steps to accumulate gradients before performing a weight update. Effectively increases the batch size without requiring more memory. For example, with batch_size=4 and gradient_accumulation_steps=8, the effective batch size is 32.</summary>
+        /// <summary>Number of steps to accumulate gradients before performing a weight update. If omitted or set to 0, the model default is used.</summary>
         public int? GradientAccumulationSteps { get; set; }
         /// <summary>The API token for the Hugging Face Hub.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

@@ -14,7 +14,7 @@ namespace Soenneker.Together.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Bearer/API token for external judge models.</summary>
+        /// <summary>Bearer/API token for the external judge model provider. Required when model_source is &apos;external&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ExternalApiToken { get; set; }
@@ -22,7 +22,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string ExternalApiToken { get; set; }
 #endif
-        /// <summary>Base URL for external judge models. Must be OpenAI-compatible base URL.</summary>
+        /// <summary>Base URL of the external inference API for the judge. Must be OpenAI-compatible. Required when model_source is &apos;external&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ExternalBaseUrl { get; set; }
@@ -30,7 +30,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string ExternalBaseUrl { get; set; }
 #endif
-        /// <summary>Maximum number of tokens the judge model can generate. Defaults to 32768. Increase for reasoning models (e.g. Gemini, o-series) that consume output token budget for chain-of-thought.</summary>
+        /// <summary>Maximum number of tokens the judge model may generate. Defaults to 32768 if omitted. Set higher for reasoning judges (e.g. o-series, Gemini) that spend tokens on internal chain-of-thought before emitting the verdict JSON.</summary>
         public int? MaxTokens { get; set; }
         /// <summary>Name of the judge model</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -40,9 +40,9 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string Model { get; set; }
 #endif
-        /// <summary>Source of the judge model.</summary>
+        /// <summary>&quot;Source of the judge model inference: - `serverless`: Together&apos;s shared serverless inference API. Default concurrency: 25 workers. - `dedicated`: A Together dedicated deployment endpoint. Default concurrency: 5 workers  (minimum enforced even if num_workers is set lower).- `external`: An external inference API (e.g. OpenAI, Anthropic, Google, OpenRouter).  Requires `external_api_token` and `external_base_url`. Default concurrency: 2 workers  for first-party APIs, 20 for proxy/aggregator endpoints.&quot;</summary>
         public global::Soenneker.Together.OpenApiClient.Models.EvaluationJudgeModelConfig_model_source? ModelSource { get; set; }
-        /// <summary>Number of concurrent workers for inference requests. Overrides the default concurrency for this model. Useful for tuning throughput when using proxy endpoints (e.g. OpenRouter) or rate-limited external APIs.</summary>
+        /// <summary>&quot;Number of concurrent inference workers for the judge. Overrides the source-specific default (serverless: 25, dedicated: 5, external: 2–20). For dedicated endpoints the value is clamped to a minimum of 5 regardless of what is set here.&quot;</summary>
         public int? NumWorkers { get; set; }
         /// <summary>System prompt template for the judge</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -52,7 +52,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string SystemTemplate { get; set; }
 #endif
-        /// <summary>Sampling temperature for the judge model. Defaults to 0.05.</summary>
+        /// <summary>Sampling temperature for the judge model. Defaults to 0.05 if omitted.</summary>
         public float? Temperature { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.EvaluationJudgeModelConfig"/> and sets the default values.

@@ -37,7 +37,7 @@ namespace Soenneker.Together.OpenApiClient.Queue.Submit
         /// Submit a new job to the queue for asynchronous processing. Jobs areprocessed in strict priority order (higher priority first, FIFO withinthe same priority). Returns a request ID that can be used to poll statusor cancel the job.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.QueueJobResponse"/></returns>
-        /// <param name="body">The request body</param>
+        /// <param name="body">Request to submit a job to the queue.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.QueueError">When receiving a 400 status code</exception>
@@ -66,7 +66,7 @@ namespace Soenneker.Together.OpenApiClient.Queue.Submit
         /// Submit a new job to the queue for asynchronous processing. Jobs areprocessed in strict priority order (higher priority first, FIFO withinthe same priority). Returns a request ID that can be used to poll statusor cancel the job.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">The request body</param>
+        /// <param name="body">Request to submit a job to the queue.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

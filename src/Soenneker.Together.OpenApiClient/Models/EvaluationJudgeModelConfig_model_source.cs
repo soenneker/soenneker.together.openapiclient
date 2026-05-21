@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
-    /// <summary>Source of the judge model.</summary>
+    /// <summary>&quot;Source of the judge model inference: - `serverless`: Together&apos;s shared serverless inference API. Default concurrency: 25 workers. - `dedicated`: A Together dedicated deployment endpoint. Default concurrency: 5 workers  (minimum enforced even if num_workers is set lower).- `external`: An external inference API (e.g. OpenAI, Anthropic, Google, OpenRouter).  Requires `external_api_token` and `external_base_url`. Default concurrency: 2 workers  for first-party APIs, 20 for proxy/aggregator endpoints.&quot;</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum EvaluationJudgeModelConfig_model_source
     {

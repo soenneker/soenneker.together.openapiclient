@@ -59,6 +59,14 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string InstanceId { get; private set; }
 #endif
+        /// <summary>Display name of the targeted instance.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? InstanceName { get; private set; }
+#nullable restore
+#else
+        public string InstanceName { get; private set; }
+#endif
         /// <summary>&quot;Remediation mode specifies how the remediation should be performed.- `REMEDIATION_MODE_VM_ONLY`: Deletes the VM and provisions a new one on any available host.- `REMEDIATION_MODE_HOST_AWARE`: Cordons the host, deletes the VM, and provisions a new one on a different host.&quot;</summary>
         public global::Soenneker.Together.OpenApiClient.Models.Remediation_mode? Mode { get; set; }
         /// <summary>Passive health check event ID that triggered this remediation.</summary>
@@ -143,6 +151,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "error_message", n => { ErrorMessage = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "instance_id", n => { InstanceId = n.GetStringValue(); } },
+                { "instance_name", n => { InstanceName = n.GetStringValue(); } },
                 { "mode", n => { Mode = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.Remediation_mode>(); } },
                 { "passive_health_check_event_id", n => { PassiveHealthCheckEventId = n.GetStringValue(); } },
                 { "reason", n => { Reason = n.GetStringValue(); } },

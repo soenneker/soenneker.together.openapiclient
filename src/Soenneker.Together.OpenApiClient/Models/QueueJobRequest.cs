@@ -7,14 +7,15 @@ using System.IO;
 using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
+    /// <summary>
+    /// Request to submit a job to the queue.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class QueueJobRequest : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Arbitrary JSON metadata stored with the job and returned in statusresponses. The model and system may add or update keys duringprocessing.</summary>
+        /// <summary>Arbitrary JSON metadata stored with the job. Returned in statusresponses, where the model and system may have added or modifiedkeys (e.g. progress).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Together.OpenApiClient.Models.QueueJobRequest_info? Info { get; set; }

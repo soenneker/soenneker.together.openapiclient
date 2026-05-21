@@ -2,6 +2,8 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.Together.OpenApiClient.Rl.TrainingSessions.Item.Operations.CustomForwardBackward;
+using Soenneker.Together.OpenApiClient.Rl.TrainingSessions.Item.Operations.Forward;
 using Soenneker.Together.OpenApiClient.Rl.TrainingSessions.Item.Operations.ForwardBackward;
 using Soenneker.Together.OpenApiClient.Rl.TrainingSessions.Item.Operations.InferenceCheckpoint;
 using Soenneker.Together.OpenApiClient.Rl.TrainingSessions.Item.Operations.OptimStep;
@@ -19,6 +21,16 @@ namespace Soenneker.Together.OpenApiClient.Rl.TrainingSessions.Item.Operations
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class OperationsRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The customForwardBackward property</summary>
+        public global::Soenneker.Together.OpenApiClient.Rl.TrainingSessions.Item.Operations.CustomForwardBackward.CustomForwardBackwardRequestBuilder CustomForwardBackward
+        {
+            get => new global::Soenneker.Together.OpenApiClient.Rl.TrainingSessions.Item.Operations.CustomForwardBackward.CustomForwardBackwardRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The forward property</summary>
+        public global::Soenneker.Together.OpenApiClient.Rl.TrainingSessions.Item.Operations.Forward.ForwardRequestBuilder Forward
+        {
+            get => new global::Soenneker.Together.OpenApiClient.Rl.TrainingSessions.Item.Operations.Forward.ForwardRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The forwardBackward property</summary>
         public global::Soenneker.Together.OpenApiClient.Rl.TrainingSessions.Item.Operations.ForwardBackward.ForwardBackwardRequestBuilder ForwardBackward
         {

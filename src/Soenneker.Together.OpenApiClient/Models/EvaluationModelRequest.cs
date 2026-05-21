@@ -14,7 +14,7 @@ namespace Soenneker.Together.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Bearer/API token for external models.</summary>
+        /// <summary>Bearer/API token for the external model provider. Required when model_source is &apos;external&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ExternalApiToken { get; set; }
@@ -22,7 +22,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string ExternalApiToken { get; set; }
 #endif
-        /// <summary>Base URL for external models. Must be OpenAI-compatible base URL</summary>
+        /// <summary>Base URL of the external inference API. Must be OpenAI-compatible. Required when model_source is &apos;external&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ExternalBaseUrl { get; set; }
@@ -30,7 +30,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string ExternalBaseUrl { get; set; }
 #endif
-        /// <summary>Input prompt template</summary>
+        /// <summary>User message template. Supports Jinja2 variables referencing dataset columns.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? InputTemplate { get; set; }
@@ -38,7 +38,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string InputTemplate { get; set; }
 #endif
-        /// <summary>Maximum number of tokens to generate</summary>
+        /// <summary>Maximum number of tokens to generate.</summary>
         public int? MaxTokens { get; set; }
         /// <summary>Name of the model to evaluate</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -48,11 +48,11 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string Model { get; set; }
 #endif
-        /// <summary>Source of the model.</summary>
+        /// <summary>&quot;Source of the model inference: - `serverless`: Together&apos;s shared serverless inference API. Default concurrency: 25 workers. - `dedicated`: A Together dedicated deployment endpoint. Default concurrency: 5 workers  (minimum enforced even if num_workers is set lower). Authentication uses the requesting  user&apos;s Together API token automatically.- `external`: An external inference API (e.g. OpenAI, Anthropic, Google, OpenRouter).  Requires `external_api_token` and `external_base_url`. Default concurrency: 2 workers  for first-party APIs (OpenAI, Anthropic, Google), 20 for proxy/aggregator endpoints.&quot;</summary>
         public global::Soenneker.Together.OpenApiClient.Models.EvaluationModelRequest_model_source? ModelSource { get; set; }
-        /// <summary>Number of concurrent workers for inference requests. Overrides the default concurrency for this model. Useful for tuning throughput when using proxy endpoints (e.g. OpenRouter) or rate-limited external APIs.</summary>
+        /// <summary>&quot;Number of concurrent inference workers. Overrides the source-specific default (serverless: 25, dedicated: 5, external: 2–20). For dedicated endpoints the value is clamped to a minimum of 5 regardless of what is set here.&quot;</summary>
         public int? NumWorkers { get; set; }
-        /// <summary>System prompt template</summary>
+        /// <summary>System prompt template. Supports Jinja2 variables referencing dataset columns.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? SystemTemplate { get; set; }
@@ -60,7 +60,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string SystemTemplate { get; set; }
 #endif
-        /// <summary>Sampling temperature</summary>
+        /// <summary>Sampling temperature for generation.</summary>
         public float? Temperature { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.EvaluationModelRequest"/> and sets the default values.

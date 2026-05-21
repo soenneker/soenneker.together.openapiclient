@@ -37,7 +37,7 @@ namespace Soenneker.Together.OpenApiClient.Queue.Cancel
         /// Cancel a pending job. Only jobs in pending status can be canceled.Running jobs cannot be stopped. Returns the job status after theattempt. If the job is not pending, returns 409 with the current statusunchanged.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.QueueCancelResponse"/></returns>
-        /// <param name="body">The request body</param>
+        /// <param name="body">Request to cancel a queued job.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.QueueError">When receiving a 400 status code</exception>
@@ -68,7 +68,7 @@ namespace Soenneker.Together.OpenApiClient.Queue.Cancel
         /// Cancel a pending job. Only jobs in pending status can be canceled.Running jobs cannot be stopped. Returns the job status after theattempt. If the job is not pending, returns 409 with the current statusunchanged.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">The request body</param>
+        /// <param name="body">Request to cancel a queued job.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
