@@ -17,10 +17,10 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Number of training examples processed together (larger batches use more memory but may train faster). Defaults to &quot;max&quot;. We use training optimizations like packing, so the effective batch size may be different than the value you set.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.UnionBranch? BatchSize { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.PostFineTunes.PostFineTunes_batch_size? BatchSize { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.UnionBranch BatchSize { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.PostFineTunes.PostFineTunes_batch_size BatchSize { get; set; }
 #endif
         /// <summary>The checkpoint identifier to continue training from a previous fine-tuning job. Format is `{$JOB_ID}` or `{$OUTPUT_MODEL_NAME}` or `{$JOB_ID}:{$STEP}` or `{$OUTPUT_MODEL_NAME}:{$STEP}`. The step value is optional; without it, uses the final checkpoint.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -140,10 +140,10 @@ namespace Soenneker.Together.OpenApiClient.Models
         [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.UnionBranch? TrainOnInputs { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.PostFineTunes.PostFineTunes_train_on_inputs? TrainOnInputs { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.UnionBranch TrainOnInputs { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.PostFineTunes.PostFineTunes_train_on_inputs TrainOnInputs { get; set; }
 #endif
         /// <summary>File-ID of a validation file uploaded to the Together API</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -222,7 +222,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "batch_size", n => { BatchSize = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.UnionBranch>(global::Soenneker.Together.OpenApiClient.Models.UnionBranch.CreateFromDiscriminatorValue); } },
+                { "batch_size", n => { BatchSize = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.PostFineTunes.PostFineTunes_batch_size>(global::Soenneker.Together.OpenApiClient.Models.PostFineTunes.PostFineTunes_batch_size.CreateFromDiscriminatorValue); } },
                 { "from_checkpoint", n => { FromCheckpoint = n.GetStringValue(); } },
                 { "from_hf_model", n => { FromHfModel = n.GetStringValue(); } },
                 { "gradient_accumulation_steps", n => { GradientAccumulationSteps = n.GetIntValue(); } },
@@ -241,7 +241,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "packing", n => { Packing = n.GetBoolValue(); } },
                 { "random_seed", n => { RandomSeed = n.GetIntValue(); } },
                 { "suffix", n => { Suffix = n.GetStringValue(); } },
-                { "train_on_inputs", n => { TrainOnInputs = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.UnionBranch>(global::Soenneker.Together.OpenApiClient.Models.UnionBranch.CreateFromDiscriminatorValue); } },
+                { "train_on_inputs", n => { TrainOnInputs = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.PostFineTunes.PostFineTunes_train_on_inputs>(global::Soenneker.Together.OpenApiClient.Models.PostFineTunes.PostFineTunes_train_on_inputs.CreateFromDiscriminatorValue); } },
                 { "training_file", n => { TrainingFile = n.GetStringValue(); } },
                 { "training_method", n => { TrainingMethod = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.PostFineTunes.PostFineTunes_training_method>(global::Soenneker.Together.OpenApiClient.Models.PostFineTunes.PostFineTunes_training_method.CreateFromDiscriminatorValue); } },
                 { "training_type", n => { TrainingType = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.PostFineTunes.PostFineTunes_training_type>(global::Soenneker.Together.OpenApiClient.Models.PostFineTunes.PostFineTunes_training_type.CreateFromDiscriminatorValue); } },
@@ -262,7 +262,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.UnionBranch>("batch_size", BatchSize);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.PostFineTunes.PostFineTunes_batch_size>("batch_size", BatchSize);
             writer.WriteStringValue("from_checkpoint", FromCheckpoint);
             writer.WriteStringValue("from_hf_model", FromHfModel);
             writer.WriteIntValue("gradient_accumulation_steps", GradientAccumulationSteps);
@@ -284,7 +284,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteStringValue("training_file", TrainingFile);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.PostFineTunes.PostFineTunes_training_method>("training_method", TrainingMethod);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.PostFineTunes.PostFineTunes_training_type>("training_type", TrainingType);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.UnionBranch>("train_on_inputs", TrainOnInputs);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.PostFineTunes.PostFineTunes_train_on_inputs>("train_on_inputs", TrainOnInputs);
             writer.WriteStringValue("validation_file", ValidationFile);
             writer.WriteStringValue("wandb_api_key", WandbApiKey);
             writer.WriteStringValue("wandb_base_url", WandbBaseUrl);
@@ -294,6 +294,128 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteFloatValue("warmup_ratio", WarmupRatio);
             writer.WriteFloatValue("weight_decay", WeightDecay);
             writer.WriteAdditionalData(AdditionalData);
+        }
+        /// <summary>
+        /// Composed type wrapper for classes <see cref="int"/>, <see cref="string"/>
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        public partial class PostFineTunes_batch_size : IComposedTypeWrapper, IParsable
+        {
+            /// <summary>Composed type representation for type <see cref="int"/></summary>
+            public int? Integer { get; set; }
+            /// <summary>Composed type representation for type <see cref="string"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public string? String { get; set; }
+#nullable restore
+#else
+            public string String { get; set; }
+#endif
+            /// <summary>
+            /// Creates a new instance of the appropriate class based on discriminator value
+            /// </summary>
+            /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.PostFineTunes.PostFineTunes_batch_size"/></returns>
+            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
+            public static global::Soenneker.Together.OpenApiClient.Models.PostFineTunes.PostFineTunes_batch_size CreateFromDiscriminatorValue(IParseNode parseNode)
+            {
+                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
+                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
+                var result = new global::Soenneker.Together.OpenApiClient.Models.PostFineTunes.PostFineTunes_batch_size();
+                if(parseNode.GetIntValue() is int integerValue)
+                {
+                    result.Integer = integerValue;
+                }
+                else if(parseNode.GetStringValue() is string stringValue)
+                {
+                    result.String = stringValue;
+                }
+                return result;
+            }
+            /// <summary>
+            /// The deserialization information for the current model
+            /// </summary>
+            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
+            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+            {
+                return new Dictionary<string, Action<IParseNode>>();
+            }
+            /// <summary>
+            /// Serializes information the current object
+            /// </summary>
+            /// <param name="writer">Serialization writer to use to serialize this model</param>
+            public virtual void Serialize(ISerializationWriter writer)
+            {
+                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+                if(Integer != null)
+                {
+                    writer.WriteIntValue(null, Integer);
+                }
+                else if(String != null)
+                {
+                    writer.WriteStringValue(null, String);
+                }
+            }
+        }
+        /// <summary>
+        /// Composed type wrapper for classes <see cref="bool"/>, <see cref="string"/>
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        public partial class PostFineTunes_train_on_inputs : IComposedTypeWrapper, IParsable
+        {
+            /// <summary>Composed type representation for type <see cref="bool"/></summary>
+            public bool? Boolean { get; set; }
+            /// <summary>Composed type representation for type <see cref="string"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public string? String { get; set; }
+#nullable restore
+#else
+            public string String { get; set; }
+#endif
+            /// <summary>
+            /// Creates a new instance of the appropriate class based on discriminator value
+            /// </summary>
+            /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.PostFineTunes.PostFineTunes_train_on_inputs"/></returns>
+            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
+            public static global::Soenneker.Together.OpenApiClient.Models.PostFineTunes.PostFineTunes_train_on_inputs CreateFromDiscriminatorValue(IParseNode parseNode)
+            {
+                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
+                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
+                var result = new global::Soenneker.Together.OpenApiClient.Models.PostFineTunes.PostFineTunes_train_on_inputs();
+                if(parseNode.GetBoolValue() is bool booleanValue)
+                {
+                    result.Boolean = booleanValue;
+                }
+                else if(parseNode.GetStringValue() is string stringValue)
+                {
+                    result.String = stringValue;
+                }
+                return result;
+            }
+            /// <summary>
+            /// The deserialization information for the current model
+            /// </summary>
+            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
+            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+            {
+                return new Dictionary<string, Action<IParseNode>>();
+            }
+            /// <summary>
+            /// Serializes information the current object
+            /// </summary>
+            /// <param name="writer">Serialization writer to use to serialize this model</param>
+            public virtual void Serialize(ISerializationWriter writer)
+            {
+                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+                if(Boolean != null)
+                {
+                    writer.WriteBoolValue(null, Boolean);
+                }
+                else if(String != null)
+                {
+                    writer.WriteStringValue(null, String);
+                }
+            }
         }
         /// <summary>
         /// Composed type wrapper for classes <see cref="global::Soenneker.Together.OpenApiClient.Models.TrainingMethodDPO"/>, <see cref="global::Soenneker.Together.OpenApiClient.Models.TrainingMethodSFT"/>

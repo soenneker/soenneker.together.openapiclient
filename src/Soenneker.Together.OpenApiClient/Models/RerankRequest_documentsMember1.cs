@@ -9,29 +9,27 @@ namespace Soenneker.Together.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class FinetuneEventLevels_Wrapper : IAdditionalDataHolder, IParsable
+    public partial class RerankRequest_documentsMember1 : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The value property</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.FinetuneEventLevels? Value { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.FinetuneEventLevels_Wrapper"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RerankRequest_documentsMember1"/> and sets the default values.
         /// </summary>
-        public FinetuneEventLevels_Wrapper()
+        public RerankRequest_documentsMember1()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.FinetuneEventLevels_Wrapper"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.RerankRequest_documentsMember1"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Together.OpenApiClient.Models.FinetuneEventLevels_Wrapper CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Together.OpenApiClient.Models.RerankRequest_documentsMember1 CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.FinetuneEventLevels_Wrapper();
+            return new global::Soenneker.Together.OpenApiClient.Models.RerankRequest_documentsMember1();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -41,7 +39,6 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "value", n => { Value = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.FinetuneEventLevels>(); } },
             };
         }
         /// <summary>
@@ -51,7 +48,6 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.FinetuneEventLevels>("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

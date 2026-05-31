@@ -34,10 +34,10 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Generated token IDs</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Together.OpenApiClient.Models.UnionBranch>? Tokens { get; set; }
+        public List<string>? Tokens { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Together.OpenApiClient.Models.UnionBranch> Tokens { get; set; }
+        public List<string> Tokens { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RLSampleSequence"/> and sets the default values.
@@ -66,7 +66,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             {
                 { "logprobs", n => { Logprobs = n.GetCollectionOfPrimitiveValues<double?>()?.AsList(); } },
                 { "stop_reason", n => { StopReason = n.GetStringValue(); } },
-                { "tokens", n => { Tokens = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.UnionBranch>(global::Soenneker.Together.OpenApiClient.Models.UnionBranch.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "tokens", n => { Tokens = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
         }
         /// <summary>
@@ -78,7 +78,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<double?>("logprobs", Logprobs);
             writer.WriteStringValue("stop_reason", StopReason);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.UnionBranch>("tokens", Tokens);
+            writer.WriteCollectionOfPrimitiveValues<string>("tokens", Tokens);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

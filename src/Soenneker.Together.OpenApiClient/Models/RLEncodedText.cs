@@ -17,10 +17,10 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Pre-tokenized text input</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Together.OpenApiClient.Models.UnionBranch>? Tokens { get; set; }
+        public List<string>? Tokens { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Together.OpenApiClient.Models.UnionBranch> Tokens { get; set; }
+        public List<string> Tokens { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RLEncodedText"/> and sets the default values.
@@ -47,7 +47,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "tokens", n => { Tokens = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.UnionBranch>(global::Soenneker.Together.OpenApiClient.Models.UnionBranch.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "tokens", n => { Tokens = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
         }
         /// <summary>
@@ -57,7 +57,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.UnionBranch>("tokens", Tokens);
+            writer.WriteCollectionOfPrimitiveValues<string>("tokens", Tokens);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

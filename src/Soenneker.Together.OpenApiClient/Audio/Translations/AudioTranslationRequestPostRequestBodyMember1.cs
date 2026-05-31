@@ -5,42 +5,31 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Soenneker.Together.OpenApiClient.Models
+namespace Soenneker.Together.OpenApiClient.Audio.Translations
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class RLLossTargetTokens : IAdditionalDataHolder, IParsable
+    public partial class AudioTranslationRequestPostRequestBodyMember1 : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Integer array of target tokens</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<string>? Data { get; set; }
-#nullable restore
-#else
-        public List<string> Data { get; set; }
-#endif
-        /// <summary>The dtype property</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.RLDType? Dtype { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RLLossTargetTokens"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Audio.Translations.AudioTranslationRequestPostRequestBodyMember1"/> and sets the default values.
         /// </summary>
-        public RLLossTargetTokens()
+        public AudioTranslationRequestPostRequestBodyMember1()
         {
             AdditionalData = new Dictionary<string, object>();
-            Dtype = global::Soenneker.Together.OpenApiClient.Models.RLDType.D_TYPE_UNSPECIFIED;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.RLLossTargetTokens"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Audio.Translations.AudioTranslationRequestPostRequestBodyMember1"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Together.OpenApiClient.Models.RLLossTargetTokens CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Together.OpenApiClient.Audio.Translations.AudioTranslationRequestPostRequestBodyMember1 CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.RLLossTargetTokens();
+            return new global::Soenneker.Together.OpenApiClient.Audio.Translations.AudioTranslationRequestPostRequestBodyMember1();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -50,8 +39,6 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "data", n => { Data = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "dtype", n => { Dtype = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.RLDType>(); } },
             };
         }
         /// <summary>
@@ -61,8 +48,6 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfPrimitiveValues<string>("data", Data);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.RLDType>("dtype", Dtype);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

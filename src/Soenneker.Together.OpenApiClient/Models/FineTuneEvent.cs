@@ -39,13 +39,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string Hash { get; set; }
 #endif
         /// <summary>The level property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.FinetuneEventLevels_Wrapper? Level { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Together.OpenApiClient.Models.FinetuneEventLevels_Wrapper Level { get; set; }
-#endif
+        public global::Soenneker.Together.OpenApiClient.Models.FinetuneEventLevels? Level { get; set; }
         /// <summary>The message property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -112,7 +106,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "checkpoint_path", n => { CheckpointPath = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetStringValue(); } },
                 { "hash", n => { Hash = n.GetStringValue(); } },
-                { "level", n => { Level = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.FinetuneEventLevels_Wrapper>(global::Soenneker.Together.OpenApiClient.Models.FinetuneEventLevels_Wrapper.CreateFromDiscriminatorValue); } },
+                { "level", n => { Level = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.FinetuneEventLevels>(); } },
                 { "message", n => { Message = n.GetStringValue(); } },
                 { "model_path", n => { ModelPath = n.GetStringValue(); } },
                 { "object", n => { Object = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.FineTuneEvent_object>(); } },
@@ -135,7 +129,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteStringValue("checkpoint_path", CheckpointPath);
             writer.WriteStringValue("created_at", CreatedAt);
             writer.WriteStringValue("hash", Hash);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.FinetuneEventLevels_Wrapper>("level", Level);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.FinetuneEventLevels>("level", Level);
             writer.WriteStringValue("message", Message);
             writer.WriteStringValue("model_path", ModelPath);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.FineTuneEvent_object>("object", Object);

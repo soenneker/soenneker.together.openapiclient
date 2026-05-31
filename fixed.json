@@ -6032,7 +6032,10 @@
             "type": "object",
             "oneOf": [
               {
-                "$ref": "#/components/schemas/UnionBranch"
+                "type": "string"
+              },
+              {
+                "type": "integer"
               }
             ],
             "description": "Random seed for reproducibility",
@@ -6082,7 +6085,10 @@
               "type": "object",
               "oneOf": [
                 {
-                  "$ref": "#/components/schemas/UnionBranch"
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
                 }
               ]
             },
@@ -6185,7 +6191,10 @@
               "type": "object",
               "oneOf": [
                 {
-                  "$ref": "#/components/schemas/UnionBranch"
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
                 }
               ]
             },
@@ -6208,7 +6217,10 @@
               "type": "object",
               "oneOf": [
                 {
-                  "$ref": "#/components/schemas/UnionBranch"
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
                 }
               ]
             },
@@ -6366,7 +6378,10 @@
             "type": "object",
             "oneOf": [
               {
-                "$ref": "#/components/schemas/UnionBranch"
+                "type": "string"
+              },
+              {
+                "type": "integer"
               }
             ],
             "description": "Step number",
@@ -6419,7 +6434,10 @@
               "type": "object",
               "oneOf": [
                 {
-                  "$ref": "#/components/schemas/UnionBranch"
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
                 }
               ]
             },
@@ -6771,7 +6789,10 @@
             "type": "object",
             "oneOf": [
               {
-                "$ref": "#/components/schemas/UnionBranch"
+                "type": "string"
+              },
+              {
+                "type": "integer"
               }
             ],
             "description": "Current training step",
@@ -6937,7 +6958,10 @@
             "type": "object",
             "oneOf": [
               {
-                "$ref": "#/components/schemas/UnionBranch"
+                "type": "string"
+              },
+              {
+                "type": "integer"
               }
             ],
             "description": "Training step at time of save",
@@ -6993,7 +7017,10 @@
             "type": "object",
             "oneOf": [
               {
-                "$ref": "#/components/schemas/UnionBranch"
+                "type": "string"
+              },
+              {
+                "type": "integer"
               }
             ],
             "description": "Training step at time of save",
@@ -7079,7 +7106,10 @@
             "type": "object",
             "oneOf": [
               {
-                "$ref": "#/components/schemas/UnionBranch"
+                "type": "string"
+              },
+              {
+                "type": "integer"
               }
             ],
             "description": "File size in bytes",
@@ -8459,7 +8489,14 @@
             "type": "string",
             "anyOf": [
               {
-                "$ref": "#/components/schemas/UnionBranch"
+                "enum": [
+                  "Salesforce/Llama-Rank-v1"
+                ],
+                "type": "string",
+                "additionalProperties": false
+              },
+              {
+                "type": "string"
               }
             ],
             "description": "The model to be used for the rerank request.<br> <br> [See all of Together AI's rerank models](https://docs.together.ai/docs/serverless-models#rerank-models)\n",
@@ -8474,7 +8511,17 @@
             "type": "object",
             "oneOf": [
               {
-                "$ref": "#/components/schemas/UnionBranch"
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "example": "Our solar system orbits the Milky Way galaxy at about 515,000 mph"
+                }
               }
             ],
             "description": "List of documents, which can be either strings or objects."
@@ -8678,7 +8725,17 @@
             "type": "string",
             "anyOf": [
               {
-                "$ref": "#/components/schemas/UnionBranch"
+                "enum": [
+                  "meta-llama/Llama-2-70b-hf",
+                  "mistralai/Mistral-7B-v0.1",
+                  "mistralai/Mixtral-8x7B-v0.1",
+                  "Meta-Llama/Llama-Guard-7b"
+                ],
+                "type": "string",
+                "additionalProperties": false
+              },
+              {
+                "type": "string"
               }
             ],
             "description": "The name of the model to query.<br> <br> [See all of Together AI's chat models](https://docs.together.ai/docs/serverless-models#chat-models)\n",
@@ -8739,7 +8796,14 @@
             "type": "string",
             "anyOf": [
               {
-                "$ref": "#/components/schemas/UnionBranch"
+                "enum": [
+                  "Meta-Llama/Llama-Guard-7b"
+                ],
+                "type": "string",
+                "additionalProperties": false
+              },
+              {
+                "type": "string"
               }
             ],
             "description": "The name of the moderation model used to validate tokens. Choose from the available moderation models found [here](https://docs.together.ai/docs/inference-models#moderation-models).",
@@ -9519,6 +9583,7 @@
         ],
         "properties": {
           "type": {
+            "title": "type",
             "type": "string",
             "description": "Union discriminator"
           }
@@ -9527,7 +9592,6 @@
         "discriminator": {
           "propertyName": "type",
           "mapping": {
-            "ChatCompletionUserMessageContent_1": "#/components/schemas/ChatCompletionUserMessageContent_Branch1",
             "ChatCompletionUserMessageContentMultimodal": "#/components/schemas/ChatCompletionUserMessageContentMultimodal_Wrapper"
           }
         }
@@ -9839,7 +9903,16 @@
             "type": "object",
             "anyOf": [
               {
-                "$ref": "#/components/schemas/UnionBranch"
+                "enum": [
+                  "cartesia/sonic",
+                  "hexgrad/Kokoro-82M",
+                  "canopylabs/orpheus-3b-0.1-ft"
+                ],
+                "type": "string",
+                "additionalProperties": false
+              },
+              {
+                "type": "string"
               }
             ],
             "description": "\"The name of the model to query.<br> <br> [See all of Together AI's chat models](https://docs.together.ai/docs/serverless-models#audio-models) The current supported tts models are: - cartesia/sonic - hexgrad/Kokoro-82M - canopylabs/orpheus-3b-0.1-ft\n\"",
@@ -9920,7 +9993,14 @@
             "type": "object",
             "oneOf": [
               {
-                "$ref": "#/components/schemas/UnionBranch"
+                "type": "string",
+                "description": "Audio file uploaded as binary. Maximum upload size 500 MB (requests above this are rejected at the edge with HTTP 413). For larger payloads, host the file and submit a URL instead.",
+                "format": "binary"
+              },
+              {
+                "type": "string",
+                "description": "Public HTTPS URL the server fetches the audio from. Server-side fetch limit is 1 GB; downloads exceeding the cap fail with `file_too_large`.",
+                "format": "uri"
               }
             ],
             "description": "\"Audio file upload or public HTTP/HTTPS URL. Supported formats: .wav, .mp3, .m4a, .webm, .flac, .ogg, .opus, .aac. Maximum duration 4 hours; longer audio is rejected with `audio_too_long`. Binary uploads are additionally capped at 500 MB (HTTP 413); URL-fetched audio is capped at 1 GB.\""
@@ -9966,7 +10046,26 @@
             "type": "object",
             "oneOf": [
               {
-                "$ref": "#/components/schemas/UnionBranch"
+                "enum": [
+                  "segment",
+                  "word"
+                ],
+                "type": "string",
+                "additionalProperties": false
+              },
+              {
+                "maxItems": 2,
+                "minItems": 1,
+                "uniqueItems": true,
+                "type": "array",
+                "items": {
+                  "enum": [
+                    "segment",
+                    "word"
+                  ],
+                  "type": "string",
+                  "additionalProperties": false
+                }
               }
             ],
             "description": "Controls level of timestamp detail in verbose_json. Only used when response_format is verbose_json. Can be a single granularity or an array to get multiple levels."
@@ -10196,7 +10295,14 @@
             "type": "object",
             "oneOf": [
               {
-                "$ref": "#/components/schemas/UnionBranch"
+                "type": "string",
+                "description": "Audio file uploaded as binary. Maximum upload size 500 MB (requests above this are rejected at the edge with HTTP 413). For larger payloads, host the file and submit a URL instead.",
+                "format": "binary"
+              },
+              {
+                "type": "string",
+                "description": "Public HTTPS URL the server fetches the audio from. Server-side fetch limit is 1 GB; downloads exceeding the cap fail with `file_too_large`.",
+                "format": "uri"
               }
             ],
             "description": "\"Audio file upload or public HTTP/HTTPS URL. Supported formats: .wav, .mp3, .m4a, .webm, .flac, .ogg, .opus, .aac. Maximum duration 4 hours; longer audio is rejected with `audio_too_long`. Binary uploads are additionally capped at 500 MB (HTTP 413); URL-fetched audio is capped at 1 GB.\""
@@ -10242,7 +10348,26 @@
             "type": "object",
             "oneOf": [
               {
-                "$ref": "#/components/schemas/UnionBranch"
+                "enum": [
+                  "segment",
+                  "word"
+                ],
+                "type": "string",
+                "additionalProperties": false
+              },
+              {
+                "maxItems": 2,
+                "minItems": 1,
+                "uniqueItems": true,
+                "type": "array",
+                "items": {
+                  "enum": [
+                    "segment",
+                    "word"
+                  ],
+                  "type": "string",
+                  "additionalProperties": false
+                }
               }
             ],
             "description": "Controls level of timestamp detail in verbose_json. Only used when response_format is verbose_json. Can be a single granularity or an array to get multiple levels."
@@ -10465,7 +10590,17 @@
             "type": "string",
             "anyOf": [
               {
-                "$ref": "#/components/schemas/UnionBranch"
+                "enum": [
+                  "WhereIsAI/UAE-Large-V1",
+                  "BAAI/bge-large-en-v1.5",
+                  "BAAI/bge-base-en-v1.5",
+                  "togethercomputer/m2-bert-80M-8k-retrieval"
+                ],
+                "type": "string",
+                "additionalProperties": false
+              },
+              {
+                "type": "string"
               }
             ],
             "description": "The name of the embedding model to use.<br> <br> [See all of Together AI's embedding models](https://docs.together.ai/docs/serverless-models#embedding-models)\n",
@@ -10475,7 +10610,17 @@
             "type": "object",
             "oneOf": [
               {
-                "$ref": "#/components/schemas/UnionBranch"
+                "type": "string",
+                "description": "A string providing the text for the model to embed.",
+                "example": "Our solar system orbits the Milky Way galaxy at about 515,000 mph"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "description": "A string providing the text for the model to embed.",
+                  "example": "Our solar system orbits the Milky Way galaxy at about 515,000 mph"
+                }
               }
             ],
             "example": "Our solar system orbits the Milky Way galaxy at about 515,000 mph"
@@ -11076,7 +11221,14 @@
             "type": "object",
             "oneOf": [
               {
-                "$ref": "#/components/schemas/UnionBranch"
+                "type": "integer"
+              },
+              {
+                "enum": [
+                  "max"
+                ],
+                "type": "string",
+                "additionalProperties": false
               }
             ]
           },
@@ -11104,7 +11256,14 @@
             "type": "object",
             "oneOf": [
               {
-                "$ref": "#/components/schemas/UnionBranch"
+                "type": "boolean"
+              },
+              {
+                "enum": [
+                  "auto"
+                ],
+                "type": "string",
+                "additionalProperties": false
               }
             ]
           },
@@ -11562,7 +11721,7 @@
             "type": "object",
             "anyOf": [
               {
-                "$ref": "#/components/schemas/FinetuneEventLevels_Wrapper"
+                "$ref": "#/components/schemas/FinetuneEventLevels"
               }
             ]
           },
@@ -11721,7 +11880,14 @@
             "type": "boolean",
             "oneOf": [
               {
-                "$ref": "#/components/schemas/UnionBranch"
+                "type": "boolean"
+              },
+              {
+                "enum": [
+                  "auto"
+                ],
+                "type": "string",
+                "additionalProperties": false
               }
             ],
             "description": "Whether to mask user messages in conversational data or prompts in instruction data."
@@ -13623,7 +13789,15 @@
             "type": "object",
             "anyOf": [
               {
-                "$ref": "#/components/schemas/UnionBranch"
+                "type": "number"
+              },
+              {
+                "enum": [
+                  "first",
+                  "last"
+                ],
+                "type": "string",
+                "additionalProperties": false
               }
             ],
             "description": "Optional param to specify where to insert the frame. If this is omitted, the following heuristics are applied:\n- frame_images size is one, frame is first.\n- If size is two, frames are first and last.\n- If size is larger, frames are first, last and evenly spaced between.\n"
@@ -14154,9 +14328,6 @@
             "description": "ReplicaEvents is a mapping of replica names or IDs to their status events"
           },
           "status": {
-            "required": [
-              "value"
-            ],
             "enum": [
               "Updating",
               "Scaling",
@@ -14164,12 +14335,12 @@
               "Failed",
               "ScaledToZero"
             ],
-            "type": "object",
-            "properties": {
-              "value": {
+            "type": "string",
+            "allOf": [
+              {
                 "$ref": "#/components/schemas/DeploymentStatus"
               }
-            },
+            ],
             "additionalProperties": false,
             "description": "Status represents the overall status of the deployment (e.g., Updating, Scaling, Ready, Failed)"
           },
@@ -15719,7 +15890,16 @@
             "type": "string",
             "anyOf": [
               {
-                "$ref": "#/components/schemas/UnionBranch"
+                "enum": [
+                  "black-forest-labs/FLUX.1-schnell-Free",
+                  "black-forest-labs/FLUX.1-schnell",
+                  "black-forest-labs/FLUX.1.1-pro"
+                ],
+                "type": "string",
+                "additionalProperties": false
+              },
+              {
+                "type": "string"
               }
             ],
             "description": "The model to use for image generation.<br> <br> [See all of Together AI's image models](https://docs.together.ai/docs/serverless-models#image-models)\n",
@@ -15893,7 +16073,14 @@
             "type": "object",
             "oneOf": [
               {
-                "$ref": "#/components/schemas/UnionBranch"
+                "type": "integer"
+              },
+              {
+                "enum": [
+                  "max"
+                ],
+                "type": "string",
+                "additionalProperties": false
               }
             ],
             "description": "Number of training examples processed together (larger batches use more memory but may train faster). Defaults to \"max\". We use training optimizations like packing, so the effective batch size may be different than the value you set."
@@ -15964,7 +16151,14 @@
             "type": "boolean",
             "oneOf": [
               {
-                "$ref": "#/components/schemas/UnionBranch"
+                "type": "boolean"
+              },
+              {
+                "enum": [
+                  "auto"
+                ],
+                "type": "string",
+                "additionalProperties": false
               }
             ],
             "description": "Whether to mask user messages in conversational data or prompts in instruction data.",
@@ -16479,18 +16673,8 @@
         "type": "object",
         "properties": {
           "value": {
-            "type": "string"
-          }
-        }
-      },
-      "FinetuneEventLevels_Wrapper": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/FinetuneEventLevels"
+            "type": "string",
+            "example": "tool_name"
           }
         }
       },
@@ -16502,17 +16686,6 @@
         "properties": {
           "value": {
             "type": "string"
-          }
-        }
-      },
-      "DeploymentStatus_Wrapper": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/DeploymentStatus"
           }
         }
       }
