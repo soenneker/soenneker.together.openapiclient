@@ -30,16 +30,18 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string CreatedAt { get; set; }
 #endif
-        /// <summary>The hash property</summary>
+        /// <summary>For early_stopped events, the best validation loss observed. Null if no improving evaluation was recorded.</summary>
+        public float? EarlyStoppingBestMetricValue { get; set; }
+        /// <summary>For early_stopped events, the selected best-checkpoint step when a finite best metric exists. If early_stopping_best_metric_value is null, this is the halt step.</summary>
+        public int? EarlyStoppingBestStep { get; set; }
+        /// <summary>The level property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Hash { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.FinetuneEventLevelsWrapper? Level { get; set; }
 #nullable restore
 #else
-        public string Hash { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.FinetuneEventLevelsWrapper Level { get; set; }
 #endif
-        /// <summary>The level property</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.FinetuneEventLevels? Level { get; set; }
         /// <summary>The message property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -57,7 +59,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string ModelPath { get; set; }
 #endif
         /// <summary>The object type, which is always `fine-tune-event`.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.FineTuneEvent_object? Object { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.FineTuneEventObject? Object { get; set; }
         /// <summary>The param_count property</summary>
         public int? ParamCount { get; set; }
         /// <summary>The step property</summary>
@@ -66,8 +68,6 @@ namespace Soenneker.Together.OpenApiClient.Models
         public int? TokenCount { get; set; }
         /// <summary>The total_steps property</summary>
         public int? TotalSteps { get; set; }
-        /// <summary>The training_offset property</summary>
-        public int? TrainingOffset { get; set; }
         /// <summary>The type property</summary>
         public global::Soenneker.Together.OpenApiClient.Models.FinetuneEventType? Type { get; set; }
         /// <summary>The wandb_url property</summary>
@@ -105,16 +105,16 @@ namespace Soenneker.Together.OpenApiClient.Models
             {
                 { "checkpoint_path", n => { CheckpointPath = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetStringValue(); } },
-                { "hash", n => { Hash = n.GetStringValue(); } },
-                { "level", n => { Level = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.FinetuneEventLevels>(); } },
+                { "early_stopping_best_metric_value", n => { EarlyStoppingBestMetricValue = n.GetFloatValue(); } },
+                { "early_stopping_best_step", n => { EarlyStoppingBestStep = n.GetIntValue(); } },
+                { "level", n => { Level = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.FinetuneEventLevelsWrapper>(global::Soenneker.Together.OpenApiClient.Models.FinetuneEventLevelsWrapper.CreateFromDiscriminatorValue); } },
                 { "message", n => { Message = n.GetStringValue(); } },
                 { "model_path", n => { ModelPath = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.FineTuneEvent_object>(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.FineTuneEventObject>(); } },
                 { "param_count", n => { ParamCount = n.GetIntValue(); } },
                 { "step", n => { Step = n.GetIntValue(); } },
                 { "token_count", n => { TokenCount = n.GetIntValue(); } },
                 { "total_steps", n => { TotalSteps = n.GetIntValue(); } },
-                { "training_offset", n => { TrainingOffset = n.GetIntValue(); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.FinetuneEventType>(); } },
                 { "wandb_url", n => { WandbUrl = n.GetStringValue(); } },
             };
@@ -128,16 +128,16 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("checkpoint_path", CheckpointPath);
             writer.WriteStringValue("created_at", CreatedAt);
-            writer.WriteStringValue("hash", Hash);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.FinetuneEventLevels>("level", Level);
+            writer.WriteFloatValue("early_stopping_best_metric_value", EarlyStoppingBestMetricValue);
+            writer.WriteIntValue("early_stopping_best_step", EarlyStoppingBestStep);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.FinetuneEventLevelsWrapper>("level", Level);
             writer.WriteStringValue("message", Message);
             writer.WriteStringValue("model_path", ModelPath);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.FineTuneEvent_object>("object", Object);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.FineTuneEventObject>("object", Object);
             writer.WriteIntValue("param_count", ParamCount);
             writer.WriteIntValue("step", Step);
             writer.WriteIntValue("token_count", TokenCount);
             writer.WriteIntValue("total_steps", TotalSteps);
-            writer.WriteIntValue("training_offset", TrainingOffset);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.FinetuneEventType>("type", Type);
             writer.WriteStringValue("wandb_url", WandbUrl);
             writer.WriteAdditionalData(AdditionalData);

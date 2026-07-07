@@ -20,14 +20,14 @@ namespace Soenneker.Together.OpenApiClient.Compute.Clusters.Storage.Volumes
     {
         /// <summary>Gets an item from the Soenneker.Together.OpenApiClient.compute.clusters.storage.volumes.item collection</summary>
         /// <param name="position">Unique identifier of the item</param>
-        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Compute.Clusters.Storage.Volumes.Item.WithVolume_ItemRequestBuilder"/></returns>
-        public global::Soenneker.Together.OpenApiClient.Compute.Clusters.Storage.Volumes.Item.WithVolume_ItemRequestBuilder this[string position]
+        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Compute.Clusters.Storage.Volumes.Item.WithVolumeItemRequestBuilder"/></returns>
+        public global::Soenneker.Together.OpenApiClient.Compute.Clusters.Storage.Volumes.Item.WithVolumeItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("volume_id", position);
-                return new global::Soenneker.Together.OpenApiClient.Compute.Clusters.Storage.Volumes.Item.WithVolume_ItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("volumeId", position);
+                return new global::Soenneker.Together.OpenApiClient.Compute.Clusters.Storage.Volumes.Item.WithVolumeItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
@@ -49,60 +49,60 @@ namespace Soenneker.Together.OpenApiClient.Compute.Clusters.Storage.Volumes
         /// <summary>
         /// List all shared volumes.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.GPUClustersSharedVolumes"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolumes"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Together.OpenApiClient.Models.GPUClustersSharedVolumes?> GetAsync(Action<RequestConfiguration<global::Soenneker.Together.OpenApiClient.Compute.Clusters.Storage.Volumes.VolumesRequestBuilder.VolumesRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolumes?> GetAsync(Action<RequestConfiguration<global::Soenneker.Together.OpenApiClient.Compute.Clusters.Storage.Volumes.VolumesRequestBuilder.VolumesRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Together.OpenApiClient.Models.GPUClustersSharedVolumes> GetAsync(Action<RequestConfiguration<global::Soenneker.Together.OpenApiClient.Compute.Clusters.Storage.Volumes.VolumesRequestBuilder.VolumesRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolumes> GetAsync(Action<RequestConfiguration<global::Soenneker.Together.OpenApiClient.Compute.Clusters.Storage.Volumes.VolumesRequestBuilder.VolumesRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.GPUClustersSharedVolumes>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.GPUClustersSharedVolumes.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolumes>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolumes.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Instant Clusters supports long-lived, resizable in-DC shared storage with user data persistence.You can dynamically create and attach volumes to your cluster at cluster creation time, and resize as your data grows.All shared storage is backed by multi-NIC bare metal paths, ensuring high-throughput and low-latency performance for shared storage.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.GPUClustersSharedVolume"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolume"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Together.OpenApiClient.Models.GPUClustersSharedVolume?> PostAsync(global::Soenneker.Together.OpenApiClient.Models.GPUClustersSharedVolumeCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolume?> PostAsync(global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolumeCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Together.OpenApiClient.Models.GPUClustersSharedVolume> PostAsync(global::Soenneker.Together.OpenApiClient.Models.GPUClustersSharedVolumeCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolume> PostAsync(global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolumeCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.GPUClustersSharedVolume>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.GPUClustersSharedVolume.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolume>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolume.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Update the configuration of an existing shared volume.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.GPUClustersSharedVolume"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolume"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Together.OpenApiClient.Models.GPUClustersSharedVolume?> PutAsync(global::Soenneker.Together.OpenApiClient.Models.GPUClustersSharedVolumeUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolume?> PutAsync(global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolumeUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Together.OpenApiClient.Models.GPUClustersSharedVolume> PutAsync(global::Soenneker.Together.OpenApiClient.Models.GPUClustersSharedVolumeUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolume> PutAsync(global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolumeUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPutRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.GPUClustersSharedVolume>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.GPUClustersSharedVolume.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolume>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolume.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// List all shared volumes.
@@ -131,11 +131,11 @@ namespace Soenneker.Together.OpenApiClient.Compute.Clusters.Storage.Volumes
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(global::Soenneker.Together.OpenApiClient.Models.GPUClustersSharedVolumeCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolumeCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(global::Soenneker.Together.OpenApiClient.Models.GPUClustersSharedVolumeCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolumeCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -153,11 +153,11 @@ namespace Soenneker.Together.OpenApiClient.Compute.Clusters.Storage.Volumes
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPutRequestInformation(global::Soenneker.Together.OpenApiClient.Models.GPUClustersSharedVolumeUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolumeUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPutRequestInformation(global::Soenneker.Together.OpenApiClient.Models.GPUClustersSharedVolumeUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolumeUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));

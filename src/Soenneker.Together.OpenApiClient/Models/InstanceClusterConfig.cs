@@ -35,7 +35,15 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>The kubernetes_dashboard_enabled property</summary>
         public bool? KubernetesDashboardEnabled { get; set; }
         /// <summary>The load_balancer property</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.InstanceClusterConfig_load_balancer? LoadBalancer { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.InstanceClusterConfigLoadBalancer? LoadBalancer { get; set; }
+        /// <summary>NVIDIA Network Operator chart/version for the tenant cluster (e.g. v24.7.0). When omitted, a service default is applied.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? NetworkOperatorVersion { get; set; }
+#nullable restore
+#else
+        public string NetworkOperatorVersion { get; set; }
+#endif
         /// <summary>The observability property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -52,6 +60,8 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public global::Soenneker.Together.OpenApiClient.Models.SlurmStartupScripts SlurmStartupScripts { get; set; }
 #endif
+        /// <summary>Whether this cluster uses a per-cluster SSH certificate authority for OIDC-signed SSH access.</summary>
+        public bool? SshCaEnabled { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.InstanceClusterConfig"/> and sets the default values.
         /// </summary>
@@ -81,9 +91,11 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "ingress", n => { Ingress = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.ClusterIngressConfig>(global::Soenneker.Together.OpenApiClient.Models.ClusterIngressConfig.CreateFromDiscriminatorValue); } },
                 { "jumphost_enabled", n => { JumphostEnabled = n.GetBoolValue(); } },
                 { "kubernetes_dashboard_enabled", n => { KubernetesDashboardEnabled = n.GetBoolValue(); } },
-                { "load_balancer", n => { LoadBalancer = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.InstanceClusterConfig_load_balancer>(); } },
+                { "load_balancer", n => { LoadBalancer = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.InstanceClusterConfigLoadBalancer>(); } },
+                { "network_operator_version", n => { NetworkOperatorVersion = n.GetStringValue(); } },
                 { "observability", n => { Observability = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.ObservabilityConfig>(global::Soenneker.Together.OpenApiClient.Models.ObservabilityConfig.CreateFromDiscriminatorValue); } },
                 { "slurm_startup_scripts", n => { SlurmStartupScripts = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.SlurmStartupScripts>(global::Soenneker.Together.OpenApiClient.Models.SlurmStartupScripts.CreateFromDiscriminatorValue); } },
+                { "ssh_ca_enabled", n => { SshCaEnabled = n.GetBoolValue(); } },
             };
         }
         /// <summary>
@@ -97,9 +109,11 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ClusterIngressConfig>("ingress", Ingress);
             writer.WriteBoolValue("jumphost_enabled", JumphostEnabled);
             writer.WriteBoolValue("kubernetes_dashboard_enabled", KubernetesDashboardEnabled);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.InstanceClusterConfig_load_balancer>("load_balancer", LoadBalancer);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.InstanceClusterConfigLoadBalancer>("load_balancer", LoadBalancer);
+            writer.WriteStringValue("network_operator_version", NetworkOperatorVersion);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ObservabilityConfig>("observability", Observability);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.SlurmStartupScripts>("slurm_startup_scripts", SlurmStartupScripts);
+            writer.WriteBoolValue("ssh_ca_enabled", SshCaEnabled);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

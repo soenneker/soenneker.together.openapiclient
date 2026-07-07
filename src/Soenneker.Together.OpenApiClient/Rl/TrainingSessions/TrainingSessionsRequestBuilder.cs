@@ -20,14 +20,14 @@ namespace Soenneker.Together.OpenApiClient.Rl.TrainingSessions
     {
         /// <summary>Gets an item from the Soenneker.Together.OpenApiClient.rl.trainingSessions.item collection</summary>
         /// <param name="position">Unique identifier of the item</param>
-        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Rl.TrainingSessions.Item.WithSession_ItemRequestBuilder"/></returns>
-        public global::Soenneker.Together.OpenApiClient.Rl.TrainingSessions.Item.WithSession_ItemRequestBuilder this[string position]
+        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Rl.TrainingSessions.Item.WithSessionItemRequestBuilder"/></returns>
+        public global::Soenneker.Together.OpenApiClient.Rl.TrainingSessions.Item.WithSessionItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("session_id", position);
-                return new global::Soenneker.Together.OpenApiClient.Rl.TrainingSessions.Item.WithSession_ItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("sessionId", position);
+                return new global::Soenneker.Together.OpenApiClient.Rl.TrainingSessions.Item.WithSessionItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
@@ -35,7 +35,7 @@ namespace Soenneker.Together.OpenApiClient.Rl.TrainingSessions
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public TrainingSessionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/rl/training-sessions{?after*,limit*,status*}", pathParameters)
+        public TrainingSessionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/rl/training-sessions{?after*,limit*,model_resources_id*,status*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,23 +43,23 @@ namespace Soenneker.Together.OpenApiClient.Rl.TrainingSessions
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public TrainingSessionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/rl/training-sessions{?after*,limit*,status*}", rawUrl)
+        public TrainingSessionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/rl/training-sessions{?after*,limit*,model_resources_id*,status*}", rawUrl)
         {
         }
         /// <summary>
         /// Lists all training sessions.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.RLTrainingSessionsListResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionsListResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.ErrorData">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Together.OpenApiClient.Models.RLTrainingSessionsListResponse?> GetAsync(Action<RequestConfiguration<global::Soenneker.Together.OpenApiClient.Rl.TrainingSessions.TrainingSessionsRequestBuilder.TrainingSessionsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionsListResponse?> GetAsync(Action<RequestConfiguration<global::Soenneker.Together.OpenApiClient.Rl.TrainingSessions.TrainingSessionsRequestBuilder.TrainingSessionsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Together.OpenApiClient.Models.RLTrainingSessionsListResponse> GetAsync(Action<RequestConfiguration<global::Soenneker.Together.OpenApiClient.Rl.TrainingSessions.TrainingSessionsRequestBuilder.TrainingSessionsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionsListResponse> GetAsync(Action<RequestConfiguration<global::Soenneker.Together.OpenApiClient.Rl.TrainingSessions.TrainingSessionsRequestBuilder.TrainingSessionsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
@@ -67,23 +67,23 @@ namespace Soenneker.Together.OpenApiClient.Rl.TrainingSessions
             {
                 { "XXX", global::Soenneker.Together.OpenApiClient.Models.ErrorData.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.RLTrainingSessionsListResponse>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.RLTrainingSessionsListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionsListResponse>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionsListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Creates a training session and returns its details.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.RLTrainingSession"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.RlTrainingSession"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.ErrorData">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Together.OpenApiClient.Models.RLTrainingSession?> PostAsync(global::Soenneker.Together.OpenApiClient.Models.RLStartTrainingSessionRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Together.OpenApiClient.Models.RlTrainingSession?> PostAsync(global::Soenneker.Together.OpenApiClient.Models.RlStartTrainingSessionRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Together.OpenApiClient.Models.RLTrainingSession> PostAsync(global::Soenneker.Together.OpenApiClient.Models.RLStartTrainingSessionRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Together.OpenApiClient.Models.RlTrainingSession> PostAsync(global::Soenneker.Together.OpenApiClient.Models.RlStartTrainingSessionRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -92,7 +92,7 @@ namespace Soenneker.Together.OpenApiClient.Rl.TrainingSessions
             {
                 { "XXX", global::Soenneker.Together.OpenApiClient.Models.ErrorData.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.RLTrainingSession>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.RLTrainingSession.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.RlTrainingSession>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.RlTrainingSession.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Lists all training sessions.
@@ -121,11 +121,11 @@ namespace Soenneker.Together.OpenApiClient.Rl.TrainingSessions
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(global::Soenneker.Together.OpenApiClient.Models.RLStartTrainingSessionRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.Together.OpenApiClient.Models.RlStartTrainingSessionRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(global::Soenneker.Together.OpenApiClient.Models.RLStartTrainingSessionRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.Together.OpenApiClient.Models.RlStartTrainingSessionRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -161,8 +161,17 @@ namespace Soenneker.Together.OpenApiClient.Rl.TrainingSessions
 #endif
             [QueryParameter("limit")]
             public int? Limit { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("model_resources_id")]
+            public string? ModelResourcesId { get; set; }
+#nullable restore
+#else
+            [QueryParameter("model_resources_id")]
+            public string ModelResourcesId { get; set; }
+#endif
             [QueryParameter("status")]
-            public global::Soenneker.Together.OpenApiClient.Models.RLTrainingSessionStatus? Status { get; set; }
+            public global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionStatus? Status { get; set; }
         }
     }
 }

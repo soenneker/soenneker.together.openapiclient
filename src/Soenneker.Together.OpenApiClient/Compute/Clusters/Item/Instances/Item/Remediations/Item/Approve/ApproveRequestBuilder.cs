@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.Together.OpenApiClient.Compute.Clusters.Item.Instances.Item.Remediations.Item.Approve
 {
     /// <summary>
-    /// Builds and executes requests for operations under \compute\clusters\{cluster_id}\instances\{instance_id}\remediations\{remediation_id}\approve
+    /// Builds and executes requests for operations under \compute\clusters\{clusterId}\instances\{instanceId}\remediations\{remediationId}\approve
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ApproveRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.Together.OpenApiClient.Compute.Clusters.Item.Instances.Item.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ApproveRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/compute/clusters/{cluster_id}/instances/{instance_id}/remediations/{remediation_id}/approve", pathParameters)
+        public ApproveRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/compute/clusters/{clusterId}/instances/{instanceId}/remediations/{remediationId}/approve", pathParameters)
         {
         }
         /// <summary>
@@ -30,23 +30,23 @@ namespace Soenneker.Together.OpenApiClient.Compute.Clusters.Item.Instances.Item.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ApproveRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/compute/clusters/{cluster_id}/instances/{instance_id}/remediations/{remediation_id}/approve", rawUrl)
+        public ApproveRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/compute/clusters/{clusterId}/instances/{instanceId}/remediations/{remediationId}/approve", rawUrl)
         {
         }
         /// <summary>
         /// &quot;Approves a pending remediation.Only remediations with state PENDING_APPROVAL can be approved.On APPROVE: state changes to PENDING and the remediation process begins.The reviewed_by, review_time, and review_comment fields are populatedon the remediation after approval.&quot;
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.Remediation"/></returns>
-        /// <param name="body">The request body</param>
+        /// <param name="body">Request body for approving a pending remediation.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Together.OpenApiClient.Models.Remediation?> PostAsync(global::Soenneker.Together.OpenApiClient.Models.CommentBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Together.OpenApiClient.Models.Remediation?> PostAsync(global::Soenneker.Together.OpenApiClient.Models.ApproveRemediationRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Together.OpenApiClient.Models.Remediation> PostAsync(global::Soenneker.Together.OpenApiClient.Models.CommentBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Together.OpenApiClient.Models.Remediation> PostAsync(global::Soenneker.Together.OpenApiClient.Models.ApproveRemediationRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -57,15 +57,15 @@ namespace Soenneker.Together.OpenApiClient.Compute.Clusters.Item.Instances.Item.
         /// &quot;Approves a pending remediation.Only remediations with state PENDING_APPROVAL can be approved.On APPROVE: state changes to PENDING and the remediation process begins.The reviewed_by, review_time, and review_comment fields are populatedon the remediation after approval.&quot;
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">The request body</param>
+        /// <param name="body">Request body for approving a pending remediation.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(global::Soenneker.Together.OpenApiClient.Models.CommentBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.Together.OpenApiClient.Models.ApproveRemediationRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(global::Soenneker.Together.OpenApiClient.Models.CommentBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.Together.OpenApiClient.Models.ApproveRemediationRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));

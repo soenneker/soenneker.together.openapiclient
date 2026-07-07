@@ -23,7 +23,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public List<global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItem> Data { get; set; }
 #endif
         /// <summary>The object type, which is always `list`.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.DeploymentListResponse_object? Object { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeploymentListResponseObject? Object { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.DeploymentListResponse"/> and sets the default values.
         /// </summary>
@@ -50,7 +50,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "data", n => { Data = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItem>(global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItem.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeploymentListResponse_object>(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeploymentListResponseObject>(); } },
             };
         }
         /// <summary>
@@ -61,7 +61,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItem>("data", Data);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeploymentListResponse_object>("object", Object);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeploymentListResponseObject>("object", Object);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

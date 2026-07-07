@@ -23,7 +23,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string AddOnType { get; set; }
 #endif
-        /// <summary>The config property</summary>
+        /// <summary>Configuration for a cluster add-on.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Together.OpenApiClient.Models.AddOnConfig? Config { get; set; }
@@ -39,7 +39,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>The state property</summary>
+        /// <summary>State for a cluster add-on.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Together.OpenApiClient.Models.AddOnState? State { get; set; }

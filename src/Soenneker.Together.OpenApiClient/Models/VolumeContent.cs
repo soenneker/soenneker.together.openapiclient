@@ -31,7 +31,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string SourcePrefix { get; set; }
 #endif
         /// <summary>Type is the content type (currently only &quot;files&quot; is supported which allows preloading files uploaded via Files API into the volume)</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.VolumeContent_type? Type { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.VolumeContentType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.VolumeContent"/> and sets the default values.
         /// </summary>
@@ -59,7 +59,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             {
                 { "files", n => { Files = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.FileInfo>(global::Soenneker.Together.OpenApiClient.Models.FileInfo.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "source_prefix", n => { SourcePrefix = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.VolumeContent_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.VolumeContentType>(); } },
             };
         }
         /// <summary>
@@ -71,7 +71,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.FileInfo>("files", Files);
             writer.WriteStringValue("source_prefix", SourcePrefix);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.VolumeContent_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.VolumeContentType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

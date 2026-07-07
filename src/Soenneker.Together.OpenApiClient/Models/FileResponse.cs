@@ -38,18 +38,28 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string Id { get; set; }
 #endif
         /// <summary>The object type, which is always `file`.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.FileResponse_object? Object { get; set; }
-        /// <summary>Whether the file has been parsed and analyzed for correctness for fine-tuning.</summary>
+        public global::Soenneker.Together.OpenApiClient.Models.FileResponseObject? Object { get; set; }
+        /// <summary>Deprecated. Whether file has been fully uploaded.</summary>
+        [Obsolete("")]
         public bool? Processed { get; set; }
+        /// <summary>Lifecycle state of a file in the validation pipeline. The typicalprogression is `PENDING` → `QUEUED` → `RUNNING` → `COMPLETED` /`FAILED`. `INVALID_FORMAT` is a terminal state for files whosecontents failed validation in a user-correctable way.</summary>
+        public global::Soenneker.Together.OpenApiClient.Models.FileProcessingStatus? ProcessingStatus { get; set; }
         /// <summary>The purpose of the file</summary>
         public global::Soenneker.Together.OpenApiClient.Models.FilePurpose? Purpose { get; set; }
+        /// <summary>Validation outcome for a fine-tune training file, produced by thefile validation pipeline.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Together.OpenApiClient.Models.FileValidationReport? ValidationReport { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Together.OpenApiClient.Models.FileValidationReport ValidationReport { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.FileResponse"/> and sets the default values.
         /// </summary>
         public FileResponse()
         {
             AdditionalData = new Dictionary<string, object>();
-            FileType = global::Soenneker.Together.OpenApiClient.Models.FileType.Jsonl;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -74,9 +84,11 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "FileType", n => { FileType = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.FileType>(); } },
                 { "filename", n => { Filename = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.FileResponse_object>(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.FileResponseObject>(); } },
                 { "Processed", n => { Processed = n.GetBoolValue(); } },
+                { "processing_status", n => { ProcessingStatus = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.FileProcessingStatus>(); } },
                 { "purpose", n => { Purpose = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.FilePurpose>(); } },
+                { "validation_report", n => { ValidationReport = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.FileValidationReport>(global::Soenneker.Together.OpenApiClient.Models.FileValidationReport.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -91,9 +103,11 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteStringValue("filename", Filename);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.FileType>("FileType", FileType);
             writer.WriteStringValue("id", Id);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.FileResponse_object>("object", Object);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.FileResponseObject>("object", Object);
             writer.WriteBoolValue("Processed", Processed);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.FileProcessingStatus>("processing_status", ProcessingStatus);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.FilePurpose>("purpose", Purpose);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.FileValidationReport>("validation_report", ValidationReport);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

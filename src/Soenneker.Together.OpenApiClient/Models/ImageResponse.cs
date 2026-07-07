@@ -17,10 +17,10 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>The data property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Together.OpenApiClient.Models.ImageResponse.ImageResponse_data>? Data { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.ImageResponseDataItem>? Data { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Together.OpenApiClient.Models.ImageResponse.ImageResponse_data> Data { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.ImageResponseDataItem> Data { get; set; }
 #endif
         /// <summary>The id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -39,7 +39,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string Model { get; set; }
 #endif
         /// <summary>The object type, which is always `list`.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.ImageResponse_object? Object { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.ImageResponseObject? Object { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.ImageResponse"/> and sets the default values.
         /// </summary>
@@ -65,10 +65,10 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "data", n => { Data = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.ImageResponse.ImageResponse_data>(global::Soenneker.Together.OpenApiClient.Models.ImageResponse.ImageResponse_data.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "data", n => { Data = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.ImageResponseDataItem>(global::Soenneker.Together.OpenApiClient.Models.ImageResponseDataItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.ImageResponse_object>(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.ImageResponseObject>(); } },
             };
         }
         /// <summary>
@@ -78,86 +78,11 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.ImageResponse.ImageResponse_data>("data", Data);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.ImageResponseDataItem>("data", Data);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("model", Model);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.ImageResponse_object>("object", Object);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.ImageResponseObject>("object", Object);
             writer.WriteAdditionalData(AdditionalData);
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.Together.OpenApiClient.Models.ImageResponseDataB64"/>, <see cref="global::Soenneker.Together.OpenApiClient.Models.ImageResponseDataUrl"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class ImageResponse_data : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.ImageResponseDataB64"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.Together.OpenApiClient.Models.ImageResponseDataB64? ImageResponseDataB64 { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.Together.OpenApiClient.Models.ImageResponseDataB64 ImageResponseDataB64 { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.ImageResponseDataUrl"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.Together.OpenApiClient.Models.ImageResponseDataUrl? ImageResponseDataUrl { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.Together.OpenApiClient.Models.ImageResponseDataUrl ImageResponseDataUrl { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.ImageResponse.ImageResponse_data"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.Together.OpenApiClient.Models.ImageResponse.ImageResponse_data CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
-                var result = new global::Soenneker.Together.OpenApiClient.Models.ImageResponse.ImageResponse_data();
-                if("ImageResponseDataB64".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.ImageResponseDataB64 = new global::Soenneker.Together.OpenApiClient.Models.ImageResponseDataB64();
-                }
-                else if("ImageResponseDataUrl".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.ImageResponseDataUrl = new global::Soenneker.Together.OpenApiClient.Models.ImageResponseDataUrl();
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(ImageResponseDataB64 != null)
-                {
-                    return ImageResponseDataB64.GetFieldDeserializers();
-                }
-                else if(ImageResponseDataUrl != null)
-                {
-                    return ImageResponseDataUrl.GetFieldDeserializers();
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(ImageResponseDataB64 != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ImageResponseDataB64>(null, ImageResponseDataB64);
-                }
-                else if(ImageResponseDataUrl != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ImageResponseDataUrl>(null, ImageResponseDataUrl);
-                }
-            }
         }
     }
 }

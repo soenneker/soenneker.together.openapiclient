@@ -25,7 +25,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>The index property</summary>
         public int? Index { get; set; }
         /// <summary>The type property</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.ImageResponseDataB64_type? Type { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.ImageResponseDataB64Type? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.ImageResponseDataB64"/> and sets the default values.
         /// </summary>
@@ -53,7 +53,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             {
                 { "b64_json", n => { B64Json = n.GetStringValue(); } },
                 { "index", n => { Index = n.GetIntValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.ImageResponseDataB64_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.ImageResponseDataB64Type>(); } },
             };
         }
         /// <summary>
@@ -65,7 +65,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("b64_json", B64Json);
             writer.WriteIntValue("index", Index);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.ImageResponseDataB64_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.ImageResponseDataB64Type>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

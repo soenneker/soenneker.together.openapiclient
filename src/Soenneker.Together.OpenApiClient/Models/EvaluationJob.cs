@@ -27,10 +27,10 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>The parameters used for this evaluation</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.EvaluationJob_parameters? Parameters { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.EvaluationJobParametersProperty? Parameters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.EvaluationJob_parameters Parameters { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.EvaluationJobParametersProperty Parameters { get; set; }
 #endif
         /// <summary>Results of the evaluation (when completed)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -41,7 +41,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public global::Soenneker.Together.OpenApiClient.Models.EvaluationJobResults Results { get; set; }
 #endif
         /// <summary>Current status of the job</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.EvaluationJob_status? Status { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.EvaluationJobStatus? Status { get; set; }
         /// <summary>History of status updates (admin only)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -51,7 +51,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public List<global::Soenneker.Together.OpenApiClient.Models.EvaluationJobStatusUpdate> StatusUpdates { get; set; }
 #endif
         /// <summary>The type of evaluation</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.EvaluationJob_type? Type { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.EvaluationJobType? Type { get; set; }
         /// <summary>When the job was last updated</summary>
         public DateTimeOffset? UpdatedAt { get; set; }
         /// <summary>The evaluation job ID</summary>
@@ -89,11 +89,11 @@ namespace Soenneker.Together.OpenApiClient.Models
             {
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "owner_id", n => { OwnerId = n.GetStringValue(); } },
-                { "parameters", n => { Parameters = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.EvaluationJob_parameters>(global::Soenneker.Together.OpenApiClient.Models.EvaluationJob_parameters.CreateFromDiscriminatorValue); } },
+                { "parameters", n => { Parameters = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.EvaluationJobParametersProperty>(global::Soenneker.Together.OpenApiClient.Models.EvaluationJobParametersProperty.CreateFromDiscriminatorValue); } },
                 { "results", n => { Results = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.EvaluationJobResults>(global::Soenneker.Together.OpenApiClient.Models.EvaluationJobResults.CreateFromDiscriminatorValue); } },
-                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.EvaluationJob_status>(); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.EvaluationJobStatus>(); } },
                 { "status_updates", n => { StatusUpdates = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.EvaluationJobStatusUpdate>(global::Soenneker.Together.OpenApiClient.Models.EvaluationJobStatusUpdate.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.EvaluationJob_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.EvaluationJobType>(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "workflow_id", n => { WorkflowId = n.GetStringValue(); } },
             };
@@ -107,11 +107,11 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteStringValue("owner_id", OwnerId);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.EvaluationJob_parameters>("parameters", Parameters);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.EvaluationJobParametersProperty>("parameters", Parameters);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.EvaluationJobResults>("results", Results);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.EvaluationJob_status>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.EvaluationJobStatus>("status", Status);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.EvaluationJobStatusUpdate>("status_updates", StatusUpdates);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.EvaluationJob_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.EvaluationJobType>("type", Type);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
             writer.WriteStringValue("workflow_id", WorkflowId);
             writer.WriteAdditionalData(AdditionalData);

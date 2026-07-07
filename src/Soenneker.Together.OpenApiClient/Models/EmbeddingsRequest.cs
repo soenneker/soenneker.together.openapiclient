@@ -17,18 +17,18 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>The input property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.EmbeddingsRequest.EmbeddingsRequest_input? Input { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.EmbeddingsRequestInput? Input { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.EmbeddingsRequest.EmbeddingsRequest_input Input { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.EmbeddingsRequestInput Input { get; set; }
 #endif
         /// <summary>The name of the embedding model to use.&lt;br&gt; &lt;br&gt; [See all of Together AI&apos;s embedding models](https://docs.together.ai/docs/serverless-models#embedding-models)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.EmbeddingsRequest.EmbeddingsRequest_model? Model { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.EmbeddingsRequestModel? Model { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.EmbeddingsRequest.EmbeddingsRequest_model Model { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.EmbeddingsRequestModel Model { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.EmbeddingsRequest"/> and sets the default values.
@@ -55,8 +55,8 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "input", n => { Input = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.EmbeddingsRequest.EmbeddingsRequest_input>(global::Soenneker.Together.OpenApiClient.Models.EmbeddingsRequest.EmbeddingsRequest_input.CreateFromDiscriminatorValue); } },
-                { "model", n => { Model = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.EmbeddingsRequest.EmbeddingsRequest_model>(global::Soenneker.Together.OpenApiClient.Models.EmbeddingsRequest.EmbeddingsRequest_model.CreateFromDiscriminatorValue); } },
+                { "input", n => { Input = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.EmbeddingsRequestInput>(global::Soenneker.Together.OpenApiClient.Models.EmbeddingsRequestInput.CreateFromDiscriminatorValue); } },
+                { "model", n => { Model = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.EmbeddingsRequestModel>(global::Soenneker.Together.OpenApiClient.Models.EmbeddingsRequestModel.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -66,126 +66,9 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.EmbeddingsRequest.EmbeddingsRequest_input>("input", Input);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.EmbeddingsRequest.EmbeddingsRequest_model>("model", Model);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.EmbeddingsRequestInput>("input", Input);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.EmbeddingsRequestModel>("model", Model);
             writer.WriteAdditionalData(AdditionalData);
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="string"/>, List&lt;string&gt;
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class EmbeddingsRequest_input : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="string"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public string? EmbeddingsRequestInputString { get; set; }
-#nullable restore
-#else
-            public string EmbeddingsRequestInputString { get; set; }
-#endif
-            /// <summary>Composed type representation for type List&lt;string&gt;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public List<string>? String { get; set; }
-#nullable restore
-#else
-            public List<string> String { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.EmbeddingsRequest.EmbeddingsRequest_input"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.Together.OpenApiClient.Models.EmbeddingsRequest.EmbeddingsRequest_input CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-                var result = new global::Soenneker.Together.OpenApiClient.Models.EmbeddingsRequest.EmbeddingsRequest_input();
-                if(parseNode.GetStringValue() is string embeddingsRequestInputStringValue)
-                {
-                    result.EmbeddingsRequestInputString = embeddingsRequestInputStringValue;
-                }
-                else if(parseNode.GetCollectionOfPrimitiveValues<string>()?.AsList() is List<string> stringValue)
-                {
-                    result.String = stringValue;
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(EmbeddingsRequestInputString != null)
-                {
-                    writer.WriteStringValue(null, EmbeddingsRequestInputString);
-                }
-                else if(String != null)
-                {
-                    writer.WriteCollectionOfPrimitiveValues<string>(null, String);
-                }
-            }
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="string"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class EmbeddingsRequest_model : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="string"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public string? String { get; set; }
-#nullable restore
-#else
-            public string String { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.EmbeddingsRequest.EmbeddingsRequest_model"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.Together.OpenApiClient.Models.EmbeddingsRequest.EmbeddingsRequest_model CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var result = new global::Soenneker.Together.OpenApiClient.Models.EmbeddingsRequest.EmbeddingsRequest_model();
-                if(parseNode.GetStringValue() is string stringValue)
-                {
-                    result.String = stringValue;
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(String != null)
-                {
-                    writer.WriteStringValue(null, String);
-                }
-            }
         }
     }
 }

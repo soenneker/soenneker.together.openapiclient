@@ -67,8 +67,16 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string InstanceName { get; private set; }
 #endif
+        /// <summary>Passive health check alerts linked to this remediation, including resolved alerts.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.Together.OpenApiClient.Models.PassiveHealthCheckAlert>? LinkedAlerts { get; private set; }
+#nullable restore
+#else
+        public List<global::Soenneker.Together.OpenApiClient.Models.PassiveHealthCheckAlert> LinkedAlerts { get; private set; }
+#endif
         /// <summary>&quot;Remediation mode specifies how the remediation should be performed.- `REMEDIATION_MODE_VM_ONLY`: Deletes the VM and provisions a new one on any available host.- `REMEDIATION_MODE_HOST_AWARE`: Cordons the host, deletes the VM, and provisions a new one on a different host.&quot;</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.Remediation_mode? Mode { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RemediationMode? Mode { get; set; }
         /// <summary>Passive health check event ID that triggered this remediation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -114,9 +122,9 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>When processing started.</summary>
         public DateTimeOffset? StartTime { get; private set; }
         /// <summary>&quot;RemediationState represents the lifecycle state of a remediation.- `PENDING_APPROVAL`: Awaiting approval before processing can begin.- `PENDING`: Approved and queued for processing.- `RUNNING`: Actively being processed.- `SUCCEEDED`: Successfully completed.- `FAILED`: Failed with an error.- `CANCELLED`: Cancelled by user or system.- `AUTO_RESOLVED`: The underlying issue was automatically resolved before processing.&quot;</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.Remediation_state? State { get; private set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RemediationState? State { get; private set; }
         /// <summary>&quot;RemediationTrigger specifies how the remediation was triggered.- `REMEDIATION_TRIGGER_MANUAL`: A user-initiated remediation (either via web UI or API call).- `REMEDIATION_TRIGGER_AUTOMATED`: A system-initiated remediation that requires approval.&quot;</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.Remediation_trigger? Trigger { get; private set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RemediationTrigger? Trigger { get; private set; }
         /// <summary>When the remediation was last updated.</summary>
         public DateTimeOffset? UpdateTime { get; private set; }
         /// <summary>
@@ -152,7 +160,8 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "instance_id", n => { InstanceId = n.GetStringValue(); } },
                 { "instance_name", n => { InstanceName = n.GetStringValue(); } },
-                { "mode", n => { Mode = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.Remediation_mode>(); } },
+                { "linked_alerts", n => { LinkedAlerts = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.PassiveHealthCheckAlert>(global::Soenneker.Together.OpenApiClient.Models.PassiveHealthCheckAlert.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "mode", n => { Mode = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.RemediationMode>(); } },
                 { "passive_health_check_event_id", n => { PassiveHealthCheckEventId = n.GetStringValue(); } },
                 { "reason", n => { Reason = n.GetStringValue(); } },
                 { "requested_by", n => { RequestedBy = n.GetStringValue(); } },
@@ -160,8 +169,8 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "review_time", n => { ReviewTime = n.GetDateTimeOffsetValue(); } },
                 { "reviewed_by", n => { ReviewedBy = n.GetStringValue(); } },
                 { "start_time", n => { StartTime = n.GetDateTimeOffsetValue(); } },
-                { "state", n => { State = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.Remediation_state>(); } },
-                { "trigger", n => { Trigger = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.Remediation_trigger>(); } },
+                { "state", n => { State = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.RemediationState>(); } },
+                { "trigger", n => { Trigger = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.RemediationTrigger>(); } },
                 { "update_time", n => { UpdateTime = n.GetDateTimeOffsetValue(); } },
             };
         }
@@ -172,7 +181,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.Remediation_mode>("mode", Mode);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.RemediationMode>("mode", Mode);
             writer.WriteStringValue("reason", Reason);
             writer.WriteAdditionalData(AdditionalData);
         }

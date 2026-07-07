@@ -15,7 +15,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Node phase.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.NodePhaseTransition_phase? Phase { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.NodePhaseTransitionPhase? Phase { get; set; }
         /// <summary>Timestamp when the phase transition occurred.</summary>
         public DateTimeOffset? TransitionTime { get; set; }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "phase", n => { Phase = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.NodePhaseTransition_phase>(); } },
+                { "phase", n => { Phase = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.NodePhaseTransitionPhase>(); } },
                 { "transition_time", n => { TransitionTime = n.GetDateTimeOffsetValue(); } },
             };
         }
@@ -54,7 +54,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.NodePhaseTransition_phase>("phase", Phase);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.NodePhaseTransitionPhase>("phase", Phase);
             writer.WriteDateTimeOffsetValue("transition_time", TransitionTime);
             writer.WriteAdditionalData(AdditionalData);
         }

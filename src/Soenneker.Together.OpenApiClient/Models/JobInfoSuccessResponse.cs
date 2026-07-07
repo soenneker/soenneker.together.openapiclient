@@ -33,14 +33,14 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string JobId { get; set; }
 #endif
         /// <summary>The status property</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.JobInfoSuccessResponse_status? Status { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.JobInfoSuccessResponseStatus? Status { get; set; }
         /// <summary>The status_updates property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Together.OpenApiClient.Models.JobInfoSuccessResponse_status_updates>? StatusUpdates { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.JobInfoSuccessResponseStatusUpdatesItem>? StatusUpdates { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Together.OpenApiClient.Models.JobInfoSuccessResponse_status_updates> StatusUpdates { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.JobInfoSuccessResponseStatusUpdatesItem> StatusUpdates { get; set; }
 #endif
         /// <summary>The type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -80,8 +80,8 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "args", n => { Args = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.JobInfoSuccessResponseArgs>(global::Soenneker.Together.OpenApiClient.Models.JobInfoSuccessResponseArgs.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "job_id", n => { JobId = n.GetStringValue(); } },
-                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.JobInfoSuccessResponse_status>(); } },
-                { "status_updates", n => { StatusUpdates = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.JobInfoSuccessResponse_status_updates>(global::Soenneker.Together.OpenApiClient.Models.JobInfoSuccessResponse_status_updates.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.JobInfoSuccessResponseStatus>(); } },
+                { "status_updates", n => { StatusUpdates = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.JobInfoSuccessResponseStatusUpdatesItem>(global::Soenneker.Together.OpenApiClient.Models.JobInfoSuccessResponseStatusUpdatesItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "type", n => { Type = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
@@ -96,8 +96,8 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.JobInfoSuccessResponseArgs>("args", Args);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteStringValue("job_id", JobId);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.JobInfoSuccessResponse_status>("status", Status);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.JobInfoSuccessResponse_status_updates>("status_updates", StatusUpdates);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.JobInfoSuccessResponseStatus>("status", Status);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.JobInfoSuccessResponseStatusUpdatesItem>("status_updates", StatusUpdates);
             writer.WriteStringValue("type", Type);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
             writer.WriteAdditionalData(AdditionalData);

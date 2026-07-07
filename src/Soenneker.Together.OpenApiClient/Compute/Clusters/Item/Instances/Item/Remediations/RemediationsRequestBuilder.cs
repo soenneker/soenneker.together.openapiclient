@@ -13,21 +13,21 @@ using System;
 namespace Soenneker.Together.OpenApiClient.Compute.Clusters.Item.Instances.Item.Remediations
 {
     /// <summary>
-    /// Builds and executes requests for operations under \compute\clusters\{cluster_id}\instances\{instance_id}\remediations
+    /// Builds and executes requests for operations under \compute\clusters\{clusterId}\instances\{instanceId}\remediations
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RemediationsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.Together.OpenApiClient.compute.clusters.item.instances.item.remediations.item collection</summary>
         /// <param name="position">Unique identifier of the item</param>
-        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Compute.Clusters.Item.Instances.Item.Remediations.Item.WithRemediation_ItemRequestBuilder"/></returns>
-        public global::Soenneker.Together.OpenApiClient.Compute.Clusters.Item.Instances.Item.Remediations.Item.WithRemediation_ItemRequestBuilder this[string position]
+        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Compute.Clusters.Item.Instances.Item.Remediations.Item.WithRemediationItemRequestBuilder"/></returns>
+        public global::Soenneker.Together.OpenApiClient.Compute.Clusters.Item.Instances.Item.Remediations.Item.WithRemediationItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("remediation_id", position);
-                return new global::Soenneker.Together.OpenApiClient.Compute.Clusters.Item.Instances.Item.Remediations.Item.WithRemediation_ItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("remediationId", position);
+                return new global::Soenneker.Together.OpenApiClient.Compute.Clusters.Item.Instances.Item.Remediations.Item.WithRemediationItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
@@ -35,7 +35,7 @@ namespace Soenneker.Together.OpenApiClient.Compute.Clusters.Item.Instances.Item.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public RemediationsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/compute/clusters/{cluster_id}/instances/{instance_id}/remediations{?mode*,order_by*,page_size*,page_token*,remediation_id*,state*,trigger*}", pathParameters)
+        public RemediationsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/compute/clusters/{clusterId}/instances/{instanceId}/remediations{?mode*,order_by*,page_size*,page_token*,remediation_id*,state*,trigger*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Soenneker.Together.OpenApiClient.Compute.Clusters.Item.Instances.Item.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public RemediationsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/compute/clusters/{cluster_id}/instances/{instance_id}/remediations{?mode*,order_by*,page_size*,page_token*,remediation_id*,state*,trigger*}", rawUrl)
+        public RemediationsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/compute/clusters/{clusterId}/instances/{instanceId}/remediations{?mode*,order_by*,page_size*,page_token*,remediation_id*,state*,trigger*}", rawUrl)
         {
         }
         /// <summary>
@@ -143,11 +143,11 @@ namespace Soenneker.Together.OpenApiClient.Compute.Clusters.Item.Instances.Item.
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("mode")]
-            public global::Soenneker.Together.OpenApiClient.Compute.Clusters.Item.Instances.Item.Remediations.GetModeQueryParameterType[]? Mode { get; set; }
+            public global::Soenneker.Together.OpenApiClient.Models.RemediationServiceListRemediationsModeParameterItem[]? Mode { get; set; }
 #nullable restore
 #else
             [QueryParameter("mode")]
-            public global::Soenneker.Together.OpenApiClient.Compute.Clusters.Item.Instances.Item.Remediations.GetModeQueryParameterType[] Mode { get; set; }
+            public global::Soenneker.Together.OpenApiClient.Models.RemediationServiceListRemediationsModeParameterItem[] Mode { get; set; }
 #endif
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -172,20 +172,20 @@ namespace Soenneker.Together.OpenApiClient.Compute.Clusters.Item.Instances.Item.
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("state")]
-            public global::Soenneker.Together.OpenApiClient.Compute.Clusters.Item.Instances.Item.Remediations.GetStateQueryParameterType[]? State { get; set; }
+            public global::Soenneker.Together.OpenApiClient.Models.RemediationServiceListRemediationsStateParameterItem[]? State { get; set; }
 #nullable restore
 #else
             [QueryParameter("state")]
-            public global::Soenneker.Together.OpenApiClient.Compute.Clusters.Item.Instances.Item.Remediations.GetStateQueryParameterType[] State { get; set; }
+            public global::Soenneker.Together.OpenApiClient.Models.RemediationServiceListRemediationsStateParameterItem[] State { get; set; }
 #endif
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("trigger")]
-            public global::Soenneker.Together.OpenApiClient.Compute.Clusters.Item.Instances.Item.Remediations.GetTriggerQueryParameterType[]? Trigger { get; set; }
+            public global::Soenneker.Together.OpenApiClient.Models.RemediationServiceListRemediationsTriggerParameterItem[]? Trigger { get; set; }
 #nullable restore
 #else
             [QueryParameter("trigger")]
-            public global::Soenneker.Together.OpenApiClient.Compute.Clusters.Item.Instances.Item.Remediations.GetTriggerQueryParameterType[] Trigger { get; set; }
+            public global::Soenneker.Together.OpenApiClient.Models.RemediationServiceListRemediationsTriggerParameterItem[] Trigger { get; set; }
 #endif
         }
         /// <summary>

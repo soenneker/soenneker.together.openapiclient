@@ -10,21 +10,21 @@ using System;
 namespace Soenneker.Together.OpenApiClient.Compute.Clusters.Item.Instances
 {
     /// <summary>
-    /// Builds and executes requests for operations under \compute\clusters\{cluster_id}\instances
+    /// Builds and executes requests for operations under \compute\clusters\{clusterId}\instances
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class InstancesRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.Together.OpenApiClient.compute.clusters.item.instances.item collection</summary>
         /// <param name="position">Unique identifier of the item</param>
-        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Compute.Clusters.Item.Instances.Item.WithInstance_ItemRequestBuilder"/></returns>
-        public global::Soenneker.Together.OpenApiClient.Compute.Clusters.Item.Instances.Item.WithInstance_ItemRequestBuilder this[string position]
+        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Compute.Clusters.Item.Instances.Item.WithInstanceItemRequestBuilder"/></returns>
+        public global::Soenneker.Together.OpenApiClient.Compute.Clusters.Item.Instances.Item.WithInstanceItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("instance_id", position);
-                return new global::Soenneker.Together.OpenApiClient.Compute.Clusters.Item.Instances.Item.WithInstance_ItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("instanceId", position);
+                return new global::Soenneker.Together.OpenApiClient.Compute.Clusters.Item.Instances.Item.WithInstanceItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
@@ -32,7 +32,7 @@ namespace Soenneker.Together.OpenApiClient.Compute.Clusters.Item.Instances
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public InstancesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/compute/clusters/{cluster_id}/instances", pathParameters)
+        public InstancesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/compute/clusters/{clusterId}/instances", pathParameters)
         {
         }
         /// <summary>
@@ -40,7 +40,7 @@ namespace Soenneker.Together.OpenApiClient.Compute.Clusters.Item.Instances
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public InstancesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/compute/clusters/{cluster_id}/instances", rawUrl)
+        public InstancesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/compute/clusters/{clusterId}/instances", rawUrl)
         {
         }
     }

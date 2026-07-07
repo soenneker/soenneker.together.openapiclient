@@ -10,7 +10,7 @@ namespace Soenneker.Together.OpenApiClient.Models
     {
         [EnumMember(Value = "readOnly")]
         #pragma warning disable CS1591
-        ReadOnly,
+        ReadOnlyValue,
         #pragma warning restore CS1591
     }
 }

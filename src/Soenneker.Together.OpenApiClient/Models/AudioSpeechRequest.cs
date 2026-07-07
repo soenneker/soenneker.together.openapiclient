@@ -43,15 +43,15 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>&quot;The name of the model to query.&lt;br&gt; &lt;br&gt; [See all of Together AI&apos;s chat models](https://docs.together.ai/docs/serverless-models#audio-models) The current supported tts models are: - cartesia/sonic - hexgrad/Kokoro-82M - canopylabs/orpheus-3b-0.1-ft&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.AudioSpeechRequest.AudioSpeechRequest_model? Model { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.AudioSpeechRequestModel? Model { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.AudioSpeechRequest.AudioSpeechRequest_model Model { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.AudioSpeechRequestModel Model { get; set; }
 #endif
         /// <summary>Audio encoding of response. Only applicable when response_format is raw or pcm. Cartesia models respect this parameter and support all values. Orpheus, Kokoro, and Minimax models always return pcm_s16le regardless of this setting.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.AudioSpeechRequest_response_encoding? ResponseEncoding { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.AudioSpeechRequestResponseEncoding? ResponseEncoding { get; set; }
         /// <summary>The format of audio output. Supported formats are mp3, wav, raw if streaming is false. If streaming is true, the only supported format is raw.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.AudioSpeechRequest_response_format? ResponseFormat { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.AudioSpeechRequestResponseFormat? ResponseFormat { get; set; }
         /// <summary>Sampling rate in Hz for the output audio. Cartesia and Minimax models respect this parameter. Orpheus and Kokoro models always output at 24000 Hz regardless of this setting.</summary>
         public int? SampleRate { get; set; }
         /// <summary>&quot;If true, output is streamed for several characters at a time instead of waiting for the full response. The stream terminates with `data: [DONE]`. If false, return the encoded audio as octet stream&quot;</summary>
@@ -70,9 +70,10 @@ namespace Soenneker.Together.OpenApiClient.Models
         public AudioSpeechRequest()
         {
             AdditionalData = new Dictionary<string, object>();
+            BitRate = 128000;
             Language = "en";
-            ResponseEncoding = global::Soenneker.Together.OpenApiClient.Models.AudioSpeechRequest_response_encoding.Pcm_f32le;
-            ResponseFormat = global::Soenneker.Together.OpenApiClient.Models.AudioSpeechRequest_response_format.Wav;
+            SampleRate = 44100;
+            Stream = false;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -96,9 +97,9 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "extra_params", n => { ExtraParams = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.AudioSpeechRequestExtraParams>(global::Soenneker.Together.OpenApiClient.Models.AudioSpeechRequestExtraParams.CreateFromDiscriminatorValue); } },
                 { "input", n => { Input = n.GetStringValue(); } },
                 { "language", n => { Language = n.GetStringValue(); } },
-                { "model", n => { Model = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.AudioSpeechRequest.AudioSpeechRequest_model>(global::Soenneker.Together.OpenApiClient.Models.AudioSpeechRequest.AudioSpeechRequest_model.CreateFromDiscriminatorValue); } },
-                { "response_encoding", n => { ResponseEncoding = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.AudioSpeechRequest_response_encoding>(); } },
-                { "response_format", n => { ResponseFormat = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.AudioSpeechRequest_response_format>(); } },
+                { "model", n => { Model = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.AudioSpeechRequestModel>(global::Soenneker.Together.OpenApiClient.Models.AudioSpeechRequestModel.CreateFromDiscriminatorValue); } },
+                { "response_encoding", n => { ResponseEncoding = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.AudioSpeechRequestResponseEncoding>(); } },
+                { "response_format", n => { ResponseFormat = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.AudioSpeechRequestResponseFormat>(); } },
                 { "sample_rate", n => { SampleRate = n.GetIntValue(); } },
                 { "stream", n => { Stream = n.GetBoolValue(); } },
                 { "voice", n => { Voice = n.GetStringValue(); } },
@@ -115,63 +116,13 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.AudioSpeechRequestExtraParams>("extra_params", ExtraParams);
             writer.WriteStringValue("input", Input);
             writer.WriteStringValue("language", Language);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.AudioSpeechRequest.AudioSpeechRequest_model>("model", Model);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.AudioSpeechRequest_response_encoding>("response_encoding", ResponseEncoding);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.AudioSpeechRequest_response_format>("response_format", ResponseFormat);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.AudioSpeechRequestModel>("model", Model);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.AudioSpeechRequestResponseEncoding>("response_encoding", ResponseEncoding);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.AudioSpeechRequestResponseFormat>("response_format", ResponseFormat);
             writer.WriteIntValue("sample_rate", SampleRate);
             writer.WriteBoolValue("stream", Stream);
             writer.WriteStringValue("voice", Voice);
             writer.WriteAdditionalData(AdditionalData);
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="string"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class AudioSpeechRequest_model : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="string"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public string? String { get; set; }
-#nullable restore
-#else
-            public string String { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.AudioSpeechRequest.AudioSpeechRequest_model"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.Together.OpenApiClient.Models.AudioSpeechRequest.AudioSpeechRequest_model CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var result = new global::Soenneker.Together.OpenApiClient.Models.AudioSpeechRequest.AudioSpeechRequest_model();
-                if(parseNode.GetStringValue() is string stringValue)
-                {
-                    result.String = stringValue;
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(String != null)
-                {
-                    writer.WriteStringValue(null, String);
-                }
-            }
         }
     }
 }

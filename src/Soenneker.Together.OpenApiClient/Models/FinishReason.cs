@@ -22,11 +22,11 @@ namespace Soenneker.Together.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "tool_calls")]
         #pragma warning disable CS1591
-        Tool_calls,
+        ToolCalls,
         #pragma warning restore CS1591
         [EnumMember(Value = "function_call")]
         #pragma warning disable CS1591
-        Function_call,
+        FunctionCall,
         #pragma warning restore CS1591
     }
 }

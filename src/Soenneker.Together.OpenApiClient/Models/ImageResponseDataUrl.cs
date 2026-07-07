@@ -17,7 +17,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>The index property</summary>
         public int? Index { get; set; }
         /// <summary>The type property</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.ImageResponseDataUrl_type? Type { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.ImageResponseDataUrlType? Type { get; set; }
         /// <summary>The url property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -52,7 +52,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "index", n => { Index = n.GetIntValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.ImageResponseDataUrl_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.ImageResponseDataUrlType>(); } },
                 { "url", n => { Url = n.GetStringValue(); } },
             };
         }
@@ -64,7 +64,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("index", Index);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.ImageResponseDataUrl_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.ImageResponseDataUrlType>("type", Type);
             writer.WriteStringValue("url", Url);
             writer.WriteAdditionalData(AdditionalData);
         }

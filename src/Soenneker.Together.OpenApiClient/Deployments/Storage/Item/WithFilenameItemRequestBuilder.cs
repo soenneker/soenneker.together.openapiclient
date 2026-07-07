@@ -4,6 +4,7 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.Together.OpenApiClient.Deployments.Storage.Item.Url;
+using Soenneker.Together.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -43,9 +44,9 @@ namespace Soenneker.Together.OpenApiClient.Deployments.Storage.Item
         /// </summary>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.Together.OpenApiClient.Deployments.Storage.Item.WithFilename400Error">When receiving a 400 status code</exception>
-        /// <exception cref="global::Soenneker.Together.OpenApiClient.Deployments.Storage.Item.WithFilename404Error">When receiving a 404 status code</exception>
-        /// <exception cref="global::Soenneker.Together.OpenApiClient.Deployments.Storage.Item.WithFilename500Error">When receiving a 500 status code</exception>
+        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.GetDeploymentsStorageByFilename400ResponseResponseJson">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.GetDeploymentsStorageByFilename404ResponseResponseJson">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.GetDeploymentsStorageByFilename500ResponseResponseJson">When receiving a 500 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -58,9 +59,9 @@ namespace Soenneker.Together.OpenApiClient.Deployments.Storage.Item
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Soenneker.Together.OpenApiClient.Deployments.Storage.Item.WithFilename400Error.CreateFromDiscriminatorValue },
-                { "404", global::Soenneker.Together.OpenApiClient.Deployments.Storage.Item.WithFilename404Error.CreateFromDiscriminatorValue },
-                { "500", global::Soenneker.Together.OpenApiClient.Deployments.Storage.Item.WithFilename500Error.CreateFromDiscriminatorValue },
+                { "400", global::Soenneker.Together.OpenApiClient.Models.GetDeploymentsStorageByFilename400ResponseResponseJson.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.Together.OpenApiClient.Models.GetDeploymentsStorageByFilename404ResponseResponseJson.CreateFromDiscriminatorValue },
+                { "500", global::Soenneker.Together.OpenApiClient.Models.GetDeploymentsStorageByFilename500ResponseResponseJson.CreateFromDiscriminatorValue },
             };
             await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }

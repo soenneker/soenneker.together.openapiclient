@@ -17,15 +17,15 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Additional configuration to pass to model engine.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequest_chat_template_kwargs? ChatTemplateKwargs { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestChatTemplateKwargsProperty? ChatTemplateKwargs { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequest_chat_template_kwargs ChatTemplateKwargs { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestChatTemplateKwargsProperty ChatTemplateKwargs { get; set; }
 #endif
         /// <summary>The compliance property</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequest_compliance? Compliance { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestCompliance? Compliance { get; set; }
         /// <summary>Defines the behavior of the API when max_tokens exceed the maximum context length of the model. When set to &apos;error&apos;, the API returns 400 with an appropriate error message. When set to &apos;truncate&apos;, overrides max_tokens with the maximum context length of the model.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequest_context_length_exceeded_behavior? ContextLengthExceededBehavior { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestContextLengthExceededBehavior? ContextLengthExceededBehavior { get; set; }
         /// <summary>If true, the response contains the prompt. Can be used with `logprobs` to return prompt logprobs.</summary>
         public bool? Echo { get; set; }
         /// <summary>A number between -2.0 and 2.0 where a positive value decreases the likelihood of repeating tokens that have already been mentioned.</summary>
@@ -41,10 +41,10 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Adjusts the likelihood of specific tokens appearing in the generated output.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequest_logit_bias? LogitBias { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestLogitBiasProperty? LogitBias { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequest_logit_bias LogitBias { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestLogitBiasProperty LogitBias { get; set; }
 #endif
         /// <summary>An integer between 0 and 20 of the top k tokens to return log probabilities for at each generation step, instead of only the sampled token. Log probabilities help assess model confidence in token predictions.</summary>
         public int? Logprobs { get; set; }
@@ -53,10 +53,10 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>A list of messages comprising the conversation so far.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Messages { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionMessageParam>? Messages { get; set; }
 #nullable restore
 #else
-        public List<string> Messages { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionMessageParam> Messages { get; set; }
 #endif
         /// <summary>A number between 0 and 1 that can be used as an alternative to top_p and top-k.</summary>
         public float? MinP { get; set; }
@@ -81,16 +81,16 @@ namespace Soenneker.Together.OpenApiClient.Models
         public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestReasoning Reasoning { get; set; }
 #endif
         /// <summary>Controls the level of reasoning effort the model should apply when generating responses. Higher values may result in more thoughtful and detailed responses but may take longer to generate.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequest_reasoning_effort? ReasoningEffort { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestReasoningEffort? ReasoningEffort { get; set; }
         /// <summary>A number that controls the diversity of generated text by reducing the likelihood of repeated sequences. Higher values decrease repetition.</summary>
         public double? RepetitionPenalty { get; set; }
         /// <summary>&quot;An object specifying the format that the model must output.Setting to `{ \&quot;type\&quot;: \&quot;json_schema\&quot;, \&quot;json_schema\&quot;: {...} }` enablesStructured Outputs which ensures the model will match your supplied JSONschema. Learn more in the [Structured Outputsguide](https://docs.together.ai/docs/json-mode).Setting to `{ \&quot;type\&quot;: \&quot;json_object\&quot; }` enables the older JSON mode, whichensures the message the model generates is valid JSON. Using `json_schema`is preferred for models that support it.&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequest.ChatCompletionRequest_response_format? ResponseFormat { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestResponseFormat? ResponseFormat { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequest.ChatCompletionRequest_response_format ResponseFormat { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestResponseFormat ResponseFormat { get; set; }
 #endif
         /// <summary>The name of the moderation model used to validate tokens. Choose from the available moderation models found [here](https://docs.together.ai/docs/inference-models#moderation-models).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -117,10 +117,10 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Controls which (if any) function is called by the model. By default uses `auto`, which lets the model pick between generating a message or calling a function.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequest.ChatCompletionRequest_tool_choice? ToolChoice { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestToolChoice? ToolChoice { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequest.ChatCompletionRequest_tool_choice ToolChoice { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestToolChoice ToolChoice { get; set; }
 #endif
         /// <summary>A list of tools the model may call. Currently, only functions are supported as a tool. Use this to provide a list of functions the model may generate JSON inputs for.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -140,7 +140,6 @@ namespace Soenneker.Together.OpenApiClient.Models
         public ChatCompletionRequest()
         {
             AdditionalData = new Dictionary<string, object>();
-            ContextLengthExceededBehavior = global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequest_context_length_exceeded_behavior.Error;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -160,30 +159,30 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "chat_template_kwargs", n => { ChatTemplateKwargs = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequest_chat_template_kwargs>(global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequest_chat_template_kwargs.CreateFromDiscriminatorValue); } },
-                { "compliance", n => { Compliance = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequest_compliance>(); } },
-                { "context_length_exceeded_behavior", n => { ContextLengthExceededBehavior = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequest_context_length_exceeded_behavior>(); } },
+                { "chat_template_kwargs", n => { ChatTemplateKwargs = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestChatTemplateKwargsProperty>(global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestChatTemplateKwargsProperty.CreateFromDiscriminatorValue); } },
+                { "compliance", n => { Compliance = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestCompliance>(); } },
+                { "context_length_exceeded_behavior", n => { ContextLengthExceededBehavior = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestContextLengthExceededBehavior>(); } },
                 { "echo", n => { Echo = n.GetBoolValue(); } },
                 { "frequency_penalty", n => { FrequencyPenalty = n.GetFloatValue(); } },
                 { "function_call", n => { FunctionCall = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestFunctionCall>(global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestFunctionCall.CreateFromDiscriminatorValue); } },
-                { "logit_bias", n => { LogitBias = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequest_logit_bias>(global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequest_logit_bias.CreateFromDiscriminatorValue); } },
+                { "logit_bias", n => { LogitBias = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestLogitBiasProperty>(global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestLogitBiasProperty.CreateFromDiscriminatorValue); } },
                 { "logprobs", n => { Logprobs = n.GetIntValue(); } },
                 { "max_tokens", n => { MaxTokens = n.GetIntValue(); } },
-                { "messages", n => { Messages = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "messages", n => { Messages = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionMessageParam>(global::Soenneker.Together.OpenApiClient.Models.ChatCompletionMessageParam.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "min_p", n => { MinP = n.GetFloatValue(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
                 { "n", n => { N = n.GetIntValue(); } },
                 { "presence_penalty", n => { PresencePenalty = n.GetFloatValue(); } },
                 { "reasoning", n => { Reasoning = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestReasoning>(global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestReasoning.CreateFromDiscriminatorValue); } },
-                { "reasoning_effort", n => { ReasoningEffort = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequest_reasoning_effort>(); } },
+                { "reasoning_effort", n => { ReasoningEffort = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestReasoningEffort>(); } },
                 { "repetition_penalty", n => { RepetitionPenalty = n.GetDoubleValue(); } },
-                { "response_format", n => { ResponseFormat = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequest.ChatCompletionRequest_response_format>(global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequest.ChatCompletionRequest_response_format.CreateFromDiscriminatorValue); } },
+                { "response_format", n => { ResponseFormat = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestResponseFormat>(global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestResponseFormat.CreateFromDiscriminatorValue); } },
                 { "safety_model", n => { SafetyModel = n.GetStringValue(); } },
                 { "seed", n => { Seed = n.GetIntValue(); } },
                 { "stop", n => { Stop = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "stream", n => { Stream = n.GetBoolValue(); } },
                 { "temperature", n => { Temperature = n.GetFloatValue(); } },
-                { "tool_choice", n => { ToolChoice = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequest.ChatCompletionRequest_tool_choice>(global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequest.ChatCompletionRequest_tool_choice.CreateFromDiscriminatorValue); } },
+                { "tool_choice", n => { ToolChoice = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestToolChoice>(global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestToolChoice.CreateFromDiscriminatorValue); } },
                 { "tools", n => { Tools = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.ToolsPart>(global::Soenneker.Together.OpenApiClient.Models.ToolsPart.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "top_k", n => { TopK = n.GetIntValue(); } },
                 { "top_p", n => { TopP = n.GetFloatValue(); } },
@@ -196,175 +195,34 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequest_chat_template_kwargs>("chat_template_kwargs", ChatTemplateKwargs);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequest_compliance>("compliance", Compliance);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequest_context_length_exceeded_behavior>("context_length_exceeded_behavior", ContextLengthExceededBehavior);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestChatTemplateKwargsProperty>("chat_template_kwargs", ChatTemplateKwargs);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestCompliance>("compliance", Compliance);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestContextLengthExceededBehavior>("context_length_exceeded_behavior", ContextLengthExceededBehavior);
             writer.WriteBoolValue("echo", Echo);
             writer.WriteFloatValue("frequency_penalty", FrequencyPenalty);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestFunctionCall>("function_call", FunctionCall);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequest_logit_bias>("logit_bias", LogitBias);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestLogitBiasProperty>("logit_bias", LogitBias);
             writer.WriteIntValue("logprobs", Logprobs);
             writer.WriteIntValue("max_tokens", MaxTokens);
-            writer.WriteCollectionOfPrimitiveValues<string>("messages", Messages);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionMessageParam>("messages", Messages);
             writer.WriteFloatValue("min_p", MinP);
             writer.WriteStringValue("model", Model);
             writer.WriteIntValue("n", N);
             writer.WriteFloatValue("presence_penalty", PresencePenalty);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestReasoning>("reasoning", Reasoning);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequest_reasoning_effort>("reasoning_effort", ReasoningEffort);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestReasoningEffort>("reasoning_effort", ReasoningEffort);
             writer.WriteDoubleValue("repetition_penalty", RepetitionPenalty);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequest.ChatCompletionRequest_response_format>("response_format", ResponseFormat);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestResponseFormat>("response_format", ResponseFormat);
             writer.WriteStringValue("safety_model", SafetyModel);
             writer.WriteIntValue("seed", Seed);
             writer.WriteCollectionOfPrimitiveValues<string>("stop", Stop);
             writer.WriteBoolValue("stream", Stream);
             writer.WriteFloatValue("temperature", Temperature);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequest.ChatCompletionRequest_tool_choice>("tool_choice", ToolChoice);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestToolChoice>("tool_choice", ToolChoice);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.ToolsPart>("tools", Tools);
             writer.WriteIntValue("top_k", TopK);
             writer.WriteFloatValue("top_p", TopP);
             writer.WriteAdditionalData(AdditionalData);
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.Together.OpenApiClient.Models.ResponseFormatJsonObject"/>, <see cref="global::Soenneker.Together.OpenApiClient.Models.ResponseFormatJsonSchema"/>, <see cref="global::Soenneker.Together.OpenApiClient.Models.ResponseFormatText"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class ChatCompletionRequest_response_format : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.ResponseFormatJsonObject"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.Together.OpenApiClient.Models.ResponseFormatJsonObject? ResponseFormatJsonObject { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.Together.OpenApiClient.Models.ResponseFormatJsonObject ResponseFormatJsonObject { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.ResponseFormatJsonSchema"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.Together.OpenApiClient.Models.ResponseFormatJsonSchema? ResponseFormatJsonSchema { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.Together.OpenApiClient.Models.ResponseFormatJsonSchema ResponseFormatJsonSchema { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.ResponseFormatText"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.Together.OpenApiClient.Models.ResponseFormatText? ResponseFormatText { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.Together.OpenApiClient.Models.ResponseFormatText ResponseFormatText { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequest.ChatCompletionRequest_response_format"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequest.ChatCompletionRequest_response_format CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var result = new global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequest.ChatCompletionRequest_response_format();
-                result.ResponseFormatJsonObject = new global::Soenneker.Together.OpenApiClient.Models.ResponseFormatJsonObject();
-                result.ResponseFormatJsonSchema = new global::Soenneker.Together.OpenApiClient.Models.ResponseFormatJsonSchema();
-                result.ResponseFormatText = new global::Soenneker.Together.OpenApiClient.Models.ResponseFormatText();
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(ResponseFormatJsonObject != null || ResponseFormatJsonSchema != null || ResponseFormatText != null)
-                {
-                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(ResponseFormatJsonObject, ResponseFormatJsonSchema, ResponseFormatText);
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ResponseFormatJsonObject>(null, ResponseFormatJsonObject, ResponseFormatJsonSchema, ResponseFormatText);
-            }
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.Together.OpenApiClient.Models.ToolChoice"/>, <see cref="global::Soenneker.Together.OpenApiClient.Models.UnionBranch"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class ChatCompletionRequest_tool_choice : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.ToolChoice"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.Together.OpenApiClient.Models.ToolChoice? ToolChoice { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.Together.OpenApiClient.Models.ToolChoice ToolChoice { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.UnionBranch"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.Together.OpenApiClient.Models.UnionBranch? UnionBranch { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.Together.OpenApiClient.Models.UnionBranch UnionBranch { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequest.ChatCompletionRequest_tool_choice"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequest.ChatCompletionRequest_tool_choice CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-                var result = new global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequest.ChatCompletionRequest_tool_choice();
-                if("ToolChoice".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.ToolChoice = new global::Soenneker.Together.OpenApiClient.Models.ToolChoice();
-                }
-                else if("UnionBranch".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.UnionBranch = new global::Soenneker.Together.OpenApiClient.Models.UnionBranch();
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(ToolChoice != null)
-                {
-                    return ToolChoice.GetFieldDeserializers();
-                }
-                else if(UnionBranch != null)
-                {
-                    return UnionBranch.GetFieldDeserializers();
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(ToolChoice != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ToolChoice>(null, ToolChoice);
-                }
-                else if(UnionBranch != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.UnionBranch>(null, UnionBranch);
-                }
-            }
         }
     }
 }

@@ -16,7 +16,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>DCGM diagnostic depth. SHORT = readiness; MEDIUM = default; LONG = system validation; EXTENDED = memtest. An omitted value selects MEDIUM when enabled.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.AcceptanceTestsParams_dcgm_diag_level? DcgmDiagLevel { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.AcceptanceTestsParamsDcgmDiagLevel? DcgmDiagLevel { get; set; }
         /// <summary>Skip DCGM diagnostics acceptance test.</summary>
         public bool? DcgmDiagSkipped { get; set; }
         /// <summary>Whether to run GPU acceptance tests during cluster bring-up.</summary>
@@ -29,6 +29,8 @@ namespace Soenneker.Together.OpenApiClient.Models
         public bool? NcclMultiNodeSkipped { get; set; }
         /// <summary>Skip NCCL single-node acceptance test.</summary>
         public bool? NcclSingleNodeSkipped { get; set; }
+        /// <summary>Skip storage-performance acceptance test.</summary>
+        public bool? StorageSkipped { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.AcceptanceTestsParams"/> and sets the default values.
         /// </summary>
@@ -54,13 +56,14 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "dcgm_diag_level", n => { DcgmDiagLevel = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.AcceptanceTestsParams_dcgm_diag_level>(); } },
+                { "dcgm_diag_level", n => { DcgmDiagLevel = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.AcceptanceTestsParamsDcgmDiagLevel>(); } },
                 { "dcgm_diag_skipped", n => { DcgmDiagSkipped = n.GetBoolValue(); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
                 { "gpu_burn_duration", n => { GpuBurnDuration = n.GetIntValue(); } },
                 { "gpu_burn_skipped", n => { GpuBurnSkipped = n.GetBoolValue(); } },
                 { "nccl_multi_node_skipped", n => { NcclMultiNodeSkipped = n.GetBoolValue(); } },
                 { "nccl_single_node_skipped", n => { NcclSingleNodeSkipped = n.GetBoolValue(); } },
+                { "storage_skipped", n => { StorageSkipped = n.GetBoolValue(); } },
             };
         }
         /// <summary>
@@ -70,13 +73,14 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.AcceptanceTestsParams_dcgm_diag_level>("dcgm_diag_level", DcgmDiagLevel);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.AcceptanceTestsParamsDcgmDiagLevel>("dcgm_diag_level", DcgmDiagLevel);
             writer.WriteBoolValue("dcgm_diag_skipped", DcgmDiagSkipped);
             writer.WriteBoolValue("enabled", Enabled);
             writer.WriteIntValue("gpu_burn_duration", GpuBurnDuration);
             writer.WriteBoolValue("gpu_burn_skipped", GpuBurnSkipped);
             writer.WriteBoolValue("nccl_multi_node_skipped", NcclMultiNodeSkipped);
             writer.WriteBoolValue("nccl_single_node_skipped", NcclSingleNodeSkipped);
+            writer.WriteBoolValue("storage_skipped", StorageSkipped);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -31,14 +31,14 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string Model { get; set; }
 #endif
         /// <summary>The object type, which is always `rerank`.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.RerankResponse_object? Object { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RerankResponseObject? Object { get; set; }
         /// <summary>The results property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Together.OpenApiClient.Models.RerankResponse_results>? Results { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.RerankResponseResultsItem>? Results { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Together.OpenApiClient.Models.RerankResponse_results> Results { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.RerankResponseResultsItem> Results { get; set; }
 #endif
         /// <summary>The usage property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -75,8 +75,8 @@ namespace Soenneker.Together.OpenApiClient.Models
             {
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.RerankResponse_object>(); } },
-                { "results", n => { Results = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RerankResponse_results>(global::Soenneker.Together.OpenApiClient.Models.RerankResponse_results.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.RerankResponseObject>(); } },
+                { "results", n => { Results = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RerankResponseResultsItem>(global::Soenneker.Together.OpenApiClient.Models.RerankResponseResultsItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "usage", n => { Usage = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.UsageData>(global::Soenneker.Together.OpenApiClient.Models.UsageData.CreateFromDiscriminatorValue); } },
             };
         }
@@ -89,8 +89,8 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("model", Model);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.RerankResponse_object>("object", Object);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RerankResponse_results>("results", Results);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.RerankResponseObject>("object", Object);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RerankResponseResultsItem>("results", Results);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.UsageData>("usage", Usage);
             writer.WriteAdditionalData(AdditionalData);
         }

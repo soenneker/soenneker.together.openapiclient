@@ -7,28 +7,37 @@ using System.IO;
 using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
+    /// <summary>
+    /// State for a cluster add-on.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class AddOnState : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The dashboard property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.AddOnState_dashboard? Dashboard { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.AddOnStateDashboard? Dashboard { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.AddOnState_dashboard Dashboard { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.AddOnStateDashboard Dashboard { get; set; }
 #endif
         /// <summary>The ingress property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.AddOnState_ingress? Ingress { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.AddOnStateIngress? Ingress { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.AddOnState_ingress Ingress { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.AddOnStateIngress Ingress { get; set; }
+#endif
+        /// <summary>Runtime state for the Model Aware TorchPass cluster add-on.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Together.OpenApiClient.Models.AddOnStateTorchpass? Torchpass { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Together.OpenApiClient.Models.AddOnStateTorchpass Torchpass { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.AddOnState"/> and sets the default values.
@@ -55,8 +64,9 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "dashboard", n => { Dashboard = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.AddOnState_dashboard>(global::Soenneker.Together.OpenApiClient.Models.AddOnState_dashboard.CreateFromDiscriminatorValue); } },
-                { "ingress", n => { Ingress = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.AddOnState_ingress>(global::Soenneker.Together.OpenApiClient.Models.AddOnState_ingress.CreateFromDiscriminatorValue); } },
+                { "dashboard", n => { Dashboard = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.AddOnStateDashboard>(global::Soenneker.Together.OpenApiClient.Models.AddOnStateDashboard.CreateFromDiscriminatorValue); } },
+                { "ingress", n => { Ingress = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.AddOnStateIngress>(global::Soenneker.Together.OpenApiClient.Models.AddOnStateIngress.CreateFromDiscriminatorValue); } },
+                { "torchpass", n => { Torchpass = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.AddOnStateTorchpass>(global::Soenneker.Together.OpenApiClient.Models.AddOnStateTorchpass.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -66,8 +76,9 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.AddOnState_dashboard>("dashboard", Dashboard);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.AddOnState_ingress>("ingress", Ingress);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.AddOnStateDashboard>("dashboard", Dashboard);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.AddOnStateIngress>("ingress", Ingress);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.AddOnStateTorchpass>("torchpass", Torchpass);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

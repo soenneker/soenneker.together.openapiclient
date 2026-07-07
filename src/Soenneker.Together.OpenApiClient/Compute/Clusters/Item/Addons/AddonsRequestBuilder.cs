@@ -13,21 +13,21 @@ using System;
 namespace Soenneker.Together.OpenApiClient.Compute.Clusters.Item.Addons
 {
     /// <summary>
-    /// Builds and executes requests for operations under \compute\clusters\{cluster_id}\addons
+    /// Builds and executes requests for operations under \compute\clusters\{clusterId}\addons
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AddonsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.Together.OpenApiClient.compute.clusters.item.addons.item collection</summary>
         /// <param name="position">Unique identifier of the item</param>
-        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Compute.Clusters.Item.Addons.Item.WithAddon_ItemRequestBuilder"/></returns>
-        public global::Soenneker.Together.OpenApiClient.Compute.Clusters.Item.Addons.Item.WithAddon_ItemRequestBuilder this[string position]
+        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Compute.Clusters.Item.Addons.Item.WithAddonItemRequestBuilder"/></returns>
+        public global::Soenneker.Together.OpenApiClient.Compute.Clusters.Item.Addons.Item.WithAddonItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("addon_id", position);
-                return new global::Soenneker.Together.OpenApiClient.Compute.Clusters.Item.Addons.Item.WithAddon_ItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("addonId", position);
+                return new global::Soenneker.Together.OpenApiClient.Compute.Clusters.Item.Addons.Item.WithAddonItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
@@ -35,7 +35,7 @@ namespace Soenneker.Together.OpenApiClient.Compute.Clusters.Item.Addons
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AddonsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/compute/clusters/{cluster_id}/addons", pathParameters)
+        public AddonsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/compute/clusters/{clusterId}/addons", pathParameters)
         {
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Soenneker.Together.OpenApiClient.Compute.Clusters.Item.Addons
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AddonsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/compute/clusters/{cluster_id}/addons", rawUrl)
+        public AddonsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/compute/clusters/{clusterId}/addons", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.ClusterAddOnsListResponse"/></returns>

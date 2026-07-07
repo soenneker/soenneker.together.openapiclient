@@ -51,7 +51,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string Link { get; set; }
 #endif
         /// <summary>The object type, which is always `model`.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.ModelInfo_object? Object { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.ModelInfoObject? Object { get; set; }
         /// <summary>The organization property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -69,7 +69,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public global::Soenneker.Together.OpenApiClient.Models.Pricing Pricing { get; set; }
 #endif
         /// <summary>The type property</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.ModelInfo_type? Type { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.ModelInfoType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.ModelInfo"/> and sets the default values.
         /// </summary>
@@ -101,10 +101,10 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "license", n => { License = n.GetStringValue(); } },
                 { "link", n => { Link = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.ModelInfo_object>(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.ModelInfoObject>(); } },
                 { "organization", n => { Organization = n.GetStringValue(); } },
                 { "pricing", n => { Pricing = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.Pricing>(global::Soenneker.Together.OpenApiClient.Models.Pricing.CreateFromDiscriminatorValue); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.ModelInfo_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.ModelInfoType>(); } },
             };
         }
         /// <summary>
@@ -120,10 +120,10 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("license", License);
             writer.WriteStringValue("link", Link);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.ModelInfo_object>("object", Object);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.ModelInfoObject>("object", Object);
             writer.WriteStringValue("organization", Organization);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.Pricing>("pricing", Pricing);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.ModelInfo_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.ModelInfoType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

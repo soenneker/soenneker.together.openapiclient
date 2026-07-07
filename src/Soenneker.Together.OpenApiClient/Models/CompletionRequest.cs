@@ -21,10 +21,10 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Adjusts the likelihood of specific tokens appearing in the generated output.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.CompletionRequest_logit_bias? LogitBias { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.CompletionRequestLogitBiasProperty? LogitBias { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.CompletionRequest_logit_bias LogitBias { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.CompletionRequestLogitBiasProperty LogitBias { get; set; }
 #endif
         /// <summary>An integer between 0 and 20 of the top k tokens to return log probabilities for at each generation step, instead of only the sampled token. Log probabilities help assess model confidence in token predictions.</summary>
         public int? Logprobs { get; set; }
@@ -35,10 +35,10 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>The name of the model to query.&lt;br&gt; &lt;br&gt; [See all of Together AI&apos;s chat models](https://docs.together.ai/docs/serverless-models#chat-models)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.CompletionRequest.CompletionRequest_model? Model { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.CompletionRequestModel? Model { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.CompletionRequest.CompletionRequest_model Model { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.CompletionRequestModel Model { get; set; }
 #endif
         /// <summary>The number of completions to generate for each prompt.</summary>
         public int? N { get; set; }
@@ -57,10 +57,10 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>The name of the moderation model used to validate tokens. Choose from the available moderation models found [here](https://docs.together.ai/docs/inference-models#moderation-models).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.CompletionRequest.CompletionRequest_safety_model? SafetyModel { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.CompletionRequestSafetyModel? SafetyModel { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.CompletionRequest.CompletionRequest_safety_model SafetyModel { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.CompletionRequestSafetyModel SafetyModel { get; set; }
 #endif
         /// <summary>Seed value for reproducibility.</summary>
         public int? Seed { get; set; }
@@ -107,16 +107,16 @@ namespace Soenneker.Together.OpenApiClient.Models
             {
                 { "echo", n => { Echo = n.GetBoolValue(); } },
                 { "frequency_penalty", n => { FrequencyPenalty = n.GetFloatValue(); } },
-                { "logit_bias", n => { LogitBias = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.CompletionRequest_logit_bias>(global::Soenneker.Together.OpenApiClient.Models.CompletionRequest_logit_bias.CreateFromDiscriminatorValue); } },
+                { "logit_bias", n => { LogitBias = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.CompletionRequestLogitBiasProperty>(global::Soenneker.Together.OpenApiClient.Models.CompletionRequestLogitBiasProperty.CreateFromDiscriminatorValue); } },
                 { "logprobs", n => { Logprobs = n.GetIntValue(); } },
                 { "max_tokens", n => { MaxTokens = n.GetIntValue(); } },
                 { "min_p", n => { MinP = n.GetFloatValue(); } },
-                { "model", n => { Model = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.CompletionRequest.CompletionRequest_model>(global::Soenneker.Together.OpenApiClient.Models.CompletionRequest.CompletionRequest_model.CreateFromDiscriminatorValue); } },
+                { "model", n => { Model = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.CompletionRequestModel>(global::Soenneker.Together.OpenApiClient.Models.CompletionRequestModel.CreateFromDiscriminatorValue); } },
                 { "n", n => { N = n.GetIntValue(); } },
                 { "presence_penalty", n => { PresencePenalty = n.GetFloatValue(); } },
                 { "prompt", n => { Prompt = n.GetStringValue(); } },
                 { "repetition_penalty", n => { RepetitionPenalty = n.GetFloatValue(); } },
-                { "safety_model", n => { SafetyModel = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.CompletionRequest.CompletionRequest_safety_model>(global::Soenneker.Together.OpenApiClient.Models.CompletionRequest.CompletionRequest_safety_model.CreateFromDiscriminatorValue); } },
+                { "safety_model", n => { SafetyModel = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.CompletionRequestSafetyModel>(global::Soenneker.Together.OpenApiClient.Models.CompletionRequestSafetyModel.CreateFromDiscriminatorValue); } },
                 { "seed", n => { Seed = n.GetIntValue(); } },
                 { "stop", n => { Stop = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "stream", n => { Stream = n.GetBoolValue(); } },
@@ -134,16 +134,16 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("echo", Echo);
             writer.WriteFloatValue("frequency_penalty", FrequencyPenalty);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.CompletionRequest_logit_bias>("logit_bias", LogitBias);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.CompletionRequestLogitBiasProperty>("logit_bias", LogitBias);
             writer.WriteIntValue("logprobs", Logprobs);
             writer.WriteIntValue("max_tokens", MaxTokens);
             writer.WriteFloatValue("min_p", MinP);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.CompletionRequest.CompletionRequest_model>("model", Model);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.CompletionRequestModel>("model", Model);
             writer.WriteIntValue("n", N);
             writer.WriteFloatValue("presence_penalty", PresencePenalty);
             writer.WriteStringValue("prompt", Prompt);
             writer.WriteFloatValue("repetition_penalty", RepetitionPenalty);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.CompletionRequest.CompletionRequest_safety_model>("safety_model", SafetyModel);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.CompletionRequestSafetyModel>("safety_model", SafetyModel);
             writer.WriteIntValue("seed", Seed);
             writer.WriteCollectionOfPrimitiveValues<string>("stop", Stop);
             writer.WriteBoolValue("stream", Stream);
@@ -151,106 +151,6 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteIntValue("top_k", TopK);
             writer.WriteFloatValue("top_p", TopP);
             writer.WriteAdditionalData(AdditionalData);
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="string"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class CompletionRequest_model : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="string"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public string? String { get; set; }
-#nullable restore
-#else
-            public string String { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.CompletionRequest.CompletionRequest_model"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.Together.OpenApiClient.Models.CompletionRequest.CompletionRequest_model CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var result = new global::Soenneker.Together.OpenApiClient.Models.CompletionRequest.CompletionRequest_model();
-                if(parseNode.GetStringValue() is string stringValue)
-                {
-                    result.String = stringValue;
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(String != null)
-                {
-                    writer.WriteStringValue(null, String);
-                }
-            }
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="string"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class CompletionRequest_safety_model : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="string"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public string? String { get; set; }
-#nullable restore
-#else
-            public string String { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.CompletionRequest.CompletionRequest_safety_model"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.Together.OpenApiClient.Models.CompletionRequest.CompletionRequest_safety_model CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var result = new global::Soenneker.Together.OpenApiClient.Models.CompletionRequest.CompletionRequest_safety_model();
-                if(parseNode.GetStringValue() is string stringValue)
-                {
-                    result.String = stringValue;
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(String != null)
-                {
-                    writer.WriteStringValue(null, String);
-                }
-            }
         }
     }
 }

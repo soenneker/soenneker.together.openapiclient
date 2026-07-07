@@ -7,14 +7,17 @@ using System.IO;
 using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
+    /// <summary>
+    /// A checkpoint available for a fine-tuning job.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class FineTuneCheckpoint : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The checkpoint_type property</summary>
+        /// <summary>Canonical artifact selector for checkpoint download requests.</summary>
+        public global::Soenneker.Together.OpenApiClient.Models.FineTuneCheckpointCheckpoint? Checkpoint { get; set; }
+        /// <summary>Display label for the checkpoint, including the final or intermediate checkpoint step.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CheckpointType { get; set; }
@@ -22,7 +25,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string CheckpointType { get; set; }
 #endif
-        /// <summary>The created_at property</summary>
+        /// <summary>Timestamp when the checkpoint was created.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CreatedAt { get; set; }
@@ -30,7 +33,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string CreatedAt { get; set; }
 #endif
-        /// <summary>The path property</summary>
+        /// <summary>Storage path for the checkpoint artifact.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Path { get; set; }
@@ -38,7 +41,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string Path { get; set; }
 #endif
-        /// <summary>The step property</summary>
+        /// <summary>Step represented by the checkpoint; final checkpoints use the shipped model step.</summary>
         public int? Step { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.FineTuneCheckpoint"/> and sets the default values.
@@ -65,6 +68,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "checkpoint", n => { Checkpoint = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.FineTuneCheckpointCheckpoint>(); } },
                 { "checkpoint_type", n => { CheckpointType = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetStringValue(); } },
                 { "path", n => { Path = n.GetStringValue(); } },
@@ -78,6 +82,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.FineTuneCheckpointCheckpoint>("checkpoint", Checkpoint);
             writer.WriteStringValue("checkpoint_type", CheckpointType);
             writer.WriteStringValue("created_at", CreatedAt);
             writer.WriteStringValue("path", Path);

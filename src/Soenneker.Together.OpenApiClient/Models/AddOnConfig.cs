@@ -7,10 +7,11 @@ using System.IO;
 using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
+    /// <summary>
+    /// Configuration for a cluster add-on.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class AddOnConfig : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -29,6 +30,14 @@ namespace Soenneker.Together.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.Together.OpenApiClient.Models.IngressConfig Ingress { get; set; }
+#endif
+        /// <summary>Configuration for the Model Aware TorchPass cluster add-on.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Together.OpenApiClient.Models.TorchpassConfig? Torchpass { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Together.OpenApiClient.Models.TorchpassConfig Torchpass { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.AddOnConfig"/> and sets the default values.
@@ -57,6 +66,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             {
                 { "dashboard", n => { Dashboard = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.DashboardConfig>(global::Soenneker.Together.OpenApiClient.Models.DashboardConfig.CreateFromDiscriminatorValue); } },
                 { "ingress", n => { Ingress = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.IngressConfig>(global::Soenneker.Together.OpenApiClient.Models.IngressConfig.CreateFromDiscriminatorValue); } },
+                { "torchpass", n => { Torchpass = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.TorchpassConfig>(global::Soenneker.Together.OpenApiClient.Models.TorchpassConfig.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -68,6 +78,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DashboardConfig>("dashboard", Dashboard);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.IngressConfig>("ingress", Ingress);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.TorchpassConfig>("torchpass", Torchpass);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

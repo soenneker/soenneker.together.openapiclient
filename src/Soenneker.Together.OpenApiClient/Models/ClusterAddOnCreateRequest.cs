@@ -14,7 +14,7 @@ namespace Soenneker.Together.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The add_on_type property</summary>
+        /// <summary>&quot;Type of add-on. Valid values: &apos;dashboard&apos;, &apos;ingress&apos;, &apos;torchpass&apos;.&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? AddOnType { get; set; }
@@ -22,7 +22,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string AddOnType { get; set; }
 #endif
-        /// <summary>The config property</summary>
+        /// <summary>Configuration for a cluster add-on.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Together.OpenApiClient.Models.AddOnConfig? Config { get; set; }
@@ -30,7 +30,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public global::Soenneker.Together.OpenApiClient.Models.AddOnConfig Config { get; set; }
 #endif
-        /// <summary>The name property</summary>
+        /// <summary>Human-readable name for this add-on instance.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get; set; }

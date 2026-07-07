@@ -41,7 +41,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string Model { get; set; }
 #endif
         /// <summary>&quot;Source of the judge model inference: - `serverless`: Together&apos;s shared serverless inference API. Default concurrency: 25 workers. - `dedicated`: A Together dedicated deployment endpoint. Default concurrency: 5 workers  (minimum enforced even if num_workers is set lower).- `external`: An external inference API (e.g. OpenAI, Anthropic, Google, OpenRouter).  Requires `external_api_token` and `external_base_url`. Default concurrency: 2 workers  for first-party APIs, 20 for proxy/aggregator endpoints.&quot;</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.EvaluationJudgeModelConfig_model_source? ModelSource { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.EvaluationJudgeModelConfigModelSource? ModelSource { get; set; }
         /// <summary>&quot;Number of concurrent inference workers for the judge. Overrides the source-specific default (serverless: 25, dedicated: 5, external: 2–20). For dedicated endpoints the value is clamped to a minimum of 5 regardless of what is set here.&quot;</summary>
         public int? NumWorkers { get; set; }
         /// <summary>System prompt template for the judge</summary>
@@ -83,7 +83,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "external_base_url", n => { ExternalBaseUrl = n.GetStringValue(); } },
                 { "max_tokens", n => { MaxTokens = n.GetIntValue(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
-                { "model_source", n => { ModelSource = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.EvaluationJudgeModelConfig_model_source>(); } },
+                { "model_source", n => { ModelSource = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.EvaluationJudgeModelConfigModelSource>(); } },
                 { "num_workers", n => { NumWorkers = n.GetIntValue(); } },
                 { "system_template", n => { SystemTemplate = n.GetStringValue(); } },
                 { "temperature", n => { Temperature = n.GetFloatValue(); } },
@@ -100,7 +100,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteStringValue("external_base_url", ExternalBaseUrl);
             writer.WriteIntValue("max_tokens", MaxTokens);
             writer.WriteStringValue("model", Model);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.EvaluationJudgeModelConfig_model_source>("model_source", ModelSource);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.EvaluationJudgeModelConfigModelSource>("model_source", ModelSource);
             writer.WriteIntValue("num_workers", NumWorkers);
             writer.WriteStringValue("system_template", SystemTemplate);
             writer.WriteFloatValue("temperature", Temperature);

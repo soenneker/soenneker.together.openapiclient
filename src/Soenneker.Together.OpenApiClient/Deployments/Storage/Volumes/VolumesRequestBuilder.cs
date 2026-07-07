@@ -52,7 +52,7 @@ namespace Soenneker.Together.OpenApiClient.Deployments.Storage.Volumes
         /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.ListVolumesResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.Together.OpenApiClient.Deployments.Storage.Volumes.ListVolumesResponse500Error">When receiving a 500 status code</exception>
+        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.GetDeploymentsStorageVolumes500ResponseResponseJson">When receiving a 500 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Together.OpenApiClient.Models.ListVolumesResponse?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -65,7 +65,7 @@ namespace Soenneker.Together.OpenApiClient.Deployments.Storage.Volumes
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "500", global::Soenneker.Together.OpenApiClient.Deployments.Storage.Volumes.ListVolumesResponse500Error.CreateFromDiscriminatorValue },
+                { "500", global::Soenneker.Together.OpenApiClient.Models.GetDeploymentsStorageVolumes500ResponseResponseJson.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.ListVolumesResponse>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.ListVolumesResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -76,8 +76,8 @@ namespace Soenneker.Together.OpenApiClient.Deployments.Storage.Volumes
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.Together.OpenApiClient.Deployments.Storage.Volumes.VolumeResponseItem400Error">When receiving a 400 status code</exception>
-        /// <exception cref="global::Soenneker.Together.OpenApiClient.Deployments.Storage.Volumes.VolumeResponseItem500Error">When receiving a 500 status code</exception>
+        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.PostDeploymentsStorageVolumes400ResponseResponseJson">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.PostDeploymentsStorageVolumes500ResponseResponseJson">When receiving a 500 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Together.OpenApiClient.Models.VolumeResponseItem?> PostAsync(global::Soenneker.Together.OpenApiClient.Models.CreateVolumeRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -91,8 +91,8 @@ namespace Soenneker.Together.OpenApiClient.Deployments.Storage.Volumes
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Soenneker.Together.OpenApiClient.Deployments.Storage.Volumes.VolumeResponseItem400Error.CreateFromDiscriminatorValue },
-                { "500", global::Soenneker.Together.OpenApiClient.Deployments.Storage.Volumes.VolumeResponseItem500Error.CreateFromDiscriminatorValue },
+                { "400", global::Soenneker.Together.OpenApiClient.Models.PostDeploymentsStorageVolumes400ResponseResponseJson.CreateFromDiscriminatorValue },
+                { "500", global::Soenneker.Together.OpenApiClient.Models.PostDeploymentsStorageVolumes500ResponseResponseJson.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.VolumeResponseItem>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.VolumeResponseItem.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

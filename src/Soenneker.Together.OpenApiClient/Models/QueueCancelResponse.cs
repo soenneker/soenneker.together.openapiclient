@@ -19,7 +19,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>The primary error message.</summary>
         public override string Message { get => base.Message; }
         /// <summary>Job status after the cancel attempt. Only pending jobs can becanceled. If the job is already running, done, or failed, the statusis returned unchanged.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.QueueCancelResponse_status? Status { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.QueueCancelResponseStatus? Status { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.QueueCancelResponse"/> and sets the default values.
         /// </summary>
@@ -45,7 +45,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.QueueCancelResponse_status>(); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.QueueCancelResponseStatus>(); } },
             };
         }
         /// <summary>
@@ -55,7 +55,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.QueueCancelResponse_status>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.QueueCancelResponseStatus>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -17,10 +17,10 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>The regions property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Together.OpenApiClient.Models.RegionListResponse_regions>? Regions { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.RegionListResponseRegionsItem>? Regions { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Together.OpenApiClient.Models.RegionListResponse_regions> Regions { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.RegionListResponseRegionsItem> Regions { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RegionListResponse"/> and sets the default values.
@@ -47,7 +47,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "regions", n => { Regions = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RegionListResponse_regions>(global::Soenneker.Together.OpenApiClient.Models.RegionListResponse_regions.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "regions", n => { Regions = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RegionListResponseRegionsItem>(global::Soenneker.Together.OpenApiClient.Models.RegionListResponseRegionsItem.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -57,7 +57,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RegionListResponse_regions>("regions", Regions);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RegionListResponseRegionsItem>("regions", Regions);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

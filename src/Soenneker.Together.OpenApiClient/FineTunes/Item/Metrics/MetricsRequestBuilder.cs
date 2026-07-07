@@ -36,20 +36,20 @@ namespace Soenneker.Together.OpenApiClient.FineTunes.Item.Metrics
         /// <summary>
         /// &quot;Retrieves recorded training metrics for a fine-tuning job in chronological order. All query parameters are optional: omit them to retrieve all metrics.&quot;
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.GetFineTunesIdMetrics200"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.GetFineTunesByIdMetrics200Response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Together.OpenApiClient.Models.GetFineTunesIdMetrics200?> GetAsync(Action<RequestConfiguration<global::Soenneker.Together.OpenApiClient.FineTunes.Item.Metrics.MetricsRequestBuilder.MetricsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Together.OpenApiClient.Models.GetFineTunesByIdMetrics200Response?> GetAsync(Action<RequestConfiguration<global::Soenneker.Together.OpenApiClient.FineTunes.Item.Metrics.MetricsRequestBuilder.MetricsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Together.OpenApiClient.Models.GetFineTunesIdMetrics200> GetAsync(Action<RequestConfiguration<global::Soenneker.Together.OpenApiClient.FineTunes.Item.Metrics.MetricsRequestBuilder.MetricsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Together.OpenApiClient.Models.GetFineTunesByIdMetrics200Response> GetAsync(Action<RequestConfiguration<global::Soenneker.Together.OpenApiClient.FineTunes.Item.Metrics.MetricsRequestBuilder.MetricsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.GetFineTunesIdMetrics200>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.GetFineTunesIdMetrics200.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.GetFineTunesByIdMetrics200Response>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.GetFineTunesByIdMetrics200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// &quot;Retrieves recorded training metrics for a fine-tuning job in chronological order. All query parameters are optional: omit them to retrieve all metrics.&quot;

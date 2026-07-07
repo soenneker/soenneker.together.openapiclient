@@ -33,10 +33,10 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>A map of parameter names to their values.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.ToolsPartFunction_parameters? Parameters { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.ToolsPartFunctionParametersProperty? Parameters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.ToolsPartFunction_parameters Parameters { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.ToolsPartFunctionParametersProperty Parameters { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.ToolsPartFunction"/> and sets the default values.
@@ -65,7 +65,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             {
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "parameters", n => { Parameters = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.ToolsPartFunction_parameters>(global::Soenneker.Together.OpenApiClient.Models.ToolsPartFunction_parameters.CreateFromDiscriminatorValue); } },
+                { "parameters", n => { Parameters = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.ToolsPartFunctionParametersProperty>(global::Soenneker.Together.OpenApiClient.Models.ToolsPartFunctionParametersProperty.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -77,7 +77,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("description", Description);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ToolsPartFunction_parameters>("parameters", Parameters);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ToolsPartFunctionParametersProperty>("parameters", Parameters);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

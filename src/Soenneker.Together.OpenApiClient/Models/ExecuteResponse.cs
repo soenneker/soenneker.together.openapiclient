@@ -8,26 +8,26 @@ using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.Together.OpenApiClient.Models.ExecuteResponseMember1"/>, <see cref="global::Soenneker.Together.OpenApiClient.Models.ExecuteResponseMember2"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.Together.OpenApiClient.Models.ExecuteResponseFailedExecution"/>, <see cref="global::Soenneker.Together.OpenApiClient.Models.ExecuteResponseSuccessfulExecution"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ExecuteResponse : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.ExecuteResponseMember1"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.ExecuteResponseFailedExecution"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.ExecuteResponseMember1? ExecuteResponseMember1 { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.ExecuteResponseFailedExecution? ExecuteResponseFailedExecution { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.ExecuteResponseMember1 ExecuteResponseMember1 { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.ExecuteResponseFailedExecution ExecuteResponseFailedExecution { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.ExecuteResponseMember2"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.ExecuteResponseSuccessfulExecution"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.ExecuteResponseMember2? ExecuteResponseMember2 { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.ExecuteResponseSuccessfulExecution? ExecuteResponseSuccessfulExecution { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.ExecuteResponseMember2 ExecuteResponseMember2 { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.ExecuteResponseSuccessfulExecution ExecuteResponseSuccessfulExecution { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -39,13 +39,13 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
             var result = new global::Soenneker.Together.OpenApiClient.Models.ExecuteResponse();
-            if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("ExecuteResponseFailedExecution".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.ExecuteResponseMember1 = new global::Soenneker.Together.OpenApiClient.Models.ExecuteResponseMember1();
+                result.ExecuteResponseFailedExecution = new global::Soenneker.Together.OpenApiClient.Models.ExecuteResponseFailedExecution();
             }
-            else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("ExecuteResponseSuccessfulExecution".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.ExecuteResponseMember2 = new global::Soenneker.Together.OpenApiClient.Models.ExecuteResponseMember2();
+                result.ExecuteResponseSuccessfulExecution = new global::Soenneker.Together.OpenApiClient.Models.ExecuteResponseSuccessfulExecution();
             }
             return result;
         }
@@ -55,13 +55,13 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(ExecuteResponseMember1 != null)
+            if(ExecuteResponseFailedExecution != null)
             {
-                return ExecuteResponseMember1.GetFieldDeserializers();
+                return ExecuteResponseFailedExecution.GetFieldDeserializers();
             }
-            else if(ExecuteResponseMember2 != null)
+            else if(ExecuteResponseSuccessfulExecution != null)
             {
-                return ExecuteResponseMember2.GetFieldDeserializers();
+                return ExecuteResponseSuccessfulExecution.GetFieldDeserializers();
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -72,13 +72,13 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(ExecuteResponseMember1 != null)
+            if(ExecuteResponseFailedExecution != null)
             {
-                writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ExecuteResponseMember1>(null, ExecuteResponseMember1);
+                writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ExecuteResponseFailedExecution>(null, ExecuteResponseFailedExecution);
             }
-            else if(ExecuteResponseMember2 != null)
+            else if(ExecuteResponseSuccessfulExecution != null)
             {
-                writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ExecuteResponseMember2>(null, ExecuteResponseMember2);
+                writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ExecuteResponseSuccessfulExecution>(null, ExecuteResponseSuccessfulExecution);
             }
         }
     }

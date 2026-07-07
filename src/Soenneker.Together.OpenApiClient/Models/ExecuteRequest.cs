@@ -25,13 +25,13 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Files to upload to the session. If present, files are uploaded before executing the given code.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Together.OpenApiClient.Models.ExecuteRequest_files>? Files { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.ExecuteRequestFilesItem>? Files { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Together.OpenApiClient.Models.ExecuteRequest_files> Files { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.ExecuteRequestFilesItem> Files { get; set; }
 #endif
         /// <summary>Programming language for the code to execute. Currently only supports Python.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.ExecuteRequest_language? Language { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.ExecuteRequestLanguage? Language { get; set; }
         /// <summary>Identifier of the current session. Used to make follow-up calls. Returns an error if the session does not belong to the caller or has expired.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -46,7 +46,6 @@ namespace Soenneker.Together.OpenApiClient.Models
         public ExecuteRequest()
         {
             AdditionalData = new Dictionary<string, object>();
-            Language = global::Soenneker.Together.OpenApiClient.Models.ExecuteRequest_language.Python;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -67,8 +66,8 @@ namespace Soenneker.Together.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "code", n => { Code = n.GetStringValue(); } },
-                { "files", n => { Files = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.ExecuteRequest_files>(global::Soenneker.Together.OpenApiClient.Models.ExecuteRequest_files.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "language", n => { Language = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.ExecuteRequest_language>(); } },
+                { "files", n => { Files = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.ExecuteRequestFilesItem>(global::Soenneker.Together.OpenApiClient.Models.ExecuteRequestFilesItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "language", n => { Language = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.ExecuteRequestLanguage>(); } },
                 { "session_id", n => { SessionId = n.GetStringValue(); } },
             };
         }
@@ -80,8 +79,8 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("code", Code);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.ExecuteRequest_files>("files", Files);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.ExecuteRequest_language>("language", Language);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.ExecuteRequestFilesItem>("files", Files);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.ExecuteRequestLanguage>("language", Language);
             writer.WriteStringValue("session_id", SessionId);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.Together.OpenApiClient.Models.EvaluationClassifyResults"/>, <see cref="global::Soenneker.Together.OpenApiClient.Models.EvaluationCompareResults"/>, <see cref="global::Soenneker.Together.OpenApiClient.Models.EvaluationJobResultsMember1"/>, <see cref="global::Soenneker.Together.OpenApiClient.Models.EvaluationScoreResults"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.Together.OpenApiClient.Models.EvaluationClassifyResults"/>, <see cref="global::Soenneker.Together.OpenApiClient.Models.EvaluationCompareResults"/>, <see cref="global::Soenneker.Together.OpenApiClient.Models.EvaluationJobResultsOneOf4"/>, <see cref="global::Soenneker.Together.OpenApiClient.Models.EvaluationScoreResults"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class EvaluationJobResults : IComposedTypeWrapper, IParsable
@@ -29,13 +29,13 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public global::Soenneker.Together.OpenApiClient.Models.EvaluationCompareResults EvaluationCompareResults { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.EvaluationJobResultsMember1"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.EvaluationJobResultsOneOf4"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.EvaluationJobResultsMember1? EvaluationJobResultsMember1 { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.EvaluationJobResultsOneOf4? EvaluationJobResultsOneOf4 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.EvaluationJobResultsMember1 EvaluationJobResultsMember1 { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.EvaluationJobResultsOneOf4 EvaluationJobResultsOneOf4 { get; set; }
 #endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.EvaluationScoreResults"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -63,9 +63,9 @@ namespace Soenneker.Together.OpenApiClient.Models
             {
                 result.EvaluationCompareResults = new global::Soenneker.Together.OpenApiClient.Models.EvaluationCompareResults();
             }
-            else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("EvaluationJobResultsOneOf4".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.EvaluationJobResultsMember1 = new global::Soenneker.Together.OpenApiClient.Models.EvaluationJobResultsMember1();
+                result.EvaluationJobResultsOneOf4 = new global::Soenneker.Together.OpenApiClient.Models.EvaluationJobResultsOneOf4();
             }
             else if("EvaluationScoreResults".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
@@ -87,9 +87,9 @@ namespace Soenneker.Together.OpenApiClient.Models
             {
                 return EvaluationCompareResults.GetFieldDeserializers();
             }
-            else if(EvaluationJobResultsMember1 != null)
+            else if(EvaluationJobResultsOneOf4 != null)
             {
-                return EvaluationJobResultsMember1.GetFieldDeserializers();
+                return EvaluationJobResultsOneOf4.GetFieldDeserializers();
             }
             else if(EvaluationScoreResults != null)
             {
@@ -112,9 +112,9 @@ namespace Soenneker.Together.OpenApiClient.Models
             {
                 writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.EvaluationCompareResults>(null, EvaluationCompareResults);
             }
-            else if(EvaluationJobResultsMember1 != null)
+            else if(EvaluationJobResultsOneOf4 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.EvaluationJobResultsMember1>(null, EvaluationJobResultsMember1);
+                writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.EvaluationJobResultsOneOf4>(null, EvaluationJobResultsOneOf4);
             }
             else if(EvaluationScoreResults != null)
             {

@@ -8,18 +8,18 @@ using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.Together.OpenApiClient.Models.EvaluationModelOrString_Branch1"/>, <see cref="global::Soenneker.Together.OpenApiClient.Models.EvaluationModelRequest"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.Together.OpenApiClient.Models.EvaluationModelOrStringBranch1"/>, <see cref="global::Soenneker.Together.OpenApiClient.Models.EvaluationModelRequest"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class EvaluationModelOrString : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.EvaluationModelOrString_Branch1"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.EvaluationModelOrStringBranch1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.EvaluationModelOrString_Branch1? EvaluationModelOrStringBranch1 { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.EvaluationModelOrStringBranch1? EvaluationModelOrStringBranch1 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.EvaluationModelOrString_Branch1 EvaluationModelOrStringBranch1 { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.EvaluationModelOrStringBranch1 EvaluationModelOrStringBranch1 { get; set; }
 #endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.EvaluationModelRequest"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -41,7 +41,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             var result = new global::Soenneker.Together.OpenApiClient.Models.EvaluationModelOrString();
             if("EvaluationModelOrString_1".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.EvaluationModelOrStringBranch1 = new global::Soenneker.Together.OpenApiClient.Models.EvaluationModelOrString_Branch1();
+                result.EvaluationModelOrStringBranch1 = new global::Soenneker.Together.OpenApiClient.Models.EvaluationModelOrStringBranch1();
             }
             else if("EvaluationModelRequest".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
@@ -74,7 +74,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             if(EvaluationModelOrStringBranch1 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.EvaluationModelOrString_Branch1>(null, EvaluationModelOrStringBranch1);
+                writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.EvaluationModelOrStringBranch1>(null, EvaluationModelOrStringBranch1);
             }
             else if(EvaluationModelRequest != null)
             {

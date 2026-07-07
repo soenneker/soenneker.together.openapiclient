@@ -13,21 +13,21 @@ using System;
 namespace Soenneker.Together.OpenApiClient.Rl.TrainingSessions.Item.Operations.OptimStep
 {
     /// <summary>
-    /// Builds and executes requests for operations under \rl\training-sessions\{session_id}\operations\optim-step
+    /// Builds and executes requests for operations under \rl\training-sessions\{sessionId}\operations\optim-step
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class OptimStepRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.Together.OpenApiClient.rl.trainingSessions.item.operations.optimStep.item collection</summary>
         /// <param name="position">Unique identifier of the item</param>
-        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Rl.TrainingSessions.Item.Operations.OptimStep.Item.WithOperation_ItemRequestBuilder"/></returns>
-        public global::Soenneker.Together.OpenApiClient.Rl.TrainingSessions.Item.Operations.OptimStep.Item.WithOperation_ItemRequestBuilder this[string position]
+        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Rl.TrainingSessions.Item.Operations.OptimStep.Item.WithOperationItemRequestBuilder"/></returns>
+        public global::Soenneker.Together.OpenApiClient.Rl.TrainingSessions.Item.Operations.OptimStep.Item.WithOperationItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("operation_id", position);
-                return new global::Soenneker.Together.OpenApiClient.Rl.TrainingSessions.Item.Operations.OptimStep.Item.WithOperation_ItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("operationId", position);
+                return new global::Soenneker.Together.OpenApiClient.Rl.TrainingSessions.Item.Operations.OptimStep.Item.WithOperationItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
@@ -35,7 +35,7 @@ namespace Soenneker.Together.OpenApiClient.Rl.TrainingSessions.Item.Operations.O
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public OptimStepRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/rl/training-sessions/{session_id}/operations/optim-step", pathParameters)
+        public OptimStepRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/rl/training-sessions/{sessionId}/operations/optim-step", pathParameters)
         {
         }
         /// <summary>
@@ -43,24 +43,24 @@ namespace Soenneker.Together.OpenApiClient.Rl.TrainingSessions.Item.Operations.O
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public OptimStepRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/rl/training-sessions/{session_id}/operations/optim-step", rawUrl)
+        public OptimStepRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/rl/training-sessions/{sessionId}/operations/optim-step", rawUrl)
         {
         }
         /// <summary>
         /// Submits an optimizer step operation that will asynchronously apply accumulated gradients to update model parameters.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.RLOptimStepOperation"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.RlOptimStepOperation"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.ErrorData">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Together.OpenApiClient.Models.RLOptimStepOperation?> PostAsync(global::Soenneker.Together.OpenApiClient.Models.RLOptimStepBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Together.OpenApiClient.Models.RlOptimStepOperation?> PostAsync(global::Soenneker.Together.OpenApiClient.Models.RlOptimStepBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Together.OpenApiClient.Models.RLOptimStepOperation> PostAsync(global::Soenneker.Together.OpenApiClient.Models.RLOptimStepBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Together.OpenApiClient.Models.RlOptimStepOperation> PostAsync(global::Soenneker.Together.OpenApiClient.Models.RlOptimStepBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -69,7 +69,7 @@ namespace Soenneker.Together.OpenApiClient.Rl.TrainingSessions.Item.Operations.O
             {
                 { "XXX", global::Soenneker.Together.OpenApiClient.Models.ErrorData.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.RLOptimStepOperation>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.RLOptimStepOperation.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.RlOptimStepOperation>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.RlOptimStepOperation.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Submits an optimizer step operation that will asynchronously apply accumulated gradients to update model parameters.
@@ -79,11 +79,11 @@ namespace Soenneker.Together.OpenApiClient.Rl.TrainingSessions.Item.Operations.O
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(global::Soenneker.Together.OpenApiClient.Models.RLOptimStepBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.Together.OpenApiClient.Models.RlOptimStepBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(global::Soenneker.Together.OpenApiClient.Models.RLOptimStepBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.Together.OpenApiClient.Models.RlOptimStepBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));

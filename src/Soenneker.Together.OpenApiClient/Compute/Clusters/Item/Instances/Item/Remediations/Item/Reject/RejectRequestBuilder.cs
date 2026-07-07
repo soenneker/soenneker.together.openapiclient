@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.Together.OpenApiClient.Compute.Clusters.Item.Instances.Item.Remediations.Item.Reject
 {
     /// <summary>
-    /// Builds and executes requests for operations under \compute\clusters\{cluster_id}\instances\{instance_id}\remediations\{remediation_id}\reject
+    /// Builds and executes requests for operations under \compute\clusters\{clusterId}\instances\{instanceId}\remediations\{remediationId}\reject
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RejectRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.Together.OpenApiClient.Compute.Clusters.Item.Instances.Item.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public RejectRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/compute/clusters/{cluster_id}/instances/{instance_id}/remediations/{remediation_id}/reject", pathParameters)
+        public RejectRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/compute/clusters/{clusterId}/instances/{instanceId}/remediations/{remediationId}/reject", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.Together.OpenApiClient.Compute.Clusters.Item.Instances.Item.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public RejectRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/compute/clusters/{cluster_id}/instances/{instance_id}/remediations/{remediation_id}/reject", rawUrl)
+        public RejectRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/compute/clusters/{clusterId}/instances/{instanceId}/remediations/{remediationId}/reject", rawUrl)
         {
         }
         /// <summary>

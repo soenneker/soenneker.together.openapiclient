@@ -17,18 +17,18 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>The data property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.SessionListResponse_data? Data { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.SessionListResponseAllOf2Data? Data { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.SessionListResponse_data Data { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.SessionListResponseAllOf2Data Data { get; set; }
 #endif
         /// <summary>The errors property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Together.OpenApiClient.Models.SessionListResponse_errors>? Errors { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.SessionListResponseResponseErrorsItem>? Errors { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Together.OpenApiClient.Models.SessionListResponse_errors> Errors { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.SessionListResponseResponseErrorsItem> Errors { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.SessionListResponse"/> and sets the default values.
@@ -55,8 +55,8 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "data", n => { Data = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.SessionListResponse_data>(global::Soenneker.Together.OpenApiClient.Models.SessionListResponse_data.CreateFromDiscriminatorValue); } },
-                { "errors", n => { Errors = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.SessionListResponse_errors>(global::Soenneker.Together.OpenApiClient.Models.SessionListResponse_errors.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "data", n => { Data = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.SessionListResponseAllOf2Data>(global::Soenneker.Together.OpenApiClient.Models.SessionListResponseAllOf2Data.CreateFromDiscriminatorValue); } },
+                { "errors", n => { Errors = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.SessionListResponseResponseErrorsItem>(global::Soenneker.Together.OpenApiClient.Models.SessionListResponseResponseErrorsItem.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -66,8 +66,8 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.SessionListResponse_data>("data", Data);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.SessionListResponse_errors>("errors", Errors);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.SessionListResponseAllOf2Data>("data", Data);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.SessionListResponseResponseErrorsItem>("errors", Errors);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -24,7 +24,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string CustomMetricName { get; set; }
 #endif
         /// <summary>Metric must be CustomMetric</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.CustomMetricAutoscalingConfig_metric? Metric { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.CustomMetricAutoscalingConfigMetric? Metric { get; set; }
         /// <summary>&quot;Target is the threshold value. Default: 500&quot;</summary>
         public double? Target { get; set; }
         /// <summary>
@@ -53,7 +53,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "custom_metric_name", n => { CustomMetricName = n.GetStringValue(); } },
-                { "metric", n => { Metric = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.CustomMetricAutoscalingConfig_metric>(); } },
+                { "metric", n => { Metric = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.CustomMetricAutoscalingConfigMetric>(); } },
                 { "target", n => { Target = n.GetDoubleValue(); } },
             };
         }
@@ -65,7 +65,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("custom_metric_name", CustomMetricName);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.CustomMetricAutoscalingConfig_metric>("metric", Metric);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.CustomMetricAutoscalingConfigMetric>("metric", Metric);
             writer.WriteDoubleValue("target", Target);
             writer.WriteAdditionalData(AdditionalData);
         }

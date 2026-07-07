@@ -63,14 +63,13 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string ModelSource { get; set; }
 #endif
         /// <summary>Whether the model is a full model or an adapter</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.ModelUploadRequest_model_type? ModelType { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.ModelUploadRequestModelType? ModelType { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.ModelUploadRequest"/> and sets the default values.
         /// </summary>
         public ModelUploadRequest()
         {
             AdditionalData = new Dictionary<string, object>();
-            ModelType = global::Soenneker.Together.OpenApiClient.Models.ModelUploadRequest_model_type.Model;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -96,7 +95,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "lora_model", n => { LoraModel = n.GetStringValue(); } },
                 { "model_name", n => { ModelName = n.GetStringValue(); } },
                 { "model_source", n => { ModelSource = n.GetStringValue(); } },
-                { "model_type", n => { ModelType = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.ModelUploadRequest_model_type>(); } },
+                { "model_type", n => { ModelType = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.ModelUploadRequestModelType>(); } },
             };
         }
         /// <summary>
@@ -112,7 +111,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteStringValue("lora_model", LoraModel);
             writer.WriteStringValue("model_name", ModelName);
             writer.WriteStringValue("model_source", ModelSource);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.ModelUploadRequest_model_type>("model_type", ModelType);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.ModelUploadRequestModelType>("model_type", ModelType);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

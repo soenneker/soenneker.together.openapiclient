@@ -15,7 +15,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Initial status of the job</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.EvaluationResponse_status? Status { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.EvaluationResponseStatus? Status { get; set; }
         /// <summary>The ID of the created evaluation job</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -49,7 +49,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.EvaluationResponse_status>(); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.EvaluationResponseStatus>(); } },
                 { "workflow_id", n => { WorkflowId = n.GetStringValue(); } },
             };
         }
@@ -60,7 +60,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.EvaluationResponse_status>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.EvaluationResponseStatus>("status", Status);
             writer.WriteStringValue("workflow_id", WorkflowId);
             writer.WriteAdditionalData(AdditionalData);
         }

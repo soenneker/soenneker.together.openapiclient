@@ -24,18 +24,18 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Job metadata. Contains keys from the submit request, plus anymodifications from the model or system (e.g. progress, retryhistory).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.QueueJobStatusResponse_info? Info { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.QueueJobStatusResponseInfoProperty? Info { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.QueueJobStatusResponse_info Info { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.QueueJobStatusResponseInfoProperty Info { get; set; }
 #endif
         /// <summary>Freeform model input, as submitted</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.QueueJobStatusResponse_inputs? Inputs { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.QueueJobStatusResponseInputsProperty? Inputs { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.QueueJobStatusResponse_inputs Inputs { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.QueueJobStatusResponseInputsProperty Inputs { get; set; }
 #endif
         /// <summary>Model identifier the job was submitted to</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -48,10 +48,10 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Freeform model output, populated when the job reaches done status. Contents are model-specific.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.QueueJobStatusResponse_outputs? Outputs { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.QueueJobStatusResponseOutputsProperty? Outputs { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.QueueJobStatusResponse_outputs Outputs { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.QueueJobStatusResponseOutputsProperty Outputs { get; set; }
 #endif
         /// <summary>Job priority. Higher values are processed first.</summary>
         public int? Priority { get; set; }
@@ -66,7 +66,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Number of times this job has been retried. Workers set a claimtimeout and must send periodic status updates to keep the job alive.If no update is received within the timeout, the job is returned tothe queue and retried. After 3 retries the job is permanentlyfailed. Jobs explicitly failed by the model are not retried.</summary>
         public int? Retries { get; set; }
         /// <summary>&quot;Current job status. Transitions: pending → running → done/failed. A pending job may also be canceled.&quot;</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.QueueJobStatusResponse_status? Status { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.QueueJobStatusResponseStatus? Status { get; set; }
         /// <summary>Non-fatal messages about the request (e.g. deprecation notices)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -103,14 +103,14 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "claimed_at", n => { ClaimedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "done_at", n => { DoneAt = n.GetDateTimeOffsetValue(); } },
-                { "info", n => { Info = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.QueueJobStatusResponse_info>(global::Soenneker.Together.OpenApiClient.Models.QueueJobStatusResponse_info.CreateFromDiscriminatorValue); } },
-                { "inputs", n => { Inputs = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.QueueJobStatusResponse_inputs>(global::Soenneker.Together.OpenApiClient.Models.QueueJobStatusResponse_inputs.CreateFromDiscriminatorValue); } },
+                { "info", n => { Info = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.QueueJobStatusResponseInfoProperty>(global::Soenneker.Together.OpenApiClient.Models.QueueJobStatusResponseInfoProperty.CreateFromDiscriminatorValue); } },
+                { "inputs", n => { Inputs = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.QueueJobStatusResponseInputsProperty>(global::Soenneker.Together.OpenApiClient.Models.QueueJobStatusResponseInputsProperty.CreateFromDiscriminatorValue); } },
                 { "model", n => { Model = n.GetStringValue(); } },
-                { "outputs", n => { Outputs = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.QueueJobStatusResponse_outputs>(global::Soenneker.Together.OpenApiClient.Models.QueueJobStatusResponse_outputs.CreateFromDiscriminatorValue); } },
+                { "outputs", n => { Outputs = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.QueueJobStatusResponseOutputsProperty>(global::Soenneker.Together.OpenApiClient.Models.QueueJobStatusResponseOutputsProperty.CreateFromDiscriminatorValue); } },
                 { "priority", n => { Priority = n.GetIntValue(); } },
                 { "request_id", n => { RequestId = n.GetStringValue(); } },
                 { "retries", n => { Retries = n.GetIntValue(); } },
-                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.QueueJobStatusResponse_status>(); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.QueueJobStatusResponseStatus>(); } },
                 { "warnings", n => { Warnings = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
         }
@@ -124,14 +124,14 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("claimed_at", ClaimedAt);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteDateTimeOffsetValue("done_at", DoneAt);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.QueueJobStatusResponse_info>("info", Info);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.QueueJobStatusResponse_inputs>("inputs", Inputs);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.QueueJobStatusResponseInfoProperty>("info", Info);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.QueueJobStatusResponseInputsProperty>("inputs", Inputs);
             writer.WriteStringValue("model", Model);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.QueueJobStatusResponse_outputs>("outputs", Outputs);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.QueueJobStatusResponseOutputsProperty>("outputs", Outputs);
             writer.WriteIntValue("priority", Priority);
             writer.WriteStringValue("request_id", RequestId);
             writer.WriteIntValue("retries", Retries);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.QueueJobStatusResponse_status>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.QueueJobStatusResponseStatus>("status", Status);
             writer.WriteCollectionOfPrimitiveValues<string>("warnings", Warnings);
             writer.WriteAdditionalData(AdditionalData);
         }

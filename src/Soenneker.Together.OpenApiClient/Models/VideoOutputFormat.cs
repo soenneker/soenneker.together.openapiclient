@@ -10,11 +10,11 @@ namespace Soenneker.Together.OpenApiClient.Models
     {
         [EnumMember(Value = "MP4")]
         #pragma warning disable CS1591
-        MP4,
+        Mp4,
         #pragma warning restore CS1591
         [EnumMember(Value = "WEBM")]
         #pragma warning disable CS1591
-        WEBM,
+        Webm,
         #pragma warning restore CS1591
     }
 }

@@ -25,10 +25,10 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>&quot;Autoscaling configuration. Example: {\&quot;metric\&quot;: \&quot;QueueBacklogPerWorker\&quot;, \&quot;target\&quot;: 1.01} to scale based on queue backlog. Omit or set to null to disable autoscaling&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.CreateDeploymentRequest.CreateDeploymentRequest_autoscaling? Autoscaling { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.CreateDeploymentRequestAutoscaling? Autoscaling { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.CreateDeploymentRequest.CreateDeploymentRequest_autoscaling Autoscaling { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.CreateDeploymentRequestAutoscaling Autoscaling { get; set; }
 #endif
         /// <summary>Command overrides the container&apos;s ENTRYPOINT. Provide as an array (e.g., [&quot;/bin/sh&quot;, &quot;-c&quot;])</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -59,7 +59,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>GPUCount is the number of GPUs to allocate per container instance. Defaults to 0 if not specified</summary>
         public int? GpuCount { get; set; }
         /// <summary>GPUType specifies the GPU hardware to use (e.g., &quot;h100-80gb&quot;).</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.CreateDeploymentRequest_gpu_type? GpuType { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.CreateDeploymentRequestGpuType? GpuType { get; set; }
         /// <summary>HealthCheckPath is the HTTP path for health checks (e.g., &quot;/health&quot;). If set, the platform checks this endpoint to determine container health.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -130,13 +130,13 @@ namespace Soenneker.Together.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "args", n => { Args = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "autoscaling", n => { Autoscaling = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.CreateDeploymentRequest.CreateDeploymentRequest_autoscaling>(global::Soenneker.Together.OpenApiClient.Models.CreateDeploymentRequest.CreateDeploymentRequest_autoscaling.CreateFromDiscriminatorValue); } },
+                { "autoscaling", n => { Autoscaling = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.CreateDeploymentRequestAutoscaling>(global::Soenneker.Together.OpenApiClient.Models.CreateDeploymentRequestAutoscaling.CreateFromDiscriminatorValue); } },
                 { "command", n => { Command = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "cpu", n => { Cpu = n.GetDoubleValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "environment_variables", n => { EnvironmentVariables = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.EnvironmentVariable>(global::Soenneker.Together.OpenApiClient.Models.EnvironmentVariable.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "gpu_count", n => { GpuCount = n.GetIntValue(); } },
-                { "gpu_type", n => { GpuType = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.CreateDeploymentRequest_gpu_type>(); } },
+                { "gpu_type", n => { GpuType = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.CreateDeploymentRequestGpuType>(); } },
                 { "health_check_path", n => { HealthCheckPath = n.GetStringValue(); } },
                 { "image", n => { Image = n.GetStringValue(); } },
                 { "max_replicas", n => { MaxReplicas = n.GetIntValue(); } },
@@ -157,13 +157,13 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("args", Args);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.CreateDeploymentRequest.CreateDeploymentRequest_autoscaling>("autoscaling", Autoscaling);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.CreateDeploymentRequestAutoscaling>("autoscaling", Autoscaling);
             writer.WriteCollectionOfPrimitiveValues<string>("command", Command);
             writer.WriteDoubleValue("cpu", Cpu);
             writer.WriteStringValue("description", Description);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.EnvironmentVariable>("environment_variables", EnvironmentVariables);
             writer.WriteIntValue("gpu_count", GpuCount);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.CreateDeploymentRequest_gpu_type>("gpu_type", GpuType);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.CreateDeploymentRequestGpuType>("gpu_type", GpuType);
             writer.WriteStringValue("health_check_path", HealthCheckPath);
             writer.WriteStringValue("image", Image);
             writer.WriteIntValue("max_replicas", MaxReplicas);
@@ -175,101 +175,6 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteIntValue("termination_grace_period_seconds", TerminationGracePeriodSeconds);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.VolumeMount>("volumes", Volumes);
             writer.WriteAdditionalData(AdditionalData);
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.Together.OpenApiClient.Models.CustomMetricAutoscalingConfig"/>, <see cref="global::Soenneker.Together.OpenApiClient.Models.HTTPAutoscalingConfig"/>, <see cref="global::Soenneker.Together.OpenApiClient.Models.QueueAutoscalingConfig"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class CreateDeploymentRequest_autoscaling : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.CustomMetricAutoscalingConfig"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.Together.OpenApiClient.Models.CustomMetricAutoscalingConfig? CustomMetricAutoscalingConfig { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.Together.OpenApiClient.Models.CustomMetricAutoscalingConfig CustomMetricAutoscalingConfig { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.HTTPAutoscalingConfig"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.Together.OpenApiClient.Models.HTTPAutoscalingConfig? HTTPAutoscalingConfig { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.Together.OpenApiClient.Models.HTTPAutoscalingConfig HTTPAutoscalingConfig { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.QueueAutoscalingConfig"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.Together.OpenApiClient.Models.QueueAutoscalingConfig? QueueAutoscalingConfig { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.Together.OpenApiClient.Models.QueueAutoscalingConfig QueueAutoscalingConfig { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.CreateDeploymentRequest.CreateDeploymentRequest_autoscaling"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.Together.OpenApiClient.Models.CreateDeploymentRequest.CreateDeploymentRequest_autoscaling CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-                var result = new global::Soenneker.Together.OpenApiClient.Models.CreateDeploymentRequest.CreateDeploymentRequest_autoscaling();
-                if("CustomMetricAutoscalingConfig".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.CustomMetricAutoscalingConfig = new global::Soenneker.Together.OpenApiClient.Models.CustomMetricAutoscalingConfig();
-                }
-                else if("HTTPAutoscalingConfig".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.HTTPAutoscalingConfig = new global::Soenneker.Together.OpenApiClient.Models.HTTPAutoscalingConfig();
-                }
-                else if("QueueAutoscalingConfig".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.QueueAutoscalingConfig = new global::Soenneker.Together.OpenApiClient.Models.QueueAutoscalingConfig();
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(CustomMetricAutoscalingConfig != null)
-                {
-                    return CustomMetricAutoscalingConfig.GetFieldDeserializers();
-                }
-                else if(HTTPAutoscalingConfig != null)
-                {
-                    return HTTPAutoscalingConfig.GetFieldDeserializers();
-                }
-                else if(QueueAutoscalingConfig != null)
-                {
-                    return QueueAutoscalingConfig.GetFieldDeserializers();
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(CustomMetricAutoscalingConfig != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.CustomMetricAutoscalingConfig>(null, CustomMetricAutoscalingConfig);
-                }
-                else if(HTTPAutoscalingConfig != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.HTTPAutoscalingConfig>(null, HTTPAutoscalingConfig);
-                }
-                else if(QueueAutoscalingConfig != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.QueueAutoscalingConfig>(null, QueueAutoscalingConfig);
-                }
-            }
         }
     }
 }

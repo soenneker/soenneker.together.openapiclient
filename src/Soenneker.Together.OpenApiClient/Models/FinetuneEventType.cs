@@ -10,95 +10,95 @@ namespace Soenneker.Together.OpenApiClient.Models
     {
         [EnumMember(Value = "job_pending")]
         #pragma warning disable CS1591
-        Job_pending,
+        JobPending,
         #pragma warning restore CS1591
         [EnumMember(Value = "job_start")]
         #pragma warning disable CS1591
-        Job_start,
+        JobStart,
         #pragma warning restore CS1591
         [EnumMember(Value = "job_stopped")]
         #pragma warning disable CS1591
-        Job_stopped,
+        JobStopped,
         #pragma warning restore CS1591
         [EnumMember(Value = "model_downloading")]
         #pragma warning disable CS1591
-        Model_downloading,
+        ModelDownloading,
         #pragma warning restore CS1591
         [EnumMember(Value = "model_download_complete")]
         #pragma warning disable CS1591
-        Model_download_complete,
+        ModelDownloadComplete,
         #pragma warning restore CS1591
         [EnumMember(Value = "training_data_downloading")]
         #pragma warning disable CS1591
-        Training_data_downloading,
+        TrainingDataDownloading,
         #pragma warning restore CS1591
         [EnumMember(Value = "training_data_download_complete")]
         #pragma warning disable CS1591
-        Training_data_download_complete,
+        TrainingDataDownloadComplete,
         #pragma warning restore CS1591
         [EnumMember(Value = "validation_data_downloading")]
         #pragma warning disable CS1591
-        Validation_data_downloading,
+        ValidationDataDownloading,
         #pragma warning restore CS1591
         [EnumMember(Value = "validation_data_download_complete")]
         #pragma warning disable CS1591
-        Validation_data_download_complete,
+        ValidationDataDownloadComplete,
         #pragma warning restore CS1591
         [EnumMember(Value = "wandb_init")]
         #pragma warning disable CS1591
-        Wandb_init,
+        WandbInit,
         #pragma warning restore CS1591
         [EnumMember(Value = "training_start")]
         #pragma warning disable CS1591
-        Training_start,
+        TrainingStart,
         #pragma warning restore CS1591
         [EnumMember(Value = "checkpoint_save")]
         #pragma warning disable CS1591
-        Checkpoint_save,
+        CheckpointSave,
         #pragma warning restore CS1591
         [EnumMember(Value = "billing_limit")]
         #pragma warning disable CS1591
-        Billing_limit,
+        BillingLimit,
         #pragma warning restore CS1591
         [EnumMember(Value = "epoch_complete")]
         #pragma warning disable CS1591
-        Epoch_complete,
+        EpochComplete,
         #pragma warning restore CS1591
         [EnumMember(Value = "training_complete")]
         #pragma warning disable CS1591
-        Training_complete,
+        TrainingComplete,
         #pragma warning restore CS1591
         [EnumMember(Value = "model_compressing")]
         #pragma warning disable CS1591
-        Model_compressing,
+        ModelCompressing,
         #pragma warning restore CS1591
         [EnumMember(Value = "model_compression_complete")]
         #pragma warning disable CS1591
-        Model_compression_complete,
+        ModelCompressionComplete,
         #pragma warning restore CS1591
         [EnumMember(Value = "model_uploading")]
         #pragma warning disable CS1591
-        Model_uploading,
+        ModelUploading,
         #pragma warning restore CS1591
         [EnumMember(Value = "model_upload_complete")]
         #pragma warning disable CS1591
-        Model_upload_complete,
+        ModelUploadComplete,
         #pragma warning restore CS1591
         [EnumMember(Value = "job_complete")]
         #pragma warning disable CS1591
-        Job_complete,
+        JobComplete,
         #pragma warning restore CS1591
         [EnumMember(Value = "job_error")]
         #pragma warning disable CS1591
-        Job_error,
+        JobError,
         #pragma warning restore CS1591
         [EnumMember(Value = "cancel_requested")]
         #pragma warning disable CS1591
-        Cancel_requested,
+        CancelRequested,
         #pragma warning restore CS1591
         [EnumMember(Value = "job_restarted")]
         #pragma warning disable CS1591
-        Job_restarted,
+        JobRestarted,
         #pragma warning restore CS1591
         [EnumMember(Value = "refund")]
         #pragma warning disable CS1591
@@ -107,6 +107,10 @@ namespace Soenneker.Together.OpenApiClient.Models
         [EnumMember(Value = "warning")]
         #pragma warning disable CS1591
         Warning,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "early_stopped")]
+        #pragma warning disable CS1591
+        EarlyStopped,
         #pragma warning restore CS1591
     }
 }

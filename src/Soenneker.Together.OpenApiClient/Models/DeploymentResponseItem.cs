@@ -25,10 +25,10 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Autoscaling contains autoscaling configuration parameters for this deployment. Omitted when autoscaling is disabled (nil)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItem.DeploymentResponseItem_autoscaling? Autoscaling { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItemAutoscaling? Autoscaling { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItem.DeploymentResponseItem_autoscaling Autoscaling { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItemAutoscaling Autoscaling { get; set; }
 #endif
         /// <summary>Command is the entrypoint command run in the container</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -63,7 +63,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>GPUCount is the number of GPUs allocated to each replica in this deployment</summary>
         public int? GpuCount { get; set; }
         /// <summary>GPUType specifies the type of GPU requested (if any) for this deployment</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItem_gpu_type? GpuType { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItemGpuType? GpuType { get; set; }
         /// <summary>HealthCheckPath is the HTTP path used for health checks of the application</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -103,7 +103,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string Name { get; set; }
 #endif
         /// <summary>The object type, which is always `deployment`.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItem_object? Object { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItemObject? Object { get; set; }
         /// <summary>Port is the container port that the deployment exposes</summary>
         public int? Port { get; set; }
         /// <summary>ReadyReplicas is the current number of replicas that are in the Ready state</summary>
@@ -111,13 +111,13 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>ReplicaEvents is a mapping of replica names or IDs to their status events</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItem_replica_events? ReplicaEvents { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItemReplicaEventsProperty? ReplicaEvents { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItem_replica_events ReplicaEvents { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItemReplicaEventsProperty ReplicaEvents { get; set; }
 #endif
         /// <summary>Status represents the overall status of the deployment (e.g., Updating, Scaling, Ready, Failed)</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItem_status? Status { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItemStatus? Status { get; set; }
         /// <summary>Storage is the amount of storage (in MB or units as defined by the platform) allocated to each replica</summary>
         public int? Storage { get; set; }
         /// <summary>TerminationGracePeriodSeconds is the time in seconds to wait for graceful shutdown before forcefully terminating the replica</summary>
@@ -158,7 +158,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "args", n => { Args = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "autoscaling", n => { Autoscaling = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItem.DeploymentResponseItem_autoscaling>(global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItem.DeploymentResponseItem_autoscaling.CreateFromDiscriminatorValue); } },
+                { "autoscaling", n => { Autoscaling = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItemAutoscaling>(global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItemAutoscaling.CreateFromDiscriminatorValue); } },
                 { "command", n => { Command = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "cpu", n => { Cpu = n.GetDoubleValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
@@ -166,7 +166,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "desired_replicas", n => { DesiredReplicas = n.GetIntValue(); } },
                 { "environment_variables", n => { EnvironmentVariables = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.EnvironmentVariable>(global::Soenneker.Together.OpenApiClient.Models.EnvironmentVariable.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "gpu_count", n => { GpuCount = n.GetIntValue(); } },
-                { "gpu_type", n => { GpuType = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItem_gpu_type>(); } },
+                { "gpu_type", n => { GpuType = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItemGpuType>(); } },
                 { "health_check_path", n => { HealthCheckPath = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "image", n => { Image = n.GetStringValue(); } },
@@ -174,11 +174,11 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "memory", n => { Memory = n.GetDoubleValue(); } },
                 { "min_replicas", n => { MinReplicas = n.GetIntValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItem_object>(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItemObject>(); } },
                 { "port", n => { Port = n.GetIntValue(); } },
                 { "ready_replicas", n => { ReadyReplicas = n.GetIntValue(); } },
-                { "replica_events", n => { ReplicaEvents = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItem_replica_events>(global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItem_replica_events.CreateFromDiscriminatorValue); } },
-                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItem_status>(); } },
+                { "replica_events", n => { ReplicaEvents = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItemReplicaEventsProperty>(global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItemReplicaEventsProperty.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItemStatus>(); } },
                 { "storage", n => { Storage = n.GetIntValue(); } },
                 { "termination_grace_period_seconds", n => { TerminationGracePeriodSeconds = n.GetIntValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
@@ -193,7 +193,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("args", Args);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItem.DeploymentResponseItem_autoscaling>("autoscaling", Autoscaling);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItemAutoscaling>("autoscaling", Autoscaling);
             writer.WriteCollectionOfPrimitiveValues<string>("command", Command);
             writer.WriteDoubleValue("cpu", Cpu);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
@@ -201,7 +201,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteIntValue("desired_replicas", DesiredReplicas);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.EnvironmentVariable>("environment_variables", EnvironmentVariables);
             writer.WriteIntValue("gpu_count", GpuCount);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItem_gpu_type>("gpu_type", GpuType);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItemGpuType>("gpu_type", GpuType);
             writer.WriteStringValue("health_check_path", HealthCheckPath);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("image", Image);
@@ -209,111 +209,16 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteDoubleValue("memory", Memory);
             writer.WriteIntValue("min_replicas", MinReplicas);
             writer.WriteStringValue("name", Name);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItem_object>("object", Object);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItemObject>("object", Object);
             writer.WriteIntValue("port", Port);
             writer.WriteIntValue("ready_replicas", ReadyReplicas);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItem_replica_events>("replica_events", ReplicaEvents);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItem_status>("status", Status);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItemReplicaEventsProperty>("replica_events", ReplicaEvents);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItemStatus>("status", Status);
             writer.WriteIntValue("storage", Storage);
             writer.WriteIntValue("termination_grace_period_seconds", TerminationGracePeriodSeconds);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.VolumeMount>("volumes", Volumes);
             writer.WriteAdditionalData(AdditionalData);
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.Together.OpenApiClient.Models.CustomMetricAutoscalingConfig"/>, <see cref="global::Soenneker.Together.OpenApiClient.Models.HTTPAutoscalingConfig"/>, <see cref="global::Soenneker.Together.OpenApiClient.Models.QueueAutoscalingConfig"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class DeploymentResponseItem_autoscaling : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.CustomMetricAutoscalingConfig"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.Together.OpenApiClient.Models.CustomMetricAutoscalingConfig? CustomMetricAutoscalingConfig { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.Together.OpenApiClient.Models.CustomMetricAutoscalingConfig CustomMetricAutoscalingConfig { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.HTTPAutoscalingConfig"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.Together.OpenApiClient.Models.HTTPAutoscalingConfig? HTTPAutoscalingConfig { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.Together.OpenApiClient.Models.HTTPAutoscalingConfig HTTPAutoscalingConfig { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.QueueAutoscalingConfig"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.Together.OpenApiClient.Models.QueueAutoscalingConfig? QueueAutoscalingConfig { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.Together.OpenApiClient.Models.QueueAutoscalingConfig QueueAutoscalingConfig { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItem.DeploymentResponseItem_autoscaling"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItem.DeploymentResponseItem_autoscaling CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-                var result = new global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItem.DeploymentResponseItem_autoscaling();
-                if("CustomMetricAutoscalingConfig".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.CustomMetricAutoscalingConfig = new global::Soenneker.Together.OpenApiClient.Models.CustomMetricAutoscalingConfig();
-                }
-                else if("HTTPAutoscalingConfig".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.HTTPAutoscalingConfig = new global::Soenneker.Together.OpenApiClient.Models.HTTPAutoscalingConfig();
-                }
-                else if("QueueAutoscalingConfig".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.QueueAutoscalingConfig = new global::Soenneker.Together.OpenApiClient.Models.QueueAutoscalingConfig();
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(CustomMetricAutoscalingConfig != null)
-                {
-                    return CustomMetricAutoscalingConfig.GetFieldDeserializers();
-                }
-                else if(HTTPAutoscalingConfig != null)
-                {
-                    return HTTPAutoscalingConfig.GetFieldDeserializers();
-                }
-                else if(QueueAutoscalingConfig != null)
-                {
-                    return QueueAutoscalingConfig.GetFieldDeserializers();
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(CustomMetricAutoscalingConfig != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.CustomMetricAutoscalingConfig>(null, CustomMetricAutoscalingConfig);
-                }
-                else if(HTTPAutoscalingConfig != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.HTTPAutoscalingConfig>(null, HTTPAutoscalingConfig);
-                }
-                else if(QueueAutoscalingConfig != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.QueueAutoscalingConfig>(null, QueueAutoscalingConfig);
-                }
-            }
         }
     }
 }

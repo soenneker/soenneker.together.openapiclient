@@ -13,21 +13,21 @@ using System;
 namespace Soenneker.Together.OpenApiClient.Rl.TrainingSessions.Item.Operations.TrainingCheckpoint
 {
     /// <summary>
-    /// Builds and executes requests for operations under \rl\training-sessions\{session_id}\operations\training-checkpoint
+    /// Builds and executes requests for operations under \rl\training-sessions\{sessionId}\operations\training-checkpoint
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TrainingCheckpointRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.Together.OpenApiClient.rl.trainingSessions.item.operations.trainingCheckpoint.item collection</summary>
         /// <param name="position">Unique identifier of the item</param>
-        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Rl.TrainingSessions.Item.Operations.TrainingCheckpoint.Item.WithOperation_ItemRequestBuilder"/></returns>
-        public global::Soenneker.Together.OpenApiClient.Rl.TrainingSessions.Item.Operations.TrainingCheckpoint.Item.WithOperation_ItemRequestBuilder this[string position]
+        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Rl.TrainingSessions.Item.Operations.TrainingCheckpoint.Item.WithOperationItemRequestBuilder"/></returns>
+        public global::Soenneker.Together.OpenApiClient.Rl.TrainingSessions.Item.Operations.TrainingCheckpoint.Item.WithOperationItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("operation_id", position);
-                return new global::Soenneker.Together.OpenApiClient.Rl.TrainingSessions.Item.Operations.TrainingCheckpoint.Item.WithOperation_ItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("operationId", position);
+                return new global::Soenneker.Together.OpenApiClient.Rl.TrainingSessions.Item.Operations.TrainingCheckpoint.Item.WithOperationItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
@@ -35,7 +35,7 @@ namespace Soenneker.Together.OpenApiClient.Rl.TrainingSessions.Item.Operations.T
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public TrainingCheckpointRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/rl/training-sessions/{session_id}/operations/training-checkpoint", pathParameters)
+        public TrainingCheckpointRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/rl/training-sessions/{sessionId}/operations/training-checkpoint", pathParameters)
         {
         }
         /// <summary>
@@ -43,23 +43,23 @@ namespace Soenneker.Together.OpenApiClient.Rl.TrainingSessions.Item.Operations.T
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public TrainingCheckpointRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/rl/training-sessions/{session_id}/operations/training-checkpoint", rawUrl)
+        public TrainingCheckpointRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/rl/training-sessions/{sessionId}/operations/training-checkpoint", rawUrl)
         {
         }
         /// <summary>
         /// Submits an operation that will asynchronously save the full training state (adapter + optimizer + step).
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.RLTrainingCheckpointOperation"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.RlTrainingCheckpointOperation"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.ErrorData">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Together.OpenApiClient.Models.RLTrainingCheckpointOperation?> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Together.OpenApiClient.Models.RlTrainingCheckpointOperation?> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Together.OpenApiClient.Models.RLTrainingCheckpointOperation> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Together.OpenApiClient.Models.RlTrainingCheckpointOperation> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToPostRequestInformation(requestConfiguration);
@@ -67,7 +67,7 @@ namespace Soenneker.Together.OpenApiClient.Rl.TrainingSessions.Item.Operations.T
             {
                 { "XXX", global::Soenneker.Together.OpenApiClient.Models.ErrorData.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.RLTrainingCheckpointOperation>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.RLTrainingCheckpointOperation.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.RlTrainingCheckpointOperation>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.RlTrainingCheckpointOperation.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Submits an operation that will asynchronously save the full training state (adapter + optimizer + step).

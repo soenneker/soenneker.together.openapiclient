@@ -30,7 +30,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string ResultFileId { get; set; }
 #endif
-        /// <summary>Number of samples that resulted in a tie</summary>
+        /// <summary>Number of samples that resulted in a tie score</summary>
         public int? Ties { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.EvaluationCompareResults"/> and sets the default values.

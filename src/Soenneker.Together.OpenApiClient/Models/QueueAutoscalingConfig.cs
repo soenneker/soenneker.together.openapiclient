@@ -16,7 +16,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Metric must be QueueBacklogPerWorker</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.QueueAutoscalingConfig_metric? Metric { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.QueueAutoscalingConfigMetric? Metric { get; set; }
         /// <summary>Model overrides the model name for queue status lookup. Defaults to the deployment app name</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -52,7 +52,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "metric", n => { Metric = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.QueueAutoscalingConfig_metric>(); } },
+                { "metric", n => { Metric = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.QueueAutoscalingConfigMetric>(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
                 { "target", n => { Target = n.GetDoubleValue(); } },
             };
@@ -64,7 +64,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.QueueAutoscalingConfig_metric>("metric", Metric);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.QueueAutoscalingConfigMetric>("metric", Metric);
             writer.WriteStringValue("model", Model);
             writer.WriteDoubleValue("target", Target);
             writer.WriteAdditionalData(AdditionalData);

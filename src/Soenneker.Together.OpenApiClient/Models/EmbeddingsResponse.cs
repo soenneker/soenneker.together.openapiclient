@@ -17,10 +17,10 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>The data property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Together.OpenApiClient.Models.EmbeddingsResponse_data>? Data { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.EmbeddingsResponseDataItem>? Data { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Together.OpenApiClient.Models.EmbeddingsResponse_data> Data { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.EmbeddingsResponseDataItem> Data { get; set; }
 #endif
         /// <summary>The model property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -31,7 +31,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string Model { get; set; }
 #endif
         /// <summary>The object type, which is always `list`.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.EmbeddingsResponse_object? Object { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.EmbeddingsResponseObject? Object { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.EmbeddingsResponse"/> and sets the default values.
         /// </summary>
@@ -57,9 +57,9 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "data", n => { Data = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.EmbeddingsResponse_data>(global::Soenneker.Together.OpenApiClient.Models.EmbeddingsResponse_data.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "data", n => { Data = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.EmbeddingsResponseDataItem>(global::Soenneker.Together.OpenApiClient.Models.EmbeddingsResponseDataItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.EmbeddingsResponse_object>(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.EmbeddingsResponseObject>(); } },
             };
         }
         /// <summary>
@@ -69,9 +69,9 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.EmbeddingsResponse_data>("data", Data);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.EmbeddingsResponseDataItem>("data", Data);
             writer.WriteStringValue("model", Model);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.EmbeddingsResponse_object>("object", Object);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.EmbeddingsResponseObject>("object", Object);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

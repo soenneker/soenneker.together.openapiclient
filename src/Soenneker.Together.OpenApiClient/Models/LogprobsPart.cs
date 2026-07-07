@@ -41,10 +41,10 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Top log probabilities for the tokens.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.LogprobsPart_top_logprobs? TopLogprobs { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.LogprobsPartTopLogprobs? TopLogprobs { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.LogprobsPart_top_logprobs TopLogprobs { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.LogprobsPartTopLogprobs TopLogprobs { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.LogprobsPart"/> and sets the default values.
@@ -74,7 +74,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "token_ids", n => { TokenIds = n.GetCollectionOfPrimitiveValues<double?>()?.AsList(); } },
                 { "token_logprobs", n => { TokenLogprobs = n.GetCollectionOfPrimitiveValues<double?>()?.AsList(); } },
                 { "tokens", n => { Tokens = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "top_logprobs", n => { TopLogprobs = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.LogprobsPart_top_logprobs>(global::Soenneker.Together.OpenApiClient.Models.LogprobsPart_top_logprobs.CreateFromDiscriminatorValue); } },
+                { "top_logprobs", n => { TopLogprobs = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.LogprobsPartTopLogprobs>(global::Soenneker.Together.OpenApiClient.Models.LogprobsPartTopLogprobs.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -87,7 +87,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<double?>("token_ids", TokenIds);
             writer.WriteCollectionOfPrimitiveValues<double?>("token_logprobs", TokenLogprobs);
             writer.WriteCollectionOfPrimitiveValues<string>("tokens", Tokens);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.LogprobsPart_top_logprobs>("top_logprobs", TopLogprobs);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.LogprobsPartTopLogprobs>("top_logprobs", TopLogprobs);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

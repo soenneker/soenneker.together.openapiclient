@@ -39,8 +39,8 @@ namespace Soenneker.Together.OpenApiClient.Deployments.Item.Logs
         /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.DeploymentLogs"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.Together.OpenApiClient.Deployments.Item.Logs.DeploymentLogs404Error">When receiving a 404 status code</exception>
-        /// <exception cref="global::Soenneker.Together.OpenApiClient.Deployments.Item.Logs.DeploymentLogs500Error">When receiving a 500 status code</exception>
+        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.GetDeploymentsByIdLogs404ResponseResponseJson">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.GetDeploymentsByIdLogs500ResponseResponseJson">When receiving a 500 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Together.OpenApiClient.Models.DeploymentLogs?> GetAsync(Action<RequestConfiguration<global::Soenneker.Together.OpenApiClient.Deployments.Item.Logs.LogsRequestBuilder.LogsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -53,8 +53,8 @@ namespace Soenneker.Together.OpenApiClient.Deployments.Item.Logs
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "404", global::Soenneker.Together.OpenApiClient.Deployments.Item.Logs.DeploymentLogs404Error.CreateFromDiscriminatorValue },
-                { "500", global::Soenneker.Together.OpenApiClient.Deployments.Item.Logs.DeploymentLogs500Error.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.Together.OpenApiClient.Models.GetDeploymentsByIdLogs404ResponseResponseJson.CreateFromDiscriminatorValue },
+                { "500", global::Soenneker.Together.OpenApiClient.Models.GetDeploymentsByIdLogs500ResponseResponseJson.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.DeploymentLogs>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.DeploymentLogs.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

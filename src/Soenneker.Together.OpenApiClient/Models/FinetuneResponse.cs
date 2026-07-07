@@ -17,13 +17,19 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>The batch_size property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.FinetuneResponse.FinetuneResponse_batch_size? BatchSize { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseBatchSize? BatchSize { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.FinetuneResponse.FinetuneResponse_batch_size BatchSize { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseBatchSize BatchSize { get; set; }
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; set; }
+        /// <summary>Whether the early-stopping criterion triggered.</summary>
+        public bool? EarlyStopped { get; set; }
+        /// <summary>Best validation loss observed, corresponding to early_stopping_best_step. Null if no improving evaluation was recorded (for example, a non-finite first evaluation).</summary>
+        public float? EarlyStoppingBestMetric { get; set; }
+        /// <summary>Step associated with the selected early-stopping artifact. When early_stopping_best_metric is null, no finite best metric was recorded; this is the halt step, not a best-checkpoint step.</summary>
+        public int? EarlyStoppingBestStep { get; set; }
         /// <summary>The epochs_completed property</summary>
         public int? EpochsCompleted { get; set; }
         /// <summary>The eval_steps property</summary>
@@ -75,10 +81,10 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>The lr_scheduler property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.LRScheduler? LrScheduler { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.LrScheduler? LrScheduler { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.LRScheduler LrScheduler { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.LrScheduler LrScheduler { get; set; }
 #endif
         /// <summary>The max_grad_norm property</summary>
         public float? MaxGradNorm { get; set; }
@@ -155,29 +161,37 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>The training_method property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.FinetuneResponse.FinetuneResponse_training_method? TrainingMethod { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseTrainingMethod? TrainingMethod { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.FinetuneResponse.FinetuneResponse_training_method TrainingMethod { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseTrainingMethod TrainingMethod { get; set; }
 #endif
         /// <summary>The training_type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.FinetuneResponse.FinetuneResponse_training_type? TrainingType { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseTrainingType? TrainingType { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.FinetuneResponse.FinetuneResponse_training_type TrainingType { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseTrainingType TrainingType { get; set; }
 #endif
         /// <summary>The train_on_inputs property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.FinetuneResponse.FinetuneResponse_train_on_inputs? TrainOnInputs { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseTrainOnInputs? TrainOnInputs { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.FinetuneResponse.FinetuneResponse_train_on_inputs TrainOnInputs { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseTrainOnInputs TrainOnInputs { get; set; }
 #endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; set; }
+        /// <summary>ID of the user who owns the fine-tune job.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? UserId { get; set; }
+#nullable restore
+#else
+        public string UserId { get; set; }
+#endif
         /// <summary>The validation_file property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -231,8 +245,11 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "batch_size", n => { BatchSize = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.FinetuneResponse.FinetuneResponse_batch_size>(global::Soenneker.Together.OpenApiClient.Models.FinetuneResponse.FinetuneResponse_batch_size.CreateFromDiscriminatorValue); } },
+                { "batch_size", n => { BatchSize = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseBatchSize>(global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseBatchSize.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
+                { "early_stopped", n => { EarlyStopped = n.GetBoolValue(); } },
+                { "early_stopping_best_metric", n => { EarlyStoppingBestMetric = n.GetFloatValue(); } },
+                { "early_stopping_best_step", n => { EarlyStoppingBestStep = n.GetIntValue(); } },
                 { "epochs_completed", n => { EpochsCompleted = n.GetIntValue(); } },
                 { "eval_steps", n => { EvalSteps = n.GetIntValue(); } },
                 { "events", n => { Events = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.FineTuneEvent>(global::Soenneker.Together.OpenApiClient.Models.FineTuneEvent.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -242,7 +259,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "job_id", n => { JobId = n.GetStringValue(); } },
                 { "learning_rate", n => { LearningRate = n.GetDoubleValue(); } },
-                { "lr_scheduler", n => { LrScheduler = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.LRScheduler>(global::Soenneker.Together.OpenApiClient.Models.LRScheduler.CreateFromDiscriminatorValue); } },
+                { "lr_scheduler", n => { LrScheduler = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.LrScheduler>(global::Soenneker.Together.OpenApiClient.Models.LrScheduler.CreateFromDiscriminatorValue); } },
                 { "max_grad_norm", n => { MaxGradNorm = n.GetFloatValue(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
                 { "model_output_name", n => { ModelOutputName = n.GetStringValue(); } },
@@ -258,13 +275,14 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.FinetuneJobStatus>(); } },
                 { "token_count", n => { TokenCount = n.GetIntValue(); } },
                 { "total_price", n => { TotalPrice = n.GetIntValue(); } },
-                { "train_on_inputs", n => { TrainOnInputs = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.FinetuneResponse.FinetuneResponse_train_on_inputs>(global::Soenneker.Together.OpenApiClient.Models.FinetuneResponse.FinetuneResponse_train_on_inputs.CreateFromDiscriminatorValue); } },
+                { "train_on_inputs", n => { TrainOnInputs = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseTrainOnInputs>(global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseTrainOnInputs.CreateFromDiscriminatorValue); } },
                 { "training_file", n => { TrainingFile = n.GetStringValue(); } },
-                { "training_method", n => { TrainingMethod = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.FinetuneResponse.FinetuneResponse_training_method>(global::Soenneker.Together.OpenApiClient.Models.FinetuneResponse.FinetuneResponse_training_method.CreateFromDiscriminatorValue); } },
-                { "training_type", n => { TrainingType = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.FinetuneResponse.FinetuneResponse_training_type>(global::Soenneker.Together.OpenApiClient.Models.FinetuneResponse.FinetuneResponse_training_type.CreateFromDiscriminatorValue); } },
+                { "training_method", n => { TrainingMethod = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseTrainingMethod>(global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseTrainingMethod.CreateFromDiscriminatorValue); } },
+                { "training_type", n => { TrainingType = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseTrainingType>(global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseTrainingType.CreateFromDiscriminatorValue); } },
                 { "trainingfile_numlines", n => { TrainingfileNumlines = n.GetIntValue(); } },
                 { "trainingfile_size", n => { TrainingfileSize = n.GetIntValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
+                { "user_id", n => { UserId = n.GetStringValue(); } },
                 { "validation_file", n => { ValidationFile = n.GetStringValue(); } },
                 { "wandb_project_name", n => { WandbProjectName = n.GetStringValue(); } },
                 { "wandb_url", n => { WandbUrl = n.GetStringValue(); } },
@@ -279,8 +297,11 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.FinetuneResponse.FinetuneResponse_batch_size>("batch_size", BatchSize);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseBatchSize>("batch_size", BatchSize);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
+            writer.WriteBoolValue("early_stopped", EarlyStopped);
+            writer.WriteFloatValue("early_stopping_best_metric", EarlyStoppingBestMetric);
+            writer.WriteIntValue("early_stopping_best_step", EarlyStoppingBestStep);
             writer.WriteIntValue("epochs_completed", EpochsCompleted);
             writer.WriteIntValue("eval_steps", EvalSteps);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.FineTuneEvent>("events", Events);
@@ -290,7 +311,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteGuidValue("id", Id);
             writer.WriteStringValue("job_id", JobId);
             writer.WriteDoubleValue("learning_rate", LearningRate);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.LRScheduler>("lr_scheduler", LrScheduler);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.LrScheduler>("lr_scheduler", LrScheduler);
             writer.WriteFloatValue("max_grad_norm", MaxGradNorm);
             writer.WriteStringValue("model", Model);
             writer.WriteStringValue("model_output_name", ModelOutputName);
@@ -309,288 +330,17 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteStringValue("training_file", TrainingFile);
             writer.WriteIntValue("trainingfile_numlines", TrainingfileNumlines);
             writer.WriteIntValue("trainingfile_size", TrainingfileSize);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.FinetuneResponse.FinetuneResponse_training_method>("training_method", TrainingMethod);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.FinetuneResponse.FinetuneResponse_training_type>("training_type", TrainingType);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.FinetuneResponse.FinetuneResponse_train_on_inputs>("train_on_inputs", TrainOnInputs);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseTrainingMethod>("training_method", TrainingMethod);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseTrainingType>("training_type", TrainingType);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseTrainOnInputs>("train_on_inputs", TrainOnInputs);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
+            writer.WriteStringValue("user_id", UserId);
             writer.WriteStringValue("validation_file", ValidationFile);
             writer.WriteStringValue("wandb_project_name", WandbProjectName);
             writer.WriteStringValue("wandb_url", WandbUrl);
             writer.WriteDoubleValue("warmup_ratio", WarmupRatio);
             writer.WriteFloatValue("weight_decay", WeightDecay);
             writer.WriteAdditionalData(AdditionalData);
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="int"/>, <see cref="string"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class FinetuneResponse_batch_size : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="int"/></summary>
-            public int? Integer { get; set; }
-            /// <summary>Composed type representation for type <see cref="string"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public string? String { get; set; }
-#nullable restore
-#else
-            public string String { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.FinetuneResponse.FinetuneResponse_batch_size"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.Together.OpenApiClient.Models.FinetuneResponse.FinetuneResponse_batch_size CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-                var result = new global::Soenneker.Together.OpenApiClient.Models.FinetuneResponse.FinetuneResponse_batch_size();
-                if(parseNode.GetIntValue() is int integerValue)
-                {
-                    result.Integer = integerValue;
-                }
-                else if(parseNode.GetStringValue() is string stringValue)
-                {
-                    result.String = stringValue;
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(Integer != null)
-                {
-                    writer.WriteIntValue(null, Integer);
-                }
-                else if(String != null)
-                {
-                    writer.WriteStringValue(null, String);
-                }
-            }
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="bool"/>, <see cref="string"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class FinetuneResponse_train_on_inputs : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="bool"/></summary>
-            public bool? Boolean { get; set; }
-            /// <summary>Composed type representation for type <see cref="string"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public string? String { get; set; }
-#nullable restore
-#else
-            public string String { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.FinetuneResponse.FinetuneResponse_train_on_inputs"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.Together.OpenApiClient.Models.FinetuneResponse.FinetuneResponse_train_on_inputs CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-                var result = new global::Soenneker.Together.OpenApiClient.Models.FinetuneResponse.FinetuneResponse_train_on_inputs();
-                if(parseNode.GetBoolValue() is bool booleanValue)
-                {
-                    result.Boolean = booleanValue;
-                }
-                else if(parseNode.GetStringValue() is string stringValue)
-                {
-                    result.String = stringValue;
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(Boolean != null)
-                {
-                    writer.WriteBoolValue(null, Boolean);
-                }
-                else if(String != null)
-                {
-                    writer.WriteStringValue(null, String);
-                }
-            }
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.Together.OpenApiClient.Models.TrainingMethodDPO"/>, <see cref="global::Soenneker.Together.OpenApiClient.Models.TrainingMethodSFT"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class FinetuneResponse_training_method : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.TrainingMethodDPO"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.Together.OpenApiClient.Models.TrainingMethodDPO? TrainingMethodDPO { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.Together.OpenApiClient.Models.TrainingMethodDPO TrainingMethodDPO { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.TrainingMethodSFT"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.Together.OpenApiClient.Models.TrainingMethodSFT? TrainingMethodSFT { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.Together.OpenApiClient.Models.TrainingMethodSFT TrainingMethodSFT { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.FinetuneResponse.FinetuneResponse_training_method"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.Together.OpenApiClient.Models.FinetuneResponse.FinetuneResponse_training_method CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-                var result = new global::Soenneker.Together.OpenApiClient.Models.FinetuneResponse.FinetuneResponse_training_method();
-                if("TrainingMethodDPO".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.TrainingMethodDPO = new global::Soenneker.Together.OpenApiClient.Models.TrainingMethodDPO();
-                }
-                else if("TrainingMethodSFT".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.TrainingMethodSFT = new global::Soenneker.Together.OpenApiClient.Models.TrainingMethodSFT();
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(TrainingMethodDPO != null)
-                {
-                    return TrainingMethodDPO.GetFieldDeserializers();
-                }
-                else if(TrainingMethodSFT != null)
-                {
-                    return TrainingMethodSFT.GetFieldDeserializers();
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(TrainingMethodDPO != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.TrainingMethodDPO>(null, TrainingMethodDPO);
-                }
-                else if(TrainingMethodSFT != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.TrainingMethodSFT>(null, TrainingMethodSFT);
-                }
-            }
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.Together.OpenApiClient.Models.FullTrainingType"/>, <see cref="global::Soenneker.Together.OpenApiClient.Models.LoRATrainingType"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class FinetuneResponse_training_type : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.FullTrainingType"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.Together.OpenApiClient.Models.FullTrainingType? FullTrainingType { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.Together.OpenApiClient.Models.FullTrainingType FullTrainingType { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.LoRATrainingType"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.Together.OpenApiClient.Models.LoRATrainingType? LoRATrainingType { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.Together.OpenApiClient.Models.LoRATrainingType LoRATrainingType { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.FinetuneResponse.FinetuneResponse_training_type"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.Together.OpenApiClient.Models.FinetuneResponse.FinetuneResponse_training_type CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-                var result = new global::Soenneker.Together.OpenApiClient.Models.FinetuneResponse.FinetuneResponse_training_type();
-                if("FullTrainingType".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.FullTrainingType = new global::Soenneker.Together.OpenApiClient.Models.FullTrainingType();
-                }
-                else if("LoRATrainingType".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.LoRATrainingType = new global::Soenneker.Together.OpenApiClient.Models.LoRATrainingType();
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(FullTrainingType != null)
-                {
-                    return FullTrainingType.GetFieldDeserializers();
-                }
-                else if(LoRATrainingType != null)
-                {
-                    return LoRATrainingType.GetFieldDeserializers();
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(FullTrainingType != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.FullTrainingType>(null, FullTrainingType);
-                }
-                else if(LoRATrainingType != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.LoRATrainingType>(null, LoRATrainingType);
-                }
-            }
         }
     }
 }

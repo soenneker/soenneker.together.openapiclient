@@ -62,14 +62,15 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string Model { get; set; }
 #endif
         /// <summary>The desired state of the endpoint</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.CreateEndpointRequest_state? State { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.CreateEndpointRequestState? State { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.CreateEndpointRequest"/> and sets the default values.
         /// </summary>
         public CreateEndpointRequest()
         {
             AdditionalData = new Dictionary<string, object>();
-            State = global::Soenneker.Together.OpenApiClient.Models.CreateEndpointRequest_state.STARTED;
+            DisablePromptCache = false;
+            DisableSpeculativeDecoding = false;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -97,7 +98,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "hardware", n => { Hardware = n.GetStringValue(); } },
                 { "inactive_timeout", n => { InactiveTimeout = n.GetIntValue(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
-                { "state", n => { State = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.CreateEndpointRequest_state>(); } },
+                { "state", n => { State = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.CreateEndpointRequestState>(); } },
             };
         }
         /// <summary>
@@ -115,7 +116,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteStringValue("hardware", Hardware);
             writer.WriteIntValue("inactive_timeout", InactiveTimeout);
             writer.WriteStringValue("model", Model);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.CreateEndpointRequest_state>("state", State);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.CreateEndpointRequestState>("state", State);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

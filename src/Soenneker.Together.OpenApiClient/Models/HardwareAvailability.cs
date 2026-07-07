@@ -16,7 +16,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The availability status of the hardware configuration</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.HardwareAvailability_status? Status { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.HardwareAvailabilityStatus? Status { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.HardwareAvailability"/> and sets the default values.
         /// </summary>
@@ -42,7 +42,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.HardwareAvailability_status>(); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.HardwareAvailabilityStatus>(); } },
             };
         }
         /// <summary>
@@ -52,7 +52,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.HardwareAvailability_status>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.HardwareAvailabilityStatus>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -23,7 +23,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string CompletionWindow { get; set; }
 #endif
         /// <summary>The endpoint to use for batch processing. Each line of the uploaded input file is dispatched against this endpoint.- `/v1/chat/completions` — chat completion batches- `/v1/audio/transcriptions` — audio transcription batches (e.g. `openai/whisper-large-v3`)- `/v1/audio/translations` — audio translation batches</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.CreateBatchRequest_endpoint? Endpoint { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.CreateBatchRequestEndpoint? Endpoint { get; set; }
         /// <summary>ID of the uploaded input file containing batch requests</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -68,7 +68,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "completion_window", n => { CompletionWindow = n.GetStringValue(); } },
-                { "endpoint", n => { Endpoint = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.CreateBatchRequest_endpoint>(); } },
+                { "endpoint", n => { Endpoint = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.CreateBatchRequestEndpoint>(); } },
                 { "input_file_id", n => { InputFileId = n.GetStringValue(); } },
                 { "model_id", n => { ModelId = n.GetStringValue(); } },
                 { "priority", n => { Priority = n.GetIntValue(); } },
@@ -82,7 +82,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("completion_window", CompletionWindow);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.CreateBatchRequest_endpoint>("endpoint", Endpoint);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.CreateBatchRequestEndpoint>("endpoint", Endpoint);
             writer.WriteStringValue("input_file_id", InputFileId);
             writer.WriteStringValue("model_id", ModelId);
             writer.WriteIntValue("priority", Priority);

@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.Together.OpenApiClient.Compute.Clusters;
+using Soenneker.Together.OpenApiClient.Compute.Passive_health_check_alerts;
 using Soenneker.Together.OpenApiClient.Compute.Regions;
 using System.Collections.Generic;
 using System.IO;
@@ -20,6 +21,11 @@ namespace Soenneker.Together.OpenApiClient.Compute
         public global::Soenneker.Together.OpenApiClient.Compute.Clusters.ClustersRequestBuilder Clusters
         {
             get => new global::Soenneker.Together.OpenApiClient.Compute.Clusters.ClustersRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The passive_health_check_alerts property</summary>
+        public global::Soenneker.Together.OpenApiClient.Compute.Passive_health_check_alerts.Passive_health_check_alertsRequestBuilder Passive_health_check_alerts
+        {
+            get => new global::Soenneker.Together.OpenApiClient.Compute.Passive_health_check_alerts.Passive_health_check_alertsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The regions property</summary>
         public global::Soenneker.Together.OpenApiClient.Compute.Regions.RegionsRequestBuilder Regions

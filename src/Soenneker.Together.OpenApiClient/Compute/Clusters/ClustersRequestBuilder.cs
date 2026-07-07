@@ -26,14 +26,14 @@ namespace Soenneker.Together.OpenApiClient.Compute.Clusters
         }
         /// <summary>Gets an item from the Soenneker.Together.OpenApiClient.compute.clusters.item collection</summary>
         /// <param name="position">Unique identifier of the item</param>
-        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Compute.Clusters.Item.WithCluster_ItemRequestBuilder"/></returns>
-        public global::Soenneker.Together.OpenApiClient.Compute.Clusters.Item.WithCluster_ItemRequestBuilder this[string position]
+        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Compute.Clusters.Item.WithClusterItemRequestBuilder"/></returns>
+        public global::Soenneker.Together.OpenApiClient.Compute.Clusters.Item.WithClusterItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("cluster_id", position);
-                return new global::Soenneker.Together.OpenApiClient.Compute.Clusters.Item.WithCluster_ItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("clusterId", position);
+                return new global::Soenneker.Together.OpenApiClient.Compute.Clusters.Item.WithClusterItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
@@ -55,40 +55,40 @@ namespace Soenneker.Together.OpenApiClient.Compute.Clusters
         /// <summary>
         /// List all GPU clusters.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.GPUClusters"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.GpuClusters"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Together.OpenApiClient.Models.GPUClusters?> GetAsync(Action<RequestConfiguration<global::Soenneker.Together.OpenApiClient.Compute.Clusters.ClustersRequestBuilder.ClustersRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Together.OpenApiClient.Models.GpuClusters?> GetAsync(Action<RequestConfiguration<global::Soenneker.Together.OpenApiClient.Compute.Clusters.ClustersRequestBuilder.ClustersRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Together.OpenApiClient.Models.GPUClusters> GetAsync(Action<RequestConfiguration<global::Soenneker.Together.OpenApiClient.Compute.Clusters.ClustersRequestBuilder.ClustersRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Together.OpenApiClient.Models.GpuClusters> GetAsync(Action<RequestConfiguration<global::Soenneker.Together.OpenApiClient.Compute.Clusters.ClustersRequestBuilder.ClustersRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.GPUClusters>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.GPUClusters.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.GpuClusters>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.GpuClusters.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Create an Instant Cluster on Together&apos;s high-performance GPU clusters.With features like on-demand scaling, long-lived resizable high-bandwidth shared DC-local storage,Kubernetes and Slurm cluster flavors, a REST API, and Terraform support,you can run workloads flexibly without complex infrastructure management.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.GPUClusterInfo"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.GpuClusterInfo"/></returns>
         /// <param name="body">GPU Cluster create request</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Together.OpenApiClient.Models.GPUClusterInfo?> PostAsync(global::Soenneker.Together.OpenApiClient.Models.GPUClusterCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Together.OpenApiClient.Models.GpuClusterInfo?> PostAsync(global::Soenneker.Together.OpenApiClient.Models.GpuClusterCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Together.OpenApiClient.Models.GPUClusterInfo> PostAsync(global::Soenneker.Together.OpenApiClient.Models.GPUClusterCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Together.OpenApiClient.Models.GpuClusterInfo> PostAsync(global::Soenneker.Together.OpenApiClient.Models.GpuClusterCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.GPUClusterInfo>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.GPUClusterInfo.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.GpuClusterInfo>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.GpuClusterInfo.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// List all GPU clusters.
@@ -117,11 +117,11 @@ namespace Soenneker.Together.OpenApiClient.Compute.Clusters
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(global::Soenneker.Together.OpenApiClient.Models.GPUClusterCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.Together.OpenApiClient.Models.GpuClusterCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(global::Soenneker.Together.OpenApiClient.Models.GPUClusterCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.Together.OpenApiClient.Models.GpuClusterCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));

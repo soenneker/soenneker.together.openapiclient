@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.Together.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -85,7 +86,7 @@ namespace Soenneker.Together.OpenApiClient.Finetune.Download
         public partial class DownloadRequestBuilderGetQueryParameters 
         {
             [QueryParameter("checkpoint")]
-            public global::Soenneker.Together.OpenApiClient.Finetune.Download.GetCheckpointQueryParameterType? Checkpoint { get; set; }
+            public global::Soenneker.Together.OpenApiClient.Models.GetFinetuneDownloadCheckpointParameter? Checkpoint { get; set; }
             [QueryParameter("checkpoint_step")]
             public int? CheckpointStep { get; set; }
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

@@ -22,15 +22,15 @@ namespace Soenneker.Together.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "legacy_info")]
         #pragma warning disable CS1591
-        Legacy_info,
+        LegacyInfo,
         #pragma warning restore CS1591
         [EnumMember(Value = "legacy_iwarning")]
         #pragma warning disable CS1591
-        Legacy_iwarning,
+        LegacyIwarning,
         #pragma warning restore CS1591
         [EnumMember(Value = "legacy_ierror")]
         #pragma warning disable CS1591
-        Legacy_ierror,
+        LegacyIerror,
         #pragma warning restore CS1591
     }
 }

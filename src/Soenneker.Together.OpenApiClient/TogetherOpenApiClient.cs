@@ -30,6 +30,7 @@ using Soenneker.Together.OpenApiClient.Rl;
 using Soenneker.Together.OpenApiClient.Tci;
 using Soenneker.Together.OpenApiClient.Videos;
 using Soenneker.Together.OpenApiClient.Voices;
+using Soenneker.Together.OpenApiClient.Whoami;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -161,6 +162,11 @@ namespace Soenneker.Together.OpenApiClient
         public global::Soenneker.Together.OpenApiClient.Voices.VoicesRequestBuilder Voices
         {
             get => new global::Soenneker.Together.OpenApiClient.Voices.VoicesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The whoami property</summary>
+        public global::Soenneker.Together.OpenApiClient.Whoami.WhoamiRequestBuilder Whoami
+        {
+            get => new global::Soenneker.Together.OpenApiClient.Whoami.WhoamiRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.TogetherOpenApiClient"/> and sets the default values.

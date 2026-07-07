@@ -26,10 +26,10 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>List of available voices for the model.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Together.OpenApiClient.Models.ModelVoices_voices>? Voices { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.ModelVoicesVoicesItem>? Voices { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Together.OpenApiClient.Models.ModelVoices_voices> Voices { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.ModelVoicesVoicesItem> Voices { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.ModelVoices"/> and sets the default values.
@@ -57,7 +57,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "model", n => { Model = n.GetStringValue(); } },
-                { "voices", n => { Voices = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.ModelVoices_voices>(global::Soenneker.Together.OpenApiClient.Models.ModelVoices_voices.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "voices", n => { Voices = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.ModelVoicesVoicesItem>(global::Soenneker.Together.OpenApiClient.Models.ModelVoicesVoicesItem.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -68,7 +68,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("model", Model);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.ModelVoices_voices>("voices", Voices);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.ModelVoicesVoicesItem>("voices", Voices);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -44,7 +44,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string Model { get; set; }
 #endif
         /// <summary>The object type, which is always video.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.VideoJob_object? Object { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.VideoJobObject? Object { get; set; }
         /// <summary>Available upon completion, the outputs provides the cost charged and the hosted url to access the video</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -101,7 +101,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "error", n => { Error = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.VideoJobError>(global::Soenneker.Together.OpenApiClient.Models.VideoJobError.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.VideoJob_object>(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.VideoJobObject>(); } },
                 { "outputs", n => { Outputs = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.VideoJobOutputs>(global::Soenneker.Together.OpenApiClient.Models.VideoJobOutputs.CreateFromDiscriminatorValue); } },
                 { "seconds", n => { Seconds = n.GetStringValue(); } },
                 { "size", n => { Size = n.GetStringValue(); } },
@@ -120,7 +120,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.VideoJobError>("error", Error);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("model", Model);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.VideoJob_object>("object", Object);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.VideoJobObject>("object", Object);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.VideoJobOutputs>("outputs", Outputs);
             writer.WriteStringValue("seconds", Seconds);
             writer.WriteStringValue("size", Size);

@@ -8,26 +8,26 @@ using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestFunctionCallMember1"/>, <see cref="global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestFunctionCall_Wrapper"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestFunctionCallOneOf2"/>, <see cref="global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestFunctionCallWrapper"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ChatCompletionRequestFunctionCall : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestFunctionCallMember1"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestFunctionCallOneOf2"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestFunctionCallMember1? ChatCompletionRequestFunctionCallMember1 { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestFunctionCallOneOf2? ChatCompletionRequestFunctionCallOneOf2 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestFunctionCallMember1 ChatCompletionRequestFunctionCallMember1 { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestFunctionCallOneOf2 ChatCompletionRequestFunctionCallOneOf2 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestFunctionCall_Wrapper"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestFunctionCallWrapper"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestFunctionCall_Wrapper? ChatCompletionRequestFunctionCallWrapper { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestFunctionCallWrapper? ChatCompletionRequestFunctionCallWrapper { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestFunctionCall_Wrapper ChatCompletionRequestFunctionCallWrapper { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestFunctionCallWrapper ChatCompletionRequestFunctionCallWrapper { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -39,13 +39,9 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
             var result = new global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestFunctionCall();
-            if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("ChatCompletionRequestFunctionCallOneOf2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.ChatCompletionRequestFunctionCallMember1 = new global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestFunctionCallMember1();
-            }
-            else if("ChatCompletionRequestFunctionCall_Wrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.ChatCompletionRequestFunctionCallWrapper = new global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestFunctionCall_Wrapper();
+                result.ChatCompletionRequestFunctionCallOneOf2 = new global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestFunctionCallOneOf2();
             }
             return result;
         }
@@ -55,9 +51,9 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(ChatCompletionRequestFunctionCallMember1 != null)
+            if(ChatCompletionRequestFunctionCallOneOf2 != null)
             {
-                return ChatCompletionRequestFunctionCallMember1.GetFieldDeserializers();
+                return ChatCompletionRequestFunctionCallOneOf2.GetFieldDeserializers();
             }
             else if(ChatCompletionRequestFunctionCallWrapper != null)
             {
@@ -72,13 +68,13 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(ChatCompletionRequestFunctionCallMember1 != null)
+            if(ChatCompletionRequestFunctionCallOneOf2 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestFunctionCallMember1>(null, ChatCompletionRequestFunctionCallMember1);
+                writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestFunctionCallOneOf2>(null, ChatCompletionRequestFunctionCallOneOf2);
             }
             else if(ChatCompletionRequestFunctionCallWrapper != null)
             {
-                writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestFunctionCall_Wrapper>(null, ChatCompletionRequestFunctionCallWrapper);
+                writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestFunctionCallWrapper>(null, ChatCompletionRequestFunctionCallWrapper);
             }
         }
     }

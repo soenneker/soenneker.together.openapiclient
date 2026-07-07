@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.Together.OpenApiClient.Queue.Cancel;
+using Soenneker.Together.OpenApiClient.Queue.Clear;
 using Soenneker.Together.OpenApiClient.Queue.Metrics;
 using Soenneker.Together.OpenApiClient.Queue.Status;
 using Soenneker.Together.OpenApiClient.Queue.Submit;
@@ -22,6 +23,11 @@ namespace Soenneker.Together.OpenApiClient.Queue
         public global::Soenneker.Together.OpenApiClient.Queue.Cancel.CancelRequestBuilder Cancel
         {
             get => new global::Soenneker.Together.OpenApiClient.Queue.Cancel.CancelRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The clear property</summary>
+        public global::Soenneker.Together.OpenApiClient.Queue.Clear.ClearRequestBuilder Clear
+        {
+            get => new global::Soenneker.Together.OpenApiClient.Queue.Clear.ClearRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The metrics property</summary>
         public global::Soenneker.Together.OpenApiClient.Queue.Metrics.MetricsRequestBuilder Metrics

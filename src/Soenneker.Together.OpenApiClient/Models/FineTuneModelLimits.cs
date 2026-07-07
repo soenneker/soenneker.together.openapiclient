@@ -35,14 +35,22 @@ namespace Soenneker.Together.OpenApiClient.Models
 #endif
         /// <summary>Maximum learning rate.</summary>
         public double? MaxLearningRate { get; set; }
+        /// <summary>Maximum number of checkpoints that can be saved during a fine-tuning job.</summary>
+        public int? MaxNumCheckpoints { get; set; }
         /// <summary>Maximum number of training epochs.</summary>
         public int? MaxNumEpochs { get; set; }
         /// <summary>Maximum number of evaluations.</summary>
         public int? MaxNumEvals { get; set; }
-        /// <summary>Whether to merge the output LoRA.</summary>
+        /// <summary>Maximum sequence length supported for DPO training.</summary>
+        public int? MaxSeqLengthDpo { get; set; }
+        /// <summary>Maximum sequence length supported for SFT training.</summary>
+        public int? MaxSeqLengthSft { get; set; }
+        /// <summary>Whether a merged checkpoint (the base model with the trained LoRA adapter fused in) is produced for LoRA fine-tunes of this model, in addition to the standalone adapter.</summary>
         public bool? MergeOutputLora { get; set; }
         /// <summary>Minimum learning rate.</summary>
         public double? MinLearningRate { get; set; }
+        /// <summary>Minimum value allowed for the max_seq_length hyperparameter.</summary>
+        public int? MinMaxSeqLength { get; set; }
         /// <summary>The name of the model.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -51,6 +59,8 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string ModelName { get; set; }
 #endif
+        /// <summary>Whether the model supports full (non-LoRA) fine-tuning. When false, only LoRA fine-tuning is available and the full_training limits are reported as zero.</summary>
+        public bool? SupportsFullTraining { get; set; }
         /// <summary>Whether the model supports reasoning.</summary>
         public bool? SupportsReasoning { get; set; }
         /// <summary>Whether the model supports tool/function calling.</summary>
@@ -86,11 +96,16 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "full_training", n => { FullTraining = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.FineTuneModelLimitsFullTraining>(global::Soenneker.Together.OpenApiClient.Models.FineTuneModelLimitsFullTraining.CreateFromDiscriminatorValue); } },
                 { "lora_training", n => { LoraTraining = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.FineTuneModelLimitsLoraTraining>(global::Soenneker.Together.OpenApiClient.Models.FineTuneModelLimitsLoraTraining.CreateFromDiscriminatorValue); } },
                 { "max_learning_rate", n => { MaxLearningRate = n.GetDoubleValue(); } },
+                { "max_num_checkpoints", n => { MaxNumCheckpoints = n.GetIntValue(); } },
                 { "max_num_epochs", n => { MaxNumEpochs = n.GetIntValue(); } },
                 { "max_num_evals", n => { MaxNumEvals = n.GetIntValue(); } },
+                { "max_seq_length_dpo", n => { MaxSeqLengthDpo = n.GetIntValue(); } },
+                { "max_seq_length_sft", n => { MaxSeqLengthSft = n.GetIntValue(); } },
                 { "merge_output_lora", n => { MergeOutputLora = n.GetBoolValue(); } },
                 { "min_learning_rate", n => { MinLearningRate = n.GetDoubleValue(); } },
+                { "min_max_seq_length", n => { MinMaxSeqLength = n.GetIntValue(); } },
                 { "model_name", n => { ModelName = n.GetStringValue(); } },
+                { "supports_full_training", n => { SupportsFullTraining = n.GetBoolValue(); } },
                 { "supports_reasoning", n => { SupportsReasoning = n.GetBoolValue(); } },
                 { "supports_tools", n => { SupportsTools = n.GetBoolValue(); } },
                 { "supports_vision", n => { SupportsVision = n.GetBoolValue(); } },
@@ -107,11 +122,16 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.FineTuneModelLimitsFullTraining>("full_training", FullTraining);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.FineTuneModelLimitsLoraTraining>("lora_training", LoraTraining);
             writer.WriteDoubleValue("max_learning_rate", MaxLearningRate);
+            writer.WriteIntValue("max_num_checkpoints", MaxNumCheckpoints);
             writer.WriteIntValue("max_num_epochs", MaxNumEpochs);
             writer.WriteIntValue("max_num_evals", MaxNumEvals);
+            writer.WriteIntValue("max_seq_length_dpo", MaxSeqLengthDpo);
+            writer.WriteIntValue("max_seq_length_sft", MaxSeqLengthSft);
             writer.WriteBoolValue("merge_output_lora", MergeOutputLora);
             writer.WriteDoubleValue("min_learning_rate", MinLearningRate);
+            writer.WriteIntValue("min_max_seq_length", MinMaxSeqLength);
             writer.WriteStringValue("model_name", ModelName);
+            writer.WriteBoolValue("supports_full_training", SupportsFullTraining);
             writer.WriteBoolValue("supports_reasoning", SupportsReasoning);
             writer.WriteBoolValue("supports_tools", SupportsTools);
             writer.WriteBoolValue("supports_vision", SupportsVision);

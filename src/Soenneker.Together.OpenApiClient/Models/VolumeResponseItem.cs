@@ -77,10 +77,10 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>VersionHistory contains previous versions of this volume, keyed by version number</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.VolumeResponseItem_version_history? VersionHistory { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.VolumeResponseItemVersionHistoryProperty? VersionHistory { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.VolumeResponseItem_version_history VersionHistory { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.VolumeResponseItemVersionHistoryProperty VersionHistory { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.VolumeResponseItem"/> and sets the default values.
@@ -116,7 +116,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "object", n => { Object = n.GetStringValue(); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.VolumeType>(); } },
                 { "updated_at", n => { UpdatedAt = n.GetStringValue(); } },
-                { "version_history", n => { VersionHistory = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.VolumeResponseItem_version_history>(global::Soenneker.Together.OpenApiClient.Models.VolumeResponseItem_version_history.CreateFromDiscriminatorValue); } },
+                { "version_history", n => { VersionHistory = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.VolumeResponseItemVersionHistoryProperty>(global::Soenneker.Together.OpenApiClient.Models.VolumeResponseItemVersionHistoryProperty.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -135,7 +135,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteStringValue("object", Object);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.VolumeType>("type", Type);
             writer.WriteStringValue("updated_at", UpdatedAt);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.VolumeResponseItem_version_history>("version_history", VersionHistory);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.VolumeResponseItemVersionHistoryProperty>("version_history", VersionHistory);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -30,7 +30,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "cancel_requested")]
         #pragma warning disable CS1591
-        Cancel_requested,
+        CancelRequested,
         #pragma warning restore CS1591
         [EnumMember(Value = "cancelled")]
         #pragma warning disable CS1591

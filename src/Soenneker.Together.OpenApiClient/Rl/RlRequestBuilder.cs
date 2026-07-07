@@ -3,6 +3,8 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.Together.OpenApiClient.Rl.Checkpoints;
+using Soenneker.Together.OpenApiClient.Rl.ModelResources;
+using Soenneker.Together.OpenApiClient.Rl.SupportedModels;
 using Soenneker.Together.OpenApiClient.Rl.TrainingSessions;
 using System.Collections.Generic;
 using System.IO;
@@ -20,6 +22,16 @@ namespace Soenneker.Together.OpenApiClient.Rl
         public global::Soenneker.Together.OpenApiClient.Rl.Checkpoints.CheckpointsRequestBuilder Checkpoints
         {
             get => new global::Soenneker.Together.OpenApiClient.Rl.Checkpoints.CheckpointsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The modelResources property</summary>
+        public global::Soenneker.Together.OpenApiClient.Rl.ModelResources.ModelResourcesRequestBuilder ModelResources
+        {
+            get => new global::Soenneker.Together.OpenApiClient.Rl.ModelResources.ModelResourcesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The supportedModels property</summary>
+        public global::Soenneker.Together.OpenApiClient.Rl.SupportedModels.SupportedModelsRequestBuilder SupportedModels
+        {
+            get => new global::Soenneker.Together.OpenApiClient.Rl.SupportedModels.SupportedModelsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The trainingSessions property</summary>
         public global::Soenneker.Together.OpenApiClient.Rl.TrainingSessions.TrainingSessionsRequestBuilder TrainingSessions

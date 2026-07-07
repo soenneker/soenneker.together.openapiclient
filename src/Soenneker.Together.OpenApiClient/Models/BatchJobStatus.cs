@@ -9,27 +9,27 @@ namespace Soenneker.Together.OpenApiClient.Models
     {
         [EnumMember(Value = "VALIDATING")]
         #pragma warning disable CS1591
-        VALIDATING,
+        Validating,
         #pragma warning restore CS1591
         [EnumMember(Value = "IN_PROGRESS")]
         #pragma warning disable CS1591
-        IN_PROGRESS,
+        InProgress,
         #pragma warning restore CS1591
         [EnumMember(Value = "COMPLETED")]
         #pragma warning disable CS1591
-        COMPLETED,
+        Completed,
         #pragma warning restore CS1591
         [EnumMember(Value = "FAILED")]
         #pragma warning disable CS1591
-        FAILED,
+        Failed,
         #pragma warning restore CS1591
         [EnumMember(Value = "EXPIRED")]
         #pragma warning disable CS1591
-        EXPIRED,
+        Expired,
         #pragma warning restore CS1591
         [EnumMember(Value = "CANCELLED")]
         #pragma warning disable CS1591
-        CANCELLED,
+        Cancelled,
         #pragma warning restore CS1591
     }
 }

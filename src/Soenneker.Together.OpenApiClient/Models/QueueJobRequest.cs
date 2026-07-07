@@ -18,10 +18,10 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Arbitrary JSON metadata stored with the job. Returned in statusresponses, where the model and system may have added or modifiedkeys (e.g. progress).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.QueueJobRequest_info? Info { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.QueueJobRequestInfoProperty? Info { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.QueueJobRequest_info Info { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.QueueJobRequestInfoProperty Info { get; set; }
 #endif
         /// <summary>Required model identifier</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -34,10 +34,10 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Freeform model input. Passed unchanged to the model. Contents are model-specific.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.QueueJobRequest_payload? Payload { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.QueueJobRequestPayloadProperty? Payload { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.QueueJobRequest_payload Payload { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.QueueJobRequestPayloadProperty Payload { get; set; }
 #endif
         /// <summary>Job priority. Higher values are processed first (strict priorityordering). Jobs with equal priority are processed in submissionorder (FIFO).</summary>
         public int? Priority { get; set; }
@@ -47,6 +47,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public QueueJobRequest()
         {
             AdditionalData = new Dictionary<string, object>();
+            Priority = 0;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -66,9 +67,9 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "info", n => { Info = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.QueueJobRequest_info>(global::Soenneker.Together.OpenApiClient.Models.QueueJobRequest_info.CreateFromDiscriminatorValue); } },
+                { "info", n => { Info = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.QueueJobRequestInfoProperty>(global::Soenneker.Together.OpenApiClient.Models.QueueJobRequestInfoProperty.CreateFromDiscriminatorValue); } },
                 { "model", n => { Model = n.GetStringValue(); } },
-                { "payload", n => { Payload = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.QueueJobRequest_payload>(global::Soenneker.Together.OpenApiClient.Models.QueueJobRequest_payload.CreateFromDiscriminatorValue); } },
+                { "payload", n => { Payload = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.QueueJobRequestPayloadProperty>(global::Soenneker.Together.OpenApiClient.Models.QueueJobRequestPayloadProperty.CreateFromDiscriminatorValue); } },
                 { "priority", n => { Priority = n.GetIntValue(); } },
             };
         }
@@ -79,9 +80,9 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.QueueJobRequest_info>("info", Info);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.QueueJobRequestInfoProperty>("info", Info);
             writer.WriteStringValue("model", Model);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.QueueJobRequest_payload>("payload", Payload);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.QueueJobRequestPayloadProperty>("payload", Payload);
             writer.WriteIntValue("priority", Priority);
             writer.WriteAdditionalData(AdditionalData);
         }

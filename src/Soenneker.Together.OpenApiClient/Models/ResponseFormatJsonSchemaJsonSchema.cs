@@ -34,18 +34,18 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>The schema for the response format, described as a JSON Schema object.Learn how to build JSON schemas [here](https://json-schema.org/).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.ResponseFormatJsonSchemaJsonSchema_schema? Schema { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.ResponseFormatJsonSchemaJsonSchemaSchema? Schema { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.ResponseFormatJsonSchemaJsonSchema_schema Schema { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.ResponseFormatJsonSchemaJsonSchemaSchema Schema { get; set; }
 #endif
         /// <summary>The strict property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.ResponseFormatJsonSchemaJsonSchema_strict? Strict { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.ResponseFormatJsonSchemaJsonSchemaStrict? Strict { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.ResponseFormatJsonSchemaJsonSchema_strict Strict { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.ResponseFormatJsonSchemaJsonSchemaStrict Strict { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.ResponseFormatJsonSchemaJsonSchema"/> and sets the default values.
@@ -74,8 +74,8 @@ namespace Soenneker.Together.OpenApiClient.Models
             {
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "schema", n => { Schema = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.ResponseFormatJsonSchemaJsonSchema_schema>(global::Soenneker.Together.OpenApiClient.Models.ResponseFormatJsonSchemaJsonSchema_schema.CreateFromDiscriminatorValue); } },
-                { "strict", n => { Strict = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.ResponseFormatJsonSchemaJsonSchema_strict>(global::Soenneker.Together.OpenApiClient.Models.ResponseFormatJsonSchemaJsonSchema_strict.CreateFromDiscriminatorValue); } },
+                { "schema", n => { Schema = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.ResponseFormatJsonSchemaJsonSchemaSchema>(global::Soenneker.Together.OpenApiClient.Models.ResponseFormatJsonSchemaJsonSchemaSchema.CreateFromDiscriminatorValue); } },
+                { "strict", n => { Strict = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.ResponseFormatJsonSchemaJsonSchemaStrict>(global::Soenneker.Together.OpenApiClient.Models.ResponseFormatJsonSchemaJsonSchemaStrict.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -87,8 +87,8 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("description", Description);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ResponseFormatJsonSchemaJsonSchema_schema>("schema", Schema);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ResponseFormatJsonSchemaJsonSchema_strict>("strict", Strict);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ResponseFormatJsonSchemaJsonSchemaSchema>("schema", Schema);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ResponseFormatJsonSchemaJsonSchemaStrict>("strict", Strict);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
