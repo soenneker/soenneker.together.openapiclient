@@ -62,6 +62,14 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string ProjectSlug { get; set; }
 #endif
+        /// <summary>The ID of the authenticated user, if available.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? UserId { get; set; }
+#nullable restore
+#else
+        public string UserId { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.WhoamiResponse"/> and sets the default values.
         /// </summary>
@@ -93,6 +101,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "project_id", n => { ProjectId = n.GetStringValue(); } },
                 { "project_name", n => { ProjectName = n.GetStringValue(); } },
                 { "project_slug", n => { ProjectSlug = n.GetStringValue(); } },
+                { "user_id", n => { UserId = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -108,6 +117,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteStringValue("project_id", ProjectId);
             writer.WriteStringValue("project_name", ProjectName);
             writer.WriteStringValue("project_slug", ProjectSlug);
+            writer.WriteStringValue("user_id", UserId);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

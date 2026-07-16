@@ -25,7 +25,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Whether to stop training early when validation loss stops improving. Requires a validation_file, and n_evals must be at least early_stopping_patience + early_stopping_warmup_evals + 1 so a plateau can be detected.</summary>
         public bool? EarlyStoppingEnabled { get; set; }
         /// <summary>Minimum decrease in validation loss for an evaluation to count as an improvement. Larger values treat small gains as non-improvements, causing training to stop sooner. Only applies when early_stopping_enabled is true.</summary>
-        public float? EarlyStoppingMinDelta { get; set; }
+        public double? EarlyStoppingMinDelta { get; set; }
         /// <summary>Number of consecutive evaluations with no improvement in validation loss to allow before stopping. Only applies when early_stopping_enabled is true.</summary>
         public int? EarlyStoppingPatience { get; set; }
         /// <summary>Number of initial evaluations excluded from the early-stopping decision. These still establish the baseline validation loss but do not count toward patience. Set to 0 to disable warmup; if omitted, defaults to 1. Only applies when early_stopping_enabled is true.</summary>
@@ -73,7 +73,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string HfOutputRepoName { get; set; }
 #endif
         /// <summary>Controls how quickly the model adapts to new information (too high may cause instability, too low may slow convergence)</summary>
-        public float? LearningRate { get; set; }
+        public double? LearningRate { get; set; }
         /// <summary>The lr_scheduler property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -83,7 +83,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public global::Soenneker.Together.OpenApiClient.Models.LrScheduler LrScheduler { get; set; }
 #endif
         /// <summary>Max gradient norm to be used for gradient clipping. Set to 0 to disable.</summary>
-        public float? MaxGradNorm { get; set; }
+        public double? MaxGradNorm { get; set; }
         /// <summary>Maximum sequence length to use for training. If not specified, the maximum allowed for the model and training method will be used.</summary>
         public int? MaxSeqLength { get; set; }
         /// <summary>Name of the base model to run fine-tune job on</summary>
@@ -202,9 +202,9 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string WandbProjectName { get; set; }
 #endif
         /// <summary>The percent of steps at the start of training to linearly increase the learning rate.</summary>
-        public float? WarmupRatio { get; set; }
+        public double? WarmupRatio { get; set; }
         /// <summary>Weight decay. Regularization parameter for the optimizer.</summary>
-        public float? WeightDecay { get; set; }
+        public double? WeightDecay { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.PostFineTunesRequest"/> and sets the default values.
         /// </summary>
@@ -212,17 +212,17 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             AdditionalData = new Dictionary<string, object>();
             EarlyStoppingEnabled = false;
-            EarlyStoppingMinDelta = 0f;
+            EarlyStoppingMinDelta = 0;
             EarlyStoppingPatience = 2;
             EarlyStoppingWarmupEvals = 1;
-            LearningRate = 0.00001f;
-            MaxGradNorm = 1f;
+            LearningRate = 0.00001;
+            MaxGradNorm = 1;
             NCheckpoints = 1;
             NEpochs = 1;
             NEvals = 0;
             Packing = true;
-            WarmupRatio = 0f;
-            WeightDecay = 0f;
+            WarmupRatio = 0;
+            WeightDecay = 0;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -244,7 +244,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             {
                 { "batch_size", n => { BatchSize = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.PostFineTunesRequestBatchSize>(global::Soenneker.Together.OpenApiClient.Models.PostFineTunesRequestBatchSize.CreateFromDiscriminatorValue); } },
                 { "early_stopping_enabled", n => { EarlyStoppingEnabled = n.GetBoolValue(); } },
-                { "early_stopping_min_delta", n => { EarlyStoppingMinDelta = n.GetFloatValue(); } },
+                { "early_stopping_min_delta", n => { EarlyStoppingMinDelta = n.GetDoubleValue(); } },
                 { "early_stopping_patience", n => { EarlyStoppingPatience = n.GetIntValue(); } },
                 { "early_stopping_warmup_evals", n => { EarlyStoppingWarmupEvals = n.GetIntValue(); } },
                 { "from_checkpoint", n => { FromCheckpoint = n.GetStringValue(); } },
@@ -253,9 +253,9 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "hf_api_token", n => { HfApiToken = n.GetStringValue(); } },
                 { "hf_model_revision", n => { HfModelRevision = n.GetStringValue(); } },
                 { "hf_output_repo_name", n => { HfOutputRepoName = n.GetStringValue(); } },
-                { "learning_rate", n => { LearningRate = n.GetFloatValue(); } },
+                { "learning_rate", n => { LearningRate = n.GetDoubleValue(); } },
                 { "lr_scheduler", n => { LrScheduler = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.LrScheduler>(global::Soenneker.Together.OpenApiClient.Models.LrScheduler.CreateFromDiscriminatorValue); } },
-                { "max_grad_norm", n => { MaxGradNorm = n.GetFloatValue(); } },
+                { "max_grad_norm", n => { MaxGradNorm = n.GetDoubleValue(); } },
                 { "max_seq_length", n => { MaxSeqLength = n.GetIntValue(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
                 { "multimodal_params", n => { MultimodalParams = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.MultimodalParams>(global::Soenneker.Together.OpenApiClient.Models.MultimodalParams.CreateFromDiscriminatorValue); } },
@@ -275,8 +275,8 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "wandb_entity", n => { WandbEntity = n.GetStringValue(); } },
                 { "wandb_name", n => { WandbName = n.GetStringValue(); } },
                 { "wandb_project_name", n => { WandbProjectName = n.GetStringValue(); } },
-                { "warmup_ratio", n => { WarmupRatio = n.GetFloatValue(); } },
-                { "weight_decay", n => { WeightDecay = n.GetFloatValue(); } },
+                { "warmup_ratio", n => { WarmupRatio = n.GetDoubleValue(); } },
+                { "weight_decay", n => { WeightDecay = n.GetDoubleValue(); } },
             };
         }
         /// <summary>
@@ -288,7 +288,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.PostFineTunesRequestBatchSize>("batch_size", BatchSize);
             writer.WriteBoolValue("early_stopping_enabled", EarlyStoppingEnabled);
-            writer.WriteFloatValue("early_stopping_min_delta", EarlyStoppingMinDelta);
+            writer.WriteDoubleValue("early_stopping_min_delta", EarlyStoppingMinDelta);
             writer.WriteIntValue("early_stopping_patience", EarlyStoppingPatience);
             writer.WriteIntValue("early_stopping_warmup_evals", EarlyStoppingWarmupEvals);
             writer.WriteStringValue("from_checkpoint", FromCheckpoint);
@@ -297,9 +297,9 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteStringValue("hf_api_token", HfApiToken);
             writer.WriteStringValue("hf_model_revision", HfModelRevision);
             writer.WriteStringValue("hf_output_repo_name", HfOutputRepoName);
-            writer.WriteFloatValue("learning_rate", LearningRate);
+            writer.WriteDoubleValue("learning_rate", LearningRate);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.LrScheduler>("lr_scheduler", LrScheduler);
-            writer.WriteFloatValue("max_grad_norm", MaxGradNorm);
+            writer.WriteDoubleValue("max_grad_norm", MaxGradNorm);
             writer.WriteIntValue("max_seq_length", MaxSeqLength);
             writer.WriteStringValue("model", Model);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.MultimodalParams>("multimodal_params", MultimodalParams);
@@ -319,8 +319,8 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteStringValue("wandb_entity", WandbEntity);
             writer.WriteStringValue("wandb_name", WandbName);
             writer.WriteStringValue("wandb_project_name", WandbProjectName);
-            writer.WriteFloatValue("warmup_ratio", WarmupRatio);
-            writer.WriteFloatValue("weight_decay", WeightDecay);
+            writer.WriteDoubleValue("warmup_ratio", WarmupRatio);
+            writer.WriteDoubleValue("weight_decay", WeightDecay);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

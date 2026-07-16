@@ -57,14 +57,6 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string ModelResourcesId { get; set; }
 #endif
-        /// <summary>Optimizer selection for the training session. Fields here are fixed for the session&apos;s lifetime; tunable per-step hyperparameters are configured on each OptimStep request instead.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RlOptimizerConfig? OptimizerConfig { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Together.OpenApiClient.Models.RlOptimizerConfig OptimizerConfig { get; set; }
-#endif
         /// <summary>Checkpoint ID this session was resumed from</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -124,7 +116,6 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "inference_checkpoints", n => { InferenceCheckpoints = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RlInferenceCheckpoint>(global::Soenneker.Together.OpenApiClient.Models.RlInferenceCheckpoint.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "lora_config", n => { LoraConfig = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlLoraConfig>(global::Soenneker.Together.OpenApiClient.Models.RlLoraConfig.CreateFromDiscriminatorValue); } },
                 { "model_resources_id", n => { ModelResourcesId = n.GetStringValue(); } },
-                { "optimizer_config", n => { OptimizerConfig = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlOptimizerConfig>(global::Soenneker.Together.OpenApiClient.Models.RlOptimizerConfig.CreateFromDiscriminatorValue); } },
                 { "resume_from_checkpoint_id", n => { ResumeFromCheckpointId = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionStatus>(); } },
                 { "step", n => { Step = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionStep>(global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionStep.CreateFromDiscriminatorValue); } },
@@ -145,7 +136,6 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RlInferenceCheckpoint>("inference_checkpoints", InferenceCheckpoints);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlLoraConfig>("lora_config", LoraConfig);
             writer.WriteStringValue("model_resources_id", ModelResourcesId);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlOptimizerConfig>("optimizer_config", OptimizerConfig);
             writer.WriteStringValue("resume_from_checkpoint_id", ResumeFromCheckpointId);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionStatus>("status", Status);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionStep>("step", Step);

@@ -75,7 +75,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public List<global::Soenneker.Together.OpenApiClient.Models.PassiveHealthCheckAlert> LinkedAlerts { get; private set; }
 #endif
-        /// <summary>&quot;Remediation mode specifies how the remediation should be performed.- `REMEDIATION_MODE_VM_ONLY`: Deletes the VM and provisions a new one on any available host.- `REMEDIATION_MODE_HOST_AWARE`: Cordons the host, deletes the VM, and provisions a new one on a different host.&quot;</summary>
+        /// <summary>&quot;Remediation mode specifies how the remediation should be performed.- `REMEDIATION_MODE_VM_ONLY`: Deletes the VM and provisions a new one on any available host.- `REMEDIATION_MODE_HOST_AWARE`: Cordons the host, deletes the VM, and provisions a new one on a different host.- `REMEDIATION_MODE_EVICT_WITHOUT_REPLACEMENT`: Evicts the VM without provisioning a replacement.- `REMEDIATION_MODE_REBOOT_VM`: Reboots the VM in place.- `REMEDIATION_MODE_HOST_POWER_CYCLE`: Cordons and power-cycles the bare-metal host while preserving host and node identity.&quot;</summary>
         public global::Soenneker.Together.OpenApiClient.Models.RemediationMode? Mode { get; set; }
         /// <summary>Passive health check event ID that triggered this remediation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -121,7 +121,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public DateTimeOffset? ReviewTime { get; private set; }
         /// <summary>When processing started.</summary>
         public DateTimeOffset? StartTime { get; private set; }
-        /// <summary>&quot;RemediationState represents the lifecycle state of a remediation.- `PENDING_APPROVAL`: Awaiting approval before processing can begin.- `PENDING`: Approved and queued for processing.- `RUNNING`: Actively being processed.- `SUCCEEDED`: Successfully completed.- `FAILED`: Failed with an error.- `CANCELLED`: Cancelled by user or system.- `AUTO_RESOLVED`: The underlying issue was automatically resolved before processing.&quot;</summary>
+        /// <summary>&quot;RemediationState represents the lifecycle state of a remediation.- `PENDING_APPROVAL`: Awaiting approval before processing can begin.- `PENDING`: Approved and queued for processing.- `RUNNING`: Actively being processed.- `SUCCEEDED`: Successfully completed.- `FAILED`: Failed with an error.- `CANCELLED`: Cancelled by user or system.- `AUTO_RESOLVED`: The underlying issue was automatically resolved before processing.- `QUARANTINING`: Cordoning or preparing the host before remediation.- `QUARANTINED`: Host has been cordoned or isolated for remediation.&quot;</summary>
         public global::Soenneker.Together.OpenApiClient.Models.RemediationState? State { get; private set; }
         /// <summary>&quot;RemediationTrigger specifies how the remediation was triggered.- `REMEDIATION_TRIGGER_MANUAL`: A user-initiated remediation (either via web UI or API call).- `REMEDIATION_TRIGGER_AUTOMATED`: A system-initiated remediation that requires approval.&quot;</summary>
         public global::Soenneker.Together.OpenApiClient.Models.RemediationTrigger? Trigger { get; private set; }

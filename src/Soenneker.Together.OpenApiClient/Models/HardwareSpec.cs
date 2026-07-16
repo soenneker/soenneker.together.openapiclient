@@ -26,7 +26,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string GpuLink { get; set; }
 #endif
         /// <summary>Amount of GPU memory in GB</summary>
-        public float? GpuMemory { get; set; }
+        public double? GpuMemory { get; set; }
         /// <summary>The type/model of GPU</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -62,7 +62,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             {
                 { "gpu_count", n => { GpuCount = n.GetIntValue(); } },
                 { "gpu_link", n => { GpuLink = n.GetStringValue(); } },
-                { "gpu_memory", n => { GpuMemory = n.GetFloatValue(); } },
+                { "gpu_memory", n => { GpuMemory = n.GetDoubleValue(); } },
                 { "gpu_type", n => { GpuType = n.GetStringValue(); } },
             };
         }
@@ -75,7 +75,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("gpu_count", GpuCount);
             writer.WriteStringValue("gpu_link", GpuLink);
-            writer.WriteFloatValue("gpu_memory", GpuMemory);
+            writer.WriteDoubleValue("gpu_memory", GpuMemory);
             writer.WriteStringValue("gpu_type", GpuType);
             writer.WriteAdditionalData(AdditionalData);
         }

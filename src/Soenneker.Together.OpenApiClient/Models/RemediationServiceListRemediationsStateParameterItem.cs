@@ -36,5 +36,13 @@ namespace Soenneker.Together.OpenApiClient.Models
         #pragma warning disable CS1591
         AutoResolved,
         #pragma warning restore CS1591
+        [EnumMember(Value = "QUARANTINING")]
+        #pragma warning disable CS1591
+        Quarantining,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "QUARANTINED")]
+        #pragma warning disable CS1591
+        Quarantined,
+        #pragma warning restore CS1591
     }
 }

@@ -17,7 +17,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Number of failed generations.</summary>
         public double? GenerationFailCount { get; set; }
         /// <summary>Number of invalid labels</summary>
-        public float? InvalidLabelCount { get; set; }
+        public double? InvalidLabelCount { get; set; }
         /// <summary>Number of failed judge generations</summary>
         public double? JudgeFailCount { get; set; }
         /// <summary>JSON string representing label counts</summary>
@@ -64,7 +64,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "generation_fail_count", n => { GenerationFailCount = n.GetDoubleValue(); } },
-                { "invalid_label_count", n => { InvalidLabelCount = n.GetFloatValue(); } },
+                { "invalid_label_count", n => { InvalidLabelCount = n.GetDoubleValue(); } },
                 { "judge_fail_count", n => { JudgeFailCount = n.GetDoubleValue(); } },
                 { "label_counts", n => { LabelCounts = n.GetStringValue(); } },
                 { "pass_percentage", n => { PassPercentage = n.GetDoubleValue(); } },
@@ -79,7 +79,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDoubleValue("generation_fail_count", GenerationFailCount);
-            writer.WriteFloatValue("invalid_label_count", InvalidLabelCount);
+            writer.WriteDoubleValue("invalid_label_count", InvalidLabelCount);
             writer.WriteDoubleValue("judge_fail_count", JudgeFailCount);
             writer.WriteStringValue("label_counts", LabelCounts);
             writer.WriteDoubleValue("pass_percentage", PassPercentage);

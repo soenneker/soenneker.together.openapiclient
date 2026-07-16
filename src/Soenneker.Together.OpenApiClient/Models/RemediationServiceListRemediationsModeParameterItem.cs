@@ -24,5 +24,9 @@ namespace Soenneker.Together.OpenApiClient.Models
         #pragma warning disable CS1591
         RemediationModeRebootVm,
         #pragma warning restore CS1591
+        [EnumMember(Value = "REMEDIATION_MODE_HOST_POWER_CYCLE")]
+        #pragma warning disable CS1591
+        RemediationModeHostPowerCycle,
+        #pragma warning restore CS1591
     }
 }

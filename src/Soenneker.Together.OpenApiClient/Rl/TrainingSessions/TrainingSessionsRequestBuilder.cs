@@ -170,8 +170,15 @@ namespace Soenneker.Together.OpenApiClient.Rl.TrainingSessions
             [QueryParameter("model_resources_id")]
             public string ModelResourcesId { get; set; }
 #endif
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
             [QueryParameter("status")]
-            public global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionStatus? Status { get; set; }
+            public global::Soenneker.Together.OpenApiClient.Models.ListTrainingSessionsStatusParameterItem[]? Status { get; set; }
+#nullable restore
+#else
+            [QueryParameter("status")]
+            public global::Soenneker.Together.OpenApiClient.Models.ListTrainingSessionsStatusParameterItem[] Status { get; set; }
+#endif
         }
     }
 }

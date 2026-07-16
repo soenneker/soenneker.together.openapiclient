@@ -18,10 +18,10 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Float array of per-token log probabilities</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<float?>? Data { get; set; }
+        public List<double?>? Data { get; set; }
 #nullable restore
 #else
-        public List<float?> Data { get; set; }
+        public List<double?> Data { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlTargetLogprobs"/> and sets the default values.
@@ -48,7 +48,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "data", n => { Data = n.GetCollectionOfPrimitiveValues<float?>()?.AsList(); } },
+                { "data", n => { Data = n.GetCollectionOfPrimitiveValues<double?>()?.AsList(); } },
             };
         }
         /// <summary>
@@ -58,7 +58,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfPrimitiveValues<float?>("data", Data);
+            writer.WriteCollectionOfPrimitiveValues<double?>("data", Data);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

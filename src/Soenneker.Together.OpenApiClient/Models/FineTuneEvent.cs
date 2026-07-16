@@ -31,7 +31,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string CreatedAt { get; set; }
 #endif
         /// <summary>For early_stopped events, the best validation loss observed. Null if no improving evaluation was recorded.</summary>
-        public float? EarlyStoppingBestMetricValue { get; set; }
+        public double? EarlyStoppingBestMetricValue { get; set; }
         /// <summary>For early_stopped events, the selected best-checkpoint step when a finite best metric exists. If early_stopping_best_metric_value is null, this is the halt step.</summary>
         public int? EarlyStoppingBestStep { get; set; }
         /// <summary>The level property</summary>
@@ -105,7 +105,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             {
                 { "checkpoint_path", n => { CheckpointPath = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetStringValue(); } },
-                { "early_stopping_best_metric_value", n => { EarlyStoppingBestMetricValue = n.GetFloatValue(); } },
+                { "early_stopping_best_metric_value", n => { EarlyStoppingBestMetricValue = n.GetDoubleValue(); } },
                 { "early_stopping_best_step", n => { EarlyStoppingBestStep = n.GetIntValue(); } },
                 { "level", n => { Level = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.FinetuneEventLevelsWrapper>(global::Soenneker.Together.OpenApiClient.Models.FinetuneEventLevelsWrapper.CreateFromDiscriminatorValue); } },
                 { "message", n => { Message = n.GetStringValue(); } },
@@ -128,7 +128,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("checkpoint_path", CheckpointPath);
             writer.WriteStringValue("created_at", CreatedAt);
-            writer.WriteFloatValue("early_stopping_best_metric_value", EarlyStoppingBestMetricValue);
+            writer.WriteDoubleValue("early_stopping_best_metric_value", EarlyStoppingBestMetricValue);
             writer.WriteIntValue("early_stopping_best_step", EarlyStoppingBestStep);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.FinetuneEventLevelsWrapper>("level", Level);
             writer.WriteStringValue("message", Message);

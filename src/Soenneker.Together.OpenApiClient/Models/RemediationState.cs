@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
-    /// <summary>&quot;RemediationState represents the lifecycle state of a remediation.- `PENDING_APPROVAL`: Awaiting approval before processing can begin.- `PENDING`: Approved and queued for processing.- `RUNNING`: Actively being processed.- `SUCCEEDED`: Successfully completed.- `FAILED`: Failed with an error.- `CANCELLED`: Cancelled by user or system.- `AUTO_RESOLVED`: The underlying issue was automatically resolved before processing.&quot;</summary>
+    /// <summary>&quot;RemediationState represents the lifecycle state of a remediation.- `PENDING_APPROVAL`: Awaiting approval before processing can begin.- `PENDING`: Approved and queued for processing.- `RUNNING`: Actively being processed.- `SUCCEEDED`: Successfully completed.- `FAILED`: Failed with an error.- `CANCELLED`: Cancelled by user or system.- `AUTO_RESOLVED`: The underlying issue was automatically resolved before processing.- `QUARANTINING`: Cordoning or preparing the host before remediation.- `QUARANTINED`: Host has been cordoned or isolated for remediation.&quot;</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum RemediationState
     {
@@ -34,6 +34,14 @@ namespace Soenneker.Together.OpenApiClient.Models
         [EnumMember(Value = "AUTO_RESOLVED")]
         #pragma warning disable CS1591
         AutoResolved,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "QUARANTINING")]
+        #pragma warning disable CS1591
+        Quarantining,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "QUARANTINED")]
+        #pragma warning disable CS1591
+        Quarantined,
         #pragma warning restore CS1591
     }
 }

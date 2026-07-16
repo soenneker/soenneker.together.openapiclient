@@ -63,7 +63,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Whether this node is marked for deletion by the operator.</summary>
         public bool? MarkedForDeletion { get; set; }
         /// <summary>The memory_gib property</summary>
-        public float? MemoryGib { get; set; }
+        public double? MemoryGib { get; set; }
         /// <summary>The networks property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -160,7 +160,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "instance_id", n => { InstanceId = n.GetStringValue(); } },
                 { "latest_remediation", n => { LatestRemediation = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.Remediation>(global::Soenneker.Together.OpenApiClient.Models.Remediation.CreateFromDiscriminatorValue); } },
                 { "marked_for_deletion", n => { MarkedForDeletion = n.GetBoolValue(); } },
-                { "memory_gib", n => { MemoryGib = n.GetFloatValue(); } },
+                { "memory_gib", n => { MemoryGib = n.GetDoubleValue(); } },
                 { "networks", n => { Networks = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "node_id", n => { NodeId = n.GetStringValue(); } },
                 { "num_cpu_cores", n => { NumCpuCores = n.GetIntValue(); } },
@@ -189,7 +189,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteStringValue("instance_id", InstanceId);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.Remediation>("latest_remediation", LatestRemediation);
             writer.WriteBoolValue("marked_for_deletion", MarkedForDeletion);
-            writer.WriteFloatValue("memory_gib", MemoryGib);
+            writer.WriteDoubleValue("memory_gib", MemoryGib);
             writer.WriteCollectionOfPrimitiveValues<string>("networks", Networks);
             writer.WriteStringValue("node_id", NodeId);
             writer.WriteIntValue("num_cpu_cores", NumCpuCores);

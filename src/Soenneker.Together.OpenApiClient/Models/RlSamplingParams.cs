@@ -33,11 +33,11 @@ namespace Soenneker.Together.OpenApiClient.Models
         public List<string> Stop { get; set; }
 #endif
         /// <summary>Sampling temperature</summary>
-        public float? Temperature { get; set; }
+        public double? Temperature { get; set; }
         /// <summary>Top-k sampling limit</summary>
         public int? TopK { get; set; }
         /// <summary>Nucleus sampling probability threshold</summary>
-        public float? TopP { get; set; }
+        public double? TopP { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlSamplingParams"/> and sets the default values.
         /// </summary>
@@ -45,9 +45,9 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             AdditionalData = new Dictionary<string, object>();
             MaxTokens = 100;
-            Temperature = 1f;
+            Temperature = 1;
             TopK = -1;
-            TopP = 1f;
+            TopP = 1;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -70,9 +70,9 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "max_tokens", n => { MaxTokens = n.GetIntValue(); } },
                 { "seed", n => { Seed = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlSamplingParamsSeed>(global::Soenneker.Together.OpenApiClient.Models.RlSamplingParamsSeed.CreateFromDiscriminatorValue); } },
                 { "stop", n => { Stop = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "temperature", n => { Temperature = n.GetFloatValue(); } },
+                { "temperature", n => { Temperature = n.GetDoubleValue(); } },
                 { "top_k", n => { TopK = n.GetIntValue(); } },
-                { "top_p", n => { TopP = n.GetFloatValue(); } },
+                { "top_p", n => { TopP = n.GetDoubleValue(); } },
             };
         }
         /// <summary>
@@ -85,9 +85,9 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteIntValue("max_tokens", MaxTokens);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlSamplingParamsSeed>("seed", Seed);
             writer.WriteCollectionOfPrimitiveValues<string>("stop", Stop);
-            writer.WriteFloatValue("temperature", Temperature);
+            writer.WriteDoubleValue("temperature", Temperature);
             writer.WriteIntValue("top_k", TopK);
-            writer.WriteFloatValue("top_p", TopP);
+            writer.WriteDoubleValue("top_p", TopP);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

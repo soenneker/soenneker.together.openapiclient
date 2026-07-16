@@ -15,7 +15,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The dpo_beta property</summary>
-        public float? DpoBeta { get; set; }
+        public double? DpoBeta { get; set; }
         /// <summary>The dpo_normalize_logratios_by_length property</summary>
         public bool? DpoNormalizeLogratiosByLength { get; set; }
         /// <summary>The dpo_reference_free property</summary>
@@ -23,20 +23,20 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>The method property</summary>
         public global::Soenneker.Together.OpenApiClient.Models.TrainingMethodDpoMethod? Method { get; set; }
         /// <summary>The rpo_alpha property</summary>
-        public float? RpoAlpha { get; set; }
+        public double? RpoAlpha { get; set; }
         /// <summary>The simpo_gamma property</summary>
-        public float? SimpoGamma { get; set; }
+        public double? SimpoGamma { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.TrainingMethodDpo"/> and sets the default values.
         /// </summary>
         public TrainingMethodDpo()
         {
             AdditionalData = new Dictionary<string, object>();
-            DpoBeta = 0.1f;
+            DpoBeta = 0.1;
             DpoNormalizeLogratiosByLength = false;
             DpoReferenceFree = false;
-            RpoAlpha = 0f;
-            SimpoGamma = 0f;
+            RpoAlpha = 0;
+            SimpoGamma = 0;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -56,12 +56,12 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "dpo_beta", n => { DpoBeta = n.GetFloatValue(); } },
+                { "dpo_beta", n => { DpoBeta = n.GetDoubleValue(); } },
                 { "dpo_normalize_logratios_by_length", n => { DpoNormalizeLogratiosByLength = n.GetBoolValue(); } },
                 { "dpo_reference_free", n => { DpoReferenceFree = n.GetBoolValue(); } },
                 { "method", n => { Method = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.TrainingMethodDpoMethod>(); } },
-                { "rpo_alpha", n => { RpoAlpha = n.GetFloatValue(); } },
-                { "simpo_gamma", n => { SimpoGamma = n.GetFloatValue(); } },
+                { "rpo_alpha", n => { RpoAlpha = n.GetDoubleValue(); } },
+                { "simpo_gamma", n => { SimpoGamma = n.GetDoubleValue(); } },
             };
         }
         /// <summary>
@@ -71,12 +71,12 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteFloatValue("dpo_beta", DpoBeta);
+            writer.WriteDoubleValue("dpo_beta", DpoBeta);
             writer.WriteBoolValue("dpo_normalize_logratios_by_length", DpoNormalizeLogratiosByLength);
             writer.WriteBoolValue("dpo_reference_free", DpoReferenceFree);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.TrainingMethodDpoMethod>("method", Method);
-            writer.WriteFloatValue("rpo_alpha", RpoAlpha);
-            writer.WriteFloatValue("simpo_gamma", SimpoGamma);
+            writer.WriteDoubleValue("rpo_alpha", RpoAlpha);
+            writer.WriteDoubleValue("simpo_gamma", SimpoGamma);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

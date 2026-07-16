@@ -12,6 +12,22 @@ namespace Soenneker.Together.OpenApiClient.Models
     public partial class FinetuneResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
+        /// <summary>Together model registry object ID for the final adapter weights on LoRA jobs.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? AdapterObjectId { get; set; }
+#nullable restore
+#else
+        public string AdapterObjectId { get; set; }
+#endif
+        /// <summary>Together model registry revision ID for the final adapter weights on LoRA jobs.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? AdapterObjectRevisionId { get; set; }
+#nullable restore
+#else
+        public string AdapterObjectRevisionId { get; set; }
+#endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The batch_size property</summary>
@@ -27,7 +43,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Whether the early-stopping criterion triggered.</summary>
         public bool? EarlyStopped { get; set; }
         /// <summary>Best validation loss observed, corresponding to early_stopping_best_step. Null if no improving evaluation was recorded (for example, a non-finite first evaluation).</summary>
-        public float? EarlyStoppingBestMetric { get; set; }
+        public double? EarlyStoppingBestMetric { get; set; }
         /// <summary>Step associated with the selected early-stopping artifact. When early_stopping_best_metric is null, no finite best metric was recorded; this is the halt step, not a best-checkpoint step.</summary>
         public int? EarlyStoppingBestStep { get; set; }
         /// <summary>The epochs_completed property</summary>
@@ -87,7 +103,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public global::Soenneker.Together.OpenApiClient.Models.LrScheduler LrScheduler { get; set; }
 #endif
         /// <summary>The max_grad_norm property</summary>
-        public float? MaxGradNorm { get; set; }
+        public double? MaxGradNorm { get; set; }
         /// <summary>The model property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -95,6 +111,22 @@ namespace Soenneker.Together.OpenApiClient.Models
 #nullable restore
 #else
         public string Model { get; set; }
+#endif
+        /// <summary>Together model registry object ID for the final model weights (e.g. `ml_...`).</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ModelObjectId { get; set; }
+#nullable restore
+#else
+        public string ModelObjectId { get; set; }
+#endif
+        /// <summary>Together model registry revision ID for the final model weights (e.g. `rv_...`).</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ModelObjectRevisionId { get; set; }
+#nullable restore
+#else
+        public string ModelObjectRevisionId { get; set; }
 #endif
         /// <summary>The model_output_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -219,7 +251,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>The warmup_ratio property</summary>
         public double? WarmupRatio { get; set; }
         /// <summary>The weight_decay property</summary>
-        public float? WeightDecay { get; set; }
+        public double? WeightDecay { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.FinetuneResponse"/> and sets the default values.
         /// </summary>
@@ -245,10 +277,12 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "adapter_object_id", n => { AdapterObjectId = n.GetStringValue(); } },
+                { "adapter_object_revision_id", n => { AdapterObjectRevisionId = n.GetStringValue(); } },
                 { "batch_size", n => { BatchSize = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseBatchSize>(global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseBatchSize.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "early_stopped", n => { EarlyStopped = n.GetBoolValue(); } },
-                { "early_stopping_best_metric", n => { EarlyStoppingBestMetric = n.GetFloatValue(); } },
+                { "early_stopping_best_metric", n => { EarlyStoppingBestMetric = n.GetDoubleValue(); } },
                 { "early_stopping_best_step", n => { EarlyStoppingBestStep = n.GetIntValue(); } },
                 { "epochs_completed", n => { EpochsCompleted = n.GetIntValue(); } },
                 { "eval_steps", n => { EvalSteps = n.GetIntValue(); } },
@@ -260,8 +294,10 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "job_id", n => { JobId = n.GetStringValue(); } },
                 { "learning_rate", n => { LearningRate = n.GetDoubleValue(); } },
                 { "lr_scheduler", n => { LrScheduler = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.LrScheduler>(global::Soenneker.Together.OpenApiClient.Models.LrScheduler.CreateFromDiscriminatorValue); } },
-                { "max_grad_norm", n => { MaxGradNorm = n.GetFloatValue(); } },
+                { "max_grad_norm", n => { MaxGradNorm = n.GetDoubleValue(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
+                { "model_object_id", n => { ModelObjectId = n.GetStringValue(); } },
+                { "model_object_revision_id", n => { ModelObjectRevisionId = n.GetStringValue(); } },
                 { "model_output_name", n => { ModelOutputName = n.GetStringValue(); } },
                 { "model_output_path", n => { ModelOutputPath = n.GetStringValue(); } },
                 { "multimodal_params", n => { MultimodalParams = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.MultimodalParams>(global::Soenneker.Together.OpenApiClient.Models.MultimodalParams.CreateFromDiscriminatorValue); } },
@@ -287,7 +323,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "wandb_project_name", n => { WandbProjectName = n.GetStringValue(); } },
                 { "wandb_url", n => { WandbUrl = n.GetStringValue(); } },
                 { "warmup_ratio", n => { WarmupRatio = n.GetDoubleValue(); } },
-                { "weight_decay", n => { WeightDecay = n.GetFloatValue(); } },
+                { "weight_decay", n => { WeightDecay = n.GetDoubleValue(); } },
             };
         }
         /// <summary>
@@ -297,10 +333,12 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("adapter_object_id", AdapterObjectId);
+            writer.WriteStringValue("adapter_object_revision_id", AdapterObjectRevisionId);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseBatchSize>("batch_size", BatchSize);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteBoolValue("early_stopped", EarlyStopped);
-            writer.WriteFloatValue("early_stopping_best_metric", EarlyStoppingBestMetric);
+            writer.WriteDoubleValue("early_stopping_best_metric", EarlyStoppingBestMetric);
             writer.WriteIntValue("early_stopping_best_step", EarlyStoppingBestStep);
             writer.WriteIntValue("epochs_completed", EpochsCompleted);
             writer.WriteIntValue("eval_steps", EvalSteps);
@@ -312,8 +350,10 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteStringValue("job_id", JobId);
             writer.WriteDoubleValue("learning_rate", LearningRate);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.LrScheduler>("lr_scheduler", LrScheduler);
-            writer.WriteFloatValue("max_grad_norm", MaxGradNorm);
+            writer.WriteDoubleValue("max_grad_norm", MaxGradNorm);
             writer.WriteStringValue("model", Model);
+            writer.WriteStringValue("model_object_id", ModelObjectId);
+            writer.WriteStringValue("model_object_revision_id", ModelObjectRevisionId);
             writer.WriteStringValue("model_output_name", ModelOutputName);
             writer.WriteStringValue("model_output_path", ModelOutputPath);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.MultimodalParams>("multimodal_params", MultimodalParams);
@@ -339,7 +379,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteStringValue("wandb_project_name", WandbProjectName);
             writer.WriteStringValue("wandb_url", WandbUrl);
             writer.WriteDoubleValue("warmup_ratio", WarmupRatio);
-            writer.WriteFloatValue("weight_decay", WeightDecay);
+            writer.WriteDoubleValue("weight_decay", WeightDecay);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

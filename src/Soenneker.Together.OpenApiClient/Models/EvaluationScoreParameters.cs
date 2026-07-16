@@ -31,9 +31,9 @@ namespace Soenneker.Together.OpenApiClient.Models
         public global::Soenneker.Together.OpenApiClient.Models.EvaluationJudgeModelConfig Judge { get; set; }
 #endif
         /// <summary>Maximum possible score</summary>
-        public float? MaxScore { get; set; }
+        public double? MaxScore { get; set; }
         /// <summary>Minimum possible score</summary>
-        public float? MinScore { get; set; }
+        public double? MinScore { get; set; }
         /// <summary>The model_to_evaluate property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -43,7 +43,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public global::Soenneker.Together.OpenApiClient.Models.EvaluationModelOrString ModelToEvaluate { get; set; }
 #endif
         /// <summary>Score threshold for passing</summary>
-        public float? PassThreshold { get; set; }
+        public double? PassThreshold { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.EvaluationScoreParameters"/> and sets the default values.
         /// </summary>
@@ -71,10 +71,10 @@ namespace Soenneker.Together.OpenApiClient.Models
             {
                 { "input_data_file_path", n => { InputDataFilePath = n.GetStringValue(); } },
                 { "judge", n => { Judge = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.EvaluationJudgeModelConfig>(global::Soenneker.Together.OpenApiClient.Models.EvaluationJudgeModelConfig.CreateFromDiscriminatorValue); } },
-                { "max_score", n => { MaxScore = n.GetFloatValue(); } },
-                { "min_score", n => { MinScore = n.GetFloatValue(); } },
+                { "max_score", n => { MaxScore = n.GetDoubleValue(); } },
+                { "min_score", n => { MinScore = n.GetDoubleValue(); } },
                 { "model_to_evaluate", n => { ModelToEvaluate = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.EvaluationModelOrString>(global::Soenneker.Together.OpenApiClient.Models.EvaluationModelOrString.CreateFromDiscriminatorValue); } },
-                { "pass_threshold", n => { PassThreshold = n.GetFloatValue(); } },
+                { "pass_threshold", n => { PassThreshold = n.GetDoubleValue(); } },
             };
         }
         /// <summary>
@@ -86,10 +86,10 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("input_data_file_path", InputDataFilePath);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.EvaluationJudgeModelConfig>("judge", Judge);
-            writer.WriteFloatValue("max_score", MaxScore);
-            writer.WriteFloatValue("min_score", MinScore);
+            writer.WriteDoubleValue("max_score", MaxScore);
+            writer.WriteDoubleValue("min_score", MinScore);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.EvaluationModelOrString>("model_to_evaluate", ModelToEvaluate);
-            writer.WriteFloatValue("pass_threshold", PassThreshold);
+            writer.WriteDoubleValue("pass_threshold", PassThreshold);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

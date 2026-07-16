@@ -41,7 +41,7 @@ namespace Soenneker.Together.OpenApiClient.Compute.Clusters
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ClustersRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/compute/clusters{?project_id*}", pathParameters)
+        public ClustersRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/compute/clusters{?projectId*}", pathParameters)
         {
         }
         /// <summary>
@@ -49,7 +49,7 @@ namespace Soenneker.Together.OpenApiClient.Compute.Clusters
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ClustersRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/compute/clusters{?project_id*}", rawUrl)
+        public ClustersRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/compute/clusters{?projectId*}", rawUrl)
         {
         }
         /// <summary>
@@ -148,11 +148,11 @@ namespace Soenneker.Together.OpenApiClient.Compute.Clusters
         {
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            [QueryParameter("project_id")]
+            [QueryParameter("projectId")]
             public string? ProjectId { get; set; }
 #nullable restore
 #else
-            [QueryParameter("project_id")]
+            [QueryParameter("projectId")]
             public string ProjectId { get; set; }
 #endif
         }

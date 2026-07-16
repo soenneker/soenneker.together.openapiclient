@@ -17,7 +17,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>The lora_alpha property</summary>
         public int? LoraAlpha { get; set; }
         /// <summary>The lora_dropout property</summary>
-        public float? LoraDropout { get; set; }
+        public double? LoraDropout { get; set; }
         /// <summary>The lora_r property</summary>
         public int? LoraR { get; set; }
         /// <summary>Comma-separated LoRA target modules. Use `all-linear` for model defaults; MoE expert modules (`w_up`, `w_gate`, `w_down`) are supported on compatible models and cannot be mixed with attention modules.</summary>
@@ -36,7 +36,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public LoRaTrainingType()
         {
             AdditionalData = new Dictionary<string, object>();
-            LoraDropout = 0f;
+            LoraDropout = 0;
             LoraTrainableModules = "all-linear";
         }
         /// <summary>
@@ -58,7 +58,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "lora_alpha", n => { LoraAlpha = n.GetIntValue(); } },
-                { "lora_dropout", n => { LoraDropout = n.GetFloatValue(); } },
+                { "lora_dropout", n => { LoraDropout = n.GetDoubleValue(); } },
                 { "lora_r", n => { LoraR = n.GetIntValue(); } },
                 { "lora_trainable_modules", n => { LoraTrainableModules = n.GetStringValue(); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.LoRaTrainingTypeType>(); } },
@@ -72,7 +72,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("lora_alpha", LoraAlpha);
-            writer.WriteFloatValue("lora_dropout", LoraDropout);
+            writer.WriteDoubleValue("lora_dropout", LoraDropout);
             writer.WriteIntValue("lora_r", LoraR);
             writer.WriteStringValue("lora_trainable_modules", LoraTrainableModules);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.LoRaTrainingTypeType>("type", Type);

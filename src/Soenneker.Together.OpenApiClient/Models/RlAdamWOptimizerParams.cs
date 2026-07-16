@@ -8,33 +8,33 @@ using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
     /// <summary>
-    /// Per-step overrides for AdamW hyperparameters. In an AdamW session this tunes the entire model. In a Muon session this tunes the parts of the model that Muon does not, typically embeddings, normalization layers, and the language-model head.
+    /// Per-step AdamW optimizer overrides.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RlAdamWOptimizerParams : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&quot;Exponential decay rate for the first-moment estimate (typical: 0.9).&quot;</summary>
-        public float? Beta1 { get; set; }
-        /// <summary>&quot;Exponential decay rate for the second-moment estimate (typical: 0.95-0.999).&quot;</summary>
-        public float? Beta2 { get; set; }
-        /// <summary>Small constant added to the denominator for numerical stability.</summary>
-        public float? Eps { get; set; }
-        /// <summary>Learning rate for the AdamW-tuned parameters. Overrides OptimStepBody.learning_rate for these parameters only.</summary>
-        public float? Lr { get; set; }
-        /// <summary>Weight decay coefficient for the AdamW-tuned parameters. The default of 0 means no regularization; typical values are 0.01-0.1 and should be set explicitly when regularization is desired.</summary>
-        public float? WeightDecay { get; set; }
+        /// <summary>Exponential decay rate for the first-moment estimate</summary>
+        public double? Beta1 { get; set; }
+        /// <summary>Exponential decay rate for the second-moment estimate</summary>
+        public double? Beta2 { get; set; }
+        /// <summary>Epsilon for numerical stability</summary>
+        public double? Eps { get; set; }
+        /// <summary>Learning rate for the AdamW-tuned parameters</summary>
+        public double? LearningRate { get; set; }
+        /// <summary>Weight decay coefficient</summary>
+        public double? WeightDecay { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlAdamWOptimizerParams"/> and sets the default values.
         /// </summary>
         public RlAdamWOptimizerParams()
         {
             AdditionalData = new Dictionary<string, object>();
-            Beta1 = 0.9f;
-            Beta2 = 0.95f;
-            Eps = 0.00000001f;
-            WeightDecay = 0f;
+            Beta1 = 0.9;
+            Beta2 = 0.95;
+            Eps = 0.00000001;
+            WeightDecay = 0;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -54,11 +54,11 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "beta1", n => { Beta1 = n.GetFloatValue(); } },
-                { "beta2", n => { Beta2 = n.GetFloatValue(); } },
-                { "eps", n => { Eps = n.GetFloatValue(); } },
-                { "lr", n => { Lr = n.GetFloatValue(); } },
-                { "weight_decay", n => { WeightDecay = n.GetFloatValue(); } },
+                { "beta1", n => { Beta1 = n.GetDoubleValue(); } },
+                { "beta2", n => { Beta2 = n.GetDoubleValue(); } },
+                { "eps", n => { Eps = n.GetDoubleValue(); } },
+                { "learning_rate", n => { LearningRate = n.GetDoubleValue(); } },
+                { "weight_decay", n => { WeightDecay = n.GetDoubleValue(); } },
             };
         }
         /// <summary>
@@ -68,11 +68,11 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteFloatValue("beta1", Beta1);
-            writer.WriteFloatValue("beta2", Beta2);
-            writer.WriteFloatValue("eps", Eps);
-            writer.WriteFloatValue("lr", Lr);
-            writer.WriteFloatValue("weight_decay", WeightDecay);
+            writer.WriteDoubleValue("beta1", Beta1);
+            writer.WriteDoubleValue("beta2", Beta2);
+            writer.WriteDoubleValue("eps", Eps);
+            writer.WriteDoubleValue("learning_rate", LearningRate);
+            writer.WriteDoubleValue("weight_decay", WeightDecay);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

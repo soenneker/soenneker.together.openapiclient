@@ -51,6 +51,14 @@ namespace Soenneker.Together.OpenApiClient.Models
 #endif
         /// <summary>Whether the resource hosts LoRA sessions or a full-weight session</summary>
         public bool? LoraEnabled { get; set; }
+        /// <summary>Optimizer configuration</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Together.OpenApiClient.Models.RlOptimizerConfig? OptimizerConfig { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Together.OpenApiClient.Models.RlOptimizerConfig OptimizerConfig { get; set; }
+#endif
         /// <summary>Lifecycle status of a model resource</summary>
         public global::Soenneker.Together.OpenApiClient.Models.RlModelResourcesStatus? Status { get; set; }
         /// <summary>Timestamp when the model resource was last updated</summary>
@@ -86,6 +94,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "error", n => { Error = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlModelResourcesError>(global::Soenneker.Together.OpenApiClient.Models.RlModelResourcesError.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "lora_enabled", n => { LoraEnabled = n.GetBoolValue(); } },
+                { "optimizer_config", n => { OptimizerConfig = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlOptimizerConfig>(global::Soenneker.Together.OpenApiClient.Models.RlOptimizerConfig.CreateFromDiscriminatorValue); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlModelResourcesStatus>(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
@@ -103,6 +112,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlModelResourcesError>("error", Error);
             writer.WriteStringValue("id", Id);
             writer.WriteBoolValue("lora_enabled", LoraEnabled);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlOptimizerConfig>("optimizer_config", OptimizerConfig);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlModelResourcesStatus>("status", Status);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
             writer.WriteAdditionalData(AdditionalData);

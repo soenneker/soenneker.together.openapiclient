@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
-    /// <summary>&quot;Remediation mode specifies how the remediation should be performed.- `REMEDIATION_MODE_VM_ONLY`: Deletes the VM and provisions a new one on any available host.- `REMEDIATION_MODE_HOST_AWARE`: Cordons the host, deletes the VM, and provisions a new one on a different host.&quot;</summary>
+    /// <summary>&quot;Remediation mode specifies how the remediation should be performed.- `REMEDIATION_MODE_VM_ONLY`: Deletes the VM and provisions a new one on any available host.- `REMEDIATION_MODE_HOST_AWARE`: Cordons the host, deletes the VM, and provisions a new one on a different host.- `REMEDIATION_MODE_EVICT_WITHOUT_REPLACEMENT`: Evicts the VM without provisioning a replacement.- `REMEDIATION_MODE_REBOOT_VM`: Reboots the VM in place.- `REMEDIATION_MODE_HOST_POWER_CYCLE`: Cordons and power-cycles the bare-metal host while preserving host and node identity.&quot;</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum RemediationMode
     {
@@ -22,6 +22,10 @@ namespace Soenneker.Together.OpenApiClient.Models
         [EnumMember(Value = "REMEDIATION_MODE_REBOOT_VM")]
         #pragma warning disable CS1591
         RemediationModeRebootVm,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "REMEDIATION_MODE_HOST_POWER_CYCLE")]
+        #pragma warning disable CS1591
+        RemediationModeHostPowerCycle,
         #pragma warning restore CS1591
     }
 }

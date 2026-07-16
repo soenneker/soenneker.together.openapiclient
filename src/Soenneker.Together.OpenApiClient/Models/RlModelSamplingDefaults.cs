@@ -22,7 +22,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Number of completions per prompt</summary>
         public int? N { get; set; }
         /// <summary>Sampling temperature</summary>
-        public float? Temperature { get; set; }
+        public double? Temperature { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlModelSamplingDefaults"/> and sets the default values.
         /// </summary>
@@ -51,7 +51,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "logprobs", n => { Logprobs = n.GetIntValue(); } },
                 { "max_tokens", n => { MaxTokens = n.GetIntValue(); } },
                 { "n", n => { N = n.GetIntValue(); } },
-                { "temperature", n => { Temperature = n.GetFloatValue(); } },
+                { "temperature", n => { Temperature = n.GetDoubleValue(); } },
             };
         }
         /// <summary>
@@ -64,7 +64,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteIntValue("logprobs", Logprobs);
             writer.WriteIntValue("max_tokens", MaxTokens);
             writer.WriteIntValue("n", N);
-            writer.WriteFloatValue("temperature", Temperature);
+            writer.WriteDoubleValue("temperature", Temperature);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

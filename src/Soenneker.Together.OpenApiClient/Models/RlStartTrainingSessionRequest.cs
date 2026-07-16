@@ -30,14 +30,6 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string ModelResourcesId { get; set; }
 #endif
-        /// <summary>Optimizer selection for the training session. Fields here are fixed for the session&apos;s lifetime; tunable per-step hyperparameters are configured on each OptimStep request instead.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RlOptimizerConfig? OptimizerConfig { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Together.OpenApiClient.Models.RlOptimizerConfig OptimizerConfig { get; set; }
-#endif
         /// <summary>Checkpoint ID to resume from</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -81,7 +73,6 @@ namespace Soenneker.Together.OpenApiClient.Models
             {
                 { "lora_config", n => { LoraConfig = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlLoraConfig>(global::Soenneker.Together.OpenApiClient.Models.RlLoraConfig.CreateFromDiscriminatorValue); } },
                 { "model_resources_id", n => { ModelResourcesId = n.GetStringValue(); } },
-                { "optimizer_config", n => { OptimizerConfig = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlOptimizerConfig>(global::Soenneker.Together.OpenApiClient.Models.RlOptimizerConfig.CreateFromDiscriminatorValue); } },
                 { "resume_from_checkpoint_id", n => { ResumeFromCheckpointId = n.GetStringValue(); } },
                 { "resume_from_hf_checkpoint", n => { ResumeFromHfCheckpoint = n.GetStringValue(); } },
             };
@@ -95,7 +86,6 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlLoraConfig>("lora_config", LoraConfig);
             writer.WriteStringValue("model_resources_id", ModelResourcesId);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlOptimizerConfig>("optimizer_config", OptimizerConfig);
             writer.WriteStringValue("resume_from_checkpoint_id", ResumeFromCheckpointId);
             writer.WriteStringValue("resume_from_hf_checkpoint", ResumeFromHfCheckpoint);
             writer.WriteAdditionalData(AdditionalData);

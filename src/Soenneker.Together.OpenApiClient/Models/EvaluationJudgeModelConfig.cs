@@ -53,7 +53,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string SystemTemplate { get; set; }
 #endif
         /// <summary>Sampling temperature for the judge model. Defaults to 0.05 if omitted.</summary>
-        public float? Temperature { get; set; }
+        public double? Temperature { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.EvaluationJudgeModelConfig"/> and sets the default values.
         /// </summary>
@@ -86,7 +86,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "model_source", n => { ModelSource = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.EvaluationJudgeModelConfigModelSource>(); } },
                 { "num_workers", n => { NumWorkers = n.GetIntValue(); } },
                 { "system_template", n => { SystemTemplate = n.GetStringValue(); } },
-                { "temperature", n => { Temperature = n.GetFloatValue(); } },
+                { "temperature", n => { Temperature = n.GetDoubleValue(); } },
             };
         }
         /// <summary>
@@ -103,7 +103,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.EvaluationJudgeModelConfigModelSource>("model_source", ModelSource);
             writer.WriteIntValue("num_workers", NumWorkers);
             writer.WriteStringValue("system_template", SystemTemplate);
-            writer.WriteFloatValue("temperature", Temperature);
+            writer.WriteDoubleValue("temperature", Temperature);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

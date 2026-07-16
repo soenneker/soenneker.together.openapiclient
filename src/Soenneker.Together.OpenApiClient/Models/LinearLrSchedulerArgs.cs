@@ -15,14 +15,14 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The ratio of the final learning rate to the peak learning rate</summary>
-        public float? MinLrRatio { get; set; }
+        public double? MinLrRatio { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.LinearLrSchedulerArgs"/> and sets the default values.
         /// </summary>
         public LinearLrSchedulerArgs()
         {
             AdditionalData = new Dictionary<string, object>();
-            MinLrRatio = 0f;
+            MinLrRatio = 0;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -42,7 +42,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "min_lr_ratio", n => { MinLrRatio = n.GetFloatValue(); } },
+                { "min_lr_ratio", n => { MinLrRatio = n.GetDoubleValue(); } },
             };
         }
         /// <summary>
@@ -52,7 +52,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteFloatValue("min_lr_ratio", MinLrRatio);
+            writer.WriteDoubleValue("min_lr_ratio", MinLrRatio);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

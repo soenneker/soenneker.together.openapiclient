@@ -17,11 +17,11 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>The agg_type property</summary>
         public global::Soenneker.Together.OpenApiClient.Models.RlGrpoLossAggregationType? AggType { get; set; }
         /// <summary>KL penalty coefficient</summary>
-        public float? Beta { get; set; }
+        public double? Beta { get; set; }
         /// <summary>Upper clip bound for importance ratio</summary>
-        public float? ClipHigh { get; set; }
+        public double? ClipHigh { get; set; }
         /// <summary>Lower clip bound for importance ratio</summary>
-        public float? ClipLow { get; set; }
+        public double? ClipLow { get; set; }
         /// <summary>Controls whether GRPO loss uses token-level or sequence-level importance ratios.</summary>
         public global::Soenneker.Together.OpenApiClient.Models.RlGrpoLossRatioType? RatioType { get; set; }
         /// <summary>
@@ -30,9 +30,9 @@ namespace Soenneker.Together.OpenApiClient.Models
         public RlGrpoLossParams()
         {
             AdditionalData = new Dictionary<string, object>();
-            Beta = 0f;
-            ClipHigh = 0.28f;
-            ClipLow = 0.2f;
+            Beta = 0;
+            ClipHigh = 0.28;
+            ClipLow = 0.2;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -53,9 +53,9 @@ namespace Soenneker.Together.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "agg_type", n => { AggType = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlGrpoLossAggregationType>(); } },
-                { "beta", n => { Beta = n.GetFloatValue(); } },
-                { "clip_high", n => { ClipHigh = n.GetFloatValue(); } },
-                { "clip_low", n => { ClipLow = n.GetFloatValue(); } },
+                { "beta", n => { Beta = n.GetDoubleValue(); } },
+                { "clip_high", n => { ClipHigh = n.GetDoubleValue(); } },
+                { "clip_low", n => { ClipLow = n.GetDoubleValue(); } },
                 { "ratio_type", n => { RatioType = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlGrpoLossRatioType>(); } },
             };
         }
@@ -67,9 +67,9 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlGrpoLossAggregationType>("agg_type", AggType);
-            writer.WriteFloatValue("beta", Beta);
-            writer.WriteFloatValue("clip_high", ClipHigh);
-            writer.WriteFloatValue("clip_low", ClipLow);
+            writer.WriteDoubleValue("beta", Beta);
+            writer.WriteDoubleValue("clip_high", ClipHigh);
+            writer.WriteDoubleValue("clip_low", ClipLow);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlGrpoLossRatioType>("ratio_type", RatioType);
             writer.WriteAdditionalData(AdditionalData);
         }

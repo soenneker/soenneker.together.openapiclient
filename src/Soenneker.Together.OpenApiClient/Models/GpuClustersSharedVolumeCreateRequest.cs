@@ -16,6 +16,14 @@ namespace Soenneker.Together.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>When true, the shared volume is not deleted when the cluster is decommissioned.</summary>
         public bool? IsLifecycleIndependent { get; set; }
+        /// <summary>Project ID that will own the volume. When omitted, the caller&apos;s default project is used.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ProjectId { get; set; }
+#nullable restore
+#else
+        public string ProjectId { get; set; }
+#endif
         /// <summary>Region name. Usable regions can be found from `clusters.list_regions()`</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -60,6 +68,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "is_lifecycle_independent", n => { IsLifecycleIndependent = n.GetBoolValue(); } },
+                { "project_id", n => { ProjectId = n.GetStringValue(); } },
                 { "region", n => { Region = n.GetStringValue(); } },
                 { "size_tib", n => { SizeTib = n.GetIntValue(); } },
                 { "volume_name", n => { VolumeName = n.GetStringValue(); } },
@@ -73,6 +82,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("is_lifecycle_independent", IsLifecycleIndependent);
+            writer.WriteStringValue("project_id", ProjectId);
             writer.WriteStringValue("region", Region);
             writer.WriteIntValue("size_tib", SizeTib);
             writer.WriteStringValue("volume_name", VolumeName);

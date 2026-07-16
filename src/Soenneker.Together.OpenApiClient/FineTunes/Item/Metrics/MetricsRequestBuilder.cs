@@ -87,10 +87,10 @@ namespace Soenneker.Together.OpenApiClient.FineTunes.Item.Metrics
         {
             /// <summary>Return only metrics with global_step &gt;= this value.</summary>
             [QueryParameter("global_step_from")]
-            public long? GlobalStepFrom { get; set; }
+            public int? GlobalStepFrom { get; set; }
             /// <summary>Return only metrics with global_step &lt;= this value.</summary>
             [QueryParameter("global_step_to")]
-            public long? GlobalStepTo { get; set; }
+            public int? GlobalStepTo { get; set; }
             /// <summary>Return only metrics logged at or after this ISO-8601 timestamp.</summary>
             [QueryParameter("logged_at_from")]
             public DateTimeOffset? LoggedAtFrom { get; set; }
@@ -99,7 +99,7 @@ namespace Soenneker.Together.OpenApiClient.FineTunes.Item.Metrics
             public DateTimeOffset? LoggedAtTo { get; set; }
             /// <summary>Number of (uniformly sampled) train metrics to return.</summary>
             [QueryParameter("resolution")]
-            public long? Resolution { get; set; }
+            public int? Resolution { get; set; }
         }
     }
 }

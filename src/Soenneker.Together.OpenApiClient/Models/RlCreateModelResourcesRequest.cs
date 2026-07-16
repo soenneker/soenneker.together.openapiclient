@@ -33,6 +33,14 @@ namespace Soenneker.Together.OpenApiClient.Models
 #endif
         /// <summary>Whether the resource hosts LoRA sessions or a single full-weight session</summary>
         public bool? LoraEnabled { get; set; }
+        /// <summary>Optimizer configuration</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Together.OpenApiClient.Models.RlOptimizerConfig? OptimizerConfig { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Together.OpenApiClient.Models.RlOptimizerConfig OptimizerConfig { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlCreateModelResourcesRequest"/> and sets the default values.
         /// </summary>
@@ -62,6 +70,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "base_model", n => { BaseModel = n.GetStringValue(); } },
                 { "compute_config", n => { ComputeConfig = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlComputeConfigCreateRequest>(global::Soenneker.Together.OpenApiClient.Models.RlComputeConfigCreateRequest.CreateFromDiscriminatorValue); } },
                 { "lora_enabled", n => { LoraEnabled = n.GetBoolValue(); } },
+                { "optimizer_config", n => { OptimizerConfig = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlOptimizerConfig>(global::Soenneker.Together.OpenApiClient.Models.RlOptimizerConfig.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -74,6 +83,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteStringValue("base_model", BaseModel);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlComputeConfigCreateRequest>("compute_config", ComputeConfig);
             writer.WriteBoolValue("lora_enabled", LoraEnabled);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlOptimizerConfig>("optimizer_config", OptimizerConfig);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

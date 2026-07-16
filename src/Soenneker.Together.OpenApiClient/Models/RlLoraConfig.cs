@@ -16,13 +16,13 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Alpha of the LoRA adapter</summary>
-        public long? Alpha { get; set; }
+        public int? Alpha { get; set; }
         /// <summary>Dropout of the LoRA adapter</summary>
-        public float? Dropout { get; set; }
+        public double? Dropout { get; set; }
         /// <summary>Whether to enable LoRA fine-tuning. If false, full fine-tuning is used.</summary>
         public bool? Enable { get; set; }
         /// <summary>Rank of the LoRA adapter</summary>
-        public long? Rank { get; set; }
+        public int? Rank { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlLoraConfig"/> and sets the default values.
         /// </summary>
@@ -30,7 +30,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             AdditionalData = new Dictionary<string, object>();
             Alpha = 16;
-            Dropout = 0.05f;
+            Dropout = 0.05;
             Enable = true;
             Rank = 8;
         }
@@ -52,10 +52,10 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "alpha", n => { Alpha = n.GetLongValue(); } },
-                { "dropout", n => { Dropout = n.GetFloatValue(); } },
+                { "alpha", n => { Alpha = n.GetIntValue(); } },
+                { "dropout", n => { Dropout = n.GetDoubleValue(); } },
                 { "enable", n => { Enable = n.GetBoolValue(); } },
-                { "rank", n => { Rank = n.GetLongValue(); } },
+                { "rank", n => { Rank = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -65,10 +65,10 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteLongValue("alpha", Alpha);
-            writer.WriteFloatValue("dropout", Dropout);
+            writer.WriteIntValue("alpha", Alpha);
+            writer.WriteDoubleValue("dropout", Dropout);
             writer.WriteBoolValue("enable", Enable);
-            writer.WriteLongValue("rank", Rank);
+            writer.WriteIntValue("rank", Rank);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

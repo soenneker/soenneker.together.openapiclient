@@ -23,7 +23,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string HostName { get; set; }
 #endif
         /// <summary>The memory_gib property</summary>
-        public float? MemoryGib { get; set; }
+        public double? MemoryGib { get; set; }
         /// <summary>The network property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -92,7 +92,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "host_name", n => { HostName = n.GetStringValue(); } },
-                { "memory_gib", n => { MemoryGib = n.GetFloatValue(); } },
+                { "memory_gib", n => { MemoryGib = n.GetDoubleValue(); } },
                 { "network", n => { Network = n.GetStringValue(); } },
                 { "node_id", n => { NodeId = n.GetStringValue(); } },
                 { "num_cpu_cores", n => { NumCpuCores = n.GetIntValue(); } },
@@ -109,7 +109,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("host_name", HostName);
-            writer.WriteFloatValue("memory_gib", MemoryGib);
+            writer.WriteDoubleValue("memory_gib", MemoryGib);
             writer.WriteStringValue("network", Network);
             writer.WriteStringValue("node_id", NodeId);
             writer.WriteIntValue("num_cpu_cores", NumCpuCores);

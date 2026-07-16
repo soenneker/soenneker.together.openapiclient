@@ -12,7 +12,7 @@ namespace Soenneker.Together.OpenApiClient.Models
     public partial class RlOptimStepBody : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Per-step overrides for AdamW hyperparameters. In an AdamW session this tunes the entire model. In a Muon session this tunes the parts of the model that Muon does not, typically embeddings, normalization layers, and the language-model head.</summary>
+        /// <summary>Per-step AdamW optimizer overrides.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Together.OpenApiClient.Models.RlAdamWOptimizerParams? AdamwParams { get; set; }
@@ -22,11 +22,9 @@ namespace Soenneker.Together.OpenApiClient.Models
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Learning rate to apply on this step. When adamw_params.lr or muon_params.lr is also set, those take precedence for the parameters they target; this field applies to any parameters not covered by a more specific override.</summary>
-        public float? LearningRate { get; set; }
-        /// <summary>Gradient norm clipping threshold for this step. Applied to the full model gradient norm, not per-parameter-group. When unset, the previous step&apos;s value is reused.</summary>
-        public float? MaxGradNorm { get; set; }
-        /// <summary>Per-step overrides for Muon-specific hyperparameters. Applied to the model&apos;s weight matrices; the rest of the model is tuned via AdamWOptimizerParams. Rejected on sessions started with a non-Muon optimizer.</summary>
+        /// <summary>Maximum gradient norm for this step, gradients across all model parameters are clipped to this value.</summary>
+        public double? MaxGradNorm { get; set; }
+        /// <summary>Per-step Muon optimizer overrides</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Together.OpenApiClient.Models.RlMuonOptimizerParams? MuonParams { get; set; }
@@ -42,7 +40,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public RlOptimStepBody()
         {
             AdditionalData = new Dictionary<string, object>();
-            LearningRate = 0.0001f;
+            MaxGradNorm = 1;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -63,8 +61,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "adamw_params", n => { AdamwParams = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlAdamWOptimizerParams>(global::Soenneker.Together.OpenApiClient.Models.RlAdamWOptimizerParams.CreateFromDiscriminatorValue); } },
-                { "learning_rate", n => { LearningRate = n.GetFloatValue(); } },
-                { "max_grad_norm", n => { MaxGradNorm = n.GetFloatValue(); } },
+                { "max_grad_norm", n => { MaxGradNorm = n.GetDoubleValue(); } },
                 { "muon_params", n => { MuonParams = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlMuonOptimizerParams>(global::Soenneker.Together.OpenApiClient.Models.RlMuonOptimizerParams.CreateFromDiscriminatorValue); } },
                 { "weight_sync_type", n => { WeightSyncType = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlWeightSyncType>(); } },
             };
@@ -77,8 +74,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlAdamWOptimizerParams>("adamw_params", AdamwParams);
-            writer.WriteFloatValue("learning_rate", LearningRate);
-            writer.WriteFloatValue("max_grad_norm", MaxGradNorm);
+            writer.WriteDoubleValue("max_grad_norm", MaxGradNorm);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlMuonOptimizerParams>("muon_params", MuonParams);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlWeightSyncType>("weight_sync_type", WeightSyncType);
             writer.WriteAdditionalData(AdditionalData);

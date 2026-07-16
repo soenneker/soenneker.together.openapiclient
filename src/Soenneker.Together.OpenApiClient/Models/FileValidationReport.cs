@@ -54,7 +54,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string FileId { get; set; }
 #endif
         /// <summary>Number of lines (records) in the dataset.</summary>
-        public long? Nlines { get; set; }
+        public int? Nlines { get; set; }
         /// <summary>Whether the file passed validation.</summary>
         public bool? Valid { get; set; }
         /// <summary>
@@ -92,7 +92,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "error", n => { Error = n.GetStringValue(); } },
                 { "error_type", n => { ErrorType = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.FileValidationReportErrorType>(); } },
                 { "file_id", n => { FileId = n.GetStringValue(); } },
-                { "nlines", n => { Nlines = n.GetLongValue(); } },
+                { "nlines", n => { Nlines = n.GetIntValue(); } },
                 { "valid", n => { Valid = n.GetBoolValue(); } },
             };
         }
@@ -113,7 +113,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteStringValue("error", Error);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.FileValidationReportErrorType>("error_type", ErrorType);
             writer.WriteStringValue("file_id", FileId);
-            writer.WriteLongValue("nlines", Nlines);
+            writer.WriteIntValue("nlines", Nlines);
             writer.WriteBoolValue("valid", Valid);
             writer.WriteAdditionalData(AdditionalData);
         }

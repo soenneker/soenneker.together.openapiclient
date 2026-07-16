@@ -43,7 +43,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string ErrorFileId { get; set; }
 #endif
         /// <summary>Size of input file in bytes</summary>
-        public long? FileSizeBytes { get; set; }
+        public int? FileSizeBytes { get; set; }
         /// <summary>The id property</summary>
         public Guid? Id { get; set; }
         /// <summary>The input_file_id property</summary>
@@ -114,7 +114,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "endpoint", n => { Endpoint = n.GetStringValue(); } },
                 { "error", n => { Error = n.GetStringValue(); } },
                 { "error_file_id", n => { ErrorFileId = n.GetStringValue(); } },
-                { "file_size_bytes", n => { FileSizeBytes = n.GetLongValue(); } },
+                { "file_size_bytes", n => { FileSizeBytes = n.GetIntValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "input_file_id", n => { InputFileId = n.GetStringValue(); } },
                 { "job_deadline", n => { JobDeadline = n.GetDateTimeOffsetValue(); } },
@@ -137,7 +137,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteStringValue("endpoint", Endpoint);
             writer.WriteStringValue("error", Error);
             writer.WriteStringValue("error_file_id", ErrorFileId);
-            writer.WriteLongValue("file_size_bytes", FileSizeBytes);
+            writer.WriteIntValue("file_size_bytes", FileSizeBytes);
             writer.WriteGuidValue("id", Id);
             writer.WriteStringValue("input_file_id", InputFileId);
             writer.WriteDateTimeOffsetValue("job_deadline", JobDeadline);

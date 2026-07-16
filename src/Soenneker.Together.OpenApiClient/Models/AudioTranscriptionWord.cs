@@ -15,7 +15,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>End time of the word in seconds</summary>
-        public float? End { get; set; }
+        public double? End { get; set; }
         /// <summary>The speaker id for the word (only when diarize is enabled)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -25,7 +25,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string SpeakerId { get; set; }
 #endif
         /// <summary>Start time of the word in seconds</summary>
-        public float? Start { get; set; }
+        public double? Start { get; set; }
         /// <summary>The word</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -59,9 +59,9 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "end", n => { End = n.GetFloatValue(); } },
+                { "end", n => { End = n.GetDoubleValue(); } },
                 { "speaker_id", n => { SpeakerId = n.GetStringValue(); } },
-                { "start", n => { Start = n.GetFloatValue(); } },
+                { "start", n => { Start = n.GetDoubleValue(); } },
                 { "word", n => { Word = n.GetStringValue(); } },
             };
         }
@@ -72,9 +72,9 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteFloatValue("end", End);
+            writer.WriteDoubleValue("end", End);
             writer.WriteStringValue("speaker_id", SpeakerId);
-            writer.WriteFloatValue("start", Start);
+            writer.WriteDoubleValue("start", Start);
             writer.WriteStringValue("word", Word);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -15,7 +15,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Number of completions to generate per prompt</summary>
-        public long? NumSamples { get; set; }
+        public int? NumSamples { get; set; }
         /// <summary>Input prompts as tokenized chunks</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -58,7 +58,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "num_samples", n => { NumSamples = n.GetLongValue(); } },
+                { "num_samples", n => { NumSamples = n.GetIntValue(); } },
                 { "prompts", n => { Prompts = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RlModelInput>(global::Soenneker.Together.OpenApiClient.Models.RlModelInput.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "sampling_params", n => { SamplingParams = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlSamplingParams>(global::Soenneker.Together.OpenApiClient.Models.RlSamplingParams.CreateFromDiscriminatorValue); } },
             };
@@ -70,7 +70,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteLongValue("num_samples", NumSamples);
+            writer.WriteIntValue("num_samples", NumSamples);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RlModelInput>("prompts", Prompts);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlSamplingParams>("sampling_params", SamplingParams);
             writer.WriteAdditionalData(AdditionalData);

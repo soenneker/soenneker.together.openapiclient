@@ -29,7 +29,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>If true, the response contains the prompt. Can be used with `logprobs` to return prompt logprobs.</summary>
         public bool? Echo { get; set; }
         /// <summary>A number between -2.0 and 2.0 where a positive value decreases the likelihood of repeating tokens that have already been mentioned.</summary>
-        public float? FrequencyPenalty { get; set; }
+        public double? FrequencyPenalty { get; set; }
         /// <summary>The function_call property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -59,7 +59,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public List<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionMessageParam> Messages { get; set; }
 #endif
         /// <summary>A number between 0 and 1 that can be used as an alternative to top_p and top-k.</summary>
-        public float? MinP { get; set; }
+        public double? MinP { get; set; }
         /// <summary>The name of the model to query.&lt;br&gt; &lt;br&gt; [See all of Together AI&apos;s chat models](https://docs.together.ai/docs/serverless-models#chat-models)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -71,7 +71,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>The number of completions to generate for each prompt.</summary>
         public int? N { get; set; }
         /// <summary>A number between -2.0 and 2.0 where a positive value increases the likelihood of a model talking about new topics.</summary>
-        public float? PresencePenalty { get; set; }
+        public double? PresencePenalty { get; set; }
         /// <summary>For models that support toggling reasoning functionality, this object can be used to control that functionality.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -113,7 +113,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>&quot;If true, stream tokens as Server-Sent Events as the model generates them instead of waiting for the full model response. The stream terminates with `data: [DONE]`. If false, return a single JSON object containing the results.&quot;</summary>
         public bool? Stream { get; set; }
         /// <summary>A decimal number from 0-1 that determines the degree of randomness in the response. A temperature less than 1 favors more correctness and is appropriate for question answering or summarization. A value closer to 1 introduces more randomness in the output.</summary>
-        public float? Temperature { get; set; }
+        public double? Temperature { get; set; }
         /// <summary>Controls which (if any) function is called by the model. By default uses `auto`, which lets the model pick between generating a message or calling a function.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -133,7 +133,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>An integer that&apos;s used to limit the number of choices for the next predicted word or token. It specifies the maximum number of tokens to consider at each step, based on their probability of occurrence. This technique helps to speed up the generation process and can improve the quality of the generated text by focusing on the most likely options.</summary>
         public int? TopK { get; set; }
         /// <summary>A percentage (also called the nucleus parameter) that&apos;s used to dynamically adjust the number of choices for each predicted token based on the cumulative probabilities. It specifies a probability threshold below which all less likely tokens are filtered out. This technique helps maintain diversity and generate more fluent and natural-sounding text.</summary>
-        public float? TopP { get; set; }
+        public double? TopP { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequest"/> and sets the default values.
         /// </summary>
@@ -163,16 +163,16 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "compliance", n => { Compliance = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestCompliance>(); } },
                 { "context_length_exceeded_behavior", n => { ContextLengthExceededBehavior = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestContextLengthExceededBehavior>(); } },
                 { "echo", n => { Echo = n.GetBoolValue(); } },
-                { "frequency_penalty", n => { FrequencyPenalty = n.GetFloatValue(); } },
+                { "frequency_penalty", n => { FrequencyPenalty = n.GetDoubleValue(); } },
                 { "function_call", n => { FunctionCall = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestFunctionCall>(global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestFunctionCall.CreateFromDiscriminatorValue); } },
                 { "logit_bias", n => { LogitBias = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestLogitBiasProperty>(global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestLogitBiasProperty.CreateFromDiscriminatorValue); } },
                 { "logprobs", n => { Logprobs = n.GetIntValue(); } },
                 { "max_tokens", n => { MaxTokens = n.GetIntValue(); } },
                 { "messages", n => { Messages = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionMessageParam>(global::Soenneker.Together.OpenApiClient.Models.ChatCompletionMessageParam.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "min_p", n => { MinP = n.GetFloatValue(); } },
+                { "min_p", n => { MinP = n.GetDoubleValue(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
                 { "n", n => { N = n.GetIntValue(); } },
-                { "presence_penalty", n => { PresencePenalty = n.GetFloatValue(); } },
+                { "presence_penalty", n => { PresencePenalty = n.GetDoubleValue(); } },
                 { "reasoning", n => { Reasoning = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestReasoning>(global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestReasoning.CreateFromDiscriminatorValue); } },
                 { "reasoning_effort", n => { ReasoningEffort = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestReasoningEffort>(); } },
                 { "repetition_penalty", n => { RepetitionPenalty = n.GetDoubleValue(); } },
@@ -181,11 +181,11 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "seed", n => { Seed = n.GetIntValue(); } },
                 { "stop", n => { Stop = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "stream", n => { Stream = n.GetBoolValue(); } },
-                { "temperature", n => { Temperature = n.GetFloatValue(); } },
+                { "temperature", n => { Temperature = n.GetDoubleValue(); } },
                 { "tool_choice", n => { ToolChoice = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestToolChoice>(global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestToolChoice.CreateFromDiscriminatorValue); } },
                 { "tools", n => { Tools = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.ToolsPart>(global::Soenneker.Together.OpenApiClient.Models.ToolsPart.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "top_k", n => { TopK = n.GetIntValue(); } },
-                { "top_p", n => { TopP = n.GetFloatValue(); } },
+                { "top_p", n => { TopP = n.GetDoubleValue(); } },
             };
         }
         /// <summary>
@@ -199,16 +199,16 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestCompliance>("compliance", Compliance);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestContextLengthExceededBehavior>("context_length_exceeded_behavior", ContextLengthExceededBehavior);
             writer.WriteBoolValue("echo", Echo);
-            writer.WriteFloatValue("frequency_penalty", FrequencyPenalty);
+            writer.WriteDoubleValue("frequency_penalty", FrequencyPenalty);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestFunctionCall>("function_call", FunctionCall);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestLogitBiasProperty>("logit_bias", LogitBias);
             writer.WriteIntValue("logprobs", Logprobs);
             writer.WriteIntValue("max_tokens", MaxTokens);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionMessageParam>("messages", Messages);
-            writer.WriteFloatValue("min_p", MinP);
+            writer.WriteDoubleValue("min_p", MinP);
             writer.WriteStringValue("model", Model);
             writer.WriteIntValue("n", N);
-            writer.WriteFloatValue("presence_penalty", PresencePenalty);
+            writer.WriteDoubleValue("presence_penalty", PresencePenalty);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestReasoning>("reasoning", Reasoning);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestReasoningEffort>("reasoning_effort", ReasoningEffort);
             writer.WriteDoubleValue("repetition_penalty", RepetitionPenalty);
@@ -217,11 +217,11 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteIntValue("seed", Seed);
             writer.WriteCollectionOfPrimitiveValues<string>("stop", Stop);
             writer.WriteBoolValue("stream", Stream);
-            writer.WriteFloatValue("temperature", Temperature);
+            writer.WriteDoubleValue("temperature", Temperature);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestToolChoice>("tool_choice", ToolChoice);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.ToolsPart>("tools", Tools);
             writer.WriteIntValue("top_k", TopK);
-            writer.WriteFloatValue("top_p", TopP);
+            writer.WriteDoubleValue("top_p", TopP);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

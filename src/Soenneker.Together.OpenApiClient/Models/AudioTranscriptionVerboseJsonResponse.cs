@@ -15,7 +15,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The duration of the audio in seconds</summary>
-        public float? Duration { get; set; }
+        public double? Duration { get; set; }
         /// <summary>The language of the audio</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -81,7 +81,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "duration", n => { Duration = n.GetFloatValue(); } },
+                { "duration", n => { Duration = n.GetDoubleValue(); } },
                 { "language", n => { Language = n.GetStringValue(); } },
                 { "segments", n => { Segments = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.AudioTranscriptionSegment>(global::Soenneker.Together.OpenApiClient.Models.AudioTranscriptionSegment.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "speaker_segments", n => { SpeakerSegments = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.AudioTranscriptionSpeakerSegment>(global::Soenneker.Together.OpenApiClient.Models.AudioTranscriptionSpeakerSegment.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -96,7 +96,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteFloatValue("duration", Duration);
+            writer.WriteDoubleValue("duration", Duration);
             writer.WriteStringValue("language", Language);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.AudioTranscriptionSegment>("segments", Segments);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.AudioTranscriptionSpeakerSegment>("speaker_segments", SpeakerSegments);

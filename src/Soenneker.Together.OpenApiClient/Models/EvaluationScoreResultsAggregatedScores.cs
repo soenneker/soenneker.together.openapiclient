@@ -15,11 +15,11 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The mean_score property</summary>
-        public float? MeanScore { get; set; }
+        public double? MeanScore { get; set; }
         /// <summary>The pass_percentage property</summary>
-        public float? PassPercentage { get; set; }
+        public double? PassPercentage { get; set; }
         /// <summary>The std_score property</summary>
-        public float? StdScore { get; set; }
+        public double? StdScore { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.EvaluationScoreResultsAggregatedScores"/> and sets the default values.
         /// </summary>
@@ -45,9 +45,9 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "mean_score", n => { MeanScore = n.GetFloatValue(); } },
-                { "pass_percentage", n => { PassPercentage = n.GetFloatValue(); } },
-                { "std_score", n => { StdScore = n.GetFloatValue(); } },
+                { "mean_score", n => { MeanScore = n.GetDoubleValue(); } },
+                { "pass_percentage", n => { PassPercentage = n.GetDoubleValue(); } },
+                { "std_score", n => { StdScore = n.GetDoubleValue(); } },
             };
         }
         /// <summary>
@@ -57,9 +57,9 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteFloatValue("mean_score", MeanScore);
-            writer.WriteFloatValue("pass_percentage", PassPercentage);
-            writer.WriteFloatValue("std_score", StdScore);
+            writer.WriteDoubleValue("mean_score", MeanScore);
+            writer.WriteDoubleValue("pass_percentage", PassPercentage);
+            writer.WriteDoubleValue("std_score", StdScore);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -35,7 +35,7 @@ namespace Soenneker.Together.OpenApiClient.Compute.Clusters.Storage.Volumes
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public VolumesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/compute/clusters/storage/volumes{?project_id*}", pathParameters)
+        public VolumesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/compute/clusters/storage/volumes{?projectId*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Soenneker.Together.OpenApiClient.Compute.Clusters.Storage.Volumes
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public VolumesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/compute/clusters/storage/volumes{?project_id*}", rawUrl)
+        public VolumesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/compute/clusters/storage/volumes{?projectId*}", rawUrl)
         {
         }
         /// <summary>
@@ -184,11 +184,11 @@ namespace Soenneker.Together.OpenApiClient.Compute.Clusters.Storage.Volumes
         {
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            [QueryParameter("project_id")]
+            [QueryParameter("projectId")]
             public string? ProjectId { get; set; }
 #nullable restore
 #else
-            [QueryParameter("project_id")]
+            [QueryParameter("projectId")]
             public string ProjectId { get; set; }
 #endif
         }

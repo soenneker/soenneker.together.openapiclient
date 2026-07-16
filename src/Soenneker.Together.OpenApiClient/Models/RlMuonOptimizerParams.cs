@@ -8,30 +8,38 @@ using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
     /// <summary>
-    /// Per-step overrides for Muon-specific hyperparameters. Applied to the model&apos;s weight matrices; the rest of the model is tuned via AdamWOptimizerParams. Rejected on sessions started with a non-Muon optimizer.
+    /// Per-step Muon optimizer overrides
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RlMuonOptimizerParams : IAdditionalDataHolder, IParsable
     {
+        /// <summary>Per-step AdamW optimizer overrides.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Together.OpenApiClient.Models.RlAdamWOptimizerParams? Adamw { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Together.OpenApiClient.Models.RlAdamWOptimizerParams Adamw { get; set; }
+#endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Learning rate for the weight-matrix updates Muon performs. When the session&apos;s scale_mode is MATCH_ADAMW_RMS or ORIGINAL, this is the input to the rescaler; when DISABLED, this is the raw Newton-Schulz step size.</summary>
-        public float? Lr { get; set; }
-        /// <summary>Momentum coefficient applied to Muon&apos;s weight-matrix updates.</summary>
-        public float? Momentum { get; set; }
-        /// <summary>Number of Newton-Schulz iterations used to approximate the orthogonalization step.</summary>
-        public long? NewtonSchulzSteps { get; set; }
-        /// <summary>Weight decay coefficient applied to Muon&apos;s weight-matrix updates.</summary>
-        public float? WeightDecay { get; set; }
+        /// <summary>Learning rate for this Muon optimizer step.</summary>
+        public double? LearningRate { get; set; }
+        /// <summary>Momentum coefficient</summary>
+        public double? Momentum { get; set; }
+        /// <summary>Number of Newton-Schulz iterations</summary>
+        public int? NewtonSchulzSteps { get; set; }
+        /// <summary>Weight decay coefficient</summary>
+        public double? WeightDecay { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlMuonOptimizerParams"/> and sets the default values.
         /// </summary>
         public RlMuonOptimizerParams()
         {
             AdditionalData = new Dictionary<string, object>();
-            Momentum = 0.95f;
+            Momentum = 0.95;
             NewtonSchulzSteps = 5;
-            WeightDecay = 0f;
+            WeightDecay = 0;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -51,10 +59,11 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "lr", n => { Lr = n.GetFloatValue(); } },
-                { "momentum", n => { Momentum = n.GetFloatValue(); } },
-                { "newton_schulz_steps", n => { NewtonSchulzSteps = n.GetLongValue(); } },
-                { "weight_decay", n => { WeightDecay = n.GetFloatValue(); } },
+                { "adamw", n => { Adamw = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlAdamWOptimizerParams>(global::Soenneker.Together.OpenApiClient.Models.RlAdamWOptimizerParams.CreateFromDiscriminatorValue); } },
+                { "learning_rate", n => { LearningRate = n.GetDoubleValue(); } },
+                { "momentum", n => { Momentum = n.GetDoubleValue(); } },
+                { "newton_schulz_steps", n => { NewtonSchulzSteps = n.GetIntValue(); } },
+                { "weight_decay", n => { WeightDecay = n.GetDoubleValue(); } },
             };
         }
         /// <summary>
@@ -64,10 +73,11 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteFloatValue("lr", Lr);
-            writer.WriteFloatValue("momentum", Momentum);
-            writer.WriteLongValue("newton_schulz_steps", NewtonSchulzSteps);
-            writer.WriteFloatValue("weight_decay", WeightDecay);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlAdamWOptimizerParams>("adamw", Adamw);
+            writer.WriteDoubleValue("learning_rate", LearningRate);
+            writer.WriteDoubleValue("momentum", Momentum);
+            writer.WriteIntValue("newton_schulz_steps", NewtonSchulzSteps);
+            writer.WriteDoubleValue("weight_decay", WeightDecay);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

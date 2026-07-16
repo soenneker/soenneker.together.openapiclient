@@ -161,8 +161,15 @@ namespace Soenneker.Together.OpenApiClient.Rl.ModelResources
 #endif
             [QueryParameter("limit")]
             public int? Limit { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
             [QueryParameter("status")]
-            public global::Soenneker.Together.OpenApiClient.Models.RlModelResourcesStatus? Status { get; set; }
+            public global::Soenneker.Together.OpenApiClient.Models.ListModelResourcesStatusParameterItem[]? Status { get; set; }
+#nullable restore
+#else
+            [QueryParameter("status")]
+            public global::Soenneker.Together.OpenApiClient.Models.ListModelResourcesStatusParameterItem[] Status { get; set; }
+#endif
         }
     }
 }

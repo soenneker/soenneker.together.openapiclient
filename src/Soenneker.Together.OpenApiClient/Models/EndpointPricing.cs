@@ -16,7 +16,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Cost per minute of endpoint uptime in cents</summary>
-        public float? CentsPerMinute { get; set; }
+        public double? CentsPerMinute { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.EndpointPricing"/> and sets the default values.
         /// </summary>
@@ -42,7 +42,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "cents_per_minute", n => { CentsPerMinute = n.GetFloatValue(); } },
+                { "cents_per_minute", n => { CentsPerMinute = n.GetDoubleValue(); } },
             };
         }
         /// <summary>
@@ -52,7 +52,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteFloatValue("cents_per_minute", CentsPerMinute);
+            writer.WriteDoubleValue("cents_per_minute", CentsPerMinute);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

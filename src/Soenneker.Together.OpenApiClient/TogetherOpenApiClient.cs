@@ -23,10 +23,14 @@ using Soenneker.Together.OpenApiClient.Hardware;
 using Soenneker.Together.OpenApiClient.Images;
 using Soenneker.Together.OpenApiClient.Jobs;
 using Soenneker.Together.OpenApiClient.ModelsRequests;
+using Soenneker.Together.OpenApiClient.Organizations;
+using Soenneker.Together.OpenApiClient.Projects;
+using Soenneker.Together.OpenApiClient.Public;
 using Soenneker.Together.OpenApiClient.Queue;
 using Soenneker.Together.OpenApiClient.Realtime;
 using Soenneker.Together.OpenApiClient.Rerank;
 using Soenneker.Together.OpenApiClient.Rl;
+using Soenneker.Together.OpenApiClient.SupportedModels;
 using Soenneker.Together.OpenApiClient.Tci;
 using Soenneker.Together.OpenApiClient.Videos;
 using Soenneker.Together.OpenApiClient.Voices;
@@ -128,6 +132,21 @@ namespace Soenneker.Together.OpenApiClient
         {
             get => new global::Soenneker.Together.OpenApiClient.ModelsRequests.ModelsRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The organizations property</summary>
+        public global::Soenneker.Together.OpenApiClient.Organizations.OrganizationsRequestBuilder Organizations
+        {
+            get => new global::Soenneker.Together.OpenApiClient.Organizations.OrganizationsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The projects property</summary>
+        public global::Soenneker.Together.OpenApiClient.Projects.ProjectsRequestBuilder Projects
+        {
+            get => new global::Soenneker.Together.OpenApiClient.Projects.ProjectsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The public property</summary>
+        public global::Soenneker.Together.OpenApiClient.Public.PublicRequestBuilder Public
+        {
+            get => new global::Soenneker.Together.OpenApiClient.Public.PublicRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The queue property</summary>
         public global::Soenneker.Together.OpenApiClient.Queue.QueueRequestBuilder Queue
         {
@@ -147,6 +166,11 @@ namespace Soenneker.Together.OpenApiClient
         public global::Soenneker.Together.OpenApiClient.Rl.RlRequestBuilder Rl
         {
             get => new global::Soenneker.Together.OpenApiClient.Rl.RlRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The supportedModels property</summary>
+        public global::Soenneker.Together.OpenApiClient.SupportedModels.SupportedModelsRequestBuilder SupportedModels
+        {
+            get => new global::Soenneker.Together.OpenApiClient.SupportedModels.SupportedModelsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The tci property</summary>
         public global::Soenneker.Together.OpenApiClient.Tci.TciRequestBuilder Tci
