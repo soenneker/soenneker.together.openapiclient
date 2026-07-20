@@ -35,7 +35,7 @@ namespace Soenneker.Together.OpenApiClient.Rl.ModelResources
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ModelResourcesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/rl/model-resources{?after*,limit*,status*}", pathParameters)
+        public ModelResourcesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/rl/model-resources{?after*,created_by*,limit*,status*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Soenneker.Together.OpenApiClient.Rl.ModelResources
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ModelResourcesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/rl/model-resources{?after*,limit*,status*}", rawUrl)
+        public ModelResourcesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/rl/model-resources{?after*,created_by*,limit*,status*}", rawUrl)
         {
         }
         /// <summary>
@@ -158,6 +158,15 @@ namespace Soenneker.Together.OpenApiClient.Rl.ModelResources
 #else
             [QueryParameter("after")]
             public string After { get; set; }
+#endif
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("created_by")]
+            public string? CreatedBy { get; set; }
+#nullable restore
+#else
+            [QueryParameter("created_by")]
+            public string CreatedBy { get; set; }
 #endif
             [QueryParameter("limit")]
             public int? Limit { get; set; }

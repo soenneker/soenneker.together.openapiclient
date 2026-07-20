@@ -35,7 +35,7 @@ namespace Soenneker.Together.OpenApiClient.Rl.TrainingSessions
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public TrainingSessionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/rl/training-sessions{?after*,limit*,model_resources_id*,status*}", pathParameters)
+        public TrainingSessionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/rl/training-sessions{?after*,created_by*,limit*,model_resources_id*,status*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Soenneker.Together.OpenApiClient.Rl.TrainingSessions
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public TrainingSessionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/rl/training-sessions{?after*,limit*,model_resources_id*,status*}", rawUrl)
+        public TrainingSessionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/rl/training-sessions{?after*,created_by*,limit*,model_resources_id*,status*}", rawUrl)
         {
         }
         /// <summary>
@@ -158,6 +158,15 @@ namespace Soenneker.Together.OpenApiClient.Rl.TrainingSessions
 #else
             [QueryParameter("after")]
             public string After { get; set; }
+#endif
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("created_by")]
+            public string? CreatedBy { get; set; }
+#nullable restore
+#else
+            [QueryParameter("created_by")]
+            public string CreatedBy { get; set; }
 #endif
             [QueryParameter("limit")]
             public int? Limit { get; set; }

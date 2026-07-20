@@ -4,11 +4,7 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.Together.OpenApiClient.Models;
-using Soenneker.Together.OpenApiClient.Projects.Item.ModelsRequests.Delete;
-using Soenneker.Together.OpenApiClient.Projects.Item.ModelsRequests.Download;
-using Soenneker.Together.OpenApiClient.Projects.Item.ModelsRequests.FileNamespace;
 using Soenneker.Together.OpenApiClient.Projects.Item.ModelsRequests.Item;
-using Soenneker.Together.OpenApiClient.Projects.Item.ModelsRequests.Upload;
 using Soenneker.Together.OpenApiClient.Projects.Item.ModelsRequests.Uploads;
 using System.Collections.Generic;
 using System.IO;
@@ -23,26 +19,6 @@ namespace Soenneker.Together.OpenApiClient.Projects.Item.ModelsRequests
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ModelsRequestBuilder : BaseRequestBuilder
     {
-        /// <summary>The deletePath property</summary>
-        public global::Soenneker.Together.OpenApiClient.Projects.Item.ModelsRequests.Delete.DeleteRequestBuilder DeletePath
-        {
-            get => new global::Soenneker.Together.OpenApiClient.Projects.Item.ModelsRequests.Delete.DeleteRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The download property</summary>
-        public global::Soenneker.Together.OpenApiClient.Projects.Item.ModelsRequests.Download.DownloadRequestBuilder Download
-        {
-            get => new global::Soenneker.Together.OpenApiClient.Projects.Item.ModelsRequests.Download.DownloadRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The file property</summary>
-        public global::Soenneker.Together.OpenApiClient.Projects.Item.ModelsRequests.FileNamespace.FileRequestBuilder File
-        {
-            get => new global::Soenneker.Together.OpenApiClient.Projects.Item.ModelsRequests.FileNamespace.FileRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The upload property</summary>
-        public global::Soenneker.Together.OpenApiClient.Projects.Item.ModelsRequests.Upload.UploadRequestBuilder Upload
-        {
-            get => new global::Soenneker.Together.OpenApiClient.Projects.Item.ModelsRequests.Upload.UploadRequestBuilder(PathParameters, RequestAdapter);
-        }
         /// <summary>The uploads property</summary>
         public global::Soenneker.Together.OpenApiClient.Projects.Item.ModelsRequests.Uploads.UploadsRequestBuilder Uploads
         {

@@ -33,6 +33,14 @@ namespace Soenneker.Together.OpenApiClient.Models
 #endif
         /// <summary>Timestamp when the model resource was created</summary>
         public DateTimeOffset? CreatedAt { get; set; }
+        /// <summary>ID of the user who created the model resource</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? CreatedBy { get; set; }
+#nullable restore
+#else
+        public string CreatedBy { get; set; }
+#endif
         /// <summary>Structured detail for the model resource&apos;s current error</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -91,6 +99,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "base_model", n => { BaseModel = n.GetStringValue(); } },
                 { "compute_config", n => { ComputeConfig = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlComputeConfig>(global::Soenneker.Together.OpenApiClient.Models.RlComputeConfig.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
+                { "created_by", n => { CreatedBy = n.GetStringValue(); } },
                 { "error", n => { Error = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlModelResourcesError>(global::Soenneker.Together.OpenApiClient.Models.RlModelResourcesError.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "lora_enabled", n => { LoraEnabled = n.GetBoolValue(); } },
@@ -109,6 +118,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteStringValue("base_model", BaseModel);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlComputeConfig>("compute_config", ComputeConfig);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
+            writer.WriteStringValue("created_by", CreatedBy);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlModelResourcesError>("error", Error);
             writer.WriteStringValue("id", Id);
             writer.WriteBoolValue("lora_enabled", LoraEnabled);

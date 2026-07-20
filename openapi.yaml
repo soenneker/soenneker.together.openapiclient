@@ -2664,136 +2664,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorData'
-  /projects/{projectId}/models/delete:
-    post:
-      tags:
-        - VolumeService
-      summary: Delete model files
-      description: >-
-        Deletes selected files from a model volume and creates a new immutable
-        model revision containing the remaining files.
-      operationId: VolumeService_DeleteModelFiles
-      servers:
-        - url: https://api.together.ai/v2
-      parameters:
-        - name: projectId
-          in: path
-          required: true
-          schema:
-            description: Project identifier.
-            type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/DE.DeleteFilesRequest'
-        required: true
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DE.DeleteFilesResponse'
-        default:
-          description: Default error response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorData'
-  /projects/{projectId}/models/download:
-    post:
-      tags:
-        - VolumeService
-      summary: Download model files
-      description: >-
-        Creates short-lived presigned URLs for downloading selected files from a
-        model revision.
-      operationId: VolumeService_DownloadModelFiles
-      servers:
-        - url: https://api.together.ai/v2
-      parameters:
-        - name: projectId
-          in: path
-          required: true
-          schema:
-            description: Project identifier.
-            type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/DE.DownloadFilesRequest'
-        required: true
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DE.DownloadFilesResponse'
-        default:
-          description: Default error response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorData'
-  /projects/{projectId}/models/file:
-    get:
-      tags:
-        - VolumeService
-      summary: Get a model file
-      description: >-
-        Returns metadata and a short-lived download URL for one file in a model
-        revision.
-      operationId: VolumeService_GetModelFile
-      servers:
-        - url: https://api.together.ai/v2
-      parameters:
-        - name: projectId
-          in: path
-          required: true
-          schema:
-            description: Project identifier.
-            type: string
-        - name: objectId
-          in: query
-          schema:
-            type: string
-            description: Volume object identifier.
-        - name: path
-          in: query
-          schema:
-            type: string
-            description: File path within the model volume.
-        - name: revisionId
-          in: query
-          schema:
-            type: string
-            description: Revision identifier to read from.
-        - name: rangeStart
-          in: query
-          schema:
-            type: string
-            description: Inclusive byte range start.
-        - name: rangeEnd
-          in: query
-          schema:
-            type: string
-            description: Exclusive byte range end.
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DE.GetFileResponse'
-        default:
-          description: Default error response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorData'
   /projects/{projectId}/models/{id}/files:
     get:
       tags:
@@ -2908,80 +2778,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DE.ListRevisionsResponseRevision'
-        default:
-          description: Default error response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorData'
-  /projects/{projectId}/models/upload/complete:
-    post:
-      tags:
-        - VolumeService
-      summary: Complete a model upload
-      description: >-
-        Finalizes a multipart model upload after all required file parts have
-        been transferred and creates a new model revision.
-      operationId: VolumeService_CompleteModelUpload
-      servers:
-        - url: https://api.together.ai/v2
-      parameters:
-        - name: projectId
-          in: path
-          required: true
-          schema:
-            description: Project identifier.
-            type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/DE.CompleteUploadRequest'
-        required: true
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DE.CompleteUploadResponse'
-        default:
-          description: Default error response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorData'
-  /projects/{projectId}/models/upload/create:
-    post:
-      tags:
-        - VolumeService
-      summary: Create a model upload
-      description: >-
-        Starts a multipart upload for model files and returns presigned URLs for
-        file parts that are not already present.
-      operationId: VolumeService_CreateModelUpload
-      servers:
-        - url: https://api.together.ai/v2
-      parameters:
-        - name: projectId
-          in: path
-          required: true
-          schema:
-            description: Project identifier.
-            type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/DE.CreateUploadRequest'
-        required: true
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DE.CreateUploadResponse'
         default:
           description: Default error response
           content:
@@ -11761,6 +11557,14 @@ paths:
           schema:
             description: Cursor for pagination
             type: string
+        - name: created_by
+          in: query
+          required: false
+          schema:
+            description: >-
+              Filter resources in the current project by the creator ID. Pass
+              "me" to show resources you created.
+            type: string
     post:
       summary: Create model resources
       description: >-
@@ -11907,6 +11711,14 @@ paths:
           required: false
           schema:
             description: Filter sessions by the model resource they are attached to
+            type: string
+        - name: created_by
+          in: query
+          required: false
+          schema:
+            description: >-
+              Filter sessions in the current project by the creator ID. Pass
+              "me" to show sessions you created.
             type: string
     post:
       summary: Create training session
@@ -13542,196 +13354,6 @@ components:
           description: >-
             Optional source credential used to access a private remote location.
             The value is write-only and is not returned.
-    DE.CompleteUploadRequest:
-      type: object
-      description: Request body for completing a multipart model upload.
-      required:
-        - objectId
-        - files
-      properties:
-        objectId:
-          type: string
-          description: Model volume object identifier.
-        files:
-          type: array
-          items:
-            $ref: '#/components/schemas/DE.CompleteUploadRequestFile'
-          description: Uploaded files to finalize into the model revision.
-    DE.CompleteUploadResponse:
-      type: object
-      description: Response returned after a model upload is completed.
-      required:
-        - revisionId
-      properties:
-        revisionId:
-          type: string
-          description: Created revision identifier.
-        objectId:
-          type: string
-          description: Server-resolved canonical model object identifier.
-    DE.CreateUploadRequest:
-      type: object
-      description: Request body for creating multipart upload URLs for model files.
-      required:
-        - files
-      properties:
-        objectId:
-          type: string
-          description: Existing model volume object identifier.
-        files:
-          type: array
-          items:
-            $ref: '#/components/schemas/DE.CreateUploadRequestFile'
-          description: Files that need upload URLs.
-        baseModelId:
-          type: string
-          description: Base model identifier for a newly created derived model.
-        objectName:
-          type: string
-          description: Name for a new model object created by the upload.
-        baseRelation:
-          enum:
-            - BASE_RELATION_FINETUNED
-            - BASE_RELATION_DISTILLED
-            - BASE_RELATION_QUANTIZED
-            - BASE_RELATION_SPECULATOR_BASE
-          type: string
-          description: Relationship between the new model and its base model.
-        draftSpeculatorType:
-          enum:
-            - DRAFT_SPECULATOR_TYPE_EAGLE
-            - DRAFT_SPECULATOR_TYPE_PHOENIX
-          type: string
-          description: Draft speculator architecture for speculator model uploads.
-        description:
-          type: string
-          description: Human-readable model description applied when a model is created.
-    DE.CreateUploadRequestFile:
-      type: object
-      description: File metadata used to request upload URLs.
-      required:
-        - path
-        - numParts
-      properties:
-        path:
-          type: string
-          description: File path within the model volume.
-        hash:
-          type: string
-          description: Content hash for the file, when known.
-        numParts:
-          type: integer
-          description: Number of upload parts to allocate.
-    DE.CreateUploadResponse:
-      type: object
-      description: Response containing upload URLs for model files.
-      required:
-        - files
-      properties:
-        files:
-          type: array
-          items:
-            $ref: '#/components/schemas/DE.CreateUploadResponseFile'
-          description: Upload instructions for each requested file.
-    DE.CreateUploadResponseFile:
-      type: object
-      description: Upload instructions for one model file.
-      required:
-        - path
-      properties:
-        path:
-          type: string
-          description: File path within the model volume.
-        skipUpload:
-          type: boolean
-          description: >-
-            Whether the file content already exists and does not need to be
-            uploaded again.
-        uploadId:
-          type: string
-          description: Multipart upload identifier.
-        parts:
-          type: array
-          items:
-            $ref: '#/components/schemas/DE.FilePart'
-          description: Presigned URLs and required headers for each multipart upload part.
-    DE.DeleteFilesRequest:
-      type: object
-      description: Request body for deleting files from a model volume.
-      required:
-        - objectId
-        - paths
-      properties:
-        objectId:
-          type: string
-          description: Model volume object identifier.
-        paths:
-          type: array
-          items:
-            type: string
-          description: File paths to delete from the model volume.
-    DE.DeleteFilesResponse:
-      type: object
-      description: Response returned after deleting model files.
-      required:
-        - revisionId
-      properties:
-        revisionId:
-          type: string
-          description: Created revision identifier after deleting files.
-    DE.DownloadFilesRequest:
-      type: object
-      description: Request body for creating download URLs for model files.
-      required:
-        - objectId
-        - paths
-      properties:
-        objectId:
-          type: string
-          description: Model volume object identifier.
-        paths:
-          type: array
-          items:
-            type: string
-          description: File paths to download from the model volume.
-        revisionId:
-          type: string
-          description: Revision identifier to download from.
-    DE.DownloadFilesResponse:
-      type: object
-      description: Response containing download URLs for model files.
-      required:
-        - files
-      properties:
-        files:
-          type: array
-          items:
-            $ref: '#/components/schemas/DE.DownloadFilesResponseFile'
-          description: Download information for each requested file.
-        revisionId:
-          type: string
-          description: Revision identifier used for the download.
-    DE.DownloadFilesResponseFile:
-      type: object
-      description: Download information for one model file.
-      required:
-        - path
-        - parts
-      properties:
-        path:
-          type: string
-          description: File path within the model volume.
-        hash:
-          type: string
-          description: Content hash for the file.
-        sizeBytes:
-          type: string
-          description: File size in bytes.
-        parts:
-          type: array
-          items:
-            $ref: '#/components/schemas/DE.FilePart'
-          description: Presigned URLs and required headers for downloading the file parts.
     DE.ListFilesResponse:
       type: object
       required:
@@ -13900,34 +13522,6 @@ components:
         - id
         - principalType
         - principalId
-    DE.GetFileResponse:
-      type: object
-      required:
-        - path
-        - sizeBytes
-        - hash
-        - url
-      properties:
-        path:
-          type: string
-          description: File path within the model volume.
-        sizeBytes:
-          type: string
-          description: File size in bytes.
-        hash:
-          type: string
-          description: Content hash used to verify the downloaded file.
-        url:
-          type: string
-          description: >-
-            Short-lived presigned URL for downloading the file or requested byte
-            range.
-        headers:
-          type: object
-          additionalProperties:
-            type: string
-          description: HTTP headers to include with the download request.
-      description: Metadata and a short-lived download URL for one model file.
     DE.GrantEndpointAccessRequest:
       type: object
       properties:
@@ -16356,27 +15950,6 @@ components:
           type: string
           description: Human-readable validation error message.
       description: One validation error reported for a model revision.
-    DE.CompleteUploadRequestFile:
-      type: object
-      properties:
-        path:
-          type: string
-          description: File path within the model volume.
-        hash:
-          type: string
-          description: Content hash used to verify the completed upload.
-        skipUpload:
-          type: boolean
-          description: >-
-            Whether the server reused existing content instead of uploading this
-            file.
-        uploadDetails:
-          $ref: '#/components/schemas/DE.FileUploadDetails'
-          description: Multipart upload ID and completed part hashes.
-        expectedSize:
-          type: string
-          description: Expected file size in bytes.
-      description: Completion metadata for one file in a multipart model upload.
     DE.DeploymentAnalyticsData:
       type: object
       properties:
@@ -16461,24 +16034,6 @@ components:
             type: number
           description: Metric names mapped to their numeric values for this bucket.
       description: Timestamped bucket containing one or more named metric values.
-    DE.FilePart:
-      type: object
-      description: Presigned URL and headers for one upload or download part.
-      required:
-        - partNumber
-        - url
-      properties:
-        partNumber:
-          type: integer
-          description: One-based part number.
-        url:
-          type: string
-          description: Presigned URL for this part.
-        headers:
-          type: object
-          additionalProperties:
-            type: string
-          description: HTTP headers to include with the part request.
     DE.Config:
       type: object
       properties:
@@ -16665,20 +16220,6 @@ components:
         - name
         - type
         - target
-    DE.FileUploadDetails:
-      type: object
-      properties:
-        uploadId:
-          type: string
-          description: >-
-            Multipart upload identifier returned when the file upload was
-            created.
-        parts:
-          type: array
-          items:
-            $ref: '#/components/schemas/DE.UploadDetailsPart'
-          description: Uploaded part numbers and their content hashes.
-      description: Completed multipart upload information for one model file.
     DE.DeploymentMetrics:
       type: object
       properties:
@@ -16863,16 +16404,6 @@ components:
             $ref: '#/components/schemas/DE.ModelDTypeCount'
           description: Parameter counts grouped by numerical data type.
       description: Model parameter count and precision breakdown.
-    DE.UploadDetailsPart:
-      type: object
-      properties:
-        partNumber:
-          type: integer
-          description: One-based multipart upload part number.
-        hash:
-          type: string
-          description: Content hash of the uploaded part.
-      description: Completed part in a multipart model file upload.
     DE.ModelDTypeCount:
       type: object
       required:
@@ -17097,6 +16628,7 @@ components:
         - created_at
         - updated_at
         - optimizer_config
+        - created_by
       properties:
         id:
           type: string
@@ -17135,6 +16667,10 @@ components:
         optimizer_config:
           $ref: '#/components/schemas/RL.OptimizerConfig'
           description: Optimizer configuration for this resource.
+        created_by:
+          type: string
+          example: user_123
+          description: ID of the user who created the model resource
     RL.ModelResourcesError:
       type: object
       description: Structured detail for the model resource's current error
@@ -17928,6 +17464,7 @@ components:
         - updated_at
         - lora_config
         - model_resources_id
+        - created_by
       properties:
         id:
           type: string
@@ -17984,6 +17521,10 @@ components:
           description: >-
             Model resource this session is attached to. The session runs on that
             resource's GPU pods.
+        created_by:
+          type: string
+          example: user_123
+          description: ID of the user who created the training session
     RL.TrainingSessionsListResponse:
       type: object
       description: Paginated list of training sessions

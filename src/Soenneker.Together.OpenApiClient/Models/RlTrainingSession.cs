@@ -17,6 +17,14 @@ namespace Soenneker.Together.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Timestamp when the training session was created</summary>
         public DateTimeOffset? CreatedAt { get; set; }
+        /// <summary>ID of the user who created the training session</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? CreatedBy { get; set; }
+#nullable restore
+#else
+        public string CreatedBy { get; set; }
+#endif
         /// <summary>Structured detail for the training session&apos;s current error</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -111,6 +119,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
+                { "created_by", n => { CreatedBy = n.GetStringValue(); } },
                 { "error", n => { Error = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionError>(global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionError.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "inference_checkpoints", n => { InferenceCheckpoints = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RlInferenceCheckpoint>(global::Soenneker.Together.OpenApiClient.Models.RlInferenceCheckpoint.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -131,6 +140,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
+            writer.WriteStringValue("created_by", CreatedBy);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionError>("error", Error);
             writer.WriteStringValue("id", Id);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RlInferenceCheckpoint>("inference_checkpoints", InferenceCheckpoints);
