@@ -25,7 +25,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string Id { get; set; }
 #endif
-        /// <summary>Project-qualified inference name.</summary>
+        /// <summary>Endpoint string in the form `&lt;project_slug&gt;/&lt;endpoint_name&gt;`, passed as the `model` parameter when calling inference.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get; set; }

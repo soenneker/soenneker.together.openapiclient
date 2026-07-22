@@ -116,7 +116,7 @@ namespace Soenneker.Together.OpenApiClient.Projects.Item.Endpoints.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.DeEndpoint>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.DeEndpoint.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Updates mutable endpoint fields such as its inference name, visibility, or deployment traffic split. Use `updateMask` to select fields explicitly and `etag` in the request body for optimistic concurrency.
+        /// Updates mutable endpoint fields such as its endpoint string, visibility, or deployment traffic split. Use `updateMask` to select fields explicitly and `etag` in the request body for optimistic concurrency.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.DeEndpoint"/></returns>
         /// <param name="body">Mutable endpoint fields for update requests.</param>
@@ -179,7 +179,7 @@ namespace Soenneker.Together.OpenApiClient.Projects.Item.Endpoints.Item
             return requestInfo;
         }
         /// <summary>
-        /// Updates mutable endpoint fields such as its inference name, visibility, or deployment traffic split. Use `updateMask` to select fields explicitly and `etag` in the request body for optimistic concurrency.
+        /// Updates mutable endpoint fields such as its endpoint string, visibility, or deployment traffic split. Use `updateMask` to select fields explicitly and `etag` in the request body for optimistic concurrency.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">Mutable endpoint fields for update requests.</param>
@@ -226,7 +226,7 @@ namespace Soenneker.Together.OpenApiClient.Projects.Item.Endpoints.Item
 #endif
         }
         /// <summary>
-        /// Updates mutable endpoint fields such as its inference name, visibility, or deployment traffic split. Use `updateMask` to select fields explicitly and `etag` in the request body for optimistic concurrency.
+        /// Updates mutable endpoint fields such as its endpoint string, visibility, or deployment traffic split. Use `updateMask` to select fields explicitly and `etag` in the request body for optimistic concurrency.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class EndpointItemRequestBuilderPatchQueryParameters 

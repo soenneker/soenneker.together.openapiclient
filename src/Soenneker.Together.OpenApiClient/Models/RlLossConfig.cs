@@ -30,7 +30,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public global::Soenneker.Together.OpenApiClient.Models.RlGrpoLossParams GrpoParams { get; set; }
 #endif
-        /// <summary>The type property</summary>
+        /// <summary>Type of loss function used for RL training.</summary>
         public global::Soenneker.Together.OpenApiClient.Models.RlLossType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlLossConfig"/> and sets the default values.

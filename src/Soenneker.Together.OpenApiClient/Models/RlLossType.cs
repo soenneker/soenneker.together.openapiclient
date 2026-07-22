@@ -3,10 +3,9 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
+    /// <summary>Type of loss function used for RL training.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public enum RlLossType
-    #pragma warning restore CS1591
     {
         [EnumMember(Value = "LOSS_TYPE_UNSPECIFIED")]
         #pragma warning disable CS1591
@@ -19,6 +18,10 @@ namespace Soenneker.Together.OpenApiClient.Models
         [EnumMember(Value = "LOSS_TYPE_GRPO")]
         #pragma warning disable CS1591
         LossTypeGrpo,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "LOSS_TYPE_IMPORTANCE_SAMPLING")]
+        #pragma warning disable CS1591
+        LossTypeImportanceSampling,
         #pragma warning restore CS1591
     }
 }

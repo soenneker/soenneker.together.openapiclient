@@ -5,6 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.Together.OpenApiClient.Models;
 using Soenneker.Together.OpenApiClient.Projects.Item.Endpoints.Item.Rollouts.Item.Abort;
+using Soenneker.Together.OpenApiClient.Projects.Item.Endpoints.Item.Rollouts.Item.Cancel;
 using Soenneker.Together.OpenApiClient.Projects.Item.Endpoints.Item.Rollouts.Item.Pause;
 using Soenneker.Together.OpenApiClient.Projects.Item.Endpoints.Item.Rollouts.Item.Promote;
 using Soenneker.Together.OpenApiClient.Projects.Item.Endpoints.Item.Rollouts.Item.Resume;
@@ -26,6 +27,11 @@ namespace Soenneker.Together.OpenApiClient.Projects.Item.Endpoints.Item.Rollouts
         public global::Soenneker.Together.OpenApiClient.Projects.Item.Endpoints.Item.Rollouts.Item.Abort.AbortRequestBuilder Abort
         {
             get => new global::Soenneker.Together.OpenApiClient.Projects.Item.Endpoints.Item.Rollouts.Item.Abort.AbortRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The cancel property</summary>
+        public global::Soenneker.Together.OpenApiClient.Projects.Item.Endpoints.Item.Rollouts.Item.Cancel.CancelRequestBuilder Cancel
+        {
+            get => new global::Soenneker.Together.OpenApiClient.Projects.Item.Endpoints.Item.Rollouts.Item.Cancel.CancelRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The pause property</summary>
         public global::Soenneker.Together.OpenApiClient.Projects.Item.Endpoints.Item.Rollouts.Item.Pause.PauseRequestBuilder Pause

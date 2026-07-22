@@ -23,7 +23,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string Etag { get; set; }
 #endif
-        /// <summary>Updated inference-addressable endpoint name.</summary>
+        /// <summary>Updated endpoint string.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get; set; }

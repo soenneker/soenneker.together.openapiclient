@@ -7,10 +7,11 @@ using System.IO;
 using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
+    /// <summary>
+    /// Token-level inputs used to compute the loss for one training sample.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class RlLossInputs : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -21,6 +22,14 @@ namespace Soenneker.Together.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.Together.OpenApiClient.Models.RlGrpoLossInputs GrpoInputs { get; set; }
+#endif
+        /// <summary>Loss inputs for unclipped importance-sampling policy-gradient updates.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Together.OpenApiClient.Models.RlImportanceSamplingLossInputs? ImportanceSamplingInputs { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Together.OpenApiClient.Models.RlImportanceSamplingLossInputs ImportanceSamplingInputs { get; set; }
 #endif
         /// <summary>Per-token loss mask (1=compute loss, 0=ignore)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -64,6 +73,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "grpo_inputs", n => { GrpoInputs = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlGrpoLossInputs>(global::Soenneker.Together.OpenApiClient.Models.RlGrpoLossInputs.CreateFromDiscriminatorValue); } },
+                { "importance_sampling_inputs", n => { ImportanceSamplingInputs = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlImportanceSamplingLossInputs>(global::Soenneker.Together.OpenApiClient.Models.RlImportanceSamplingLossInputs.CreateFromDiscriminatorValue); } },
                 { "loss_mask", n => { LossMask = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlLossMask>(global::Soenneker.Together.OpenApiClient.Models.RlLossMask.CreateFromDiscriminatorValue); } },
                 { "target_tokens", n => { TargetTokens = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlLossTargetTokens>(global::Soenneker.Together.OpenApiClient.Models.RlLossTargetTokens.CreateFromDiscriminatorValue); } },
             };
@@ -76,6 +86,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlGrpoLossInputs>("grpo_inputs", GrpoInputs);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlImportanceSamplingLossInputs>("importance_sampling_inputs", ImportanceSamplingInputs);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlLossMask>("loss_mask", LossMask);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlLossTargetTokens>("target_tokens", TargetTokens);
             writer.WriteAdditionalData(AdditionalData);

@@ -448,7 +448,7 @@
           "EndpointService"
         ],
         "summary": "Update an endpoint",
-        "description": "Updates mutable endpoint fields such as its inference name, visibility, or deployment traffic split. Use \u0060updateMask\u0060 to select fields explicitly and \u0060etag\u0060 in the request body for optimistic concurrency.",
+        "description": "Updates mutable endpoint fields such as its endpoint string, visibility, or deployment traffic split. Use \u0060updateMask\u0060 to select fields explicitly and \u0060etag\u0060 in the request body for optimistic concurrency.",
         "operationId": "EndpointServiceUpdateEndpoint",
         "parameters": [
           {
@@ -1948,6 +1948,81 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/DeAbortRolloutRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeRollout"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Default error response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          }
+        },
+        "servers": [
+          {
+            "url": "https://api.together.ai/v2"
+          }
+        ]
+      }
+    },
+    "/projects/{projectId}/endpoints/{endpointId}/rollouts/{id}/cancel": {
+      "post": {
+        "tags": [
+          "RolloutService"
+        ],
+        "summary": "Cancel a rollout",
+        "description": "Cancels a running, paused, system-paused, or stabilizing rollout by freezing the current traffic split and leaving both deployments under operator control. The response is the CANCELLING rollout snapshot; poll GetRollout until it reaches CANCELED.",
+        "operationId": "RolloutServiceCancelRollout",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Project identifier."
+            }
+          },
+          {
+            "name": "endpointId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Endpoint identifier."
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Rollout identifier."
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeCancelRolloutRequest"
               }
             }
           }
@@ -5856,12 +5931,7 @@
               }
             }
           }
-        },
-        "servers": [
-          {
-            "url": "https://api-inference.together.ai/v1"
-          }
-        ]
+        }
       }
     },
     "/completions": {
@@ -9492,6 +9562,16 @@
               }
             }
           },
+          "429": {
+            "description": "Rate limit exceeded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          },
           "default": {
             "description": "An unexpected error response.",
             "content": {
@@ -11080,7 +11160,7 @@
           },
           "name": {
             "type": "string",
-            "description": "Project-qualified inference name."
+            "description": "Endpoint string in the form \u0060\u003Cproject_slug\u003E/\u003Cendpoint_name\u003E\u0060, passed as the \u0060model\u0060 parameter when calling inference."
           },
           "createdAt": {
             "type": "string",
@@ -11319,7 +11399,7 @@
         "properties": {
           "name": {
             "type": "string",
-            "description": "Updated inference-addressable endpoint name."
+            "description": "Updated endpoint string."
           },
           "etag": {
             "type": "string",
@@ -11347,7 +11427,7 @@
         "properties": {
           "name": {
             "type": "string",
-            "description": "Name for the deployment within its endpoint. Returned as a project- and endpoint-qualified inference name."
+            "description": "Name for the deployment within its endpoint. Returned as a fully-qualified endpoint string."
           },
           "modelId": {
             "type": "string",
@@ -11387,7 +11467,7 @@
         "properties": {
           "name": {
             "type": "string",
-            "description": "Updated inference-addressable deployment name."
+            "description": "Updated endpoint string."
           },
           "autoscaling": {
             "$ref": "#/components/schemas/DeUpdateDeploymentRequestAutoscaling"
@@ -12266,6 +12346,23 @@
           }
         },
         "description": "Reason and optional concurrency check for aborting a rollout and restoring source traffic."
+      },
+      "DeCancelRolloutRequest": {
+        "required": [
+          "reason"
+        ],
+        "type": "object",
+        "properties": {
+          "reason": {
+            "type": "string",
+            "description": "Required human-readable reason recorded in the rollout audit trail."
+          },
+          "etag": {
+            "type": "string",
+            "description": "Optional etag for optimistic concurrency."
+          }
+        },
+        "description": "Reason and optional concurrency check for canceling a rollout while preserving the current traffic split."
       },
       "DePromoteRolloutRequest": {
         "type": "object",
@@ -15272,10 +15369,12 @@
         "enum": [
           "LOSS_TYPE_UNSPECIFIED",
           "LOSS_TYPE_CROSS_ENTROPY",
-          "LOSS_TYPE_GRPO"
+          "LOSS_TYPE_GRPO",
+          "LOSS_TYPE_IMPORTANCE_SAMPLING"
         ],
         "type": "string",
         "additionalProperties": false,
+        "description": "Type of loss function used for RL training.",
         "x-ms-enum": {
           "name": "RlLossType",
           "modelAsString": false,
@@ -15291,6 +15390,10 @@
             {
               "value": "LOSS_TYPE_GRPO",
               "name": "LossTypeGrpo"
+            },
+            {
+              "value": "LOSS_TYPE_IMPORTANCE_SAMPLING",
+              "name": "LossTypeImportanceSampling"
             }
           ]
         }
@@ -15524,6 +15627,22 @@
           }
         }
       },
+      "RlImportanceSamplingLossInputs": {
+        "required": [
+          "advantages",
+          "generator_logprobs"
+        ],
+        "type": "object",
+        "properties": {
+          "advantages": {
+            "$ref": "#/components/schemas/RlLossAdvantages"
+          },
+          "generator_logprobs": {
+            "$ref": "#/components/schemas/RlLossLogprobs"
+          }
+        },
+        "description": "Loss inputs for unclipped importance-sampling policy-gradient updates."
+      },
       "RlLossInputs": {
         "required": [
           "target_tokens"
@@ -15538,8 +15657,12 @@
           },
           "grpo_inputs": {
             "$ref": "#/components/schemas/RlGrpoLossInputs"
+          },
+          "importance_sampling_inputs": {
+            "$ref": "#/components/schemas/RlImportanceSamplingLossInputs"
           }
-        }
+        },
+        "description": "Token-level inputs used to compute the loss for one training sample."
       },
       "RlTrainingSample": {
         "required": [
@@ -17273,6 +17396,12 @@
           },
           "torchpass": {
             "$ref": "#/components/schemas/TorchpassConfig"
+          },
+          "slurm_web": {
+            "$ref": "#/components/schemas/SlurmWebConfig"
+          },
+          "headlamp": {
+            "$ref": "#/components/schemas/HeadlampConfig"
           }
         },
         "description": "Configuration for a cluster add-on."
@@ -17332,6 +17461,12 @@
           },
           "torchpass": {
             "$ref": "#/components/schemas/AddOnStateTorchpass"
+          },
+          "slurm_web": {
+            "$ref": "#/components/schemas/AddOnStateSlurmWeb"
+          },
+          "headlamp": {
+            "$ref": "#/components/schemas/AddOnStateHeadlamp"
           }
         },
         "description": "State for a cluster add-on."
@@ -17386,7 +17521,7 @@
           },
           "add_on_type": {
             "type": "string",
-            "description": "\u0022Type of add-on. Valid values: \u0027dashboard\u0027, \u0027ingress\u0027, \u0027torchpass\u0027.\u0022"
+            "description": "\u0022Type of add-on. Valid values: \u0027dashboard\u0027, \u0027ingress\u0027, \u0027torchpass\u0027, \u0027headlamp\u0027.\u0022"
           },
           "config": {
             "$ref": "#/components/schemas/AddOnConfig"
@@ -17456,6 +17591,21 @@
         "type": "object",
         "x-stainless-empty-object": true
       },
+      "HeadlampConfig": {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "description": "Whether to enable the Headlamp Kubernetes dashboard add-on."
+          }
+        },
+        "description": "Configuration for the Headlamp Kubernetes dashboard cluster add-on."
+      },
+      "HeadlampState": {
+        "type": "object",
+        "description": "Runtime state for the Headlamp Kubernetes dashboard cluster add-on.",
+        "x-stainless-empty-object": true
+      },
       "GpuClusterDeleteResponse": {
         "required": [
           "cluster_id"
@@ -17492,6 +17642,21 @@
       "TorchpassState": {
         "type": "object",
         "description": "Runtime state for the Model Aware TorchPass cluster add-on.",
+        "x-stainless-empty-object": true
+      },
+      "SlurmWebConfig": {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "description": "Whether to enable the Slurm Web add-on."
+          }
+        },
+        "description": "Configuration for the Slurm Web cluster add-on."
+      },
+      "SlurmWebState": {
+        "type": "object",
+        "description": "Runtime state for the Slurm Web cluster add-on.",
         "x-stainless-empty-object": true
       },
       "InstanceClusterConfig": {
@@ -28684,6 +28849,14 @@
         "type": "object",
         "description": "Runtime state for the Model Aware TorchPass cluster add-on."
       },
+      "AddOnStateSlurmWeb": {
+        "type": "object",
+        "description": "Runtime state for the Slurm Web cluster add-on."
+      },
+      "AddOnStateHeadlamp": {
+        "type": "object",
+        "description": "Runtime state for the Headlamp Kubernetes dashboard cluster add-on."
+      },
       "PassiveHealthCheckAlertAnnotationsProperty": {
         "type": "object",
         "additionalProperties": {
@@ -29668,7 +29841,9 @@
           "ROLLOUT_STATE_COMPLETED",
           "ROLLOUT_STATE_ABORTED",
           "ROLLOUT_STATE_PENDING",
-          "ROLLOUT_STATE_SYSTEM_PAUSED"
+          "ROLLOUT_STATE_SYSTEM_PAUSED",
+          "ROLLOUT_STATE_CANCELLING",
+          "ROLLOUT_STATE_CANCELED"
         ],
         "type": "string",
         "additionalProperties": false,
@@ -29709,6 +29884,14 @@
             {
               "value": "ROLLOUT_STATE_SYSTEM_PAUSED",
               "name": "RolloutStateSystemPaused"
+            },
+            {
+              "value": "ROLLOUT_STATE_CANCELLING",
+              "name": "RolloutStateCancelling"
+            },
+            {
+              "value": "ROLLOUT_STATE_CANCELED",
+              "name": "RolloutStateCanceled"
             }
           ]
         }

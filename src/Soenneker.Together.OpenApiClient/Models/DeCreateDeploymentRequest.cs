@@ -65,7 +65,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string ModelRevisionId { get; set; }
 #endif
-        /// <summary>Name for the deployment within its endpoint. Returned as a project- and endpoint-qualified inference name.</summary>
+        /// <summary>Name for the deployment within its endpoint. Returned as a fully-qualified endpoint string.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get; set; }
