@@ -34,10 +34,10 @@ namespace Soenneker.Together.OpenApiClient.Projects.Item.Endpoints.Item.Rollouts
         {
         }
         /// <summary>
-        /// Cancels a running, paused, system-paused, or stabilizing rollout by freezing the current traffic split and leaving both deployments under operator control. The response is the CANCELLING rollout snapshot; poll GetRollout until it reaches CANCELED.
+        /// Cancels a running, paused, system-paused, or stabilizing rollout by freezing the current traffic split, or by reverting all traffic to the source deployment when requested. The response is the accepted rollout snapshot; poll GetRollout until it reaches CANCELED for freeze or ABORTED for revert.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.DeRollout"/></returns>
-        /// <param name="body">Reason and optional concurrency check for canceling a rollout while preserving the current traffic split.</param>
+        /// <param name="body">Reason, disposition, and optional concurrency check for canceling a rollout.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.ErrorData">When receiving a 4XX or 5XX status code</exception>
@@ -59,10 +59,10 @@ namespace Soenneker.Together.OpenApiClient.Projects.Item.Endpoints.Item.Rollouts
             return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.DeRollout>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.DeRollout.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Cancels a running, paused, system-paused, or stabilizing rollout by freezing the current traffic split and leaving both deployments under operator control. The response is the CANCELLING rollout snapshot; poll GetRollout until it reaches CANCELED.
+        /// Cancels a running, paused, system-paused, or stabilizing rollout by freezing the current traffic split, or by reverting all traffic to the source deployment when requested. The response is the accepted rollout snapshot; poll GetRollout until it reaches CANCELED for freeze or ABORTED for revert.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">Reason and optional concurrency check for canceling a rollout while preserving the current traffic split.</param>
+        /// <param name="body">Reason, disposition, and optional concurrency check for canceling a rollout.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

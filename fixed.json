@@ -1987,7 +1987,7 @@
           "RolloutService"
         ],
         "summary": "Cancel a rollout",
-        "description": "Cancels a running, paused, system-paused, or stabilizing rollout by freezing the current traffic split and leaving both deployments under operator control. The response is the CANCELLING rollout snapshot; poll GetRollout until it reaches CANCELED.",
+        "description": "Cancels a running, paused, system-paused, or stabilizing rollout by freezing the current traffic split, or by reverting all traffic to the source deployment when requested. The response is the accepted rollout snapshot; poll GetRollout until it reaches CANCELED for freeze or ABORTED for revert.",
         "operationId": "RolloutServiceCancelRollout",
         "parameters": [
           {
@@ -6594,6 +6594,97 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/fine-tunes/preview": {
+      "post": {
+        "tags": [
+          "Fine-tuning"
+        ],
+        "summary": "Preview tokenized data",
+        "description": "Preview how sampled rows from a fine-tuning training file will be tokenized before packing.",
+        "operationId": "PostFineTunesPreview",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FineTunePreviewRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Tokenized data preview generated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FineTunePreviewResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request or unsupported dataset for preview.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostFineTunesPreview400Response"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Training file not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FineTunePreviewMessageError"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Preview service unavailable.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FineTunePreviewMessageError"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Preview service is at capacity.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FineTunePreviewDetailError"
                 }
               }
             }
@@ -11294,12 +11385,12 @@
           "id",
           "autoscaling",
           "createdAt",
-          "hardware",
           "model",
           "modelId",
           "name",
           "state",
-          "trafficMode"
+          "trafficMode",
+          "estimatedEffectiveTrafficShare"
         ],
         "type": "object",
         "properties": {
@@ -12360,9 +12451,12 @@
           "etag": {
             "type": "string",
             "description": "Optional etag for optimistic concurrency."
+          },
+          "disposition": {
+            "$ref": "#/components/schemas/DeCancelRolloutRequestDisposition"
           }
         },
-        "description": "Reason and optional concurrency check for canceling a rollout while preserving the current traffic split."
+        "description": "Reason, disposition, and optional concurrency check for canceling a rollout."
       },
       "DePromoteRolloutRequest": {
         "type": "object",
@@ -20293,6 +20387,10 @@
             "type": "string",
             "description": "Together model registry object ID for the final model weights (e.g. \u0060ml_...\u0060)."
           },
+          "model_object_name": {
+            "type": "string",
+            "description": "Together model registry name for the final model weights, formatted as \u0060\u003Cproject_slug\u003E/\u003Cmodel_name\u003E\u0060."
+          },
           "model_object_revision_id": {
             "type": "string",
             "description": "Together model registry revision ID for the final model weights (e.g. \u0060rv_...\u0060)."
@@ -20301,13 +20399,17 @@
             "type": "string",
             "description": "Together model registry object ID for the final adapter weights on LoRA jobs."
           },
+          "adapter_object_name": {
+            "type": "string",
+            "description": "Together model registry name for the final adapter weights on LoRA jobs, formatted as \u0060\u003Cproject_slug\u003E/\u003Cmodel_name\u003E-adapter\u0060."
+          },
           "adapter_object_revision_id": {
             "type": "string",
             "description": "Together model registry revision ID for the final adapter weights on LoRA jobs."
           },
           "user_id": {
             "type": "string",
-            "description": "ID of the user who owns the fine-tune job."
+            "description": "ID of the user who created the fine-tune job."
           },
           "trainingfile_numlines": {
             "type": "integer"
@@ -20465,7 +20567,7 @@
           },
           "user_id": {
             "type": "string",
-            "description": "ID of the user who owns the fine-tune job."
+            "description": "ID of the user who created the fine-tune job."
           },
           "owner_address": {
             "type": "string",
@@ -20626,6 +20728,165 @@
             "description": "Message indicating the result of the deletion"
           }
         }
+      },
+      "FineTunePreviewRequest": {
+        "required": [
+          "model",
+          "training_file"
+        ],
+        "type": "object",
+        "properties": {
+          "model": {
+            "type": "string",
+            "description": "Name of the base model whose tokenizer and chat template will be used."
+          },
+          "training_file": {
+            "type": "string",
+            "description": "File-ID of the uploaded JSONL training file to sample for preview."
+          },
+          "training_method": {
+            "$ref": "#/components/schemas/FineTunePreviewRequestTrainingMethod"
+          },
+          "train_on_inputs": {
+            "type": "boolean",
+            "description": "Whether prompt or user-message tokens should contribute to training loss in the preview.",
+            "default": false
+          },
+          "top_k": {
+            "maximum": 50,
+            "minimum": 1,
+            "type": "integer",
+            "description": "Maximum number of rows from the start of the training file to tokenize.",
+            "default": 5
+          }
+        },
+        "description": "Request body for previewing tokenized fine-tuning data."
+      },
+      "FineTunePreviewResponse": {
+        "required": [
+          "model",
+          "dataset_format",
+          "max_seq_length",
+          "train_on_inputs",
+          "rows"
+        ],
+        "type": "object",
+        "properties": {
+          "model": {
+            "type": "string",
+            "description": "Name of the base model used to tokenize the sampled rows."
+          },
+          "dataset_format": {
+            "$ref": "#/components/schemas/FineTunePreviewResponseDatasetFormat"
+          },
+          "max_seq_length": {
+            "type": "integer",
+            "description": "Maximum sequence length configured for the requested model."
+          },
+          "train_on_inputs": {
+            "type": "boolean",
+            "description": "Whether prompt or user-message tokens contribute to training loss."
+          },
+          "rows": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FineTunePreviewRow"
+            },
+            "description": "Tokenized preview rows, in the same order as the sampled training file rows."
+          }
+        },
+        "description": "Tokenized preview for sampled rows from a fine-tuning training file."
+      },
+      "FineTunePreviewRow": {
+        "required": [
+          "input_ids",
+          "tokens",
+          "labels",
+          "trained_spans",
+          "num_tokens",
+          "num_trained_tokens",
+          "truncated"
+        ],
+        "type": "object",
+        "properties": {
+          "input_ids": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "description": "Token ID from the model tokenizer."
+            },
+            "description": "Token IDs produced for the sampled row."
+          },
+          "tokens": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "description": "Token text from the model tokenizer."
+            },
+            "description": "Raw token strings produced for the sampled row."
+          },
+          "labels": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "description": "Label value for the token at the same position."
+            },
+            "description": "Training labels for each token; masked tokens use -100."
+          },
+          "trained_spans": {
+            "type": "array",
+            "items": {
+              "maxItems": 2,
+              "minItems": 2,
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "description": "Token index in the row."
+              },
+              "description": "Start and end token indexes for one trained span."
+            },
+            "description": "Half-open token index ranges that contribute to training loss."
+          },
+          "num_tokens": {
+            "type": "integer",
+            "description": "Total number of tokens in the preview row after truncation."
+          },
+          "num_trained_tokens": {
+            "type": "integer",
+            "description": "Number of tokens in the row that contribute to training loss."
+          },
+          "truncated": {
+            "type": "boolean",
+            "description": "Whether the row was truncated to the model maximum sequence length."
+          }
+        },
+        "description": "Tokenized representation of one sampled fine-tuning row."
+      },
+      "FineTunePreviewMessageError": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "Human-readable error message."
+          }
+        },
+        "description": "Error response with a message field returned by the fine-tuning API layer."
+      },
+      "FineTunePreviewDetailError": {
+        "required": [
+          "detail"
+        ],
+        "type": "object",
+        "properties": {
+          "detail": {
+            "type": "string",
+            "description": "Human-readable error detail."
+          }
+        },
+        "description": "Error response with a detail field returned by the preview tokenization service."
       },
       "FineTuneModelLimits": {
         "required": [
@@ -21110,6 +21371,10 @@
           "object_id": {
             "type": "string",
             "description": "Together model registry object ID for the checkpoint artifact (e.g. \u0060ml_...\u0060)."
+          },
+          "object_name": {
+            "type": "string",
+            "description": "Together model registry name for the checkpoint artifact, formatted as \u0060\u003Cproject_slug\u003E/\u003Ccheckpoint_name\u003E\u0060."
           },
           "object_revision_id": {
             "type": "string",
@@ -27513,6 +27778,33 @@
           "propertyName": "type"
         }
       },
+      "PostFineTunesPreview400Response": {
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/FineTunePreviewMessageError"
+          },
+          {
+            "$ref": "#/components/schemas/FineTunePreviewDetailError"
+          }
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Union discriminator"
+          }
+        },
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "FineTunePreviewMessageError": "#/components/schemas/FineTunePreviewMessageError",
+            "FineTunePreviewDetailError": "#/components/schemas/FineTunePreviewDetailError"
+          }
+        }
+      },
       "GetFinetuneDownload200Response": {
         "type": "string",
         "format": "binary"
@@ -29799,6 +30091,29 @@
             {
               "value": "REGRESSION_DIRECTION_LOWER_IS_WORSE",
               "name": "RegressionDirectionLowerIsWorse"
+            }
+          ]
+        }
+      },
+      "DeCancelRolloutRequestDisposition": {
+        "enum": [
+          "CANCEL_DISPOSITION_FREEZE",
+          "CANCEL_DISPOSITION_REVERT"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Optional cancel behavior. Absent defaults to freeze, which preserves the current traffic split; revert sends all traffic back to the source deployment and terminates the rollout.",
+        "x-ms-enum": {
+          "name": "DeCancelRolloutRequestDisposition",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "CANCEL_DISPOSITION_FREEZE",
+              "name": "CancelDispositionFreeze"
+            },
+            {
+              "value": "CANCEL_DISPOSITION_REVERT",
+              "name": "CancelDispositionRevert"
             }
           ]
         }
@@ -32194,6 +32509,52 @@
             {
               "value": "INVALID_FORMAT",
               "name": "InvalidFormat"
+            }
+          ]
+        }
+      },
+      "FineTunePreviewRequestTrainingMethod": {
+        "enum": [
+          "sft"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Fine-tuning method to preview. Only supervised fine-tuning is currently supported.",
+        "x-ms-enum": {
+          "name": "FineTunePreviewRequestTrainingMethod",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "sft",
+              "name": "Sft"
+            }
+          ]
+        }
+      },
+      "FineTunePreviewResponseDatasetFormat": {
+        "enum": [
+          "general",
+          "conversation",
+          "instruction"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Detected SFT dataset format for the sampled rows.",
+        "x-ms-enum": {
+          "name": "FineTunePreviewResponseDatasetFormat",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "general",
+              "name": "General"
+            },
+            {
+              "value": "conversation",
+              "name": "Conversation"
+            },
+            {
+              "value": "instruction",
+              "name": "Instruction"
             }
           ]
         }

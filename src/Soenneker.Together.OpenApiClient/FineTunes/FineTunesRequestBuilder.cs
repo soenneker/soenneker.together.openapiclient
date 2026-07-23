@@ -6,6 +6,7 @@ using Microsoft.Kiota.Abstractions;
 using Soenneker.Together.OpenApiClient.FineTunes.EstimatePrice;
 using Soenneker.Together.OpenApiClient.FineTunes.Item;
 using Soenneker.Together.OpenApiClient.FineTunes.ModelsRequests;
+using Soenneker.Together.OpenApiClient.FineTunes.Preview;
 using Soenneker.Together.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -29,6 +30,11 @@ namespace Soenneker.Together.OpenApiClient.FineTunes
         public global::Soenneker.Together.OpenApiClient.FineTunes.ModelsRequests.ModelsRequestBuilder Models
         {
             get => new global::Soenneker.Together.OpenApiClient.FineTunes.ModelsRequests.ModelsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The preview property</summary>
+        public global::Soenneker.Together.OpenApiClient.FineTunes.Preview.PreviewRequestBuilder Preview
+        {
+            get => new global::Soenneker.Together.OpenApiClient.FineTunes.Preview.PreviewRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Soenneker.Together.OpenApiClient.fineTunes.item collection</summary>
         /// <param name="position">Unique identifier of the item</param>

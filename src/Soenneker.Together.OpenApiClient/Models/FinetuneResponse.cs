@@ -20,6 +20,14 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string AdapterObjectId { get; set; }
 #endif
+        /// <summary>Together model registry name for the final adapter weights on LoRA jobs, formatted as `&lt;project_slug&gt;/&lt;model_name&gt;-adapter`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? AdapterObjectName { get; set; }
+#nullable restore
+#else
+        public string AdapterObjectName { get; set; }
+#endif
         /// <summary>Together model registry revision ID for the final adapter weights on LoRA jobs.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -120,6 +128,14 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string ModelObjectId { get; set; }
 #endif
+        /// <summary>Together model registry name for the final model weights, formatted as `&lt;project_slug&gt;/&lt;model_name&gt;`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ModelObjectName { get; set; }
+#nullable restore
+#else
+        public string ModelObjectName { get; set; }
+#endif
         /// <summary>Together model registry revision ID for the final model weights (e.g. `rv_...`).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -216,7 +232,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; set; }
-        /// <summary>ID of the user who owns the fine-tune job.</summary>
+        /// <summary>ID of the user who created the fine-tune job.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? UserId { get; set; }
@@ -278,6 +294,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "adapter_object_id", n => { AdapterObjectId = n.GetStringValue(); } },
+                { "adapter_object_name", n => { AdapterObjectName = n.GetStringValue(); } },
                 { "adapter_object_revision_id", n => { AdapterObjectRevisionId = n.GetStringValue(); } },
                 { "batch_size", n => { BatchSize = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseBatchSize>(global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseBatchSize.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
@@ -297,6 +314,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "max_grad_norm", n => { MaxGradNorm = n.GetDoubleValue(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
                 { "model_object_id", n => { ModelObjectId = n.GetStringValue(); } },
+                { "model_object_name", n => { ModelObjectName = n.GetStringValue(); } },
                 { "model_object_revision_id", n => { ModelObjectRevisionId = n.GetStringValue(); } },
                 { "model_output_name", n => { ModelOutputName = n.GetStringValue(); } },
                 { "model_output_path", n => { ModelOutputPath = n.GetStringValue(); } },
@@ -334,6 +352,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("adapter_object_id", AdapterObjectId);
+            writer.WriteStringValue("adapter_object_name", AdapterObjectName);
             writer.WriteStringValue("adapter_object_revision_id", AdapterObjectRevisionId);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseBatchSize>("batch_size", BatchSize);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
@@ -353,6 +372,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteDoubleValue("max_grad_norm", MaxGradNorm);
             writer.WriteStringValue("model", Model);
             writer.WriteStringValue("model_object_id", ModelObjectId);
+            writer.WriteStringValue("model_object_name", ModelObjectName);
             writer.WriteStringValue("model_object_revision_id", ModelObjectRevisionId);
             writer.WriteStringValue("model_output_name", ModelOutputName);
             writer.WriteStringValue("model_output_path", ModelOutputPath);

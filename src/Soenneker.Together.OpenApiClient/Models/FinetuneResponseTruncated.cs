@@ -163,7 +163,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #endif
         /// <summary>Last update timestamp of the fine-tune job</summary>
         public DateTimeOffset? UpdatedAt { get; set; }
-        /// <summary>ID of the user who owns the fine-tune job.</summary>
+        /// <summary>ID of the user who created the fine-tune job.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? UserId { get; set; }

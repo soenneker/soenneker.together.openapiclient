@@ -1343,9 +1343,10 @@ paths:
       summary: Cancel a rollout
       description: >-
         Cancels a running, paused, system-paused, or stabilizing rollout by
-        freezing the current traffic split and leaving both deployments under
-        operator control. The response is the CANCELLING rollout snapshot; poll
-        GetRollout until it reaches CANCELED.
+        freezing the current traffic split, or by reverting all traffic to the
+        source deployment when requested. The response is the accepted rollout
+        snapshot; poll GetRollout until it reaches CANCELED for freeze or
+        ABORTED for revert.
       operationId: RolloutService_CancelRollout
       servers:
         - url: https://api.together.ai/v2
@@ -6311,6 +6312,65 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorData'
+  /fine-tunes/preview:
+    post:
+      tags:
+        - Fine-tuning
+      summary: Preview tokenized data
+      description: >-
+        Preview how sampled rows from a fine-tuning training file will be
+        tokenized before packing.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FineTunePreviewRequest'
+      responses:
+        '200':
+          description: Tokenized data preview generated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FineTunePreviewResponse'
+        '400':
+          description: Invalid request or unsupported dataset for preview.
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/FineTunePreviewMessageError'
+                  - $ref: '#/components/schemas/FineTunePreviewDetailError'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorData'
+        '404':
+          description: Training file not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorData'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FineTunePreviewMessageError'
+        '502':
+          description: Preview service unavailable.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FineTunePreviewMessageError'
+        '503':
+          description: Preview service is at capacity.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FineTunePreviewDetailError'
   /fine-tunes/{id}:
     get:
       tags:
@@ -13125,12 +13185,12 @@ components:
         - id
         - autoscaling
         - createdAt
-        - hardware
         - model
         - modelId
         - name
         - state
         - trafficMode
+        - estimatedEffectiveTrafficShare
       properties:
         id:
           readOnly: true
@@ -14169,8 +14229,8 @@ components:
     DE.CancelRolloutRequest:
       type: object
       description: >-
-        Reason and optional concurrency check for canceling a rollout while
-        preserving the current traffic split.
+        Reason, disposition, and optional concurrency check for canceling a
+        rollout.
       required:
         - reason
       properties:
@@ -14180,6 +14240,15 @@ components:
         etag:
           type: string
           description: Optional etag for optimistic concurrency.
+        disposition:
+          enum:
+            - CANCEL_DISPOSITION_FREEZE
+            - CANCEL_DISPOSITION_REVERT
+          type: string
+          description: >-
+            Optional cancel behavior. Absent defaults to freeze, which preserves
+            the current traffic split; revert sends all traffic back to the
+            source deployment and terminates the rollout.
     DE.PromoteRolloutRequest:
       type: object
       description: >-
@@ -21748,6 +21817,11 @@ components:
           description: >-
             Together model registry object ID for the final model weights (e.g.
             `ml_...`).
+        model_object_name:
+          type: string
+          description: >-
+            Together model registry name for the final model weights, formatted
+            as `<project_slug>/<model_name>`.
         model_object_revision_id:
           type: string
           description: >-
@@ -21758,6 +21832,11 @@ components:
           description: >-
             Together model registry object ID for the final adapter weights on
             LoRA jobs.
+        adapter_object_name:
+          type: string
+          description: >-
+            Together model registry name for the final adapter weights on LoRA
+            jobs, formatted as `<project_slug>/<model_name>-adapter`.
         adapter_object_revision_id:
           type: string
           description: >-
@@ -21765,7 +21844,7 @@ components:
             LoRA jobs.
         user_id:
           type: string
-          description: ID of the user who owns the fine-tune job.
+          description: ID of the user who created the fine-tune job.
         trainingfile_numlines:
           type: integer
         trainingfile_size:
@@ -21916,7 +21995,7 @@ components:
           description: Start timestamp of the current stage of the fine-tune job
         user_id:
           type: string
-          description: ID of the user who owns the fine-tune job.
+          description: ID of the user who created the fine-tune job.
         owner_address:
           type: string
           description: Owner address information
@@ -22036,6 +22115,148 @@ components:
         message:
           type: string
           description: Message indicating the result of the deletion
+    FineTunePreviewRequest:
+      type: object
+      description: Request body for previewing tokenized fine-tuning data.
+      required:
+        - model
+        - training_file
+      properties:
+        model:
+          type: string
+          description: >-
+            Name of the base model whose tokenizer and chat template will be
+            used.
+        training_file:
+          type: string
+          description: File-ID of the uploaded JSONL training file to sample for preview.
+        training_method:
+          type: string
+          default: sft
+          enum:
+            - sft
+          description: >-
+            Fine-tuning method to preview. Only supervised fine-tuning is
+            currently supported.
+        train_on_inputs:
+          type: boolean
+          default: false
+          description: >-
+            Whether prompt or user-message tokens should contribute to training
+            loss in the preview.
+        top_k:
+          type: integer
+          default: 5
+          minimum: 1
+          maximum: 50
+          description: >-
+            Maximum number of rows from the start of the training file to
+            tokenize.
+    FineTunePreviewResponse:
+      type: object
+      description: Tokenized preview for sampled rows from a fine-tuning training file.
+      required:
+        - model
+        - dataset_format
+        - max_seq_length
+        - train_on_inputs
+        - rows
+      properties:
+        model:
+          type: string
+          description: Name of the base model used to tokenize the sampled rows.
+        dataset_format:
+          type: string
+          enum:
+            - general
+            - conversation
+            - instruction
+          description: Detected SFT dataset format for the sampled rows.
+        max_seq_length:
+          type: integer
+          description: Maximum sequence length configured for the requested model.
+        train_on_inputs:
+          type: boolean
+          description: Whether prompt or user-message tokens contribute to training loss.
+        rows:
+          type: array
+          description: >-
+            Tokenized preview rows, in the same order as the sampled training
+            file rows.
+          items:
+            $ref: '#/components/schemas/FineTunePreviewRow'
+    FineTunePreviewRow:
+      type: object
+      description: Tokenized representation of one sampled fine-tuning row.
+      required:
+        - input_ids
+        - tokens
+        - labels
+        - trained_spans
+        - num_tokens
+        - num_trained_tokens
+        - truncated
+      properties:
+        input_ids:
+          type: array
+          description: Token IDs produced for the sampled row.
+          items:
+            type: integer
+            description: Token ID from the model tokenizer.
+        tokens:
+          type: array
+          description: Raw token strings produced for the sampled row.
+          items:
+            type: string
+            description: Token text from the model tokenizer.
+        labels:
+          type: array
+          description: Training labels for each token; masked tokens use -100.
+          items:
+            type: integer
+            description: Label value for the token at the same position.
+        trained_spans:
+          type: array
+          description: Half-open token index ranges that contribute to training loss.
+          items:
+            type: array
+            minItems: 2
+            maxItems: 2
+            description: Start and end token indexes for one trained span.
+            items:
+              type: integer
+              description: Token index in the row.
+        num_tokens:
+          type: integer
+          description: Total number of tokens in the preview row after truncation.
+        num_trained_tokens:
+          type: integer
+          description: Number of tokens in the row that contribute to training loss.
+        truncated:
+          type: boolean
+          description: Whether the row was truncated to the model maximum sequence length.
+    FineTunePreviewMessageError:
+      type: object
+      description: >-
+        Error response with a message field returned by the fine-tuning API
+        layer.
+      required:
+        - message
+      properties:
+        message:
+          type: string
+          description: Human-readable error message.
+    FineTunePreviewDetailError:
+      type: object
+      description: >-
+        Error response with a detail field returned by the preview tokenization
+        service.
+      required:
+        - detail
+      properties:
+        detail:
+          type: string
+          description: Human-readable error detail.
     FineTuneModelLimits:
       type: object
       description: Model limits for fine-tuning.
@@ -22332,6 +22553,11 @@ components:
           description: >-
             Together model registry object ID for the checkpoint artifact (e.g.
             `ml_...`).
+        object_name:
+          type: string
+          description: >-
+            Together model registry name for the checkpoint artifact, formatted
+            as `<project_slug>/<checkpoint_name>`.
         object_revision_id:
           type: string
           description: >-

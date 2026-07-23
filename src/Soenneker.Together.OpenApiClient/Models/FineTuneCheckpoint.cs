@@ -41,6 +41,14 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string ObjectId { get; set; }
 #endif
+        /// <summary>Together model registry name for the checkpoint artifact, formatted as `&lt;project_slug&gt;/&lt;checkpoint_name&gt;`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ObjectName { get; set; }
+#nullable restore
+#else
+        public string ObjectName { get; set; }
+#endif
         /// <summary>Together model registry revision ID for the checkpoint artifact (e.g. `rv_...`).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -88,6 +96,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "checkpoint_type", n => { CheckpointType = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetStringValue(); } },
                 { "object_id", n => { ObjectId = n.GetStringValue(); } },
+                { "object_name", n => { ObjectName = n.GetStringValue(); } },
                 { "object_revision_id", n => { ObjectRevisionId = n.GetStringValue(); } },
                 { "path", n => { Path = n.GetStringValue(); } },
                 { "step", n => { Step = n.GetIntValue(); } },
@@ -104,6 +113,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteStringValue("checkpoint_type", CheckpointType);
             writer.WriteStringValue("created_at", CreatedAt);
             writer.WriteStringValue("object_id", ObjectId);
+            writer.WriteStringValue("object_name", ObjectName);
             writer.WriteStringValue("object_revision_id", ObjectRevisionId);
             writer.WriteStringValue("path", Path);
             writer.WriteIntValue("step", Step);
