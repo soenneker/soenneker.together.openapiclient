@@ -15,6 +15,22 @@ namespace Soenneker.Together.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The cispo_inputs property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Together.OpenApiClient.Models.RlCispoLossInputs? CispoInputs { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Together.OpenApiClient.Models.RlCispoLossInputs CispoInputs { get; set; }
+#endif
+        /// <summary>The dro_inputs property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Together.OpenApiClient.Models.RlDroLossInputs? DroInputs { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Together.OpenApiClient.Models.RlDroLossInputs DroInputs { get; set; }
+#endif
         /// <summary>The grpo_inputs property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -38,6 +54,14 @@ namespace Soenneker.Together.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.Together.OpenApiClient.Models.RlLossMask LossMask { get; set; }
+#endif
+        /// <summary>The ppo_inputs property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Together.OpenApiClient.Models.RlPpoLossInputs? PpoInputs { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Together.OpenApiClient.Models.RlPpoLossInputs PpoInputs { get; set; }
 #endif
         /// <summary>The target_tokens property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -72,9 +96,12 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "cispo_inputs", n => { CispoInputs = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlCispoLossInputs>(global::Soenneker.Together.OpenApiClient.Models.RlCispoLossInputs.CreateFromDiscriminatorValue); } },
+                { "dro_inputs", n => { DroInputs = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlDroLossInputs>(global::Soenneker.Together.OpenApiClient.Models.RlDroLossInputs.CreateFromDiscriminatorValue); } },
                 { "grpo_inputs", n => { GrpoInputs = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlGrpoLossInputs>(global::Soenneker.Together.OpenApiClient.Models.RlGrpoLossInputs.CreateFromDiscriminatorValue); } },
                 { "importance_sampling_inputs", n => { ImportanceSamplingInputs = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlImportanceSamplingLossInputs>(global::Soenneker.Together.OpenApiClient.Models.RlImportanceSamplingLossInputs.CreateFromDiscriminatorValue); } },
                 { "loss_mask", n => { LossMask = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlLossMask>(global::Soenneker.Together.OpenApiClient.Models.RlLossMask.CreateFromDiscriminatorValue); } },
+                { "ppo_inputs", n => { PpoInputs = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlPpoLossInputs>(global::Soenneker.Together.OpenApiClient.Models.RlPpoLossInputs.CreateFromDiscriminatorValue); } },
                 { "target_tokens", n => { TargetTokens = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlLossTargetTokens>(global::Soenneker.Together.OpenApiClient.Models.RlLossTargetTokens.CreateFromDiscriminatorValue); } },
             };
         }
@@ -85,9 +112,12 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlCispoLossInputs>("cispo_inputs", CispoInputs);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlDroLossInputs>("dro_inputs", DroInputs);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlGrpoLossInputs>("grpo_inputs", GrpoInputs);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlImportanceSamplingLossInputs>("importance_sampling_inputs", ImportanceSamplingInputs);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlLossMask>("loss_mask", LossMask);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlPpoLossInputs>("ppo_inputs", PpoInputs);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlLossTargetTokens>("target_tokens", TargetTokens);
             writer.WriteAdditionalData(AdditionalData);
         }

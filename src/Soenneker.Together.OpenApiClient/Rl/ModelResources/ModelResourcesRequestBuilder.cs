@@ -4,6 +4,7 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.Together.OpenApiClient.Models;
+using Soenneker.Together.OpenApiClient.Rl.ModelResources.EstimateCost;
 using Soenneker.Together.OpenApiClient.Rl.ModelResources.Item;
 using System.Collections.Generic;
 using System.IO;
@@ -18,6 +19,11 @@ namespace Soenneker.Together.OpenApiClient.Rl.ModelResources
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ModelResourcesRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The estimateCost property</summary>
+        public global::Soenneker.Together.OpenApiClient.Rl.ModelResources.EstimateCost.EstimateCostRequestBuilder EstimateCost
+        {
+            get => new global::Soenneker.Together.OpenApiClient.Rl.ModelResources.EstimateCost.EstimateCostRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>Gets an item from the Soenneker.Together.OpenApiClient.rl.modelResources.item collection</summary>
         /// <param name="position">Unique identifier of the item</param>
         /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Rl.ModelResources.Item.WithModelResourcesItemRequestBuilder"/></returns>

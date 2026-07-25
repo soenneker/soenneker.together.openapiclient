@@ -7,42 +7,35 @@ using System.IO;
 using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
-    /// <summary>
-    /// LoRA adapter configuration
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class RlLoraConfig : IAdditionalDataHolder, IParsable
+    #pragma warning disable CS1591
+    public partial class RlCispoLossParams : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Alpha of the LoRA adapter</summary>
-        public int? Alpha { get; set; }
-        /// <summary>Dropout of the LoRA adapter</summary>
-        public double? Dropout { get; set; }
-        /// <summary>Whether to enable LoRA fine-tuning. If false, full fine-tuning is used.</summary>
-        public bool? Enable { get; set; }
-        /// <summary>Rank of the LoRA adapter</summary>
-        public int? Rank { get; set; }
+        /// <summary>Upper absolute bound for the importance ratio; the clipped ratio is applied as a detached coefficient</summary>
+        public float? ClipHighThreshold { get; set; }
+        /// <summary>Lower absolute bound for the importance ratio; the clipped ratio is applied as a detached coefficient</summary>
+        public float? ClipLowThreshold { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlLoraConfig"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlCispoLossParams"/> and sets the default values.
         /// </summary>
-        public RlLoraConfig()
+        public RlCispoLossParams()
         {
             AdditionalData = new Dictionary<string, object>();
-            Alpha = 64;
-            Dropout = 0;
-            Enable = true;
-            Rank = 32;
+            ClipHighThreshold = 4f;
+            ClipLowThreshold = 0f;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.RlLoraConfig"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.RlCispoLossParams"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Together.OpenApiClient.Models.RlLoraConfig CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Together.OpenApiClient.Models.RlCispoLossParams CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.RlLoraConfig();
+            return new global::Soenneker.Together.OpenApiClient.Models.RlCispoLossParams();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -52,10 +45,8 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "alpha", n => { Alpha = n.GetIntValue(); } },
-                { "dropout", n => { Dropout = n.GetDoubleValue(); } },
-                { "enable", n => { Enable = n.GetBoolValue(); } },
-                { "rank", n => { Rank = n.GetIntValue(); } },
+                { "clip_high_threshold", n => { ClipHighThreshold = n.GetFloatValue(); } },
+                { "clip_low_threshold", n => { ClipLowThreshold = n.GetFloatValue(); } },
             };
         }
         /// <summary>
@@ -65,10 +56,8 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteIntValue("alpha", Alpha);
-            writer.WriteDoubleValue("dropout", Dropout);
-            writer.WriteBoolValue("enable", Enable);
-            writer.WriteIntValue("rank", Rank);
+            writer.WriteFloatValue("clip_high_threshold", ClipHighThreshold);
+            writer.WriteFloatValue("clip_low_threshold", ClipLowThreshold);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -16,6 +16,8 @@ namespace Soenneker.Together.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Maximum number of tokens to generate per completion</summary>
         public int? MaxTokens { get; set; }
+        /// <summary>When true, also return teacher-forced log-probabilities for the prompt tokens in `SampleRollout.prompt_logprobs`.</summary>
+        public bool? ReturnPromptLogprobs { get; set; }
         /// <summary>Random seed for reproducibility</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -44,7 +46,8 @@ namespace Soenneker.Together.OpenApiClient.Models
         public RlSamplingParams()
         {
             AdditionalData = new Dictionary<string, object>();
-            MaxTokens = 100;
+            MaxTokens = 512;
+            ReturnPromptLogprobs = false;
             Temperature = 1;
             TopK = -1;
             TopP = 1;
@@ -68,6 +71,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "max_tokens", n => { MaxTokens = n.GetIntValue(); } },
+                { "return_prompt_logprobs", n => { ReturnPromptLogprobs = n.GetBoolValue(); } },
                 { "seed", n => { Seed = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlSamplingParamsSeed>(global::Soenneker.Together.OpenApiClient.Models.RlSamplingParamsSeed.CreateFromDiscriminatorValue); } },
                 { "stop", n => { Stop = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "temperature", n => { Temperature = n.GetDoubleValue(); } },
@@ -83,6 +87,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("max_tokens", MaxTokens);
+            writer.WriteBoolValue("return_prompt_logprobs", ReturnPromptLogprobs);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlSamplingParamsSeed>("seed", Seed);
             writer.WriteCollectionOfPrimitiveValues<string>("stop", Stop);
             writer.WriteDoubleValue("temperature", Temperature);

@@ -1906,81 +1906,6 @@
         ]
       }
     },
-    "/projects/{projectId}/endpoints/{endpointId}/rollouts/{id}/abort": {
-      "post": {
-        "tags": [
-          "RolloutService"
-        ],
-        "summary": "Abort a rollout",
-        "description": "Aborts a running or paused rollout, routes traffic back to the source deployment, and records the required reason in the audit trail.",
-        "operationId": "RolloutServiceAbortRollout",
-        "parameters": [
-          {
-            "name": "projectId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "description": "Project identifier."
-            }
-          },
-          {
-            "name": "endpointId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "description": "Endpoint identifier."
-            }
-          },
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "description": "Rollout identifier."
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/DeAbortRolloutRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/DeRollout"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "Default error response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorData"
-                }
-              }
-            }
-          }
-        },
-        "servers": [
-          {
-            "url": "https://api.together.ai/v2"
-          }
-        ]
-      }
-    },
     "/projects/{projectId}/endpoints/{endpointId}/rollouts/{id}/cancel": {
       "post": {
         "tags": [
@@ -6476,6 +6401,16 @@
               }
             }
           },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          },
           "400": {
             "description": "Bad Request",
             "content": {
@@ -6488,16 +6423,6 @@
           },
           "401": {
             "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorData"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -6578,22 +6503,22 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "Price estimated successfully",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PostFineTunesEstimatePrice200Response"
-                }
-              }
-            }
-          },
           "500": {
             "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Price estimated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostFineTunesEstimatePrice200Response"
                 }
               }
             }
@@ -9405,6 +9330,47 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/RlModelResources"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/rl/model-resources/estimate-cost": {
+      "post": {
+        "tags": [
+          "RL"
+        ],
+        "summary": "Estimate on-demand model resource cost",
+        "description": "Estimates a model resource\u0027s on-demand hourly price without creating it.",
+        "operationId": "EstimateModelResourcesCost",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RlCreateModelResourcesRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Estimated on-demand cost",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RlModelResourcesEstimateCostResponse"
                 }
               }
             }
@@ -12421,23 +12387,6 @@
         },
         "description": "Optional concurrency check for resuming a paused rollout."
       },
-      "DeAbortRolloutRequest": {
-        "required": [
-          "reason"
-        ],
-        "type": "object",
-        "properties": {
-          "reason": {
-            "type": "string",
-            "description": "Required human-readable reason recorded in the rollout audit trail."
-          },
-          "etag": {
-            "type": "string",
-            "description": "Optional etag for optimistic concurrency."
-          }
-        },
-        "description": "Reason and optional concurrency check for aborting a rollout and restoring source traffic."
-      },
       "DeCancelRolloutRequest": {
         "required": [
           "reason"
@@ -14921,6 +14870,7 @@
           "max_grad_norm": {
             "type": "number",
             "description": "Maximum gradient norm for this step, gradients across all model parameters are clipped to this value.",
+            "format": "float",
             "default": 1,
             "example": 10
           },
@@ -14996,8 +14946,8 @@
           "max_tokens": {
             "type": "integer",
             "description": "Maximum number of tokens to generate per completion",
-            "default": 100,
-            "example": 100
+            "default": 512,
+            "example": 512
           },
           "temperature": {
             "type": "number",
@@ -15026,6 +14976,12 @@
           },
           "seed": {
             "$ref": "#/components/schemas/RlSamplingParamsSeed"
+          },
+          "return_prompt_logprobs": {
+            "type": "boolean",
+            "description": "When true, also return teacher-forced log-probabilities for the prompt tokens in \u0060SampleRollout.prompt_logprobs\u0060.",
+            "default": false,
+            "example": false
           }
         }
       },
@@ -15310,6 +15266,26 @@
         },
         "description": "Request to provision a standalone model resource"
       },
+      "RlModelResourcesEstimateCostResponse": {
+        "required": [
+          "price_per_hour",
+          "currency"
+        ],
+        "type": "object",
+        "properties": {
+          "price_per_hour": {
+            "type": "number",
+            "description": "Estimated on-demand price per hour in the currency\u0027s major unit.",
+            "format": "double",
+            "example": 56
+          },
+          "currency": {
+            "type": "string",
+            "description": "ISO 4217 currency code.",
+            "example": "USD"
+          }
+        }
+      },
       "RlModelResourcesListResponse": {
         "required": [
           "data",
@@ -15464,7 +15440,10 @@
           "LOSS_TYPE_UNSPECIFIED",
           "LOSS_TYPE_CROSS_ENTROPY",
           "LOSS_TYPE_GRPO",
-          "LOSS_TYPE_IMPORTANCE_SAMPLING"
+          "LOSS_TYPE_IMPORTANCE_SAMPLING",
+          "LOSS_TYPE_PPO",
+          "LOSS_TYPE_CISPO",
+          "LOSS_TYPE_DRO"
         ],
         "type": "string",
         "additionalProperties": false,
@@ -15488,6 +15467,18 @@
             {
               "value": "LOSS_TYPE_IMPORTANCE_SAMPLING",
               "name": "LossTypeImportanceSampling"
+            },
+            {
+              "value": "LOSS_TYPE_PPO",
+              "name": "LossTypePpo"
+            },
+            {
+              "value": "LOSS_TYPE_CISPO",
+              "name": "LossTypeCispo"
+            },
+            {
+              "value": "LOSS_TYPE_DRO",
+              "name": "LossTypeDro"
             }
           ]
         }
@@ -15532,17 +15523,19 @@
       "RlGrpoLossParams": {
         "type": "object",
         "properties": {
-          "clip_low": {
+          "clip_low_threshold": {
             "type": "number",
-            "description": "Lower clip bound for importance ratio",
-            "default": 0.2,
-            "example": 0.2
+            "description": "Lower clip threshold for the importance-sampling ratio. The ratio is clamped to this bound; tighter clipping makes policy updates more conservative. Must be \u003C= 1.",
+            "format": "float",
+            "default": 0.8,
+            "example": 0.8
           },
-          "clip_high": {
+          "clip_high_threshold": {
             "type": "number",
-            "description": "Upper clip bound for importance ratio",
-            "default": 0.28,
-            "example": 0.28
+            "description": "Upper clip threshold for the importance-sampling ratio. The ratio is clamped to this bound; tighter clipping makes policy updates more conservative. Must be \u003E= 1.",
+            "format": "float",
+            "default": 1.2,
+            "example": 1.2
           },
           "beta": {
             "type": "number",
@@ -15613,6 +15606,58 @@
           ]
         }
       },
+      "RlPpoLossParams": {
+        "type": "object",
+        "properties": {
+          "clip_low_threshold": {
+            "type": "number",
+            "description": "Lower absolute bound for the importance ratio in the clipped surrogate. Must be \u003C= 1.",
+            "format": "float",
+            "default": 0.8,
+            "example": 0.8
+          },
+          "clip_high_threshold": {
+            "type": "number",
+            "description": "Upper absolute bound for the importance ratio in the clipped surrogate. Must be \u003E= 1.",
+            "format": "float",
+            "default": 1.2,
+            "example": 1.2
+          }
+        }
+      },
+      "RlCispoLossParams": {
+        "type": "object",
+        "properties": {
+          "clip_low_threshold": {
+            "type": "number",
+            "description": "Lower absolute bound for the importance ratio; the clipped ratio is applied as a detached coefficient",
+            "format": "float",
+            "default": 0,
+            "example": 0
+          },
+          "clip_high_threshold": {
+            "type": "number",
+            "description": "Upper absolute bound for the importance ratio; the clipped ratio is applied as a detached coefficient",
+            "format": "float",
+            "default": 4,
+            "example": 4
+          }
+        }
+      },
+      "RlDroLossParams": {
+        "required": [
+          "beta"
+        ],
+        "type": "object",
+        "properties": {
+          "beta": {
+            "type": "number",
+            "description": "Coefficient on the quadratic log-ratio penalty. Required; there is no default.",
+            "format": "float",
+            "example": 0.05
+          }
+        }
+      },
       "RlLossConfig": {
         "required": [
           "type"
@@ -15627,6 +15672,15 @@
           },
           "grpo_params": {
             "$ref": "#/components/schemas/RlGrpoLossParams"
+          },
+          "ppo_params": {
+            "$ref": "#/components/schemas/RlPpoLossParams"
+          },
+          "cispo_params": {
+            "$ref": "#/components/schemas/RlCispoLossParams"
+          },
+          "dro_params": {
+            "$ref": "#/components/schemas/RlDroLossParams"
           }
         }
       },
@@ -15737,6 +15791,51 @@
         },
         "description": "Loss inputs for unclipped importance-sampling policy-gradient updates."
       },
+      "RlPpoLossInputs": {
+        "required": [
+          "advantages",
+          "generator_logprobs"
+        ],
+        "type": "object",
+        "properties": {
+          "advantages": {
+            "$ref": "#/components/schemas/RlLossAdvantages"
+          },
+          "generator_logprobs": {
+            "$ref": "#/components/schemas/RlLossLogprobs"
+          }
+        }
+      },
+      "RlCispoLossInputs": {
+        "required": [
+          "advantages",
+          "generator_logprobs"
+        ],
+        "type": "object",
+        "properties": {
+          "advantages": {
+            "$ref": "#/components/schemas/RlLossAdvantages"
+          },
+          "generator_logprobs": {
+            "$ref": "#/components/schemas/RlLossLogprobs"
+          }
+        }
+      },
+      "RlDroLossInputs": {
+        "required": [
+          "advantages",
+          "generator_logprobs"
+        ],
+        "type": "object",
+        "properties": {
+          "advantages": {
+            "$ref": "#/components/schemas/RlLossAdvantages"
+          },
+          "generator_logprobs": {
+            "$ref": "#/components/schemas/RlLossLogprobs"
+          }
+        }
+      },
       "RlLossInputs": {
         "required": [
           "target_tokens"
@@ -15754,6 +15853,15 @@
           },
           "importance_sampling_inputs": {
             "$ref": "#/components/schemas/RlImportanceSamplingLossInputs"
+          },
+          "ppo_inputs": {
+            "$ref": "#/components/schemas/RlPpoLossInputs"
+          },
+          "cispo_inputs": {
+            "$ref": "#/components/schemas/RlCispoLossInputs"
+          },
+          "dro_inputs": {
+            "$ref": "#/components/schemas/RlDroLossInputs"
           }
         },
         "description": "Token-level inputs used to compute the loss for one training sample."
@@ -15897,6 +16005,14 @@
               "$ref": "#/components/schemas/RlSampleSequence"
             },
             "description": "Completions generated for one prompt"
+          },
+          "prompt_logprobs": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "description": "Teacher-forced log-probabilities for the prompt tokens, one per token after the first (log P(token_i | token_\u003Ci)). Present only when return_prompt_logprobs was set on the request."
           }
         },
         "description": "Completions generated for a single prompt"
@@ -16452,20 +16568,20 @@
           "rank": {
             "type": "integer",
             "description": "Rank of the LoRA adapter",
-            "default": 8,
-            "example": 8
+            "default": 32,
+            "example": 32
           },
           "alpha": {
             "type": "integer",
             "description": "Alpha of the LoRA adapter",
-            "default": 16,
-            "example": 16
+            "default": 64,
+            "example": 64
           },
           "dropout": {
             "type": "number",
             "description": "Dropout of the LoRA adapter",
-            "default": 0.05,
-            "example": 0.05
+            "default": 0,
+            "example": 0
           },
           "enable": {
             "type": "boolean",
@@ -26358,8 +26474,8 @@
         },
         "description": "Adjusts the likelihood of specific tokens appearing in the generated output.",
         "example": {
-          "105": 21.4,
-          "1024": -10.5
+          "1024": -10.5,
+          "105": 21.4
         }
       },
       "CompletionChoiceDelta": {
@@ -26438,8 +26554,8 @@
         },
         "description": "Adjusts the likelihood of specific tokens appearing in the generated output.",
         "example": {
-          "105": 21.4,
-          "1024": -10.5
+          "1024": -10.5,
+          "105": 21.4
         }
       },
       "ChatCompletionRequestChatTemplateKwargs": {

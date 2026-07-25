@@ -23,5 +23,17 @@ namespace Soenneker.Together.OpenApiClient.Models
         #pragma warning disable CS1591
         LossTypeImportanceSampling,
         #pragma warning restore CS1591
+        [EnumMember(Value = "LOSS_TYPE_PPO")]
+        #pragma warning disable CS1591
+        LossTypePpo,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "LOSS_TYPE_CISPO")]
+        #pragma warning disable CS1591
+        LossTypeCispo,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "LOSS_TYPE_DRO")]
+        #pragma warning disable CS1591
+        LossTypeDro,
+        #pragma warning restore CS1591
     }
 }

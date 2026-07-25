@@ -4,7 +4,6 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.Together.OpenApiClient.Models;
-using Soenneker.Together.OpenApiClient.Projects.Item.Endpoints.Item.Rollouts.Item.Abort;
 using Soenneker.Together.OpenApiClient.Projects.Item.Endpoints.Item.Rollouts.Item.Cancel;
 using Soenneker.Together.OpenApiClient.Projects.Item.Endpoints.Item.Rollouts.Item.Pause;
 using Soenneker.Together.OpenApiClient.Projects.Item.Endpoints.Item.Rollouts.Item.Promote;
@@ -23,11 +22,6 @@ namespace Soenneker.Together.OpenApiClient.Projects.Item.Endpoints.Item.Rollouts
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RolloutsItemRequestBuilder : BaseRequestBuilder
     {
-        /// <summary>The abort property</summary>
-        public global::Soenneker.Together.OpenApiClient.Projects.Item.Endpoints.Item.Rollouts.Item.Abort.AbortRequestBuilder Abort
-        {
-            get => new global::Soenneker.Together.OpenApiClient.Projects.Item.Endpoints.Item.Rollouts.Item.Abort.AbortRequestBuilder(PathParameters, RequestAdapter);
-        }
         /// <summary>The cancel property</summary>
         public global::Soenneker.Together.OpenApiClient.Projects.Item.Endpoints.Item.Rollouts.Item.Cancel.CancelRequestBuilder Cancel
         {
