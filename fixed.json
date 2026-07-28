@@ -6401,16 +6401,6 @@
               }
             }
           },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorData"
-                }
-              }
-            }
-          },
           "400": {
             "description": "Bad Request",
             "content": {
@@ -6423,6 +6413,16 @@
           },
           "401": {
             "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -6503,22 +6503,22 @@
           }
         },
         "responses": {
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorData"
-                }
-              }
-            }
-          },
           "200": {
             "description": "Price estimated successfully",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/PostFineTunesEstimatePrice200Response"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
                 }
               }
             }
@@ -14869,7 +14869,7 @@
           },
           "max_grad_norm": {
             "type": "number",
-            "description": "Maximum gradient norm for this step, gradients across all model parameters are clipped to this value.",
+            "description": "Maximum gradient norm for this step, gradients across all model parameters are clipped to this value. Set to 0 to disable gradient clipping. When unset, gradients are clipped to the session default (1.0).",
             "format": "float",
             "default": 1,
             "example": 10
@@ -14884,16 +14884,16 @@
       },
       "RlSampleBody": {
         "required": [
-          "prompts"
+          "model_inputs"
         ],
         "type": "object",
         "properties": {
-          "prompts": {
+          "model_inputs": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/RlModelInput"
             },
-            "description": "Input prompts as tokenized chunks"
+            "description": "Model inputs to sample from"
           },
           "sampling_params": {
             "$ref": "#/components/schemas/RlSamplingParams"
@@ -14979,7 +14979,7 @@
           },
           "return_prompt_logprobs": {
             "type": "boolean",
-            "description": "When true, also return teacher-forced log-probabilities for the prompt tokens in \u0060SampleRollout.prompt_logprobs\u0060.",
+            "description": "When true, also return teacher-forced log-probabilities for the model input tokens in \u0060SampleResult.prompt_logprobs\u0060.",
             "default": false,
             "example": false
           }
@@ -15518,7 +15518,8 @@
       },
       "RlCrossEntropyLossParams": {
         "type": "object",
-        "description": "Cross-entropy loss parameters (currently empty)."
+        "description": "Cross-entropy loss parameters (currently empty).",
+        "x-stainless-empty-object": true
       },
       "RlGrpoLossParams": {
         "type": "object",
@@ -15869,7 +15870,8 @@
       "RlTrainingSample": {
         "required": [
           "model_input",
-          "loss_inputs"
+          "loss_inputs",
+          "policy_segments"
         ],
         "type": "object",
         "properties": {
@@ -15884,7 +15886,7 @@
             "items": {
               "$ref": "#/components/schemas/RlPolicyVersionSegment"
             },
-            "description": "Policy versions that produced this sample\u0027s tokens. Echo back from \u0060SampleResult.policy_segments\u0060."
+            "description": "Policy versions associated with this sample\u0027s tokens"
           }
         }
       },
@@ -15903,12 +15905,12 @@
           },
           "start_token": {
             "type": "integer",
-            "description": "Index of the first token of this segment within the rollout\u0027s token sequence. Always 0 for the first segment.",
+            "description": "Index of the first token of this segment within the sampled sequence. Always 0 for the first segment.",
             "format": "int32",
             "example": 0
           }
         },
-        "description": "A (policy version, starting token) span within a rollout. Version 0 is the initial model; each optim_step call increments the version by 1."
+        "description": "A (policy version, starting token) span within a sampled sequence. Version 0 is the initial model; each optim_step call increments the version by 1."
       },
       "RlOptimStepOperation": {
         "required": [
@@ -15950,7 +15952,7 @@
             "$ref": "#/components/schemas/RlTrainingOperationStatus"
           },
           "output": {
-            "$ref": "#/components/schemas/RlSampleResult"
+            "$ref": "#/components/schemas/RlSampleBatchResult"
           },
           "error": {
             "$ref": "#/components/schemas/RlTrainingOperationError"
@@ -15970,41 +15972,35 @@
         },
         "description": "Result of an optimizer step operation"
       },
-      "RlSampleResult": {
+      "RlSampleBatchResult": {
         "required": [
-          "rollouts"
+          "results"
         ],
         "type": "object",
         "properties": {
-          "rollouts": {
+          "results": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/RlSampleRollout"
+              "$ref": "#/components/schemas/RlSampleResult"
             },
-            "description": "Completions grouped by prompt"
-          },
-          "policy_segments": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/RlPolicyVersionSegment"
-            },
-            "description": "Policy versions that produced the returned rollouts. Most rollouts carry a single segment \u0060(version, start_token=0)\u0060; longer rollouts may carry multiple segments when the policy was updated mid-generation."
+            "description": "One result per model input"
           }
         },
-        "description": "Result of a sample operation"
+        "description": "Batched result of a sample operation"
       },
-      "RlSampleRollout": {
+      "RlSampleResult": {
         "required": [
-          "sequences"
+          "sequences",
+          "policy_segments"
         ],
         "type": "object",
         "properties": {
           "sequences": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/RlSampleSequence"
+              "$ref": "#/components/schemas/RlSampledSequence"
             },
-            "description": "Completions generated for one prompt"
+            "description": "Generated completions"
           },
           "prompt_logprobs": {
             "type": "array",
@@ -16012,21 +16008,29 @@
               "type": "number",
               "format": "double"
             },
-            "description": "Teacher-forced log-probabilities for the prompt tokens, one per token after the first (log P(token_i | token_\u003Ci)). Present only when return_prompt_logprobs was set on the request."
+            "description": "Teacher-forced log-probabilities for the model input tokens, one per token after the first (log P(token_i | token_\u003Ci)). Present only when return_prompt_logprobs was set on the request."
+          },
+          "policy_segments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RlPolicyVersionSegment"
+            },
+            "description": "Policy versions that produced these completions"
           }
         },
-        "description": "Completions generated for a single prompt"
+        "description": "Completions generated for a single model input"
       },
-      "RlSampleSequence": {
+      "RlSampledSequence": {
         "required": [
-          "tokens"
+          "tokens",
+          "stop_reason"
         ],
         "type": "object",
         "properties": {
           "tokens": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/RlSampleSequenceTokensItem"
+              "$ref": "#/components/schemas/RlSampledSequenceTokensItem"
             },
             "description": "Generated token IDs"
           },
@@ -16038,12 +16042,33 @@
             "description": "Log probabilities for each generated token"
           },
           "stop_reason": {
-            "type": "string",
-            "description": "Reason for stopping generation",
-            "example": "length"
+            "$ref": "#/components/schemas/RlStopReason"
           }
         },
         "description": "A single generated completion sequence with tokens and logprobs"
+      },
+      "RlStopReason": {
+        "enum": [
+          "STOP_REASON_LENGTH",
+          "STOP_REASON_STOP"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Reason generation stopped.",
+        "x-ms-enum": {
+          "name": "RlStopReason",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "STOP_REASON_LENGTH",
+              "name": "StopReasonLength"
+            },
+            {
+              "value": "STOP_REASON_STOP",
+              "name": "StopReasonStop"
+            }
+          ]
+        }
       },
       "RlForwardBackwardOperation": {
         "required": [
@@ -21522,21 +21547,25 @@
             "$ref": "#/components/schemas/LoRaTrainingTypeType"
           },
           "lora_r": {
-            "type": "integer"
+            "type": "integer",
+            "description": "Rank of the LoRA adapter matrices."
           },
           "lora_alpha": {
-            "type": "integer"
+            "type": "integer",
+            "description": "Scaling factor applied to the LoRA adapter weights."
           },
           "lora_dropout": {
             "type": "number",
+            "description": "Dropout probability applied to LoRA adapter inputs.",
             "default": 0
           },
           "lora_trainable_modules": {
             "type": "string",
-            "description": "Comma-separated LoRA target modules. Use \u0060all-linear\u0060 for model defaults; MoE expert modules (\u0060w_up\u0060, \u0060w_gate\u0060, \u0060w_down\u0060) are supported on compatible models and cannot be mixed with attention modules.",
+            "description": "Comma-separated LoRA target modules. Use \u0060all-linear\u0060 for model defaults; MoE expert modules (\u0060w_up\u0060, \u0060w_gate\u0060, \u0060w_down\u0060) can be combined with attention modules on compatible models. Fine-tunes that target any expert module produce adapter-only output.",
             "default": "all-linear"
           }
-        }
+        },
+        "description": "LoRA training configuration for a fine-tuning job."
       },
       "TrainingMethodSft": {
         "required": [
@@ -24806,7 +24835,7 @@
         "description": "Step number",
         "example": 100
       },
-      "RlSampleSequenceTokensItem": {
+      "RlSampledSequenceTokensItem": {
         "type": "object",
         "oneOf": [
           {
@@ -26474,8 +26503,8 @@
         },
         "description": "Adjusts the likelihood of specific tokens appearing in the generated output.",
         "example": {
-          "1024": -10.5,
-          "105": 21.4
+          "105": 21.4,
+          "1024": -10.5
         }
       },
       "CompletionChoiceDelta": {
@@ -26554,8 +26583,8 @@
         },
         "description": "Adjusts the likelihood of specific tokens appearing in the generated output.",
         "example": {
-          "1024": -10.5,
-          "105": 21.4
+          "105": 21.4,
+          "1024": -10.5
         }
       },
       "ChatCompletionRequestChatTemplateKwargs": {
@@ -32710,7 +32739,8 @@
           "Lora"
         ],
         "type": "string",
-        "additionalProperties": false
+        "additionalProperties": false,
+        "description": "Identifies this request as a LoRA fine-tune."
       },
       "TrainingMethodSftMethod": {
         "enum": [

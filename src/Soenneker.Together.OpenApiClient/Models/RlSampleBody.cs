@@ -14,16 +14,16 @@ namespace Soenneker.Together.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Number of completions to generate per prompt</summary>
-        public int? NumSamples { get; set; }
-        /// <summary>Input prompts as tokenized chunks</summary>
+        /// <summary>Model inputs to sample from</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Together.OpenApiClient.Models.RlModelInput>? Prompts { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.RlModelInput>? ModelInputs { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Together.OpenApiClient.Models.RlModelInput> Prompts { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.RlModelInput> ModelInputs { get; set; }
 #endif
+        /// <summary>Number of completions to generate per prompt</summary>
+        public int? NumSamples { get; set; }
         /// <summary>The sampling_params property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -58,8 +58,8 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "model_inputs", n => { ModelInputs = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RlModelInput>(global::Soenneker.Together.OpenApiClient.Models.RlModelInput.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "num_samples", n => { NumSamples = n.GetIntValue(); } },
-                { "prompts", n => { Prompts = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RlModelInput>(global::Soenneker.Together.OpenApiClient.Models.RlModelInput.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "sampling_params", n => { SamplingParams = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlSamplingParams>(global::Soenneker.Together.OpenApiClient.Models.RlSamplingParams.CreateFromDiscriminatorValue); } },
             };
         }
@@ -70,8 +70,8 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RlModelInput>("model_inputs", ModelInputs);
             writer.WriteIntValue("num_samples", NumSamples);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RlModelInput>("prompts", Prompts);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlSamplingParams>("sampling_params", SamplingParams);
             writer.WriteAdditionalData(AdditionalData);
         }

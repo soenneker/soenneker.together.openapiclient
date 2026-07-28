@@ -3,10 +3,9 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
+    /// <summary>Identifies this request as a LoRA fine-tune.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public enum LoRaTrainingTypeType
-    #pragma warning restore CS1591
     {
         [EnumMember(Value = "Lora")]
         #pragma warning disable CS1591

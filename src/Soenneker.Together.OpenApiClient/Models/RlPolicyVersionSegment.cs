@@ -8,14 +8,14 @@ using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
     /// <summary>
-    /// A (policy version, starting token) span within a rollout. Version 0 is the initial model; each optim_step call increments the version by 1.
+    /// A (policy version, starting token) span within a sampled sequence. Version 0 is the initial model; each optim_step call increments the version by 1.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RlPolicyVersionSegment : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Index of the first token of this segment within the rollout&apos;s token sequence. Always 0 for the first segment.</summary>
+        /// <summary>Index of the first token of this segment within the sampled sequence. Always 0 for the first segment.</summary>
         public int? StartToken { get; set; }
         /// <summary>Model version under which this segment of tokens was generated</summary>
         public int? Version { get; set; }

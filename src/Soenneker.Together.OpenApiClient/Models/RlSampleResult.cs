@@ -8,14 +8,14 @@ using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
     /// <summary>
-    /// Result of a sample operation
+    /// Completions generated for a single model input
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RlSampleResult : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Policy versions that produced the returned rollouts. Most rollouts carry a single segment `(version, start_token=0)`; longer rollouts may carry multiple segments when the policy was updated mid-generation.</summary>
+        /// <summary>Policy versions that produced these completions</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Together.OpenApiClient.Models.RlPolicyVersionSegment>? PolicySegments { get; set; }
@@ -23,13 +23,21 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public List<global::Soenneker.Together.OpenApiClient.Models.RlPolicyVersionSegment> PolicySegments { get; set; }
 #endif
-        /// <summary>Completions grouped by prompt</summary>
+        /// <summary>Teacher-forced log-probabilities for the model input tokens, one per token after the first (log P(token_i | token_&lt;i)). Present only when return_prompt_logprobs was set on the request.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Together.OpenApiClient.Models.RlSampleRollout>? Rollouts { get; set; }
+        public List<double?>? PromptLogprobs { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Together.OpenApiClient.Models.RlSampleRollout> Rollouts { get; set; }
+        public List<double?> PromptLogprobs { get; set; }
+#endif
+        /// <summary>Generated completions</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.Together.OpenApiClient.Models.RlSampledSequence>? Sequences { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.Together.OpenApiClient.Models.RlSampledSequence> Sequences { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlSampleResult"/> and sets the default values.
@@ -57,7 +65,8 @@ namespace Soenneker.Together.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "policy_segments", n => { PolicySegments = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RlPolicyVersionSegment>(global::Soenneker.Together.OpenApiClient.Models.RlPolicyVersionSegment.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "rollouts", n => { Rollouts = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RlSampleRollout>(global::Soenneker.Together.OpenApiClient.Models.RlSampleRollout.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "prompt_logprobs", n => { PromptLogprobs = n.GetCollectionOfPrimitiveValues<double?>()?.AsList(); } },
+                { "sequences", n => { Sequences = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RlSampledSequence>(global::Soenneker.Together.OpenApiClient.Models.RlSampledSequence.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -68,7 +77,8 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RlPolicyVersionSegment>("policy_segments", PolicySegments);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RlSampleRollout>("rollouts", Rollouts);
+            writer.WriteCollectionOfPrimitiveValues<double?>("prompt_logprobs", PromptLogprobs);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RlSampledSequence>("sequences", Sequences);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -16,7 +16,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Maximum number of tokens to generate per completion</summary>
         public int? MaxTokens { get; set; }
-        /// <summary>When true, also return teacher-forced log-probabilities for the prompt tokens in `SampleRollout.prompt_logprobs`.</summary>
+        /// <summary>When true, also return teacher-forced log-probabilities for the model input tokens in `SampleResult.prompt_logprobs`.</summary>
         public bool? ReturnPromptLogprobs { get; set; }
         /// <summary>Random seed for reproducibility</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

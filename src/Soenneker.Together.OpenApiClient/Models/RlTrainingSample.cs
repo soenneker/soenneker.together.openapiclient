@@ -30,7 +30,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public global::Soenneker.Together.OpenApiClient.Models.RlModelInput ModelInput { get; set; }
 #endif
-        /// <summary>Policy versions that produced this sample&apos;s tokens. Echo back from `SampleResult.policy_segments`.</summary>
+        /// <summary>Policy versions associated with this sample&apos;s tokens</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Together.OpenApiClient.Models.RlPolicyVersionSegment>? PolicySegments { get; set; }

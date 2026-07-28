@@ -7,20 +7,21 @@ using System.IO;
 using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
+    /// <summary>
+    /// LoRA training configuration for a fine-tuning job.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class LoRaTrainingType : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The lora_alpha property</summary>
+        /// <summary>Scaling factor applied to the LoRA adapter weights.</summary>
         public int? LoraAlpha { get; set; }
-        /// <summary>The lora_dropout property</summary>
+        /// <summary>Dropout probability applied to LoRA adapter inputs.</summary>
         public double? LoraDropout { get; set; }
-        /// <summary>The lora_r property</summary>
+        /// <summary>Rank of the LoRA adapter matrices.</summary>
         public int? LoraR { get; set; }
-        /// <summary>Comma-separated LoRA target modules. Use `all-linear` for model defaults; MoE expert modules (`w_up`, `w_gate`, `w_down`) are supported on compatible models and cannot be mixed with attention modules.</summary>
+        /// <summary>Comma-separated LoRA target modules. Use `all-linear` for model defaults; MoE expert modules (`w_up`, `w_gate`, `w_down`) can be combined with attention modules on compatible models. Fine-tunes that target any expert module produce adapter-only output.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? LoraTrainableModules { get; set; }
@@ -28,7 +29,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string LoraTrainableModules { get; set; }
 #endif
-        /// <summary>The type property</summary>
+        /// <summary>Identifies this request as a LoRA fine-tune.</summary>
         public global::Soenneker.Together.OpenApiClient.Models.LoRaTrainingTypeType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.LoRaTrainingType"/> and sets the default values.

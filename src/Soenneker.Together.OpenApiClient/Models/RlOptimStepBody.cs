@@ -22,7 +22,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Maximum gradient norm for this step, gradients across all model parameters are clipped to this value.</summary>
+        /// <summary>Maximum gradient norm for this step, gradients across all model parameters are clipped to this value. Set to 0 to disable gradient clipping. When unset, gradients are clipped to the session default (1.0).</summary>
         public float? MaxGradNorm { get; set; }
         /// <summary>Per-step Muon optimizer overrides</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

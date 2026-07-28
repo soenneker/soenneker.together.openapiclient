@@ -11,7 +11,7 @@ namespace Soenneker.Together.OpenApiClient.Models
     /// A single generated completion sequence with tokens and logprobs
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class RlSampleSequence : IAdditionalDataHolder, IParsable
+    public partial class RlSampledSequence : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -23,14 +23,8 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public List<double?> Logprobs { get; set; }
 #endif
-        /// <summary>Reason for stopping generation</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? StopReason { get; set; }
-#nullable restore
-#else
-        public string StopReason { get; set; }
-#endif
+        /// <summary>Reason generation stopped.</summary>
+        public global::Soenneker.Together.OpenApiClient.Models.RlStopReason? StopReason { get; set; }
         /// <summary>Generated token IDs</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -40,21 +34,21 @@ namespace Soenneker.Together.OpenApiClient.Models
         public List<string> Tokens { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlSampleSequence"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlSampledSequence"/> and sets the default values.
         /// </summary>
-        public RlSampleSequence()
+        public RlSampledSequence()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.RlSampleSequence"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.RlSampledSequence"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Together.OpenApiClient.Models.RlSampleSequence CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Together.OpenApiClient.Models.RlSampledSequence CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.RlSampleSequence();
+            return new global::Soenneker.Together.OpenApiClient.Models.RlSampledSequence();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -65,7 +59,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "logprobs", n => { Logprobs = n.GetCollectionOfPrimitiveValues<double?>()?.AsList(); } },
-                { "stop_reason", n => { StopReason = n.GetStringValue(); } },
+                { "stop_reason", n => { StopReason = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlStopReason>(); } },
                 { "tokens", n => { Tokens = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
         }
@@ -77,7 +71,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<double?>("logprobs", Logprobs);
-            writer.WriteStringValue("stop_reason", StopReason);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlStopReason>("stop_reason", StopReason);
             writer.WriteCollectionOfPrimitiveValues<string>("tokens", Tokens);
             writer.WriteAdditionalData(AdditionalData);
         }
