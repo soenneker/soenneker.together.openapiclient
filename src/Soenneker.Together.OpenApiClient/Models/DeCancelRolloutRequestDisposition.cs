@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
-    /// <summary>Optional cancel behavior. Absent defaults to freeze, which preserves the current traffic split; revert sends all traffic back to the source deployment and terminates the rollout.</summary>
+    /// <summary>Optional cancel behavior. Absent defaults to freeze, which preserves the current traffic split. Revert is removed and rejected with FAILED_PRECONDITION; cancel with freeze, then run a reverse rollout back to the source.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum DeCancelRolloutRequestDisposition
     {

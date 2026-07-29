@@ -23,7 +23,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public List<global::Soenneker.Together.OpenApiClient.Models.RlPolicyVersionSegment> PolicySegments { get; set; }
 #endif
-        /// <summary>Teacher-forced log-probabilities for the model input tokens, one per token after the first (log P(token_i | token_&lt;i)). Present only when return_prompt_logprobs was set on the request.</summary>
+        /// <summary>&quot;Teacher-forced log-probability of each model input token. Full prompt length; entry i corresponds to prompt token i. Entry 0 is always 0 as a placeholder: the first prompt token has no conditioning context, so it has no log-probability. Present only when prompt_logprobs was set on the request.&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<double?>? PromptLogprobs { get; set; }
@@ -38,6 +38,14 @@ namespace Soenneker.Together.OpenApiClient.Models
 #nullable restore
 #else
         public List<global::Soenneker.Together.OpenApiClient.Models.RlSampledSequence> Sequences { get; set; }
+#endif
+        /// <summary>The most likely alternative tokens at each model input token, up to `topk_prompt_logprobs` per position. Full prompt length; entry i corresponds to prompt token i, and entry 0 is empty. Present only when topk_prompt_logprobs was set on the request.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.Together.OpenApiClient.Models.RlPromptTopLogprobs>? TopkPromptLogprobs { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.Together.OpenApiClient.Models.RlPromptTopLogprobs> TopkPromptLogprobs { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlSampleResult"/> and sets the default values.
@@ -67,6 +75,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "policy_segments", n => { PolicySegments = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RlPolicyVersionSegment>(global::Soenneker.Together.OpenApiClient.Models.RlPolicyVersionSegment.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "prompt_logprobs", n => { PromptLogprobs = n.GetCollectionOfPrimitiveValues<double?>()?.AsList(); } },
                 { "sequences", n => { Sequences = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RlSampledSequence>(global::Soenneker.Together.OpenApiClient.Models.RlSampledSequence.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "topk_prompt_logprobs", n => { TopkPromptLogprobs = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RlPromptTopLogprobs>(global::Soenneker.Together.OpenApiClient.Models.RlPromptTopLogprobs.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -79,6 +88,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RlPolicyVersionSegment>("policy_segments", PolicySegments);
             writer.WriteCollectionOfPrimitiveValues<double?>("prompt_logprobs", PromptLogprobs);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RlSampledSequence>("sequences", Sequences);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RlPromptTopLogprobs>("topk_prompt_logprobs", TopkPromptLogprobs);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

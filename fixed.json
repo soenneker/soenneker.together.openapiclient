@@ -1912,7 +1912,7 @@
           "RolloutService"
         ],
         "summary": "Cancel a rollout",
-        "description": "Cancels a running, paused, system-paused, or stabilizing rollout by freezing the current traffic split, or by reverting all traffic to the source deployment when requested. The response is the accepted rollout snapshot; poll GetRollout until it reaches CANCELED for freeze or ABORTED for revert.",
+        "description": "Cancels a running, paused, system-paused, or stabilizing rollout by freezing the current traffic split. Revert is removed and rejected; cancel with freeze, then run a reverse rollout back to the source. The response is the accepted rollout snapshot; poll GetRollout until it reaches CANCELED.",
         "operationId": "RolloutServiceCancelRollout",
         "parameters": [
           {
@@ -3410,7 +3410,7 @@
             "in": "query",
             "schema": {
               "type": "integer",
-              "description": "Maximum number of events to return. Max 500, defaults to 50."
+              "description": "Maximum number of events to return. Max 10000, defaults to 50."
             }
           },
           {
@@ -14867,18 +14867,11 @@
           "weight_sync_type": {
             "$ref": "#/components/schemas/RlWeightSyncType"
           },
-          "max_grad_norm": {
-            "type": "number",
-            "description": "Maximum gradient norm for this step, gradients across all model parameters are clipped to this value. Set to 0 to disable gradient clipping. When unset, gradients are clipped to the session default (1.0).",
-            "format": "float",
-            "default": 1,
-            "example": 10
-          },
-          "adamw_params": {
-            "$ref": "#/components/schemas/RlAdamWOptimizerParams"
+          "adam_params": {
+            "$ref": "#/components/schemas/RlAdamParams"
           },
           "muon_params": {
-            "$ref": "#/components/schemas/RlMuonOptimizerParams"
+            "$ref": "#/components/schemas/RlMuonParams"
           }
         }
       },
@@ -14903,6 +14896,20 @@
             "description": "Number of completions to generate per prompt",
             "default": 1,
             "example": 1
+          },
+          "prompt_logprobs": {
+            "type": "boolean",
+            "description": "When true, also compute teacher-forced log-probabilities for the model input tokens and return them in \u0060SampleResult.prompt_logprobs\u0060.",
+            "default": false,
+            "example": false
+          },
+          "topk_prompt_logprobs": {
+            "maximum": 20,
+            "minimum": 0,
+            "type": "integer",
+            "description": "Number of most likely alternative tokens to return per model input token in \u0060SampleResult.topk_prompt_logprobs\u0060. 0 disables top-k prompt log-probabilities. Maximum 20.",
+            "default": 0,
+            "example": 0
           }
         }
       },
@@ -14934,7 +14941,7 @@
           "chunks": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/RlInputChunk"
+              "$ref": "#/components/schemas/RlModelInputChunk"
             },
             "description": "Input chunks for the model"
           }
@@ -14976,22 +14983,20 @@
           },
           "seed": {
             "$ref": "#/components/schemas/RlSamplingParamsSeed"
-          },
-          "return_prompt_logprobs": {
-            "type": "boolean",
-            "description": "When true, also return teacher-forced log-probabilities for the model input tokens in \u0060SampleResult.prompt_logprobs\u0060.",
-            "default": false,
-            "example": false
           }
         }
       },
-      "RlInputChunk": {
+      "RlModelInputChunk": {
+        "required": [
+          "encoded_text"
+        ],
         "type": "object",
         "properties": {
           "encoded_text": {
-            "$ref": "#/components/schemas/RlEncodedText"
+            "$ref": "#/components/schemas/RlEncodedTextChunk"
           }
-        }
+        },
+        "description": "A single chunk of model input content."
       },
       "RlListMeta": {
         "type": "object",
@@ -15388,7 +15393,7 @@
         },
         "description": "A base model supported by the RL service. Per-mode configs are present only when the model supports that mode."
       },
-      "RlEncodedText": {
+      "RlEncodedTextChunk": {
         "required": [
           "tokens"
         ],
@@ -15397,11 +15402,12 @@
           "tokens": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/RlEncodedTextTokensItem"
+              "$ref": "#/components/schemas/RlEncodedTextChunkTokensItem"
             },
             "description": "Pre-tokenized text input"
           }
-        }
+        },
+        "description": "Pre-tokenized text content for a model input chunk."
       },
       "RlDType": {
         "enum": [
@@ -15703,7 +15709,7 @@
           }
         }
       },
-      "RlLossMask": {
+      "RlWeights": {
         "required": [
           "data"
         ],
@@ -15712,15 +15718,14 @@
           "data": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/RlLossMaskDataItem"
+              "$ref": "#/components/schemas/RlWeightsDataItem"
             },
-            "description": "Integer array of per-token mask values (0s and 1s)"
+            "description": "\u0022Per-token weights: 1 to include the token in the loss, 0 to ignore it.\u0022"
           },
           "dtype": {
             "$ref": "#/components/schemas/RlDType"
           }
-        },
-        "description": "Per-token loss mask (1=compute loss, 0=ignore)"
+        }
       },
       "RlLossAdvantages": {
         "required": [
@@ -15761,14 +15766,14 @@
       "RlGrpoLossInputs": {
         "required": [
           "advantages",
-          "generator_logprobs"
+          "logprobs"
         ],
         "type": "object",
         "properties": {
           "advantages": {
             "$ref": "#/components/schemas/RlLossAdvantages"
           },
-          "generator_logprobs": {
+          "logprobs": {
             "$ref": "#/components/schemas/RlLossLogprobs"
           },
           "reference_logprobs": {
@@ -15779,14 +15784,14 @@
       "RlImportanceSamplingLossInputs": {
         "required": [
           "advantages",
-          "generator_logprobs"
+          "logprobs"
         ],
         "type": "object",
         "properties": {
           "advantages": {
             "$ref": "#/components/schemas/RlLossAdvantages"
           },
-          "generator_logprobs": {
+          "logprobs": {
             "$ref": "#/components/schemas/RlLossLogprobs"
           }
         },
@@ -15795,14 +15800,14 @@
       "RlPpoLossInputs": {
         "required": [
           "advantages",
-          "generator_logprobs"
+          "logprobs"
         ],
         "type": "object",
         "properties": {
           "advantages": {
             "$ref": "#/components/schemas/RlLossAdvantages"
           },
-          "generator_logprobs": {
+          "logprobs": {
             "$ref": "#/components/schemas/RlLossLogprobs"
           }
         }
@@ -15810,14 +15815,14 @@
       "RlCispoLossInputs": {
         "required": [
           "advantages",
-          "generator_logprobs"
+          "logprobs"
         ],
         "type": "object",
         "properties": {
           "advantages": {
             "$ref": "#/components/schemas/RlLossAdvantages"
           },
-          "generator_logprobs": {
+          "logprobs": {
             "$ref": "#/components/schemas/RlLossLogprobs"
           }
         }
@@ -15825,14 +15830,14 @@
       "RlDroLossInputs": {
         "required": [
           "advantages",
-          "generator_logprobs"
+          "logprobs"
         ],
         "type": "object",
         "properties": {
           "advantages": {
             "$ref": "#/components/schemas/RlLossAdvantages"
           },
-          "generator_logprobs": {
+          "logprobs": {
             "$ref": "#/components/schemas/RlLossLogprobs"
           }
         }
@@ -15846,8 +15851,8 @@
           "target_tokens": {
             "$ref": "#/components/schemas/RlLossTargetTokens"
           },
-          "loss_mask": {
-            "$ref": "#/components/schemas/RlLossMask"
+          "weights": {
+            "$ref": "#/components/schemas/RlWeights"
           },
           "grpo_inputs": {
             "$ref": "#/components/schemas/RlGrpoLossInputs"
@@ -15911,6 +15916,28 @@
           }
         },
         "description": "A (policy version, starting token) span within a sampled sequence. Version 0 is the initial model; each optim_step call increments the version by 1."
+      },
+      "RlPromptTopLogprobs": {
+        "type": "object",
+        "properties": {
+          "token_ids": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "description": "Token IDs of the alternatives, ordered by descending log-probability."
+          },
+          "logprobs": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "description": "Log-probability of each alternative in \u0060token_ids\u0060, at the same index."
+          }
+        },
+        "description": "The most likely alternative tokens at a single prompt position, as two parallel arrays of equal length. Both are empty for a position with no conditioning context, such as position 0."
       },
       "RlOptimStepOperation": {
         "required": [
@@ -16008,7 +16035,14 @@
               "type": "number",
               "format": "double"
             },
-            "description": "Teacher-forced log-probabilities for the model input tokens, one per token after the first (log P(token_i | token_\u003Ci)). Present only when return_prompt_logprobs was set on the request."
+            "description": "\u0022Teacher-forced log-probability of each model input token. Full prompt length; entry i corresponds to prompt token i. Entry 0 is always 0 as a placeholder: the first prompt token has no conditioning context, so it has no log-probability. Present only when prompt_logprobs was set on the request.\u0022"
+          },
+          "topk_prompt_logprobs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RlPromptTopLogprobs"
+            },
+            "description": "The most likely alternative tokens at each model input token, up to \u0060topk_prompt_logprobs\u0060 per position. Full prompt length; entry i corresponds to prompt token i, and entry 0 is empty. Present only when topk_prompt_logprobs was set on the request."
           },
           "policy_segments": {
             "type": "array",
@@ -16488,7 +16522,6 @@
           "step",
           "created_at",
           "updated_at",
-          "lora_config",
           "model_resources_id",
           "created_by"
         ],
@@ -16607,12 +16640,6 @@
             "description": "Dropout of the LoRA adapter",
             "default": 0,
             "example": 0
-          },
-          "enable": {
-            "type": "boolean",
-            "description": "Whether to enable LoRA fine-tuning. If false, full fine-tuning is used.",
-            "default": true,
-            "example": true
           }
         },
         "description": "LoRA adapter configuration"
@@ -16669,12 +16696,12 @@
           ]
         }
       },
-      "RlAdamWOptimizerParams": {
+      "RlAdamParams": {
         "type": "object",
         "properties": {
           "learning_rate": {
             "type": "number",
-            "description": "Learning rate for the AdamW-tuned parameters",
+            "description": "Learning rate for the Adam-tuned parameters",
             "example": 0.0001
           },
           "beta1": {
@@ -16700,11 +16727,17 @@
             "description": "Weight decay coefficient",
             "default": 0,
             "example": 0.1
+          },
+          "grad_clip_norm": {
+            "type": "number",
+            "description": "Maximum gradient norm for this step, gradients across all model parameters are clipped to this value. Set to 0 to disable gradient clipping. When unset, gradients are clipped to the session default (1.0).",
+            "default": 1,
+            "example": 10
           }
         },
-        "description": "Per-step AdamW optimizer overrides."
+        "description": "Per-step Adam optimizer overrides."
       },
-      "RlMuonOptimizerParams": {
+      "RlMuonParams": {
         "type": "object",
         "properties": {
           "learning_rate": {
@@ -16730,8 +16763,14 @@
             "default": 0,
             "example": 0
           },
-          "adamw": {
-            "$ref": "#/components/schemas/RlAdamWOptimizerParams"
+          "grad_clip_norm": {
+            "type": "number",
+            "description": "Maximum gradient norm for this step, gradients across all model parameters are clipped to this value. Set to 0 to disable gradient clipping. When unset, gradients are clipped to the session default (1.0).",
+            "default": 1,
+            "example": 10
+          },
+          "adam": {
+            "$ref": "#/components/schemas/RlAdamParams"
           }
         },
         "description": "Per-step Muon optimizer overrides"
@@ -24789,7 +24828,7 @@
         "description": "Random seed for reproducibility",
         "example": 42
       },
-      "RlEncodedTextTokensItem": {
+      "RlEncodedTextChunkTokensItem": {
         "type": "object",
         "oneOf": [
           {
@@ -24811,7 +24850,7 @@
           }
         ]
       },
-      "RlLossMaskDataItem": {
+      "RlWeightsDataItem": {
         "type": "object",
         "oneOf": [
           {
@@ -30247,7 +30286,7 @@
         ],
         "type": "string",
         "additionalProperties": false,
-        "description": "Optional cancel behavior. Absent defaults to freeze, which preserves the current traffic split; revert sends all traffic back to the source deployment and terminates the rollout.",
+        "description": "Optional cancel behavior. Absent defaults to freeze, which preserves the current traffic split. Revert is removed and rejected with FAILED_PRECONDITION; cancel with freeze, then run a reverse rollout back to the source.",
         "x-ms-enum": {
           "name": "DeCancelRolloutRequestDisposition",
           "modelAsString": false,

@@ -1294,10 +1294,10 @@ paths:
       summary: Cancel a rollout
       description: >-
         Cancels a running, paused, system-paused, or stabilizing rollout by
-        freezing the current traffic split, or by reverting all traffic to the
-        source deployment when requested. The response is the accepted rollout
-        snapshot; poll GetRollout until it reaches CANCELED for freeze or
-        ABORTED for revert.
+        freezing the current traffic split. Revert is removed and rejected;
+        cancel with freeze, then run a reverse rollout back to the source. The
+        response is the accepted rollout snapshot; poll GetRollout until it
+        reaches CANCELED.
       operationId: RolloutService_CancelRollout
       servers:
         - url: https://api.together.ai/v2
@@ -2292,7 +2292,7 @@ paths:
           in: query
           schema:
             type: integer
-            description: Maximum number of events to return. Max 500, defaults to 50.
+            description: Maximum number of events to return. Max 10000, defaults to 50.
         - name: after
           in: query
           schema:
@@ -14210,8 +14210,9 @@ components:
           type: string
           description: >-
             Optional cancel behavior. Absent defaults to freeze, which preserves
-            the current traffic split; revert sends all traffic back to the
-            source deployment and terminates the rollout.
+            the current traffic split. Revert is removed and rejected with
+            FAILED_PRECONDITION; cancel with freeze, then run a reverse rollout
+            back to the source.
     DE.PromoteRolloutRequest:
       type: object
       description: >-
@@ -16532,20 +16533,12 @@ components:
           description: >-
             How the trainer's updated weights are propagated to the generator
             after this optimizer step. See `WeightSyncType` for accepted values.
-        max_grad_norm:
-          type: number
-          format: float
-          example: 10
-          default: '1.0'
-          description: >-
-            Maximum gradient norm for this step, gradients across all model
-            parameters are clipped to this value. Set to 0 to disable gradient
-            clipping. When unset, gradients are clipped to the session default
-            (1.0).
-        adamw_params:
-          $ref: '#/components/schemas/RL.AdamWOptimizerParams'
+        adam_params:
+          $ref: '#/components/schemas/RL.AdamParams'
+          description: Adam optimizer overrides for this step.
         muon_params:
-          $ref: '#/components/schemas/RL.MuonOptimizerParams'
+          $ref: '#/components/schemas/RL.MuonParams'
+          description: Muon optimizer overrides for this step.
     RL.SampleBody:
       type: object
       required:
@@ -16565,6 +16558,24 @@ components:
           example: 1
           default: '1'
           description: Number of completions to generate per prompt
+        prompt_logprobs:
+          type: boolean
+          example: false
+          default: 'false'
+          description: >-
+            When true, also compute teacher-forced log-probabilities for the
+            model input tokens and return them in
+            `SampleResult.prompt_logprobs`.
+        topk_prompt_logprobs:
+          type: integer
+          minimum: 0
+          maximum: 20
+          example: 0
+          default: '0'
+          description: >-
+            Number of most likely alternative tokens to return per model input
+            token in `SampleResult.topk_prompt_logprobs`. 0 disables top-k
+            prompt log-probabilities. Maximum 20.
     RL.ForwardBackwardBody:
       type: object
       required:
@@ -16590,7 +16601,7 @@ components:
           type: array
           items:
             type: object
-            $ref: '#/components/schemas/RL.InputChunk'
+            $ref: '#/components/schemas/RL.ModelInputChunk'
     RL.SamplingParams:
       type: object
       properties:
@@ -16629,18 +16640,15 @@ components:
             - type: integer
           example: '42'
           description: Random seed for reproducibility
-        return_prompt_logprobs:
-          type: boolean
-          example: false
-          default: 'false'
-          description: >-
-            When true, also return teacher-forced log-probabilities for the
-            model input tokens in `SampleResult.prompt_logprobs`.
-    RL.InputChunk:
+    RL.ModelInputChunk:
       type: object
+      description: A single chunk of model input content.
+      required:
+        - encoded_text
       properties:
         encoded_text:
-          $ref: '#/components/schemas/RL.EncodedText'
+          $ref: '#/components/schemas/RL.EncodedTextChunk'
+          description: Pre-tokenized text content for this input chunk.
     RL.ListMeta:
       type: object
       description: Pagination metadata for list responses
@@ -16945,8 +16953,9 @@ components:
           description: >-
             Inference config. Set when the model can be provisioned with
             generator replicas.
-    RL.EncodedText:
+    RL.EncodedTextChunk:
       type: object
+      description: Pre-tokenized text content for a model input chunk.
       required:
         - tokens
       properties:
@@ -17147,14 +17156,15 @@ components:
           description: Data type of the integer array
           $ref: '#/components/schemas/RL.DType'
           example: D_TYPE_INT64
-    RL.LossMask:
+    RL.Weights:
       type: object
       required:
         - data
-      description: Per-token loss mask (1=compute loss, 0=ignore)
       properties:
         data:
-          description: Integer array of per-token mask values (0s and 1s)
+          description: >-
+            Per-token weights: 1 to include the token in the loss, 0 to ignore
+            it.
           type: array
           example:
             - 0
@@ -17206,14 +17216,14 @@ components:
       type: object
       required:
         - advantages
-        - generator_logprobs
+        - logprobs
       properties:
         advantages:
           $ref: '#/components/schemas/RL.LossAdvantages'
           description: Per-token advantages for GRPO
-        generator_logprobs:
+        logprobs:
           $ref: '#/components/schemas/RL.LossLogprobs'
-          description: Generator log probabilities for GRPO
+          description: Log probabilities for GRPO
         reference_logprobs:
           $ref: '#/components/schemas/RL.LossLogprobs'
           description: Reference model log probabilities (required if beta > 0)
@@ -17222,50 +17232,50 @@ components:
       description: Loss inputs for unclipped importance-sampling policy-gradient updates.
       required:
         - advantages
-        - generator_logprobs
+        - logprobs
       properties:
         advantages:
           $ref: '#/components/schemas/RL.LossAdvantages'
           description: Per-token advantages for importance sampling
-        generator_logprobs:
+        logprobs:
           $ref: '#/components/schemas/RL.LossLogprobs'
-          description: Generator log probabilities for importance sampling
+          description: Log probabilities for importance sampling
     RL.PPOLossInputs:
       type: object
       properties:
         advantages:
           $ref: '#/components/schemas/RL.LossAdvantages'
           description: Per-token advantages for PPO
-        generator_logprobs:
+        logprobs:
           $ref: '#/components/schemas/RL.LossLogprobs'
-          description: Generator log probabilities for PPO
+          description: Log probabilities for PPO
       required:
         - advantages
-        - generator_logprobs
+        - logprobs
     RL.CISPOLossInputs:
       type: object
       properties:
         advantages:
           $ref: '#/components/schemas/RL.LossAdvantages'
           description: Per-token advantages for CISPO
-        generator_logprobs:
+        logprobs:
           $ref: '#/components/schemas/RL.LossLogprobs'
-          description: Generator log probabilities for CISPO
+          description: Log probabilities for CISPO
       required:
         - advantages
-        - generator_logprobs
+        - logprobs
     RL.DROLossInputs:
       type: object
       properties:
         advantages:
           $ref: '#/components/schemas/RL.LossAdvantages'
           description: Per-token advantages for DRO
-        generator_logprobs:
+        logprobs:
           $ref: '#/components/schemas/RL.LossLogprobs'
-          description: Generator log probabilities for DRO
+          description: Log probabilities for DRO
       required:
         - advantages
-        - generator_logprobs
+        - logprobs
     RL.LossInputs:
       type: object
       description: Token-level inputs used to compute the loss for one training sample.
@@ -17273,12 +17283,9 @@ components:
         target_tokens:
           $ref: '#/components/schemas/RL.LossTargetTokens'
           description: Target tokens for loss computation
-        loss_mask:
-          $ref: '#/components/schemas/RL.LossMask'
-          description: >-
-            Per-token loss mask (1=compute loss, 0=ignore). Required for
-            cross-entropy forward-backward; optional for forward and
-            advantage-based losses, where omission includes all tokens.
+        weights:
+          $ref: '#/components/schemas/RL.Weights'
+          description: Per-token weights (1=compute loss, 0=ignore).
         grpo_inputs:
           $ref: '#/components/schemas/RL.GRPOLossInputs'
           description: Inputs required when the loss type is GRPO
@@ -17334,6 +17341,35 @@ components:
           description: >-
             Index of the first token of this segment within the sampled
             sequence. Always 0 for the first segment.
+    RL.PromptTopLogprobs:
+      type: object
+      description: >-
+        The most likely alternative tokens at a single prompt position, as two
+        parallel arrays of equal length. Both are empty for a position with no
+        conditioning context, such as position 0.
+      properties:
+        token_ids:
+          type: array
+          example:
+            - 123
+            - 456
+          items:
+            type: integer
+            format: int32
+          description: >-
+            Token IDs of the alternatives, ordered by descending
+            log-probability.
+        logprobs:
+          type: array
+          example:
+            - -0.5
+            - -2.1
+          items:
+            type: number
+            format: double
+          description: >-
+            Log-probability of each alternative in `token_ids`, at the same
+            index.
     RL.OptimStepOperation:
       type: object
       description: Async optimizer step operation
@@ -17415,16 +17451,28 @@ components:
         prompt_logprobs:
           type: array
           example:
+            - 0
             - -0.5
             - -1.2
-            - -0.3
           items:
             type: number
             format: double
           description: >-
-            Teacher-forced log-probabilities for the model input tokens, one per
-            token after the first (log P(token_i | token_<i)). Present only when
-            return_prompt_logprobs was set on the request.
+            Teacher-forced log-probability of each model input token. Full
+            prompt length; entry i corresponds to prompt token i. Entry 0 is
+            always 0 as a placeholder: the first prompt token has no
+            conditioning context, so it has no log-probability. Present only
+            when prompt_logprobs was set on the request.
+        topk_prompt_logprobs:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/RL.PromptTopLogprobs'
+          description: >-
+            The most likely alternative tokens at each model input token, up to
+            `topk_prompt_logprobs` per position. Full prompt length; entry i
+            corresponds to prompt token i, and entry 0 is empty. Present only
+            when topk_prompt_logprobs was set on the request.
         policy_segments:
           type: array
           items:
@@ -17743,7 +17791,6 @@ components:
         - step
         - created_at
         - updated_at
-        - lora_config
         - model_resources_id
         - created_by
       properties:
@@ -17795,7 +17842,9 @@ components:
           description: Timestamp when the training session was last updated
         lora_config:
           $ref: '#/components/schemas/RL.LoraConfig'
-          description: LoRA adapter configuration for this session
+          description: >-
+            LoRA adapter configuration. Present only for sessions running on a
+            LoRA-enabled model resource.
         model_resources_id:
           type: string
           example: 123e4567-e89b-12d3-a456-426614174000
@@ -17849,13 +17898,6 @@ components:
           example: 0
           default: '0.0'
           description: Dropout of the LoRA adapter
-        enable:
-          type: boolean
-          example: true
-          default: 'true'
-          description: >-
-            Whether to enable LoRA fine-tuning. If false, full fine-tuning is
-            used.
     RL.OptimizerConfig:
       type: object
       description: Optimizer configuration
@@ -17885,12 +17927,12 @@ components:
         - MUON_SCALING_STRATEGY_MATCH_ADAMW
         - MUON_SCALING_STRATEGY_ORIGINAL
       default: MUON_SCALING_STRATEGY_UNSPECIFIED
-    RL.AdamWOptimizerParams:
-      description: Per-step AdamW optimizer overrides.
+    RL.AdamParams:
+      description: Per-step Adam optimizer overrides.
       type: object
       properties:
         learning_rate:
-          description: Learning rate for the AdamW-tuned parameters
+          description: Learning rate for the Adam-tuned parameters
           type: number
           example: 0.0001
         beta1:
@@ -17913,7 +17955,16 @@ components:
           type: number
           example: 0.1
           default: '0'
-    RL.MuonOptimizerParams:
+        grad_clip_norm:
+          description: >-
+            Maximum gradient norm for this step, gradients across all model
+            parameters are clipped to this value. Set to 0 to disable gradient
+            clipping. When unset, gradients are clipped to the session default
+            (1.0).
+          type: number
+          example: 10
+          default: '1.0'
+    RL.MuonParams:
       type: object
       description: Per-step Muon optimizer overrides
       properties:
@@ -17936,11 +17987,20 @@ components:
           example: 0
           default: '0.0'
           description: Weight decay coefficient
-        adamw:
-          $ref: '#/components/schemas/RL.AdamWOptimizerParams'
+        grad_clip_norm:
+          type: number
+          example: 10
+          default: '1.0'
           description: >-
-            Per-step AdamW optimizer overrides for the AdamW-tuned parameters in
-            a Muon-tuned optimizer session.
+            Maximum gradient norm for this step, gradients across all model
+            parameters are clipped to this value. Set to 0 to disable gradient
+            clipping. When unset, gradients are clipped to the session default
+            (1.0).
+        adam:
+          $ref: '#/components/schemas/RL.AdamParams'
+          description: >-
+            Per-step Adam optimizer overrides for the Adam-tuned parameters in a
+            Muon-tuned optimizer session.
     RL.InferenceCheckpointOperation:
       type: object
       description: Async inference checkpoint operation

@@ -19,8 +19,6 @@ namespace Soenneker.Together.OpenApiClient.Models
         public int? Alpha { get; set; }
         /// <summary>Dropout of the LoRA adapter</summary>
         public double? Dropout { get; set; }
-        /// <summary>Whether to enable LoRA fine-tuning. If false, full fine-tuning is used.</summary>
-        public bool? Enable { get; set; }
         /// <summary>Rank of the LoRA adapter</summary>
         public int? Rank { get; set; }
         /// <summary>
@@ -31,7 +29,6 @@ namespace Soenneker.Together.OpenApiClient.Models
             AdditionalData = new Dictionary<string, object>();
             Alpha = 64;
             Dropout = 0;
-            Enable = true;
             Rank = 32;
         }
         /// <summary>
@@ -54,7 +51,6 @@ namespace Soenneker.Together.OpenApiClient.Models
             {
                 { "alpha", n => { Alpha = n.GetIntValue(); } },
                 { "dropout", n => { Dropout = n.GetDoubleValue(); } },
-                { "enable", n => { Enable = n.GetBoolValue(); } },
                 { "rank", n => { Rank = n.GetIntValue(); } },
             };
         }
@@ -67,7 +63,6 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("alpha", Alpha);
             writer.WriteDoubleValue("dropout", Dropout);
-            writer.WriteBoolValue("enable", Enable);
             writer.WriteIntValue("rank", Rank);
             writer.WriteAdditionalData(AdditionalData);
         }

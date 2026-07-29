@@ -12,25 +12,23 @@ namespace Soenneker.Together.OpenApiClient.Models
     public partial class RlOptimStepBody : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Per-step AdamW optimizer overrides.</summary>
+        /// <summary>Per-step Adam optimizer overrides.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RlAdamWOptimizerParams? AdamwParams { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlAdamParams? AdamParams { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.RlAdamWOptimizerParams AdamwParams { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlAdamParams AdamParams { get; set; }
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Maximum gradient norm for this step, gradients across all model parameters are clipped to this value. Set to 0 to disable gradient clipping. When unset, gradients are clipped to the session default (1.0).</summary>
-        public float? MaxGradNorm { get; set; }
         /// <summary>Per-step Muon optimizer overrides</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RlMuonOptimizerParams? MuonParams { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlMuonParams? MuonParams { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.RlMuonOptimizerParams MuonParams { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlMuonParams MuonParams { get; set; }
 #endif
         /// <summary>How the trainer&apos;s updated weights are propagated to the generator after an optimizer step. SYNCHRONOUS publishes inline before the step returns; BACKGROUND_PUBLISH returns immediately and publishes once in-flight rollouts drain; PIPELINE overlaps the publish with in-flight rollouts so they continue decoding under the new weights.</summary>
         public global::Soenneker.Together.OpenApiClient.Models.RlWeightSyncType? WeightSyncType { get; set; }
@@ -40,7 +38,6 @@ namespace Soenneker.Together.OpenApiClient.Models
         public RlOptimStepBody()
         {
             AdditionalData = new Dictionary<string, object>();
-            MaxGradNorm = 1f;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -60,9 +57,8 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "adamw_params", n => { AdamwParams = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlAdamWOptimizerParams>(global::Soenneker.Together.OpenApiClient.Models.RlAdamWOptimizerParams.CreateFromDiscriminatorValue); } },
-                { "max_grad_norm", n => { MaxGradNorm = n.GetFloatValue(); } },
-                { "muon_params", n => { MuonParams = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlMuonOptimizerParams>(global::Soenneker.Together.OpenApiClient.Models.RlMuonOptimizerParams.CreateFromDiscriminatorValue); } },
+                { "adam_params", n => { AdamParams = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlAdamParams>(global::Soenneker.Together.OpenApiClient.Models.RlAdamParams.CreateFromDiscriminatorValue); } },
+                { "muon_params", n => { MuonParams = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlMuonParams>(global::Soenneker.Together.OpenApiClient.Models.RlMuonParams.CreateFromDiscriminatorValue); } },
                 { "weight_sync_type", n => { WeightSyncType = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlWeightSyncType>(); } },
             };
         }
@@ -73,9 +69,8 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlAdamWOptimizerParams>("adamw_params", AdamwParams);
-            writer.WriteFloatValue("max_grad_norm", MaxGradNorm);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlMuonOptimizerParams>("muon_params", MuonParams);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlAdamParams>("adam_params", AdamParams);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlMuonParams>("muon_params", MuonParams);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlWeightSyncType>("weight_sync_type", WeightSyncType);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -7,37 +7,38 @@ using System.IO;
 using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
+    /// <summary>
+    /// A single chunk of model input content.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
-    public partial class RlInputChunk : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
+    public partial class RlModelInputChunk : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The encoded_text property</summary>
+        /// <summary>Pre-tokenized text content for a model input chunk.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RlEncodedText? EncodedText { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlEncodedTextChunk? EncodedText { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.RlEncodedText EncodedText { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlEncodedTextChunk EncodedText { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlInputChunk"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlModelInputChunk"/> and sets the default values.
         /// </summary>
-        public RlInputChunk()
+        public RlModelInputChunk()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.RlInputChunk"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.RlModelInputChunk"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Together.OpenApiClient.Models.RlInputChunk CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Together.OpenApiClient.Models.RlModelInputChunk CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.RlInputChunk();
+            return new global::Soenneker.Together.OpenApiClient.Models.RlModelInputChunk();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -47,7 +48,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "encoded_text", n => { EncodedText = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlEncodedText>(global::Soenneker.Together.OpenApiClient.Models.RlEncodedText.CreateFromDiscriminatorValue); } },
+                { "encoded_text", n => { EncodedText = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlEncodedTextChunk>(global::Soenneker.Together.OpenApiClient.Models.RlEncodedTextChunk.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -57,7 +58,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlEncodedText>("encoded_text", EncodedText);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlEncodedTextChunk>("encoded_text", EncodedText);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

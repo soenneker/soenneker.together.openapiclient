@@ -24,6 +24,8 @@ namespace Soenneker.Together.OpenApiClient.Models
 #endif
         /// <summary>Number of completions to generate per prompt</summary>
         public int? NumSamples { get; set; }
+        /// <summary>When true, also compute teacher-forced log-probabilities for the model input tokens and return them in `SampleResult.prompt_logprobs`.</summary>
+        public bool? PromptLogprobs { get; set; }
         /// <summary>The sampling_params property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -32,6 +34,8 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public global::Soenneker.Together.OpenApiClient.Models.RlSamplingParams SamplingParams { get; set; }
 #endif
+        /// <summary>Number of most likely alternative tokens to return per model input token in `SampleResult.topk_prompt_logprobs`. 0 disables top-k prompt log-probabilities. Maximum 20.</summary>
+        public int? TopkPromptLogprobs { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlSampleBody"/> and sets the default values.
         /// </summary>
@@ -39,6 +43,8 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             AdditionalData = new Dictionary<string, object>();
             NumSamples = 1;
+            PromptLogprobs = false;
+            TopkPromptLogprobs = 0;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -60,7 +66,9 @@ namespace Soenneker.Together.OpenApiClient.Models
             {
                 { "model_inputs", n => { ModelInputs = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RlModelInput>(global::Soenneker.Together.OpenApiClient.Models.RlModelInput.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "num_samples", n => { NumSamples = n.GetIntValue(); } },
+                { "prompt_logprobs", n => { PromptLogprobs = n.GetBoolValue(); } },
                 { "sampling_params", n => { SamplingParams = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlSamplingParams>(global::Soenneker.Together.OpenApiClient.Models.RlSamplingParams.CreateFromDiscriminatorValue); } },
+                { "topk_prompt_logprobs", n => { TopkPromptLogprobs = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -72,7 +80,9 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RlModelInput>("model_inputs", ModelInputs);
             writer.WriteIntValue("num_samples", NumSamples);
+            writer.WriteBoolValue("prompt_logprobs", PromptLogprobs);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlSamplingParams>("sampling_params", SamplingParams);
+            writer.WriteIntValue("topk_prompt_logprobs", TopkPromptLogprobs);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

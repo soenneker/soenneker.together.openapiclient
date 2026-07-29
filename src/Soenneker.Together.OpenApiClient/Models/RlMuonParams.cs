@@ -8,43 +8,51 @@ using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
     /// <summary>
-    /// Per-step AdamW optimizer overrides.
+    /// Per-step Muon optimizer overrides
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class RlAdamWOptimizerParams : IAdditionalDataHolder, IParsable
+    public partial class RlMuonParams : IAdditionalDataHolder, IParsable
     {
+        /// <summary>Per-step Adam optimizer overrides.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Together.OpenApiClient.Models.RlAdamParams? Adam { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Together.OpenApiClient.Models.RlAdamParams Adam { get; set; }
+#endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Exponential decay rate for the first-moment estimate</summary>
-        public double? Beta1 { get; set; }
-        /// <summary>Exponential decay rate for the second-moment estimate</summary>
-        public double? Beta2 { get; set; }
-        /// <summary>Epsilon for numerical stability</summary>
-        public double? Eps { get; set; }
-        /// <summary>Learning rate for the AdamW-tuned parameters</summary>
+        /// <summary>Maximum gradient norm for this step, gradients across all model parameters are clipped to this value. Set to 0 to disable gradient clipping. When unset, gradients are clipped to the session default (1.0).</summary>
+        public double? GradClipNorm { get; set; }
+        /// <summary>Learning rate for this Muon optimizer step.</summary>
         public double? LearningRate { get; set; }
+        /// <summary>Momentum coefficient</summary>
+        public double? Momentum { get; set; }
+        /// <summary>Number of Newton-Schulz iterations</summary>
+        public int? NewtonSchulzSteps { get; set; }
         /// <summary>Weight decay coefficient</summary>
         public double? WeightDecay { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlAdamWOptimizerParams"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlMuonParams"/> and sets the default values.
         /// </summary>
-        public RlAdamWOptimizerParams()
+        public RlMuonParams()
         {
             AdditionalData = new Dictionary<string, object>();
-            Beta1 = 0.9;
-            Beta2 = 0.95;
-            Eps = 0.00000001;
+            GradClipNorm = 1;
+            Momentum = 0.95;
+            NewtonSchulzSteps = 5;
             WeightDecay = 0;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.RlAdamWOptimizerParams"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.RlMuonParams"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Together.OpenApiClient.Models.RlAdamWOptimizerParams CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Together.OpenApiClient.Models.RlMuonParams CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.RlAdamWOptimizerParams();
+            return new global::Soenneker.Together.OpenApiClient.Models.RlMuonParams();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -54,10 +62,11 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "beta1", n => { Beta1 = n.GetDoubleValue(); } },
-                { "beta2", n => { Beta2 = n.GetDoubleValue(); } },
-                { "eps", n => { Eps = n.GetDoubleValue(); } },
+                { "adam", n => { Adam = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlAdamParams>(global::Soenneker.Together.OpenApiClient.Models.RlAdamParams.CreateFromDiscriminatorValue); } },
+                { "grad_clip_norm", n => { GradClipNorm = n.GetDoubleValue(); } },
                 { "learning_rate", n => { LearningRate = n.GetDoubleValue(); } },
+                { "momentum", n => { Momentum = n.GetDoubleValue(); } },
+                { "newton_schulz_steps", n => { NewtonSchulzSteps = n.GetIntValue(); } },
                 { "weight_decay", n => { WeightDecay = n.GetDoubleValue(); } },
             };
         }
@@ -68,10 +77,11 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteDoubleValue("beta1", Beta1);
-            writer.WriteDoubleValue("beta2", Beta2);
-            writer.WriteDoubleValue("eps", Eps);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlAdamParams>("adam", Adam);
+            writer.WriteDoubleValue("grad_clip_norm", GradClipNorm);
             writer.WriteDoubleValue("learning_rate", LearningRate);
+            writer.WriteDoubleValue("momentum", Momentum);
+            writer.WriteIntValue("newton_schulz_steps", NewtonSchulzSteps);
             writer.WriteDoubleValue("weight_decay", WeightDecay);
             writer.WriteAdditionalData(AdditionalData);
         }

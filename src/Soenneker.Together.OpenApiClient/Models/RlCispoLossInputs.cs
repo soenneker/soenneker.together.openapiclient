@@ -22,13 +22,13 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public global::Soenneker.Together.OpenApiClient.Models.RlLossAdvantages Advantages { get; set; }
 #endif
-        /// <summary>The generator_logprobs property</summary>
+        /// <summary>The logprobs property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RlLossLogprobs? GeneratorLogprobs { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlLossLogprobs? Logprobs { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.RlLossLogprobs GeneratorLogprobs { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlLossLogprobs Logprobs { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlCispoLossInputs"/> and sets the default values.
@@ -56,7 +56,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "advantages", n => { Advantages = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlLossAdvantages>(global::Soenneker.Together.OpenApiClient.Models.RlLossAdvantages.CreateFromDiscriminatorValue); } },
-                { "generator_logprobs", n => { GeneratorLogprobs = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlLossLogprobs>(global::Soenneker.Together.OpenApiClient.Models.RlLossLogprobs.CreateFromDiscriminatorValue); } },
+                { "logprobs", n => { Logprobs = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlLossLogprobs>(global::Soenneker.Together.OpenApiClient.Models.RlLossLogprobs.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -67,7 +67,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlLossAdvantages>("advantages", Advantages);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlLossLogprobs>("generator_logprobs", GeneratorLogprobs);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlLossLogprobs>("logprobs", Logprobs);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

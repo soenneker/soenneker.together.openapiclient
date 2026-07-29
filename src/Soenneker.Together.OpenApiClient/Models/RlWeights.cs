@@ -7,15 +7,14 @@ using System.IO;
 using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
-    /// <summary>
-    /// Per-token loss mask (1=compute loss, 0=ignore)
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class RlLossMask : IAdditionalDataHolder, IParsable
+    #pragma warning disable CS1591
+    public partial class RlWeights : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Integer array of per-token mask values (0s and 1s)</summary>
+        /// <summary>&quot;Per-token weights: 1 to include the token in the loss, 0 to ignore it.&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? Data { get; set; }
@@ -26,21 +25,21 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>The dtype property</summary>
         public global::Soenneker.Together.OpenApiClient.Models.RlDType? Dtype { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlLossMask"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlWeights"/> and sets the default values.
         /// </summary>
-        public RlLossMask()
+        public RlWeights()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.RlLossMask"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.RlWeights"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Together.OpenApiClient.Models.RlLossMask CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Together.OpenApiClient.Models.RlWeights CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.RlLossMask();
+            return new global::Soenneker.Together.OpenApiClient.Models.RlWeights();
         }
         /// <summary>
         /// The deserialization information for the current model

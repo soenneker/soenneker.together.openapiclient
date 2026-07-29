@@ -15,7 +15,7 @@ namespace Soenneker.Together.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Optional cancel behavior. Absent defaults to freeze, which preserves the current traffic split; revert sends all traffic back to the source deployment and terminates the rollout.</summary>
+        /// <summary>Optional cancel behavior. Absent defaults to freeze, which preserves the current traffic split. Revert is removed and rejected with FAILED_PRECONDITION; cancel with freeze, then run a reverse rollout back to the source.</summary>
         public global::Soenneker.Together.OpenApiClient.Models.DeCancelRolloutRequestDisposition? Disposition { get; set; }
         /// <summary>Optional etag for optimistic concurrency.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

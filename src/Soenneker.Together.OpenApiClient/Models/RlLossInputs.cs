@@ -47,14 +47,6 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public global::Soenneker.Together.OpenApiClient.Models.RlImportanceSamplingLossInputs ImportanceSamplingInputs { get; set; }
 #endif
-        /// <summary>Per-token loss mask (1=compute loss, 0=ignore)</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RlLossMask? LossMask { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Together.OpenApiClient.Models.RlLossMask LossMask { get; set; }
-#endif
         /// <summary>The ppo_inputs property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -70,6 +62,14 @@ namespace Soenneker.Together.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.Together.OpenApiClient.Models.RlLossTargetTokens TargetTokens { get; set; }
+#endif
+        /// <summary>The weights property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Together.OpenApiClient.Models.RlWeights? Weights { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Together.OpenApiClient.Models.RlWeights Weights { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlLossInputs"/> and sets the default values.
@@ -100,9 +100,9 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "dro_inputs", n => { DroInputs = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlDroLossInputs>(global::Soenneker.Together.OpenApiClient.Models.RlDroLossInputs.CreateFromDiscriminatorValue); } },
                 { "grpo_inputs", n => { GrpoInputs = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlGrpoLossInputs>(global::Soenneker.Together.OpenApiClient.Models.RlGrpoLossInputs.CreateFromDiscriminatorValue); } },
                 { "importance_sampling_inputs", n => { ImportanceSamplingInputs = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlImportanceSamplingLossInputs>(global::Soenneker.Together.OpenApiClient.Models.RlImportanceSamplingLossInputs.CreateFromDiscriminatorValue); } },
-                { "loss_mask", n => { LossMask = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlLossMask>(global::Soenneker.Together.OpenApiClient.Models.RlLossMask.CreateFromDiscriminatorValue); } },
                 { "ppo_inputs", n => { PpoInputs = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlPpoLossInputs>(global::Soenneker.Together.OpenApiClient.Models.RlPpoLossInputs.CreateFromDiscriminatorValue); } },
                 { "target_tokens", n => { TargetTokens = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlLossTargetTokens>(global::Soenneker.Together.OpenApiClient.Models.RlLossTargetTokens.CreateFromDiscriminatorValue); } },
+                { "weights", n => { Weights = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlWeights>(global::Soenneker.Together.OpenApiClient.Models.RlWeights.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -116,9 +116,9 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlDroLossInputs>("dro_inputs", DroInputs);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlGrpoLossInputs>("grpo_inputs", GrpoInputs);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlImportanceSamplingLossInputs>("importance_sampling_inputs", ImportanceSamplingInputs);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlLossMask>("loss_mask", LossMask);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlPpoLossInputs>("ppo_inputs", PpoInputs);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlLossTargetTokens>("target_tokens", TargetTokens);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlWeights>("weights", Weights);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
