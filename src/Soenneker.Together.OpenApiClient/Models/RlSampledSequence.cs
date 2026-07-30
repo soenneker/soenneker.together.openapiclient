@@ -23,6 +23,8 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public List<double?> Logprobs { get; set; }
 #endif
+        /// <summary>Number of model input tokens served from the prefix cache while generating this sequence.</summary>
+        public int? PromptCacheHitTokens { get; set; }
         /// <summary>Reason generation stopped.</summary>
         public global::Soenneker.Together.OpenApiClient.Models.RlStopReason? StopReason { get; set; }
         /// <summary>Generated token IDs</summary>
@@ -59,6 +61,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "logprobs", n => { Logprobs = n.GetCollectionOfPrimitiveValues<double?>()?.AsList(); } },
+                { "prompt_cache_hit_tokens", n => { PromptCacheHitTokens = n.GetIntValue(); } },
                 { "stop_reason", n => { StopReason = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlStopReason>(); } },
                 { "tokens", n => { Tokens = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
@@ -71,6 +74,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<double?>("logprobs", Logprobs);
+            writer.WriteIntValue("prompt_cache_hit_tokens", PromptCacheHitTokens);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlStopReason>("stop_reason", StopReason);
             writer.WriteCollectionOfPrimitiveValues<string>("tokens", Tokens);
             writer.WriteAdditionalData(AdditionalData);

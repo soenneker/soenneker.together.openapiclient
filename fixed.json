@@ -6401,6 +6401,16 @@
               }
             }
           },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          },
           "400": {
             "description": "Bad Request",
             "content": {
@@ -6413,16 +6423,6 @@
           },
           "401": {
             "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorData"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -6503,22 +6503,22 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "Price estimated successfully",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PostFineTunesEstimatePrice200Response"
-                }
-              }
-            }
-          },
           "500": {
             "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Price estimated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostFineTunesEstimatePrice200Response"
                 }
               }
             }
@@ -16057,7 +16057,8 @@
       "RlSampledSequence": {
         "required": [
           "tokens",
-          "stop_reason"
+          "stop_reason",
+          "prompt_cache_hit_tokens"
         ],
         "type": "object",
         "properties": {
@@ -16077,6 +16078,12 @@
           },
           "stop_reason": {
             "$ref": "#/components/schemas/RlStopReason"
+          },
+          "prompt_cache_hit_tokens": {
+            "type": "integer",
+            "description": "Number of model input tokens served from the prefix cache while generating this sequence.",
+            "format": "int32",
+            "example": 1024
           }
         },
         "description": "A single generated completion sequence with tokens and logprobs"
@@ -26542,8 +26549,8 @@
         },
         "description": "Adjusts the likelihood of specific tokens appearing in the generated output.",
         "example": {
-          "105": 21.4,
-          "1024": -10.5
+          "1024": -10.5,
+          "105": 21.4
         }
       },
       "CompletionChoiceDelta": {
@@ -26622,8 +26629,8 @@
         },
         "description": "Adjusts the likelihood of specific tokens appearing in the generated output.",
         "example": {
-          "105": 21.4,
-          "1024": -10.5
+          "1024": -10.5,
+          "105": 21.4
         }
       },
       "ChatCompletionRequestChatTemplateKwargs": {
