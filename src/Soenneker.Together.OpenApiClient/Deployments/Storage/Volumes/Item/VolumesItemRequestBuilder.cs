@@ -36,27 +36,27 @@ namespace Soenneker.Together.OpenApiClient.Deployments.Storage.Volumes.Item
         /// <summary>
         /// Delete an existing volume
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.DeleteDeploymentsStorageVolumesById200ResponseResponseJson"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.DeleteDeploymentsStorageVolumesById200ResponseSchema"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.DeleteDeploymentsStorageVolumesById404ResponseResponseJson">When receiving a 404 status code</exception>
-        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.DeleteDeploymentsStorageVolumesById500ResponseResponseJson">When receiving a 500 status code</exception>
+        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.DeleteDeploymentsStorageVolumesById404ResponseSchema">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.DeleteDeploymentsStorageVolumesById500ResponseSchema">When receiving a 500 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Together.OpenApiClient.Models.DeleteDeploymentsStorageVolumesById200ResponseResponseJson?> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Together.OpenApiClient.Models.DeleteDeploymentsStorageVolumesById200ResponseSchema?> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Together.OpenApiClient.Models.DeleteDeploymentsStorageVolumesById200ResponseResponseJson> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Together.OpenApiClient.Models.DeleteDeploymentsStorageVolumesById200ResponseSchema> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "404", global::Soenneker.Together.OpenApiClient.Models.DeleteDeploymentsStorageVolumesById404ResponseResponseJson.CreateFromDiscriminatorValue },
-                { "500", global::Soenneker.Together.OpenApiClient.Models.DeleteDeploymentsStorageVolumesById500ResponseResponseJson.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.Together.OpenApiClient.Models.DeleteDeploymentsStorageVolumesById404ResponseSchema.CreateFromDiscriminatorValue },
+                { "500", global::Soenneker.Together.OpenApiClient.Models.DeleteDeploymentsStorageVolumesById500ResponseSchema.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.DeleteDeploymentsStorageVolumesById200ResponseResponseJson>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.DeleteDeploymentsStorageVolumesById200ResponseResponseJson.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.DeleteDeploymentsStorageVolumesById200ResponseSchema>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.DeleteDeploymentsStorageVolumesById200ResponseSchema.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Retrieve details of a specific volume by its ID or name
@@ -64,9 +64,9 @@ namespace Soenneker.Together.OpenApiClient.Deployments.Storage.Volumes.Item
         /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.VolumeResponseItem"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.GetDeploymentsStorageVolumesById400ResponseResponseJson">When receiving a 400 status code</exception>
-        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.GetDeploymentsStorageVolumesById404ResponseResponseJson">When receiving a 404 status code</exception>
-        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.GetDeploymentsStorageVolumesById500ResponseResponseJson">When receiving a 500 status code</exception>
+        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.GetDeploymentsStorageVolumesById400ResponseSchema">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.GetDeploymentsStorageVolumesById404ResponseSchema">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.GetDeploymentsStorageVolumesById500ResponseSchema">When receiving a 500 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Together.OpenApiClient.Models.VolumeResponseItem?> GetAsync(Action<RequestConfiguration<global::Soenneker.Together.OpenApiClient.Deployments.Storage.Volumes.Item.VolumesItemRequestBuilder.VolumesItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -79,9 +79,9 @@ namespace Soenneker.Together.OpenApiClient.Deployments.Storage.Volumes.Item
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Soenneker.Together.OpenApiClient.Models.GetDeploymentsStorageVolumesById400ResponseResponseJson.CreateFromDiscriminatorValue },
-                { "404", global::Soenneker.Together.OpenApiClient.Models.GetDeploymentsStorageVolumesById404ResponseResponseJson.CreateFromDiscriminatorValue },
-                { "500", global::Soenneker.Together.OpenApiClient.Models.GetDeploymentsStorageVolumesById500ResponseResponseJson.CreateFromDiscriminatorValue },
+                { "400", global::Soenneker.Together.OpenApiClient.Models.GetDeploymentsStorageVolumesById400ResponseSchema.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.Together.OpenApiClient.Models.GetDeploymentsStorageVolumesById404ResponseSchema.CreateFromDiscriminatorValue },
+                { "500", global::Soenneker.Together.OpenApiClient.Models.GetDeploymentsStorageVolumesById500ResponseSchema.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.VolumeResponseItem>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.VolumeResponseItem.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -92,9 +92,9 @@ namespace Soenneker.Together.OpenApiClient.Deployments.Storage.Volumes.Item
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.PatchDeploymentsStorageVolumesById400ResponseResponseJson">When receiving a 400 status code</exception>
-        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.PatchDeploymentsStorageVolumesById404ResponseResponseJson">When receiving a 404 status code</exception>
-        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.PatchDeploymentsStorageVolumesById500ResponseResponseJson">When receiving a 500 status code</exception>
+        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.PatchDeploymentsStorageVolumesById400ResponseSchema">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.PatchDeploymentsStorageVolumesById404ResponseSchema">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.PatchDeploymentsStorageVolumesById500ResponseSchema">When receiving a 500 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Together.OpenApiClient.Models.VolumeResponseItem?> PatchAsync(global::Soenneker.Together.OpenApiClient.Models.UpdateVolumeRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -108,9 +108,9 @@ namespace Soenneker.Together.OpenApiClient.Deployments.Storage.Volumes.Item
             var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Soenneker.Together.OpenApiClient.Models.PatchDeploymentsStorageVolumesById400ResponseResponseJson.CreateFromDiscriminatorValue },
-                { "404", global::Soenneker.Together.OpenApiClient.Models.PatchDeploymentsStorageVolumesById404ResponseResponseJson.CreateFromDiscriminatorValue },
-                { "500", global::Soenneker.Together.OpenApiClient.Models.PatchDeploymentsStorageVolumesById500ResponseResponseJson.CreateFromDiscriminatorValue },
+                { "400", global::Soenneker.Together.OpenApiClient.Models.PatchDeploymentsStorageVolumesById400ResponseSchema.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.Together.OpenApiClient.Models.PatchDeploymentsStorageVolumesById404ResponseSchema.CreateFromDiscriminatorValue },
+                { "500", global::Soenneker.Together.OpenApiClient.Models.PatchDeploymentsStorageVolumesById500ResponseSchema.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.VolumeResponseItem>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.VolumeResponseItem.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

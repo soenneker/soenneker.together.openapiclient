@@ -44,9 +44,9 @@ namespace Soenneker.Together.OpenApiClient.Deployments.Storage.Item
         /// </summary>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.GetDeploymentsStorageByFilename400ResponseResponseJson">When receiving a 400 status code</exception>
-        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.GetDeploymentsStorageByFilename404ResponseResponseJson">When receiving a 404 status code</exception>
-        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.GetDeploymentsStorageByFilename500ResponseResponseJson">When receiving a 500 status code</exception>
+        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.GetDeploymentsStorageByFilename400ResponseSchema">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.GetDeploymentsStorageByFilename404ResponseSchema">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.GetDeploymentsStorageByFilename500ResponseSchema">When receiving a 500 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -59,9 +59,9 @@ namespace Soenneker.Together.OpenApiClient.Deployments.Storage.Item
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Soenneker.Together.OpenApiClient.Models.GetDeploymentsStorageByFilename400ResponseResponseJson.CreateFromDiscriminatorValue },
-                { "404", global::Soenneker.Together.OpenApiClient.Models.GetDeploymentsStorageByFilename404ResponseResponseJson.CreateFromDiscriminatorValue },
-                { "500", global::Soenneker.Together.OpenApiClient.Models.GetDeploymentsStorageByFilename500ResponseResponseJson.CreateFromDiscriminatorValue },
+                { "400", global::Soenneker.Together.OpenApiClient.Models.GetDeploymentsStorageByFilename400ResponseSchema.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.Together.OpenApiClient.Models.GetDeploymentsStorageByFilename404ResponseSchema.CreateFromDiscriminatorValue },
+                { "500", global::Soenneker.Together.OpenApiClient.Models.GetDeploymentsStorageByFilename500ResponseSchema.CreateFromDiscriminatorValue },
             };
             await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }

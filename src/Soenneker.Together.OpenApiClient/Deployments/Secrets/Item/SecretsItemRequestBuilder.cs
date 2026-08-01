@@ -36,27 +36,27 @@ namespace Soenneker.Together.OpenApiClient.Deployments.Secrets.Item
         /// <summary>
         /// Delete an existing secret
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.DeleteDeploymentsSecretsById200ResponseResponseJson"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.DeleteDeploymentsSecretsById200ResponseSchema"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.DeleteDeploymentsSecretsById404ResponseResponseJson">When receiving a 404 status code</exception>
-        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.DeleteDeploymentsSecretsById500ResponseResponseJson">When receiving a 500 status code</exception>
+        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.DeleteDeploymentsSecretsById404ResponseSchema">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.DeleteDeploymentsSecretsById500ResponseSchema">When receiving a 500 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Together.OpenApiClient.Models.DeleteDeploymentsSecretsById200ResponseResponseJson?> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Together.OpenApiClient.Models.DeleteDeploymentsSecretsById200ResponseSchema?> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Together.OpenApiClient.Models.DeleteDeploymentsSecretsById200ResponseResponseJson> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Together.OpenApiClient.Models.DeleteDeploymentsSecretsById200ResponseSchema> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "404", global::Soenneker.Together.OpenApiClient.Models.DeleteDeploymentsSecretsById404ResponseResponseJson.CreateFromDiscriminatorValue },
-                { "500", global::Soenneker.Together.OpenApiClient.Models.DeleteDeploymentsSecretsById500ResponseResponseJson.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.Together.OpenApiClient.Models.DeleteDeploymentsSecretsById404ResponseSchema.CreateFromDiscriminatorValue },
+                { "500", global::Soenneker.Together.OpenApiClient.Models.DeleteDeploymentsSecretsById500ResponseSchema.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.DeleteDeploymentsSecretsById200ResponseResponseJson>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.DeleteDeploymentsSecretsById200ResponseResponseJson.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.DeleteDeploymentsSecretsById200ResponseSchema>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.DeleteDeploymentsSecretsById200ResponseSchema.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Retrieve details of a specific secret by its ID or name
@@ -64,8 +64,8 @@ namespace Soenneker.Together.OpenApiClient.Deployments.Secrets.Item
         /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.SecretResponseItem"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.GetDeploymentsSecretsById404ResponseResponseJson">When receiving a 404 status code</exception>
-        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.GetDeploymentsSecretsById500ResponseResponseJson">When receiving a 500 status code</exception>
+        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.GetDeploymentsSecretsById404ResponseSchema">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.GetDeploymentsSecretsById500ResponseSchema">When receiving a 500 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Together.OpenApiClient.Models.SecretResponseItem?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -78,8 +78,8 @@ namespace Soenneker.Together.OpenApiClient.Deployments.Secrets.Item
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "404", global::Soenneker.Together.OpenApiClient.Models.GetDeploymentsSecretsById404ResponseResponseJson.CreateFromDiscriminatorValue },
-                { "500", global::Soenneker.Together.OpenApiClient.Models.GetDeploymentsSecretsById500ResponseResponseJson.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.Together.OpenApiClient.Models.GetDeploymentsSecretsById404ResponseSchema.CreateFromDiscriminatorValue },
+                { "500", global::Soenneker.Together.OpenApiClient.Models.GetDeploymentsSecretsById500ResponseSchema.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.SecretResponseItem>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.SecretResponseItem.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -90,9 +90,9 @@ namespace Soenneker.Together.OpenApiClient.Deployments.Secrets.Item
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.PatchDeploymentsSecretsById400ResponseResponseJson">When receiving a 400 status code</exception>
-        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.PatchDeploymentsSecretsById404ResponseResponseJson">When receiving a 404 status code</exception>
-        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.PatchDeploymentsSecretsById500ResponseResponseJson">When receiving a 500 status code</exception>
+        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.PatchDeploymentsSecretsById400ResponseSchema">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.PatchDeploymentsSecretsById404ResponseSchema">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.PatchDeploymentsSecretsById500ResponseSchema">When receiving a 500 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Together.OpenApiClient.Models.SecretResponseItem?> PatchAsync(global::Soenneker.Together.OpenApiClient.Models.UpdateSecretRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -106,9 +106,9 @@ namespace Soenneker.Together.OpenApiClient.Deployments.Secrets.Item
             var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Soenneker.Together.OpenApiClient.Models.PatchDeploymentsSecretsById400ResponseResponseJson.CreateFromDiscriminatorValue },
-                { "404", global::Soenneker.Together.OpenApiClient.Models.PatchDeploymentsSecretsById404ResponseResponseJson.CreateFromDiscriminatorValue },
-                { "500", global::Soenneker.Together.OpenApiClient.Models.PatchDeploymentsSecretsById500ResponseResponseJson.CreateFromDiscriminatorValue },
+                { "400", global::Soenneker.Together.OpenApiClient.Models.PatchDeploymentsSecretsById400ResponseSchema.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.Together.OpenApiClient.Models.PatchDeploymentsSecretsById404ResponseSchema.CreateFromDiscriminatorValue },
+                { "500", global::Soenneker.Together.OpenApiClient.Models.PatchDeploymentsSecretsById500ResponseSchema.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.SecretResponseItem>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.SecretResponseItem.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

@@ -4699,7 +4699,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetDeployments500ResponseResponseJson"
+                  "$ref": "#/components/schemas/GetDeployments500ResponseSchema"
                 }
               }
             }
@@ -4739,7 +4739,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PostDeployments400ResponseResponseJson"
+                  "$ref": "#/components/schemas/PostDeployments400ResponseSchema"
                 }
               }
             }
@@ -4749,7 +4749,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PostDeployments500ResponseResponseJson"
+                  "$ref": "#/components/schemas/PostDeployments500ResponseSchema"
                 }
               }
             }
@@ -4782,7 +4782,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DeleteDeploymentsById200ResponseResponseJson"
+                  "$ref": "#/components/schemas/DeleteDeploymentsById200ResponseSchema"
                 }
               }
             }
@@ -4792,7 +4792,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DeleteDeploymentsById404ResponseResponseJson"
+                  "$ref": "#/components/schemas/DeleteDeploymentsById404ResponseSchema"
                 }
               }
             }
@@ -4802,7 +4802,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DeleteDeploymentsById500ResponseResponseJson"
+                  "$ref": "#/components/schemas/DeleteDeploymentsById500ResponseSchema"
                 }
               }
             }
@@ -4843,7 +4843,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetDeploymentsById404ResponseResponseJson"
+                  "$ref": "#/components/schemas/GetDeploymentsById404ResponseSchema"
                 }
               }
             }
@@ -4853,7 +4853,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetDeploymentsById500ResponseResponseJson"
+                  "$ref": "#/components/schemas/GetDeploymentsById500ResponseSchema"
                 }
               }
             }
@@ -4904,7 +4904,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PatchDeploymentsById400ResponseResponseJson"
+                  "$ref": "#/components/schemas/PatchDeploymentsById400ResponseSchema"
                 }
               }
             }
@@ -4914,7 +4914,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PatchDeploymentsById404ResponseResponseJson"
+                  "$ref": "#/components/schemas/PatchDeploymentsById404ResponseSchema"
                 }
               }
             }
@@ -4924,7 +4924,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PatchDeploymentsById500ResponseResponseJson"
+                  "$ref": "#/components/schemas/PatchDeploymentsById500ResponseSchema"
                 }
               }
             }
@@ -4991,7 +4991,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetDeploymentsByIdLogs404ResponseResponseJson"
+                  "$ref": "#/components/schemas/GetDeploymentsByIdLogs404ResponseSchema"
                 }
               }
             }
@@ -5001,7 +5001,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetDeploymentsByIdLogs500ResponseResponseJson"
+                  "$ref": "#/components/schemas/GetDeploymentsByIdLogs500ResponseSchema"
                 }
               }
             }
@@ -5033,7 +5033,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetDeploymentsSecrets500ResponseResponseJson"
+                  "$ref": "#/components/schemas/GetDeploymentsSecrets500ResponseSchema"
                 }
               }
             }
@@ -5073,7 +5073,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PostDeploymentsSecrets400ResponseResponseJson"
+                  "$ref": "#/components/schemas/PostDeploymentsSecrets400ResponseSchema"
                 }
               }
             }
@@ -5083,7 +5083,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PostDeploymentsSecrets500ResponseResponseJson"
+                  "$ref": "#/components/schemas/PostDeploymentsSecrets500ResponseSchema"
                 }
               }
             }
@@ -5116,7 +5116,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DeleteDeploymentsSecretsById200ResponseResponseJson"
+                  "$ref": "#/components/schemas/DeleteDeploymentsSecretsById200ResponseSchema"
                 }
               }
             }
@@ -5126,7 +5126,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DeleteDeploymentsSecretsById404ResponseResponseJson"
+                  "$ref": "#/components/schemas/DeleteDeploymentsSecretsById404ResponseSchema"
                 }
               }
             }
@@ -5136,7 +5136,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DeleteDeploymentsSecretsById500ResponseResponseJson"
+                  "$ref": "#/components/schemas/DeleteDeploymentsSecretsById500ResponseSchema"
                 }
               }
             }
@@ -5177,7 +5177,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetDeploymentsSecretsById404ResponseResponseJson"
+                  "$ref": "#/components/schemas/GetDeploymentsSecretsById404ResponseSchema"
                 }
               }
             }
@@ -5187,7 +5187,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetDeploymentsSecretsById500ResponseResponseJson"
+                  "$ref": "#/components/schemas/GetDeploymentsSecretsById500ResponseSchema"
                 }
               }
             }
@@ -5238,7 +5238,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PatchDeploymentsSecretsById400ResponseResponseJson"
+                  "$ref": "#/components/schemas/PatchDeploymentsSecretsById400ResponseSchema"
                 }
               }
             }
@@ -5248,7 +5248,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PatchDeploymentsSecretsById404ResponseResponseJson"
+                  "$ref": "#/components/schemas/PatchDeploymentsSecretsById404ResponseSchema"
                 }
               }
             }
@@ -5258,7 +5258,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PatchDeploymentsSecretsById500ResponseResponseJson"
+                  "$ref": "#/components/schemas/PatchDeploymentsSecretsById500ResponseSchema"
                 }
               }
             }
@@ -5291,7 +5291,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetDeploymentsStorageByFilename307ResponseResponseJson"
+                  "$ref": "#/components/schemas/GetDeploymentsStorageByFilename307ResponseSchema"
                 }
               }
             }
@@ -5301,7 +5301,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetDeploymentsStorageByFilename400ResponseResponseJson"
+                  "$ref": "#/components/schemas/GetDeploymentsStorageByFilename400ResponseSchema"
                 }
               }
             }
@@ -5311,7 +5311,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetDeploymentsStorageByFilename404ResponseResponseJson"
+                  "$ref": "#/components/schemas/GetDeploymentsStorageByFilename404ResponseSchema"
                 }
               }
             }
@@ -5321,7 +5321,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetDeploymentsStorageByFilename500ResponseResponseJson"
+                  "$ref": "#/components/schemas/GetDeploymentsStorageByFilename500ResponseSchema"
                 }
               }
             }
@@ -5364,7 +5364,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetDeploymentsStorageByFilenameUrl400ResponseResponseJson"
+                  "$ref": "#/components/schemas/GetDeploymentsStorageByFilenameUrl400ResponseSchema"
                 }
               }
             }
@@ -5374,7 +5374,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetDeploymentsStorageByFilenameUrl404ResponseResponseJson"
+                  "$ref": "#/components/schemas/GetDeploymentsStorageByFilenameUrl404ResponseSchema"
                 }
               }
             }
@@ -5384,7 +5384,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetDeploymentsStorageByFilenameUrl500ResponseResponseJson"
+                  "$ref": "#/components/schemas/GetDeploymentsStorageByFilenameUrl500ResponseSchema"
                 }
               }
             }
@@ -5416,7 +5416,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetDeploymentsStorageVolumes500ResponseResponseJson"
+                  "$ref": "#/components/schemas/GetDeploymentsStorageVolumes500ResponseSchema"
                 }
               }
             }
@@ -5456,7 +5456,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PostDeploymentsStorageVolumes400ResponseResponseJson"
+                  "$ref": "#/components/schemas/PostDeploymentsStorageVolumes400ResponseSchema"
                 }
               }
             }
@@ -5466,7 +5466,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PostDeploymentsStorageVolumes500ResponseResponseJson"
+                  "$ref": "#/components/schemas/PostDeploymentsStorageVolumes500ResponseSchema"
                 }
               }
             }
@@ -5499,7 +5499,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DeleteDeploymentsStorageVolumesById200ResponseResponseJson"
+                  "$ref": "#/components/schemas/DeleteDeploymentsStorageVolumesById200ResponseSchema"
                 }
               }
             }
@@ -5509,7 +5509,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DeleteDeploymentsStorageVolumesById404ResponseResponseJson"
+                  "$ref": "#/components/schemas/DeleteDeploymentsStorageVolumesById404ResponseSchema"
                 }
               }
             }
@@ -5519,7 +5519,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DeleteDeploymentsStorageVolumesById500ResponseResponseJson"
+                  "$ref": "#/components/schemas/DeleteDeploymentsStorageVolumesById500ResponseSchema"
                 }
               }
             }
@@ -5568,7 +5568,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetDeploymentsStorageVolumesById400ResponseResponseJson"
+                  "$ref": "#/components/schemas/GetDeploymentsStorageVolumesById400ResponseSchema"
                 }
               }
             }
@@ -5578,7 +5578,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetDeploymentsStorageVolumesById404ResponseResponseJson"
+                  "$ref": "#/components/schemas/GetDeploymentsStorageVolumesById404ResponseSchema"
                 }
               }
             }
@@ -5588,7 +5588,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetDeploymentsStorageVolumesById500ResponseResponseJson"
+                  "$ref": "#/components/schemas/GetDeploymentsStorageVolumesById500ResponseSchema"
                 }
               }
             }
@@ -5639,7 +5639,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PatchDeploymentsStorageVolumesById400ResponseResponseJson"
+                  "$ref": "#/components/schemas/PatchDeploymentsStorageVolumesById400ResponseSchema"
                 }
               }
             }
@@ -5649,7 +5649,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PatchDeploymentsStorageVolumesById404ResponseResponseJson"
+                  "$ref": "#/components/schemas/PatchDeploymentsStorageVolumesById404ResponseSchema"
                 }
               }
             }
@@ -5659,7 +5659,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PatchDeploymentsStorageVolumesById500ResponseResponseJson"
+                  "$ref": "#/components/schemas/PatchDeploymentsStorageVolumesById500ResponseSchema"
                 }
               }
             }
@@ -6355,7 +6355,7 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetFilesByIdContent200ResponseResponsePlain"
+                  "$ref": "#/components/schemas/GetFilesByIdContent200PlainResponseSchema"
                 }
               }
             }
@@ -6817,7 +6817,7 @@
             "content": {
               "application/octet-stream": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetFinetuneDownload200ResponseResponseOctetStream"
+                  "$ref": "#/components/schemas/GetFinetuneDownload200OctetStreamResponseSchema"
                 }
               }
             }
@@ -7117,17 +7117,17 @@
             "content": {
               "application/octet-stream": {
                 "schema": {
-                  "$ref": "#/components/schemas/AudioSpeech200ResponseResponseOctetStream"
+                  "$ref": "#/components/schemas/AudioSpeech200OctetStreamResponseSchema"
                 }
               },
               "audio/wav": {
                 "schema": {
-                  "$ref": "#/components/schemas/AudioSpeech200ResponseResponseWav2"
+                  "$ref": "#/components/schemas/AudioSpeech200WavResponseSchema"
                 }
               },
               "audio/mpeg": {
                 "schema": {
-                  "$ref": "#/components/schemas/AudioSpeech200ResponseResponseMpeg2"
+                  "$ref": "#/components/schemas/AudioSpeech200MpegResponseSchema"
                 }
               },
               "text/event-stream": {
@@ -7210,7 +7210,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponse"
+                  "$ref": "#/components/schemas/RealtimeTts200Response"
                 }
               }
             }
@@ -7271,7 +7271,7 @@
             "content": {
               "text/html": {
                 "schema": {
-                  "$ref": "#/components/schemas/AudioTranscriptions413ResponseResponseHtml"
+                  "$ref": "#/components/schemas/AudioTranscriptions413HtmlResponseSchema"
                 }
               }
             }
@@ -7342,7 +7342,7 @@
             "content": {
               "text/html": {
                 "schema": {
-                  "$ref": "#/components/schemas/AudioTranslations413ResponseResponseHtml"
+                  "$ref": "#/components/schemas/AudioTranslations413HtmlResponseSchema"
                 }
               }
             }
@@ -8306,7 +8306,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetBatches200ResponseResponseJson"
+                  "$ref": "#/components/schemas/GetBatches200ResponseSchema"
                 }
               }
             }
@@ -8671,7 +8671,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetAllEvaluationJobs200ResponseResponseJson"
+                  "$ref": "#/components/schemas/GetAllEvaluationJobs200ResponseSchema"
                 }
               }
             }
@@ -8889,7 +8889,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DefaultResponseResponseJson"
+                  "$ref": "#/components/schemas/RealtimeTranscription200Response"
                 }
               }
             }
@@ -27709,7 +27709,7 @@
           }
         }
       },
-      "GetFilesByIdContent200Response": {
+      "GetFilesByIdContent200PlainResponse": {
         "type": "string",
         "format": "binary"
       },
@@ -27996,7 +27996,7 @@
           }
         }
       },
-      "GetFinetuneDownload200Response": {
+      "GetFinetuneDownload200OctetStreamResponse": {
         "type": "string",
         "format": "binary"
       },
@@ -28057,22 +28057,22 @@
           }
         }
       },
-      "AudioSpeech200Response": {
+      "AudioSpeech200OctetStreamResponse": {
         "type": "string",
         "format": "binary"
       },
-      "AudioSpeech200ResponseResponseWav": {
+      "AudioSpeech200WavResponse": {
         "type": "string",
         "format": "binary"
       },
-      "AudioSpeech200ResponseResponseMpeg": {
+      "AudioSpeech200MpegResponse": {
         "type": "string",
         "format": "binary"
       },
-      "AudioTranscriptions413Response": {
+      "AudioTranscriptions413HtmlResponse": {
         "type": "string"
       },
-      "AudioTranslations413Response": {
+      "AudioTranslations413HtmlResponse": {
         "type": "string"
       },
       "UpdateEndpointRequest": {
@@ -28558,151 +28558,151 @@
         "type": "object",
         "description": "Empty response returned after a successful delete operation."
       },
-      "GetDeployments500ResponseResponseJson": {
+      "GetDeployments500ResponseSchema": {
         "type": "object"
       },
-      "PostDeployments400ResponseResponseJson": {
+      "PostDeployments400ResponseSchema": {
         "type": "object"
       },
-      "PostDeployments500ResponseResponseJson": {
+      "PostDeployments500ResponseSchema": {
         "type": "object"
       },
-      "DeleteDeploymentsById200ResponseResponseJson": {
+      "DeleteDeploymentsById200ResponseSchema": {
         "type": "object"
       },
-      "DeleteDeploymentsById404ResponseResponseJson": {
+      "DeleteDeploymentsById404ResponseSchema": {
         "type": "object"
       },
-      "DeleteDeploymentsById500ResponseResponseJson": {
+      "DeleteDeploymentsById500ResponseSchema": {
         "type": "object"
       },
-      "GetDeploymentsById404ResponseResponseJson": {
+      "GetDeploymentsById404ResponseSchema": {
         "type": "object"
       },
-      "GetDeploymentsById500ResponseResponseJson": {
+      "GetDeploymentsById500ResponseSchema": {
         "type": "object"
       },
-      "PatchDeploymentsById400ResponseResponseJson": {
+      "PatchDeploymentsById400ResponseSchema": {
         "type": "object"
       },
-      "PatchDeploymentsById404ResponseResponseJson": {
+      "PatchDeploymentsById404ResponseSchema": {
         "type": "object"
       },
-      "PatchDeploymentsById500ResponseResponseJson": {
+      "PatchDeploymentsById500ResponseSchema": {
         "type": "object"
       },
-      "GetDeploymentsByIdLogs404ResponseResponseJson": {
+      "GetDeploymentsByIdLogs404ResponseSchema": {
         "type": "object"
       },
-      "GetDeploymentsByIdLogs500ResponseResponseJson": {
+      "GetDeploymentsByIdLogs500ResponseSchema": {
         "type": "object"
       },
-      "GetDeploymentsSecrets500ResponseResponseJson": {
+      "GetDeploymentsSecrets500ResponseSchema": {
         "type": "object"
       },
-      "PostDeploymentsSecrets400ResponseResponseJson": {
+      "PostDeploymentsSecrets400ResponseSchema": {
         "type": "object"
       },
-      "PostDeploymentsSecrets500ResponseResponseJson": {
+      "PostDeploymentsSecrets500ResponseSchema": {
         "type": "object"
       },
-      "DeleteDeploymentsSecretsById200ResponseResponseJson": {
+      "DeleteDeploymentsSecretsById200ResponseSchema": {
         "type": "object"
       },
-      "DeleteDeploymentsSecretsById404ResponseResponseJson": {
+      "DeleteDeploymentsSecretsById404ResponseSchema": {
         "type": "object"
       },
-      "DeleteDeploymentsSecretsById500ResponseResponseJson": {
+      "DeleteDeploymentsSecretsById500ResponseSchema": {
         "type": "object"
       },
-      "GetDeploymentsSecretsById404ResponseResponseJson": {
+      "GetDeploymentsSecretsById404ResponseSchema": {
         "type": "object"
       },
-      "GetDeploymentsSecretsById500ResponseResponseJson": {
+      "GetDeploymentsSecretsById500ResponseSchema": {
         "type": "object"
       },
-      "PatchDeploymentsSecretsById400ResponseResponseJson": {
+      "PatchDeploymentsSecretsById400ResponseSchema": {
         "type": "object"
       },
-      "PatchDeploymentsSecretsById404ResponseResponseJson": {
+      "PatchDeploymentsSecretsById404ResponseSchema": {
         "type": "object"
       },
-      "PatchDeploymentsSecretsById500ResponseResponseJson": {
+      "PatchDeploymentsSecretsById500ResponseSchema": {
         "type": "object"
       },
-      "GetDeploymentsStorageByFilename307ResponseResponseJson": {
+      "GetDeploymentsStorageByFilename307ResponseSchema": {
         "type": "string"
       },
-      "GetDeploymentsStorageByFilename400ResponseResponseJson": {
+      "GetDeploymentsStorageByFilename400ResponseSchema": {
         "type": "object",
         "additionalProperties": {
           "type": "string"
         }
       },
-      "GetDeploymentsStorageByFilename404ResponseResponseJson": {
+      "GetDeploymentsStorageByFilename404ResponseSchema": {
         "type": "object",
         "additionalProperties": {
           "type": "string"
         }
       },
-      "GetDeploymentsStorageByFilename500ResponseResponseJson": {
+      "GetDeploymentsStorageByFilename500ResponseSchema": {
         "type": "object",
         "additionalProperties": {
           "type": "string"
         }
       },
-      "GetDeploymentsStorageByFilenameUrl400ResponseResponseJson": {
+      "GetDeploymentsStorageByFilenameUrl400ResponseSchema": {
         "type": "object",
         "additionalProperties": {
           "type": "string"
         }
       },
-      "GetDeploymentsStorageByFilenameUrl404ResponseResponseJson": {
+      "GetDeploymentsStorageByFilenameUrl404ResponseSchema": {
         "type": "object",
         "additionalProperties": {
           "type": "string"
         }
       },
-      "GetDeploymentsStorageByFilenameUrl500ResponseResponseJson": {
+      "GetDeploymentsStorageByFilenameUrl500ResponseSchema": {
         "type": "object",
         "additionalProperties": {
           "type": "string"
         }
       },
-      "GetDeploymentsStorageVolumes500ResponseResponseJson": {
+      "GetDeploymentsStorageVolumes500ResponseSchema": {
         "type": "object"
       },
-      "PostDeploymentsStorageVolumes400ResponseResponseJson": {
+      "PostDeploymentsStorageVolumes400ResponseSchema": {
         "type": "object"
       },
-      "PostDeploymentsStorageVolumes500ResponseResponseJson": {
+      "PostDeploymentsStorageVolumes500ResponseSchema": {
         "type": "object"
       },
-      "DeleteDeploymentsStorageVolumesById200ResponseResponseJson": {
+      "DeleteDeploymentsStorageVolumesById200ResponseSchema": {
         "type": "object"
       },
-      "DeleteDeploymentsStorageVolumesById404ResponseResponseJson": {
+      "DeleteDeploymentsStorageVolumesById404ResponseSchema": {
         "type": "object"
       },
-      "DeleteDeploymentsStorageVolumesById500ResponseResponseJson": {
+      "DeleteDeploymentsStorageVolumesById500ResponseSchema": {
         "type": "object"
       },
-      "GetDeploymentsStorageVolumesById400ResponseResponseJson": {
+      "GetDeploymentsStorageVolumesById400ResponseSchema": {
         "type": "object"
       },
-      "GetDeploymentsStorageVolumesById404ResponseResponseJson": {
+      "GetDeploymentsStorageVolumesById404ResponseSchema": {
         "type": "object"
       },
-      "GetDeploymentsStorageVolumesById500ResponseResponseJson": {
+      "GetDeploymentsStorageVolumesById500ResponseSchema": {
         "type": "object"
       },
-      "PatchDeploymentsStorageVolumesById400ResponseResponseJson": {
+      "PatchDeploymentsStorageVolumesById400ResponseSchema": {
         "type": "object"
       },
-      "PatchDeploymentsStorageVolumesById404ResponseResponseJson": {
+      "PatchDeploymentsStorageVolumesById404ResponseSchema": {
         "type": "object"
       },
-      "PatchDeploymentsStorageVolumesById500ResponseResponseJson": {
+      "PatchDeploymentsStorageVolumesById500ResponseSchema": {
         "type": "object"
       },
       "Models200Response": {
@@ -28711,35 +28711,35 @@
           "$ref": "#/components/schemas/ModelInfo"
         }
       },
-      "GetFilesByIdContent200ResponseResponsePlain": {
+      "GetFilesByIdContent200PlainResponseSchema": {
         "type": "string",
         "format": "binary"
       },
-      "GetFinetuneDownload200ResponseResponseOctetStream": {
+      "GetFinetuneDownload200OctetStreamResponseSchema": {
         "type": "string",
         "format": "binary"
       },
-      "AudioSpeech200ResponseResponseOctetStream": {
+      "AudioSpeech200OctetStreamResponseSchema": {
         "type": "string",
         "format": "binary"
       },
-      "AudioSpeech200ResponseResponseWav2": {
+      "AudioSpeech200WavResponseSchema": {
         "type": "string",
         "format": "binary"
       },
-      "AudioSpeech200ResponseResponseMpeg2": {
+      "AudioSpeech200MpegResponseSchema": {
         "type": "string",
         "format": "binary"
       },
-      "DefaultResponse": {
+      "RealtimeTts200Response": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"
       },
-      "AudioTranscriptions413ResponseResponseHtml": {
+      "AudioTranscriptions413HtmlResponseSchema": {
         "type": "string"
       },
-      "AudioTranslations413ResponseResponseHtml": {
+      "AudioTranslations413HtmlResponseSchema": {
         "type": "string"
       },
       "ListEndpoints200Response": {
@@ -28793,19 +28793,19 @@
           }
         }
       },
-      "GetBatches200ResponseResponseJson": {
+      "GetBatches200ResponseSchema": {
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/BatchJob"
         }
       },
-      "GetAllEvaluationJobs200ResponseResponseJson": {
+      "GetAllEvaluationJobs200ResponseSchema": {
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/EvaluationJob"
         }
       },
-      "DefaultResponseResponseJson": {
+      "RealtimeTranscription200Response": {
         "title": "DefaultResponse",
         "type": "object",
         "description": "Default response schema"

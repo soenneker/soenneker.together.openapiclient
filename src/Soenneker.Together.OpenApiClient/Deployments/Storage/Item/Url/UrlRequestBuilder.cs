@@ -39,9 +39,9 @@ namespace Soenneker.Together.OpenApiClient.Deployments.Storage.Item.Url
         /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.SignedUrlResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.GetDeploymentsStorageByFilenameUrl400ResponseResponseJson">When receiving a 400 status code</exception>
-        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.GetDeploymentsStorageByFilenameUrl404ResponseResponseJson">When receiving a 404 status code</exception>
-        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.GetDeploymentsStorageByFilenameUrl500ResponseResponseJson">When receiving a 500 status code</exception>
+        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.GetDeploymentsStorageByFilenameUrl400ResponseSchema">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.GetDeploymentsStorageByFilenameUrl404ResponseSchema">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.GetDeploymentsStorageByFilenameUrl500ResponseSchema">When receiving a 500 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Together.OpenApiClient.Models.SignedUrlResponse?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -54,9 +54,9 @@ namespace Soenneker.Together.OpenApiClient.Deployments.Storage.Item.Url
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Soenneker.Together.OpenApiClient.Models.GetDeploymentsStorageByFilenameUrl400ResponseResponseJson.CreateFromDiscriminatorValue },
-                { "404", global::Soenneker.Together.OpenApiClient.Models.GetDeploymentsStorageByFilenameUrl404ResponseResponseJson.CreateFromDiscriminatorValue },
-                { "500", global::Soenneker.Together.OpenApiClient.Models.GetDeploymentsStorageByFilenameUrl500ResponseResponseJson.CreateFromDiscriminatorValue },
+                { "400", global::Soenneker.Together.OpenApiClient.Models.GetDeploymentsStorageByFilenameUrl400ResponseSchema.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.Together.OpenApiClient.Models.GetDeploymentsStorageByFilenameUrl404ResponseSchema.CreateFromDiscriminatorValue },
+                { "500", global::Soenneker.Together.OpenApiClient.Models.GetDeploymentsStorageByFilenameUrl500ResponseSchema.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.SignedUrlResponse>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.SignedUrlResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
