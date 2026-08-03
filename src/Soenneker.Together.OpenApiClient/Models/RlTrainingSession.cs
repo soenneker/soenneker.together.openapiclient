@@ -25,6 +25,14 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string CreatedBy { get; set; }
 #endif
+        /// <summary>Display name used to identify the training session</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? DisplayName { get; set; }
+#nullable restore
+#else
+        public string DisplayName { get; set; }
+#endif
         /// <summary>Structured detail for the training session&apos;s current error</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -56,6 +64,14 @@ namespace Soenneker.Together.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.Together.OpenApiClient.Models.RlLoraConfig LoraConfig { get; set; }
+#endif
+        /// <summary>Auxiliary metadata associated with a training session</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionMetadata? Metadata { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionMetadata Metadata { get; set; }
 #endif
         /// <summary>Model resource this session is attached to. The session runs on that resource&apos;s GPU pods.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -120,10 +136,12 @@ namespace Soenneker.Together.OpenApiClient.Models
             {
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetStringValue(); } },
+                { "display_name", n => { DisplayName = n.GetStringValue(); } },
                 { "error", n => { Error = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionError>(global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionError.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "inference_checkpoints", n => { InferenceCheckpoints = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RlInferenceCheckpoint>(global::Soenneker.Together.OpenApiClient.Models.RlInferenceCheckpoint.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "lora_config", n => { LoraConfig = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlLoraConfig>(global::Soenneker.Together.OpenApiClient.Models.RlLoraConfig.CreateFromDiscriminatorValue); } },
+                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionMetadata>(global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionMetadata.CreateFromDiscriminatorValue); } },
                 { "model_resources_id", n => { ModelResourcesId = n.GetStringValue(); } },
                 { "resume_from_checkpoint_id", n => { ResumeFromCheckpointId = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionStatus>(); } },
@@ -141,10 +159,12 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteStringValue("created_by", CreatedBy);
+            writer.WriteStringValue("display_name", DisplayName);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionError>("error", Error);
             writer.WriteStringValue("id", Id);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RlInferenceCheckpoint>("inference_checkpoints", InferenceCheckpoints);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlLoraConfig>("lora_config", LoraConfig);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionMetadata>("metadata", Metadata);
             writer.WriteStringValue("model_resources_id", ModelResourcesId);
             writer.WriteStringValue("resume_from_checkpoint_id", ResumeFromCheckpointId);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionStatus>("status", Status);

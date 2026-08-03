@@ -20,5 +20,9 @@ namespace Soenneker.Together.OpenApiClient.Models
         #pragma warning disable CS1591
         ProductFineTuning,
         #pragma warning restore CS1591
+        [EnumMember(Value = "PRODUCT_RESERVED")]
+        #pragma warning disable CS1591
+        ProductReserved,
+        #pragma warning restore CS1591
     }
 }

@@ -31,11 +31,11 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public global::Soenneker.Together.OpenApiClient.Models.DeCreateRolloutRequestCanary Canary { get; set; }
 #endif
-        /// <summary>Optional final replica count for the source deployment after completion.</summary>
+        /// <summary>Optional final replica count for the source deployment. Defaults to 0, which drains and stops the source.</summary>
         public int? FinalSourceReplicas { get; set; }
-        /// <summary>Optional final replica count for the target deployment after completion.</summary>
+        /// <summary>Optional target replica count at completion. Must be at least 1 when set; defaults to the source deployment&apos;s replica count at create time.</summary>
         public int? FinalTargetReplicas { get; set; }
-        /// <summary>Optional metric gates evaluated after each step&apos;s soak.</summary>
+        /// <summary>Optional metric gates evaluated after each step&apos;s soak. Canary only; rejected on rolling and blue-green rollouts.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Together.OpenApiClient.Models.DeMetricRule>? Metrics { get; set; }
@@ -51,8 +51,6 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public global::Soenneker.Together.OpenApiClient.Models.DeCreateRolloutRequestRolling Rolling { get; set; }
 #endif
-        /// <summary>Optional policy for the source deployment after completion.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.DeCreateRolloutRequestSourceCleanup? SourceCleanup { get; set; }
         /// <summary>Deployment that traffic shifts away from.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -60,14 +58,6 @@ namespace Soenneker.Together.OpenApiClient.Models
 #nullable restore
 #else
         public string SourceDeploymentId { get; set; }
-#endif
-        /// <summary>Optional per-step soak duration before the metric gate runs.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? StabilizationWindow { get; set; }
-#nullable restore
-#else
-        public string StabilizationWindow { get; set; }
 #endif
         /// <summary>Deployment that traffic shifts toward.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -108,9 +98,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "finalTargetReplicas", n => { FinalTargetReplicas = n.GetIntValue(); } },
                 { "metrics", n => { Metrics = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.DeMetricRule>(global::Soenneker.Together.OpenApiClient.Models.DeMetricRule.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "rolling", n => { Rolling = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeCreateRolloutRequestRolling>(global::Soenneker.Together.OpenApiClient.Models.DeCreateRolloutRequestRolling.CreateFromDiscriminatorValue); } },
-                { "sourceCleanup", n => { SourceCleanup = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeCreateRolloutRequestSourceCleanup>(); } },
                 { "sourceDeploymentId", n => { SourceDeploymentId = n.GetStringValue(); } },
-                { "stabilizationWindow", n => { StabilizationWindow = n.GetStringValue(); } },
                 { "targetDeploymentId", n => { TargetDeploymentId = n.GetStringValue(); } },
             };
         }
@@ -127,9 +115,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteIntValue("finalTargetReplicas", FinalTargetReplicas);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.DeMetricRule>("metrics", Metrics);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeCreateRolloutRequestRolling>("rolling", Rolling);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeCreateRolloutRequestSourceCleanup>("sourceCleanup", SourceCleanup);
             writer.WriteStringValue("sourceDeploymentId", SourceDeploymentId);
-            writer.WriteStringValue("stabilizationWindow", StabilizationWindow);
             writer.WriteStringValue("targetDeploymentId", TargetDeploymentId);
             writer.WriteAdditionalData(AdditionalData);
         }

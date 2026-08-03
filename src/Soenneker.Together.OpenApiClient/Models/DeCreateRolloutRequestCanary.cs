@@ -15,7 +15,7 @@ namespace Soenneker.Together.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Optional interval between steps. Defaults to 10m if omitted.</summary>
+        /// <summary>Optional positive soak between steps. Defaults to 3m if omitted, and grows to cover metric rule windows plus ingestion lag.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? StepInterval { get; set; }
@@ -23,7 +23,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string StepInterval { get; set; }
 #endif
-        /// <summary>Required progression steps. The final step must send 100 percent traffic to the target.</summary>
+        /// <summary>Optional progression steps. Defaults to 5, 25, 50, 100 percent when empty; explicit steps must increase and end at 100 percent.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Together.OpenApiClient.Models.DeRolloutStep>? Steps { get; set; }

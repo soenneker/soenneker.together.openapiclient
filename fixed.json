@@ -1762,7 +1762,7 @@
           "RolloutService"
         ],
         "summary": "Pause a rollout",
-        "description": "Pauses a running rollout at its current traffic split and records an optional reason.",
+        "description": "Requests a running or stabilizing rollout to pause and records an optional reason. The response returns the PAUSING snapshot; poll GetRollout until state is PAUSED to confirm the executor has parked.",
         "operationId": "RolloutServicePauseRollout",
         "parameters": [
           {
@@ -1837,7 +1837,7 @@
           "RolloutService"
         ],
         "summary": "Resume a rollout",
-        "description": "Resumes a paused rollout from its current step and traffic split.",
+        "description": "Resumes a pausing, paused, or system-paused rollout from its current step and traffic split.",
         "operationId": "RolloutServiceResumeRollout",
         "parameters": [
           {
@@ -1912,7 +1912,7 @@
           "RolloutService"
         ],
         "summary": "Cancel a rollout",
-        "description": "Cancels a running, paused, system-paused, or stabilizing rollout by freezing the current traffic split. Revert is removed and rejected; cancel with freeze, then run a reverse rollout back to the source. The response is the accepted rollout snapshot; poll GetRollout until it reaches CANCELED.",
+        "description": "Cancels a running, pausing, paused, system-paused, or stabilizing rollout by freezing the current traffic split. Revert is removed and rejected; cancel with freeze, then run a reverse rollout back to the source. The response is the accepted rollout snapshot; poll GetRollout until it reaches CANCELED.",
         "operationId": "RolloutServiceCancelRollout",
         "parameters": [
           {
@@ -6401,6 +6401,16 @@
               }
             }
           },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          },
           "400": {
             "description": "Bad Request",
             "content": {
@@ -6413,16 +6423,6 @@
           },
           "401": {
             "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorData"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -6503,22 +6503,22 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "Price estimated successfully",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PostFineTunesEstimatePrice200Response"
-                }
-              }
-            }
-          },
           "500": {
             "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Price estimated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostFineTunesEstimatePrice200Response"
                 }
               }
             }
@@ -9683,6 +9683,56 @@
             }
           }
         }
+      },
+      "patch": {
+        "tags": [
+          "RL"
+        ],
+        "summary": "Update a training session",
+        "description": "Updates the display name or metadata associated with a training session. Omitted fields remain unchanged, and empty strings clear existing values.",
+        "operationId": "UpdateTrainingSession",
+        "parameters": [
+          {
+            "name": "sessionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "ID of the training session"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RlUpdateTrainingSessionRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated training session details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RlTrainingSession"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/rl/training-sessions/{sessionId}/stop": {
@@ -11111,6 +11161,13 @@
               },
               "description": "Severity tiers to include. Omit or pass an empty array to include all severities."
             }
+          },
+          {
+            "name": "order_by",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/HealthCheckServiceListPassiveHealthCheckAlertsOrderByParameter"
+            }
           }
         ],
         "responses": {
@@ -11340,7 +11397,7 @@
           },
           "activeRolloutId": {
             "type": "string",
-            "description": "ID of the currently active rollout, or empty if none.",
+            "description": "ID of the currently active rollout in an in-flight state, including paused.",
             "readOnly": true
           }
         },
@@ -12212,23 +12269,15 @@
             "items": {
               "$ref": "#/components/schemas/DeMetricRule"
             },
-            "description": "Optional metric gates evaluated after each step\u0027s soak."
-          },
-          "stabilizationWindow": {
-            "pattern": "^-?(?:0|[1-9][0-9]{0,11})(?:\\.[0-9]{1,9})?s$",
-            "type": "string",
-            "description": "Optional per-step soak duration before the metric gate runs."
-          },
-          "sourceCleanup": {
-            "$ref": "#/components/schemas/DeCreateRolloutRequestSourceCleanup"
+            "description": "Optional metric gates evaluated after each step\u0027s soak. Canary only; rejected on rolling and blue-green rollouts."
           },
           "finalSourceReplicas": {
             "type": "integer",
-            "description": "Optional final replica count for the source deployment after completion."
+            "description": "Optional final replica count for the source deployment. Defaults to 0, which drains and stops the source."
           },
           "finalTargetReplicas": {
             "type": "integer",
-            "description": "Optional final replica count for the target deployment after completion."
+            "description": "Optional target replica count at completion. Must be at least 1 when set; defaults to the source deployment\u0027s replica count at create time."
           }
         },
         "description": "Strategy, metric gates, timing, and cleanup policy for shifting traffic between two deployments under one endpoint."
@@ -12244,9 +12293,6 @@
         "x-stainless-empty-object": true
       },
       "DeCanaryConfig": {
-        "required": [
-          "steps"
-        ],
         "type": "object",
         "properties": {
           "steps": {
@@ -12254,15 +12300,15 @@
             "items": {
               "$ref": "#/components/schemas/DeRolloutStep"
             },
-            "description": "Required progression steps. The final step must send 100 percent traffic to the target."
+            "description": "Optional progression steps. Defaults to 5, 25, 50, 100 percent when empty; explicit steps must increase and end at 100 percent."
           },
           "stepInterval": {
             "pattern": "^-?(?:0|[1-9][0-9]{0,11})(?:\\.[0-9]{1,9})?s$",
             "type": "string",
-            "description": "Optional interval between steps. Defaults to 10m if omitted."
+            "description": "Optional positive soak between steps. Defaults to 3m if omitted, and grows to cover metric rule windows plus ingestion lag."
           }
         },
-        "description": "Canary strategy configuration for gradual traffic progression."
+        "description": "Canary strategy configuration for gradual traffic progression. An empty config uses the default 5, 25, 50, 100 percent ladder."
       },
       "DeRolloutStep": {
         "required": [
@@ -12844,7 +12890,8 @@
           "performanceBenchmarks",
           "config",
           "model",
-          "parallelism"
+          "parallelism",
+          "modelName"
         ],
         "type": "object",
         "properties": {
@@ -12891,6 +12938,10 @@
           "parallelism": {
             "type": "string",
             "description": "Free-form parallelism spec for the profile, such as TP8, TP4, EP, or PD; supersedes tensor_parallel_size."
+          },
+          "modelName": {
+            "type": "string",
+            "description": "Fully-qualified deploy model name in the form \u0060{projectSlug}/{modelName}\u0060, such as \u0060Qwen/Qwen3.5-9B-FP8\u0060; empty when no public model is linked."
           }
         },
         "description": "Certified deployment profile for a supported model."
@@ -13225,7 +13276,7 @@
           },
           "targetDeploymentId": {
             "type": "string",
-            "description": "Deployment under the parent endpoint that receives mirrored traffic. Exclude it from the endpoint\u0027s live traffic split."
+            "description": "Deployment under the parent endpoint that receives mirrored traffic. It must not be a live traffic-split member or the source or target of an active rollout; traffic-split weight 0 warm-up targets are allowed."
           },
           "description": {
             "type": "string",
@@ -13243,7 +13294,7 @@
           },
           "targetDeploymentId": {
             "type": "string",
-            "description": "Replacement deployment under the parent endpoint. Exclude it from the endpoint\u0027s live traffic split."
+            "description": "Replacement deployment under the parent endpoint. It must not be a live traffic-split member or the source or target of an active rollout; traffic-split weight 0 warm-up targets are allowed."
           },
           "description": {
             "type": "string",
@@ -13408,7 +13459,7 @@
           },
           "targetDeploymentId": {
             "type": "string",
-            "description": "Deployment under the parent endpoint that receives mirrored traffic. Shadow targets should be excluded from the endpoint\u0027s live traffic split."
+            "description": "Deployment under the parent endpoint that receives mirrored traffic. It must not be a live traffic-split member or the source or target of an active rollout; traffic-split weight 0 warm-up targets are allowed."
           },
           "description": {
             "type": "string",
@@ -16202,7 +16253,8 @@
       },
       "RlCustomForwardBackwardResult": {
         "type": "object",
-        "description": "Result of a custom forward-backward pass operation"
+        "description": "Result of a custom forward-backward pass operation",
+        "x-stainless-empty-object": true
       },
       "RlForwardBody": {
         "required": [
@@ -16316,10 +16368,12 @@
           "TRAINING_OPERATION_ERROR_CODE_TIMEOUT",
           "TRAINING_OPERATION_ERROR_CODE_INTERNAL_ERROR",
           "TRAINING_OPERATION_ERROR_CODE_SESSION_NOT_ACTIVE",
-          "TRAINING_OPERATION_ERROR_CODE_INVALID_INPUT"
+          "TRAINING_OPERATION_ERROR_CODE_INVALID_INPUT",
+          "TRAINING_OPERATION_ERROR_CODE_NON_FINITE_LOSS"
         ],
         "type": "string",
         "additionalProperties": false,
+        "description": "Application error code for a failed training operation",
         "x-ms-enum": {
           "name": "RlTrainingOperationErrorCode",
           "modelAsString": false,
@@ -16347,6 +16401,10 @@
             {
               "value": "TRAINING_OPERATION_ERROR_CODE_INVALID_INPUT",
               "name": "TrainingOperationErrorCodeInvalidInput"
+            },
+            {
+              "value": "TRAINING_OPERATION_ERROR_CODE_NON_FINITE_LOSS",
+              "name": "TrainingOperationErrorCodeNonFiniteLoss"
             }
           ]
         }
@@ -16411,8 +16469,31 @@
             "type": "string",
             "description": "Model resource to attach the session to. The session runs on that resource\u0027s GPU pods.",
             "example": "123e4567-e89b-12d3-a456-426614174000"
+          },
+          "display_name": {
+            "maxLength": 128,
+            "type": "string",
+            "description": "Optional display name used to identify the training session",
+            "example": "gsm8k-experiment-2"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/RlTrainingSessionMetadata"
           }
         }
+      },
+      "RlUpdateTrainingSessionRequest": {
+        "type": "object",
+        "properties": {
+          "display_name": {
+            "maxLength": 128,
+            "type": "string",
+            "description": "Display name to update. An empty string clears the existing display name."
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/RlTrainingSessionMetadata"
+          }
+        },
+        "description": "Fields to update on a training session"
       },
       "RlTrainingSessionStatus": {
         "enum": [
@@ -16520,9 +16601,61 @@
           ]
         }
       },
+      "RlWandbMetadata": {
+        "type": "object",
+        "properties": {
+          "entity": {
+            "maxLength": 256,
+            "type": "string",
+            "description": "Weights \u0026 Biases username or team that owns the project",
+            "example": "example-org"
+          },
+          "project": {
+            "maxLength": 256,
+            "type": "string",
+            "description": "Weights \u0026 Biases project containing the run",
+            "example": "grpo-gsm8k"
+          },
+          "group": {
+            "maxLength": 256,
+            "type": "string",
+            "description": "Weights \u0026 Biases group used to organize related runs",
+            "example": "gsm8k-35b-sweep"
+          },
+          "run_name": {
+            "maxLength": 256,
+            "type": "string",
+            "description": "Human-readable name of the Weights \u0026 Biases run",
+            "example": "exp2-thinking-4k-ctx"
+          },
+          "run_id": {
+            "maxLength": 256,
+            "type": "string",
+            "description": "Unique identifier assigned to the run by Weights \u0026 Biases",
+            "example": "abc123"
+          },
+          "url": {
+            "maxLength": 2048,
+            "type": "string",
+            "description": "HTTPS URL for the Weights \u0026 Biases run",
+            "example": "https://wandb.ai/example-org/example-project/runs/run-id"
+          }
+        },
+        "description": "Details that associate a training session with a Weights \u0026 Biases run"
+      },
+      "RlTrainingSessionMetadata": {
+        "type": "object",
+        "properties": {
+          "wandb": {
+            "$ref": "#/components/schemas/RlWandbMetadata"
+          }
+        },
+        "description": "Auxiliary metadata associated with a training session"
+      },
       "RlTrainingSession": {
         "required": [
           "id",
+          "metadata",
           "status",
           "inference_checkpoints",
           "training_checkpoints",
@@ -16538,6 +16671,15 @@
             "type": "string",
             "description": "ID of the training session",
             "example": "123e4567-e89b-12d3-a456-426614174000"
+          },
+          "display_name": {
+            "maxLength": 128,
+            "type": "string",
+            "description": "Display name used to identify the training session",
+            "example": "gsm8k-experiment-2"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/RlTrainingSessionMetadata"
           },
           "status": {
             "$ref": "#/components/schemas/RlTrainingSessionStatus"
@@ -16665,7 +16807,8 @@
       },
       "RlAdamWOptimizerConfig": {
         "type": "object",
-        "description": "AdamW optimizer configuration"
+        "description": "AdamW optimizer configuration",
+        "x-stainless-empty-object": true
       },
       "RlMuonOptimizerConfig": {
         "type": "object",
@@ -17060,11 +17203,38 @@
           "gpu_type",
           "num_gpus",
           "cluster_name",
-          "cuda_version",
-          "nvidia_driver_version",
           "billing_type"
         ],
         "type": "object",
+        "anyOf": [
+          {
+            "required": [
+              "nvidia_version_id"
+            ],
+            "type": "object",
+            "not": {
+              "anyOf": [
+                {
+                  "required": [
+                    "cuda_version"
+                  ]
+                },
+                {
+                  "required": [
+                    "nvidia_driver_version"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "required": [
+              "cuda_version",
+              "nvidia_driver_version"
+            ],
+            "type": "object"
+          }
+        ],
         "properties": {
           "cluster_type": {
             "$ref": "#/components/schemas/GpuClusterCreateRequestClusterType"
@@ -17134,11 +17304,15 @@
           },
           "cuda_version": {
             "type": "string",
-            "description": "CUDA version for this cluster. For example, 12.5"
+            "description": "Legacy CUDA selector for this cluster. Bare semantic values such as 12.5 select ubuntu-22.04; existing OS-suffixed values remain accepted for compatibility. Must be paired with nvidia_driver_version. Prefer nvidia_version_id for new integrations."
           },
           "nvidia_driver_version": {
             "type": "string",
-            "description": "Nvidia driver version for this cluster. For example, 550. Only some combination of cuda_version and nvidia_driver_version are supported."
+            "description": "Legacy NVIDIA driver selector for this cluster. For example, 550. Must be paired with cuda_version. Prefer nvidia_version_id for new integrations."
+          },
+          "nvidia_version_id": {
+            "type": "string",
+            "description": "Canonical region-specific NVIDIA version ID. If cuda_version and nvidia_driver_version are also set, they must resolve to the same catalog entry."
           },
           "slurm_image": {
             "type": "string",
@@ -17620,14 +17794,22 @@
         "properties": {
           "cuda_version": {
             "type": "string",
-            "description": "CUDA driver version."
+            "description": "Semantic CUDA version without operating system text."
           },
           "nvidia_driver_version": {
             "type": "string",
             "description": "NVIDIA driver version."
+          },
+          "id": {
+            "type": "string",
+            "description": "Region-specific NVIDIA catalog ID to send as nvidia_version_id when creating a cluster."
+          },
+          "os": {
+            "type": "string",
+            "description": "Operating system image family for this catalog entry."
           }
         },
-        "description": "CUDA/NVIDIA driver versions pair available in the region to use in the create cluster request."
+        "description": "NVIDIA software configuration available in the region."
       },
       "AcceptanceTestsParams": {
         "type": "object",
@@ -18082,7 +18264,7 @@
             "items": {
               "$ref": "#/components/schemas/PassiveHealthCheckAlert"
             },
-            "description": "Alerts on the current page, ordered by start time descending."
+            "description": "Alerts on the current page, ordered by the request sort order."
           },
           "next_page_token": {
             "type": "string",
@@ -24413,9 +24595,6 @@
         "description": "Region constraints used to schedule the deployment\u0027s replicas."
       },
       "DeCreateRolloutRequestCanary": {
-        "required": [
-          "steps"
-        ],
         "type": "object",
         "properties": {
           "steps": {
@@ -24423,12 +24602,12 @@
             "items": {
               "$ref": "#/components/schemas/DeRolloutStep"
             },
-            "description": "Required progression steps. The final step must send 100 percent traffic to the target."
+            "description": "Optional progression steps. Defaults to 5, 25, 50, 100 percent when empty; explicit steps must increase and end at 100 percent."
           },
           "stepInterval": {
             "pattern": "^-?(?:0|[1-9][0-9]{0,11})(?:\\.[0-9]{1,9})?s$",
             "type": "string",
-            "description": "Optional interval between steps. Defaults to 10m if omitted."
+            "description": "Optional positive soak between steps. Defaults to 3m if omitted, and grows to cover metric rule windows plus ingestion lag."
           }
         },
         "description": "Canary rollout strategy configuration. Mutually exclusive with blueGreen and rolling."
@@ -24521,7 +24700,7 @@
             "format": "date-time"
           }
         },
-        "description": "Output only. Why and when the rollout was paused. Set only while paused or system-paused.",
+        "description": "Output only. Why and when the rollout was paused. Set while a pause is pending or effective (PAUSING, PAUSED, or SYSTEM_PAUSED); while PAUSING, pausedAt records when the pause was requested.",
         "readOnly": true
       },
       "DeRolloutStatusCondition": {
@@ -26549,8 +26728,8 @@
         },
         "description": "Adjusts the likelihood of specific tokens appearing in the generated output.",
         "example": {
-          "105": 21.4,
-          "1024": -10.5
+          "1024": -10.5,
+          "105": 21.4
         }
       },
       "CompletionChoiceDelta": {
@@ -26629,8 +26808,8 @@
         },
         "description": "Adjusts the likelihood of specific tokens appearing in the generated output.",
         "example": {
-          "105": 21.4,
-          "1024": -10.5
+          "1024": -10.5,
+          "105": 21.4
         }
       },
       "ChatCompletionRequestChatTemplateKwargs": {
@@ -29973,11 +30152,12 @@
       "DeEndpointEndpointType": {
         "enum": [
           "ENDPOINT_TYPE_DEDICATED",
-          "ENDPOINT_TYPE_SERVERLESS"
+          "ENDPOINT_TYPE_SERVERLESS",
+          "ENDPOINT_TYPE_RESERVED"
         ],
         "type": "string",
         "additionalProperties": false,
-        "description": "Serving class of the endpoint.",
+        "description": "Serving class of the endpoint. Reserved endpoints use reserved capacity.",
         "readOnly": true,
         "x-ms-enum": {
           "name": "DeEndpointEndpointType",
@@ -29990,6 +30170,10 @@
             {
               "value": "ENDPOINT_TYPE_SERVERLESS",
               "name": "EndpointTypeServerless"
+            },
+            {
+              "value": "ENDPOINT_TYPE_RESERVED",
+              "name": "EndpointTypeReserved"
             }
           ]
         }
@@ -30174,29 +30358,6 @@
           ]
         }
       },
-      "DeCreateRolloutRequestSourceCleanup": {
-        "enum": [
-          "SOURCE_CLEANUP_POLICY_DRAIN",
-          "SOURCE_CLEANUP_POLICY_KEEP"
-        ],
-        "type": "string",
-        "additionalProperties": false,
-        "description": "Optional policy for the source deployment after completion.",
-        "x-ms-enum": {
-          "name": "DeCreateRolloutRequestSourceCleanup",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "SOURCE_CLEANUP_POLICY_DRAIN",
-              "name": "SourceCleanupPolicyDrain"
-            },
-            {
-              "value": "SOURCE_CLEANUP_POLICY_KEEP",
-              "name": "SourceCleanupPolicyKeep"
-            }
-          ]
-        }
-      },
       "DeMetricRuleStat": {
         "enum": [
           "METRIC_STAT_TYPE_AVG",
@@ -30349,7 +30510,8 @@
           "ROLLOUT_STATE_PENDING",
           "ROLLOUT_STATE_SYSTEM_PAUSED",
           "ROLLOUT_STATE_CANCELLING",
-          "ROLLOUT_STATE_CANCELED"
+          "ROLLOUT_STATE_CANCELED",
+          "ROLLOUT_STATE_PAUSING"
         ],
         "type": "string",
         "additionalProperties": false,
@@ -30398,6 +30560,10 @@
             {
               "value": "ROLLOUT_STATE_CANCELED",
               "name": "RolloutStateCanceled"
+            },
+            {
+              "value": "ROLLOUT_STATE_PAUSING",
+              "name": "RolloutStatePausing"
             }
           ]
         }
@@ -30767,7 +30933,8 @@
         "enum": [
           "PRODUCT_SERVERLESS",
           "PRODUCT_DEDICATED",
-          "PRODUCT_FINE_TUNING"
+          "PRODUCT_FINE_TUNING",
+          "PRODUCT_RESERVED"
         ],
         "type": "string",
         "additionalProperties": false,
@@ -30786,6 +30953,10 @@
             {
               "value": "PRODUCT_FINE_TUNING",
               "name": "ProductFineTuning"
+            },
+            {
+              "value": "PRODUCT_RESERVED",
+              "name": "ProductReserved"
             }
           ]
         }
@@ -31452,7 +31623,8 @@
           "RTX_6000_PCI",
           "L40_PCIE",
           "B200_SXM",
-          "H100_SXM_INF"
+          "H100_SXM_INF",
+          "B300_SXM"
         ],
         "type": "string",
         "additionalProperties": false,
@@ -31484,6 +31656,10 @@
             {
               "value": "H100_SXM_INF",
               "name": "H100SxmInf"
+            },
+            {
+              "value": "B300_SXM",
+              "name": "B300Sxm"
             }
           ]
         }
@@ -31547,7 +31723,8 @@
           "RTX_6000_PCI",
           "L40_PCIE",
           "B200_SXM",
-          "H100_SXM_INF"
+          "H100_SXM_INF",
+          "B300_SXM"
         ],
         "type": "string",
         "additionalProperties": false,
@@ -31578,6 +31755,10 @@
             {
               "value": "H100_SXM_INF",
               "name": "H100SxmInf"
+            },
+            {
+              "value": "B300_SXM",
+              "name": "B300Sxm"
             }
           ]
         }
@@ -31658,7 +31839,8 @@
           "RTX_6000_PCI",
           "L40_PCIE",
           "B200_SXM",
-          "H100_SXM_INF"
+          "H100_SXM_INF",
+          "B300_SXM"
         ],
         "type": "string",
         "additionalProperties": false,
@@ -31689,6 +31871,10 @@
             {
               "value": "H100_SXM_INF",
               "name": "H100SxmInf"
+            },
+            {
+              "value": "B300_SXM",
+              "name": "B300Sxm"
             }
           ]
         }
@@ -34986,6 +35172,29 @@
             {
               "value": "PHC_SEVERITY_CRITICAL",
               "name": "PhcSeverityCritical"
+            }
+          ]
+        }
+      },
+      "HealthCheckServiceListPassiveHealthCheckAlertsOrderByParameter": {
+        "enum": [
+          "PHC_ALERT_ORDER_STARTED_AT_ASC",
+          "PHC_ALERT_ORDER_STARTED_AT_DESC"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Sort order for returned alerts. Omit for newest alerts first.",
+        "x-ms-enum": {
+          "name": "HealthCheckServiceListPassiveHealthCheckAlertsOrderByParameter",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "PHC_ALERT_ORDER_STARTED_AT_ASC",
+              "name": "PhcAlertOrderStartedAtAsc"
+            },
+            {
+              "value": "PHC_ALERT_ORDER_STARTED_AT_DESC",
+              "name": "PhcAlertOrderStartedAtDesc"
             }
           ]
         }

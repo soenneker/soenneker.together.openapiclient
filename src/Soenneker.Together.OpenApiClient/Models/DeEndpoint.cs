@@ -13,7 +13,7 @@ namespace Soenneker.Together.OpenApiClient.Models
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DeEndpoint : IAdditionalDataHolder, IParsable
     {
-        /// <summary>ID of the currently active rollout, or empty if none.</summary>
+        /// <summary>ID of the currently active rollout in an in-flight state, including paused.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ActiveRolloutId { get; private set; }
@@ -33,7 +33,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public List<global::Soenneker.Together.OpenApiClient.Models.DeDeploymentSummary> Deployments { get; private set; }
 #endif
-        /// <summary>Serving class of the endpoint.</summary>
+        /// <summary>Serving class of the endpoint. Reserved endpoints use reserved capacity.</summary>
         public global::Soenneker.Together.OpenApiClient.Models.DeEndpointEndpointType? EndpointType { get; private set; }
         /// <summary>Opaque version tag for optimistic concurrency control.Supply on update/delete to ensure consistent read-modify-write.If not set, the write overwrites based on current state.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

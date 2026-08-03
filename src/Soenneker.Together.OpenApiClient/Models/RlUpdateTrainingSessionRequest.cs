@@ -8,53 +8,45 @@ using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
     /// <summary>
-    /// Deployment under the parent endpoint that should receive mirrored requests from a shadow experiment.
+    /// Fields to update on a training session
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class DeCreateShadowExperimentTargetRequest : IAdditionalDataHolder, IParsable
+    public partial class RlUpdateTrainingSessionRequest : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Optional free-form target description.</summary>
+        /// <summary>Display name to update. An empty string clears the existing display name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Description { get; set; }
+        public string? DisplayName { get; set; }
 #nullable restore
 #else
-        public string Description { get; set; }
+        public string DisplayName { get; set; }
 #endif
-        /// <summary>Human-readable target name, unique within the shadow experiment. At most 256 characters.</summary>
+        /// <summary>Auxiliary metadata associated with a training session</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionMetadata? Metadata { get; set; }
 #nullable restore
 #else
-        public string Name { get; set; }
-#endif
-        /// <summary>Deployment under the parent endpoint that receives mirrored traffic. It must not be a live traffic-split member or the source or target of an active rollout; traffic-split weight 0 warm-up targets are allowed.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? TargetDeploymentId { get; set; }
-#nullable restore
-#else
-        public string TargetDeploymentId { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionMetadata Metadata { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.DeCreateShadowExperimentTargetRequest"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlUpdateTrainingSessionRequest"/> and sets the default values.
         /// </summary>
-        public DeCreateShadowExperimentTargetRequest()
+        public RlUpdateTrainingSessionRequest()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.DeCreateShadowExperimentTargetRequest"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.RlUpdateTrainingSessionRequest"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Together.OpenApiClient.Models.DeCreateShadowExperimentTargetRequest CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Together.OpenApiClient.Models.RlUpdateTrainingSessionRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.DeCreateShadowExperimentTargetRequest();
+            return new global::Soenneker.Together.OpenApiClient.Models.RlUpdateTrainingSessionRequest();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -64,9 +56,8 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "description", n => { Description = n.GetStringValue(); } },
-                { "name", n => { Name = n.GetStringValue(); } },
-                { "targetDeploymentId", n => { TargetDeploymentId = n.GetStringValue(); } },
+                { "display_name", n => { DisplayName = n.GetStringValue(); } },
+                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionMetadata>(global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionMetadata.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -76,9 +67,8 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("description", Description);
-            writer.WriteStringValue("name", Name);
-            writer.WriteStringValue("targetDeploymentId", TargetDeploymentId);
+            writer.WriteStringValue("display_name", DisplayName);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionMetadata>("metadata", Metadata);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

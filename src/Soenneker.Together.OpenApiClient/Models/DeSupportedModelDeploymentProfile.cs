@@ -57,6 +57,14 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string Model { get; set; }
 #endif
+        /// <summary>Fully-qualified deploy model name in the form `{projectSlug}/{modelName}`, such as `Qwen/Qwen3.5-9B-FP8`; empty when no public model is linked.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ModelName { get; set; }
+#nullable restore
+#else
+        public string ModelName { get; set; }
+#endif
         /// <summary>Free-form parallelism spec for the profile, such as TP8, TP4, EP, or PD; supersedes tensor_parallel_size.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -123,6 +131,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "gpuCount", n => { GpuCount = n.GetIntValue(); } },
                 { "gpuType", n => { GpuType = n.GetStringValue(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
+                { "modelName", n => { ModelName = n.GetStringValue(); } },
                 { "parallelism", n => { Parallelism = n.GetStringValue(); } },
                 { "performanceBenchmarks", n => { PerformanceBenchmarks = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelPerformanceBenchmarks>(global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelPerformanceBenchmarks.CreateFromDiscriminatorValue); } },
                 { "profileId", n => { ProfileId = n.GetStringValue(); } },
@@ -143,6 +152,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteIntValue("gpuCount", GpuCount);
             writer.WriteStringValue("gpuType", GpuType);
             writer.WriteStringValue("model", Model);
+            writer.WriteStringValue("modelName", ModelName);
             writer.WriteStringValue("parallelism", Parallelism);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelPerformanceBenchmarks>("performanceBenchmarks", PerformanceBenchmarks);
             writer.WriteStringValue("profileId", ProfileId);

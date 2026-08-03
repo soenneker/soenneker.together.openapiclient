@@ -14,6 +14,14 @@ namespace Soenneker.Together.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Optional display name used to identify the training session</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? DisplayName { get; set; }
+#nullable restore
+#else
+        public string DisplayName { get; set; }
+#endif
         /// <summary>LoRA adapter configuration</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -21,6 +29,14 @@ namespace Soenneker.Together.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.Together.OpenApiClient.Models.RlLoraConfig LoraConfig { get; set; }
+#endif
+        /// <summary>Auxiliary metadata associated with a training session</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionMetadata? Metadata { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionMetadata Metadata { get; set; }
 #endif
         /// <summary>Model resource to attach the session to. The session runs on that resource&apos;s GPU pods.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -71,7 +87,9 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "display_name", n => { DisplayName = n.GetStringValue(); } },
                 { "lora_config", n => { LoraConfig = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlLoraConfig>(global::Soenneker.Together.OpenApiClient.Models.RlLoraConfig.CreateFromDiscriminatorValue); } },
+                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionMetadata>(global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionMetadata.CreateFromDiscriminatorValue); } },
                 { "model_resources_id", n => { ModelResourcesId = n.GetStringValue(); } },
                 { "resume_from_checkpoint_id", n => { ResumeFromCheckpointId = n.GetStringValue(); } },
                 { "resume_from_hf_checkpoint", n => { ResumeFromHfCheckpoint = n.GetStringValue(); } },
@@ -84,7 +102,9 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("display_name", DisplayName);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlLoraConfig>("lora_config", LoraConfig);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionMetadata>("metadata", Metadata);
             writer.WriteStringValue("model_resources_id", ModelResourcesId);
             writer.WriteStringValue("resume_from_checkpoint_id", ResumeFromCheckpointId);
             writer.WriteStringValue("resume_from_hf_checkpoint", ResumeFromHfCheckpoint);

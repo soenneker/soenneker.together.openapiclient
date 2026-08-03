@@ -66,7 +66,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #endif
         /// <summary>Type of cluster to create.</summary>
         public global::Soenneker.Together.OpenApiClient.Models.GpuClusterCreateRequestClusterType? ClusterType { get; set; }
-        /// <summary>CUDA version for this cluster. For example, 12.5</summary>
+        /// <summary>Legacy CUDA selector for this cluster. Bare semantic values such as 12.5 select ubuntu-22.04; existing OS-suffixed values remain accepted for compatibility. Must be paired with nvidia_driver_version. Prefer nvidia_version_id for new integrations.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CudaVersion { get; set; }
@@ -88,13 +88,21 @@ namespace Soenneker.Together.OpenApiClient.Models
         public int? NumPreemptibleGpus { get; set; }
         /// <summary>Number of prepaid (PLG) reserved GPUs for this cluster. When omitted for RESERVED billing on create, the server defaults this to num_gpus.</summary>
         public int? NumReservedGpus { get; set; }
-        /// <summary>Nvidia driver version for this cluster. For example, 550. Only some combination of cuda_version and nvidia_driver_version are supported.</summary>
+        /// <summary>Legacy NVIDIA driver selector for this cluster. For example, 550. Must be paired with cuda_version. Prefer nvidia_version_id for new integrations.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? NvidiaDriverVersion { get; set; }
 #nullable restore
 #else
         public string NvidiaDriverVersion { get; set; }
+#endif
+        /// <summary>Canonical region-specific NVIDIA version ID. If cuda_version and nvidia_driver_version are also set, they must resolve to the same catalog entry.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? NvidiaVersionId { get; set; }
+#nullable restore
+#else
+        public string NvidiaVersionId { get; set; }
 #endif
         /// <summary>The oidc_config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -196,6 +204,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "num_preemptible_gpus", n => { NumPreemptibleGpus = n.GetIntValue(); } },
                 { "num_reserved_gpus", n => { NumReservedGpus = n.GetIntValue(); } },
                 { "nvidia_driver_version", n => { NvidiaDriverVersion = n.GetStringValue(); } },
+                { "nvidia_version_id", n => { NvidiaVersionId = n.GetStringValue(); } },
                 { "oidc_config", n => { OidcConfig = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.OidcConfig>(global::Soenneker.Together.OpenApiClient.Models.OidcConfig.CreateFromDiscriminatorValue); } },
                 { "project_id", n => { ProjectId = n.GetStringValue(); } },
                 { "region", n => { Region = n.GetStringValue(); } },
@@ -233,6 +242,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteIntValue("num_preemptible_gpus", NumPreemptibleGpus);
             writer.WriteIntValue("num_reserved_gpus", NumReservedGpus);
             writer.WriteStringValue("nvidia_driver_version", NvidiaDriverVersion);
+            writer.WriteStringValue("nvidia_version_id", NvidiaVersionId);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.OidcConfig>("oidc_config", OidcConfig);
             writer.WriteStringValue("project_id", ProjectId);
             writer.WriteStringValue("region", Region);

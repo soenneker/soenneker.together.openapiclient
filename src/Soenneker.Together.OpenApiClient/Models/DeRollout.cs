@@ -47,7 +47,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string Id { get; private set; }
 #endif
-        /// <summary>Output only. Why and when the rollout was paused. Set only while paused or system-paused.</summary>
+        /// <summary>Output only. Why and when the rollout was paused. Set while a pause is pending or effective (PAUSING, PAUSED, or SYSTEM_PAUSED); while PAUSING, pausedAt records when the pause was requested.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Together.OpenApiClient.Models.DeRolloutPauseInfo? PauseInfo { get; private set; }

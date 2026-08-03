@@ -8,39 +8,37 @@ using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
     /// <summary>
-    /// Error details for a failed training operation
+    /// Auxiliary metadata associated with a training session
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class RlTrainingOperationError : IAdditionalDataHolder, IParsable
+    public partial class RlTrainingSessionMetadata : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Application error code for a failed training operation</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.RlTrainingOperationErrorCode? Code { get; set; }
-        /// <summary>Human-readable error message</summary>
+        /// <summary>Details that associate a training session with a Weights &amp; Biases run</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Message { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlWandbMetadata? Wandb { get; set; }
 #nullable restore
 #else
-        public string Message { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlWandbMetadata Wandb { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlTrainingOperationError"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionMetadata"/> and sets the default values.
         /// </summary>
-        public RlTrainingOperationError()
+        public RlTrainingSessionMetadata()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.RlTrainingOperationError"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionMetadata"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Together.OpenApiClient.Models.RlTrainingOperationError CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionMetadata CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.RlTrainingOperationError();
+            return new global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionMetadata();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -50,8 +48,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "code", n => { Code = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlTrainingOperationErrorCode>(); } },
-                { "message", n => { Message = n.GetStringValue(); } },
+                { "wandb", n => { Wandb = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlWandbMetadata>(global::Soenneker.Together.OpenApiClient.Models.RlWandbMetadata.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -61,8 +58,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlTrainingOperationErrorCode>("code", Code);
-            writer.WriteStringValue("message", Message);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlWandbMetadata>("wandb", Wandb);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

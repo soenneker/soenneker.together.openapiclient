@@ -32,5 +32,9 @@ namespace Soenneker.Together.OpenApiClient.Models
         #pragma warning disable CS1591
         H100SxmInf,
         #pragma warning restore CS1591
+        [EnumMember(Value = "B300_SXM")]
+        #pragma warning disable CS1591
+        B300Sxm,
+        #pragma warning restore CS1591
     }
 }

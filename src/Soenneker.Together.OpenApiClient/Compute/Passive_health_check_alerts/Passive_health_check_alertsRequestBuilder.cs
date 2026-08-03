@@ -22,7 +22,7 @@ namespace Soenneker.Together.OpenApiClient.Compute.Passive_health_check_alerts
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Passive_health_check_alertsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/compute/passive_health_check_alerts{?cluster_id*,instance_id*,intent_id*,page_size*,page_token*,severity_filter*,status*}", pathParameters)
+        public Passive_health_check_alertsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/compute/passive_health_check_alerts{?cluster_id*,instance_id*,intent_id*,order_by*,page_size*,page_token*,severity_filter*,status*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.Together.OpenApiClient.Compute.Passive_health_check_alerts
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Passive_health_check_alertsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/compute/passive_health_check_alerts{?cluster_id*,instance_id*,intent_id*,page_size*,page_token*,severity_filter*,status*}", rawUrl)
+        public Passive_health_check_alertsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/compute/passive_health_check_alerts{?cluster_id*,instance_id*,intent_id*,order_by*,page_size*,page_token*,severity_filter*,status*}", rawUrl)
         {
         }
         /// <summary>
@@ -112,6 +112,8 @@ namespace Soenneker.Together.OpenApiClient.Compute.Passive_health_check_alerts
             [QueryParameter("intent_id")]
             public string IntentId { get; set; }
 #endif
+            [QueryParameter("order_by")]
+            public global::Soenneker.Together.OpenApiClient.Models.HealthCheckServiceListPassiveHealthCheckAlertsOrderByParameter? OrderBy { get; set; }
             [QueryParameter("page_size")]
             public int? PageSize { get; set; }
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

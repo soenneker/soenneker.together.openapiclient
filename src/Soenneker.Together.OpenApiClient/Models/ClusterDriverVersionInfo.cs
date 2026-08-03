@@ -8,20 +8,28 @@ using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
     /// <summary>
-    /// CUDA/NVIDIA driver versions pair available in the region to use in the create cluster request.
+    /// NVIDIA software configuration available in the region.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ClusterDriverVersionInfo : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>CUDA driver version.</summary>
+        /// <summary>Semantic CUDA version without operating system text.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CudaVersion { get; set; }
 #nullable restore
 #else
         public string CudaVersion { get; set; }
+#endif
+        /// <summary>Region-specific NVIDIA catalog ID to send as nvidia_version_id when creating a cluster.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Id { get; set; }
+#nullable restore
+#else
+        public string Id { get; set; }
 #endif
         /// <summary>NVIDIA driver version.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -30,6 +38,14 @@ namespace Soenneker.Together.OpenApiClient.Models
 #nullable restore
 #else
         public string NvidiaDriverVersion { get; set; }
+#endif
+        /// <summary>Operating system image family for this catalog entry.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Os { get; set; }
+#nullable restore
+#else
+        public string Os { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.ClusterDriverVersionInfo"/> and sets the default values.
@@ -57,7 +73,9 @@ namespace Soenneker.Together.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "cuda_version", n => { CudaVersion = n.GetStringValue(); } },
+                { "id", n => { Id = n.GetStringValue(); } },
                 { "nvidia_driver_version", n => { NvidiaDriverVersion = n.GetStringValue(); } },
+                { "os", n => { Os = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -68,7 +86,9 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("cuda_version", CudaVersion);
+            writer.WriteStringValue("id", Id);
             writer.WriteStringValue("nvidia_driver_version", NvidiaDriverVersion);
+            writer.WriteStringValue("os", Os);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -34,7 +34,7 @@ namespace Soenneker.Together.OpenApiClient.Projects.Item.Endpoints.Item.Rollouts
         {
         }
         /// <summary>
-        /// Pauses a running rollout at its current traffic split and records an optional reason.
+        /// Requests a running or stabilizing rollout to pause and records an optional reason. The response returns the PAUSING snapshot; poll GetRollout until state is PAUSED to confirm the executor has parked.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.DeRollout"/></returns>
         /// <param name="body">Optional concurrency check and audit reason for pausing a running rollout.</param>
@@ -59,7 +59,7 @@ namespace Soenneker.Together.OpenApiClient.Projects.Item.Endpoints.Item.Rollouts
             return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.DeRollout>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.DeRollout.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Pauses a running rollout at its current traffic split and records an optional reason.
+        /// Requests a running or stabilizing rollout to pause and records an optional reason. The response returns the PAUSING snapshot; poll GetRollout until state is PAUSED to confirm the executor has parked.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">Optional concurrency check and audit reason for pausing a running rollout.</param>

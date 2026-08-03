@@ -34,7 +34,7 @@ namespace Soenneker.Together.OpenApiClient.Projects.Item.Endpoints.Item.Rollouts
         {
         }
         /// <summary>
-        /// Resumes a paused rollout from its current step and traffic split.
+        /// Resumes a pausing, paused, or system-paused rollout from its current step and traffic split.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.DeRollout"/></returns>
         /// <param name="body">Optional concurrency check for resuming a paused rollout.</param>
@@ -59,7 +59,7 @@ namespace Soenneker.Together.OpenApiClient.Projects.Item.Endpoints.Item.Rollouts
             return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.DeRollout>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.DeRollout.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Resumes a paused rollout from its current step and traffic split.
+        /// Resumes a pausing, paused, or system-paused rollout from its current step and traffic split.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">Optional concurrency check for resuming a paused rollout.</param>

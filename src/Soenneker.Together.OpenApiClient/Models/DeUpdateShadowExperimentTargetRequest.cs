@@ -39,7 +39,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>Replacement deployment under the parent endpoint. Exclude it from the endpoint&apos;s live traffic split.</summary>
+        /// <summary>Replacement deployment under the parent endpoint. It must not be a live traffic-split member or the source or target of an active rollout; traffic-split weight 0 warm-up targets are allowed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? TargetDeploymentId { get; set; }

@@ -3,10 +3,9 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
+    /// <summary>Application error code for a failed training operation</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public enum RlTrainingOperationErrorCode
-    #pragma warning restore CS1591
     {
         [EnumMember(Value = "TRAINING_OPERATION_ERROR_CODE_UNSPECIFIED")]
         #pragma warning disable CS1591
@@ -31,6 +30,10 @@ namespace Soenneker.Together.OpenApiClient.Models
         [EnumMember(Value = "TRAINING_OPERATION_ERROR_CODE_INVALID_INPUT")]
         #pragma warning disable CS1591
         TrainingOperationErrorCodeInvalidInput,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "TRAINING_OPERATION_ERROR_CODE_NON_FINITE_LOSS")]
+        #pragma warning disable CS1591
+        TrainingOperationErrorCodeNonFiniteLoss,
         #pragma warning restore CS1591
     }
 }

@@ -47,5 +47,9 @@ namespace Soenneker.Together.OpenApiClient.Models
         #pragma warning disable CS1591
         RolloutStateCanceled,
         #pragma warning restore CS1591
+        [EnumMember(Value = "ROLLOUT_STATE_PAUSING")]
+        #pragma warning disable CS1591
+        RolloutStatePausing,
+        #pragma warning restore CS1591
     }
 }

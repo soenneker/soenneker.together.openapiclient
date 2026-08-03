@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
-    /// <summary>Serving class of the endpoint.</summary>
+    /// <summary>Serving class of the endpoint. Reserved endpoints use reserved capacity.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum DeEndpointEndpointType
     {
@@ -14,6 +14,10 @@ namespace Soenneker.Together.OpenApiClient.Models
         [EnumMember(Value = "ENDPOINT_TYPE_SERVERLESS")]
         #pragma warning disable CS1591
         EndpointTypeServerless,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ENDPOINT_TYPE_RESERVED")]
+        #pragma warning disable CS1591
+        EndpointTypeReserved,
         #pragma warning restore CS1591
     }
 }
