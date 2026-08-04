@@ -112,5 +112,9 @@ namespace Soenneker.Together.OpenApiClient.Models
         #pragma warning disable CS1591
         EarlyStopped,
         #pragma warning restore CS1591
+        [EnumMember(Value = "tokenized_dataset_upload_complete")]
+        #pragma warning disable CS1591
+        TokenizedDatasetUploadComplete,
+        #pragma warning restore CS1591
     }
 }

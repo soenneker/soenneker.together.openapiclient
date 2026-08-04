@@ -5,6 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.Together.OpenApiClient.FineTunes.Item.Cancel;
 using Soenneker.Together.OpenApiClient.FineTunes.Item.Checkpoints;
+using Soenneker.Together.OpenApiClient.FineTunes.Item.DownloadTokenizedDataset;
 using Soenneker.Together.OpenApiClient.FineTunes.Item.Events;
 using Soenneker.Together.OpenApiClient.FineTunes.Item.Metrics;
 using Soenneker.Together.OpenApiClient.Models;
@@ -30,6 +31,11 @@ namespace Soenneker.Together.OpenApiClient.FineTunes.Item
         public global::Soenneker.Together.OpenApiClient.FineTunes.Item.Checkpoints.CheckpointsRequestBuilder Checkpoints
         {
             get => new global::Soenneker.Together.OpenApiClient.FineTunes.Item.Checkpoints.CheckpointsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The downloadTokenizedDataset property</summary>
+        public global::Soenneker.Together.OpenApiClient.FineTunes.Item.DownloadTokenizedDataset.DownloadTokenizedDatasetRequestBuilder DownloadTokenizedDataset
+        {
+            get => new global::Soenneker.Together.OpenApiClient.FineTunes.Item.DownloadTokenizedDataset.DownloadTokenizedDatasetRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The events property</summary>
         public global::Soenneker.Together.OpenApiClient.FineTunes.Item.Events.EventsRequestBuilder Events

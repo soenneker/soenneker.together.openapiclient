@@ -66,6 +66,14 @@ namespace Soenneker.Together.OpenApiClient.Models
         public int? Step { get; set; }
         /// <summary>The token_count property</summary>
         public int? TokenCount { get; set; }
+        /// <summary>Storage path for the tokenized dataset archive associated with this event.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? TokenizedDatasetPath { get; set; }
+#nullable restore
+#else
+        public string TokenizedDatasetPath { get; set; }
+#endif
         /// <summary>The total_steps property</summary>
         public int? TotalSteps { get; set; }
         /// <summary>The type property</summary>
@@ -114,6 +122,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "param_count", n => { ParamCount = n.GetIntValue(); } },
                 { "step", n => { Step = n.GetIntValue(); } },
                 { "token_count", n => { TokenCount = n.GetIntValue(); } },
+                { "tokenized_dataset_path", n => { TokenizedDatasetPath = n.GetStringValue(); } },
                 { "total_steps", n => { TotalSteps = n.GetIntValue(); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.FinetuneEventType>(); } },
                 { "wandb_url", n => { WandbUrl = n.GetStringValue(); } },
@@ -137,6 +146,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteIntValue("param_count", ParamCount);
             writer.WriteIntValue("step", Step);
             writer.WriteIntValue("token_count", TokenCount);
+            writer.WriteStringValue("tokenized_dataset_path", TokenizedDatasetPath);
             writer.WriteIntValue("total_steps", TotalSteps);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.FinetuneEventType>("type", Type);
             writer.WriteStringValue("wandb_url", WandbUrl);

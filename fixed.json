@@ -6401,16 +6401,6 @@
               }
             }
           },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorData"
-                }
-              }
-            }
-          },
           "400": {
             "description": "Bad Request",
             "content": {
@@ -6423,6 +6413,16 @@
           },
           "401": {
             "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -6503,22 +6503,22 @@
           }
         },
         "responses": {
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorData"
-                }
-              }
-            }
-          },
           "200": {
             "description": "Price estimated successfully",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/PostFineTunesEstimatePrice200Response"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
                 }
               }
             }
@@ -6770,6 +6770,49 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/FinetuneListCheckpoints"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/fine-tunes/{id}/download-tokenized-dataset": {
+      "get": {
+        "tags": [
+          "Fine-tuning"
+        ],
+        "summary": "Download tokenized dataset",
+        "description": "Get a presigned URL for the tokenized dataset archive generated for a fine-tune job.",
+        "operationId": "GetFineTunesByIdDownloadTokenizedDataset",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The ID of the fine-tune job whose tokenized dataset should be downloaded."
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Presigned tokenized dataset download URL.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FineTuneTokenizedDatasetRetrieveResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Fine-tune job or tokenized dataset not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
                 }
               }
             }
@@ -20752,6 +20795,15 @@
           "model_output_path": {
             "type": "string"
           },
+          "tokenized_dataset_path": {
+            "type": "string",
+            "description": "Storage path for the tokenized dataset archive generated for this fine-tune job."
+          },
+          "tokenized_dataset_uploaded_at": {
+            "type": "string",
+            "description": "Timestamp when the tokenized dataset archive was uploaded.",
+            "format": "date-time"
+          },
           "model_object_id": {
             "type": "string",
             "description": "Together model registry object ID for the final model weights (e.g. \u0060ml_...\u0060)."
@@ -21473,7 +21525,8 @@
           "job_restarted",
           "refund",
           "warning",
-          "early_stopped"
+          "early_stopped",
+          "tokenized_dataset_upload_complete"
         ],
         "type": "string",
         "additionalProperties": false,
@@ -21584,6 +21637,10 @@
             {
               "value": "early_stopped",
               "name": "EarlyStopped"
+            },
+            {
+              "value": "tokenized_dataset_upload_complete",
+              "name": "TokenizedDatasetUploadComplete"
             }
           ]
         }
@@ -21661,6 +21718,10 @@
           "model_path": {
             "type": "string"
           },
+          "tokenized_dataset_path": {
+            "type": "string",
+            "description": "Storage path for the tokenized dataset archive associated with this event."
+          },
           "early_stopping_best_step": {
             "type": "integer",
             "description": "For early_stopped events, the selected best-checkpoint step when a finite best metric exists. If early_stopping_best_metric_value is null, this is the halt step.\n",
@@ -21676,6 +21737,41 @@
             }
           }
         }
+      },
+      "FineTuneTokenizedDatasetRetrieveResponse": {
+        "required": [
+          "url",
+          "filename",
+          "size",
+          "content_type",
+          "expires_at"
+        ],
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "description": "Presigned URL for downloading the tokenized dataset archive.",
+            "format": "uri"
+          },
+          "filename": {
+            "type": "string",
+            "description": "Archive filename to use when saving the downloaded tokenized dataset."
+          },
+          "size": {
+            "type": "integer",
+            "description": "Archive size in bytes."
+          },
+          "content_type": {
+            "type": "string",
+            "description": "MIME type for the tokenized dataset archive."
+          },
+          "expires_at": {
+            "type": "string",
+            "description": "Time when the presigned download URL expires.",
+            "format": "date-time"
+          }
+        },
+        "description": "Presigned download metadata for a fine-tune tokenized dataset archive."
       },
       "FineTuneProgress": {
         "required": [
@@ -26728,8 +26824,8 @@
         },
         "description": "Adjusts the likelihood of specific tokens appearing in the generated output.",
         "example": {
-          "1024": -10.5,
-          "105": 21.4
+          "105": 21.4,
+          "1024": -10.5
         }
       },
       "CompletionChoiceDelta": {
@@ -26808,8 +26904,8 @@
         },
         "description": "Adjusts the likelihood of specific tokens appearing in the generated output.",
         "example": {
-          "1024": -10.5,
-          "105": 21.4
+          "105": 21.4,
+          "1024": -10.5
         }
       },
       "ChatCompletionRequestChatTemplateKwargs": {

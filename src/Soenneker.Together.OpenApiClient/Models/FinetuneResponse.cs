@@ -192,6 +192,16 @@ namespace Soenneker.Together.OpenApiClient.Models
         public global::Soenneker.Together.OpenApiClient.Models.FinetuneJobStatus? Status { get; set; }
         /// <summary>The token_count property</summary>
         public int? TokenCount { get; set; }
+        /// <summary>Storage path for the tokenized dataset archive generated for this fine-tune job.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? TokenizedDatasetPath { get; set; }
+#nullable restore
+#else
+        public string TokenizedDatasetPath { get; set; }
+#endif
+        /// <summary>Timestamp when the tokenized dataset archive was uploaded.</summary>
+        public DateTimeOffset? TokenizedDatasetUploadedAt { get; set; }
         /// <summary>The total_price property</summary>
         public int? TotalPrice { get; set; }
         /// <summary>The training_file property</summary>
@@ -328,6 +338,8 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "started_at", n => { StartedAt = n.GetDateTimeOffsetValue(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.FinetuneJobStatus>(); } },
                 { "token_count", n => { TokenCount = n.GetIntValue(); } },
+                { "tokenized_dataset_path", n => { TokenizedDatasetPath = n.GetStringValue(); } },
+                { "tokenized_dataset_uploaded_at", n => { TokenizedDatasetUploadedAt = n.GetDateTimeOffsetValue(); } },
                 { "total_price", n => { TotalPrice = n.GetIntValue(); } },
                 { "train_on_inputs", n => { TrainOnInputs = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseTrainOnInputs>(global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseTrainOnInputs.CreateFromDiscriminatorValue); } },
                 { "training_file", n => { TrainingFile = n.GetStringValue(); } },
@@ -386,6 +398,8 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("started_at", StartedAt);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.FinetuneJobStatus>("status", Status);
             writer.WriteIntValue("token_count", TokenCount);
+            writer.WriteStringValue("tokenized_dataset_path", TokenizedDatasetPath);
+            writer.WriteDateTimeOffsetValue("tokenized_dataset_uploaded_at", TokenizedDatasetUploadedAt);
             writer.WriteIntValue("total_price", TotalPrice);
             writer.WriteStringValue("training_file", TrainingFile);
             writer.WriteIntValue("trainingfile_numlines", TrainingfileNumlines);
