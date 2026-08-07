@@ -26,6 +26,8 @@ namespace Soenneker.Together.OpenApiClient.Models
         public int? NumSamples { get; set; }
         /// <summary>When true, also compute teacher-forced log-probabilities for the model input tokens and return them in `SampleResult.prompt_logprobs`.</summary>
         public bool? PromptLogprobs { get; set; }
+        /// <summary>When true, capture the mixture-of-experts routing decisions made while generating and return them in `SampledSequence.routed_experts`, so training can reuse the same expert selection. Only available on mixture-of-experts models; ignored otherwise. The captured buffer scales with sequence length, so leave it off unless you replay routing during training.</summary>
+        public bool? ReturnRoutedExperts { get; set; }
         /// <summary>The sampling_params property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -44,6 +46,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             AdditionalData = new Dictionary<string, object>();
             NumSamples = 1;
             PromptLogprobs = false;
+            ReturnRoutedExperts = false;
             TopkPromptLogprobs = 0;
         }
         /// <summary>
@@ -67,6 +70,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "model_inputs", n => { ModelInputs = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RlModelInput>(global::Soenneker.Together.OpenApiClient.Models.RlModelInput.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "num_samples", n => { NumSamples = n.GetIntValue(); } },
                 { "prompt_logprobs", n => { PromptLogprobs = n.GetBoolValue(); } },
+                { "return_routed_experts", n => { ReturnRoutedExperts = n.GetBoolValue(); } },
                 { "sampling_params", n => { SamplingParams = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlSamplingParams>(global::Soenneker.Together.OpenApiClient.Models.RlSamplingParams.CreateFromDiscriminatorValue); } },
                 { "topk_prompt_logprobs", n => { TopkPromptLogprobs = n.GetIntValue(); } },
             };
@@ -81,6 +85,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RlModelInput>("model_inputs", ModelInputs);
             writer.WriteIntValue("num_samples", NumSamples);
             writer.WriteBoolValue("prompt_logprobs", PromptLogprobs);
+            writer.WriteBoolValue("return_routed_experts", ReturnRoutedExperts);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlSamplingParams>("sampling_params", SamplingParams);
             writer.WriteIntValue("topk_prompt_logprobs", TopkPromptLogprobs);
             writer.WriteAdditionalData(AdditionalData);

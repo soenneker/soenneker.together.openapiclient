@@ -15,6 +15,14 @@ namespace Soenneker.Together.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Base model the session trains, taken from the model resource it is attached to</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? BaseModel { get; set; }
+#nullable restore
+#else
+        public string BaseModel { get; set; }
+#endif
         /// <summary>Timestamp when the training session was created</summary>
         public DateTimeOffset? CreatedAt { get; set; }
         /// <summary>ID of the user who created the training session</summary>
@@ -134,6 +142,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "base_model", n => { BaseModel = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetStringValue(); } },
                 { "display_name", n => { DisplayName = n.GetStringValue(); } },
@@ -157,6 +166,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("base_model", BaseModel);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteStringValue("created_by", CreatedBy);
             writer.WriteStringValue("display_name", DisplayName);

@@ -7,39 +7,32 @@ using System.IO;
 using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
+    /// <summary>
+    /// Request body for publishing updated policy parameters for sampling.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
-    public partial class RlWeights : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
+    public partial class RlWeightsSyncBody : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Per-token loss weights, one non-negative weight per target token. A weight of 0 excludes the token from loss; fractional weights are honored only by cross-entropy.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<double?>? Data { get; set; }
-#nullable restore
-#else
-        public List<double?> Data { get; set; }
-#endif
-        /// <summary>The dtype property</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.RlDType? Dtype { get; set; }
+        /// <summary>How updated policy parameters are made available for sampling. SYNCHRONOUS waits for the policy update before returning; BACKGROUND_PUBLISH returns after scheduling the update; PIPELINE overlaps the update with in-flight sampling when possible.</summary>
+        public global::Soenneker.Together.OpenApiClient.Models.RlWeightSyncType? WeightSyncType { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlWeights"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlWeightsSyncBody"/> and sets the default values.
         /// </summary>
-        public RlWeights()
+        public RlWeightsSyncBody()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.RlWeights"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.RlWeightsSyncBody"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Together.OpenApiClient.Models.RlWeights CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Together.OpenApiClient.Models.RlWeightsSyncBody CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.RlWeights();
+            return new global::Soenneker.Together.OpenApiClient.Models.RlWeightsSyncBody();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -49,8 +42,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "data", n => { Data = n.GetCollectionOfPrimitiveValues<double?>()?.AsList(); } },
-                { "dtype", n => { Dtype = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlDType>(); } },
+                { "weight_sync_type", n => { WeightSyncType = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlWeightSyncType>(); } },
             };
         }
         /// <summary>
@@ -60,8 +52,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfPrimitiveValues<double?>("data", Data);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlDType>("dtype", Dtype);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlWeightSyncType>("weight_sync_type", WeightSyncType);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

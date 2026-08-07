@@ -25,6 +25,14 @@ namespace Soenneker.Together.OpenApiClient.Models
 #endif
         /// <summary>Number of model input tokens served from the prefix cache while generating this sequence.</summary>
         public int? PromptCacheHitTokens { get; set; }
+        /// <summary>Mixture-of-experts routing decisions captured while generating, so training can reuse the same expert selection. A contiguous uint16 buffer of selected expert indices, reshaped by `shape`, which is always `[num_tokens, num_layers, topk]`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Together.OpenApiClient.Models.RlRoutedExperts? RoutedExperts { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Together.OpenApiClient.Models.RlRoutedExperts RoutedExperts { get; set; }
+#endif
         /// <summary>Reason generation stopped.</summary>
         public global::Soenneker.Together.OpenApiClient.Models.RlStopReason? StopReason { get; set; }
         /// <summary>Generated token IDs</summary>
@@ -62,6 +70,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             {
                 { "logprobs", n => { Logprobs = n.GetCollectionOfPrimitiveValues<double?>()?.AsList(); } },
                 { "prompt_cache_hit_tokens", n => { PromptCacheHitTokens = n.GetIntValue(); } },
+                { "routed_experts", n => { RoutedExperts = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlRoutedExperts>(global::Soenneker.Together.OpenApiClient.Models.RlRoutedExperts.CreateFromDiscriminatorValue); } },
                 { "stop_reason", n => { StopReason = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlStopReason>(); } },
                 { "tokens", n => { Tokens = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
@@ -75,6 +84,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<double?>("logprobs", Logprobs);
             writer.WriteIntValue("prompt_cache_hit_tokens", PromptCacheHitTokens);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlRoutedExperts>("routed_experts", RoutedExperts);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlStopReason>("stop_reason", StopReason);
             writer.WriteCollectionOfPrimitiveValues<string>("tokens", Tokens);
             writer.WriteAdditionalData(AdditionalData);

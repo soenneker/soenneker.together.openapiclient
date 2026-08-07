@@ -9,6 +9,7 @@ using Soenneker.Together.OpenApiClient.Rl.TrainingSessions.Item.Operations.Infer
 using Soenneker.Together.OpenApiClient.Rl.TrainingSessions.Item.Operations.OptimStep;
 using Soenneker.Together.OpenApiClient.Rl.TrainingSessions.Item.Operations.Sample;
 using Soenneker.Together.OpenApiClient.Rl.TrainingSessions.Item.Operations.TrainingCheckpoint;
+using Soenneker.Together.OpenApiClient.Rl.TrainingSessions.Item.Operations.WeightsSync;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -55,6 +56,11 @@ namespace Soenneker.Together.OpenApiClient.Rl.TrainingSessions.Item.Operations
         public global::Soenneker.Together.OpenApiClient.Rl.TrainingSessions.Item.Operations.TrainingCheckpoint.TrainingCheckpointRequestBuilder TrainingCheckpoint
         {
             get => new global::Soenneker.Together.OpenApiClient.Rl.TrainingSessions.Item.Operations.TrainingCheckpoint.TrainingCheckpointRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The weightsSync property</summary>
+        public global::Soenneker.Together.OpenApiClient.Rl.TrainingSessions.Item.Operations.WeightsSync.WeightsSyncRequestBuilder WeightsSync
+        {
+            get => new global::Soenneker.Together.OpenApiClient.Rl.TrainingSessions.Item.Operations.WeightsSync.WeightsSyncRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Rl.TrainingSessions.Item.Operations.OperationsRequestBuilder"/> and sets the default values.

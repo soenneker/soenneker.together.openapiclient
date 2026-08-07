@@ -7,45 +7,46 @@ using System.IO;
 using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
+    /// <summary>
+    /// Mixture-of-experts routing decisions captured while generating, so training can reuse the same expert selection. A contiguous uint16 buffer of selected expert indices, reshaped by `shape`, which is always `[num_tokens, num_layers, topk]`.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
-    public partial class RlTrainingSample : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
+    public partial class RlRoutedExperts : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Token-level inputs used to compute the loss for one training sample.</summary>
+        /// <summary>Base64-encoded contiguous uint16 buffer of selected expert indices, row-major over (token, layer, k).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RlLossInputs? LossInputs { get; set; }
+        public byte[]? Data { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.RlLossInputs LossInputs { get; set; }
+        public byte[] Data { get; set; }
 #endif
-        /// <summary>The model_input property</summary>
+        /// <summary>Buffer shape as `[num_tokens, num_layers, topk]`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RlModelInput? ModelInput { get; set; }
+        public List<string>? Shape { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.RlModelInput ModelInput { get; set; }
+        public List<string> Shape { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlTrainingSample"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlRoutedExperts"/> and sets the default values.
         /// </summary>
-        public RlTrainingSample()
+        public RlRoutedExperts()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.RlTrainingSample"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.RlRoutedExperts"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Together.OpenApiClient.Models.RlTrainingSample CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Together.OpenApiClient.Models.RlRoutedExperts CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.RlTrainingSample();
+            return new global::Soenneker.Together.OpenApiClient.Models.RlRoutedExperts();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -55,8 +56,8 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "loss_inputs", n => { LossInputs = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlLossInputs>(global::Soenneker.Together.OpenApiClient.Models.RlLossInputs.CreateFromDiscriminatorValue); } },
-                { "model_input", n => { ModelInput = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlModelInput>(global::Soenneker.Together.OpenApiClient.Models.RlModelInput.CreateFromDiscriminatorValue); } },
+                { "data", n => { Data = n.GetByteArrayValue(); } },
+                { "shape", n => { Shape = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
         }
         /// <summary>
@@ -66,8 +67,8 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlLossInputs>("loss_inputs", LossInputs);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlModelInput>("model_input", ModelInput);
+            writer.WriteByteArrayValue("data", Data);
+            writer.WriteCollectionOfPrimitiveValues<string>("shape", Shape);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

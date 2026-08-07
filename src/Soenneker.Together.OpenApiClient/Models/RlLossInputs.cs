@@ -55,6 +55,14 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public global::Soenneker.Together.OpenApiClient.Models.RlPpoLossInputs PpoInputs { get; set; }
 #endif
+        /// <summary>Mixture-of-experts routing decisions captured while generating, so training can reuse the same expert selection. A contiguous uint16 buffer of selected expert indices, reshaped by `shape`, which is always `[num_tokens, num_layers, topk]`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Together.OpenApiClient.Models.RlRoutedExperts? RoutedExperts { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Together.OpenApiClient.Models.RlRoutedExperts RoutedExperts { get; set; }
+#endif
         /// <summary>The target_tokens property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -101,6 +109,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "grpo_inputs", n => { GrpoInputs = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlGrpoLossInputs>(global::Soenneker.Together.OpenApiClient.Models.RlGrpoLossInputs.CreateFromDiscriminatorValue); } },
                 { "importance_sampling_inputs", n => { ImportanceSamplingInputs = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlImportanceSamplingLossInputs>(global::Soenneker.Together.OpenApiClient.Models.RlImportanceSamplingLossInputs.CreateFromDiscriminatorValue); } },
                 { "ppo_inputs", n => { PpoInputs = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlPpoLossInputs>(global::Soenneker.Together.OpenApiClient.Models.RlPpoLossInputs.CreateFromDiscriminatorValue); } },
+                { "routed_experts", n => { RoutedExperts = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlRoutedExperts>(global::Soenneker.Together.OpenApiClient.Models.RlRoutedExperts.CreateFromDiscriminatorValue); } },
                 { "target_tokens", n => { TargetTokens = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlLossTargetTokens>(global::Soenneker.Together.OpenApiClient.Models.RlLossTargetTokens.CreateFromDiscriminatorValue); } },
                 { "weights", n => { Weights = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlWeights>(global::Soenneker.Together.OpenApiClient.Models.RlWeights.CreateFromDiscriminatorValue); } },
             };
@@ -117,6 +126,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlGrpoLossInputs>("grpo_inputs", GrpoInputs);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlImportanceSamplingLossInputs>("importance_sampling_inputs", ImportanceSamplingInputs);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlPpoLossInputs>("ppo_inputs", PpoInputs);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlRoutedExperts>("routed_experts", RoutedExperts);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlLossTargetTokens>("target_tokens", TargetTokens);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlWeights>("weights", Weights);
             writer.WriteAdditionalData(AdditionalData);

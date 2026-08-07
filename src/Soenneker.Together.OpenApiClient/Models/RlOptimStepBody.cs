@@ -7,10 +7,11 @@ using System.IO;
 using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
+    /// <summary>
+    /// Request body for an optimizer step.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class RlOptimStepBody : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     {
         /// <summary>Per-step Adam optimizer overrides.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -30,8 +31,6 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public global::Soenneker.Together.OpenApiClient.Models.RlMuonParams MuonParams { get; set; }
 #endif
-        /// <summary>How the trainer&apos;s updated weights are propagated to the generator after an optimizer step. SYNCHRONOUS publishes inline before the step returns; BACKGROUND_PUBLISH returns immediately and publishes once in-flight rollouts drain; PIPELINE overlaps the publish with in-flight rollouts so they continue decoding under the new weights.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.RlWeightSyncType? WeightSyncType { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlOptimStepBody"/> and sets the default values.
         /// </summary>
@@ -59,7 +58,6 @@ namespace Soenneker.Together.OpenApiClient.Models
             {
                 { "adam_params", n => { AdamParams = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlAdamParams>(global::Soenneker.Together.OpenApiClient.Models.RlAdamParams.CreateFromDiscriminatorValue); } },
                 { "muon_params", n => { MuonParams = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlMuonParams>(global::Soenneker.Together.OpenApiClient.Models.RlMuonParams.CreateFromDiscriminatorValue); } },
-                { "weight_sync_type", n => { WeightSyncType = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlWeightSyncType>(); } },
             };
         }
         /// <summary>
@@ -71,7 +69,6 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlAdamParams>("adam_params", AdamParams);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlMuonParams>("muon_params", MuonParams);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlWeightSyncType>("weight_sync_type", WeightSyncType);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

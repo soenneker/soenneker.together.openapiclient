@@ -21,6 +21,14 @@ namespace Soenneker.Together.OpenApiClient.Models
         public double? Dropout { get; set; }
         /// <summary>Rank of the LoRA adapter</summary>
         public int? Rank { get; set; }
+        /// <summary>Random seed for initializing LoRA adapter weights. Ignored when LoRA is disabled or the session resumes from a checkpoint.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Together.OpenApiClient.Models.RlLoraConfigSeed? Seed { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Together.OpenApiClient.Models.RlLoraConfigSeed Seed { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlLoraConfig"/> and sets the default values.
         /// </summary>
@@ -52,6 +60,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "alpha", n => { Alpha = n.GetIntValue(); } },
                 { "dropout", n => { Dropout = n.GetDoubleValue(); } },
                 { "rank", n => { Rank = n.GetIntValue(); } },
+                { "seed", n => { Seed = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlLoraConfigSeed>(global::Soenneker.Together.OpenApiClient.Models.RlLoraConfigSeed.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -64,6 +73,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteIntValue("alpha", Alpha);
             writer.WriteDoubleValue("dropout", Dropout);
             writer.WriteIntValue("rank", Rank);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlLoraConfigSeed>("seed", Seed);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

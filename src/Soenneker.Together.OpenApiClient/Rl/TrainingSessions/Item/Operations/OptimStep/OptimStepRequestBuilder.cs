@@ -47,10 +47,10 @@ namespace Soenneker.Together.OpenApiClient.Rl.TrainingSessions.Item.Operations.O
         {
         }
         /// <summary>
-        /// Submits an optimizer step operation that will asynchronously apply accumulated gradients to update model parameters.
+        /// Submits an optimizer step operation that will asynchronously apply accumulated gradients to update model parameters. Does not make the updated parameters available for sampling; call `weights-sync` afterwards when you want subsequent samples to use the updated policy.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.RlOptimStepOperation"/></returns>
-        /// <param name="body">The request body</param>
+        /// <param name="body">Request body for an optimizer step.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.ErrorData">When receiving a 4XX or 5XX status code</exception>
@@ -72,10 +72,10 @@ namespace Soenneker.Together.OpenApiClient.Rl.TrainingSessions.Item.Operations.O
             return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.RlOptimStepOperation>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.RlOptimStepOperation.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Submits an optimizer step operation that will asynchronously apply accumulated gradients to update model parameters.
+        /// Submits an optimizer step operation that will asynchronously apply accumulated gradients to update model parameters. Does not make the updated parameters available for sampling; call `weights-sync` afterwards when you want subsequent samples to use the updated policy.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">The request body</param>
+        /// <param name="body">Request body for an optimizer step.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

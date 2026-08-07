@@ -3,14 +3,10 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
-    /// <summary>How the trainer&apos;s updated weights are propagated to the generator after an optimizer step. SYNCHRONOUS publishes inline before the step returns; BACKGROUND_PUBLISH returns immediately and publishes once in-flight rollouts drain; PIPELINE overlaps the publish with in-flight rollouts so they continue decoding under the new weights.</summary>
+    /// <summary>How updated policy parameters are made available for sampling. SYNCHRONOUS waits for the policy update before returning; BACKGROUND_PUBLISH returns after scheduling the update; PIPELINE overlaps the update with in-flight sampling when possible.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum RlWeightSyncType
     {
-        [EnumMember(Value = "WEIGHT_SYNC_TYPE_UNSPECIFIED")]
-        #pragma warning disable CS1591
-        WeightSyncTypeUnspecified,
-        #pragma warning restore CS1591
         [EnumMember(Value = "WEIGHT_SYNC_TYPE_SYNCHRONOUS")]
         #pragma warning disable CS1591
         WeightSyncTypeSynchronous,

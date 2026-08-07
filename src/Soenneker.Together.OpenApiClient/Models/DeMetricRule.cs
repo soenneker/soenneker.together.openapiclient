@@ -15,14 +15,8 @@ namespace Soenneker.Together.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Required metric name as exported to the observability backend.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Name { get; set; }
-#nullable restore
-#else
-        public string Name { get; set; }
-#endif
+        /// <summary>The name property</summary>
+        public global::Soenneker.Together.OpenApiClient.Models.DeMetricRuleName? Name { get; set; }
         /// <summary>Percentile value, such as 99. Set only when stat is METRIC_STAT_TYPE_PERCENTILE.</summary>
         public int? Percentile { get; set; }
         /// <summary>Regression evaluation criteria. Mutually exclusive with thresholdCheck.</summary>
@@ -76,7 +70,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "name", n => { Name = n.GetStringValue(); } },
+                { "name", n => { Name = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeMetricRuleName>(); } },
                 { "percentile", n => { Percentile = n.GetIntValue(); } },
                 { "regressionCheck", n => { RegressionCheck = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeMetricRuleRegressionCheck>(global::Soenneker.Together.OpenApiClient.Models.DeMetricRuleRegressionCheck.CreateFromDiscriminatorValue); } },
                 { "stat", n => { Stat = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeMetricRuleStat>(); } },
@@ -91,7 +85,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("name", Name);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeMetricRuleName>("name", Name);
             writer.WriteIntValue("percentile", Percentile);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeMetricRuleRegressionCheck>("regressionCheck", RegressionCheck);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeMetricRuleStat>("stat", Stat);

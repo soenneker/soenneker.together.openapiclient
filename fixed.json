@@ -6401,6 +6401,16 @@
               }
             }
           },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          },
           "400": {
             "description": "Bad Request",
             "content": {
@@ -6413,16 +6423,6 @@
           },
           "401": {
             "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorData"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -6503,22 +6503,22 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "Price estimated successfully",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PostFineTunesEstimatePrice200Response"
-                }
-              }
-            }
-          },
           "500": {
             "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Price estimated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostFineTunesEstimatePrice200Response"
                 }
               }
             }
@@ -9925,6 +9925,58 @@
         }
       }
     },
+    "/rl/training-sessions/{sessionId}/operations/weights-sync/{operationId}": {
+      "get": {
+        "tags": [
+          "RL"
+        ],
+        "summary": "Get weights-sync operation",
+        "description": "Retrieves the current status and result of a weights-sync operation.",
+        "operationId": "GetWeightsSyncOperation",
+        "parameters": [
+          {
+            "name": "sessionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Training session ID"
+            }
+          },
+          {
+            "name": "operationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Operation ID"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RlWeightsSyncOperation"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/rl/training-sessions/{sessionId}/operations/sample/{operationId}": {
       "get": {
         "tags": [
@@ -10243,7 +10295,7 @@
           "RL"
         ],
         "summary": "Optimizer step",
-        "description": "Submits an optimizer step operation that will asynchronously apply accumulated gradients to update model parameters.",
+        "description": "Submits an optimizer step operation that will asynchronously apply accumulated gradients to update model parameters. Does not make the updated parameters available for sampling; call \u0060weights-sync\u0060 afterwards when you want subsequent samples to use the updated policy.",
         "operationId": "OptimStep",
         "parameters": [
           {
@@ -10272,6 +10324,58 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/RlOptimStepOperation"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/rl/training-sessions/{sessionId}/operations/weights-sync": {
+      "post": {
+        "tags": [
+          "RL"
+        ],
+        "summary": "Weights sync",
+        "description": "Submits a weights-sync operation that makes the session\u0027s current trained parameters available for sampling. Call this after \u0060optim-step\u0060 when you want subsequent samples to use the updated policy.",
+        "operationId": "WeightsSync",
+        "parameters": [
+          {
+            "name": "sessionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Training session ID"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RlWeightsSyncBody"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Weights-sync operation details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RlWeightsSyncOperation"
                 }
               }
             }
@@ -12394,8 +12498,7 @@
         ],
         "properties": {
           "name": {
-            "type": "string",
-            "description": "Required metric name as exported to the observability backend."
+            "$ref": "#/components/schemas/DeMetricRuleName"
           },
           "stat": {
             "$ref": "#/components/schemas/DeMetricRuleStat"
@@ -14953,6 +15056,18 @@
         "description": "Number of model parameters stored in one numerical data type."
       },
       "RlOptimStepBody": {
+        "type": "object",
+        "properties": {
+          "adam_params": {
+            "$ref": "#/components/schemas/RlAdamParams"
+          },
+          "muon_params": {
+            "$ref": "#/components/schemas/RlMuonParams"
+          }
+        },
+        "description": "Request body for an optimizer step."
+      },
+      "RlWeightsSyncBody": {
         "required": [
           "weight_sync_type"
         ],
@@ -14960,14 +15075,9 @@
         "properties": {
           "weight_sync_type": {
             "$ref": "#/components/schemas/RlWeightSyncType"
-          },
-          "adam_params": {
-            "$ref": "#/components/schemas/RlAdamParams"
-          },
-          "muon_params": {
-            "$ref": "#/components/schemas/RlMuonParams"
           }
-        }
+        },
+        "description": "Request body for publishing updated policy parameters for sampling."
       },
       "RlSampleBody": {
         "required": [
@@ -15004,6 +15114,12 @@
             "description": "Number of most likely alternative tokens to return per model input token in \u0060SampleResult.topk_prompt_logprobs\u0060. 0 disables top-k prompt log-probabilities. Maximum 20.",
             "default": 0,
             "example": 0
+          },
+          "return_routed_experts": {
+            "type": "boolean",
+            "description": "When true, capture the mixture-of-experts routing decisions made while generating and return them in \u0060SampledSequence.routed_experts\u0060, so training can reuse the same expert selection. Only available on mixture-of-experts models; ignored otherwise. The captured buffer scales with sequence length, so leave it off unless you replay routing during training.",
+            "default": false,
+            "example": false
           }
         }
       },
@@ -15585,22 +15701,17 @@
       },
       "RlWeightSyncType": {
         "enum": [
-          "WEIGHT_SYNC_TYPE_UNSPECIFIED",
           "WEIGHT_SYNC_TYPE_SYNCHRONOUS",
           "WEIGHT_SYNC_TYPE_BACKGROUND_PUBLISH",
           "WEIGHT_SYNC_TYPE_PIPELINE"
         ],
         "type": "string",
         "additionalProperties": false,
-        "description": "How the trainer\u0027s updated weights are propagated to the generator after an optimizer step. SYNCHRONOUS publishes inline before the step returns; BACKGROUND_PUBLISH returns immediately and publishes once in-flight rollouts drain; PIPELINE overlaps the publish with in-flight rollouts so they continue decoding under the new weights.",
+        "description": "How updated policy parameters are made available for sampling. SYNCHRONOUS waits for the policy update before returning; BACKGROUND_PUBLISH returns after scheduling the update; PIPELINE overlaps the update with in-flight sampling when possible.",
         "x-ms-enum": {
           "name": "RlWeightSyncType",
           "modelAsString": false,
           "values": [
-            {
-              "value": "WEIGHT_SYNC_TYPE_UNSPECIFIED",
-              "name": "WeightSyncTypeUnspecified"
-            },
             {
               "value": "WEIGHT_SYNC_TYPE_SYNCHRONOUS",
               "name": "WeightSyncTypeSynchronous"
@@ -15812,9 +15923,10 @@
           "data": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/RlWeightsDataItem"
+              "minimum": 0,
+              "type": "number"
             },
-            "description": "\u0022Per-token weights: 1 to include the token in the loss, 0 to ignore it.\u0022"
+            "description": "Per-token loss weights, one non-negative weight per target token. A weight of 0 excludes the token from loss; fractional weights are honored only by cross-entropy."
           },
           "dtype": {
             "$ref": "#/components/schemas/RlDType"
@@ -15962,6 +16074,9 @@
           },
           "dro_inputs": {
             "$ref": "#/components/schemas/RlDroLossInputs"
+          },
+          "routed_experts": {
+            "$ref": "#/components/schemas/RlRoutedExperts"
           }
         },
         "description": "Token-level inputs used to compute the loss for one training sample."
@@ -15969,8 +16084,7 @@
       "RlTrainingSample": {
         "required": [
           "model_input",
-          "loss_inputs",
-          "policy_segments"
+          "loss_inputs"
         ],
         "type": "object",
         "properties": {
@@ -15979,13 +16093,6 @@
           },
           "loss_inputs": {
             "$ref": "#/components/schemas/RlLossInputs"
-          },
-          "policy_segments": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/RlPolicyVersionSegment"
-            },
-            "description": "Policy versions associated with this sample\u0027s tokens"
           }
         }
       },
@@ -16033,6 +16140,28 @@
         },
         "description": "The most likely alternative tokens at a single prompt position, as two parallel arrays of equal length. Both are empty for a position with no conditioning context, such as position 0."
       },
+      "RlRoutedExperts": {
+        "required": [
+          "data",
+          "shape"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "string",
+            "description": "Base64-encoded contiguous uint16 buffer of selected expert indices, row-major over (token, layer, k).",
+            "format": "byte"
+          },
+          "shape": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RlRoutedExpertsShapeItem"
+            },
+            "description": "Buffer shape as \u0060[num_tokens, num_layers, topk]\u0060."
+          }
+        },
+        "description": "Mixture-of-experts routing decisions captured while generating, so training can reuse the same expert selection. A contiguous uint16 buffer of selected expert indices, reshaped by \u0060shape\u0060, which is always \u0060[num_tokens, num_layers, topk]\u0060."
+      },
       "RlOptimStepOperation": {
         "required": [
           "id",
@@ -16056,6 +16185,30 @@
           }
         },
         "description": "Async optimizer step operation"
+      },
+      "RlWeightsSyncOperation": {
+        "required": [
+          "id",
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Operation ID",
+            "example": "550e8400-e29b-41d4-a716-446655440000"
+          },
+          "status": {
+            "$ref": "#/components/schemas/RlTrainingOperationStatus"
+          },
+          "output": {
+            "$ref": "#/components/schemas/RlWeightsSyncResult"
+          },
+          "error": {
+            "$ref": "#/components/schemas/RlTrainingOperationError"
+          }
+        },
+        "description": "Async weights-sync operation"
       },
       "RlSampleOperation": {
         "required": [
@@ -16092,6 +16245,18 @@
           }
         },
         "description": "Result of an optimizer step operation"
+      },
+      "RlWeightsSyncResult": {
+        "required": [
+          "weights_version"
+        ],
+        "type": "object",
+        "properties": {
+          "weights_version": {
+            "$ref": "#/components/schemas/RlWeightsSyncResultWeightsVersion"
+          }
+        },
+        "description": "Result of a weights-sync operation"
       },
       "RlSampleBatchResult": {
         "required": [
@@ -16178,6 +16343,9 @@
             "description": "Number of model input tokens served from the prefix cache while generating this sequence.",
             "format": "int32",
             "example": 1024
+          },
+          "routed_experts": {
+            "$ref": "#/components/schemas/RlRoutedExperts"
           }
         },
         "description": "A single generated completion sequence with tokens and logprobs"
@@ -16706,7 +16874,8 @@
           "created_at",
           "updated_at",
           "model_resources_id",
-          "created_by"
+          "created_by",
+          "base_model"
         ],
         "type": "object",
         "properties": {
@@ -16772,6 +16941,11 @@
             "description": "Model resource this session is attached to. The session runs on that resource\u0027s GPU pods.",
             "example": "123e4567-e89b-12d3-a456-426614174000"
           },
+          "base_model": {
+            "type": "string",
+            "description": "Base model the session trains, taken from the model resource it is attached to",
+            "example": "Qwen/Qwen3-0.6B"
+          },
           "created_by": {
             "type": "string",
             "description": "ID of the user who created the training session",
@@ -16832,6 +17006,9 @@
             "description": "Dropout of the LoRA adapter",
             "default": 0,
             "example": 0
+          },
+          "seed": {
+            "$ref": "#/components/schemas/RlLoraConfigSeed"
           }
         },
         "description": "LoRA adapter configuration"
@@ -17831,7 +18008,9 @@
       "ClusterDriverVersionInfo": {
         "required": [
           "cuda_version",
-          "nvidia_driver_version"
+          "nvidia_driver_version",
+          "id",
+          "os"
         ],
         "type": "object",
         "properties": {
@@ -25132,7 +25311,7 @@
           }
         ]
       },
-      "RlWeightsDataItem": {
+      "RlRoutedExpertsShapeItem": {
         "type": "object",
         "oneOf": [
           {
@@ -25154,6 +25333,19 @@
           }
         ],
         "description": "Step number",
+        "example": 100
+      },
+      "RlWeightsSyncResultWeightsVersion": {
+        "type": "object",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "integer"
+          }
+        ],
+        "description": "Policy version now available for sampling, or queued to become available for deferred sync modes. Comparable to \u0060policy_segments[].version\u0060 on sample results.",
         "example": 100
       },
       "RlSampledSequenceTokensItem": {
@@ -25179,6 +25371,19 @@
         ],
         "description": "Current training step",
         "example": 100
+      },
+      "RlLoraConfigSeed": {
+        "type": "object",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "integer"
+          }
+        ],
+        "description": "Random seed for initializing LoRA adapter weights. Ignored when LoRA is disabled or the session resumes from a checkpoint.",
+        "example": 59
       },
       "RlInferenceCheckpointStep": {
         "type": "object",
@@ -26824,8 +27029,8 @@
         },
         "description": "Adjusts the likelihood of specific tokens appearing in the generated output.",
         "example": {
-          "105": 21.4,
-          "1024": -10.5
+          "1024": -10.5,
+          "105": 21.4
         }
       },
       "CompletionChoiceDelta": {
@@ -26904,8 +27109,8 @@
         },
         "description": "Adjusts the likelihood of specific tokens appearing in the generated output.",
         "example": {
-          "105": 21.4,
-          "1024": -10.5
+          "1024": -10.5,
+          "105": 21.4
         }
       },
       "ChatCompletionRequestChatTemplateKwargs": {
@@ -30450,6 +30655,38 @@
             {
               "value": "ADAPTER_LOAD_STATE_FAILED",
               "name": "AdapterLoadStateFailed"
+            }
+          ]
+        }
+      },
+      "DeMetricRuleName": {
+        "enum": [
+          "inflight_requests",
+          "router_error_rate",
+          "router_latency",
+          "serving_latency"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "DeMetricRuleName",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "inflight_requests",
+              "name": "InflightRequests"
+            },
+            {
+              "value": "router_error_rate",
+              "name": "RouterErrorRate"
+            },
+            {
+              "value": "router_latency",
+              "name": "RouterLatency"
+            },
+            {
+              "value": "serving_latency",
+              "name": "ServingLatency"
             }
           ]
         }
