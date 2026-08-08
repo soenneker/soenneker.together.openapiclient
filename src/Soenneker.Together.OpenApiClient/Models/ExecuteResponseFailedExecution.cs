@@ -17,10 +17,10 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>The data property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.ExecuteResponseFailedExecutionData? Data { get; set; }
+        public UntypedNode? Data { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.ExecuteResponseFailedExecutionData Data { get; set; }
+        public UntypedNode Data { get; set; }
 #endif
         /// <summary>The errors property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -55,7 +55,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "data", n => { Data = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.ExecuteResponseFailedExecutionData>(global::Soenneker.Together.OpenApiClient.Models.ExecuteResponseFailedExecutionData.CreateFromDiscriminatorValue); } },
+                { "data", n => { Data = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "errors", n => { Errors = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.ExecuteResponseFailedExecutionErrorsItem>(global::Soenneker.Together.OpenApiClient.Models.ExecuteResponseFailedExecutionErrorsItem.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
@@ -66,7 +66,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ExecuteResponseFailedExecutionData>("data", Data);
+            writer.WriteObjectValue<UntypedNode>("data", Data);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.ExecuteResponseFailedExecutionErrorsItem>("errors", Errors);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -6401,16 +6401,6 @@
               }
             }
           },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorData"
-                }
-              }
-            }
-          },
           "400": {
             "description": "Bad Request",
             "content": {
@@ -6423,6 +6413,16 @@
           },
           "401": {
             "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -6503,22 +6503,22 @@
           }
         },
         "responses": {
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorData"
-                }
-              }
-            }
-          },
           "200": {
             "description": "Price estimated successfully",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/PostFineTunesEstimatePrice200Response"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
                 }
               }
             }
@@ -9307,7 +9307,7 @@
             "schema": {
               "type": "integer",
               "description": "Maximum number of resources to return (1-100)",
-              "default": 20
+              "default": "20"
             }
           },
           {
@@ -9552,7 +9552,7 @@
             "schema": {
               "type": "integer",
               "description": "Maximum number of sessions to return (1-100)",
-              "default": 20
+              "default": "20"
             }
           },
           {
@@ -17089,7 +17089,7 @@
           "eps": {
             "type": "number",
             "description": "Epsilon for numerical stability",
-            "default": 0.00000001,
+            "default": 1E-08,
             "example": 0.00000001
           },
           "weight_decay": {
@@ -25287,7 +25287,7 @@
           }
         ],
         "description": "Random seed for reproducibility",
-        "example": 42
+        "example": "42"
       },
       "RlEncodedTextChunkTokensItem": {
         "type": "object",
@@ -25333,7 +25333,7 @@
           }
         ],
         "description": "Step number",
-        "example": 100
+        "example": "100"
       },
       "RlWeightsSyncResultWeightsVersion": {
         "type": "object",
@@ -25346,7 +25346,7 @@
           }
         ],
         "description": "Policy version now available for sampling, or queued to become available for deferred sync modes. Comparable to \u0060policy_segments[].version\u0060 on sample results.",
-        "example": 100
+        "example": "100"
       },
       "RlSampledSequenceTokensItem": {
         "type": "object",
@@ -25370,7 +25370,7 @@
           }
         ],
         "description": "Current training step",
-        "example": 100
+        "example": "100"
       },
       "RlLoraConfigSeed": {
         "type": "object",
@@ -25383,7 +25383,7 @@
           }
         ],
         "description": "Random seed for initializing LoRA adapter weights. Ignored when LoRA is disabled or the session resumes from a checkpoint.",
-        "example": 59
+        "example": "59"
       },
       "RlInferenceCheckpointStep": {
         "type": "object",
@@ -25396,7 +25396,7 @@
           }
         ],
         "description": "Training step at time of save",
-        "example": 42
+        "example": "42"
       },
       "RlTrainingCheckpointStep": {
         "type": "object",
@@ -25409,7 +25409,7 @@
           }
         ],
         "description": "Training step at time of save",
-        "example": 42
+        "example": "42"
       },
       "RlCheckpointFileSize": {
         "type": "object",
@@ -25422,7 +25422,7 @@
           }
         ],
         "description": "File size in bytes",
-        "example": 123456789
+        "example": "123456789"
       },
       "RerankRequestModel": {
         "type": "string",
@@ -25598,17 +25598,6 @@
             "ToolChoice": "#/components/schemas/ToolChoice"
           }
         }
-      },
-      "ResponseFormatJsonSchemaJsonSchemaStrict": {
-        "type": "object",
-        "anyOf": [
-          {
-            "$ref": "#/components/schemas/ResponseFormatJsonSchemaJsonSchemaStrictBranch1"
-          },
-          {
-            "type": "object"
-          }
-        ]
       },
       "ChatCompletionChoicesDataItemLogprobs": {
         "type": "object",
@@ -26014,7 +26003,9 @@
         "type": "object",
         "properties": {
           "errors": {
-            "$ref": "#/components/schemas/ExecuteResponseSuccessfulExecutionErrors"
+            "enum": [
+              null
+            ]
           },
           "data": {
             "$ref": "#/components/schemas/ExecuteResponseSuccessfulExecutionData"
@@ -26030,7 +26021,9 @@
         "type": "object",
         "properties": {
           "data": {
-            "$ref": "#/components/schemas/ExecuteResponseFailedExecutionData"
+            "enum": [
+              null
+            ]
           },
           "errors": {
             "type": "array",
@@ -27029,8 +27022,8 @@
         },
         "description": "Adjusts the likelihood of specific tokens appearing in the generated output.",
         "example": {
-          "1024": -10.5,
-          "105": 21.4
+          "105": 21.4,
+          "1024": -10.5
         }
       },
       "CompletionChoiceDelta": {
@@ -27109,8 +27102,8 @@
         },
         "description": "Adjusts the likelihood of specific tokens appearing in the generated output.",
         "example": {
-          "1024": -10.5,
-          "105": 21.4
+          "105": 21.4,
+          "1024": -10.5
         }
       },
       "ChatCompletionRequestChatTemplateKwargs": {
@@ -27148,7 +27141,10 @@
             "$ref": "#/components/schemas/ResponseFormatJsonSchemaJsonSchemaSchema"
           },
           "strict": {
-            "$ref": "#/components/schemas/ResponseFormatJsonSchemaJsonSchemaStrict"
+            "type": "boolean",
+            "description": "Whether to enable strict schema adherence when generating the output.\nIf set to true, the model will always follow the exact schema defined\nin the \u0060schema\u0060 field. Only a subset of JSON Schema is supported when\n\u0060strict\u0060 is \u0060true\u0060. To learn more, read the [Structured Outputs\nguide](https://docs.together.ai/docs/json-mode).\n",
+            "default": false,
+            "nullable": true
           }
         },
         "description": "Structured Outputs configuration options, including a JSON Schema.\n"
@@ -28915,19 +28911,6 @@
         "type": "object",
         "description": "Placeholder schema for path example refs"
       },
-      "ResponseFormatJsonSchemaJsonSchemaStrictBranch1": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "type": "boolean",
-            "description": "Whether to enable strict schema adherence when generating the output.\nIf set to true, the model will always follow the exact schema defined\nin the \u0060schema\u0060 field. Only a subset of JSON Schema is supported when\n\u0060strict\u0060 is \u0060true\u0060. To learn more, read the [Structured Outputs\nguide](https://docs.together.ai/docs/json-mode).\n",
-            "default": false
-          }
-        }
-      },
       "AudioSpeechRequestModelBranch2": {
         "required": [
           "value"
@@ -30259,12 +30242,6 @@
           "type": "number"
         },
         "description": "Top log probabilities for the tokens."
-      },
-      "ExecuteResponseSuccessfulExecutionErrors": {
-        "type": "object"
-      },
-      "ExecuteResponseFailedExecutionData": {
-        "type": "object"
       },
       "ChatCompletionToolFunctionParametersProperty": {
         "type": "object"

@@ -35,7 +35,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             AdditionalData = new Dictionary<string, object>();
             Beta1 = 0.9;
             Beta2 = 0.95;
-            Eps = 0.00000001;
+            Eps = 1E-08;
             GradClipNorm = 1;
             WeightDecay = 0;
         }

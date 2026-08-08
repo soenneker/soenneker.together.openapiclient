@@ -39,20 +39,15 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public global::Soenneker.Together.OpenApiClient.Models.ResponseFormatJsonSchemaJsonSchemaSchema Schema { get; set; }
 #endif
-        /// <summary>The strict property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.ResponseFormatJsonSchemaJsonSchemaStrict? Strict { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Together.OpenApiClient.Models.ResponseFormatJsonSchemaJsonSchemaStrict Strict { get; set; }
-#endif
+        /// <summary>Whether to enable strict schema adherence when generating the output.If set to true, the model will always follow the exact schema definedin the `schema` field. Only a subset of JSON Schema is supported when`strict` is `true`. To learn more, read the [Structured Outputsguide](https://docs.together.ai/docs/json-mode).</summary>
+        public bool? Strict { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.ResponseFormatJsonSchemaJsonSchema"/> and sets the default values.
         /// </summary>
         public ResponseFormatJsonSchemaJsonSchema()
         {
             AdditionalData = new Dictionary<string, object>();
+            Strict = false;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -75,7 +70,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "schema", n => { Schema = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.ResponseFormatJsonSchemaJsonSchemaSchema>(global::Soenneker.Together.OpenApiClient.Models.ResponseFormatJsonSchemaJsonSchemaSchema.CreateFromDiscriminatorValue); } },
-                { "strict", n => { Strict = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.ResponseFormatJsonSchemaJsonSchemaStrict>(global::Soenneker.Together.OpenApiClient.Models.ResponseFormatJsonSchemaJsonSchemaStrict.CreateFromDiscriminatorValue); } },
+                { "strict", n => { Strict = n.GetBoolValue(); } },
             };
         }
         /// <summary>
@@ -88,7 +83,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteStringValue("description", Description);
             writer.WriteStringValue("name", Name);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ResponseFormatJsonSchemaJsonSchemaSchema>("schema", Schema);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ResponseFormatJsonSchemaJsonSchemaStrict>("strict", Strict);
+            writer.WriteBoolValue("strict", Strict);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

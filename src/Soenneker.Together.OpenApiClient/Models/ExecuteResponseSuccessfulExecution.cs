@@ -25,10 +25,10 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>The errors property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.ExecuteResponseSuccessfulExecutionErrors? Errors { get; set; }
+        public UntypedNode? Errors { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.ExecuteResponseSuccessfulExecutionErrors Errors { get; set; }
+        public UntypedNode Errors { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.ExecuteResponseSuccessfulExecution"/> and sets the default values.
@@ -56,7 +56,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "data", n => { Data = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.ExecuteResponseSuccessfulExecutionData>(global::Soenneker.Together.OpenApiClient.Models.ExecuteResponseSuccessfulExecutionData.CreateFromDiscriminatorValue); } },
-                { "errors", n => { Errors = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.ExecuteResponseSuccessfulExecutionErrors>(global::Soenneker.Together.OpenApiClient.Models.ExecuteResponseSuccessfulExecutionErrors.CreateFromDiscriminatorValue); } },
+                { "errors", n => { Errors = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -67,7 +67,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ExecuteResponseSuccessfulExecutionData>("data", Data);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ExecuteResponseSuccessfulExecutionErrors>("errors", Errors);
+            writer.WriteObjectValue<UntypedNode>("errors", Errors);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
