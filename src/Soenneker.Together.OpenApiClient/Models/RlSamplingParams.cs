@@ -16,7 +16,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Maximum number of tokens to generate per completion</summary>
         public int? MaxTokens { get; set; }
-        /// <summary>Random seed for reproducibility</summary>
+        /// <summary>Random seed for reproducible sampling for the same prompt and model state. Per-completion seeds remain stable if the request is split across generator replicas.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Together.OpenApiClient.Models.RlSamplingParamsSeed? Seed { get; set; }
