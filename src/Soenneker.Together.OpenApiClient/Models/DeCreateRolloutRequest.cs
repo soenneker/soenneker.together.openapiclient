@@ -33,7 +33,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #endif
         /// <summary>Optional final replica count for the source deployment. Defaults to 0, which drains and stops the source.</summary>
         public int? FinalSourceReplicas { get; set; }
-        /// <summary>Optional target replica count at completion. Must be at least 1 when set; defaults to the source deployment&apos;s replica count at create time.</summary>
+        /// <summary>Optional target replica count at completion. Must be at least 1 when set; defaults to the source deployment&apos;s replica count at create time, or to the source and target deployments&apos; combined replica count when both already stand in the endpoint traffic split after a cancel.</summary>
         public int? FinalTargetReplicas { get; set; }
         /// <summary>Optional metric gates evaluated after each step&apos;s soak. Canary only; rejected on rolling and blue-green rollouts.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
