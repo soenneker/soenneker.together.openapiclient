@@ -5,6 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.Together.OpenApiClient.Models;
 using Soenneker.Together.OpenApiClient.Projects.Item.Endpoints.Item.Rollouts.Item;
+using Soenneker.Together.OpenApiClient.Projects.Item.Endpoints.Item.Rollouts.PreviewDefaults;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -18,6 +19,11 @@ namespace Soenneker.Together.OpenApiClient.Projects.Item.Endpoints.Item.Rollouts
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RolloutsRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The previewDefaults property</summary>
+        public global::Soenneker.Together.OpenApiClient.Projects.Item.Endpoints.Item.Rollouts.PreviewDefaults.PreviewDefaultsRequestBuilder PreviewDefaults
+        {
+            get => new global::Soenneker.Together.OpenApiClient.Projects.Item.Endpoints.Item.Rollouts.PreviewDefaults.PreviewDefaultsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>Gets an item from the Soenneker.Together.OpenApiClient.projects.item.endpoints.item.rollouts.item collection</summary>
         /// <param name="position">Unique identifier of the item</param>
         /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Projects.Item.Endpoints.Item.Rollouts.Item.RolloutsItemRequestBuilder"/></returns>

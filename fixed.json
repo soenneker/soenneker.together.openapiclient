@@ -1519,6 +1519,57 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/DeCreateRolloutRequest"
+              },
+              "examples": {
+                "canary": {
+                  "summary": "Canary rollout with a metric gate",
+                  "value": {
+                    "sourceDeploymentId": "dep_source123",
+                    "targetDeploymentId": "dep_target456",
+                    "canary": {
+                      "steps": [
+                        {
+                          "traffic": 25
+                        },
+                        {
+                          "traffic": 50
+                        },
+                        {
+                          "traffic": 100
+                        }
+                      ],
+                      "stepInterval": "300s"
+                    },
+                    "metrics": [
+                      {
+                        "name": "serving_latency",
+                        "stat": "METRIC_STAT_TYPE_PERCENTILE",
+                        "percentile": 95,
+                        "thresholdCheck": {
+                          "value": 30000,
+                          "operator": "THRESHOLD_OPERATOR_LT"
+                        },
+                        "window": "300s"
+                      }
+                    ]
+                  }
+                },
+                "blueGreen": {
+                  "summary": "Blue-green cutover",
+                  "value": {
+                    "sourceDeploymentId": "dep_source123",
+                    "targetDeploymentId": "dep_target456",
+                    "blueGreen": {}
+                  }
+                },
+                "rolling": {
+                  "summary": "Rolling replica swap",
+                  "value": {
+                    "sourceDeploymentId": "dep_source123",
+                    "targetDeploymentId": "dep_target456",
+                    "rolling": {}
+                  }
+                }
               }
             }
           }
@@ -1530,6 +1581,72 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/DeRollout"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Default error response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          }
+        },
+        "servers": [
+          {
+            "url": "https://api.together.ai/v2"
+          }
+        ]
+      }
+    },
+    "/projects/{projectId}/endpoints/{endpointId}/rollouts/preview-defaults": {
+      "post": {
+        "tags": [
+          "RolloutService"
+        ],
+        "summary": "Preview rollout defaults",
+        "description": "Returns the values a create request would pick for any field left unset, plus the capacity context needed to display them, without creating a rollout. Responses are display state only and re-validated authoritatively at create and start; do not copy response values back into a create request.",
+        "operationId": "RolloutServicePreviewRolloutDefaults",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Project identifier."
+            }
+          },
+          {
+            "name": "endpointId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Endpoint identifier."
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeCreateRolloutRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeRolloutDefaultsPreview"
                 }
               }
             }
@@ -6401,6 +6518,16 @@
               }
             }
           },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          },
           "400": {
             "description": "Bad Request",
             "content": {
@@ -6413,16 +6540,6 @@
           },
           "401": {
             "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorData"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -6503,22 +6620,22 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "Price estimated successfully",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PostFineTunesEstimatePrice200Response"
-                }
-              }
-            }
-          },
           "500": {
             "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Price estimated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostFineTunesEstimatePrice200Response"
                 }
               }
             }
@@ -12608,6 +12725,79 @@
           }
         },
         "description": "Optional concurrency check for immediately completing a rollout on its target deployment."
+      },
+      "DeRolloutDefaultsPreview": {
+        "required": [
+          "spec",
+          "sourceReplicas",
+          "targetReplicas",
+          "targetMinReplicas",
+          "targetMaxReplicas",
+          "warnings"
+        ],
+        "type": "object",
+        "properties": {
+          "spec": {
+            "$ref": "#/components/schemas/DeRolloutDefaultsPreviewSpec"
+          },
+          "estimatedEffectiveSteps": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DeRolloutStep"
+            },
+            "description": "Steps the rollout is expected to walk when the caller leaves steps unset. Display only. Empty when the caller supplied steps or no ladder applies."
+          },
+          "frozenPair": {
+            "type": "boolean",
+            "description": "True when both deployments still share the endpoint traffic split left by a cancelled rollout, so the rollout resumes from the current split rather than from zero."
+          },
+          "estimatedSeedPercent": {
+            "type": "integer",
+            "description": "Percentage of the pair\u0027s traffic currently reaching the target, the floor the suggested steps start above. Unset when not a frozen pair or unknown; 0 is a real measurement."
+          },
+          "sourceReplicas": {
+            "type": "integer",
+            "description": "Source deployment replica count the defaults were computed from. Zero is a real value."
+          },
+          "targetReplicas": {
+            "type": "integer",
+            "description": "Target deployment replica count the defaults were computed from. Zero is a real value."
+          },
+          "targetMinReplicas": {
+            "type": "integer",
+            "description": "Target deployment autoscaling minimum replica count. Zero is a real value."
+          },
+          "targetMaxReplicas": {
+            "type": "integer",
+            "description": "Target deployment autoscaling maximum replica count. Zero is a real value."
+          },
+          "warnings": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DePreviewWarning"
+            },
+            "description": "Non-blocking findings to surface next to the form. An empty list means the shown values are safe to submit as-is."
+          }
+        },
+        "description": "Completed create-form state \u2014 the caller\u0027s spec with defaulted values filled in, the steps the rollout is expected to walk, and the capacity context the defaults were computed from. Display only."
+      },
+      "DePreviewWarning": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "Machine-readable warning code, such as CREATE_WILL_REJECT or TARGET_ALREADY_IN_TRAFFIC_SPLIT. Render message for unrecognized codes."
+          },
+          "message": {
+            "type": "string",
+            "description": "Plain-language description of the finding, safe to show users as-is."
+          }
+        },
+        "description": "A non-blocking finding attached to a rollout defaults preview."
       },
       "DePauseInfo": {
         "required": [
@@ -19334,6 +19524,12 @@
             "unrecognizedKeywords": {
               "nullable": true
             }
+          },
+          "reasoning_content": {
+            "type": "string",
+            "unrecognizedKeywords": {
+              "nullable": true
+            }
           }
         }
       },
@@ -19674,6 +19870,18 @@
           },
           "function_call": {
             "$ref": "#/components/schemas/ChatCompletionAssistantMessageParamFunctionCall"
+          },
+          "reasoning": {
+            "type": "string",
+            "unrecognizedKeywords": {
+              "nullable": true
+            }
+          },
+          "reasoning_content": {
+            "type": "string",
+            "unrecognizedKeywords": {
+              "nullable": true
+            }
           }
         }
       },
@@ -24929,6 +25137,15 @@
         },
         "description": "Regression evaluation criteria. Mutually exclusive with thresholdCheck."
       },
+      "DeRolloutDefaultsPreviewSpec": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/DeCreateRolloutRequest"
+          }
+        ],
+        "description": "The caller\u0027s spec with defaulted values filled in for display. canary.steps is echoed exactly as sent; the suggested ladder is returned in estimatedEffectiveSteps instead."
+      },
       "DeRolloutStatusComposed": {
         "required": [
           "totalSteps",
@@ -27022,8 +27239,8 @@
         },
         "description": "Adjusts the likelihood of specific tokens appearing in the generated output.",
         "example": {
-          "105": 21.4,
-          "1024": -10.5
+          "1024": -10.5,
+          "105": 21.4
         }
       },
       "CompletionChoiceDelta": {
@@ -27046,6 +27263,12 @@
             }
           },
           "reasoning": {
+            "type": "string",
+            "unrecognizedKeywords": {
+              "nullable": true
+            }
+          },
+          "reasoning_content": {
             "type": "string",
             "unrecognizedKeywords": {
               "nullable": true
@@ -27102,8 +27325,8 @@
         },
         "description": "Adjusts the likelihood of specific tokens appearing in the generated output.",
         "example": {
-          "105": 21.4,
-          "1024": -10.5
+          "1024": -10.5,
+          "105": 21.4
         }
       },
       "ChatCompletionRequestChatTemplateKwargs": {
@@ -27833,6 +28056,12 @@
             }
           },
           "reasoning": {
+            "type": "string",
+            "unrecognizedKeywords": {
+              "nullable": true
+            }
+          },
+          "reasoning_content": {
             "type": "string",
             "unrecognizedKeywords": {
               "nullable": true

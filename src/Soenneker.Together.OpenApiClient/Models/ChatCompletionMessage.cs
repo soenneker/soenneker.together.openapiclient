@@ -39,6 +39,14 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string Reasoning { get; set; }
 #endif
+        /// <summary>The reasoning_content property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ReasoningContent { get; set; }
+#nullable restore
+#else
+        public string ReasoningContent { get; set; }
+#endif
         /// <summary>The role property</summary>
         public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionMessageRole? Role { get; set; }
         /// <summary>The tool_calls property</summary>
@@ -77,6 +85,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "content", n => { Content = n.GetStringValue(); } },
                 { "function_call", n => { FunctionCall = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionMessageFunctionCall>(global::Soenneker.Together.OpenApiClient.Models.ChatCompletionMessageFunctionCall.CreateFromDiscriminatorValue); } },
                 { "reasoning", n => { Reasoning = n.GetStringValue(); } },
+                { "reasoning_content", n => { ReasoningContent = n.GetStringValue(); } },
                 { "role", n => { Role = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionMessageRole>(); } },
                 { "tool_calls", n => { ToolCalls = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.ToolChoice>(global::Soenneker.Together.OpenApiClient.Models.ToolChoice.CreateFromDiscriminatorValue)?.AsList(); } },
             };
@@ -91,6 +100,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteStringValue("content", Content);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionMessageFunctionCall>("function_call", FunctionCall);
             writer.WriteStringValue("reasoning", Reasoning);
+            writer.WriteStringValue("reasoning_content", ReasoningContent);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionMessageRole>("role", Role);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.ToolChoice>("tool_calls", ToolCalls);
             writer.WriteAdditionalData(AdditionalData);
