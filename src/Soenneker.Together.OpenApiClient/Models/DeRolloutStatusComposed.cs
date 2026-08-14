@@ -23,6 +23,14 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public global::Soenneker.Together.OpenApiClient.Models.DeRolloutStatusCondition Condition { get; set; }
 #endif
+        /// <summary>Informational conditions that describe the rollout&apos;s current state. Omitted when empty; clients should treat an absent key as an empty list.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.Together.OpenApiClient.Models.DeRolloutCondition>? Conditions { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.Together.OpenApiClient.Models.DeRolloutCondition> Conditions { get; set; }
+#endif
         /// <summary>Per-step rollout execution summaries.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -61,6 +69,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "condition", n => { Condition = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeRolloutStatusCondition>(global::Soenneker.Together.OpenApiClient.Models.DeRolloutStatusCondition.CreateFromDiscriminatorValue); } },
+                { "conditions", n => { Conditions = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.DeRolloutCondition>(global::Soenneker.Together.OpenApiClient.Models.DeRolloutCondition.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "steps", n => { Steps = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.DeRolloutStepStatus>(global::Soenneker.Together.OpenApiClient.Models.DeRolloutStepStatus.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "totalSteps", n => { TotalSteps = n.GetIntValue(); } },
                 { "updatedAt", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
@@ -74,6 +83,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeRolloutStatusCondition>("condition", Condition);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.DeRolloutCondition>("conditions", Conditions);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.DeRolloutStepStatus>("steps", Steps);
             writer.WriteIntValue("totalSteps", TotalSteps);
             writer.WriteDateTimeOffsetValue("updatedAt", UpdatedAt);

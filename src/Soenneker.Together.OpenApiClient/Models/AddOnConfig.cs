@@ -23,7 +23,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public global::Soenneker.Together.OpenApiClient.Models.DashboardConfig Dashboard { get; set; }
 #endif
-        /// <summary>Configuration for the Headlamp Kubernetes dashboard cluster add-on.</summary>
+        /// <summary>Configuration for the Headlamp Kubernetes dashboard add-on.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Together.OpenApiClient.Models.HeadlampConfig? Headlamp { get; set; }
@@ -39,7 +39,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public global::Soenneker.Together.OpenApiClient.Models.IngressConfig Ingress { get; set; }
 #endif
-        /// <summary>Configuration for the Slurm Web cluster add-on.</summary>
+        /// <summary>Configuration for the Slurm Web add-on.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Together.OpenApiClient.Models.SlurmWebConfig? SlurmWeb { get; set; }
@@ -47,7 +47,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public global::Soenneker.Together.OpenApiClient.Models.SlurmWebConfig SlurmWeb { get; set; }
 #endif
-        /// <summary>Configuration for the Model Aware TorchPass cluster add-on.</summary>
+        /// <summary>Configuration for the Model Aware TorchPass add-on.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Together.OpenApiClient.Models.TorchpassConfig? Torchpass { get; set; }

@@ -111,7 +111,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #endif
         /// <summary>Whether sequence packing is being used for training.</summary>
         public bool? Packing { get; set; }
-        /// <summary>Progress information for a fine-tuning job</summary>
+        /// <summary>Progress information for the fine-tuning job</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Together.OpenApiClient.Models.FineTuneProgress? Progress { get; set; }

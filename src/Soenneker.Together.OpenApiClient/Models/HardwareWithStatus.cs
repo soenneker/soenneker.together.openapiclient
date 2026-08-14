@@ -32,7 +32,13 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string Id { get; set; }
 #endif
         /// <summary>The object type, which is always `hardware`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.Together.OpenApiClient.Models.HardwareWithStatusObject? Object { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Together.OpenApiClient.Models.HardwareWithStatusObject Object { get; set; }
+#endif
         /// <summary>Pricing details for using an endpoint</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -78,7 +84,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             {
                 { "availability", n => { Availability = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.HardwareAvailability>(global::Soenneker.Together.OpenApiClient.Models.HardwareAvailability.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.HardwareWithStatusObject>(); } },
+                { "object", n => { Object = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.HardwareWithStatusObject>(global::Soenneker.Together.OpenApiClient.Models.HardwareWithStatusObject.CreateFromDiscriminatorValue); } },
                 { "pricing", n => { Pricing = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.EndpointPricing>(global::Soenneker.Together.OpenApiClient.Models.EndpointPricing.CreateFromDiscriminatorValue); } },
                 { "specs", n => { Specs = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.HardwareSpec>(global::Soenneker.Together.OpenApiClient.Models.HardwareSpec.CreateFromDiscriminatorValue); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
@@ -93,7 +99,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.HardwareAvailability>("availability", Availability);
             writer.WriteStringValue("id", Id);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.HardwareWithStatusObject>("object", Object);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.HardwareWithStatusObject>("object", Object);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.EndpointPricing>("pricing", Pricing);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.HardwareSpec>("specs", Specs);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);

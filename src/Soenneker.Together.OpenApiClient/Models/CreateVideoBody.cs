@@ -32,7 +32,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public int? GuidanceScale { get; set; }
         /// <summary>The height property</summary>
         public int? Height { get; set; }
-        /// <summary>Contains all media inputs for video generation. Accepted fields depend on the model type.</summary>
+        /// <summary>Media inputs for video generation. The accepted fields depend on the model type (e.g. i2v, r2v, t2v, videoedit).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Together.OpenApiClient.Models.VideoMedia? Media { get; set; }
@@ -56,7 +56,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string NegativePrompt { get; set; }
 #endif
-        /// <summary>The output_format property</summary>
+        /// <summary>Specifies the format of the output video. Defaults to MP4.</summary>
         public global::Soenneker.Together.OpenApiClient.Models.VideoOutputFormat? OutputFormat { get; set; }
         /// <summary>Compression quality. Defaults to 20.</summary>
         public int? OutputQuality { get; set; }

@@ -41,7 +41,13 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string Model { get; set; }
 #endif
         /// <summary>The object type, which is always `chat.completion`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionResponseObject? Object { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionResponseObject Object { get; set; }
+#endif
         /// <summary>The prompt property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -95,7 +101,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "created", n => { Created = n.GetIntValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionResponseObject>(); } },
+                { "object", n => { Object = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionResponseObject>(global::Soenneker.Together.OpenApiClient.Models.ChatCompletionResponseObject.CreateFromDiscriminatorValue); } },
                 { "prompt", n => { Prompt = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.PromptPartItem>(global::Soenneker.Together.OpenApiClient.Models.PromptPartItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "usage", n => { Usage = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.UsageData>(global::Soenneker.Together.OpenApiClient.Models.UsageData.CreateFromDiscriminatorValue); } },
                 { "warnings", n => { Warnings = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.InferenceWarning>(global::Soenneker.Together.OpenApiClient.Models.InferenceWarning.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -112,7 +118,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteIntValue("created", Created);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("model", Model);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionResponseObject>("object", Object);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionResponseObject>("object", Object);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.PromptPartItem>("prompt", Prompt);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.UsageData>("usage", Usage);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.InferenceWarning>("warnings", Warnings);

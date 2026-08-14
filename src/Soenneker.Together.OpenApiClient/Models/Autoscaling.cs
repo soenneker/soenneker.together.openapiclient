@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
     /// <summary>
-    /// Configuration for automatic scaling of replicas based on demand.
+    /// Configuration for automatic scaling of the endpoint
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Autoscaling : IAdditionalDataHolder, IParsable

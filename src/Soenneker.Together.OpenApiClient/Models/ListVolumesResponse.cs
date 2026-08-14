@@ -23,7 +23,13 @@ namespace Soenneker.Together.OpenApiClient.Models
         public List<global::Soenneker.Together.OpenApiClient.Models.VolumeResponseItem> Data { get; set; }
 #endif
         /// <summary>The object type, which is always `list`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.Together.OpenApiClient.Models.ListVolumesResponseObject? Object { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Together.OpenApiClient.Models.ListVolumesResponseObject Object { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.ListVolumesResponse"/> and sets the default values.
         /// </summary>
@@ -50,7 +56,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "data", n => { Data = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.VolumeResponseItem>(global::Soenneker.Together.OpenApiClient.Models.VolumeResponseItem.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.ListVolumesResponseObject>(); } },
+                { "object", n => { Object = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.ListVolumesResponseObject>(global::Soenneker.Together.OpenApiClient.Models.ListVolumesResponseObject.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -61,7 +67,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.VolumeResponseItem>("data", Data);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.ListVolumesResponseObject>("object", Object);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ListVolumesResponseObject>("object", Object);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
     /// <summary>
-    /// Configuration for the Headlamp Kubernetes dashboard cluster add-on.
+    /// Configuration for the Headlamp Kubernetes dashboard add-on.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class HeadlampConfig : IAdditionalDataHolder, IParsable

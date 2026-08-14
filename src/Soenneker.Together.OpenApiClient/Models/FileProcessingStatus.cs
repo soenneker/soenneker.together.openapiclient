@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
-    /// <summary>Lifecycle state of a file in the validation pipeline. The typicalprogression is `PENDING` → `QUEUED` → `RUNNING` → `COMPLETED` /`FAILED`. `INVALID_FORMAT` is a terminal state for files whosecontents failed validation in a user-correctable way.</summary>
+    /// <summary>Lifecycle state of the file validation pipeline. Files fornon-`fine-tune` purposes skip validation.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum FileProcessingStatus
     {

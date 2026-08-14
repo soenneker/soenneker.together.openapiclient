@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
     /// <summary>
-    /// Progress information for a fine-tuning job
+    /// Progress information for the fine-tuning job
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class FineTuneProgress : IAdditionalDataHolder, IParsable

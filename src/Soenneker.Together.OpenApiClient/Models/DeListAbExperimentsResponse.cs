@@ -32,7 +32,13 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string NextCursor { get; set; }
 #endif
         /// <summary>Object type. Always `list`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.Together.OpenApiClient.Models.DeListAbExperimentsResponseObject? Object { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Together.OpenApiClient.Models.DeListAbExperimentsResponseObject Object { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.DeListAbExperimentsResponse"/> and sets the default values.
         /// </summary>
@@ -60,7 +66,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             {
                 { "data", n => { Data = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.DeAbExperiment>(global::Soenneker.Together.OpenApiClient.Models.DeAbExperiment.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "next_cursor", n => { NextCursor = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeListAbExperimentsResponseObject>(); } },
+                { "object", n => { Object = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeListAbExperimentsResponseObject>(global::Soenneker.Together.OpenApiClient.Models.DeListAbExperimentsResponseObject.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -72,7 +78,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.DeAbExperiment>("data", Data);
             writer.WriteStringValue("next_cursor", NextCursor);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeListAbExperimentsResponseObject>("object", Object);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeListAbExperimentsResponseObject>("object", Object);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

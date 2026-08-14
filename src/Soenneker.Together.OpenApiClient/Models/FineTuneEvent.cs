@@ -59,7 +59,13 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string ModelPath { get; set; }
 #endif
         /// <summary>The object type, which is always `fine-tune-event`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.Together.OpenApiClient.Models.FineTuneEventObject? Object { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Together.OpenApiClient.Models.FineTuneEventObject Object { get; set; }
+#endif
         /// <summary>The param_count property</summary>
         public int? ParamCount { get; set; }
         /// <summary>The step property</summary>
@@ -118,7 +124,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "level", n => { Level = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.FinetuneEventLevelsWrapper>(global::Soenneker.Together.OpenApiClient.Models.FinetuneEventLevelsWrapper.CreateFromDiscriminatorValue); } },
                 { "message", n => { Message = n.GetStringValue(); } },
                 { "model_path", n => { ModelPath = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.FineTuneEventObject>(); } },
+                { "object", n => { Object = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.FineTuneEventObject>(global::Soenneker.Together.OpenApiClient.Models.FineTuneEventObject.CreateFromDiscriminatorValue); } },
                 { "param_count", n => { ParamCount = n.GetIntValue(); } },
                 { "step", n => { Step = n.GetIntValue(); } },
                 { "token_count", n => { TokenCount = n.GetIntValue(); } },
@@ -142,7 +148,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.FinetuneEventLevelsWrapper>("level", Level);
             writer.WriteStringValue("message", Message);
             writer.WriteStringValue("model_path", ModelPath);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.FineTuneEventObject>("object", Object);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.FineTuneEventObject>("object", Object);
             writer.WriteIntValue("param_count", ParamCount);
             writer.WriteIntValue("step", Step);
             writer.WriteIntValue("token_count", TokenCount);

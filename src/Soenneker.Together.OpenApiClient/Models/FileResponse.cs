@@ -27,7 +27,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string Filename { get; set; }
 #endif
-        /// <summary>The type of the file</summary>
+        /// <summary>The type of the file such as `jsonl`, `csv`, or `parquet`.</summary>
         public global::Soenneker.Together.OpenApiClient.Models.FileType? FileType { get; set; }
         /// <summary>ID of the file.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -38,15 +38,21 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string Id { get; set; }
 #endif
         /// <summary>The object type, which is always `file`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.Together.OpenApiClient.Models.FileResponseObject? Object { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Together.OpenApiClient.Models.FileResponseObject Object { get; set; }
+#endif
         /// <summary>Deprecated. Whether file has been fully uploaded.</summary>
         [Obsolete("")]
         public bool? Processed { get; set; }
-        /// <summary>Lifecycle state of a file in the validation pipeline. The typicalprogression is `PENDING` → `QUEUED` → `RUNNING` → `COMPLETED` /`FAILED`. `INVALID_FORMAT` is a terminal state for files whosecontents failed validation in a user-correctable way.</summary>
+        /// <summary>Lifecycle state of the file validation pipeline. Files fornon-`fine-tune` purposes skip validation.</summary>
         public global::Soenneker.Together.OpenApiClient.Models.FileProcessingStatus? ProcessingStatus { get; set; }
-        /// <summary>The purpose of the file</summary>
+        /// <summary>The purpose of the file as it was uploaded.</summary>
         public global::Soenneker.Together.OpenApiClient.Models.FilePurpose? Purpose { get; set; }
-        /// <summary>Validation outcome for a fine-tune training file, produced by thefile validation pipeline.</summary>
+        /// <summary>Report produced by the file validation pipeline. Present oncevalidation has run; absent on files that bypassed validation(non-`fine-tune` purposes) or have not yet been validated.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Together.OpenApiClient.Models.FileValidationReport? ValidationReport { get; set; }
@@ -84,7 +90,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "FileType", n => { FileType = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.FileType>(); } },
                 { "filename", n => { Filename = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.FileResponseObject>(); } },
+                { "object", n => { Object = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.FileResponseObject>(global::Soenneker.Together.OpenApiClient.Models.FileResponseObject.CreateFromDiscriminatorValue); } },
                 { "Processed", n => { Processed = n.GetBoolValue(); } },
                 { "processing_status", n => { ProcessingStatus = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.FileProcessingStatus>(); } },
                 { "purpose", n => { Purpose = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.FilePurpose>(); } },
@@ -103,7 +109,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteStringValue("filename", Filename);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.FileType>("FileType", FileType);
             writer.WriteStringValue("id", Id);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.FileResponseObject>("object", Object);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.FileResponseObject>("object", Object);
             writer.WriteBoolValue("Processed", Processed);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.FileProcessingStatus>("processing_status", ProcessingStatus);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.FilePurpose>("purpose", Purpose);

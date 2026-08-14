@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
     /// <summary>
-    /// Configuration for the Model Aware TorchPass cluster add-on.
+    /// Configuration for the Model Aware TorchPass add-on.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TorchpassConfig : IAdditionalDataHolder, IParsable

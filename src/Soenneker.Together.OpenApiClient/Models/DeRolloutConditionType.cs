@@ -3,13 +3,13 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
-    /// <summary>Public visibility of the endpoint.</summary>
+    /// <summary>Informational condition type. `CapacityLimited` means the current step advanced partially because full capacity was not placeable.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum DePublicEndpoint_visibility
+    public enum DeRolloutConditionType
     {
-        [EnumMember(Value = "VISIBILITY_PUBLIC")]
+        [EnumMember(Value = "CapacityLimited")]
         #pragma warning disable CS1591
-        VisibilityPublic,
+        CapacityLimited,
         #pragma warning restore CS1591
     }
 }

@@ -44,7 +44,13 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Timestamp when the endpoint was last updated.</summary>
         public DateTimeOffset? UpdatedAt { get; set; }
         /// <summary>Public visibility of the endpoint.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.DePublicEndpoint_visibility? Visibility { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Visibility { get; set; }
+#nullable restore
+#else
+        public string Visibility { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.DePublicEndpoint"/> and sets the default values.
         /// </summary>
@@ -75,7 +81,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "projectId", n => { ProjectId = n.GetStringValue(); } },
                 { "updatedAt", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
-                { "visibility", n => { Visibility = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DePublicEndpoint_visibility>(); } },
+                { "visibility", n => { Visibility = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -90,7 +96,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("projectId", ProjectId);
             writer.WriteDateTimeOffsetValue("updatedAt", UpdatedAt);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.DePublicEndpoint_visibility>("visibility", Visibility);
+            writer.WriteStringValue("visibility", Visibility);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

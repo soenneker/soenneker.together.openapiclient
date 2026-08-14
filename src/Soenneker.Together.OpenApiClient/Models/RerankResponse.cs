@@ -31,7 +31,13 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string Model { get; set; }
 #endif
         /// <summary>The object type, which is always `rerank`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.Together.OpenApiClient.Models.RerankResponseObject? Object { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Together.OpenApiClient.Models.RerankResponseObject Object { get; set; }
+#endif
         /// <summary>The results property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -75,7 +81,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             {
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.RerankResponseObject>(); } },
+                { "object", n => { Object = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RerankResponseObject>(global::Soenneker.Together.OpenApiClient.Models.RerankResponseObject.CreateFromDiscriminatorValue); } },
                 { "results", n => { Results = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RerankResponseResultsItem>(global::Soenneker.Together.OpenApiClient.Models.RerankResponseResultsItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "usage", n => { Usage = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.UsageData>(global::Soenneker.Together.OpenApiClient.Models.UsageData.CreateFromDiscriminatorValue); } },
             };
@@ -89,7 +95,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("model", Model);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.RerankResponseObject>("object", Object);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RerankResponseObject>("object", Object);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RerankResponseResultsItem>("results", Results);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.UsageData>("usage", Usage);
             writer.WriteAdditionalData(AdditionalData);

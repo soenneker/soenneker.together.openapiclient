@@ -29,6 +29,8 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public global::Soenneker.Together.OpenApiClient.Models.RlLoraConfigSeed Seed { get; set; }
 #endif
+        /// <summary>Whether to also train a LoRA adapter on the output head. Defaults to true.</summary>
+        public bool? TrainUnembed { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlLoraConfig"/> and sets the default values.
         /// </summary>
@@ -38,6 +40,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             Alpha = 64;
             Dropout = 0;
             Rank = 32;
+            TrainUnembed = true;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -61,6 +64,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "dropout", n => { Dropout = n.GetDoubleValue(); } },
                 { "rank", n => { Rank = n.GetIntValue(); } },
                 { "seed", n => { Seed = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlLoraConfigSeed>(global::Soenneker.Together.OpenApiClient.Models.RlLoraConfigSeed.CreateFromDiscriminatorValue); } },
+                { "train_unembed", n => { TrainUnembed = n.GetBoolValue(); } },
             };
         }
         /// <summary>
@@ -74,6 +78,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteDoubleValue("dropout", Dropout);
             writer.WriteIntValue("rank", Rank);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlLoraConfigSeed>("seed", Seed);
+            writer.WriteBoolValue("train_unembed", TrainUnembed);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

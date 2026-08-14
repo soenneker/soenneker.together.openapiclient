@@ -25,7 +25,13 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>The index property</summary>
         public int? Index { get; set; }
         /// <summary>The object type, which is always `embedding`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.Together.OpenApiClient.Models.EmbeddingsResponseDataItemObject? Object { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Together.OpenApiClient.Models.EmbeddingsResponseDataItemObject Object { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.EmbeddingsResponseDataItem"/> and sets the default values.
         /// </summary>
@@ -53,7 +59,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             {
                 { "embedding", n => { Embedding = n.GetCollectionOfPrimitiveValues<double?>()?.AsList(); } },
                 { "index", n => { Index = n.GetIntValue(); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.EmbeddingsResponseDataItemObject>(); } },
+                { "object", n => { Object = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.EmbeddingsResponseDataItemObject>(global::Soenneker.Together.OpenApiClient.Models.EmbeddingsResponseDataItemObject.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -65,7 +71,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<double?>("embedding", Embedding);
             writer.WriteIntValue("index", Index);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.EmbeddingsResponseDataItemObject>("object", Object);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.EmbeddingsResponseDataItemObject>("object", Object);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

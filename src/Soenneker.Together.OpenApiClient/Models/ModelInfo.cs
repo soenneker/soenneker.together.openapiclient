@@ -51,7 +51,13 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string Link { get; set; }
 #endif
         /// <summary>The object type, which is always `model`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.Together.OpenApiClient.Models.ModelInfoObject? Object { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Together.OpenApiClient.Models.ModelInfoObject Object { get; set; }
+#endif
         /// <summary>The organization property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -101,7 +107,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "license", n => { License = n.GetStringValue(); } },
                 { "link", n => { Link = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.ModelInfoObject>(); } },
+                { "object", n => { Object = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.ModelInfoObject>(global::Soenneker.Together.OpenApiClient.Models.ModelInfoObject.CreateFromDiscriminatorValue); } },
                 { "organization", n => { Organization = n.GetStringValue(); } },
                 { "pricing", n => { Pricing = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.Pricing>(global::Soenneker.Together.OpenApiClient.Models.Pricing.CreateFromDiscriminatorValue); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.ModelInfoType>(); } },
@@ -120,7 +126,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("license", License);
             writer.WriteStringValue("link", Link);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.ModelInfoObject>("object", Object);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ModelInfoObject>("object", Object);
             writer.WriteStringValue("organization", Organization);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.Pricing>("pricing", Pricing);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.ModelInfoType>("type", Type);

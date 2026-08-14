@@ -23,7 +23,13 @@ namespace Soenneker.Together.OpenApiClient.Models
         public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestChatTemplateKwargsProperty ChatTemplateKwargs { get; set; }
 #endif
         /// <summary>The compliance property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestCompliance? Compliance { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestCompliance Compliance { get; set; }
+#endif
         /// <summary>Defines the behavior of the API when max_tokens exceed the maximum context length of the model. When set to &apos;error&apos;, the API returns 400 with an appropriate error message. When set to &apos;truncate&apos;, overrides max_tokens with the maximum context length of the model.</summary>
         public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestContextLengthExceededBehavior? ContextLengthExceededBehavior { get; set; }
         /// <summary>If true, the response contains the prompt. Can be used with `logprobs` to return prompt logprobs.</summary>
@@ -160,7 +166,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "chat_template_kwargs", n => { ChatTemplateKwargs = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestChatTemplateKwargsProperty>(global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestChatTemplateKwargsProperty.CreateFromDiscriminatorValue); } },
-                { "compliance", n => { Compliance = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestCompliance>(); } },
+                { "compliance", n => { Compliance = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestCompliance>(global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestCompliance.CreateFromDiscriminatorValue); } },
                 { "context_length_exceeded_behavior", n => { ContextLengthExceededBehavior = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestContextLengthExceededBehavior>(); } },
                 { "echo", n => { Echo = n.GetBoolValue(); } },
                 { "frequency_penalty", n => { FrequencyPenalty = n.GetDoubleValue(); } },
@@ -196,7 +202,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestChatTemplateKwargsProperty>("chat_template_kwargs", ChatTemplateKwargs);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestCompliance>("compliance", Compliance);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestCompliance>("compliance", Compliance);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestContextLengthExceededBehavior>("context_length_exceeded_behavior", ContextLengthExceededBehavior);
             writer.WriteBoolValue("echo", Echo);
             writer.WriteDoubleValue("frequency_penalty", FrequencyPenalty);

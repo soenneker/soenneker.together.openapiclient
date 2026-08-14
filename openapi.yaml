@@ -12789,6 +12789,11 @@ components:
           type: string
           description: Timestamp of the most recent progress update.
           format: date-time
+        conditions:
+          type: array
+          items:
+            $ref: '#/components/schemas/DE.RolloutCondition'
+          description: Informational conditions that describe the rollout's current state. Omitted when empty; clients should treat an absent key as an empty list.
     DE.RolloutCondition:
       type: object
       description: Structured reason a rollout stopped progressing.
@@ -12825,6 +12830,11 @@ components:
           items:
             $ref: '#/components/schemas/DE.MetricResult'
           description: Metrics observed at the failing gate, enriched with their criteria.
+        type:
+          type: string
+          enum:
+            - CapacityLimited
+          description: Informational condition type. `CapacityLimited` means the current step advanced partially because full capacity was not placeable.
     DE.RolloutStepStatus:
       type: object
       description: Collapsed execution state for one rollout step.
@@ -16137,6 +16147,11 @@ components:
             - type: integer
           example: "59"
           description: Random seed for initializing LoRA adapter weights. Ignored when LoRA is disabled or the session resumes from a checkpoint.
+        train_unembed:
+          type: boolean
+          example: true
+          default: true
+          description: Whether to also train a LoRA adapter on the output head. Defaults to true.
     RL.OptimizerConfig:
       type: object
       description: Optimizer configuration
