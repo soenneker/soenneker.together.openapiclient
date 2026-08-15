@@ -34,7 +34,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string TrainingFile { get; set; }
 #endif
         /// <summary>Fine-tuning method to preview. Only supervised fine-tuning is currently supported.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.FineTunePreviewRequestTrainingMethod? TrainingMethod { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.SftTrainingMethod? TrainingMethod { get; set; }
         /// <summary>Whether prompt or user-message tokens should contribute to training loss in the preview.</summary>
         public bool? TrainOnInputs { get; set; }
         /// <summary>
@@ -68,7 +68,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "top_k", n => { TopK = n.GetIntValue(); } },
                 { "train_on_inputs", n => { TrainOnInputs = n.GetBoolValue(); } },
                 { "training_file", n => { TrainingFile = n.GetStringValue(); } },
-                { "training_method", n => { TrainingMethod = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.FineTunePreviewRequestTrainingMethod>(); } },
+                { "training_method", n => { TrainingMethod = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.SftTrainingMethod>(); } },
             };
         }
         /// <summary>
@@ -81,7 +81,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteStringValue("model", Model);
             writer.WriteIntValue("top_k", TopK);
             writer.WriteStringValue("training_file", TrainingFile);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.FineTunePreviewRequestTrainingMethod>("training_method", TrainingMethod);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.SftTrainingMethod>("training_method", TrainingMethod);
             writer.WriteBoolValue("train_on_inputs", TrainOnInputs);
             writer.WriteAdditionalData(AdditionalData);
         }

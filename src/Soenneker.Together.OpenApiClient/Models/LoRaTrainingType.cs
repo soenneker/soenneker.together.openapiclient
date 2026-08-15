@@ -30,7 +30,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string LoraTrainableModules { get; set; }
 #endif
         /// <summary>Identifies this request as a LoRA fine-tune.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.LoRaTrainingTypeType? Type { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.LoraType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.LoRaTrainingType"/> and sets the default values.
         /// </summary>
@@ -62,7 +62,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "lora_dropout", n => { LoraDropout = n.GetDoubleValue(); } },
                 { "lora_r", n => { LoraR = n.GetIntValue(); } },
                 { "lora_trainable_modules", n => { LoraTrainableModules = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.LoRaTrainingTypeType>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.LoraType>(); } },
             };
         }
         /// <summary>
@@ -76,7 +76,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteDoubleValue("lora_dropout", LoraDropout);
             writer.WriteIntValue("lora_r", LoraR);
             writer.WriteStringValue("lora_trainable_modules", LoraTrainableModules);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.LoRaTrainingTypeType>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.LoraType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

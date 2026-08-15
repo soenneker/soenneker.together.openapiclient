@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
-    /// <summary>&quot;Role of the weights: full model, speculative draft model, or LoRA adapter.&quot;</summary>
+    /// <summary>Role of the weights: full model, speculative draft model, or LoRA adapter.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum DeModelWeightsType
     {

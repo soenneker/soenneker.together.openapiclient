@@ -44,7 +44,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string Error { get; set; }
 #endif
         /// <summary>Category of validation failure.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.FileValidationReportErrorType? ErrorType { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.InvalidFormatErrorType? ErrorType { get; set; }
         /// <summary>ID of the file this report describes.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -90,7 +90,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "dataset_has_tools", n => { DatasetHasTools = n.GetBoolValue(); } },
                 { "dataset_is_multimodal", n => { DatasetIsMultimodal = n.GetBoolValue(); } },
                 { "error", n => { Error = n.GetStringValue(); } },
-                { "error_type", n => { ErrorType = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.FileValidationReportErrorType>(); } },
+                { "error_type", n => { ErrorType = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.InvalidFormatErrorType>(); } },
                 { "file_id", n => { FileId = n.GetStringValue(); } },
                 { "nlines", n => { Nlines = n.GetIntValue(); } },
                 { "valid", n => { Valid = n.GetBoolValue(); } },
@@ -111,7 +111,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteBoolValue("dataset_has_tools", DatasetHasTools);
             writer.WriteBoolValue("dataset_is_multimodal", DatasetIsMultimodal);
             writer.WriteStringValue("error", Error);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.FileValidationReportErrorType>("error_type", ErrorType);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.InvalidFormatErrorType>("error_type", ErrorType);
             writer.WriteStringValue("file_id", FileId);
             writer.WriteIntValue("nlines", Nlines);
             writer.WriteBoolValue("valid", Valid);

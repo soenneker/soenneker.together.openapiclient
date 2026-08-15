@@ -37,7 +37,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseTruncatedTrainingMethod CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
+            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseTruncatedTrainingMethod();
             if("TrainingMethodDpo".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {

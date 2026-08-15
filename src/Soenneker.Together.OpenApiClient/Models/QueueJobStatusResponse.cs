@@ -65,7 +65,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #endif
         /// <summary>Number of times this job has been retried. Workers set a claimtimeout and must send periodic status updates to keep the job alive.If no update is received within the timeout, the job is returned tothe queue and retried. After 3 retries the job is permanentlyfailed. Jobs explicitly failed by the model are not retried.</summary>
         public int? Retries { get; set; }
-        /// <summary>&quot;Current job status. Transitions: pending → running → done/failed. A pending job may also be canceled.&quot;</summary>
+        /// <summary>Current job status. Transitions: pending → running → done/failed. A pending job may also be canceled.</summary>
         public global::Soenneker.Together.OpenApiClient.Models.QueueJobStatusResponseStatus? Status { get; set; }
         /// <summary>Non-fatal messages about the request (e.g. deprecation notices)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

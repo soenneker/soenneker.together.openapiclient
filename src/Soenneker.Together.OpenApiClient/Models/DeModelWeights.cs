@@ -43,7 +43,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #endif
         /// <summary>Speculative decoding mechanism for speculator weights.</summary>
         public global::Soenneker.Together.OpenApiClient.Models.DeModelWeightsSpeculatorMechanism? SpeculatorMechanism { get; set; }
-        /// <summary>&quot;Role of the weights: full model, speculative draft model, or LoRA adapter.&quot;</summary>
+        /// <summary>Role of the weights: full model, speculative draft model, or LoRA adapter.</summary>
         public global::Soenneker.Together.OpenApiClient.Models.DeModelWeightsType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.DeModelWeights"/> and sets the default values.

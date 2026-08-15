@@ -32,7 +32,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string Name { get; set; }
 #endif
         /// <summary>The role property</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionFunctionMessageParamRole? Role { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.FunctionRole? Role { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.ChatCompletionFunctionMessageParam"/> and sets the default values.
         /// </summary>
@@ -60,7 +60,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             {
                 { "content", n => { Content = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "role", n => { Role = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionFunctionMessageParamRole>(); } },
+                { "role", n => { Role = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.FunctionRole>(); } },
             };
         }
         /// <summary>
@@ -72,7 +72,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("content", Content);
             writer.WriteStringValue("name", Name);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionFunctionMessageParamRole>("role", Role);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.FunctionRole>("role", Role);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

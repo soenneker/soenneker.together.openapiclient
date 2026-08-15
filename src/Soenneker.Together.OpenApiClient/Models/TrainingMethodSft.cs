@@ -15,7 +15,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The method property</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.TrainingMethodSftMethod? Method { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.SftMethod? Method { get; set; }
         /// <summary>Whether to mask user messages in conversational data or prompts in instruction data.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -49,7 +49,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "method", n => { Method = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.TrainingMethodSftMethod>(); } },
+                { "method", n => { Method = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.SftMethod>(); } },
                 { "train_on_inputs", n => { TrainOnInputs = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.TrainingMethodSftTrainOnInputs>(global::Soenneker.Together.OpenApiClient.Models.TrainingMethodSftTrainOnInputs.CreateFromDiscriminatorValue); } },
             };
         }
@@ -60,7 +60,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.TrainingMethodSftMethod>("method", Method);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.SftMethod>("method", Method);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.TrainingMethodSftTrainOnInputs>("train_on_inputs", TrainOnInputs);
             writer.WriteAdditionalData(AdditionalData);
         }

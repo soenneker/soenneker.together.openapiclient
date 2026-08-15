@@ -24,7 +24,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string Data { get; set; }
 #endif
         /// <summary>The type property</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.ExecuteResponseSuccessfulExecutionDataOutputsItemErrorOutputType? Type { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.ErrorType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.ExecuteResponseSuccessfulExecutionDataOutputsItemErrorOutput"/> and sets the default values.
         /// </summary>
@@ -51,7 +51,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "data", n => { Data = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.ExecuteResponseSuccessfulExecutionDataOutputsItemErrorOutputType>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.ErrorType>(); } },
             };
         }
         /// <summary>
@@ -62,7 +62,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("data", Data);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.ExecuteResponseSuccessfulExecutionDataOutputsItemErrorOutputType>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.ErrorType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -23,13 +23,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public List<global::Soenneker.Together.OpenApiClient.Models.HardwareWithStatus> Data { get; set; }
 #endif
         /// <summary>The object type, which is always `list`.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
         public global::Soenneker.Together.OpenApiClient.Models.ListHardware200ResponseObject? Object { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Together.OpenApiClient.Models.ListHardware200ResponseObject Object { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.ListHardware200Response"/> and sets the default values.
         /// </summary>
@@ -56,7 +50,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "data", n => { Data = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.HardwareWithStatus>(global::Soenneker.Together.OpenApiClient.Models.HardwareWithStatus.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "object", n => { Object = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.ListHardware200ResponseObject>(global::Soenneker.Together.OpenApiClient.Models.ListHardware200ResponseObject.CreateFromDiscriminatorValue); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.ListHardware200ResponseObject>(); } },
             };
         }
         /// <summary>
@@ -67,7 +61,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.HardwareWithStatus>("data", Data);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ListHardware200ResponseObject>("object", Object);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.ListHardware200ResponseObject>("object", Object);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

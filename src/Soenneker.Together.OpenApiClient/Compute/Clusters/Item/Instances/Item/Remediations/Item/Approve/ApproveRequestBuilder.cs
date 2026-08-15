@@ -34,7 +34,7 @@ namespace Soenneker.Together.OpenApiClient.Compute.Clusters.Item.Instances.Item.
         {
         }
         /// <summary>
-        /// &quot;Approves a pending remediation.Only remediations with state PENDING_APPROVAL can be approved.On APPROVE: state changes to PENDING and the remediation process begins.The reviewed_by, review_time, and review_comment fields are populatedon the remediation after approval.&quot;
+        /// Approves a pending remediation.Only remediations with state PENDING_APPROVAL can be approved.On APPROVE: state changes to PENDING and the remediation process begins.The reviewed_by, review_time, and review_comment fields are populatedon the remediation after approval.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.Remediation"/></returns>
         /// <param name="body">Request body for approving a pending remediation.</param>
@@ -54,7 +54,7 @@ namespace Soenneker.Together.OpenApiClient.Compute.Clusters.Item.Instances.Item.
             return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.Remediation>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.Remediation.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Approves a pending remediation.Only remediations with state PENDING_APPROVAL can be approved.On APPROVE: state changes to PENDING and the remediation process begins.The reviewed_by, review_time, and review_comment fields are populatedon the remediation after approval.&quot;
+        /// Approves a pending remediation.Only remediations with state PENDING_APPROVAL can be approved.On APPROVE: state changes to PENDING and the remediation process begins.The reviewed_by, review_time, and review_comment fields are populatedon the remediation after approval.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">Request body for approving a pending remediation.</param>

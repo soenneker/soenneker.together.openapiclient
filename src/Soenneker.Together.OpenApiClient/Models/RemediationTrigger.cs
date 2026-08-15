@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
-    /// <summary>&quot;RemediationTrigger specifies how the remediation was triggered.- `REMEDIATION_TRIGGER_MANUAL`: A user-initiated remediation (either via web UI or API call).- `REMEDIATION_TRIGGER_AUTOMATED`: A system-initiated remediation that requires approval.&quot;</summary>
+    /// <summary>RemediationTrigger specifies how the remediation was triggered.- `REMEDIATION_TRIGGER_MANUAL`: A user-initiated remediation (either via web UI or API call).- `REMEDIATION_TRIGGER_AUTOMATED`: A system-initiated remediation that requires approval.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum RemediationTrigger
     {

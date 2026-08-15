@@ -37,9 +37,9 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.VideoMediaSourceVideo CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
+            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.Together.OpenApiClient.Models.VideoMediaSourceVideo();
-            if("VideoMediaSourceVideo_1".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("VideoMediaSourceVideoBranch1".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.VideoMediaSourceVideoBranch1 = new global::Soenneker.Together.OpenApiClient.Models.VideoMediaSourceVideoBranch1();
             }

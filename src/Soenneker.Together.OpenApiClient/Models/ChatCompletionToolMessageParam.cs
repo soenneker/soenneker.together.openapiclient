@@ -31,7 +31,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string Name { get; set; }
 #endif
         /// <summary>The role property</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionToolMessageParamRole? Role { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.ToolRole? Role { get; set; }
         /// <summary>The tool_call_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -67,7 +67,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             {
                 { "content", n => { Content = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "role", n => { Role = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionToolMessageParamRole>(); } },
+                { "role", n => { Role = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.ToolRole>(); } },
                 { "tool_call_id", n => { ToolCallId = n.GetStringValue(); } },
             };
         }
@@ -80,7 +80,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("content", Content);
             writer.WriteStringValue("name", Name);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionToolMessageParamRole>("role", Role);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.ToolRole>("role", Role);
             writer.WriteStringValue("tool_call_id", ToolCallId);
             writer.WriteAdditionalData(AdditionalData);
         }

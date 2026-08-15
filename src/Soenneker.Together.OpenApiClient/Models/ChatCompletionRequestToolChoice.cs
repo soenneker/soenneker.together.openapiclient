@@ -37,9 +37,9 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestToolChoice CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
+            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestToolChoice();
-            if("ChatCompletionRequestToolChoice_1".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("ChatCompletionRequestToolChoiceBranch1".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ChatCompletionRequestToolChoiceBranch1 = new global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestToolChoiceBranch1();
             }

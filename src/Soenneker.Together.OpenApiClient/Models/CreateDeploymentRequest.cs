@@ -22,7 +22,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public List<string> Args { get; set; }
 #endif
-        /// <summary>&quot;Autoscaling configuration. Example: {\&quot;metric\&quot;: \&quot;QueueBacklogPerWorker\&quot;, \&quot;target\&quot;: 1.01} to scale based on queue backlog. Omit or set to null to disable autoscaling&quot;</summary>
+        /// <summary>Autoscaling configuration. Example: {&quot;metric&quot;: &quot;QueueBacklogPerWorker&quot;, &quot;target&quot;: 1.01} to scale based on queue backlog. Omit or set to null to disable autoscaling</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Together.OpenApiClient.Models.CreateDeploymentRequestAutoscaling? Autoscaling { get; set; }

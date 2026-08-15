@@ -31,7 +31,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string SessionId { get; set; }
 #endif
         /// <summary>Status of the execution. Currently only supports success.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.ExecuteResponseSuccessfulExecutionDataStatus? Status { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.SuccessStatus? Status { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.ExecuteResponseSuccessfulExecutionData"/> and sets the default values.
         /// </summary>
@@ -59,7 +59,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             {
                 { "outputs", n => { Outputs = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.ExecuteResponseSuccessfulExecutionDataOutputsItem>(global::Soenneker.Together.OpenApiClient.Models.ExecuteResponseSuccessfulExecutionDataOutputsItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "session_id", n => { SessionId = n.GetStringValue(); } },
-                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.ExecuteResponseSuccessfulExecutionDataStatus>(); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.SuccessStatus>(); } },
             };
         }
         /// <summary>
@@ -71,7 +71,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.ExecuteResponseSuccessfulExecutionDataOutputsItem>("outputs", Outputs);
             writer.WriteStringValue("session_id", SessionId);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.ExecuteResponseSuccessfulExecutionDataStatus>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.SuccessStatus>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

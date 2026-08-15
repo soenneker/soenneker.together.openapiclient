@@ -17,7 +17,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Frames per second. Defaults to 24.</summary>
         public int? Fps { get; set; }
-        /// <summary>&quot;Deprecated: use media.frame_images instead. Array of images to guide video generation, similar to keyframes.&quot;</summary>
+        /// <summary>Deprecated: use media.frame_images instead. Array of images to guide video generation, similar to keyframes.</summary>
         [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -76,7 +76,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string Ratio { get; set; }
 #endif
-        /// <summary>&quot;Deprecated: use media.reference_images instead. Unlike frame_images which constrain specific timeline positions, reference images guide the general appearance that should appear consistently across the video.&quot;</summary>
+        /// <summary>Deprecated: use media.reference_images instead. Unlike frame_images which constrain specific timeline positions, reference images guide the general appearance that should appear consistently across the video.</summary>
         [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

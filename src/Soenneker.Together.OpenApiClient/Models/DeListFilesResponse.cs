@@ -32,13 +32,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string NextCursor { get; set; }
 #endif
         /// <summary>The object property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
         public global::Soenneker.Together.OpenApiClient.Models.DeListFilesResponseObject? Object { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Together.OpenApiClient.Models.DeListFilesResponseObject Object { get; set; }
-#endif
         /// <summary>Time when the listed model revision was created.</summary>
         public DateTimeOffset? RevisionCreatedAt { get; set; }
         /// <summary>ID of the model revision whose files are listed.</summary>
@@ -84,7 +78,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             {
                 { "data", n => { Data = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.DeListFilesResponseFile>(global::Soenneker.Together.OpenApiClient.Models.DeListFilesResponseFile.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "next_cursor", n => { NextCursor = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeListFilesResponseObject>(global::Soenneker.Together.OpenApiClient.Models.DeListFilesResponseObject.CreateFromDiscriminatorValue); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeListFilesResponseObject>(); } },
                 { "revisionCreatedAt", n => { RevisionCreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "revisionId", n => { RevisionId = n.GetStringValue(); } },
                 { "totalSizeBytes", n => { TotalSizeBytes = n.GetStringValue(); } },
@@ -99,7 +93,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.DeListFilesResponseFile>("data", Data);
             writer.WriteStringValue("next_cursor", NextCursor);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeListFilesResponseObject>("object", Object);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeListFilesResponseObject>("object", Object);
             writer.WriteDateTimeOffsetValue("revisionCreatedAt", RevisionCreatedAt);
             writer.WriteStringValue("revisionId", RevisionId);
             writer.WriteStringValue("totalSizeBytes", TotalSizeBytes);

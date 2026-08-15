@@ -7,28 +7,34 @@ using System.IO;
 using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
-    /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.Together.OpenApiClient.Models.PostFineTunesEstimatePrice200ResponseOneOf1"/>, <see cref="global::Soenneker.Together.OpenApiClient.Models.PostFineTunesEstimatePrice200ResponseOneOf2"/>
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class PostFineTunesEstimatePrice200Response : IComposedTypeWrapper, IParsable
+    #pragma warning disable CS1591
+    public partial class PostFineTunesEstimatePrice200Response : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.PostFineTunesEstimatePrice200ResponseOneOf1"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.PostFineTunesEstimatePrice200ResponseOneOf1? PostFineTunesEstimatePrice200ResponseOneOf1 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Together.OpenApiClient.Models.PostFineTunesEstimatePrice200ResponseOneOf1 PostFineTunesEstimatePrice200ResponseOneOf1 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.PostFineTunesEstimatePrice200ResponseOneOf2"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.PostFineTunesEstimatePrice200ResponseOneOf2? PostFineTunesEstimatePrice200ResponseOneOf2 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Together.OpenApiClient.Models.PostFineTunesEstimatePrice200ResponseOneOf2 PostFineTunesEstimatePrice200ResponseOneOf2 { get; set; }
-#endif
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Whether you are allowed to proceed with the fine-tuning job.</summary>
+        public bool? AllowedToProceed { get; set; }
+        /// <summary>The estimated number of tokens for evaluation</summary>
+        public double? EstimatedEvalTokenCount { get; set; }
+        /// <summary>The price of the fine-tuning job</summary>
+        public double? EstimatedTotalPrice { get; set; }
+        /// <summary>The estimated number of tokens to be trained</summary>
+        public double? EstimatedTrainTokenCount { get; set; }
+        /// <summary>Whether price estimation is available for the requested fine-tune job.</summary>
+        public bool? EstimationAvailable { get; set; }
+        /// <summary>Reason price estimation is unavailable for the requested fine-tune job.</summary>
+        public global::Soenneker.Together.OpenApiClient.Models.PostFineTunesEstimatePrice200ResponseUnavailableReason? UnavailableReason { get; set; }
+        /// <summary>Your credit limit in dollars.</summary>
+        public double? UserLimit { get; set; }
+        /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.PostFineTunesEstimatePrice200Response"/> and sets the default values.
+        /// </summary>
+        public PostFineTunesEstimatePrice200Response()
+        {
+            AdditionalData = new Dictionary<string, object>();
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -37,17 +43,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.PostFineTunesEstimatePrice200Response CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
-            var result = new global::Soenneker.Together.OpenApiClient.Models.PostFineTunesEstimatePrice200Response();
-            if("PostFineTunesEstimatePrice200ResponseOneOf1".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.PostFineTunesEstimatePrice200ResponseOneOf1 = new global::Soenneker.Together.OpenApiClient.Models.PostFineTunesEstimatePrice200ResponseOneOf1();
-            }
-            else if("PostFineTunesEstimatePrice200ResponseOneOf2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.PostFineTunesEstimatePrice200ResponseOneOf2 = new global::Soenneker.Together.OpenApiClient.Models.PostFineTunesEstimatePrice200ResponseOneOf2();
-            }
-            return result;
+            return new global::Soenneker.Together.OpenApiClient.Models.PostFineTunesEstimatePrice200Response();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -55,15 +51,16 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(PostFineTunesEstimatePrice200ResponseOneOf1 != null)
+            return new Dictionary<string, Action<IParseNode>>
             {
-                return PostFineTunesEstimatePrice200ResponseOneOf1.GetFieldDeserializers();
-            }
-            else if(PostFineTunesEstimatePrice200ResponseOneOf2 != null)
-            {
-                return PostFineTunesEstimatePrice200ResponseOneOf2.GetFieldDeserializers();
-            }
-            return new Dictionary<string, Action<IParseNode>>();
+                { "allowed_to_proceed", n => { AllowedToProceed = n.GetBoolValue(); } },
+                { "estimated_eval_token_count", n => { EstimatedEvalTokenCount = n.GetDoubleValue(); } },
+                { "estimated_total_price", n => { EstimatedTotalPrice = n.GetDoubleValue(); } },
+                { "estimated_train_token_count", n => { EstimatedTrainTokenCount = n.GetDoubleValue(); } },
+                { "estimation_available", n => { EstimationAvailable = n.GetBoolValue(); } },
+                { "unavailable_reason", n => { UnavailableReason = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.PostFineTunesEstimatePrice200ResponseUnavailableReason>(); } },
+                { "user_limit", n => { UserLimit = n.GetDoubleValue(); } },
+            };
         }
         /// <summary>
         /// Serializes information the current object
@@ -72,14 +69,14 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(PostFineTunesEstimatePrice200ResponseOneOf1 != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.PostFineTunesEstimatePrice200ResponseOneOf1>(null, PostFineTunesEstimatePrice200ResponseOneOf1);
-            }
-            else if(PostFineTunesEstimatePrice200ResponseOneOf2 != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.PostFineTunesEstimatePrice200ResponseOneOf2>(null, PostFineTunesEstimatePrice200ResponseOneOf2);
-            }
+            writer.WriteBoolValue("allowed_to_proceed", AllowedToProceed);
+            writer.WriteDoubleValue("estimated_eval_token_count", EstimatedEvalTokenCount);
+            writer.WriteDoubleValue("estimated_total_price", EstimatedTotalPrice);
+            writer.WriteDoubleValue("estimated_train_token_count", EstimatedTrainTokenCount);
+            writer.WriteBoolValue("estimation_available", EstimationAvailable);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.PostFineTunesEstimatePrice200ResponseUnavailableReason>("unavailable_reason", UnavailableReason);
+            writer.WriteDoubleValue("user_limit", UserLimit);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

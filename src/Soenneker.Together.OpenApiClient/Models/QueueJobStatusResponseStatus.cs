@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
-    /// <summary>&quot;Current job status. Transitions: pending → running → done/failed. A pending job may also be canceled.&quot;</summary>
+    /// <summary>Current job status. Transitions: pending → running → done/failed. A pending job may also be canceled.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum QueueJobStatusResponseStatus
     {

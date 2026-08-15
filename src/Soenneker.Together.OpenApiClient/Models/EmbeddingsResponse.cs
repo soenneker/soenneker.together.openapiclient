@@ -31,13 +31,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string Model { get; set; }
 #endif
         /// <summary>The object type, which is always `list`.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
         public global::Soenneker.Together.OpenApiClient.Models.EmbeddingsResponseObject? Object { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Together.OpenApiClient.Models.EmbeddingsResponseObject Object { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.EmbeddingsResponse"/> and sets the default values.
         /// </summary>
@@ -65,7 +59,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             {
                 { "data", n => { Data = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.EmbeddingsResponseDataItem>(global::Soenneker.Together.OpenApiClient.Models.EmbeddingsResponseDataItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.EmbeddingsResponseObject>(global::Soenneker.Together.OpenApiClient.Models.EmbeddingsResponseObject.CreateFromDiscriminatorValue); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.EmbeddingsResponseObject>(); } },
             };
         }
         /// <summary>
@@ -77,7 +71,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.EmbeddingsResponseDataItem>("data", Data);
             writer.WriteStringValue("model", Model);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.EmbeddingsResponseObject>("object", Object);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.EmbeddingsResponseObject>("object", Object);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

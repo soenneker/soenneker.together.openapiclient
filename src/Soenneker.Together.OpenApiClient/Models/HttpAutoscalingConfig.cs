@@ -17,9 +17,9 @@ namespace Soenneker.Together.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Metric must be HTTPTotalRequests or HTTPAvgRequestDuration</summary>
         public global::Soenneker.Together.OpenApiClient.Models.HttpAutoscalingConfigMetric? Metric { get; set; }
-        /// <summary>&quot;Target is the threshold value. Default: 100 for HTTPTotalRequests, 500 (ms) for HTTPAvgRequestDuration&quot;</summary>
+        /// <summary>Target is the threshold value. Default: 100 for HTTPTotalRequests, 500 (ms) for HTTPAvgRequestDuration</summary>
         public double? Target { get; set; }
-        /// <summary>&quot;TimeIntervalMinutes is the rate window in minutes. Default: 10&quot;</summary>
+        /// <summary>TimeIntervalMinutes is the rate window in minutes. Default: 10</summary>
         public int? TimeIntervalMinutes { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.HttpAutoscalingConfig"/> and sets the default values.

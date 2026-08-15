@@ -75,7 +75,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string Message { get; set; }
 #endif
-        /// <summary>&quot;Resource name at the time of the event. Populated by: deployment.created, deployment.deleted, endpoint.created, endpoint.deleted&quot;</summary>
+        /// <summary>Resource name at the time of the event. Populated by: deployment.created, deployment.deleted, endpoint.created, endpoint.deleted</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get; set; }
@@ -93,9 +93,9 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string NodeId { get; set; }
 #endif
-        /// <summary>&quot;Replica-count transition. Populated by: deployment.scaled&quot;</summary>
+        /// <summary>Replica-count transition. Populated by: deployment.scaled</summary>
         public int? OldReplicas { get; set; }
-        /// <summary>&quot;Field-mask paths that were modified. Populated by: deployment.updated, endpoint.updated&quot;</summary>
+        /// <summary>Field-mask paths that were modified. Populated by: deployment.updated, endpoint.updated</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? Paths { get; set; }
@@ -137,7 +137,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #endif
         /// <summary>Output only. Whether this row describes the endpoint or one of its deployments.</summary>
         public global::Soenneker.Together.OpenApiClient.Models.DeEndpointEventSourceKind? SourceKind { get; set; }
-        /// <summary>&quot;Condition status for `condition.set` and `cluster_condition.set`: `True`, `False`, or `Unknown`. The condition type is carried in `subjectId`.&quot;</summary>
+        /// <summary>Condition status for `condition.set` and `cluster_condition.set`: `True`, `False`, or `Unknown`. The condition type is carried in `subjectId`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Status { get; set; }

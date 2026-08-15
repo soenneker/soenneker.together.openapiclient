@@ -33,7 +33,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>The index property</summary>
         public double? Index { get; set; }
         /// <summary>The type property</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.ToolChoiceType? Type { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.FunctionType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.ToolChoice"/> and sets the default values.
         /// </summary>
@@ -62,7 +62,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "function", n => { Function = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.ToolChoiceFunction>(global::Soenneker.Together.OpenApiClient.Models.ToolChoiceFunction.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "index", n => { Index = n.GetDoubleValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.ToolChoiceType>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.FunctionType>(); } },
             };
         }
         /// <summary>
@@ -75,7 +75,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ToolChoiceFunction>("function", Function);
             writer.WriteStringValue("id", Id);
             writer.WriteDoubleValue("index", Index);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.ToolChoiceType>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.FunctionType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

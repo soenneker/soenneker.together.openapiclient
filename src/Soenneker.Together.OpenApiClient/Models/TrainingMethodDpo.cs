@@ -21,7 +21,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>The dpo_reference_free property</summary>
         public bool? DpoReferenceFree { get; set; }
         /// <summary>The method property</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.TrainingMethodDpoMethod? Method { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DpoMethod? Method { get; set; }
         /// <summary>The rpo_alpha property</summary>
         public double? RpoAlpha { get; set; }
         /// <summary>The simpo_gamma property</summary>
@@ -59,7 +59,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "dpo_beta", n => { DpoBeta = n.GetDoubleValue(); } },
                 { "dpo_normalize_logratios_by_length", n => { DpoNormalizeLogratiosByLength = n.GetBoolValue(); } },
                 { "dpo_reference_free", n => { DpoReferenceFree = n.GetBoolValue(); } },
-                { "method", n => { Method = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.TrainingMethodDpoMethod>(); } },
+                { "method", n => { Method = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DpoMethod>(); } },
                 { "rpo_alpha", n => { RpoAlpha = n.GetDoubleValue(); } },
                 { "simpo_gamma", n => { SimpoGamma = n.GetDoubleValue(); } },
             };
@@ -74,7 +74,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteDoubleValue("dpo_beta", DpoBeta);
             writer.WriteBoolValue("dpo_normalize_logratios_by_length", DpoNormalizeLogratiosByLength);
             writer.WriteBoolValue("dpo_reference_free", DpoReferenceFree);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.TrainingMethodDpoMethod>("method", Method);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.DpoMethod>("method", Method);
             writer.WriteDoubleValue("rpo_alpha", RpoAlpha);
             writer.WriteDoubleValue("simpo_gamma", SimpoGamma);
             writer.WriteAdditionalData(AdditionalData);

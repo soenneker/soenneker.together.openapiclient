@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
-    /// <summary>&quot;Checkpoint variant: merged (full model) or adapter (LoRA weights only)&quot;</summary>
+    /// <summary>Checkpoint variant: merged (full model) or adapter (LoRA weights only)</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum RlCheckpointVariant
     {

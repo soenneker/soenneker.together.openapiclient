@@ -38,7 +38,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Timestamp when the condition was observed.</summary>
         public DateTimeOffset? ObservedAt { get; set; }
         /// <summary>Informational condition type. `CapacityLimited` means the current step advanced partially because full capacity was not placeable.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.DeRolloutConditionType? Type { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.CapacityLimitedType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.DeRolloutCondition"/> and sets the default values.
         /// </summary>
@@ -69,7 +69,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "message", n => { Message = n.GetStringValue(); } },
                 { "metrics", n => { Metrics = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.DeMetricResult>(global::Soenneker.Together.OpenApiClient.Models.DeMetricResult.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "observedAt", n => { ObservedAt = n.GetDateTimeOffsetValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeRolloutConditionType>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.CapacityLimitedType>(); } },
             };
         }
         /// <summary>
@@ -84,7 +84,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteStringValue("message", Message);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.DeMetricResult>("metrics", Metrics);
             writer.WriteDateTimeOffsetValue("observedAt", ObservedAt);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeRolloutConditionType>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.CapacityLimitedType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

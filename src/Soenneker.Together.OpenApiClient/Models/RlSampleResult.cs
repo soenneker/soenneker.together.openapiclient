@@ -23,7 +23,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public List<global::Soenneker.Together.OpenApiClient.Models.RlPolicyVersionSegment> PolicySegments { get; set; }
 #endif
-        /// <summary>&quot;Teacher-forced log-probability of each model input token. Full prompt length; entry i corresponds to prompt token i. Entry 0 is always 0 as a placeholder: the first prompt token has no conditioning context, so it has no log-probability. Present only when prompt_logprobs was set on the request.&quot;</summary>
+        /// <summary>Teacher-forced log-probability of each model input token. Full prompt length; entry i corresponds to prompt token i. Entry 0 is always 0 as a placeholder: the first prompt token has no conditioning context, so it has no log-probability. Present only when prompt_logprobs was set on the request.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<double?>? PromptLogprobs { get; set; }

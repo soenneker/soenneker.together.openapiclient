@@ -31,7 +31,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public List<global::Soenneker.Together.OpenApiClient.Models.ExecuteRequestFilesItem> Files { get; set; }
 #endif
         /// <summary>Programming language for the code to execute. Currently only supports Python.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.ExecuteRequestLanguage? Language { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.PythonLanguage? Language { get; set; }
         /// <summary>Identifier of the current session. Used to make follow-up calls. Returns an error if the session does not belong to the caller or has expired.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -67,7 +67,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             {
                 { "code", n => { Code = n.GetStringValue(); } },
                 { "files", n => { Files = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.ExecuteRequestFilesItem>(global::Soenneker.Together.OpenApiClient.Models.ExecuteRequestFilesItem.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "language", n => { Language = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.ExecuteRequestLanguage>(); } },
+                { "language", n => { Language = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.PythonLanguage>(); } },
                 { "session_id", n => { SessionId = n.GetStringValue(); } },
             };
         }
@@ -80,7 +80,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("code", Code);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.ExecuteRequestFilesItem>("files", Files);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.ExecuteRequestLanguage>("language", Language);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.PythonLanguage>("language", Language);
             writer.WriteStringValue("session_id", SessionId);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -37,10 +37,10 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>The level property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.FinetuneEventLevelsWrapper? Level { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.FineTuneEventLevel? Level { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.FinetuneEventLevelsWrapper Level { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.FineTuneEventLevel Level { get; set; }
 #endif
         /// <summary>The message property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -59,13 +59,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string ModelPath { get; set; }
 #endif
         /// <summary>The object type, which is always `fine-tune-event`.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
         public global::Soenneker.Together.OpenApiClient.Models.FineTuneEventObject? Object { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Together.OpenApiClient.Models.FineTuneEventObject Object { get; set; }
-#endif
         /// <summary>The param_count property</summary>
         public int? ParamCount { get; set; }
         /// <summary>The step property</summary>
@@ -121,10 +115,10 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "created_at", n => { CreatedAt = n.GetStringValue(); } },
                 { "early_stopping_best_metric_value", n => { EarlyStoppingBestMetricValue = n.GetDoubleValue(); } },
                 { "early_stopping_best_step", n => { EarlyStoppingBestStep = n.GetIntValue(); } },
-                { "level", n => { Level = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.FinetuneEventLevelsWrapper>(global::Soenneker.Together.OpenApiClient.Models.FinetuneEventLevelsWrapper.CreateFromDiscriminatorValue); } },
+                { "level", n => { Level = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.FineTuneEventLevel>(global::Soenneker.Together.OpenApiClient.Models.FineTuneEventLevel.CreateFromDiscriminatorValue); } },
                 { "message", n => { Message = n.GetStringValue(); } },
                 { "model_path", n => { ModelPath = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.FineTuneEventObject>(global::Soenneker.Together.OpenApiClient.Models.FineTuneEventObject.CreateFromDiscriminatorValue); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.FineTuneEventObject>(); } },
                 { "param_count", n => { ParamCount = n.GetIntValue(); } },
                 { "step", n => { Step = n.GetIntValue(); } },
                 { "token_count", n => { TokenCount = n.GetIntValue(); } },
@@ -145,10 +139,10 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteStringValue("created_at", CreatedAt);
             writer.WriteDoubleValue("early_stopping_best_metric_value", EarlyStoppingBestMetricValue);
             writer.WriteIntValue("early_stopping_best_step", EarlyStoppingBestStep);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.FinetuneEventLevelsWrapper>("level", Level);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.FineTuneEventLevel>("level", Level);
             writer.WriteStringValue("message", Message);
             writer.WriteStringValue("model_path", ModelPath);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.FineTuneEventObject>("object", Object);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.FineTuneEventObject>("object", Object);
             writer.WriteIntValue("param_count", ParamCount);
             writer.WriteIntValue("step", Step);
             writer.WriteIntValue("token_count", TokenCount);

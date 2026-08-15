@@ -37,13 +37,13 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.VideoMediaAudioInputsItem CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
+            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.Together.OpenApiClient.Models.VideoMediaAudioInputsItem();
             if("AudioRef".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.AudioRef = new global::Soenneker.Together.OpenApiClient.Models.AudioRef();
             }
-            else if("VideoMediaAudioInputsItem_1".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("VideoMediaAudioInputsItemBranch1".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.VideoMediaAudioInputsItemBranch1 = new global::Soenneker.Together.OpenApiClient.Models.VideoMediaAudioInputsItemBranch1();
             }

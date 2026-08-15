@@ -72,7 +72,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public List<string> Stop { get; set; }
 #endif
-        /// <summary>&quot;If true, stream tokens as Server-Sent Events as the model generates them instead of waiting for the full model response. The stream terminates with `data: [DONE]`. If false, return a single JSON object containing the results.&quot;</summary>
+        /// <summary>If true, stream tokens as Server-Sent Events as the model generates them instead of waiting for the full model response. The stream terminates with `data: [DONE]`. If false, return a single JSON object containing the results.</summary>
         public bool? Stream { get; set; }
         /// <summary>A decimal number from 0-1 that determines the degree of randomness in the response. A temperature less than 1 favors more correctness and is appropriate for question answering or summarization. A value closer to 1 introduces more randomness in the output.</summary>
         public double? Temperature { get; set; }

@@ -39,14 +39,6 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentSamplingOneOf2KeyBased KeyBased { get; set; }
 #endif
-        /// <summary>Union discriminator</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Type { get; set; }
-#nullable restore
-#else
-        public string Type { get; set; }
-#endif
         /// <summary>Fixed random request sampling.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -83,7 +75,6 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "adaptiveKeyBased", n => { AdaptiveKeyBased = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentSamplingOneOf4AdaptiveKeyBased>(global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentSamplingOneOf4AdaptiveKeyBased.CreateFromDiscriminatorValue); } },
                 { "adaptiveUniform", n => { AdaptiveUniform = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentSamplingOneOf3AdaptiveUniform>(global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentSamplingOneOf3AdaptiveUniform.CreateFromDiscriminatorValue); } },
                 { "keyBased", n => { KeyBased = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentSamplingOneOf2KeyBased>(global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentSamplingOneOf2KeyBased.CreateFromDiscriminatorValue); } },
-                { "type", n => { Type = n.GetStringValue(); } },
                 { "uniform", n => { Uniform = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentSamplingOneOf1Uniform>(global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentSamplingOneOf1Uniform.CreateFromDiscriminatorValue); } },
             };
         }
@@ -97,7 +88,6 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentSamplingOneOf4AdaptiveKeyBased>("adaptiveKeyBased", AdaptiveKeyBased);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentSamplingOneOf3AdaptiveUniform>("adaptiveUniform", AdaptiveUniform);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentSamplingOneOf2KeyBased>("keyBased", KeyBased);
-            writer.WriteStringValue("type", Type);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentSamplingOneOf1Uniform>("uniform", Uniform);
             writer.WriteAdditionalData(AdditionalData);
         }

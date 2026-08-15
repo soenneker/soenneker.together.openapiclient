@@ -15,7 +15,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The value property</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseBatchSizeWrapperValue? Value { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.MaxValue? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseBatchSizeWrapper"/> and sets the default values.
         /// </summary>
@@ -41,7 +41,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "value", n => { Value = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseBatchSizeWrapperValue>(); } },
+                { "value", n => { Value = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.MaxValue>(); } },
             };
         }
         /// <summary>
@@ -51,7 +51,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseBatchSizeWrapperValue>("value", Value);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.MaxValue>("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

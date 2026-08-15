@@ -34,7 +34,7 @@ namespace Soenneker.Together.OpenApiClient.FineTunes.Item.Metrics
         {
         }
         /// <summary>
-        /// &quot;Retrieves recorded training metrics for a fine-tuning job in chronological order. All query parameters are optional: omit them to retrieve all metrics.&quot;
+        /// Retrieves recorded training metrics for a fine-tuning job in chronological order. All query parameters are optional: omit them to retrieve all metrics.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.GetFineTunesByIdMetrics200Response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.Together.OpenApiClient.FineTunes.Item.Metrics
             return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.GetFineTunesByIdMetrics200Response>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.GetFineTunesByIdMetrics200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Retrieves recorded training metrics for a fine-tuning job in chronological order. All query parameters are optional: omit them to retrieve all metrics.&quot;
+        /// Retrieves recorded training metrics for a fine-tuning job in chronological order. All query parameters are optional: omit them to retrieve all metrics.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -80,7 +80,7 @@ namespace Soenneker.Together.OpenApiClient.FineTunes.Item.Metrics
             return new global::Soenneker.Together.OpenApiClient.FineTunes.Item.Metrics.MetricsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// &quot;Retrieves recorded training metrics for a fine-tuning job in chronological order. All query parameters are optional: omit them to retrieve all metrics.&quot;
+        /// Retrieves recorded training metrics for a fine-tuning job in chronological order. All query parameters are optional: omit them to retrieve all metrics.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class MetricsRequestBuilderGetQueryParameters 

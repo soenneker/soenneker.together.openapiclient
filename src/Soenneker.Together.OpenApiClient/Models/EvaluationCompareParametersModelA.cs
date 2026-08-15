@@ -37,9 +37,9 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.EvaluationCompareParametersModelA CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
+            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.Together.OpenApiClient.Models.EvaluationCompareParametersModelA();
-            if("EvaluationCompareParametersModelA_2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("EvaluationCompareParametersModelABranch2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.EvaluationCompareParametersModelABranch2 = new global::Soenneker.Together.OpenApiClient.Models.EvaluationCompareParametersModelABranch2();
             }

@@ -24,7 +24,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string SourcePrefix { get; set; }
 #endif
         /// <summary>Type is the content type (currently only &quot;files&quot; is supported which allows preloading files uploaded via Files API into the volume)</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.VolumeContentRequestType? Type { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.FilesType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.CreateVolumeRequestContent"/> and sets the default values.
         /// </summary>
@@ -51,7 +51,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "source_prefix", n => { SourcePrefix = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.VolumeContentRequestType>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.FilesType>(); } },
             };
         }
         /// <summary>
@@ -62,7 +62,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("source_prefix", SourcePrefix);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.VolumeContentRequestType>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.FilesType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

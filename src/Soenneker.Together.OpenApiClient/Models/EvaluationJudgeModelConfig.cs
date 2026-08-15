@@ -40,9 +40,9 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string Model { get; set; }
 #endif
-        /// <summary>&quot;Source of the judge model inference: - `serverless`: Together&apos;s shared serverless inference API. Default concurrency: 25 workers. - `dedicated`: A Together dedicated deployment endpoint. Default concurrency: 5 workers  (minimum enforced even if num_workers is set lower).- `external`: An external inference API (e.g. OpenAI, Anthropic, Google, OpenRouter).  Requires `external_api_token` and `external_base_url`. Default concurrency: 2 workers  for first-party APIs, 20 for proxy/aggregator endpoints.&quot;</summary>
+        /// <summary>Source of the judge model inference: - `serverless`: Together&apos;s shared serverless inference API. Default concurrency: 25 workers. - `dedicated`: A Together dedicated deployment endpoint. Default concurrency: 5 workers  (minimum enforced even if num_workers is set lower).- `external`: An external inference API (e.g. OpenAI, Anthropic, Google, OpenRouter).  Requires `external_api_token` and `external_base_url`. Default concurrency: 2 workers  for first-party APIs, 20 for proxy/aggregator endpoints.</summary>
         public global::Soenneker.Together.OpenApiClient.Models.EvaluationJudgeModelConfigModelSource? ModelSource { get; set; }
-        /// <summary>&quot;Number of concurrent inference workers for the judge. Overrides the source-specific default (serverless: 25, dedicated: 5, external: 2–20). For dedicated endpoints the value is clamped to a minimum of 5 regardless of what is set here.&quot;</summary>
+        /// <summary>Number of concurrent inference workers for the judge. Overrides the source-specific default (serverless: 25, dedicated: 5, external: 2–20). For dedicated endpoints the value is clamped to a minimum of 5 regardless of what is set here.</summary>
         public int? NumWorkers { get; set; }
         /// <summary>System prompt template for the judge</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

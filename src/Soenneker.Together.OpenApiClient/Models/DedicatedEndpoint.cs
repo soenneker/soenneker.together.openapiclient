@@ -66,13 +66,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string Name { get; set; }
 #endif
         /// <summary>The object type, which is always `endpoint`.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
         public global::Soenneker.Together.OpenApiClient.Models.DedicatedEndpointObject? Object { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Together.OpenApiClient.Models.DedicatedEndpointObject Object { get; set; }
-#endif
         /// <summary>The owner of this endpoint</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -84,7 +78,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Current state of the endpoint</summary>
         public global::Soenneker.Together.OpenApiClient.Models.DedicatedEndpointState? State { get; set; }
         /// <summary>The type of endpoint</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.DedicatedEndpointType? Type { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DedicatedType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.DedicatedEndpoint"/> and sets the default values.
         /// </summary>
@@ -117,10 +111,10 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.DedicatedEndpointObject>(global::Soenneker.Together.OpenApiClient.Models.DedicatedEndpointObject.CreateFromDiscriminatorValue); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DedicatedEndpointObject>(); } },
                 { "owner", n => { Owner = n.GetStringValue(); } },
                 { "state", n => { State = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DedicatedEndpointState>(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DedicatedEndpointType>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DedicatedType>(); } },
             };
         }
         /// <summary>
@@ -137,10 +131,10 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("model", Model);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DedicatedEndpointObject>("object", Object);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.DedicatedEndpointObject>("object", Object);
             writer.WriteStringValue("owner", Owner);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.DedicatedEndpointState>("state", State);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.DedicatedEndpointType>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.DedicatedType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

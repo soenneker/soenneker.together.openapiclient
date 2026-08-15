@@ -56,7 +56,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string ReasoningContent { get; set; }
 #endif
         /// <summary>The role property</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionAssistantMessageParamRole? Role { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.AssistantRole? Role { get; set; }
         /// <summary>The tool_calls property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -95,7 +95,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "reasoning", n => { Reasoning = n.GetStringValue(); } },
                 { "reasoning_content", n => { ReasoningContent = n.GetStringValue(); } },
-                { "role", n => { Role = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionAssistantMessageParamRole>(); } },
+                { "role", n => { Role = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.AssistantRole>(); } },
                 { "tool_calls", n => { ToolCalls = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.ToolChoice>(global::Soenneker.Together.OpenApiClient.Models.ToolChoice.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
@@ -111,7 +111,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("reasoning", Reasoning);
             writer.WriteStringValue("reasoning_content", ReasoningContent);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionAssistantMessageParamRole>("role", Role);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.AssistantRole>("role", Role);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.ToolChoice>("tool_calls", ToolCalls);
             writer.WriteAdditionalData(AdditionalData);
         }

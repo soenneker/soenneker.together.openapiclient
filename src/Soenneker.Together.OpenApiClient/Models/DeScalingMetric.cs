@@ -23,7 +23,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>&quot;Percentile to evaluate for latency-based metrics: `p50`, `p90`, `p95`, or `p99`.&quot;</summary>
+        /// <summary>Percentile to evaluate for latency-based metrics: `p50`, `p90`, `p95`, or `p99`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Percentile { get; set; }

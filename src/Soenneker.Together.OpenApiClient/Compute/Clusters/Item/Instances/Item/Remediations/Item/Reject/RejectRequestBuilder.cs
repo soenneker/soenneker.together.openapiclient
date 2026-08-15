@@ -34,7 +34,7 @@ namespace Soenneker.Together.OpenApiClient.Compute.Clusters.Item.Instances.Item.
         {
         }
         /// <summary>
-        /// &quot;Rejects a pending remediation.Only remediations with state PENDING_APPROVAL can be rejected.On REJECT: state changes to CANCELLED.The reviewed_by, review_time, and review_comment fields are populatedon the remediation after rejection.&quot;
+        /// Rejects a pending remediation.Only remediations with state PENDING_APPROVAL can be rejected.On REJECT: state changes to CANCELLED.The reviewed_by, review_time, and review_comment fields are populatedon the remediation after rejection.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.Remediation"/></returns>
         /// <param name="body">The request body</param>
@@ -54,7 +54,7 @@ namespace Soenneker.Together.OpenApiClient.Compute.Clusters.Item.Instances.Item.
             return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.Remediation>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.Remediation.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Rejects a pending remediation.Only remediations with state PENDING_APPROVAL can be rejected.On REJECT: state changes to CANCELLED.The reviewed_by, review_time, and review_comment fields are populatedon the remediation after rejection.&quot;
+        /// Rejects a pending remediation.Only remediations with state PENDING_APPROVAL can be rejected.On REJECT: state changes to CANCELLED.The reviewed_by, review_time, and review_comment fields are populatedon the remediation after rejection.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

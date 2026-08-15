@@ -31,14 +31,6 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string Profile { get; set; }
 #endif
-        /// <summary>Union discriminator</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Type { get; set; }
-#nullable restore
-#else
-        public string Type { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.DeCreateDeploymentRequestPlacement"/> and sets the default values.
         /// </summary>
@@ -66,7 +58,6 @@ namespace Soenneker.Together.OpenApiClient.Models
             {
                 { "inline", n => { Inline = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.DePlacementOneOf1Inline>(global::Soenneker.Together.OpenApiClient.Models.DePlacementOneOf1Inline.CreateFromDiscriminatorValue); } },
                 { "profile", n => { Profile = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -78,7 +69,6 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DePlacementOneOf1Inline>("inline", Inline);
             writer.WriteStringValue("profile", Profile);
-            writer.WriteStringValue("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
