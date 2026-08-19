@@ -25,6 +25,14 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string Id { get; set; }
 #endif
+        /// <summary>Together model registry details for a training checkpoint</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Together.OpenApiClient.Models.RlTrainingCheckpointRegistration? Registration { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Together.OpenApiClient.Models.RlTrainingCheckpointRegistration Registration { get; set; }
+#endif
         /// <summary>Training step at time of save</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -60,6 +68,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             {
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
+                { "registration", n => { Registration = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlTrainingCheckpointRegistration>(global::Soenneker.Together.OpenApiClient.Models.RlTrainingCheckpointRegistration.CreateFromDiscriminatorValue); } },
                 { "step", n => { Step = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlTrainingCheckpointStep>(global::Soenneker.Together.OpenApiClient.Models.RlTrainingCheckpointStep.CreateFromDiscriminatorValue); } },
             };
         }
@@ -72,6 +81,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteStringValue("id", Id);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlTrainingCheckpointRegistration>("registration", Registration);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlTrainingCheckpointStep>("step", Step);
             writer.WriteAdditionalData(AdditionalData);
         }

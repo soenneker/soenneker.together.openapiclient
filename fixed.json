@@ -17484,6 +17484,22 @@
             "description": "Timestamp when the model was registered",
             "format": "date-time",
             "example": "2026-01-02T00:00:00Z"
+          },
+          "model_object_id": {
+            "type": "string",
+            "description": "Together model registry object ID for the model checkpoint (e.g. \u0060ml_...\u0060), set on full-weight training sessions"
+          },
+          "model_object_revision_id": {
+            "type": "string",
+            "description": "Together model registry revision ID for the model checkpoint (e.g. \u0060rv_...\u0060)"
+          },
+          "adapter_object_id": {
+            "type": "string",
+            "description": "Together model registry object ID for the adapter checkpoint (e.g. \u0060ml_...\u0060), set on LoRA training sessions"
+          },
+          "adapter_object_revision_id": {
+            "type": "string",
+            "description": "Together model registry revision ID for the adapter checkpoint (e.g. \u0060rv_...\u0060)"
           }
         },
         "description": "Model registration details for an inference checkpoint"
@@ -17509,9 +17525,29 @@
             "description": "Timestamp when the checkpoint was created",
             "format": "date-time",
             "example": "2026-01-02T00:00:00Z"
+          },
+          "registration": {
+            "$ref": "#/components/schemas/RlTrainingCheckpointRegistration"
           }
         },
         "description": "Saved training checkpoint"
+      },
+      "RlTrainingCheckpointRegistration": {
+        "required": [
+          "object_id"
+        ],
+        "type": "object",
+        "properties": {
+          "object_id": {
+            "type": "string",
+            "description": "Together model registry object ID for the training checkpoint artifact (e.g. \u0060ml_...\u0060)"
+          },
+          "object_revision_id": {
+            "type": "string",
+            "description": "Together model registry revision ID for the training checkpoint artifact (e.g. \u0060rv_...\u0060), empty when the upload reported no revision"
+          }
+        },
+        "description": "Together model registry details for a training checkpoint"
       },
       "RlTrainingCheckpointResult": {
         "required": [
