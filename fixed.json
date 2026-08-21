@@ -12606,7 +12606,7 @@
           },
           "finalTargetReplicas": {
             "type": "integer",
-            "description": "Optional target replica count at completion. Must be at least 1 when set; defaults to the source deployment\u0027s replica count at create time, or to the source and target deployments\u0027 combined replica count when both already stand in the endpoint traffic split after a cancel."
+            "description": "Optional target replica floor at completion. Must be at least 1 when set; defaults to the source deployment\u0027s replica count at create time, or to the source and target deployments\u0027 combined replica count when both already stand in the endpoint traffic split after a cancel. If this exceeds the target autoscaling max, the rollout raises that max once when first needed unless an operator changes max mid-run; the raised ceiling remains after completion."
           }
         },
         "description": "Strategy, metric gates, timing, and cleanup policy for shifting traffic between two deployments under one endpoint."
@@ -12855,7 +12855,7 @@
         "properties": {
           "code": {
             "type": "string",
-            "description": "Machine-readable warning code, such as CREATE_WILL_REJECT or TARGET_ALREADY_IN_TRAFFIC_SPLIT. Render message for unrecognized codes."
+            "description": "Machine-readable warning code, such as CREATE_WILL_REJECT, TARGET_ALREADY_IN_TRAFFIC_SPLIT, or ROLLOUT_WILL_RAISE_TARGET_MAX. Render message for unrecognized codes."
           },
           "message": {
             "type": "string",
@@ -15370,6 +15370,12 @@
             "description": "When true, capture the mixture-of-experts routing decisions made while generating and return them in \u0060SampledSequence.routed_experts\u0060, so training can reuse the same expert selection. Only available on mixture-of-experts models; ignored otherwise. The captured buffer scales with sequence length, so leave it off unless you replay routing during training.",
             "default": false,
             "example": false
+          },
+          "return_routed_experts_object_uri": {
+            "type": "boolean",
+            "description": "When true together with \u0060return_routed_experts\u0060, return each routing capture as a backend-owned \u0060object_uri\u0060 plus shape instead of inline base64 data. Clients that do not opt in keep the legacy inline response.",
+            "default": false,
+            "example": false
           }
         }
       },
@@ -16392,25 +16398,29 @@
       },
       "RlRoutedExperts": {
         "required": [
-          "data",
           "shape"
         ],
         "type": "object",
         "properties": {
           "data": {
             "type": "string",
-            "description": "Base64-encoded contiguous uint16 buffer of selected expert indices, row-major over (token, layer, k).",
+            "description": "Legacy base64-encoded contiguous int32 routing buffer, row-major over (token, layer, width).",
             "format": "byte"
+          },
+          "object_uri": {
+            "type": "string",
+            "description": "Backend-owned S3/R2 object URI containing the contiguous int32 routing buffer. Clients relay this URI unchanged; the manager validates and downloads it before training.",
+            "format": "uri"
           },
           "shape": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/RlRoutedExpertsShapeItem"
             },
-            "description": "Buffer shape as \u0060[num_tokens, num_layers, topk]\u0060."
+            "description": "Buffer shape as \u0060[num_tokens, num_layers, width]\u0060."
           }
         },
-        "description": "Mixture-of-experts routing decisions captured while generating, so training can reuse the same expert selection. A contiguous uint16 buffer of selected expert indices, reshaped by \u0060shape\u0060, which is always \u0060[num_tokens, num_layers, topk]\u0060."
+        "description": "Mixture-of-experts routing decisions captured while generating, so training can reuse the same expert selection. Exactly one source is set\u2014legacy inline \u0060data\u0060, or a backend-owned \u0060object_uri\u0060 that the manager hydrates before training. The contiguous int32 buffer is reshaped by \u0060shape\u0060, which is always \u0060[num_tokens, num_layers, width]\u0060; packed buffers carry fp32-bitcast routing weights in the trailing top-k columns."
       },
       "RlOptimStepOperation": {
         "required": [
@@ -16939,6 +16949,11 @@
           },
           "metadata": {
             "$ref": "#/components/schemas/RlTrainingSessionMetadata"
+          },
+          "load_optimizer": {
+            "type": "boolean",
+            "description": "Whether to restore optimizer state and step from a training checkpoint. Omitted or true restores them; false loads weights only with a fresh optimizer and step 0. Not valid for inference or HuggingFace checkpoints, which have no optimizer state.",
+            "example": true
           }
         }
       },
@@ -18799,6 +18814,38 @@
         },
         "description": "Response returned when listing passive health check alerts."
       },
+      "PhcAnnotation": {
+        "required": [
+          "title",
+          "description",
+          "summary_line"
+        ],
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "Alert title from the Alertmanager summary annotation.",
+            "readOnly": true
+          },
+          "description": {
+            "type": "string",
+            "description": "Static explanation for the alert.",
+            "readOnly": true
+          },
+          "summary_line": {
+            "type": "string",
+            "description": "Per-firing summary line parsed from the evidence annotation.",
+            "readOnly": true
+          },
+          "xid": {
+            "$ref": "#/components/schemas/PhcAnnotationXid"
+          },
+          "slurm_node_unavailable": {
+            "$ref": "#/components/schemas/PhcAnnotationSlurmNodeUnavailable"
+          }
+        },
+        "description": "Typed content parsed from passive health check alert annotations."
+      },
       "PassiveHealthCheckAlert": {
         "required": [
           "passive_health_check_alert_id",
@@ -18807,7 +18854,8 @@
           "alert_name",
           "severity",
           "annotations",
-          "started_at"
+          "started_at",
+          "annotation"
         ],
         "type": "object",
         "properties": {
@@ -18858,6 +18906,9 @@
             "type": "string",
             "description": "Remediation intent UUID attached to this alert, if any.",
             "readOnly": true
+          },
+          "annotation": {
+            "$ref": "#/components/schemas/PassiveHealthCheckAlertAnnotation"
           }
         },
         "description": "Passive health check alert returned by the health check API."
@@ -19104,6 +19155,63 @@
           }
         },
         "description": "SlurmStartupScripts carries optional Slurm lifecycle scripts (prolog/epilog, init, extra conf)."
+      },
+      "SlurmNodeUnavailableDetail": {
+        "required": [
+          "reason"
+        ],
+        "type": "object",
+        "properties": {
+          "reason": {
+            "type": "string",
+            "description": "Drain reason reported for the unavailable Slurm node.",
+            "readOnly": true
+          }
+        },
+        "description": "Details for a Slurm node unavailable passive health check alert."
+      },
+      "XidDetail": {
+        "required": [
+          "events"
+        ],
+        "type": "object",
+        "properties": {
+          "events": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/XidEvent"
+            },
+            "description": "Xid events observed during the alert window.",
+            "readOnly": true
+          }
+        },
+        "description": "Details for a DmesgXidError passive health check alert."
+      },
+      "XidEvent": {
+        "required": [
+          "xid_code",
+          "mnemonic",
+          "count"
+        ],
+        "type": "object",
+        "properties": {
+          "xid_code": {
+            "type": "string",
+            "description": "NVIDIA Xid code, such as \u006079\u0060.",
+            "readOnly": true
+          },
+          "mnemonic": {
+            "type": "string",
+            "description": "Driver mnemonic for the Xid code when metadata is available.",
+            "readOnly": true
+          },
+          "count": {
+            "type": "integer",
+            "description": "Number of times this Xid code appeared in the alert window.",
+            "readOnly": true
+          }
+        },
+        "description": "One NVIDIA Xid code observed during the alert window."
       },
       "ListVoicesResponse": {
         "required": [
@@ -25807,6 +25915,70 @@
         "description": "File size in bytes",
         "example": "123456789"
       },
+      "PhcAnnotationXid": {
+        "required": [
+          "events"
+        ],
+        "type": "object",
+        "properties": {
+          "events": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/XidEvent"
+            },
+            "description": "Xid events observed during the alert window.",
+            "readOnly": true
+          }
+        },
+        "description": "Xid-specific details when the alert was caused by NVIDIA Xid errors."
+      },
+      "PhcAnnotationSlurmNodeUnavailable": {
+        "required": [
+          "reason"
+        ],
+        "type": "object",
+        "properties": {
+          "reason": {
+            "type": "string",
+            "description": "Drain reason reported for the unavailable Slurm node.",
+            "readOnly": true
+          }
+        },
+        "description": "Slurm node details when the alert was caused by unavailable Slurm nodes."
+      },
+      "PassiveHealthCheckAlertAnnotation": {
+        "required": [
+          "title",
+          "description",
+          "summary_line"
+        ],
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "Alert title from the Alertmanager summary annotation.",
+            "readOnly": true
+          },
+          "description": {
+            "type": "string",
+            "description": "Static explanation for the alert.",
+            "readOnly": true
+          },
+          "summary_line": {
+            "type": "string",
+            "description": "Per-firing summary line parsed from the evidence annotation.",
+            "readOnly": true
+          },
+          "xid": {
+            "$ref": "#/components/schemas/PhcAnnotationXid"
+          },
+          "slurm_node_unavailable": {
+            "$ref": "#/components/schemas/PhcAnnotationSlurmNodeUnavailable"
+          }
+        },
+        "description": "Typed annotation content parsed from the legacy annotations bag.",
+        "readOnly": true
+      },
       "RerankRequestModel": {
         "type": "string",
         "anyOf": [
@@ -27497,7 +27669,7 @@
         "additionalProperties": {
           "type": "string"
         },
-        "description": "Alertmanager annotations as key-value strings.",
+        "description": "Legacy Alertmanager annotations as key-value strings.",
         "readOnly": true
       },
       "ModelVoicesVoicesItem": {
@@ -30457,7 +30629,7 @@
         "additionalProperties": {
           "type": "string"
         },
-        "description": "Alertmanager annotations as key-value strings."
+        "description": "Legacy Alertmanager annotations as key-value strings."
       },
       "RerankResponseObject": {
         "const": null,

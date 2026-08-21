@@ -28,6 +28,8 @@ namespace Soenneker.Together.OpenApiClient.Models
         public bool? PromptLogprobs { get; set; }
         /// <summary>When true, capture the mixture-of-experts routing decisions made while generating and return them in `SampledSequence.routed_experts`, so training can reuse the same expert selection. Only available on mixture-of-experts models; ignored otherwise. The captured buffer scales with sequence length, so leave it off unless you replay routing during training.</summary>
         public bool? ReturnRoutedExperts { get; set; }
+        /// <summary>When true together with `return_routed_experts`, return each routing capture as a backend-owned `object_uri` plus shape instead of inline base64 data. Clients that do not opt in keep the legacy inline response.</summary>
+        public bool? ReturnRoutedExpertsObjectUri { get; set; }
         /// <summary>The sampling_params property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -47,6 +49,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             NumSamples = 1;
             PromptLogprobs = false;
             ReturnRoutedExperts = false;
+            ReturnRoutedExpertsObjectUri = false;
             TopkPromptLogprobs = 0;
         }
         /// <summary>
@@ -71,6 +74,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "num_samples", n => { NumSamples = n.GetIntValue(); } },
                 { "prompt_logprobs", n => { PromptLogprobs = n.GetBoolValue(); } },
                 { "return_routed_experts", n => { ReturnRoutedExperts = n.GetBoolValue(); } },
+                { "return_routed_experts_object_uri", n => { ReturnRoutedExpertsObjectUri = n.GetBoolValue(); } },
                 { "sampling_params", n => { SamplingParams = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlSamplingParams>(global::Soenneker.Together.OpenApiClient.Models.RlSamplingParams.CreateFromDiscriminatorValue); } },
                 { "topk_prompt_logprobs", n => { TopkPromptLogprobs = n.GetIntValue(); } },
             };
@@ -86,6 +90,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteIntValue("num_samples", NumSamples);
             writer.WriteBoolValue("prompt_logprobs", PromptLogprobs);
             writer.WriteBoolValue("return_routed_experts", ReturnRoutedExperts);
+            writer.WriteBoolValue("return_routed_experts_object_uri", ReturnRoutedExpertsObjectUri);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlSamplingParams>("sampling_params", SamplingParams);
             writer.WriteIntValue("topk_prompt_logprobs", TopkPromptLogprobs);
             writer.WriteAdditionalData(AdditionalData);

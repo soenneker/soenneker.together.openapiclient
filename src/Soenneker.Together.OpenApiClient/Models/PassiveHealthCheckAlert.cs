@@ -23,7 +23,15 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string AlertName { get; private set; }
 #endif
-        /// <summary>Alertmanager annotations as key-value strings.</summary>
+        /// <summary>Typed annotation content parsed from the legacy annotations bag.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Together.OpenApiClient.Models.PassiveHealthCheckAlertAnnotation? Annotation { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.Together.OpenApiClient.Models.PassiveHealthCheckAlertAnnotation Annotation { get; private set; }
+#endif
+        /// <summary>Legacy Alertmanager annotations as key-value strings.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Together.OpenApiClient.Models.PassiveHealthCheckAlertAnnotationsProperty? Annotations { get; set; }
@@ -103,6 +111,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "alert_name", n => { AlertName = n.GetStringValue(); } },
+                { "annotation", n => { Annotation = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.PassiveHealthCheckAlertAnnotation>(global::Soenneker.Together.OpenApiClient.Models.PassiveHealthCheckAlertAnnotation.CreateFromDiscriminatorValue); } },
                 { "annotations", n => { Annotations = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.PassiveHealthCheckAlertAnnotationsProperty>(global::Soenneker.Together.OpenApiClient.Models.PassiveHealthCheckAlertAnnotationsProperty.CreateFromDiscriminatorValue); } },
                 { "cluster_id", n => { ClusterId = n.GetStringValue(); } },
                 { "instance_id", n => { InstanceId = n.GetStringValue(); } },

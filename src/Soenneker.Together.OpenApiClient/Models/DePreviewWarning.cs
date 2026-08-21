@@ -15,7 +15,7 @@ namespace Soenneker.Together.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Machine-readable warning code, such as CREATE_WILL_REJECT or TARGET_ALREADY_IN_TRAFFIC_SPLIT. Render message for unrecognized codes.</summary>
+        /// <summary>Machine-readable warning code, such as CREATE_WILL_REJECT, TARGET_ALREADY_IN_TRAFFIC_SPLIT, or ROLLOUT_WILL_RAISE_TARGET_MAX. Render message for unrecognized codes.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Code { get; set; }

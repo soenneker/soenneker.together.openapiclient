@@ -8,14 +8,14 @@ using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
     /// <summary>
-    /// Mixture-of-experts routing decisions captured while generating, so training can reuse the same expert selection. A contiguous uint16 buffer of selected expert indices, reshaped by `shape`, which is always `[num_tokens, num_layers, topk]`.
+    /// Mixture-of-experts routing decisions captured while generating, so training can reuse the same expert selection. Exactly one source is set—legacy inline `data`, or a backend-owned `object_uri` that the manager hydrates before training. The contiguous int32 buffer is reshaped by `shape`, which is always `[num_tokens, num_layers, width]`; packed buffers carry fp32-bitcast routing weights in the trailing top-k columns.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RlRoutedExperts : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Base64-encoded contiguous uint16 buffer of selected expert indices, row-major over (token, layer, k).</summary>
+        /// <summary>Legacy base64-encoded contiguous int32 routing buffer, row-major over (token, layer, width).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public byte[]? Data { get; set; }
@@ -23,7 +23,15 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public byte[] Data { get; set; }
 #endif
-        /// <summary>Buffer shape as `[num_tokens, num_layers, topk]`.</summary>
+        /// <summary>Backend-owned S3/R2 object URI containing the contiguous int32 routing buffer. Clients relay this URI unchanged; the manager validates and downloads it before training.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ObjectUri { get; set; }
+#nullable restore
+#else
+        public string ObjectUri { get; set; }
+#endif
+        /// <summary>Buffer shape as `[num_tokens, num_layers, width]`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? Shape { get; set; }
@@ -57,6 +65,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "data", n => { Data = n.GetByteArrayValue(); } },
+                { "object_uri", n => { ObjectUri = n.GetStringValue(); } },
                 { "shape", n => { Shape = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
         }
@@ -68,6 +77,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteByteArrayValue("data", Data);
+            writer.WriteStringValue("object_uri", ObjectUri);
             writer.WriteCollectionOfPrimitiveValues<string>("shape", Shape);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -25,7 +25,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #endif
         /// <summary>Number of model input tokens served from the prefix cache while generating this sequence.</summary>
         public int? PromptCacheHitTokens { get; set; }
-        /// <summary>Mixture-of-experts routing decisions captured while generating, so training can reuse the same expert selection. A contiguous uint16 buffer of selected expert indices, reshaped by `shape`, which is always `[num_tokens, num_layers, topk]`.</summary>
+        /// <summary>Mixture-of-experts routing decisions captured while generating, so training can reuse the same expert selection. Exactly one source is set—legacy inline `data`, or a backend-owned `object_uri` that the manager hydrates before training. The contiguous int32 buffer is reshaped by `shape`, which is always `[num_tokens, num_layers, width]`; packed buffers carry fp32-bitcast routing weights in the trailing top-k columns.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Together.OpenApiClient.Models.RlRoutedExperts? RoutedExperts { get; set; }

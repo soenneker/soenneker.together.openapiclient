@@ -12505,7 +12505,7 @@ components:
           description: Optional final replica count for the source deployment. Defaults to 0, which drains and stops the source.
         finalTargetReplicas:
           type: integer
-          description: Optional target replica count at completion. Must be at least 1 when set; defaults to the source deployment's replica count at create time, or to the source and target deployments' combined replica count when both already stand in the endpoint traffic split after a cancel.
+          description: Optional target replica floor at completion. Must be at least 1 when set; defaults to the source deployment's replica count at create time, or to the source and target deployments' combined replica count when both already stand in the endpoint traffic split after a cancel. If this exceeds the target autoscaling max, the rollout raises that max once when first needed unless an operator changes max mid-run; the raised ceiling remains after completion.
     DE.BlueGreenConfig:
       type: object
       properties: {}
@@ -12715,7 +12715,7 @@ components:
       properties:
         code:
           type: string
-          description: Machine-readable warning code, such as CREATE_WILL_REJECT or TARGET_ALREADY_IN_TRAFFIC_SPLIT. Render message for unrecognized codes.
+          description: Machine-readable warning code, such as CREATE_WILL_REJECT, TARGET_ALREADY_IN_TRAFFIC_SPLIT, or ROLLOUT_WILL_RAISE_TARGET_MAX. Render message for unrecognized codes.
         message:
           type: string
           description: Plain-language description of the finding, safe to show users as-is.
@@ -14839,6 +14839,11 @@ components:
           example: false
           default: "false"
           description: When true, capture the mixture-of-experts routing decisions made while generating and return them in `SampledSequence.routed_experts`, so training can reuse the same expert selection. Only available on mixture-of-experts models; ignored otherwise. The captured buffer scales with sequence length, so leave it off unless you replay routing during training.
+        return_routed_experts_object_uri:
+          type: boolean
+          example: false
+          default: "false"
+          description: When true together with `return_routed_experts`, return each routing capture as a backend-owned `object_uri` plus shape instead of inline base64 data. Clients that do not opt in keep the legacy inline response.
     RL.ForwardBackwardBody:
       type: object
       required:
@@ -15561,15 +15566,18 @@ components:
           description: Log-probability of each alternative in `token_ids`, at the same index.
     RL.RoutedExperts:
       type: object
-      description: Mixture-of-experts routing decisions captured while generating, so training can reuse the same expert selection. A contiguous uint16 buffer of selected expert indices, reshaped by `shape`, which is always `[num_tokens, num_layers, topk]`.
+      description: Mixture-of-experts routing decisions captured while generating, so training can reuse the same expert selection. Exactly one source is set—legacy inline `data`, or a backend-owned `object_uri` that the manager hydrates before training. The contiguous int32 buffer is reshaped by `shape`, which is always `[num_tokens, num_layers, width]`; packed buffers carry fp32-bitcast routing weights in the trailing top-k columns.
       required:
-        - data
         - shape
       properties:
         data:
           type: string
           format: byte
-          description: Base64-encoded contiguous uint16 buffer of selected expert indices, row-major over (token, layer, k).
+          description: Legacy base64-encoded contiguous int32 routing buffer, row-major over (token, layer, width).
+        object_uri:
+          type: string
+          format: uri
+          description: Backend-owned S3/R2 object URI containing the contiguous int32 routing buffer. Clients relay this URI unchanged; the manager validates and downloads it before training.
         shape:
           type: array
           example:
@@ -15580,7 +15588,7 @@ components:
             oneOf:
               - type: string
               - type: integer
-          description: Buffer shape as `[num_tokens, num_layers, topk]`.
+          description: Buffer shape as `[num_tokens, num_layers, width]`.
     RL.OptimStepOperation:
       type: object
       description: Async optimizer step operation
@@ -15974,6 +15982,10 @@ components:
         metadata:
           $ref: '#/components/schemas/RL.TrainingSessionMetadata'
           description: Optional auxiliary metadata to associate with the training session
+        load_optimizer:
+          description: Whether to restore optimizer state and step from a training checkpoint. Omitted or true restores them; false loads weights only with a fresh optimizer and step 0. Not valid for inference or HuggingFace checkpoints, which have no optimizer state.
+          type: boolean
+          example: true
     RL.UpdateTrainingSessionRequest:
       type: object
       description: Fields to update on a training session
@@ -17444,6 +17456,34 @@ components:
           type: string
           description: Opaque token for the next page. Empty means there are no more pages.
       description: Response returned when listing passive health check alerts.
+    PHCAnnotation:
+      type: object
+      required:
+        - title
+        - description
+        - summary_line
+      properties:
+        title:
+          readOnly: true
+          type: string
+          description: Alert title from the Alertmanager summary annotation.
+        description:
+          readOnly: true
+          type: string
+          description: Static explanation for the alert.
+        summary_line:
+          readOnly: true
+          type: string
+          description: Per-firing summary line parsed from the evidence annotation.
+        xid:
+          allOf:
+            - $ref: '#/components/schemas/XidDetail'
+          description: Xid-specific details when the alert was caused by NVIDIA Xid errors.
+        slurm_node_unavailable:
+          allOf:
+            - $ref: '#/components/schemas/SlurmNodeUnavailableDetail'
+          description: Slurm node details when the alert was caused by unavailable Slurm nodes.
+      description: Typed content parsed from passive health check alert annotations.
     PassiveHealthCheckAlert:
       type: object
       required:
@@ -17454,6 +17494,7 @@ components:
         - severity
         - annotations
         - started_at
+        - annotation
       properties:
         passive_health_check_alert_id:
           readOnly: true
@@ -17488,7 +17529,7 @@ components:
           type: object
           additionalProperties:
             type: string
-          description: Alertmanager annotations as key-value strings.
+          description: Legacy Alertmanager annotations as key-value strings.
         started_at:
           readOnly: true
           type: string
@@ -17503,6 +17544,11 @@ components:
           readOnly: true
           type: string
           description: Remediation intent UUID attached to this alert, if any.
+        annotation:
+          readOnly: true
+          allOf:
+            - $ref: '#/components/schemas/PHCAnnotation'
+          description: Typed annotation content parsed from the legacy annotations bag.
       description: Passive health check alert returned by the health check API.
     Remediation:
       type: object
@@ -17743,6 +17789,48 @@ components:
           type: string
           description: Additional slurm.conf fragments.
       description: SlurmStartupScripts carries optional Slurm lifecycle scripts (prolog/epilog, init, extra conf).
+    SlurmNodeUnavailableDetail:
+      type: object
+      required:
+        - reason
+      properties:
+        reason:
+          readOnly: true
+          type: string
+          description: Drain reason reported for the unavailable Slurm node.
+      description: Details for a Slurm node unavailable passive health check alert.
+    XidDetail:
+      type: object
+      required:
+        - events
+      properties:
+        events:
+          readOnly: true
+          type: array
+          items:
+            $ref: '#/components/schemas/XidEvent'
+          description: Xid events observed during the alert window.
+      description: Details for a DmesgXidError passive health check alert.
+    XidEvent:
+      type: object
+      required:
+        - xid_code
+        - mnemonic
+        - count
+      properties:
+        xid_code:
+          readOnly: true
+          type: string
+          description: NVIDIA Xid code, such as `79`.
+        mnemonic:
+          readOnly: true
+          type: string
+          description: Driver mnemonic for the Xid code when metadata is available.
+        count:
+          readOnly: true
+          type: integer
+          description: Number of times this Xid code appeared in the alert window.
+      description: One NVIDIA Xid code observed during the alert window.
     ListVoicesResponse:
       description: Response containing a list of models and their available voices.
       type: object
