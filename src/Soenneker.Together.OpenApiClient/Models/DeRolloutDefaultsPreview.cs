@@ -25,7 +25,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #endif
         /// <summary>Percentage of the pair&apos;s traffic currently reaching the target, the floor the suggested steps start above. Unset when not a frozen pair or unknown; 0 is a real measurement.</summary>
         public int? EstimatedSeedPercent { get; set; }
-        /// <summary>True when both deployments still share the endpoint traffic split left by a cancelled rollout, so the rollout resumes from the current split rather than from zero.</summary>
+        /// <summary>True when both deployments stand in the endpoint traffic split, so the rollout resumes from the current split rather than from zero. See warnings for standing split shapes that StartRollout will still reject.</summary>
         public bool? FrozenPair { get; set; }
         /// <summary>Source deployment replica count the defaults were computed from. Zero is a real value.</summary>
         public int? SourceReplicas { get; set; }

@@ -34,7 +34,7 @@ namespace Soenneker.Together.OpenApiClient.Projects.Item.Endpoints.Item.Rollouts
         {
         }
         /// <summary>
-        /// Cancels a running, pausing, paused, system-paused, or stabilizing rollout by freezing the current traffic split. Revert is removed and rejected; cancel with freeze, then run a reverse rollout back to the source. The response is the accepted rollout snapshot; poll GetRollout until it reaches CANCELED.
+        /// Cancels a running, pausing, paused, system-paused, or stabilizing rollout by freezing the current traffic split into standing weights. Revert is removed and rejected; after canceling, start another canary rollout in either direction or rebalance the traffic split. The response is the accepted rollout snapshot; poll GetRollout until it reaches CANCELED.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.DeRollout"/></returns>
         /// <param name="body">Reason, disposition, and optional concurrency check for canceling a rollout.</param>
@@ -59,7 +59,7 @@ namespace Soenneker.Together.OpenApiClient.Projects.Item.Endpoints.Item.Rollouts
             return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.DeRollout>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.DeRollout.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Cancels a running, pausing, paused, system-paused, or stabilizing rollout by freezing the current traffic split. Revert is removed and rejected; cancel with freeze, then run a reverse rollout back to the source. The response is the accepted rollout snapshot; poll GetRollout until it reaches CANCELED.
+        /// Cancels a running, pausing, paused, system-paused, or stabilizing rollout by freezing the current traffic split into standing weights. Revert is removed and rejected; after canceling, start another canary rollout in either direction or rebalance the traffic split. The response is the accepted rollout snapshot; poll GetRollout until it reaches CANCELED.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">Reason, disposition, and optional concurrency check for canceling a rollout.</param>

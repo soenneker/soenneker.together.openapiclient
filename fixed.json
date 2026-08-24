@@ -2039,7 +2039,7 @@
           "RolloutService"
         ],
         "summary": "Cancel a rollout",
-        "description": "Cancels a running, pausing, paused, system-paused, or stabilizing rollout by freezing the current traffic split. Revert is removed and rejected; cancel with freeze, then run a reverse rollout back to the source. The response is the accepted rollout snapshot; poll GetRollout until it reaches CANCELED.",
+        "description": "Cancels a running, pausing, paused, system-paused, or stabilizing rollout by freezing the current traffic split into standing weights. Revert is removed and rejected; after canceling, start another canary rollout in either direction or rebalance the traffic split. The response is the accepted rollout snapshot; poll GetRollout until it reaches CANCELED.",
         "operationId": "RolloutServiceCancelRollout",
         "parameters": [
           {
@@ -12606,7 +12606,7 @@
           },
           "finalTargetReplicas": {
             "type": "integer",
-            "description": "Optional target replica floor at completion. Must be at least 1 when set; defaults to the source deployment\u0027s replica count at create time, or to the source and target deployments\u0027 combined replica count when both already stand in the endpoint traffic split after a cancel. If this exceeds the target autoscaling max, the rollout raises that max once when first needed unless an operator changes max mid-run; the raised ceiling remains after completion."
+            "description": "Optional target replica floor at completion. Must be at least 1 when set; defaults to the source deployment\u0027s replica count at create time, or to the source and target deployments\u0027 combined replica count when both already stand in the endpoint traffic split after a cancel. If this exceeds the target autoscaling max, the rollout raises that max once when first needed unless an operator changes max mid-run; the raised ceiling remains after completion. If the target\u0027s autoscaling min, or the source min inherited by a target that starts stopped, is higher, completion holds that higher floor and PreviewRolloutDefaults reports FINAL_BELOW_INHERITED_MIN."
           }
         },
         "description": "Strategy, metric gates, timing, and cleanup policy for shifting traffic between two deployments under one endpoint."
@@ -12814,7 +12814,7 @@
           },
           "frozenPair": {
             "type": "boolean",
-            "description": "True when both deployments still share the endpoint traffic split left by a cancelled rollout, so the rollout resumes from the current split rather than from zero."
+            "description": "True when both deployments stand in the endpoint traffic split, so the rollout resumes from the current split rather than from zero. See warnings for standing split shapes that StartRollout will still reject."
           },
           "estimatedSeedPercent": {
             "type": "integer",
@@ -12855,7 +12855,7 @@
         "properties": {
           "code": {
             "type": "string",
-            "description": "Machine-readable warning code, such as CREATE_WILL_REJECT, TARGET_ALREADY_IN_TRAFFIC_SPLIT, or ROLLOUT_WILL_RAISE_TARGET_MAX. Render message for unrecognized codes."
+            "description": "Machine-readable warning code, such as START_WILL_REJECT, ROLLOUT_WILL_RAISE_TARGET_MAX, or FINAL_BELOW_INHERITED_MIN. Render message for unrecognized codes."
           },
           "message": {
             "type": "string",
