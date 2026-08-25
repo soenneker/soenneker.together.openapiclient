@@ -7,9 +7,9 @@ namespace Soenneker.Together.OpenApiClient.Models
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum RlModelResourcesErrorCode
     {
-        [EnumMember(Value = "MODEL_RESOURCES_ERROR_CODE_CAPACITY_UNAVAILABLE")]
+        [EnumMember(Value = "MODEL_RESOURCES_ERROR_CODE_CAPACITY_WAIT_TIMEOUT")]
         #pragma warning disable CS1591
-        ModelResourcesErrorCodeCapacityUnavailable,
+        ModelResourcesErrorCodeCapacityWaitTimeout,
         #pragma warning restore CS1591
         [EnumMember(Value = "MODEL_RESOURCES_ERROR_CODE_PROVISIONING_FAILED")]
         #pragma warning disable CS1591

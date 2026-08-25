@@ -15,7 +15,7 @@ namespace Soenneker.Together.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The name property</summary>
+        /// <summary>Required catalogue key for the metric to gate on. `serving_latency` is retired.</summary>
         public global::Soenneker.Together.OpenApiClient.Models.DeMetricRuleName? Name { get; set; }
         /// <summary>Percentile value, such as 99. Set only when stat is METRIC_STAT_TYPE_PERCENTILE.</summary>
         public int? Percentile { get; set; }

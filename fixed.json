@@ -1548,7 +1548,7 @@
                     },
                     "metrics": [
                       {
-                        "name": "serving_latency",
+                        "name": "router_latency",
                         "stat": "METRIC_STAT_TYPE_PERCENTILE",
                         "percentile": 95,
                         "thresholdCheck": {
@@ -15677,7 +15677,7 @@
           "message": {
             "type": "string",
             "description": "User-safe human-readable detail for the current status",
-            "example": "Capacity is currently unavailable. Try again later."
+            "example": "Timed out waiting for cluster capacity. Try again later."
           },
           "occurred_at": {
             "type": "string",
@@ -15690,7 +15690,7 @@
       },
       "RlModelResourcesErrorCode": {
         "enum": [
-          "MODEL_RESOURCES_ERROR_CODE_CAPACITY_UNAVAILABLE",
+          "MODEL_RESOURCES_ERROR_CODE_CAPACITY_WAIT_TIMEOUT",
           "MODEL_RESOURCES_ERROR_CODE_PROVISIONING_FAILED"
         ],
         "type": "string",
@@ -15701,8 +15701,8 @@
           "modelAsString": false,
           "values": [
             {
-              "value": "MODEL_RESOURCES_ERROR_CODE_CAPACITY_UNAVAILABLE",
-              "name": "ModelResourcesErrorCodeCapacityUnavailable"
+              "value": "MODEL_RESOURCES_ERROR_CODE_CAPACITY_WAIT_TIMEOUT",
+              "name": "ModelResourcesErrorCodeCapacityWaitTimeout"
             },
             {
               "value": "MODEL_RESOURCES_ERROR_CODE_PROVISIONING_FAILED",
@@ -31503,11 +31503,11 @@
         "enum": [
           "inflight_requests",
           "router_error_rate",
-          "router_latency",
-          "serving_latency"
+          "router_latency"
         ],
         "type": "string",
         "additionalProperties": false,
+        "description": "Required catalogue key for the metric to gate on. \u0060serving_latency\u0060 is retired.",
         "x-ms-enum": {
           "name": "DeMetricRuleName",
           "modelAsString": false,
@@ -31523,10 +31523,6 @@
             {
               "value": "router_latency",
               "name": "RouterLatency"
-            },
-            {
-              "value": "serving_latency",
-              "name": "ServingLatency"
             }
           ]
         }

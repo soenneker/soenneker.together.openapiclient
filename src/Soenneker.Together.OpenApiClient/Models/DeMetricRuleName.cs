@@ -3,10 +3,9 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
+    /// <summary>Required catalogue key for the metric to gate on. `serving_latency` is retired.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public enum DeMetricRuleName
-    #pragma warning restore CS1591
     {
         [EnumMember(Value = "inflight_requests")]
         #pragma warning disable CS1591
@@ -19,10 +18,6 @@ namespace Soenneker.Together.OpenApiClient.Models
         [EnumMember(Value = "router_latency")]
         #pragma warning disable CS1591
         RouterLatency,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "serving_latency")]
-        #pragma warning disable CS1591
-        ServingLatency,
         #pragma warning restore CS1591
     }
 }

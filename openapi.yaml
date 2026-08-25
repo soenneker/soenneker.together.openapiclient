@@ -957,7 +957,7 @@ paths:
                       - traffic: 100
                     stepInterval: 300s
                   metrics:
-                    - name: serving_latency
+                    - name: router_latency
                       stat: METRIC_STAT_TYPE_PERCENTILE
                       percentile: 95
                       thresholdCheck:
@@ -12562,8 +12562,8 @@ components:
             - inflight_requests
             - router_error_rate
             - router_latency
-            - serving_latency
           type: string
+          description: Required catalogue key for the metric to gate on. `serving_latency` is retired.
         stat:
           enum:
             - METRIC_STAT_TYPE_AVG
@@ -15061,11 +15061,11 @@ components:
       properties:
         code:
           $ref: '#/components/schemas/RL.ModelResourcesErrorCode'
-          example: MODEL_RESOURCES_ERROR_CODE_CAPACITY_UNAVAILABLE
+          example: MODEL_RESOURCES_ERROR_CODE_CAPACITY_WAIT_TIMEOUT
           description: Finite machine-readable reason code for UI branching
         message:
           type: string
-          example: Capacity is currently unavailable. Try again later.
+          example: Timed out waiting for cluster capacity. Try again later.
           description: User-safe human-readable detail for the current status
         occurred_at:
           type: string
@@ -15076,7 +15076,7 @@ components:
       type: string
       description: Finite machine-readable model resource lifecycle error code
       enum:
-        - MODEL_RESOURCES_ERROR_CODE_CAPACITY_UNAVAILABLE
+        - MODEL_RESOURCES_ERROR_CODE_CAPACITY_WAIT_TIMEOUT
         - MODEL_RESOURCES_ERROR_CODE_PROVISIONING_FAILED
     RL.CreateModelResourcesRequest:
       type: object
