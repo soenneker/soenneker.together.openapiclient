@@ -82,7 +82,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public double? Memory { get; set; }
         /// <summary>MinReplicas is the minimum number of container instances to run. Defaults to 1 if not specified</summary>
         public int? MinReplicas { get; set; }
-        /// <summary>Name is the unique identifier for your deployment. Must contain only alphanumeric characters, underscores, or hyphens (1-100 characters)</summary>
+        /// <summary>Name is the unique identifier for your deployment. Must contain lowercase letters, numbers, or hyphens, start with a lowercase letter or number, and be 4-63 characters. It cannot be changed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get; set; }
