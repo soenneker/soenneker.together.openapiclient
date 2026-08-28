@@ -7,39 +7,30 @@ using System.IO;
 using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
+    /// <summary>
+    /// Rate-determining dimensions (varies by product). Passthrough from Metronome pricing group values.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
-    public partial class RlLossLogprobs : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
+    public partial class BillingUsageLineItemPricingDimensionsProperty : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Float array of per-token log probabilities</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<double?>? Data { get; set; }
-#nullable restore
-#else
-        public List<double?> Data { get; set; }
-#endif
-        /// <summary>The dtype property</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.RlDType? Dtype { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlLossLogprobs"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.BillingUsageLineItemPricingDimensionsProperty"/> and sets the default values.
         /// </summary>
-        public RlLossLogprobs()
+        public BillingUsageLineItemPricingDimensionsProperty()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.RlLossLogprobs"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.BillingUsageLineItemPricingDimensionsProperty"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Together.OpenApiClient.Models.RlLossLogprobs CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Together.OpenApiClient.Models.BillingUsageLineItemPricingDimensionsProperty CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.RlLossLogprobs();
+            return new global::Soenneker.Together.OpenApiClient.Models.BillingUsageLineItemPricingDimensionsProperty();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -49,8 +40,6 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "data", n => { Data = n.GetCollectionOfPrimitiveValues<double?>()?.AsList(); } },
-                { "dtype", n => { Dtype = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlDType>(); } },
             };
         }
         /// <summary>
@@ -60,8 +49,6 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfPrimitiveValues<double?>("data", Data);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlDType>("dtype", Dtype);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

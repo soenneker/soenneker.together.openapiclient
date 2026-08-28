@@ -11652,6 +11652,97 @@ paths:
           source: |
             curl https://api.together.ai/v1/whoami \
                  -H "Authorization: Bearer $TOGETHER_API_KEY"
+  /billing/usage:
+    get:
+      tags: ['Billing']
+      summary: Get billing usage
+      description: >
+        Returns an organization's billing usage for a month as cost-annotated line items grouped into time windows. Finalized windows are returned through the end of yesterday at daily granularity, or the last completed hour at hourly granularity (UTC).
+      operationId: getBillingUsage
+      parameters:
+        - name: month
+          in: query
+          schema:
+            description: Billing month in YYYY-MM format. Defaults to the current month, which returns data through yesterday (daily) or the last completed hour (hourly).
+            type: string
+            pattern: '^\d{4}-(0[1-9]|1[0-2])$'
+        - name: organization_id
+          in: query
+          schema:
+            description: Organization to report on. Usage is always reported for the organization that owns the API key, so this is optional; supplying an ID that is not that organization returns 403.
+            type: string
+            minLength: 1
+        - name: granularity
+          in: query
+          schema:
+            description: Time window size for rows. 'hour' returns ~24x more rows than 'day'.
+            type: string
+            enum:
+              - day
+              - hour
+            default: day
+        - name: limit
+          in: query
+          schema:
+            description: Maximum number of time windows per page (max 1000).
+            type: integer
+            minimum: 1
+            maximum: 1000
+            default: 100
+        - name: after
+          in: query
+          schema:
+            description: >-
+              Opaque cursor from a previous response's `next_cursor`. Only valid for the month and granularity it was issued for. Current-month data is a moving snapshot: each page reflects data as of its request, so newly completed windows may appear at the end of the sequence.
+            type: string
+      responses:
+        '200':
+          description: Billing usage report for the requested month
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillingUsageReport'
+        '400':
+          description: Invalid request parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorData'
+        '401':
+          description: Unauthorized — missing or invalid API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorData'
+        '403':
+          description: Forbidden — organization_id does not match the organization that owns the API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorData'
+        '404':
+          description: Not found — the endpoint is not enabled for this organization
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorData'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorData'
+      x-codeSamples:
+        - lang: Shell
+          label: cURL
+          source: |
+            # First page
+            curl "https://api.together.ai/v1/billing/usage?month=2026-06&granularity=day" \
+                 -H "Authorization: Bearer $TOGETHER_API_KEY"
+
+            # Next page: pass the previous response's next_cursor
+            curl "https://api.together.ai/v1/billing/usage?month=2026-06&granularity=day&after=NEXT_CURSOR" \
+                 -H "Authorization: Bearer $TOGETHER_API_KEY"
 components:
   securitySchemes:
     bearerAuth:
@@ -15374,183 +15465,70 @@ components:
           $ref: '#/components/schemas/RL.CISPOLossParams'
         dro_params:
           $ref: '#/components/schemas/RL.DROLossParams'
-    RL.LossTargetTokens:
+    RL.TensorData:
       type: object
+      description: A tensor encoded as flattened row-major values, with an optional shape.
       required:
         - data
+        - dtype
       properties:
         data:
-          description: Integer array of target tokens
           type: array
+          description: Flattened one-dimensional values encoded as JSON numbers.
           example:
-            - 123
-            - 456
-            - 789
-          items:
-            oneOf:
-              - type: string
-              - type: integer
-        dtype:
-          description: Data type of the integer array
-          $ref: '#/components/schemas/RL.DType'
-          example: D_TYPE_INT64
-    RL.Weights:
-      type: object
-      required:
-        - data
-      properties:
-        data:
-          description: Per-token loss weights, one non-negative weight per target token. A weight of 0 excludes the token from loss; fractional weights are honored only by cross-entropy.
-          type: array
-          example:
-            - 0
-            - 0
-            - 0.5
             - 1
+            - 2
+            - 3
           items:
             type: number
-            minimum: 0
+            format: double
         dtype:
-          description: Data type of the weights array (must be D_TYPE_FLOAT32).
-          $ref: '#/components/schemas/RL.DType'
-          example: D_TYPE_FLOAT32
-    RL.LossAdvantages:
-      type: object
-      required:
-        - data
-      properties:
-        data:
-          description: Float array of per-token advantages
+          type: string
+          enum:
+            - int64
+            - float32
+          description: Tensor element type, either `int64` or `float32`.
+          example: int64
+        shape:
           type: array
+          description: Optional tensor shape; training operations accept one-dimensional tensors only, and the dimension must match the data length.
           example:
-            - 0.5
-            - 0.5
+            - 3
           items:
-            type: number
-        dtype:
-          description: Data type of the float array (D_TYPE_FLOAT32 or D_TYPE_BFLOAT16)
-          $ref: '#/components/schemas/RL.DType'
-          example: D_TYPE_FLOAT32
-    RL.LossLogprobs:
-      type: object
-      required:
-        - data
-      properties:
-        data:
-          description: Float array of per-token log probabilities
+            type: integer
+        sparse_crow_indices:
           type: array
+          description: Reserved for Tinker schema compatibility; current training operations reject sparse tensors.
           example:
-            - -1.2
-            - -0.8
+            - 0
+            - 2
           items:
-            type: number
-        dtype:
-          description: Data type of the float array (D_TYPE_FLOAT32 or D_TYPE_BFLOAT16)
-          $ref: '#/components/schemas/RL.DType'
-          example: D_TYPE_FLOAT32
-    RL.GRPOLossInputs:
-      type: object
-      required:
-        - advantages
-        - logprobs
-      properties:
-        advantages:
-          $ref: '#/components/schemas/RL.LossAdvantages'
-          description: Per-token advantages for GRPO
-        logprobs:
-          $ref: '#/components/schemas/RL.LossLogprobs'
-          description: Log probabilities for GRPO
-        reference_logprobs:
-          $ref: '#/components/schemas/RL.LossLogprobs'
-          description: Reference model log probabilities (required if beta > 0)
-    RL.ImportanceSamplingLossInputs:
-      type: object
-      description: Loss inputs for unclipped importance-sampling policy-gradient updates.
-      required:
-        - advantages
-        - logprobs
-      properties:
-        advantages:
-          $ref: '#/components/schemas/RL.LossAdvantages'
-          description: Per-token advantages for importance sampling
-        logprobs:
-          $ref: '#/components/schemas/RL.LossLogprobs'
-          description: Log probabilities for importance sampling
-    RL.PPOLossInputs:
-      type: object
-      properties:
-        advantages:
-          $ref: '#/components/schemas/RL.LossAdvantages'
-          description: Per-token advantages for PPO
-        logprobs:
-          $ref: '#/components/schemas/RL.LossLogprobs'
-          description: Log probabilities for PPO
-      required:
-        - advantages
-        - logprobs
-    RL.CISPOLossInputs:
-      type: object
-      properties:
-        advantages:
-          $ref: '#/components/schemas/RL.LossAdvantages'
-          description: Per-token advantages for CISPO
-        logprobs:
-          $ref: '#/components/schemas/RL.LossLogprobs'
-          description: Log probabilities for CISPO
-      required:
-        - advantages
-        - logprobs
-    RL.DROLossInputs:
-      type: object
-      properties:
-        advantages:
-          $ref: '#/components/schemas/RL.LossAdvantages'
-          description: Per-token advantages for DRO
-        logprobs:
-          $ref: '#/components/schemas/RL.LossLogprobs'
-          description: Log probabilities for DRO
-      required:
-        - advantages
-        - logprobs
-    RL.LossInputs:
-      type: object
-      description: Token-level inputs used to compute the loss for one training sample.
-      properties:
-        target_tokens:
-          $ref: '#/components/schemas/RL.LossTargetTokens'
-          description: Target tokens for loss computation
-        weights:
-          $ref: '#/components/schemas/RL.Weights'
-          description: 'Per-token loss weights (>= 0), one weight per target token. Required for cross-entropy, which honors fractional weights; other loss types treat weights as a 0/1 mask.'
-        grpo_inputs:
-          $ref: '#/components/schemas/RL.GRPOLossInputs'
-          description: Inputs required when the loss type is GRPO
-        importance_sampling_inputs:
-          $ref: '#/components/schemas/RL.ImportanceSamplingLossInputs'
-          description: Inputs required when the loss type is importance sampling
-        ppo_inputs:
-          $ref: '#/components/schemas/RL.PPOLossInputs'
-        cispo_inputs:
-          $ref: '#/components/schemas/RL.CISPOLossInputs'
-        dro_inputs:
-          $ref: '#/components/schemas/RL.DROLossInputs'
-        routed_experts:
-          $ref: '#/components/schemas/RL.RoutedExperts'
-          description: Optional MoE per-token routing captured at sample time. Replayed on every training operation, so expert selection matches the one used at sample time. Must cover the whole sample, or all but its last token.
-      required:
-        - target_tokens
+            type: integer
+        sparse_col_indices:
+          type: array
+          description: Reserved for Tinker schema compatibility; current training operations reject sparse tensors.
+          example:
+            - 0
+            - 2
+          items:
+            type: integer
     RL.TrainingSample:
       type: object
       required:
         - model_input
-        - loss_inputs
+        - loss_fn_inputs
       properties:
         model_input:
           description: Model input
           $ref: '#/components/schemas/RL.ModelInput'
-        loss_inputs:
-          description: Loss function inputs
-          $ref: '#/components/schemas/RL.LossInputs'
+        loss_fn_inputs:
+          type: object
+          description: Per-token loss tensors keyed by name. Include `target_tokens` and the inputs required by the selected loss. Each tensor must declare `int64` or `float32`, be one-dimensional, and have the same length.
+          additionalProperties:
+            $ref: '#/components/schemas/RL.TensorData'
+        routed_experts:
+          $ref: '#/components/schemas/RL.RoutedExperts'
+          description: Optional MoE per-token routing captured at sample time. Replayed on every training operation, so expert selection matches the one used at sample time. Must cover the whole sample, or all but its last token.
     RL.PolicyVersionSegment:
       type: object
       description: A (policy version, starting token) span within a sampled sequence. Version 0 is the initial model; each optim_step call increments the version by 1.
@@ -23122,3 +23100,102 @@ components:
         user_id:
           type: string
           description: The ID of the authenticated user, if available.
+    BillingUsageReport:
+      type: object
+      required:
+        - object
+        - organization_id
+        - billing_period
+        - earliest_window_start
+        - latest_window_end
+        - currency
+        - data
+        - next_cursor
+      properties:
+        object:
+          type: string
+          const: list
+        organization_id:
+          type: string
+          description: ID of the organization the report belongs to.
+        billing_period:
+          type: string
+          description: Billing month (YYYY-MM).
+        earliest_window_start:
+          type: string
+          format: date-time
+          nullable: true
+          description: Start of the earliest time window with usage in the month (UTC, ISO 8601); null when the month has no usage.
+        latest_window_end:
+          type: string
+          format: date-time
+          nullable: true
+          description: Exclusive end of the latest time window with usage in the month (UTC, ISO 8601); null when the month has no usage. Describes the whole month, not the current page.
+        currency:
+          type: string
+          const: USD
+        data:
+          type: array
+          description: Time windows containing usage line items.
+          items:
+            $ref: '#/components/schemas/BillingUsageWindow'
+        next_cursor:
+          type: string
+          nullable: true
+          description: Opaque cursor for the next page; null when this is the last page.
+    BillingUsageWindow:
+      type: object
+      required:
+        - date
+        - start_time
+        - end_time
+        - line_items
+      properties:
+        date:
+          type: string
+          description: Day this window covers (UTC, YYYY-MM-DD). Present for both granularities.
+        start_time:
+          type: string
+          format: date-time
+          description: Window start (UTC, ISO 8601). Start of the day (daily) or hour (hourly).
+        end_time:
+          type: string
+          format: date-time
+          description: Window end (UTC, ISO 8601), exclusive. Start of the next day (daily) or hour (hourly).
+        line_items:
+          type: array
+          description: Usage line items in this time window.
+          items:
+            $ref: '#/components/schemas/BillingUsageLineItem'
+    BillingUsageLineItem:
+      type: object
+      required:
+        - product_name
+        - quantity
+        - unit_price
+        - cost
+        - pricing_dimensions
+        - attributes
+      properties:
+        product_name:
+          type: string
+          description: Metronome product name (e.g. 'Serverless Inference - Input Tokens').
+        quantity:
+          type: string
+          description: Total usage for the window in the product's native unit (GPU-hours, tokens, ...) as a decimal string.
+        unit_price:
+          type: string
+          description: Per-unit price in USD as a decimal string.
+        cost:
+          type: string
+          description: Total cost for this line item in USD as a decimal string.
+        pricing_dimensions:
+          type: object
+          description: Rate-determining dimensions (varies by product). Passthrough from Metronome pricing group values.
+          additionalProperties:
+            type: string
+        attributes:
+          type: object
+          description: Resource identifiers for attribution, varying by product.
+          additionalProperties:
+            type: string

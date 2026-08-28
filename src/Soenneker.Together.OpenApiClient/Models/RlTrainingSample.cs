@@ -14,13 +14,13 @@ namespace Soenneker.Together.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Token-level inputs used to compute the loss for one training sample.</summary>
+        /// <summary>Per-token loss tensors keyed by name. Include `target_tokens` and the inputs required by the selected loss. Each tensor must declare `int64` or `float32`, be one-dimensional, and have the same length.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RlLossInputs? LossInputs { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlTrainingSampleLossFnInputsProperty? LossFnInputs { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.RlLossInputs LossInputs { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlTrainingSampleLossFnInputsProperty LossFnInputs { get; set; }
 #endif
         /// <summary>The model_input property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -29,6 +29,14 @@ namespace Soenneker.Together.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.Together.OpenApiClient.Models.RlModelInput ModelInput { get; set; }
+#endif
+        /// <summary>Mixture-of-experts routing decisions captured while generating, so training can reuse the same expert selection. Exactly one source is set—legacy inline `data`, or a backend-owned `object_uri` that the manager hydrates before training. The contiguous int32 buffer is reshaped by `shape`, which is always `[num_tokens, num_layers, width]`; packed buffers carry fp32-bitcast routing weights in the trailing top-k columns.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Together.OpenApiClient.Models.RlRoutedExperts? RoutedExperts { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Together.OpenApiClient.Models.RlRoutedExperts RoutedExperts { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlTrainingSample"/> and sets the default values.
@@ -55,8 +63,9 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "loss_inputs", n => { LossInputs = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlLossInputs>(global::Soenneker.Together.OpenApiClient.Models.RlLossInputs.CreateFromDiscriminatorValue); } },
+                { "loss_fn_inputs", n => { LossFnInputs = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlTrainingSampleLossFnInputsProperty>(global::Soenneker.Together.OpenApiClient.Models.RlTrainingSampleLossFnInputsProperty.CreateFromDiscriminatorValue); } },
                 { "model_input", n => { ModelInput = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlModelInput>(global::Soenneker.Together.OpenApiClient.Models.RlModelInput.CreateFromDiscriminatorValue); } },
+                { "routed_experts", n => { RoutedExperts = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlRoutedExperts>(global::Soenneker.Together.OpenApiClient.Models.RlRoutedExperts.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -66,8 +75,9 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlLossInputs>("loss_inputs", LossInputs);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlTrainingSampleLossFnInputsProperty>("loss_fn_inputs", LossFnInputs);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlModelInput>("model_input", ModelInput);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlRoutedExperts>("routed_experts", RoutedExperts);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

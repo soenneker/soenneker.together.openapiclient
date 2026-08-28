@@ -11611,6 +11611,124 @@
           }
         }
       }
+    },
+    "/billing/usage": {
+      "get": {
+        "tags": [
+          "Billing"
+        ],
+        "summary": "Get billing usage",
+        "description": "Returns an organization\u0027s billing usage for a month as cost-annotated line items grouped into time windows. Finalized windows are returned through the end of yesterday at daily granularity, or the last completed hour at hourly granularity (UTC).\n",
+        "operationId": "GetBillingUsage",
+        "parameters": [
+          {
+            "name": "month",
+            "in": "query",
+            "schema": {
+              "pattern": "^\\d{4}-(0[1-9]|1[0-2])$",
+              "type": "string",
+              "description": "Billing month in YYYY-MM format. Defaults to the current month, which returns data through yesterday (daily) or the last completed hour (hourly)."
+            }
+          },
+          {
+            "name": "organization_id",
+            "in": "query",
+            "schema": {
+              "minLength": 1,
+              "type": "string",
+              "description": "Organization to report on. Usage is always reported for the organization that owns the API key, so this is optional; supplying an ID that is not that organization returns 403."
+            }
+          },
+          {
+            "name": "granularity",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/GetBillingUsageGranularityParameter"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer",
+              "description": "Maximum number of time windows per page (max 1000).",
+              "default": 100
+            }
+          },
+          {
+            "name": "after",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "description": "Opaque cursor from a previous response\u0027s \u0060next_cursor\u0060. Only valid for the month and granularity it was issued for. Current-month data is a moving snapshot: each page reflects data as of its request, so newly completed windows may appear at the end of the sequence."
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Billing usage report for the requested month",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BillingUsageReport"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized \u2014 missing or invalid API key",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden \u2014 organization_id does not match the organization that owns the API key",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found \u2014 the endpoint is not enabled for this organization",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -16195,203 +16313,63 @@
           }
         }
       },
-      "RlLossTargetTokens": {
+      "RlTensorData": {
         "required": [
-          "data"
+          "data",
+          "dtype"
         ],
         "type": "object",
         "properties": {
           "data": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/RlLossTargetTokensDataItem"
+              "type": "number",
+              "format": "double"
             },
-            "description": "Integer array of target tokens"
+            "description": "Flattened one-dimensional values encoded as JSON numbers."
           },
           "dtype": {
-            "$ref": "#/components/schemas/RlDType"
-          }
-        }
-      },
-      "RlWeights": {
-        "required": [
-          "data"
-        ],
-        "type": "object",
-        "properties": {
-          "data": {
+            "$ref": "#/components/schemas/RlTensorDataDtype"
+          },
+          "shape": {
             "type": "array",
             "items": {
-              "minimum": 0,
-              "type": "number"
+              "type": "integer"
             },
-            "description": "Per-token loss weights, one non-negative weight per target token. A weight of 0 excludes the token from loss; fractional weights are honored only by cross-entropy."
+            "description": "Optional tensor shape; training operations accept one-dimensional tensors only, and the dimension must match the data length."
           },
-          "dtype": {
-            "$ref": "#/components/schemas/RlDType"
-          }
-        }
-      },
-      "RlLossAdvantages": {
-        "required": [
-          "data"
-        ],
-        "type": "object",
-        "properties": {
-          "data": {
+          "sparse_crow_indices": {
             "type": "array",
             "items": {
-              "type": "number"
+              "type": "integer"
             },
-            "description": "Float array of per-token advantages"
+            "description": "Reserved for Tinker schema compatibility; current training operations reject sparse tensors."
           },
-          "dtype": {
-            "$ref": "#/components/schemas/RlDType"
-          }
-        }
-      },
-      "RlLossLogprobs": {
-        "required": [
-          "data"
-        ],
-        "type": "object",
-        "properties": {
-          "data": {
+          "sparse_col_indices": {
             "type": "array",
             "items": {
-              "type": "number"
+              "type": "integer"
             },
-            "description": "Float array of per-token log probabilities"
-          },
-          "dtype": {
-            "$ref": "#/components/schemas/RlDType"
-          }
-        }
-      },
-      "RlGrpoLossInputs": {
-        "required": [
-          "advantages",
-          "logprobs"
-        ],
-        "type": "object",
-        "properties": {
-          "advantages": {
-            "$ref": "#/components/schemas/RlLossAdvantages"
-          },
-          "logprobs": {
-            "$ref": "#/components/schemas/RlLossLogprobs"
-          },
-          "reference_logprobs": {
-            "$ref": "#/components/schemas/RlLossLogprobs"
-          }
-        }
-      },
-      "RlImportanceSamplingLossInputs": {
-        "required": [
-          "advantages",
-          "logprobs"
-        ],
-        "type": "object",
-        "properties": {
-          "advantages": {
-            "$ref": "#/components/schemas/RlLossAdvantages"
-          },
-          "logprobs": {
-            "$ref": "#/components/schemas/RlLossLogprobs"
+            "description": "Reserved for Tinker schema compatibility; current training operations reject sparse tensors."
           }
         },
-        "description": "Loss inputs for unclipped importance-sampling policy-gradient updates."
-      },
-      "RlPpoLossInputs": {
-        "required": [
-          "advantages",
-          "logprobs"
-        ],
-        "type": "object",
-        "properties": {
-          "advantages": {
-            "$ref": "#/components/schemas/RlLossAdvantages"
-          },
-          "logprobs": {
-            "$ref": "#/components/schemas/RlLossLogprobs"
-          }
-        }
-      },
-      "RlCispoLossInputs": {
-        "required": [
-          "advantages",
-          "logprobs"
-        ],
-        "type": "object",
-        "properties": {
-          "advantages": {
-            "$ref": "#/components/schemas/RlLossAdvantages"
-          },
-          "logprobs": {
-            "$ref": "#/components/schemas/RlLossLogprobs"
-          }
-        }
-      },
-      "RlDroLossInputs": {
-        "required": [
-          "advantages",
-          "logprobs"
-        ],
-        "type": "object",
-        "properties": {
-          "advantages": {
-            "$ref": "#/components/schemas/RlLossAdvantages"
-          },
-          "logprobs": {
-            "$ref": "#/components/schemas/RlLossLogprobs"
-          }
-        }
-      },
-      "RlLossInputs": {
-        "required": [
-          "target_tokens"
-        ],
-        "type": "object",
-        "properties": {
-          "target_tokens": {
-            "$ref": "#/components/schemas/RlLossTargetTokens"
-          },
-          "weights": {
-            "$ref": "#/components/schemas/RlWeights"
-          },
-          "grpo_inputs": {
-            "$ref": "#/components/schemas/RlGrpoLossInputs"
-          },
-          "importance_sampling_inputs": {
-            "$ref": "#/components/schemas/RlImportanceSamplingLossInputs"
-          },
-          "ppo_inputs": {
-            "$ref": "#/components/schemas/RlPpoLossInputs"
-          },
-          "cispo_inputs": {
-            "$ref": "#/components/schemas/RlCispoLossInputs"
-          },
-          "dro_inputs": {
-            "$ref": "#/components/schemas/RlDroLossInputs"
-          },
-          "routed_experts": {
-            "$ref": "#/components/schemas/RlRoutedExperts"
-          }
-        },
-        "description": "Token-level inputs used to compute the loss for one training sample."
+        "description": "A tensor encoded as flattened row-major values, with an optional shape."
       },
       "RlTrainingSample": {
         "required": [
           "model_input",
-          "loss_inputs"
+          "loss_fn_inputs"
         ],
         "type": "object",
         "properties": {
           "model_input": {
             "$ref": "#/components/schemas/RlModelInput"
           },
-          "loss_inputs": {
-            "$ref": "#/components/schemas/RlLossInputs"
+          "loss_fn_inputs": {
+            "$ref": "#/components/schemas/RlTrainingSampleLossFnInputsProperty"
+          },
+          "routed_experts": {
+            "$ref": "#/components/schemas/RlRoutedExperts"
           }
         }
       },
@@ -25241,6 +25219,132 @@
           }
         }
       },
+      "BillingUsageReport": {
+        "required": [
+          "object",
+          "organization_id",
+          "billing_period",
+          "earliest_window_start",
+          "latest_window_end",
+          "currency",
+          "data",
+          "next_cursor"
+        ],
+        "type": "object",
+        "properties": {
+          "object": {
+            "$ref": "#/components/schemas/ListObject"
+          },
+          "organization_id": {
+            "type": "string",
+            "description": "ID of the organization the report belongs to."
+          },
+          "billing_period": {
+            "type": "string",
+            "description": "Billing month (YYYY-MM)."
+          },
+          "earliest_window_start": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Start of the earliest time window with usage in the month (UTC, ISO 8601); null when the month has no usage.",
+            "format": "date-time"
+          },
+          "latest_window_end": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Exclusive end of the latest time window with usage in the month (UTC, ISO 8601); null when the month has no usage. Describes the whole month, not the current page.",
+            "format": "date-time"
+          },
+          "currency": {
+            "$ref": "#/components/schemas/UsdCurrency"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BillingUsageWindow"
+            },
+            "description": "Time windows containing usage line items."
+          },
+          "next_cursor": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Opaque cursor for the next page; null when this is the last page."
+          }
+        }
+      },
+      "BillingUsageWindow": {
+        "required": [
+          "date",
+          "start_time",
+          "end_time",
+          "line_items"
+        ],
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "description": "Day this window covers (UTC, YYYY-MM-DD). Present for both granularities."
+          },
+          "start_time": {
+            "type": "string",
+            "description": "Window start (UTC, ISO 8601). Start of the day (daily) or hour (hourly).",
+            "format": "date-time"
+          },
+          "end_time": {
+            "type": "string",
+            "description": "Window end (UTC, ISO 8601), exclusive. Start of the next day (daily) or hour (hourly).",
+            "format": "date-time"
+          },
+          "line_items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BillingUsageLineItem"
+            },
+            "description": "Usage line items in this time window."
+          }
+        }
+      },
+      "BillingUsageLineItem": {
+        "required": [
+          "product_name",
+          "quantity",
+          "unit_price",
+          "cost",
+          "pricing_dimensions",
+          "attributes"
+        ],
+        "type": "object",
+        "properties": {
+          "product_name": {
+            "type": "string",
+            "description": "Metronome product name (e.g. \u0027Serverless Inference - Input Tokens\u0027)."
+          },
+          "quantity": {
+            "type": "string",
+            "description": "Total usage for the window in the product\u0027s native unit (GPU-hours, tokens, ...) as a decimal string."
+          },
+          "unit_price": {
+            "type": "string",
+            "description": "Per-unit price in USD as a decimal string."
+          },
+          "cost": {
+            "type": "string",
+            "description": "Total cost for this line item in USD as a decimal string."
+          },
+          "pricing_dimensions": {
+            "$ref": "#/components/schemas/BillingUsageLineItemPricingDimensionsProperty"
+          },
+          "attributes": {
+            "$ref": "#/components/schemas/BillingUsageLineItemAttributesProperty"
+          }
+        }
+      },
       "DeDeploymentSummaryAutoscaling": {
         "type": "object",
         "properties": {
@@ -25893,17 +25997,6 @@
         "example": "42"
       },
       "RlEncodedTextChunkTokensItem": {
-        "type": "object",
-        "oneOf": [
-          {
-            "type": "string"
-          },
-          {
-            "type": "integer"
-          }
-        ]
-      },
-      "RlLossTargetTokensDataItem": {
         "type": "object",
         "oneOf": [
           {
@@ -27750,6 +27843,13 @@
         },
         "description": "Request counts keyed by HTTP status code."
       },
+      "RlTrainingSampleLossFnInputs": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/RlTensorData"
+        },
+        "description": "Per-token loss tensors keyed by name. Include \u0060target_tokens\u0060 and the inputs required by the selected loss. Each tensor must declare \u0060int64\u0060 or \u0060float32\u0060, be one-dimensional, and have the same length."
+      },
       "RlForwardBackwardResultMetrics": {
         "type": "object",
         "additionalProperties": {
@@ -28436,6 +28536,20 @@
       "QueueJobStatusResponseOutputs": {
         "type": "object",
         "description": "Freeform model output, populated when the job reaches done status. Contents are model-specific."
+      },
+      "BillingUsageLineItemPricingDimensions": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Rate-determining dimensions (varies by product). Passthrough from Metronome pricing group values."
+      },
+      "BillingUsageLineItemAttributes": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Resource identifiers for attribution, varying by product."
       },
       "ExecuteResponseSuccessfulExecutionData": {
         "required": [
@@ -30716,6 +30830,13 @@
         "type": "object",
         "description": "Cross-entropy loss parameters (currently empty)."
       },
+      "RlTrainingSampleLossFnInputsProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/RlTensorData"
+        },
+        "description": "Per-token loss tensors keyed by name. Include \u0060target_tokens\u0060 and the inputs required by the selected loss. Each tensor must declare \u0060int64\u0060 or \u0060float32\u0060, be one-dimensional, and have the same length."
+      },
       "RlForwardBackwardResultMetricsProperty": {
         "type": "object",
         "additionalProperties": {
@@ -31202,6 +31323,20 @@
       "QueueJobStatusResponseOutputsProperty": {
         "type": "object",
         "description": "Freeform model output, populated when the job reaches done status. Contents are model-specific."
+      },
+      "BillingUsageLineItemPricingDimensionsProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Rate-determining dimensions (varies by product). Passthrough from Metronome pricing group values."
+      },
+      "BillingUsageLineItemAttributesProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Resource identifiers for attribution, varying by product."
       },
       "ChatCompletionChoicesDataItemLogprobsTopLogprobs": {
         "type": "object",
@@ -32891,6 +33026,30 @@
             {
               "value": "METRIC_TARGET_TYPE_AVERAGE_VALUE",
               "name": "MetricTargetTypeAverageValue"
+            }
+          ]
+        }
+      },
+      "RlTensorDataDtype": {
+        "enum": [
+          "int64",
+          "float32"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Tensor element type, either \u0060int64\u0060 or \u0060float32\u0060.",
+        "example": "int64",
+        "x-ms-enum": {
+          "name": "RlTensorDataDtype",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "int64",
+              "name": "Int64"
+            },
+            {
+              "value": "float32",
+              "name": "Float32"
             }
           ]
         }
@@ -34978,6 +35137,40 @@
           ]
         }
       },
+      "ListObject": {
+        "const": null,
+        "enum": [
+          "list"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "ListObject",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "list",
+              "name": "List"
+            }
+          ]
+        }
+      },
+      "UsdCurrency": {
+        "const": null,
+        "enum": [
+          "USD"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "UsdCurrency",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "USD",
+              "name": "Usd"
+            }
+          ]
+        }
+      },
       "RerankRequestModelAnyOf1": {
         "enum": [
           "Salesforce/Llama-Rank-v1"
@@ -36385,6 +36578,29 @@
             {
               "value": "PHC_ALERT_ORDER_STARTED_AT_DESC",
               "name": "PhcAlertOrderStartedAtDesc"
+            }
+          ]
+        }
+      },
+      "GetBillingUsageGranularityParameter": {
+        "enum": [
+          "day",
+          "hour"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Time window size for rows. \u0027hour\u0027 returns ~24x more rows than \u0027day\u0027.",
+        "x-ms-enum": {
+          "name": "GetBillingUsageGranularityParameter",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "day",
+              "name": "Day"
+            },
+            {
+              "value": "hour",
+              "name": "Hour"
             }
           ]
         }

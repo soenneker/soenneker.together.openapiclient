@@ -8,6 +8,7 @@ using Microsoft.Kiota.Serialization.Multipart;
 using Microsoft.Kiota.Serialization.Text;
 using Soenneker.Together.OpenApiClient.Audio;
 using Soenneker.Together.OpenApiClient.Batches;
+using Soenneker.Together.OpenApiClient.Billing;
 using Soenneker.Together.OpenApiClient.Chat;
 using Soenneker.Together.OpenApiClient.Clusters;
 using Soenneker.Together.OpenApiClient.Completions;
@@ -56,6 +57,11 @@ namespace Soenneker.Together.OpenApiClient
         public global::Soenneker.Together.OpenApiClient.Batches.BatchesRequestBuilder Batches
         {
             get => new global::Soenneker.Together.OpenApiClient.Batches.BatchesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The billing property</summary>
+        public global::Soenneker.Together.OpenApiClient.Billing.BillingRequestBuilder Billing
+        {
+            get => new global::Soenneker.Together.OpenApiClient.Billing.BillingRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The chat property</summary>
         public global::Soenneker.Together.OpenApiClient.Chat.ChatRequestBuilder Chat
