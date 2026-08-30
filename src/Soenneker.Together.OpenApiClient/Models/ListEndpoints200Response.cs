@@ -22,8 +22,8 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public List<global::Soenneker.Together.OpenApiClient.Models.ListEndpoint> Data { get; set; }
 #endif
-        /// <summary>The object type, which is always `list`.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.ListEndpoints200ResponseObject? Object { get; set; }
+        /// <summary>The object property</summary>
+        public global::Soenneker.Together.OpenApiClient.Models.ListObject? Object { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.ListEndpoints200Response"/> and sets the default values.
         /// </summary>
@@ -50,7 +50,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "data", n => { Data = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.ListEndpoint>(global::Soenneker.Together.OpenApiClient.Models.ListEndpoint.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.ListEndpoints200ResponseObject>(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.ListObject>(); } },
             };
         }
         /// <summary>
@@ -61,7 +61,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.ListEndpoint>("data", Data);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.ListEndpoints200ResponseObject>("object", Object);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.ListObject>("object", Object);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

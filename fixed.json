@@ -26260,17 +26260,6 @@
         "allOf": [
           {
             "$ref": "#/components/schemas/UsageData"
-          },
-          {
-            "type": "object",
-            "anyOf": [
-              {
-                "type": "object"
-              },
-              {
-                "type": "null"
-              }
-            ]
           }
         ]
       },
@@ -26279,19 +26268,6 @@
           "value"
         ],
         "type": "object",
-        "allOf": [
-          {
-            "type": "object",
-            "anyOf": [
-              {
-                "type": "object"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          }
-        ],
         "properties": {
           "value": {
             "$ref": "#/components/schemas/FinishReason"
@@ -26377,19 +26353,6 @@
       },
       "ChatCompletionChoicesDataItemLogprobs": {
         "type": "object",
-        "allOf": [
-          {
-            "type": "object",
-            "anyOf": [
-              {
-                "type": "object"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          }
-        ],
         "properties": {
           "token_ids": {
             "type": "array",
@@ -26475,17 +26438,6 @@
         "allOf": [
           {
             "$ref": "#/components/schemas/UsageData"
-          },
-          {
-            "type": "object",
-            "anyOf": [
-              {
-                "type": "object"
-              },
-              {
-                "type": "null"
-              }
-            ]
           }
         ]
       },
@@ -30160,7 +30112,7 @@
         "type": "object",
         "properties": {
           "object": {
-            "$ref": "#/components/schemas/ListEndpoints200ResponseObject"
+            "$ref": "#/components/schemas/ListObject"
           },
           "data": {
             "type": "array",
@@ -30193,7 +30145,7 @@
         "type": "object",
         "properties": {
           "object": {
-            "$ref": "#/components/schemas/ListHardware200ResponseObject"
+            "$ref": "#/components/schemas/ListObject"
           },
           "data": {
             "type": "array",
@@ -31471,42 +31423,6 @@
           "endpoint_name": {
             "type": "string"
           }
-        }
-      },
-      "ListEndpoints200ResponseObject": {
-        "const": null,
-        "enum": [
-          "list"
-        ],
-        "type": "object",
-        "description": "The object type, which is always \u0060list\u0060.",
-        "x-ms-enum": {
-          "name": "ListEndpoints200ResponseObject",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "list",
-              "name": "List"
-            }
-          ]
-        }
-      },
-      "ListHardware200ResponseObject": {
-        "const": null,
-        "enum": [
-          "list"
-        ],
-        "type": "object",
-        "description": "The object type, which is always \u0060list\u0060.",
-        "x-ms-enum": {
-          "name": "ListHardware200ResponseObject",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "list",
-              "name": "List"
-            }
-          ]
         }
       },
       "VisibilityPublicVisibility": {
