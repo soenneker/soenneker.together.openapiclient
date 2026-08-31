@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
     /// <summary>
-    /// Inference config. If present, the model can be provisioned with one or more generator replicas.
+    /// Inference capabilities and limits for a model on one GPU type. If present, the model can be provisioned with one or more generator replicas.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RlModelGeneratorConfig : IAdditionalDataHolder, IParsable

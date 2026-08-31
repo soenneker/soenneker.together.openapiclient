@@ -23,22 +23,16 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string BaseModel { get; set; }
 #endif
-        /// <summary>Inference config. If present, the model can be provisioned with one or more generator replicas.</summary>
+        /// <summary>Validated GPU configurations available for this base model.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RlModelGeneratorConfig? GeneratorConfig { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.RlSupportedModelComputeConfig>? ComputeConfigs { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.RlModelGeneratorConfig GeneratorConfig { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.RlSupportedModelComputeConfig> ComputeConfigs { get; set; }
 #endif
-        /// <summary>Training config. Each sub-mode is present only when the model supports that training mode.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RlModelTrainerConfig? TrainerConfig { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Together.OpenApiClient.Models.RlModelTrainerConfig TrainerConfig { get; set; }
-#endif
+        /// <summary>GPU type used when model-resource creation omits gpu_type.</summary>
+        public global::Soenneker.Together.OpenApiClient.Models.RlSupportedModelDefaultGpuType? DefaultGpuType { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlSupportedModel"/> and sets the default values.
         /// </summary>
@@ -65,8 +59,8 @@ namespace Soenneker.Together.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "base_model", n => { BaseModel = n.GetStringValue(); } },
-                { "generator_config", n => { GeneratorConfig = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlModelGeneratorConfig>(global::Soenneker.Together.OpenApiClient.Models.RlModelGeneratorConfig.CreateFromDiscriminatorValue); } },
-                { "trainer_config", n => { TrainerConfig = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlModelTrainerConfig>(global::Soenneker.Together.OpenApiClient.Models.RlModelTrainerConfig.CreateFromDiscriminatorValue); } },
+                { "compute_configs", n => { ComputeConfigs = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RlSupportedModelComputeConfig>(global::Soenneker.Together.OpenApiClient.Models.RlSupportedModelComputeConfig.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "default_gpu_type", n => { DefaultGpuType = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlSupportedModelDefaultGpuType>(); } },
             };
         }
         /// <summary>
@@ -77,8 +71,8 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("base_model", BaseModel);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlModelGeneratorConfig>("generator_config", GeneratorConfig);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlModelTrainerConfig>("trainer_config", TrainerConfig);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RlSupportedModelComputeConfig>("compute_configs", ComputeConfigs);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlSupportedModelDefaultGpuType>("default_gpu_type", DefaultGpuType);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

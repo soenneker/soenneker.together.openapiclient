@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
     /// <summary>
-    /// Public view of a rollout resource and its embedded runtime status.
+    /// Public view of a rollout resource, including runtime progress and any pause or abort reason.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DeRollout : IAdditionalDataHolder, IParsable
@@ -47,7 +47,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string Id { get; private set; }
 #endif
-        /// <summary>Output only. Why and when the rollout was paused. Set while a pause is pending or effective (PAUSING, PAUSED, or SYSTEM_PAUSED); while PAUSING, pausedAt records when the pause was requested.</summary>
+        /// <summary>Output only. Why and when the rollout was paused. Set while a pause is pending or effective (PAUSING, PAUSED, or SYSTEM_PAUSED) and cleared after resume or abort; while PAUSING, pausedAt records when the pause was requested.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Together.OpenApiClient.Models.DeRolloutPauseInfo? PauseInfo { get; private set; }
@@ -67,7 +67,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public DateTimeOffset? StartedAt { get; private set; }
         /// <summary>Output only. High-level rollout lifecycle state.</summary>
         public global::Soenneker.Together.OpenApiClient.Models.DeRolloutState? State { get; private set; }
-        /// <summary>Output only. Derived runtime progress and failure details.</summary>
+        /// <summary>Output only. Derived runtime progress, step summary, and pause or abort failure details.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Together.OpenApiClient.Models.DeRolloutStatusComposed? Status { get; private set; }

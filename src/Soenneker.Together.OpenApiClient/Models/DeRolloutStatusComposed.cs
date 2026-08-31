@@ -8,14 +8,14 @@ using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
     /// <summary>
-    /// Output only. Derived runtime progress and failure details.
+    /// Output only. Derived runtime progress, step summary, and pause or abort failure details.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DeRolloutStatusComposed : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Failure detail set when the rollout pauses, system-pauses, or aborts.</summary>
+        /// <summary>Failure detail set when the rollout pauses, system-pauses, or aborts; carries the human-readable reason and structured detail.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Together.OpenApiClient.Models.DeRolloutStatusCondition? Condition { get; set; }

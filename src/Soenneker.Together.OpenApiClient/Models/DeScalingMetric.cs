@@ -15,14 +15,8 @@ namespace Soenneker.Together.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Metric name, such as `gpu_utilization`, `ttft`, `inflight_requests`, `e2e_latency`, `throughput_per_replica`, or `decoding_speed`.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Name { get; set; }
-#nullable restore
-#else
-        public string Name { get; set; }
-#endif
+        /// <summary>Autoscaling metric name from the server allowlist.</summary>
+        public global::Soenneker.Together.OpenApiClient.Models.DeScalingMetricName? Name { get; set; }
         /// <summary>Percentile to evaluate for latency-based metrics: `p50`, `p90`, `p95`, or `p99`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -60,7 +54,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "name", n => { Name = n.GetStringValue(); } },
+                { "name", n => { Name = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeScalingMetricName>(); } },
                 { "percentile", n => { Percentile = n.GetStringValue(); } },
                 { "target", n => { Target = n.GetDoubleValue(); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeScalingMetricType>(); } },
@@ -73,7 +67,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("name", Name);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeScalingMetricName>("name", Name);
             writer.WriteStringValue("percentile", Percentile);
             writer.WriteDoubleValue("target", Target);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeScalingMetricType>("type", Type);

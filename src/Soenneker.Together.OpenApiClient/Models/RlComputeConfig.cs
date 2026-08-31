@@ -15,6 +15,8 @@ namespace Soenneker.Together.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>GPU type selected for this resource.</summary>
+        public global::Soenneker.Together.OpenApiClient.Models.RlComputeConfigGpuType? GpuType { get; set; }
         /// <summary>Number of generator replicas. 0 means the resource runs the trainer only, with no generator.</summary>
         public int? NumGeneratorReplicas { get; set; }
         /// <summary>
@@ -42,6 +44,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "gpu_type", n => { GpuType = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlComputeConfigGpuType>(); } },
                 { "num_generator_replicas", n => { NumGeneratorReplicas = n.GetIntValue(); } },
             };
         }
@@ -52,6 +55,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlComputeConfigGpuType>("gpu_type", GpuType);
             writer.WriteIntValue("num_generator_replicas", NumGeneratorReplicas);
             writer.WriteAdditionalData(AdditionalData);
         }

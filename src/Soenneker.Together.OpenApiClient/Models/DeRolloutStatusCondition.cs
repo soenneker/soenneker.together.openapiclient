@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
     /// <summary>
-    /// Failure detail set when the rollout pauses, system-pauses, or aborts.
+    /// Failure detail set when the rollout pauses, system-pauses, or aborts; carries the human-readable reason and structured detail.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DeRolloutStatusCondition : IAdditionalDataHolder, IParsable

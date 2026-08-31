@@ -12767,7 +12767,7 @@
           },
           "finalTargetReplicas": {
             "type": "integer",
-            "description": "Optional target replica floor at completion. Must be at least 1 when set; defaults to the source deployment\u0027s replica count at create time, or to the source and target deployments\u0027 combined replica count when both already stand in the endpoint traffic split after a cancel. If this exceeds the target autoscaling max, the rollout raises that max once when first needed unless an operator changes max mid-run; the raised ceiling remains after completion. If the target\u0027s autoscaling min, or the source min inherited by a target that starts stopped, is higher, completion holds that higher floor and PreviewRolloutDefaults reports FINAL_BELOW_INHERITED_MIN."
+            "description": "Optional target replica floor at completion. Must be at least 1 when set; defaults to the source deployment\u0027s replica count at create time, or to the source and target deployments\u0027 combined replica count when both already stand in the endpoint traffic split after a cancel. If this exceeds the target autoscaling max, the rollout raises that max once when first needed unless an operator changes max mid-run; the raised ceiling remains after completion. A pre-existing target whose own autoscaling min is higher keeps that floor, reported as FINAL_BELOW_INHERITED_MIN. A target that starts stopped lands exactly at this value; if the source min was higher, PreviewRolloutDefaults reports FINAL_BELOW_SOURCE_MIN."
           }
         },
         "description": "Strategy, metric gates, timing, and cleanup policy for shifting traffic between two deployments under one endpoint."
@@ -13016,7 +13016,7 @@
         "properties": {
           "code": {
             "type": "string",
-            "description": "Machine-readable warning code, such as START_WILL_REJECT, ROLLOUT_WILL_RAISE_TARGET_MAX, or FINAL_BELOW_INHERITED_MIN. Render message for unrecognized codes."
+            "description": "Machine-readable warning code, such as START_WILL_REJECT, ROLLOUT_WILL_RAISE_TARGET_MAX, FINAL_BELOW_INHERITED_MIN, or FINAL_BELOW_SOURCE_MIN. Render message for unrecognized codes."
           },
           "message": {
             "type": "string",
@@ -13122,7 +13122,7 @@
             "$ref": "#/components/schemas/DeRolloutPauseInfo"
           }
         },
-        "description": "Public view of a rollout resource and its embedded runtime status."
+        "description": "Public view of a rollout resource, including runtime progress and any pause or abort reason."
       },
       "DeRolloutStatus": {
         "required": [
@@ -15207,8 +15207,7 @@
         "type": "object",
         "properties": {
           "name": {
-            "type": "string",
-            "description": "Metric name, such as \u0060gpu_utilization\u0060, \u0060ttft\u0060, \u0060inflight_requests\u0060, \u0060e2e_latency\u0060, \u0060throughput_per_replica\u0060, or \u0060decoding_speed\u0060."
+            "$ref": "#/components/schemas/DeScalingMetricName"
           },
           "type": {
             "$ref": "#/components/schemas/DeScalingMetricType"
@@ -15703,6 +15702,9 @@
             "description": "Number of generator replicas. 0 means the resource runs the trainer only, with no generator.",
             "format": "int32",
             "example": 1
+          },
+          "gpu_type": {
+            "$ref": "#/components/schemas/RlComputeConfigGpuType"
           }
         },
         "description": "Compute layout for a model resource"
@@ -15716,6 +15718,9 @@
             "format": "int32",
             "default": 1,
             "example": 2
+          },
+          "gpu_type": {
+            "$ref": "#/components/schemas/RlComputeConfigCreateRequestGpuType"
           }
         },
         "description": "Compute layout to provision for a model resource"
@@ -15948,7 +15953,7 @@
             "$ref": "#/components/schemas/RlModelLoraModeConfig"
           }
         },
-        "description": "Training config. Each sub-mode is present only when the model supports that training mode."
+        "description": "Training capabilities and limits for a model on one GPU type. Each sub-mode is present only when the model supports that training mode."
       },
       "RlModelSamplingDefaults": {
         "required": [
@@ -15998,11 +16003,30 @@
             "$ref": "#/components/schemas/RlModelSamplingDefaults"
           }
         },
-        "description": "Inference config. If present, the model can be provisioned with one or more generator replicas."
+        "description": "Inference capabilities and limits for a model on one GPU type. If present, the model can be provisioned with one or more generator replicas."
+      },
+      "RlSupportedModelComputeConfig": {
+        "required": [
+          "gpu_type"
+        ],
+        "type": "object",
+        "properties": {
+          "gpu_type": {
+            "$ref": "#/components/schemas/RlSupportedModelComputeConfigGpuType"
+          },
+          "trainer_config": {
+            "$ref": "#/components/schemas/RlModelTrainerConfig"
+          },
+          "generator_config": {
+            "$ref": "#/components/schemas/RlModelGeneratorConfig"
+          }
+        },
+        "description": "A validated hardware configuration available for an RL base model."
       },
       "RlSupportedModel": {
         "required": [
-          "base_model"
+          "base_model",
+          "default_gpu_type"
         ],
         "type": "object",
         "properties": {
@@ -16011,11 +16035,15 @@
             "description": "Base model identifier to pass as base_model when creating a model resource",
             "example": "Qwen/Qwen3-0.6B"
           },
-          "trainer_config": {
-            "$ref": "#/components/schemas/RlModelTrainerConfig"
+          "default_gpu_type": {
+            "$ref": "#/components/schemas/RlSupportedModelDefaultGpuType"
           },
-          "generator_config": {
-            "$ref": "#/components/schemas/RlModelGeneratorConfig"
+          "compute_configs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RlSupportedModelComputeConfig"
+            },
+            "description": "Validated GPU configurations available for this base model."
           }
         },
         "description": "A base model supported by the RL service. Per-mode configs are present only when the model supports that mode."
@@ -17149,6 +17177,32 @@
         },
         "description": "Auxiliary metadata associated with a training session"
       },
+      "RlSessionPolicyState": {
+        "required": [
+          "trainer_step",
+          "target_weights_version",
+          "applied_weights_version",
+          "pending_publish"
+        ],
+        "type": "object",
+        "properties": {
+          "trainer_step": {
+            "$ref": "#/components/schemas/RlSessionPolicyStateTrainerStep"
+          },
+          "target_weights_version": {
+            "$ref": "#/components/schemas/RlSessionPolicyStateTargetWeightsVersion"
+          },
+          "applied_weights_version": {
+            "$ref": "#/components/schemas/RlSessionPolicyStateAppliedWeightsVersion"
+          },
+          "pending_publish": {
+            "type": "boolean",
+            "description": "True when a generator publish has been requested but has not finished.",
+            "example": true
+          }
+        },
+        "description": "Session-scoped policy and weight versions. Comparable to \u0060policy_segments[].version\u0060 on sample results. Resets if the session is resumed or its training runtime restarts."
+      },
       "RlTrainingSession": {
         "required": [
           "id",
@@ -17161,7 +17215,8 @@
           "updated_at",
           "model_resources_id",
           "created_by",
-          "base_model"
+          "base_model",
+          "policy_state"
         ],
         "type": "object",
         "properties": {
@@ -17236,6 +17291,9 @@
             "type": "string",
             "description": "ID of the user who created the training session",
             "example": "user_123"
+          },
+          "policy_state": {
+            "$ref": "#/components/schemas/RlSessionPolicyState"
           }
         },
         "description": "A training session and its current state"
@@ -25660,7 +25718,7 @@
             "description": "Informational conditions that describe the rollout\u0027s current state. Omitted when empty; clients should treat an absent key as an empty list."
           }
         },
-        "description": "Output only. Derived runtime progress and failure details.",
+        "description": "Output only. Derived runtime progress, step summary, and pause or abort failure details.",
         "readOnly": true
       },
       "DeRolloutPauseInfo": {
@@ -25679,7 +25737,7 @@
             "format": "date-time"
           }
         },
-        "description": "Output only. Why and when the rollout was paused. Set while a pause is pending or effective (PAUSING, PAUSED, or SYSTEM_PAUSED); while PAUSING, pausedAt records when the pause was requested.",
+        "description": "Output only. Why and when the rollout was paused. Set while a pause is pending or effective (PAUSING, PAUSED, or SYSTEM_PAUSED) and cleared after resume or abort; while PAUSING, pausedAt records when the pause was requested.",
         "readOnly": true
       },
       "DeRolloutStatusCondition": {
@@ -25712,7 +25770,7 @@
             "$ref": "#/components/schemas/CapacityLimitedType"
           }
         },
-        "description": "Failure detail set when the rollout pauses, system-pauses, or aborts."
+        "description": "Failure detail set when the rollout pauses, system-pauses, or aborts; carries the human-readable reason and structured detail."
       },
       "DePlacementOneOf1": {
         "required": [
@@ -26054,6 +26112,45 @@
             "type": "integer"
           }
         ]
+      },
+      "RlSessionPolicyStateTrainerStep": {
+        "type": "object",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "integer"
+          }
+        ],
+        "description": "Policy version produced by the last completed optimizer step. Distinct from \u0060TrainingSession.step\u0060, which is the durable optimizer-step counter.",
+        "example": "7"
+      },
+      "RlSessionPolicyStateTargetWeightsVersion": {
+        "type": "object",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "integer"
+          }
+        ],
+        "description": "Policy version promised to the generator by the latest weights-sync.",
+        "example": "7"
+      },
+      "RlSessionPolicyStateAppliedWeightsVersion": {
+        "type": "object",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "integer"
+          }
+        ],
+        "description": "Policy version successfully applied to the generator for this session.",
+        "example": "6"
       },
       "RlTrainingSessionStep": {
         "type": "object",
@@ -32918,6 +33015,59 @@
           ]
         }
       },
+      "DeScalingMetricName": {
+        "enum": [
+          "cache_hit_rate",
+          "decoding_speed",
+          "e2e_latency",
+          "gpu_utilization",
+          "inflight_requests",
+          "throughput_per_replica",
+          "token_utilization",
+          "ttft"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Autoscaling metric name from the server allowlist.",
+        "x-ms-enum": {
+          "name": "DeScalingMetricName",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "cache_hit_rate",
+              "name": "CacheHitRate"
+            },
+            {
+              "value": "decoding_speed",
+              "name": "DecodingSpeed"
+            },
+            {
+              "value": "e2e_latency",
+              "name": "E2ELatency"
+            },
+            {
+              "value": "gpu_utilization",
+              "name": "GpuUtilization"
+            },
+            {
+              "value": "inflight_requests",
+              "name": "InflightRequests"
+            },
+            {
+              "value": "throughput_per_replica",
+              "name": "ThroughputPerReplica"
+            },
+            {
+              "value": "token_utilization",
+              "name": "TokenUtilization"
+            },
+            {
+              "value": "ttft",
+              "name": "Ttft"
+            }
+          ]
+        }
+      },
       "DeScalingMetricType": {
         "enum": [
           "METRIC_TARGET_TYPE_VALUE",
@@ -32942,6 +33092,102 @@
             {
               "value": "METRIC_TARGET_TYPE_AVERAGE_VALUE",
               "name": "MetricTargetTypeAverageValue"
+            }
+          ]
+        }
+      },
+      "RlComputeConfigGpuType": {
+        "enum": [
+          "H100-80GB",
+          "B200-SXM"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "GPU type selected for this resource.",
+        "example": "H100-80GB",
+        "x-ms-enum": {
+          "name": "RlComputeConfigGpuType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "H100-80GB",
+              "name": "H10080Gb"
+            },
+            {
+              "value": "B200-SXM",
+              "name": "B200Sxm"
+            }
+          ]
+        }
+      },
+      "RlComputeConfigCreateRequestGpuType": {
+        "enum": [
+          "H100-80GB",
+          "B200-SXM"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "GPU type to provision. Omit to use the model\u0027s default GPU type.",
+        "example": "B200-SXM",
+        "x-ms-enum": {
+          "name": "RlComputeConfigCreateRequestGpuType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "H100-80GB",
+              "name": "H10080Gb"
+            },
+            {
+              "value": "B200-SXM",
+              "name": "B200Sxm"
+            }
+          ]
+        }
+      },
+      "RlSupportedModelComputeConfigGpuType": {
+        "enum": [
+          "H100-80GB",
+          "B200-SXM"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "GPU type this configuration provisions.",
+        "example": "H100-80GB",
+        "x-ms-enum": {
+          "name": "RlSupportedModelComputeConfigGpuType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "H100-80GB",
+              "name": "H10080Gb"
+            },
+            {
+              "value": "B200-SXM",
+              "name": "B200Sxm"
+            }
+          ]
+        }
+      },
+      "RlSupportedModelDefaultGpuType": {
+        "enum": [
+          "H100-80GB",
+          "B200-SXM"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "GPU type used when model-resource creation omits gpu_type.",
+        "example": "H100-80GB",
+        "x-ms-enum": {
+          "name": "RlSupportedModelDefaultGpuType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "H100-80GB",
+              "name": "H10080Gb"
+            },
+            {
+              "value": "B200-SXM",
+              "name": "B200Sxm"
             }
           ]
         }

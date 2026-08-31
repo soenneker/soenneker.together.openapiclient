@@ -89,6 +89,14 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string ModelResourcesId { get; set; }
 #endif
+        /// <summary>Session-scoped policy and weight versions. Comparable to `policy_segments[].version` on sample results. Resets if the session is resumed or its training runtime restarts.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Together.OpenApiClient.Models.RlSessionPolicyState? PolicyState { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Together.OpenApiClient.Models.RlSessionPolicyState PolicyState { get; set; }
+#endif
         /// <summary>Checkpoint ID this session was resumed from</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -152,6 +160,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "lora_config", n => { LoraConfig = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlLoraConfig>(global::Soenneker.Together.OpenApiClient.Models.RlLoraConfig.CreateFromDiscriminatorValue); } },
                 { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionMetadata>(global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionMetadata.CreateFromDiscriminatorValue); } },
                 { "model_resources_id", n => { ModelResourcesId = n.GetStringValue(); } },
+                { "policy_state", n => { PolicyState = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlSessionPolicyState>(global::Soenneker.Together.OpenApiClient.Models.RlSessionPolicyState.CreateFromDiscriminatorValue); } },
                 { "resume_from_checkpoint_id", n => { ResumeFromCheckpointId = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionStatus>(); } },
                 { "step", n => { Step = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionStep>(global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionStep.CreateFromDiscriminatorValue); } },
@@ -176,6 +185,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlLoraConfig>("lora_config", LoraConfig);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionMetadata>("metadata", Metadata);
             writer.WriteStringValue("model_resources_id", ModelResourcesId);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlSessionPolicyState>("policy_state", PolicyState);
             writer.WriteStringValue("resume_from_checkpoint_id", ResumeFromCheckpointId);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionStatus>("status", Status);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionStep>("step", Step);

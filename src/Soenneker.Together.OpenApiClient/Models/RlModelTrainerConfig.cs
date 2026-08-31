@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
     /// <summary>
-    /// Training config. Each sub-mode is present only when the model supports that training mode.
+    /// Training capabilities and limits for a model on one GPU type. Each sub-mode is present only when the model supports that training mode.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RlModelTrainerConfig : IAdditionalDataHolder, IParsable
