@@ -27,7 +27,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string Message { get; set; }
 #endif
-        /// <summary>Metrics observed at the failing gate, enriched with their criteria.</summary>
+        /// <summary>Metrics observed at the failing gate, enriched with their criteria. Unmeasured rules appear as synthesized rows with verdict METRIC_VERDICT_UNAVAILABLE and no measured values.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Together.OpenApiClient.Models.DeMetricResult>? Metrics { get; set; }

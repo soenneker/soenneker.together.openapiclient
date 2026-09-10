@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
-    /// <summary>Execution state of this rollout step.</summary>
+    /// <summary>Outcome of this step. Finished steps are PASSED, the live step mirrors the rollout state, skipped-over steps are SKIPPED, and unreached steps are PENDING.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum DeRolloutStepStatusState
     {
@@ -22,6 +22,18 @@ namespace Soenneker.Together.OpenApiClient.Models
         [EnumMember(Value = "ROLLOUT_STEP_STATE_FAILED")]
         #pragma warning disable CS1591
         RolloutStepStateFailed,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ROLLOUT_STEP_STATE_PAUSED")]
+        #pragma warning disable CS1591
+        RolloutStepStatePaused,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ROLLOUT_STEP_STATE_CANCELED")]
+        #pragma warning disable CS1591
+        RolloutStepStateCanceled,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ROLLOUT_STEP_STATE_SKIPPED")]
+        #pragma warning disable CS1591
+        RolloutStepStateSkipped,
         #pragma warning restore CS1591
     }
 }

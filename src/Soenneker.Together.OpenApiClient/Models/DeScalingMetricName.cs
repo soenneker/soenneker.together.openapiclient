@@ -7,6 +7,10 @@ namespace Soenneker.Together.OpenApiClient.Models
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum DeScalingMetricName
     {
+        [EnumMember(Value = "active_sessions")]
+        #pragma warning disable CS1591
+        ActiveSessions,
+        #pragma warning restore CS1591
         [EnumMember(Value = "cache_hit_rate")]
         #pragma warning disable CS1591
         CacheHitRate,

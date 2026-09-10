@@ -17,7 +17,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Required direction that indicates whether higher or lower metric values are worse.</summary>
         public global::Soenneker.Together.OpenApiClient.Models.DeRegressionCheckDirection? Direction { get; set; }
-        /// <summary>Required maximum allowed regression percentage.</summary>
+        /// <summary>Required finite maximum allowed regression percentage, greater than or equal to 0. A value of 0 is the strictest budget; any regression fails, and exactly-at-budget passes.</summary>
         public double? MaxRegressionPercent { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.DeMetricRuleRegressionCheck"/> and sets the default values.

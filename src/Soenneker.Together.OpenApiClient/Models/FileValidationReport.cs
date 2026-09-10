@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
     /// <summary>
-    /// Report produced by the file validation pipeline. Present oncevalidation has run; absent on files that bypassed validation(non-`fine-tune` purposes) or have not yet been validated.
+    /// Validation outcome for a fine-tune training file, produced by thefile validation pipeline.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class FileValidationReport : IAdditionalDataHolder, IParsable

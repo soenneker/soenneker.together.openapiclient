@@ -10372,111 +10372,6 @@
         }
       }
     },
-    "/rl/training-sessions/{sessionId}/operations/forward": {
-      "post": {
-        "tags": [
-          "RL"
-        ],
-        "summary": "Forward pass",
-        "description": "Submits a forward operation that will asynchronously run a no-grad forward pass and return per-token log-probabilities for each sample.",
-        "operationId": "Forward",
-        "parameters": [
-          {
-            "name": "sessionId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "description": "Training session ID"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/RlForwardBody"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "200 response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RlForwardOperation"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorData"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/rl/training-sessions/{sessionId}/operations/forward/{operationId}": {
-      "get": {
-        "tags": [
-          "RL"
-        ],
-        "summary": "Get forward operation",
-        "description": "Retrieves the current status and result of a forward operation.",
-        "operationId": "GetForwardOperation",
-        "parameters": [
-          {
-            "name": "sessionId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "description": "Training session ID"
-            }
-          },
-          {
-            "name": "operationId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "description": "Operation ID"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Forward operation details",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RlForwardOperation"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorData"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/rl/training-sessions/{sessionId}/operations/optim-step": {
       "post": {
         "tags": [
@@ -10809,6 +10704,73 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/RlTrainingCheckpointOperation"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/rl/checkpoints": {
+      "get": {
+        "tags": [
+          "RL"
+        ],
+        "summary": "List training checkpoints",
+        "description": "Lists training checkpoints owned by the caller. Filter by session or base model to recover a checkpoint ID for resume. Inference checkpoints are not included; they remain on the training session and in the model catalog.",
+        "operationId": "ListCheckpoints",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "description": "Only return checkpoints produced by this training session"
+            }
+          },
+          {
+            "name": "base_model",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "description": "Only return checkpoints trained from this base model. Match is exact."
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "description": "Maximum number of checkpoints to return (1-100)",
+              "default": "20"
+            }
+          },
+          {
+            "name": "after",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "description": "Cursor for pagination (ID of the last checkpoint from the previous page)"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of training checkpoints",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RlCheckpointsListResponse"
                 }
               }
             }
@@ -12767,7 +12729,7 @@
           },
           "finalTargetReplicas": {
             "type": "integer",
-            "description": "Optional target replica floor at completion. Must be at least 1 when set; defaults to the source deployment\u0027s replica count at create time, or to the source and target deployments\u0027 combined replica count when both already stand in the endpoint traffic split after a cancel. If this exceeds the target autoscaling max, the rollout raises that max once when first needed unless an operator changes max mid-run; the raised ceiling remains after completion. A pre-existing target whose own autoscaling min is higher keeps that floor, reported as FINAL_BELOW_INHERITED_MIN. A target that starts stopped lands exactly at this value; if the source min was higher, PreviewRolloutDefaults reports FINAL_BELOW_SOURCE_MIN."
+            "description": "Optional target replica floor at completion. Must be at least 1 when set; defaults to the source deployment\u0027s replica count at create time, or to the source and target deployments\u0027 combined replica count when both already stand in the endpoint traffic split after a cancel. The completed target\u0027s autoscaling max lands at the landing ceiling, max(this value, the source max, the target\u0027s own max); the rollout may lift the target max at first wake, at the first step that needs it, or at completion unless an operator changes max mid-run. The lifted ceiling remains after completion, and PreviewRolloutDefaults reports a coming lift as ROLLOUT_WILL_RAISE_TARGET_MAX. A pre-existing target whose own autoscaling min is higher keeps that floor, reported as FINAL_BELOW_INHERITED_MIN. A target that starts stopped lands exactly at this value; if the source min was higher, PreviewRolloutDefaults reports FINAL_BELOW_SOURCE_MIN."
           }
         },
         "description": "Strategy, metric gates, timing, and cleanup policy for shifting traffic between two deployments under one endpoint."
@@ -12819,8 +12781,7 @@
       },
       "DeMetricRule": {
         "required": [
-          "name",
-          "stat"
+          "name"
         ],
         "type": "object",
         "oneOf": [
@@ -12873,7 +12834,7 @@
         "properties": {
           "value": {
             "type": "number",
-            "description": "Required numeric threshold value."
+            "description": "Required finite threshold value. Interpreted in the metric\u0027s unit:\nrouter_error_rate is a ratio in [0, 1], router_latency is\nmilliseconds, and inflight_requests is a raw count. Thresholds that\nno achievable value could pass, or that every achievable value\npasses, are rejected at create."
           },
           "operator": {
             "$ref": "#/components/schemas/DeThresholdCheckOperator"
@@ -12890,7 +12851,7 @@
         "properties": {
           "maxRegressionPercent": {
             "type": "number",
-            "description": "Required maximum allowed regression percentage."
+            "description": "Required finite maximum allowed regression percentage, greater than or equal to 0. A value of 0 is the strictest budget; any regression fails, and exactly-at-budget passes."
           },
           "direction": {
             "$ref": "#/components/schemas/DeRegressionCheckDirection"
@@ -13184,7 +13145,7 @@
             "items": {
               "$ref": "#/components/schemas/DeMetricResult"
             },
-            "description": "Metrics observed at the failing gate, enriched with their criteria."
+            "description": "Metrics observed at the failing gate, enriched with their criteria. Unmeasured rules appear as synthesized rows with verdict METRIC_VERDICT_UNAVAILABLE and no measured values."
           },
           "type": {
             "$ref": "#/components/schemas/CapacityLimitedType"
@@ -13211,21 +13172,21 @@
             "items": {
               "$ref": "#/components/schemas/DeMetricResult"
             },
-            "description": "Metric gate results for this step."
+            "description": "Metric gate results for this step, enriched with criteria and verdict. Unmeasured rules appear as synthesized rows with verdict METRIC_VERDICT_UNAVAILABLE and no measured values."
           },
           "startedAt": {
             "type": "string",
-            "description": "Timestamp when this step started.",
+            "description": "Timestamp when this step\u0027s first sub-step ran. Unset for steps no sub-step reached.",
             "format": "date-time"
           },
           "completedAt": {
             "type": "string",
-            "description": "Timestamp when this step completed.",
+            "description": "Timestamp when this step finished, was skipped over, or the rollout ended on it. Unset while in progress.",
             "format": "date-time"
           },
           "failureReason": {
             "type": "string",
-            "description": "Failure reason when this step failed."
+            "description": "Failure reason set only when this step failed."
           }
         },
         "description": "Collapsed execution state for one rollout step."
@@ -13249,11 +13210,11 @@
           },
           "sourceValue": {
             "type": "number",
-            "description": "Observed source baseline. Set only for regression checks; a 0 reading serializes explicitly."
+            "description": "Observed source baseline. Set only for regression checks with a recorded observation; a 0 reading serializes explicitly."
           },
           "targetValue": {
             "type": "number",
-            "description": "Observed target value. A 0 reading serializes explicitly."
+            "description": "Observed target value. Set when the gate recorded an observation; absent on synthesized unavailable results. A 0 reading serializes explicitly."
           },
           "threshold": {
             "type": "number",
@@ -13273,7 +13234,7 @@
             "$ref": "#/components/schemas/DeMetricResultVerdict"
           }
         },
-        "description": "Observed metric value enriched with its rollout rule and verdict."
+        "description": "Observed metric result enriched with rollout rule criteria and verdict. Unmeasured rules are synthesized with verdict METRIC_VERDICT_UNAVAILABLE and no source or target value."
       },
       "DeAbExperiment": {
         "required": [
@@ -15555,6 +15516,16 @@
           },
           "loss": {
             "$ref": "#/components/schemas/RlLossConfig"
+          },
+          "return_loss_fn_outputs": {
+            "type": "boolean",
+            "description": "Return the loss function\u0027s per-sample output tensors alongside the loss and metrics. Defaults to false. Enabling it increases the response size substantially for large batches and reduces step throughput, so leave it unset for ordinary training steps.",
+            "example": true
+          },
+          "forward_only": {
+            "type": "boolean",
+            "description": "Run the forward pass only: report the loss and metrics, and the per-sample outputs when requested, without accumulating gradients. Defaults to false. Pair it with \u0060return_loss_fn_outputs\u0060 to score a batch and read back its per-token log-probabilities.",
+            "example": true
           }
         }
       },
@@ -16341,6 +16312,18 @@
           }
         }
       },
+      "RlLossFnOutput": {
+        "required": [
+          "tensors"
+        ],
+        "type": "object",
+        "properties": {
+          "tensors": {
+            "$ref": "#/components/schemas/RlLossFnOutputTensorsProperty"
+          }
+        },
+        "description": "Output tensors produced by the loss function for one sample."
+      },
       "RlTensorData": {
         "required": [
           "data",
@@ -16719,9 +16702,16 @@
           },
           "metrics": {
             "$ref": "#/components/schemas/RlForwardBackwardResultMetricsProperty"
+          },
+          "loss_fn_outputs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RlLossFnOutput"
+            },
+            "description": "Per-sample loss function outputs, in request order. Empty unless the request set \u0060return_loss_fn_outputs\u0060."
           }
         },
-        "description": "Result of a forward-backward pass operation"
+        "description": "Result of a scored forward or forward-backward operation"
       },
       "RlCustomForwardBackwardBody": {
         "required": [
@@ -16775,78 +16765,6 @@
         "type": "object",
         "description": "Result of a custom forward-backward pass operation",
         "x-stainless-empty-object": true
-      },
-      "RlForwardBody": {
-        "required": [
-          "samples"
-        ],
-        "type": "object",
-        "properties": {
-          "samples": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/RlTrainingSample"
-            },
-            "description": "Batch of training samples for which to compute per-token log-probabilities"
-          }
-        },
-        "description": "Request body for a forward pass."
-      },
-      "RlForwardOperation": {
-        "required": [
-          "id",
-          "status"
-        ],
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "Operation ID",
-            "example": "550e8400-e29b-41d4-a716-446655440000"
-          },
-          "status": {
-            "$ref": "#/components/schemas/RlTrainingOperationStatus"
-          },
-          "output": {
-            "$ref": "#/components/schemas/RlForwardResult"
-          },
-          "error": {
-            "$ref": "#/components/schemas/RlTrainingOperationError"
-          }
-        },
-        "description": "Async forward pass operation"
-      },
-      "RlForwardResult": {
-        "required": [
-          "logprobs"
-        ],
-        "type": "object",
-        "properties": {
-          "logprobs": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/RlTargetLogprobs"
-            },
-            "description": "Per-sample per-token log-probabilities"
-          }
-        },
-        "description": "Result of a forward pass operation"
-      },
-      "RlTargetLogprobs": {
-        "required": [
-          "data"
-        ],
-        "type": "object",
-        "properties": {
-          "data": {
-            "type": "array",
-            "items": {
-              "type": "number"
-            },
-            "description": "Float array of per-token log probabilities"
-          }
-        },
-        "description": "Per-token log-probabilities from the target model"
       },
       "RlTargetLogprobGradients": {
         "required": [
@@ -17680,6 +17598,26 @@
           }
         },
         "description": "Async save training checkpoint operation"
+      },
+      "RlCheckpointsListResponse": {
+        "required": [
+          "data",
+          "meta"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RlCheckpoint"
+            },
+            "description": "Training checkpoints in this page"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/RlListMeta"
+          }
+        },
+        "description": "A page of training checkpoints"
       },
       "RlCheckpointType": {
         "enum": [
@@ -23159,6 +23097,9 @@
       },
       "InterpreterOutput": {
         "title": "InterpreterOutput",
+        "required": [
+          "type"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -23171,6 +23112,11 @@
             "$ref": "#/components/schemas/InterpreterOutputDisplayorExecuteOutput"
           }
         ],
+        "properties": {
+          "type": {
+            "type": "string"
+          }
+        },
         "discriminator": {
           "propertyName": "type",
           "mapping": {
@@ -25650,7 +25596,7 @@
         "properties": {
           "value": {
             "type": "number",
-            "description": "Required numeric threshold value."
+            "description": "Required finite threshold value. Interpreted in the metric\u0027s unit:\nrouter_error_rate is a ratio in [0, 1], router_latency is\nmilliseconds, and inflight_requests is a raw count. Thresholds that\nno achievable value could pass, or that every achievable value\npasses, are rejected at create."
           },
           "operator": {
             "$ref": "#/components/schemas/DeThresholdCheckOperator"
@@ -25667,7 +25613,7 @@
         "properties": {
           "maxRegressionPercent": {
             "type": "number",
-            "description": "Required maximum allowed regression percentage."
+            "description": "Required finite maximum allowed regression percentage, greater than or equal to 0. A value of 0 is the strictest budget; any regression fails, and exactly-at-budget passes."
           },
           "direction": {
             "$ref": "#/components/schemas/DeRegressionCheckDirection"
@@ -25764,7 +25710,7 @@
             "items": {
               "$ref": "#/components/schemas/DeMetricResult"
             },
-            "description": "Metrics observed at the failing gate, enriched with their criteria."
+            "description": "Metrics observed at the failing gate, enriched with their criteria. Unmeasured rules appear as synthesized rows with verdict METRIC_VERDICT_UNAVAILABLE and no measured values."
           },
           "type": {
             "$ref": "#/components/schemas/CapacityLimitedType"
@@ -26391,6 +26337,9 @@
         }
       },
       "ChatCompletionRequestResponseFormat": {
+        "required": [
+          "type"
+        ],
         "type": "object",
         "anyOf": [
           {
@@ -26406,6 +26355,9 @@
         "properties": {
           "json_schema": {
             "$ref": "#/components/schemas/ResponseFormatJsonSchemaJsonSchema"
+          },
+          "type": {
+            "type": "string"
           }
         },
         "description": "An object specifying the format that the model must output.\n\nSetting to \u0060{ \u0022type\u0022: \u0022json_schema\u0022, \u0022json_schema\u0022: {...} }\u0060 enables\nStructured Outputs which ensures the model will match your supplied JSON\nschema. Learn more in the [Structured Outputs\nguide](https://docs.together.ai/docs/json-mode).\n\nSetting to \u0060{ \u0022type\u0022: \u0022json_object\u0022 }\u0060 enables the older JSON mode, which\nensures the message the model generates is valid JSON. Using \u0060json_schema\u0060\nis preferred for models that support it.\n",
@@ -26640,6 +26592,9 @@
         "example": "Our solar system orbits the Milky Way galaxy at about 515,000 mph"
       },
       "ImageResponseDataItem": {
+        "required": [
+          "type"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -26657,6 +26612,9 @@
             "type": "string"
           },
           "url": {
+            "type": "string"
+          },
+          "type": {
             "type": "string"
           }
         },
@@ -27758,6 +27716,9 @@
       },
       "ExecuteResponseSuccessfulExecutionDataOutputsItem": {
         "title": "InterpreterOutput",
+        "required": [
+          "type"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -27770,6 +27731,11 @@
             "$ref": "#/components/schemas/ExecuteResponseSuccessfulExecutionDataOutputsItemDisplayorExecuteOutput"
           }
         ],
+        "properties": {
+          "type": {
+            "type": "string"
+          }
+        },
         "discriminator": {
           "propertyName": "type",
           "mapping": {
@@ -27891,6 +27857,13 @@
           "type": "string"
         },
         "description": "Request counts keyed by HTTP status code."
+      },
+      "RlLossFnOutputTensors": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/RlTensorData"
+        },
+        "description": "Output tensors keyed by name. Built-in losses return \u0060logprobs\u0060: the model\u0027s float32 per-token log-probabilities under the current policy, one value per token of the sample\u0027s input. Positions excluded from the loss, such as zero-weight positions, are masked to zero rather than true log-probabilities."
       },
       "RlTrainingSampleLossFnInputs": {
         "type": "object",
@@ -30879,6 +30852,13 @@
         "type": "object",
         "description": "Cross-entropy loss parameters (currently empty)."
       },
+      "RlLossFnOutputTensorsProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/RlTensorData"
+        },
+        "description": "Output tensors keyed by name. Built-in losses return \u0060logprobs\u0060: the model\u0027s float32 per-token log-probabilities under the current policy, one value per token of the sample\u0027s input. Positions excluded from the loss, such as zero-weight positions, are masked to zero rather than true log-probabilities."
+      },
       "RlTrainingSampleLossFnInputsProperty": {
         "type": "object",
         "additionalProperties": {
@@ -31809,7 +31789,7 @@
         ],
         "type": "string",
         "additionalProperties": false,
-        "description": "Required aggregation used for the metric.",
+        "description": "Aggregation used for the metric. Optional for router_error_rate and inflight_requests; omitted values default to METRIC_STAT_TYPE_AVG. Required for router_latency, where AVG or PERCENTILE may be used.",
         "x-ms-enum": {
           "name": "DeMetricRuleStat",
           "modelAsString": false,
@@ -32101,11 +32081,14 @@
           "ROLLOUT_STEP_STATE_PENDING",
           "ROLLOUT_STEP_STATE_RUNNING",
           "ROLLOUT_STEP_STATE_PASSED",
-          "ROLLOUT_STEP_STATE_FAILED"
+          "ROLLOUT_STEP_STATE_FAILED",
+          "ROLLOUT_STEP_STATE_PAUSED",
+          "ROLLOUT_STEP_STATE_CANCELED",
+          "ROLLOUT_STEP_STATE_SKIPPED"
         ],
         "type": "string",
         "additionalProperties": false,
-        "description": "Execution state of this rollout step.",
+        "description": "Outcome of this step. Finished steps are PASSED, the live step mirrors the rollout state, skipped-over steps are SKIPPED, and unreached steps are PENDING.",
         "x-ms-enum": {
           "name": "DeRolloutStepStatusState",
           "modelAsString": false,
@@ -32125,6 +32108,18 @@
             {
               "value": "ROLLOUT_STEP_STATE_FAILED",
               "name": "RolloutStepStateFailed"
+            },
+            {
+              "value": "ROLLOUT_STEP_STATE_PAUSED",
+              "name": "RolloutStepStatePaused"
+            },
+            {
+              "value": "ROLLOUT_STEP_STATE_CANCELED",
+              "name": "RolloutStepStateCanceled"
+            },
+            {
+              "value": "ROLLOUT_STEP_STATE_SKIPPED",
+              "name": "RolloutStepStateSkipped"
             }
           ]
         }
@@ -33017,6 +33012,7 @@
       },
       "DeScalingMetricName": {
         "enum": [
+          "active_sessions",
           "cache_hit_rate",
           "decoding_speed",
           "e2e_latency",
@@ -33033,6 +33029,10 @@
           "name": "DeScalingMetricName",
           "modelAsString": false,
           "values": [
+            {
+              "value": "active_sessions",
+              "name": "ActiveSessions"
+            },
             {
               "value": "cache_hit_rate",
               "name": "CacheHitRate"

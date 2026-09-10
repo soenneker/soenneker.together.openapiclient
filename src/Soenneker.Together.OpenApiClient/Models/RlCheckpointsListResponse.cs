@@ -8,37 +8,45 @@ using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
     /// <summary>
-    /// Request body for a forward pass.
+    /// A page of training checkpoints
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class RlForwardBody : IAdditionalDataHolder, IParsable
+    public partial class RlCheckpointsListResponse : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Batch of training samples for which to compute per-token log-probabilities</summary>
+        /// <summary>Training checkpoints in this page</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Together.OpenApiClient.Models.RlTrainingSample>? Samples { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.RlCheckpoint>? Data { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Together.OpenApiClient.Models.RlTrainingSample> Samples { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.RlCheckpoint> Data { get; set; }
+#endif
+        /// <summary>Pagination metadata for list responses</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Together.OpenApiClient.Models.RlListMeta? Meta { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Together.OpenApiClient.Models.RlListMeta Meta { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlForwardBody"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlCheckpointsListResponse"/> and sets the default values.
         /// </summary>
-        public RlForwardBody()
+        public RlCheckpointsListResponse()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.RlForwardBody"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.RlCheckpointsListResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Together.OpenApiClient.Models.RlForwardBody CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Together.OpenApiClient.Models.RlCheckpointsListResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.RlForwardBody();
+            return new global::Soenneker.Together.OpenApiClient.Models.RlCheckpointsListResponse();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -48,7 +56,8 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "samples", n => { Samples = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RlTrainingSample>(global::Soenneker.Together.OpenApiClient.Models.RlTrainingSample.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "data", n => { Data = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RlCheckpoint>(global::Soenneker.Together.OpenApiClient.Models.RlCheckpoint.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "meta", n => { Meta = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlListMeta>(global::Soenneker.Together.OpenApiClient.Models.RlListMeta.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -58,7 +67,8 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RlTrainingSample>("samples", Samples);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RlCheckpoint>("data", Data);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlListMeta>("meta", Meta);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -89,12 +89,16 @@ namespace Soenneker.Together.OpenApiClient.Realtime
             public global::Soenneker.Together.OpenApiClient.Models.PcmS16Le16000InputAudioFormat? InputAudioFormat { get; set; }
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("model")]
             public string? Model { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("model")]
             public string Model { get; set; }
+            #pragma warning restore CS1591
 #endif
         }
     }

@@ -154,12 +154,18 @@ namespace Soenneker.Together.OpenApiClient.Endpoints
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class EndpointsRequestBuilderGetQueryParameters 
         {
+            #pragma warning disable CS1591
             [QueryParameter("mine")]
             public bool? Mine { get; set; }
+            #pragma warning restore CS1591
+            #pragma warning disable CS1591
             [QueryParameter("type")]
             public global::Soenneker.Together.OpenApiClient.Models.ListEndpointsTypeParameter? Type { get; set; }
+            #pragma warning restore CS1591
+            #pragma warning disable CS1591
             [QueryParameter("usage_type")]
             public global::Soenneker.Together.OpenApiClient.Models.ListEndpointsUsageTypeParameter? UsageType { get; set; }
+            #pragma warning restore CS1591
         }
     }
 }

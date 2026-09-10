@@ -15,9 +15,9 @@ namespace Soenneker.Together.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Timestamp when this step completed.</summary>
+        /// <summary>Timestamp when this step finished, was skipped over, or the rollout ended on it. Unset while in progress.</summary>
         public DateTimeOffset? CompletedAt { get; set; }
-        /// <summary>Failure reason when this step failed.</summary>
+        /// <summary>Failure reason set only when this step failed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? FailureReason { get; set; }
@@ -25,7 +25,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string FailureReason { get; set; }
 #endif
-        /// <summary>Metric gate results for this step.</summary>
+        /// <summary>Metric gate results for this step, enriched with criteria and verdict. Unmeasured rules appear as synthesized rows with verdict METRIC_VERDICT_UNAVAILABLE and no measured values.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Together.OpenApiClient.Models.DeMetricResult>? Metrics { get; set; }
@@ -33,9 +33,9 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public List<global::Soenneker.Together.OpenApiClient.Models.DeMetricResult> Metrics { get; set; }
 #endif
-        /// <summary>Timestamp when this step started.</summary>
+        /// <summary>Timestamp when this step&apos;s first sub-step ran. Unset for steps no sub-step reached.</summary>
         public DateTimeOffset? StartedAt { get; set; }
-        /// <summary>Execution state of this rollout step.</summary>
+        /// <summary>Outcome of this step. Finished steps are PASSED, the live step mirrors the rollout state, skipped-over steps are SKIPPED, and unreached steps are PENDING.</summary>
         public global::Soenneker.Together.OpenApiClient.Models.DeRolloutStepStatusState? State { get; set; }
         /// <summary>Index of this step in the rollout progression. Step 0 serializes explicitly.</summary>
         public int? StepIndex { get; set; }

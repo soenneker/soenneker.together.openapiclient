@@ -141,8 +141,10 @@ namespace Soenneker.Together.OpenApiClient.ModelsRequests
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class ModelsRequestBuilderGetQueryParameters 
         {
+            #pragma warning disable CS1591
             [QueryParameter("dedicated")]
             public bool? Dedicated { get; set; }
+            #pragma warning restore CS1591
         }
     }
 }

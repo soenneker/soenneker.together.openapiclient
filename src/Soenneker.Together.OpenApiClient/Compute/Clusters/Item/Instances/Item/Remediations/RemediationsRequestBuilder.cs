@@ -142,50 +142,72 @@ namespace Soenneker.Together.OpenApiClient.Compute.Clusters.Item.Instances.Item.
         {
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("mode")]
             public global::Soenneker.Together.OpenApiClient.Models.RemediationServiceListRemediationsModeParameterItem[]? Mode { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("mode")]
             public global::Soenneker.Together.OpenApiClient.Models.RemediationServiceListRemediationsModeParameterItem[] Mode { get; set; }
+            #pragma warning restore CS1591
 #endif
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("order_by")]
             public string? OrderBy { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("order_by")]
             public string OrderBy { get; set; }
+            #pragma warning restore CS1591
 #endif
+            #pragma warning disable CS1591
             [QueryParameter("page_size")]
             public int? PageSize { get; set; }
+            #pragma warning restore CS1591
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("page_token")]
             public string? PageToken { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("page_token")]
             public string PageToken { get; set; }
+            #pragma warning restore CS1591
 #endif
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("state")]
             public global::Soenneker.Together.OpenApiClient.Models.RemediationServiceListRemediationsStateParameterItem[]? State { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("state")]
             public global::Soenneker.Together.OpenApiClient.Models.RemediationServiceListRemediationsStateParameterItem[] State { get; set; }
+            #pragma warning restore CS1591
 #endif
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("trigger")]
             public global::Soenneker.Together.OpenApiClient.Models.RemediationServiceListRemediationsTriggerParameterItem[]? Trigger { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("trigger")]
             public global::Soenneker.Together.OpenApiClient.Models.RemediationServiceListRemediationsTriggerParameterItem[] Trigger { get; set; }
+            #pragma warning restore CS1591
 #endif
         }
         /// <summary>
@@ -196,12 +218,16 @@ namespace Soenneker.Together.OpenApiClient.Compute.Clusters.Item.Instances.Item.
         {
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("remediation_id")]
             public string? RemediationId { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("remediation_id")]
             public string RemediationId { get; set; }
+            #pragma warning restore CS1591
 #endif
         }
     }

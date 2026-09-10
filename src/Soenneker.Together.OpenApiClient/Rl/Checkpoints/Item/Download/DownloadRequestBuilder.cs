@@ -90,8 +90,10 @@ namespace Soenneker.Together.OpenApiClient.Rl.Checkpoints.Item.Download
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class DownloadRequestBuilderGetQueryParameters 
         {
+            #pragma warning disable CS1591
             [QueryParameter("variant")]
             public global::Soenneker.Together.OpenApiClient.Models.RlCheckpointVariant? Variant { get; set; }
+            #pragma warning restore CS1591
         }
     }
 }

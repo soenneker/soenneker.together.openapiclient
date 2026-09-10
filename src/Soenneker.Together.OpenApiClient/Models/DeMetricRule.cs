@@ -27,7 +27,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public global::Soenneker.Together.OpenApiClient.Models.DeMetricRuleRegressionCheck RegressionCheck { get; set; }
 #endif
-        /// <summary>Required aggregation used for the metric.</summary>
+        /// <summary>Aggregation used for the metric. Optional for router_error_rate and inflight_requests; omitted values default to METRIC_STAT_TYPE_AVG. Required for router_latency, where AVG or PERCENTILE may be used.</summary>
         public global::Soenneker.Together.OpenApiClient.Models.DeMetricRuleStat? Stat { get; set; }
         /// <summary>Threshold evaluation criteria. Mutually exclusive with regressionCheck.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

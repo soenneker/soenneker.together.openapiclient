@@ -17,7 +17,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Required comparison operator applied to the target metric value.</summary>
         public global::Soenneker.Together.OpenApiClient.Models.DeThresholdCheckOperator? Operator { get; set; }
-        /// <summary>Required numeric threshold value.</summary>
+        /// <summary>Required finite threshold value. Interpreted in the metric&apos;s unit:router_error_rate is a ratio in [0, 1], router_latency ismilliseconds, and inflight_requests is a raw count. Thresholds thatno achievable value could pass, or that every achievable valuepasses, are rejected at create.</summary>
         public double? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.DeMetricRuleThresholdCheck"/> and sets the default values.

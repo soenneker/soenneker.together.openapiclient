@@ -160,8 +160,10 @@ namespace Soenneker.Together.OpenApiClient.FineTunes.Item
         public partial class FineTunesItemRequestBuilderDeleteQueryParameters 
         {
             [Obsolete("")]
+            #pragma warning disable CS1591
             [QueryParameter("force")]
             public bool? Force { get; set; }
+            #pragma warning restore CS1591
         }
     }
 }

@@ -8,37 +8,37 @@ using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
     /// <summary>
-    /// Per-token log-probabilities from the target model
+    /// Output tensors produced by the loss function for one sample.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class RlTargetLogprobs : IAdditionalDataHolder, IParsable
+    public partial class RlLossFnOutput : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Float array of per-token log probabilities</summary>
+        /// <summary>Output tensors keyed by name. Built-in losses return `logprobs`: the model&apos;s float32 per-token log-probabilities under the current policy, one value per token of the sample&apos;s input. Positions excluded from the loss, such as zero-weight positions, are masked to zero rather than true log-probabilities.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<double?>? Data { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlLossFnOutputTensorsProperty? Tensors { get; set; }
 #nullable restore
 #else
-        public List<double?> Data { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlLossFnOutputTensorsProperty Tensors { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlTargetLogprobs"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlLossFnOutput"/> and sets the default values.
         /// </summary>
-        public RlTargetLogprobs()
+        public RlLossFnOutput()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.RlTargetLogprobs"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.RlLossFnOutput"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Together.OpenApiClient.Models.RlTargetLogprobs CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Together.OpenApiClient.Models.RlLossFnOutput CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.RlTargetLogprobs();
+            return new global::Soenneker.Together.OpenApiClient.Models.RlLossFnOutput();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -48,7 +48,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "data", n => { Data = n.GetCollectionOfPrimitiveValues<double?>()?.AsList(); } },
+                { "tensors", n => { Tensors = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlLossFnOutputTensorsProperty>(global::Soenneker.Together.OpenApiClient.Models.RlLossFnOutputTensorsProperty.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -58,7 +58,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfPrimitiveValues<double?>("data", Data);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlLossFnOutputTensorsProperty>("tensors", Tensors);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

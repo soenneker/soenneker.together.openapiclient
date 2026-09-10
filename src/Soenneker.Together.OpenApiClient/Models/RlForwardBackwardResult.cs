@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
     /// <summary>
-    /// Result of a forward-backward pass operation
+    /// Result of a scored forward or forward-backward operation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RlForwardBackwardResult : IAdditionalDataHolder, IParsable
@@ -17,6 +17,14 @@ namespace Soenneker.Together.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Loss value</summary>
         public double? Loss { get; set; }
+        /// <summary>Per-sample loss function outputs, in request order. Empty unless the request set `return_loss_fn_outputs`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.Together.OpenApiClient.Models.RlLossFnOutput>? LossFnOutputs { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.Together.OpenApiClient.Models.RlLossFnOutput> LossFnOutputs { get; set; }
+#endif
         /// <summary>Loss-specific metrics (e.g., KL divergence, clip fraction for GRPO)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -51,6 +59,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "loss", n => { Loss = n.GetDoubleValue(); } },
+                { "loss_fn_outputs", n => { LossFnOutputs = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RlLossFnOutput>(global::Soenneker.Together.OpenApiClient.Models.RlLossFnOutput.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "metrics", n => { Metrics = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlForwardBackwardResultMetricsProperty>(global::Soenneker.Together.OpenApiClient.Models.RlForwardBackwardResultMetricsProperty.CreateFromDiscriminatorValue); } },
             };
         }
@@ -62,6 +71,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDoubleValue("loss", Loss);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RlLossFnOutput>("loss_fn_outputs", LossFnOutputs);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlForwardBackwardResultMetricsProperty>("metrics", Metrics);
             writer.WriteAdditionalData(AdditionalData);
         }

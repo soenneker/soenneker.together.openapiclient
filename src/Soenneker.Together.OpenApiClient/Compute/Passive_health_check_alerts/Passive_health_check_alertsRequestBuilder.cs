@@ -87,55 +87,81 @@ namespace Soenneker.Together.OpenApiClient.Compute.Passive_health_check_alerts
         {
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("cluster_id")]
             public string? ClusterId { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("cluster_id")]
             public string ClusterId { get; set; }
+            #pragma warning restore CS1591
 #endif
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("instance_id")]
             public string? InstanceId { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("instance_id")]
             public string InstanceId { get; set; }
+            #pragma warning restore CS1591
 #endif
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("intent_id")]
             public string? IntentId { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("intent_id")]
             public string IntentId { get; set; }
+            #pragma warning restore CS1591
 #endif
+            #pragma warning disable CS1591
             [QueryParameter("order_by")]
             public global::Soenneker.Together.OpenApiClient.Models.HealthCheckServiceListPassiveHealthCheckAlertsOrderByParameter? OrderBy { get; set; }
+            #pragma warning restore CS1591
+            #pragma warning disable CS1591
             [QueryParameter("page_size")]
             public int? PageSize { get; set; }
+            #pragma warning restore CS1591
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("page_token")]
             public string? PageToken { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("page_token")]
             public string PageToken { get; set; }
+            #pragma warning restore CS1591
 #endif
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("severity_filter")]
             public global::Soenneker.Together.OpenApiClient.Models.HealthCheckServiceListPassiveHealthCheckAlertsSeverityFilterParameterItem[]? SeverityFilter { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("severity_filter")]
             public global::Soenneker.Together.OpenApiClient.Models.HealthCheckServiceListPassiveHealthCheckAlertsSeverityFilterParameterItem[] SeverityFilter { get; set; }
+            #pragma warning restore CS1591
 #endif
+            #pragma warning disable CS1591
             [QueryParameter("status")]
             public global::Soenneker.Together.OpenApiClient.Models.HealthCheckServiceListPassiveHealthCheckAlertsStatusParameter? Status { get; set; }
+            #pragma warning restore CS1591
         }
     }
 }

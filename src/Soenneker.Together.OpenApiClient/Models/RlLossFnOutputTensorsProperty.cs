@@ -8,37 +8,29 @@ using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
     /// <summary>
-    /// Result of a forward pass operation
+    /// Output tensors keyed by name. Built-in losses return `logprobs`: the model&apos;s float32 per-token log-probabilities under the current policy, one value per token of the sample&apos;s input. Positions excluded from the loss, such as zero-weight positions, are masked to zero rather than true log-probabilities.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class RlForwardResult : IAdditionalDataHolder, IParsable
+    public partial class RlLossFnOutputTensorsProperty : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Per-sample per-token log-probabilities</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<global::Soenneker.Together.OpenApiClient.Models.RlTargetLogprobs>? Logprobs { get; set; }
-#nullable restore
-#else
-        public List<global::Soenneker.Together.OpenApiClient.Models.RlTargetLogprobs> Logprobs { get; set; }
-#endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlForwardResult"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlLossFnOutputTensorsProperty"/> and sets the default values.
         /// </summary>
-        public RlForwardResult()
+        public RlLossFnOutputTensorsProperty()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.RlForwardResult"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.RlLossFnOutputTensorsProperty"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Together.OpenApiClient.Models.RlForwardResult CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Together.OpenApiClient.Models.RlLossFnOutputTensorsProperty CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.RlForwardResult();
+            return new global::Soenneker.Together.OpenApiClient.Models.RlLossFnOutputTensorsProperty();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -48,7 +40,6 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "logprobs", n => { Logprobs = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RlTargetLogprobs>(global::Soenneker.Together.OpenApiClient.Models.RlTargetLogprobs.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -58,7 +49,6 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RlTargetLogprobs>("logprobs", Logprobs);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

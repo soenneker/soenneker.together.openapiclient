@@ -86,25 +86,37 @@ namespace Soenneker.Together.OpenApiClient.Audio.Speech.Websocket
         {
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("language")]
             public string? Language { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("language")]
             public string Language { get; set; }
+            #pragma warning restore CS1591
 #endif
+            #pragma warning disable CS1591
             [QueryParameter("max_partial_length")]
             public int? MaxPartialLength { get; set; }
+            #pragma warning restore CS1591
+            #pragma warning disable CS1591
             [QueryParameter("model")]
             public global::Soenneker.Together.OpenApiClient.Models.RealtimeTtsModelParameter? Model { get; set; }
+            #pragma warning restore CS1591
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("voice")]
             public string? Voice { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("voice")]
             public string Voice { get; set; }
+            #pragma warning restore CS1591
 #endif
         }
     }

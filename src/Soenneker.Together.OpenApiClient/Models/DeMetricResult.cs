@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
     /// <summary>
-    /// Observed metric value enriched with its rollout rule and verdict.
+    /// Observed metric result enriched with rollout rule criteria and verdict. Unmeasured rules are synthesized with verdict METRIC_VERDICT_UNAVAILABLE and no source or target value.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DeMetricResult : IAdditionalDataHolder, IParsable
@@ -33,11 +33,11 @@ namespace Soenneker.Together.OpenApiClient.Models
         public global::Soenneker.Together.OpenApiClient.Models.DeMetricResultOperator? Operator { get; set; }
         /// <summary>Percentile value, such as 99. Set only when stat is METRIC_STAT_TYPE_PERCENTILE.</summary>
         public int? Percentile { get; set; }
-        /// <summary>Observed source baseline. Set only for regression checks; a 0 reading serializes explicitly.</summary>
+        /// <summary>Observed source baseline. Set only for regression checks with a recorded observation; a 0 reading serializes explicitly.</summary>
         public double? SourceValue { get; set; }
         /// <summary>Aggregation used for the metric.</summary>
         public global::Soenneker.Together.OpenApiClient.Models.DeMetricResultStat? Stat { get; set; }
-        /// <summary>Observed target value. A 0 reading serializes explicitly.</summary>
+        /// <summary>Observed target value. Set when the gate recorded an observation; absent on synthesized unavailable results. A 0 reading serializes explicitly.</summary>
         public double? TargetValue { get; set; }
         /// <summary>Threshold criteria used when check is METRIC_CHECK_TYPE_THRESHOLD.</summary>
         public double? Threshold { get; set; }

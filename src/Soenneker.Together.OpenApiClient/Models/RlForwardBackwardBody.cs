@@ -14,6 +14,8 @@ namespace Soenneker.Together.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Run the forward pass only: report the loss and metrics, and the per-sample outputs when requested, without accumulating gradients. Defaults to false. Pair it with `return_loss_fn_outputs` to score a batch and read back its per-token log-probabilities.</summary>
+        public bool? ForwardOnly { get; set; }
         /// <summary>The loss property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -22,6 +24,8 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public global::Soenneker.Together.OpenApiClient.Models.RlLossConfig Loss { get; set; }
 #endif
+        /// <summary>Return the loss function&apos;s per-sample output tensors alongside the loss and metrics. Defaults to false. Enabling it increases the response size substantially for large batches and reduces step throughput, so leave it unset for ordinary training steps.</summary>
+        public bool? ReturnLossFnOutputs { get; set; }
         /// <summary>Batch of training samples to process</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -55,7 +59,9 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "forward_only", n => { ForwardOnly = n.GetBoolValue(); } },
                 { "loss", n => { Loss = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlLossConfig>(global::Soenneker.Together.OpenApiClient.Models.RlLossConfig.CreateFromDiscriminatorValue); } },
+                { "return_loss_fn_outputs", n => { ReturnLossFnOutputs = n.GetBoolValue(); } },
                 { "samples", n => { Samples = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RlTrainingSample>(global::Soenneker.Together.OpenApiClient.Models.RlTrainingSample.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
@@ -66,7 +72,9 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteBoolValue("forward_only", ForwardOnly);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlLossConfig>("loss", Loss);
+            writer.WriteBoolValue("return_loss_fn_outputs", ReturnLossFnOutputs);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RlTrainingSample>("samples", Samples);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -90,8 +90,10 @@ namespace Soenneker.Together.OpenApiClient.Rl.ModelResources.Item.Stop
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class StopRequestBuilderPostQueryParameters 
         {
+            #pragma warning disable CS1591
             [QueryParameter("force")]
             public bool? Force { get; set; }
+            #pragma warning restore CS1591
         }
     }
 }

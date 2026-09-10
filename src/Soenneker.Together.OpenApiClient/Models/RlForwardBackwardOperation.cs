@@ -31,7 +31,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string Id { get; set; }
 #endif
-        /// <summary>Result of a forward-backward pass operation</summary>
+        /// <summary>Result of a scored forward or forward-backward operation</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Together.OpenApiClient.Models.RlForwardBackwardResult? Output { get; set; }
