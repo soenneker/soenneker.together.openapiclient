@@ -19,17 +19,9 @@ namespace Soenneker.Together.OpenApiClient.Models
         #pragma warning disable CS1591
         RolloutStateStabilizing,
         #pragma warning restore CS1591
-        [EnumMember(Value = "ROLLOUT_STATE_ABORTING")]
-        #pragma warning disable CS1591
-        RolloutStateAborting,
-        #pragma warning restore CS1591
         [EnumMember(Value = "ROLLOUT_STATE_COMPLETED")]
         #pragma warning disable CS1591
         RolloutStateCompleted,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "ROLLOUT_STATE_ABORTED")]
-        #pragma warning disable CS1591
-        RolloutStateAborted,
         #pragma warning restore CS1591
         [EnumMember(Value = "ROLLOUT_STATE_PENDING")]
         #pragma warning disable CS1591

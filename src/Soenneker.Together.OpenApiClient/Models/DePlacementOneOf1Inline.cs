@@ -15,6 +15,14 @@ namespace Soenneker.Together.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Compliance regimes required for clusters that run the deployment.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Together.OpenApiClient.Models.DeInlinePlacementCompliancePolicy? CompliancePolicy { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Together.OpenApiClient.Models.DeInlinePlacementCompliancePolicy CompliancePolicy { get; set; }
+#endif
         /// <summary>How strictly the regions list is enforced.</summary>
         public global::Soenneker.Together.OpenApiClient.Models.DeInlinePlacementConstraint? Constraint { get; set; }
         /// <summary>Regions where the deployment is allowed to run. Multiple regions allow best-effort replica spreading.</summary>
@@ -50,6 +58,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "compliancePolicy", n => { CompliancePolicy = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeInlinePlacementCompliancePolicy>(global::Soenneker.Together.OpenApiClient.Models.DeInlinePlacementCompliancePolicy.CreateFromDiscriminatorValue); } },
                 { "constraint", n => { Constraint = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeInlinePlacementConstraint>(); } },
                 { "regions", n => { Regions = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
@@ -61,6 +70,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeInlinePlacementCompliancePolicy>("compliancePolicy", CompliancePolicy);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeInlinePlacementConstraint>("constraint", Constraint);
             writer.WriteCollectionOfPrimitiveValues<string>("regions", Regions);
             writer.WriteAdditionalData(AdditionalData);

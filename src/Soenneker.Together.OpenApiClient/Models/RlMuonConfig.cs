@@ -11,28 +11,28 @@ namespace Soenneker.Together.OpenApiClient.Models
     /// Advanced configuration for the Muon optimizer.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class RlMuonOptimizerConfig : IAdditionalDataHolder, IParsable
+    public partial class RlMuonConfig : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The scaling_strategy property</summary>
         public global::Soenneker.Together.OpenApiClient.Models.RlMuonScalingStrategy? ScalingStrategy { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlMuonOptimizerConfig"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlMuonConfig"/> and sets the default values.
         /// </summary>
-        public RlMuonOptimizerConfig()
+        public RlMuonConfig()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.RlMuonOptimizerConfig"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.RlMuonConfig"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Together.OpenApiClient.Models.RlMuonOptimizerConfig CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Together.OpenApiClient.Models.RlMuonConfig CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.RlMuonOptimizerConfig();
+            return new global::Soenneker.Together.OpenApiClient.Models.RlMuonConfig();
         }
         /// <summary>
         /// The deserialization information for the current model

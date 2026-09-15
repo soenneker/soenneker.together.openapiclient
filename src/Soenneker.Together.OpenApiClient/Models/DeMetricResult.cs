@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
     /// <summary>
-    /// Observed metric result enriched with rollout rule criteria and verdict. Unmeasured rules are synthesized with verdict METRIC_VERDICT_UNAVAILABLE and no source or target value.
+    /// Observed metric result enriched with rollout rule criteria and the rule&apos;s recorded verdict. Unmeasured rules are synthesized with verdict METRIC_VERDICT_UNAVAILABLE and no source or target value.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DeMetricResult : IAdditionalDataHolder, IParsable
@@ -19,6 +19,14 @@ namespace Soenneker.Together.OpenApiClient.Models
         public global::Soenneker.Together.OpenApiClient.Models.DeMetricResultCheck? Check { get; set; }
         /// <summary>Direction that indicates whether higher or lower values are worse.</summary>
         public global::Soenneker.Together.OpenApiClient.Models.DeMetricResultDirection? Direction { get; set; }
+        /// <summary>Rule-specific failure text. Set only when verdict is METRIC_VERDICT_BREACHED and the gate recorded one.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? FailureReason { get; set; }
+#nullable restore
+#else
+        public string FailureReason { get; set; }
+#endif
         /// <summary>Regression percentage limit used when check is METRIC_CHECK_TYPE_REGRESSION.</summary>
         public double? MaxRegressionPercent { get; set; }
         /// <summary>Metric name as exported to the observability backend.</summary>
@@ -41,7 +49,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public double? TargetValue { get; set; }
         /// <summary>Threshold criteria used when check is METRIC_CHECK_TYPE_THRESHOLD.</summary>
         public double? Threshold { get; set; }
-        /// <summary>Result of evaluating this metric at the gate.</summary>
+        /// <summary>Rule decision recorded by the metric gate. Absent when no decision was recorded.</summary>
         public global::Soenneker.Together.OpenApiClient.Models.DeMetricResultVerdict? Verdict { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.DeMetricResult"/> and sets the default values.
@@ -70,6 +78,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             {
                 { "check", n => { Check = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeMetricResultCheck>(); } },
                 { "direction", n => { Direction = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeMetricResultDirection>(); } },
+                { "failureReason", n => { FailureReason = n.GetStringValue(); } },
                 { "maxRegressionPercent", n => { MaxRegressionPercent = n.GetDoubleValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "operator", n => { Operator = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeMetricResultOperator>(); } },
@@ -90,6 +99,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeMetricResultCheck>("check", Check);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeMetricResultDirection>("direction", Direction);
+            writer.WriteStringValue("failureReason", FailureReason);
             writer.WriteDoubleValue("maxRegressionPercent", MaxRegressionPercent);
             writer.WriteStringValue("name", Name);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeMetricResultOperator>("operator", Operator);

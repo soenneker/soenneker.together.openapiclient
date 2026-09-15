@@ -11,14 +11,6 @@ namespace Soenneker.Together.OpenApiClient.Models
         #pragma warning disable CS1591
         MetricStatTypeAvg,
         #pragma warning restore CS1591
-        [EnumMember(Value = "METRIC_STAT_TYPE_MIN")]
-        #pragma warning disable CS1591
-        MetricStatTypeMin,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "METRIC_STAT_TYPE_MAX")]
-        #pragma warning disable CS1591
-        MetricStatTypeMax,
-        #pragma warning restore CS1591
         [EnumMember(Value = "METRIC_STAT_TYPE_PERCENTILE")]
         #pragma warning disable CS1591
         MetricStatTypePercentile,

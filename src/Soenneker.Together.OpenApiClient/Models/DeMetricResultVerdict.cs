@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
-    /// <summary>Result of evaluating this metric at the gate.</summary>
+    /// <summary>Rule decision recorded by the metric gate. Absent when no decision was recorded.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum DeMetricResultVerdict
     {

@@ -1643,6 +1643,57 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/DeCreateRolloutRequest"
+              },
+              "examples": {
+                "canary": {
+                  "summary": "Canary rollout with a metric gate",
+                  "value": {
+                    "sourceDeploymentId": "dep_source123",
+                    "targetDeploymentId": "dep_target456",
+                    "canary": {
+                      "steps": [
+                        {
+                          "traffic": 25
+                        },
+                        {
+                          "traffic": 50
+                        },
+                        {
+                          "traffic": 100
+                        }
+                      ],
+                      "stepInterval": "300s"
+                    },
+                    "metrics": [
+                      {
+                        "name": "serving_latency",
+                        "stat": "METRIC_STAT_TYPE_PERCENTILE",
+                        "percentile": 95,
+                        "thresholdCheck": {
+                          "value": 30000,
+                          "operator": "THRESHOLD_OPERATOR_LT"
+                        },
+                        "window": "300s"
+                      }
+                    ]
+                  }
+                },
+                "blueGreen": {
+                  "summary": "Blue-green cutover",
+                  "value": {
+                    "sourceDeploymentId": "dep_source123",
+                    "targetDeploymentId": "dep_target456",
+                    "blueGreen": {}
+                  }
+                },
+                "rolling": {
+                  "summary": "Rolling replica swap",
+                  "value": {
+                    "sourceDeploymentId": "dep_source123",
+                    "targetDeploymentId": "dep_target456",
+                    "rolling": {}
+                  }
+                }
               }
             }
           },
@@ -1655,6 +1706,49 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/DeRolloutDefaultsPreview"
+                },
+                "examples": {
+                  "canary": {
+                    "summary": "Preview of a canary create form with defaults filled in",
+                    "value": {
+                      "spec": {
+                        "sourceDeploymentId": "dep_source123",
+                        "targetDeploymentId": "dep_target456",
+                        "canary": {
+                          "steps": [
+                            {
+                              "traffic": 25
+                            },
+                            {
+                              "traffic": 50
+                            },
+                            {
+                              "traffic": 100
+                            }
+                          ],
+                          "stepInterval": "300s"
+                        },
+                        "metrics": [
+                          {
+                            "name": "serving_latency",
+                            "stat": "METRIC_STAT_TYPE_PERCENTILE",
+                            "percentile": 95,
+                            "thresholdCheck": {
+                              "value": 30000,
+                              "operator": "THRESHOLD_OPERATOR_LT"
+                            },
+                            "window": "300s"
+                          }
+                        ]
+                      },
+                      "sourceReplicas": 4,
+                      "targetReplicas": 1,
+                      "targetMinReplicas": 1,
+                      "targetMaxReplicas": 8,
+                      "warnings": [],
+                      "frozenPair": false
+                    }
+                  }
                 }
               }
             }
@@ -12827,14 +12921,13 @@
       },
       "DeThresholdCheck": {
         "required": [
-          "value",
           "operator"
         ],
         "type": "object",
         "properties": {
           "value": {
             "type": "number",
-            "description": "Required finite threshold value. Interpreted in the metric\u0027s unit:\nrouter_error_rate is a ratio in [0, 1], router_latency is\nmilliseconds, and inflight_requests is a raw count. Thresholds that\nno achievable value could pass, or that every achievable value\npasses, are rejected at create."
+            "description": "Finite threshold value. Interpreted in the metric\u0027s unit:\nrouter_error_rate is a ratio in [0, 1], router_latency is\nmilliseconds, and inflight_requests is in-flight requests per ready\nreplica averaged over the rule window. Thresholds that no\nachievable value could pass, or that every achievable value passes,\nare rejected at create.\n\nOmitting this value is read as 0. Set 0 explicitly for the strictest\nthreshold: nothing at all is tolerated."
           },
           "operator": {
             "$ref": "#/components/schemas/DeThresholdCheckOperator"
@@ -12844,14 +12937,13 @@
       },
       "DeRegressionCheck": {
         "required": [
-          "maxRegressionPercent",
           "direction"
         ],
         "type": "object",
         "properties": {
           "maxRegressionPercent": {
             "type": "number",
-            "description": "Required finite maximum allowed regression percentage, greater than or equal to 0. A value of 0 is the strictest budget; any regression fails, and exactly-at-budget passes."
+            "description": "Finite maximum allowed regression percentage, greater than or equal to 0. Omitting this value is read as 0. A value of 0 is the strictest budget; any regression fails, and exactly-at-budget passes."
           },
           "direction": {
             "$ref": "#/components/schemas/DeRegressionCheckDirection"
@@ -12966,7 +13058,45 @@
             "description": "Non-blocking findings to surface next to the form. An empty list means the shown values are safe to submit as-is."
           }
         },
-        "description": "Completed create-form state \u2014 the caller\u0027s spec with defaulted values filled in, the steps the rollout is expected to walk, and the capacity context the defaults were computed from. Display only."
+        "description": "Completed create-form state \u2014 the caller\u0027s spec with defaulted values filled in, the steps the rollout is expected to walk, and the capacity context the defaults were computed from. Display only.",
+        "example": {
+          "spec": {
+            "sourceDeploymentId": "dep_source123",
+            "targetDeploymentId": "dep_target456",
+            "canary": {
+              "steps": [
+                {
+                  "traffic": 25
+                },
+                {
+                  "traffic": 50
+                },
+                {
+                  "traffic": 100
+                }
+              ],
+              "stepInterval": "300s"
+            },
+            "metrics": [
+              {
+                "name": "serving_latency",
+                "stat": "METRIC_STAT_TYPE_PERCENTILE",
+                "percentile": 95,
+                "thresholdCheck": {
+                  "value": 30000,
+                  "operator": "THRESHOLD_OPERATOR_LT"
+                },
+                "window": "300s"
+              }
+            ]
+          },
+          "sourceReplicas": 4,
+          "targetReplicas": 1,
+          "targetMinReplicas": 1,
+          "targetMaxReplicas": 8,
+          "warnings": [],
+          "frozenPair": false
+        }
       },
       "DePreviewWarning": {
         "required": [
@@ -13232,9 +13362,13 @@
           },
           "verdict": {
             "$ref": "#/components/schemas/DeMetricResultVerdict"
+          },
+          "failureReason": {
+            "type": "string",
+            "description": "Rule-specific failure text. Set only when verdict is METRIC_VERDICT_BREACHED and the gate recorded one."
           }
         },
-        "description": "Observed metric result enriched with rollout rule criteria and verdict. Unmeasured rules are synthesized with verdict METRIC_VERDICT_UNAVAILABLE and no source or target value."
+        "description": "Observed metric result enriched with rollout rule criteria and the rule\u0027s recorded verdict. Unmeasured rules are synthesized with verdict METRIC_VERDICT_UNAVAILABLE and no source or target value."
       },
       "DeAbExperiment": {
         "required": [
@@ -13353,9 +13487,22 @@
           },
           "constraint": {
             "$ref": "#/components/schemas/DeInlinePlacementConstraint"
+          },
+          "compliancePolicy": {
+            "$ref": "#/components/schemas/DeInlinePlacementCompliancePolicy"
           }
         },
         "description": "Inline placement parameters expanded into scheduling rules by the server."
+      },
+      "DeCompliancePolicy": {
+        "type": "object",
+        "properties": {
+          "hipaa": {
+            "type": "boolean",
+            "description": "Restrict placement to HIPAA-attested clusters."
+          }
+        },
+        "description": "Compliance regimes required by a deployment placement policy."
       },
       "DeListModelsResponse": {
         "required": [
@@ -17284,21 +17431,21 @@
       "RlOptimizerConfig": {
         "type": "object",
         "properties": {
-          "adamw": {
-            "$ref": "#/components/schemas/RlOptimizerConfigAdamw"
+          "adam": {
+            "$ref": "#/components/schemas/RlOptimizerConfigAdam"
           },
           "muon": {
-            "$ref": "#/components/schemas/RlMuonOptimizerConfig"
+            "$ref": "#/components/schemas/RlMuonConfig"
           }
         },
         "description": "Optimizer configuration"
       },
-      "RlAdamWOptimizerConfig": {
+      "RlAdamConfig": {
         "type": "object",
-        "description": "AdamW optimizer configuration",
+        "description": "Adam optimizer configuration",
         "x-stainless-empty-object": true
       },
-      "RlMuonOptimizerConfig": {
+      "RlMuonConfig": {
         "type": "object",
         "properties": {
           "scaling_strategy": {
@@ -17310,7 +17457,7 @@
       "RlMuonScalingStrategy": {
         "enum": [
           "MUON_SCALING_STRATEGY_UNSPECIFIED",
-          "MUON_SCALING_STRATEGY_MATCH_ADAMW",
+          "MUON_SCALING_STRATEGY_MATCH_ADAM",
           "MUON_SCALING_STRATEGY_ORIGINAL"
         ],
         "type": "string",
@@ -17324,8 +17471,8 @@
               "name": "MuonScalingStrategyUnspecified"
             },
             {
-              "value": "MUON_SCALING_STRATEGY_MATCH_ADAMW",
-              "name": "MuonScalingStrategyMatchAdamw"
+              "value": "MUON_SCALING_STRATEGY_MATCH_ADAM",
+              "name": "MuonScalingStrategyMatchAdam"
             },
             {
               "value": "MUON_SCALING_STRATEGY_ORIGINAL",
@@ -25589,14 +25736,13 @@
       },
       "DeMetricRuleThresholdCheck": {
         "required": [
-          "value",
           "operator"
         ],
         "type": "object",
         "properties": {
           "value": {
             "type": "number",
-            "description": "Required finite threshold value. Interpreted in the metric\u0027s unit:\nrouter_error_rate is a ratio in [0, 1], router_latency is\nmilliseconds, and inflight_requests is a raw count. Thresholds that\nno achievable value could pass, or that every achievable value\npasses, are rejected at create."
+            "description": "Finite threshold value. Interpreted in the metric\u0027s unit:\nrouter_error_rate is a ratio in [0, 1], router_latency is\nmilliseconds, and inflight_requests is in-flight requests per ready\nreplica averaged over the rule window. Thresholds that no\nachievable value could pass, or that every achievable value passes,\nare rejected at create.\n\nOmitting this value is read as 0. Set 0 explicitly for the strictest\nthreshold: nothing at all is tolerated."
           },
           "operator": {
             "$ref": "#/components/schemas/DeThresholdCheckOperator"
@@ -25606,14 +25752,13 @@
       },
       "DeMetricRuleRegressionCheck": {
         "required": [
-          "maxRegressionPercent",
           "direction"
         ],
         "type": "object",
         "properties": {
           "maxRegressionPercent": {
             "type": "number",
-            "description": "Required finite maximum allowed regression percentage, greater than or equal to 0. A value of 0 is the strictest budget; any regression fails, and exactly-at-budget passes."
+            "description": "Finite maximum allowed regression percentage, greater than or equal to 0. Omitting this value is read as 0. A value of 0 is the strictest budget; any regression fails, and exactly-at-budget passes."
           },
           "direction": {
             "$ref": "#/components/schemas/DeRegressionCheckDirection"
@@ -25742,6 +25887,16 @@
           }
         },
         "x-stainless-variantName": "Profile"
+      },
+      "DeInlinePlacementCompliancePolicy": {
+        "type": "object",
+        "properties": {
+          "hipaa": {
+            "type": "boolean",
+            "description": "Restrict placement to HIPAA-attested clusters."
+          }
+        },
+        "description": "Compliance regimes required for clusters that run the deployment."
       },
       "DeCreateShadowExperimentRequestSource": {
         "required": [
@@ -27485,6 +27640,9 @@
           },
           "constraint": {
             "$ref": "#/components/schemas/DeInlinePlacementConstraint"
+          },
+          "compliancePolicy": {
+            "$ref": "#/components/schemas/DeInlinePlacementCompliancePolicy"
           }
         },
         "description": "Inline placement parameters evaluated at deploy time."
@@ -30877,9 +31035,9 @@
         "type": "object",
         "description": "Result of a custom forward-backward pass operation"
       },
-      "RlOptimizerConfigAdamw": {
+      "RlOptimizerConfigAdam": {
         "type": "object",
-        "description": "AdamW optimizer configuration"
+        "description": "Adam optimizer configuration"
       },
       "AddOnStateDashboard": {
         "type": "object"
@@ -31783,8 +31941,6 @@
       "DeMetricRuleStat": {
         "enum": [
           "METRIC_STAT_TYPE_AVG",
-          "METRIC_STAT_TYPE_MIN",
-          "METRIC_STAT_TYPE_MAX",
           "METRIC_STAT_TYPE_PERCENTILE"
         ],
         "type": "string",
@@ -31797,14 +31953,6 @@
             {
               "value": "METRIC_STAT_TYPE_AVG",
               "name": "MetricStatTypeAvg"
-            },
-            {
-              "value": "METRIC_STAT_TYPE_MIN",
-              "name": "MetricStatTypeMin"
-            },
-            {
-              "value": "METRIC_STAT_TYPE_MAX",
-              "name": "MetricStatTypeMax"
             },
             {
               "value": "METRIC_STAT_TYPE_PERCENTILE",
@@ -31926,9 +32074,7 @@
           "ROLLOUT_STATE_RUNNING",
           "ROLLOUT_STATE_PAUSED",
           "ROLLOUT_STATE_STABILIZING",
-          "ROLLOUT_STATE_ABORTING",
           "ROLLOUT_STATE_COMPLETED",
-          "ROLLOUT_STATE_ABORTED",
           "ROLLOUT_STATE_PENDING",
           "ROLLOUT_STATE_SYSTEM_PAUSED",
           "ROLLOUT_STATE_CANCELLING",
@@ -31956,16 +32102,8 @@
               "name": "RolloutStateStabilizing"
             },
             {
-              "value": "ROLLOUT_STATE_ABORTING",
-              "name": "RolloutStateAborting"
-            },
-            {
               "value": "ROLLOUT_STATE_COMPLETED",
               "name": "RolloutStateCompleted"
-            },
-            {
-              "value": "ROLLOUT_STATE_ABORTED",
-              "name": "RolloutStateAborted"
             },
             {
               "value": "ROLLOUT_STATE_PENDING",
@@ -32127,8 +32265,6 @@
       "DeMetricResultStat": {
         "enum": [
           "METRIC_STAT_TYPE_AVG",
-          "METRIC_STAT_TYPE_MIN",
-          "METRIC_STAT_TYPE_MAX",
           "METRIC_STAT_TYPE_PERCENTILE"
         ],
         "type": "string",
@@ -32141,14 +32277,6 @@
             {
               "value": "METRIC_STAT_TYPE_AVG",
               "name": "MetricStatTypeAvg"
-            },
-            {
-              "value": "METRIC_STAT_TYPE_MIN",
-              "name": "MetricStatTypeMin"
-            },
-            {
-              "value": "METRIC_STAT_TYPE_MAX",
-              "name": "MetricStatTypeMax"
             },
             {
               "value": "METRIC_STAT_TYPE_PERCENTILE",
@@ -32244,7 +32372,7 @@
         ],
         "type": "string",
         "additionalProperties": false,
-        "description": "Result of evaluating this metric at the gate.",
+        "description": "Rule decision recorded by the metric gate. Absent when no decision was recorded.",
         "x-ms-enum": {
           "name": "DeMetricResultVerdict",
           "modelAsString": false,

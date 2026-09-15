@@ -12,9 +12,9 @@ namespace Soenneker.Together.OpenApiClient.Models
         #pragma warning disable CS1591
         MuonScalingStrategyUnspecified,
         #pragma warning restore CS1591
-        [EnumMember(Value = "MUON_SCALING_STRATEGY_MATCH_ADAMW")]
+        [EnumMember(Value = "MUON_SCALING_STRATEGY_MATCH_ADAM")]
         #pragma warning disable CS1591
-        MuonScalingStrategyMatchAdamw,
+        MuonScalingStrategyMatchAdam,
         #pragma warning restore CS1591
         [EnumMember(Value = "MUON_SCALING_STRATEGY_ORIGINAL")]
         #pragma warning disable CS1591

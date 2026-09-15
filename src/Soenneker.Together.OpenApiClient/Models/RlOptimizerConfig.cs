@@ -13,23 +13,23 @@ namespace Soenneker.Together.OpenApiClient.Models
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RlOptimizerConfig : IAdditionalDataHolder, IParsable
     {
-        /// <summary>AdamW optimizer configuration</summary>
+        /// <summary>Adam optimizer configuration</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RlOptimizerConfigAdamw? Adamw { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlOptimizerConfigAdam? Adam { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.RlOptimizerConfigAdamw Adamw { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlOptimizerConfigAdam Adam { get; set; }
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Advanced configuration for the Muon optimizer.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RlMuonOptimizerConfig? Muon { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlMuonConfig? Muon { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.RlMuonOptimizerConfig Muon { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlMuonConfig Muon { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlOptimizerConfig"/> and sets the default values.
@@ -56,8 +56,8 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "adamw", n => { Adamw = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlOptimizerConfigAdamw>(global::Soenneker.Together.OpenApiClient.Models.RlOptimizerConfigAdamw.CreateFromDiscriminatorValue); } },
-                { "muon", n => { Muon = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlMuonOptimizerConfig>(global::Soenneker.Together.OpenApiClient.Models.RlMuonOptimizerConfig.CreateFromDiscriminatorValue); } },
+                { "adam", n => { Adam = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlOptimizerConfigAdam>(global::Soenneker.Together.OpenApiClient.Models.RlOptimizerConfigAdam.CreateFromDiscriminatorValue); } },
+                { "muon", n => { Muon = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlMuonConfig>(global::Soenneker.Together.OpenApiClient.Models.RlMuonConfig.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -67,8 +67,8 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlOptimizerConfigAdamw>("adamw", Adamw);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlMuonOptimizerConfig>("muon", Muon);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlOptimizerConfigAdam>("adam", Adam);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlMuonConfig>("muon", Muon);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

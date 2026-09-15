@@ -8,33 +8,31 @@ using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
     /// <summary>
-    /// Regression evaluation criteria. Mutually exclusive with thresholdCheck.
+    /// Compliance regimes required for clusters that run the deployment.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class DeMetricRuleRegressionCheck : IAdditionalDataHolder, IParsable
+    public partial class DeInlinePlacementCompliancePolicy : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Required direction that indicates whether higher or lower metric values are worse.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.DeRegressionCheckDirection? Direction { get; set; }
-        /// <summary>Finite maximum allowed regression percentage, greater than or equal to 0. Omitting this value is read as 0. A value of 0 is the strictest budget; any regression fails, and exactly-at-budget passes.</summary>
-        public double? MaxRegressionPercent { get; set; }
+        /// <summary>Restrict placement to HIPAA-attested clusters.</summary>
+        public bool? Hipaa { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.DeMetricRuleRegressionCheck"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.DeInlinePlacementCompliancePolicy"/> and sets the default values.
         /// </summary>
-        public DeMetricRuleRegressionCheck()
+        public DeInlinePlacementCompliancePolicy()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.DeMetricRuleRegressionCheck"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.DeInlinePlacementCompliancePolicy"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Together.OpenApiClient.Models.DeMetricRuleRegressionCheck CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Together.OpenApiClient.Models.DeInlinePlacementCompliancePolicy CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.DeMetricRuleRegressionCheck();
+            return new global::Soenneker.Together.OpenApiClient.Models.DeInlinePlacementCompliancePolicy();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -44,8 +42,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "direction", n => { Direction = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeRegressionCheckDirection>(); } },
-                { "maxRegressionPercent", n => { MaxRegressionPercent = n.GetDoubleValue(); } },
+                { "hipaa", n => { Hipaa = n.GetBoolValue(); } },
             };
         }
         /// <summary>
@@ -55,8 +52,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeRegressionCheckDirection>("direction", Direction);
-            writer.WriteDoubleValue("maxRegressionPercent", MaxRegressionPercent);
+            writer.WriteBoolValue("hipaa", Hipaa);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
