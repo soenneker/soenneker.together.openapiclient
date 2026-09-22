@@ -19,6 +19,14 @@ namespace Soenneker.Together.OpenApiClient.Models
         public int? MaxReplicas { get; set; }
         /// <summary>Minimum number of replicas. Omit on update to preserve the current value. Set both `minReplicas` and `maxReplicas` to `0` to stop the deployment.</summary>
         public int? MinReplicas { get; set; }
+        /// <summary>Rate limits applied when scaling down. Stabilization remains controlled by `scaleDownWindow`.Omitted fields are preserved on update; a non-empty policy list replaces the previous list.To clear policies or reset the selector, explicitly mask that leaf field. Empty lists inparent-only updates are treated as omitted.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Together.OpenApiClient.Models.DeAutoscalingScaleDown? ScaleDown { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Together.OpenApiClient.Models.DeAutoscalingScaleDown ScaleDown { get; set; }
+#endif
         /// <summary>Time a lower replica recommendation must remain stable before scaling down. Defaults to `5m`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -34,6 +42,14 @@ namespace Soenneker.Together.OpenApiClient.Models
 #nullable restore
 #else
         public string ScaleToZeroWindow { get; set; }
+#endif
+        /// <summary>Rate limits applied when scaling up. Stabilization remains controlled by `scaleUpWindow`.Omitted fields are preserved on update; a non-empty policy list replaces the previous list.To clear policies or reset the selector, explicitly mask that leaf field. Empty lists inparent-only updates are treated as omitted.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Together.OpenApiClient.Models.DeAutoscalingScaleUp? ScaleUp { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Together.OpenApiClient.Models.DeAutoscalingScaleUp ScaleUp { get; set; }
 #endif
         /// <summary>Stabilization window before scaling up.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -78,8 +94,10 @@ namespace Soenneker.Together.OpenApiClient.Models
             {
                 { "maxReplicas", n => { MaxReplicas = n.GetIntValue(); } },
                 { "minReplicas", n => { MinReplicas = n.GetIntValue(); } },
+                { "scaleDown", n => { ScaleDown = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeAutoscalingScaleDown>(global::Soenneker.Together.OpenApiClient.Models.DeAutoscalingScaleDown.CreateFromDiscriminatorValue); } },
                 { "scaleDownWindow", n => { ScaleDownWindow = n.GetStringValue(); } },
                 { "scaleToZeroWindow", n => { ScaleToZeroWindow = n.GetStringValue(); } },
+                { "scaleUp", n => { ScaleUp = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeAutoscalingScaleUp>(global::Soenneker.Together.OpenApiClient.Models.DeAutoscalingScaleUp.CreateFromDiscriminatorValue); } },
                 { "scaleUpWindow", n => { ScaleUpWindow = n.GetStringValue(); } },
                 { "scalingMetrics", n => { ScalingMetrics = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.DeScalingMetric>(global::Soenneker.Together.OpenApiClient.Models.DeScalingMetric.CreateFromDiscriminatorValue)?.AsList(); } },
             };
@@ -93,8 +111,10 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("maxReplicas", MaxReplicas);
             writer.WriteIntValue("minReplicas", MinReplicas);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeAutoscalingScaleDown>("scaleDown", ScaleDown);
             writer.WriteStringValue("scaleDownWindow", ScaleDownWindow);
             writer.WriteStringValue("scaleToZeroWindow", ScaleToZeroWindow);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeAutoscalingScaleUp>("scaleUp", ScaleUp);
             writer.WriteStringValue("scaleUpWindow", ScaleUpWindow);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.DeScalingMetric>("scalingMetrics", ScalingMetrics);
             writer.WriteAdditionalData(AdditionalData);

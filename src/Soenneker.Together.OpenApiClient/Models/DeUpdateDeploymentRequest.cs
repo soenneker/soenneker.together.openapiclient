@@ -31,6 +31,8 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string Etag { get; set; }
 #endif
+        /// <summary>Updated inactive timeout in minutes. Use 0 to disable automatic stopping; otherwise accepted values are 30 through 1440.</summary>
+        public int? InactiveTimeout { get; set; }
         /// <summary>Updated endpoint string.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -66,6 +68,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             {
                 { "autoscaling", n => { Autoscaling = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeUpdateDeploymentRequestAutoscaling>(global::Soenneker.Together.OpenApiClient.Models.DeUpdateDeploymentRequestAutoscaling.CreateFromDiscriminatorValue); } },
                 { "etag", n => { Etag = n.GetStringValue(); } },
+                { "inactiveTimeout", n => { InactiveTimeout = n.GetIntValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
             };
         }
@@ -78,6 +81,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeUpdateDeploymentRequestAutoscaling>("autoscaling", Autoscaling);
             writer.WriteStringValue("etag", Etag);
+            writer.WriteIntValue("inactiveTimeout", InactiveTimeout);
             writer.WriteStringValue("name", Name);
             writer.WriteAdditionalData(AdditionalData);
         }

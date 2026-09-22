@@ -39,8 +39,8 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string ConfigId { get; set; }
 #endif
-        /// <summary>Enables dynamic loading of LoRA adapters on the deployment.</summary>
-        public bool? EnableLora { get; set; }
+        /// <summary>Inactive timeout in minutes. Use 0 or omit to disable automatic stopping; otherwise accepted values are 30 through 1440.</summary>
+        public int? InactiveTimeout { get; set; }
         /// <summary>Model resource name in the form `projects/{projectId}/models/{modelId}[/revisions/{revisionId}]`. Omit the revision segment to pin the latest revision at creation time.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -109,7 +109,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "autoscaling", n => { Autoscaling = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeCreateDeploymentRequestAutoscaling>(global::Soenneker.Together.OpenApiClient.Models.DeCreateDeploymentRequestAutoscaling.CreateFromDiscriminatorValue); } },
                 { "config", n => { Config = n.GetStringValue(); } },
                 { "configId", n => { ConfigId = n.GetStringValue(); } },
-                { "enableLora", n => { EnableLora = n.GetBoolValue(); } },
+                { "inactiveTimeout", n => { InactiveTimeout = n.GetIntValue(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
                 { "modelId", n => { ModelId = n.GetStringValue(); } },
                 { "modelRevisionId", n => { ModelRevisionId = n.GetStringValue(); } },
@@ -127,7 +127,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeCreateDeploymentRequestAutoscaling>("autoscaling", Autoscaling);
             writer.WriteStringValue("config", Config);
             writer.WriteStringValue("configId", ConfigId);
-            writer.WriteBoolValue("enableLora", EnableLora);
+            writer.WriteIntValue("inactiveTimeout", InactiveTimeout);
             writer.WriteStringValue("model", Model);
             writer.WriteStringValue("modelId", ModelId);
             writer.WriteStringValue("modelRevisionId", ModelRevisionId);

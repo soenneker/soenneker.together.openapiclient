@@ -15,5 +15,9 @@ namespace Soenneker.Together.OpenApiClient.Models
         #pragma warning disable CS1591
         ModelResourcesErrorCodeProvisioningFailed,
         #pragma warning restore CS1591
+        [EnumMember(Value = "MODEL_RESOURCES_ERROR_CODE_RESOURCE_UNAVAILABLE")]
+        #pragma warning disable CS1591
+        ModelResourcesErrorCodeResourceUnavailable,
+        #pragma warning restore CS1591
     }
 }

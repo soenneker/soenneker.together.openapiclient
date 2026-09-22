@@ -153,6 +153,14 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public List<global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelOutputModalitiesItem?> OutputModalities { get; set; }
 #endif
+        /// <summary>Serverless token pricing for a supported model.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelPricing? Pricing { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelPricing Pricing { get; set; }
+#endif
         /// <summary>Product surfaces where the model is offered.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -232,6 +240,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "outputFormat", n => { OutputFormat = n.GetStringValue(); } },
                 { "outputModalities", n => { OutputModalities = n.GetCollectionOfEnumValues<global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelOutputModalitiesItem>()?.AsList(); } },
+                { "pricing", n => { Pricing = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelPricing>(global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelPricing.CreateFromDiscriminatorValue); } },
                 { "products", n => { Products = n.GetCollectionOfEnumValues<global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelProductsItem>()?.AsList(); } },
                 { "publisher", n => { Publisher = n.GetStringValue(); } },
                 { "serverlessEndpoint", n => { ServerlessEndpoint = n.GetStringValue(); } },
@@ -265,6 +274,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("outputFormat", OutputFormat);
             writer.WriteCollectionOfEnumValues<global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelOutputModalitiesItem>("outputModalities", OutputModalities);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelPricing>("pricing", Pricing);
             writer.WriteCollectionOfEnumValues<global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelProductsItem>("products", Products);
             writer.WriteStringValue("publisher", Publisher);
             writer.WriteStringValue("serverlessEndpoint", ServerlessEndpoint);

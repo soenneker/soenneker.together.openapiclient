@@ -1666,7 +1666,7 @@
                     },
                     "metrics": [
                       {
-                        "name": "serving_latency",
+                        "name": "router_latency",
                         "stat": "METRIC_STAT_TYPE_PERCENTILE",
                         "percentile": 95,
                         "thresholdCheck": {
@@ -1730,7 +1730,7 @@
                         },
                         "metrics": [
                           {
-                            "name": "serving_latency",
+                            "name": "router_latency",
                             "stat": "METRIC_STAT_TYPE_PERCENTILE",
                             "percentile": 95,
                             "thresholdCheck": {
@@ -13708,9 +13708,9 @@
             "type": "string",
             "description": "Immutable config revision in the form \u0060projects/{projectId}/configs/{configRevisionId}\u0060. The config must be compatible with the model."
           },
-          "enableLora": {
-            "type": "boolean",
-            "description": "Enables dynamic loading of LoRA adapters on the deployment."
+          "inactiveTimeout": {
+            "type": "integer",
+            "description": "Inactive timeout in minutes. Use 0 or omit to disable automatic stopping; otherwise accepted values are 30 through 1440."
           },
           "placement": {
             "$ref": "#/components/schemas/DeCreateDeploymentRequestPlacement"
@@ -13727,6 +13727,10 @@
           },
           "autoscaling": {
             "$ref": "#/components/schemas/DeUpdateDeploymentRequestAutoscaling"
+          },
+          "inactiveTimeout": {
+            "type": "integer",
+            "description": "Updated inactive timeout in minutes. Use 0 to disable automatic stopping; otherwise accepted values are 30 through 1440."
           },
           "etag": {
             "type": "string",
@@ -14129,9 +14133,9 @@
             "format": "double",
             "readOnly": true
           },
-          "enableLora": {
-            "type": "boolean",
-            "description": "Whether the deployment can dynamically load LoRA adapters."
+          "inactiveTimeout": {
+            "type": "integer",
+            "description": "Minutes without an inference request before the deployment stops automatically. Omitted or 0 means automatic stopping is disabled."
           },
           "etag": {
             "type": "string",
@@ -14675,7 +14679,7 @@
             },
             "metrics": [
               {
-                "name": "serving_latency",
+                "name": "router_latency",
                 "stat": "METRIC_STAT_TYPE_PERCENTILE",
                 "percentile": 95,
                 "thresholdCheck": {
@@ -15234,6 +15238,27 @@
         },
         "description": "Performance benchmark metrics for a supported model profile."
       },
+      "DeSupportedModelPricing": {
+        "type": "object",
+        "properties": {
+          "input": {
+            "type": "number",
+            "description": "Price in USD per one million input tokens.",
+            "format": "double"
+          },
+          "output": {
+            "type": "number",
+            "description": "Price in USD per one million output tokens.",
+            "format": "double"
+          },
+          "cachedInput": {
+            "type": "number",
+            "description": "Price in USD per one million cached input tokens.",
+            "format": "double"
+          }
+        },
+        "description": "Serverless token pricing for a supported model."
+      },
       "DeSupportedModel": {
         "required": [
           "id",
@@ -15338,6 +15363,9 @@
           "serverlessEndpoint": {
             "type": "string",
             "description": "Serverless endpoint name for inference, if available."
+          },
+          "pricing": {
+            "$ref": "#/components/schemas/DeSupportedModelPricing"
           },
           "familyId": {
             "type": "string",
@@ -16415,6 +16443,12 @@
               "$ref": "#/components/schemas/DeScalingMetric"
             },
             "description": "Metrics and targets that drive replica recommendations. When omitted, the platform uses concurrent in-flight requests per replica."
+          },
+          "scaleUp": {
+            "$ref": "#/components/schemas/DeAutoscalingScaleUp"
+          },
+          "scaleDown": {
+            "$ref": "#/components/schemas/DeAutoscalingScaleDown"
           }
         },
         "description": "Autoscaling configuration for a deployment."
@@ -16455,6 +16489,12 @@
               "$ref": "#/components/schemas/DeScalingMetric"
             },
             "description": "Metrics and targets that drive replica recommendations. When omitted, the platform uses concurrent in-flight requests per replica."
+          },
+          "scaleUp": {
+            "$ref": "#/components/schemas/DeAutoscalingScaleUp"
+          },
+          "scaleDown": {
+            "$ref": "#/components/schemas/DeAutoscalingScaleDown"
           }
         },
         "description": "Resolved autoscaling configuration returned for a deployment."
@@ -16901,6 +16941,63 @@
           }
         },
         "description": "Architecture, size, precision, and speculative-decoding metadata for model weights."
+      },
+      "DeScalingPolicy": {
+        "required": [
+          "type",
+          "value",
+          "periodSeconds"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/DeScalingPolicyType"
+          },
+          "value": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "description": "Positive replica count or percentage used as the rate-limit amount."
+          },
+          "periodSeconds": {
+            "maximum": 1800,
+            "minimum": 1,
+            "type": "integer",
+            "description": "Trailing rate-limit window in seconds, from 1 to 1800."
+          }
+        },
+        "description": "Replica rate-limit policy applied over a trailing window."
+      },
+      "DeScalingRules": {
+        "type": "object",
+        "properties": {
+          "policies": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DeScalingPolicy"
+            },
+            "description": "Non-empty lists replace the existing policies. To clear policies, include\n\u0060autoscaling.scaleDown.policies\u0060 or \u0060autoscaling.scaleUp.policies\u0060 in the update mask\nand supply an empty scaling rules object or \u0060policies: []\u0060."
+          },
+          "selectPolicy": {
+            "$ref": "#/components/schemas/DeScalingRulesSelectPolicy"
+          }
+        },
+        "description": "Rate limits applied after stabilization and before replica bounds.",
+        "example": {
+          "policies": [
+            {
+              "type": "SCALING_POLICY_TYPE_PERCENT",
+              "value": 25,
+              "periodSeconds": 60
+            },
+            {
+              "type": "SCALING_POLICY_TYPE_PODS",
+              "value": 10,
+              "periodSeconds": 60
+            }
+          ],
+          "selectPolicy": "SCALING_POLICY_SELECT_MIN"
+        }
       },
       "DeScalingMetric": {
         "required": [
@@ -17571,7 +17668,8 @@
       "RlModelResourcesErrorCode": {
         "enum": [
           "MODEL_RESOURCES_ERROR_CODE_CAPACITY_WAIT_TIMEOUT",
-          "MODEL_RESOURCES_ERROR_CODE_PROVISIONING_FAILED"
+          "MODEL_RESOURCES_ERROR_CODE_PROVISIONING_FAILED",
+          "MODEL_RESOURCES_ERROR_CODE_RESOURCE_UNAVAILABLE"
         ],
         "type": "string",
         "additionalProperties": false,
@@ -17587,6 +17685,10 @@
             {
               "value": "MODEL_RESOURCES_ERROR_CODE_PROVISIONING_FAILED",
               "name": "ModelResourcesErrorCodeProvisioningFailed"
+            },
+            {
+              "value": "MODEL_RESOURCES_ERROR_CODE_RESOURCE_UNAVAILABLE",
+              "name": "ModelResourcesErrorCodeResourceUnavailable"
             }
           ]
         }
@@ -21845,31 +21947,9 @@
           }
         }
       },
-      "ChatCompletionChoicesDataItem": {
-        "type": "object",
-        "properties": {
-          "text": {
-            "type": "string"
-          },
-          "index": {
-            "type": "integer"
-          },
-          "seed": {
-            "type": "integer"
-          },
-          "finish_reason": {
-            "$ref": "#/components/schemas/FinishReason"
-          },
-          "message": {
-            "$ref": "#/components/schemas/ChatCompletionMessage"
-          },
-          "logprobs": {
-            "$ref": "#/components/schemas/ChatCompletionChoicesDataItemLogprobs"
-          },
-          "top_logprobs": {
-            "$ref": "#/components/schemas/ChatCompletionChoicesDataItemTopLogprobs"
-          }
-        }
+      "ChatCompletionUserMessageContentString": {
+        "type": "string",
+        "description": "A plain text message."
       },
       "ChatCompletionUserMessageContentMultimodal": {
         "type": "array",
@@ -25564,35 +25644,15 @@
           }
         }
       },
-      "CompletionChoicesDataItem": {
-        "type": "object",
-        "properties": {
-          "text": {
-            "type": "string",
-            "example": "The capital of France is Paris. It\u0027s located in the north-central part of the country and is one of the most populous and visited cities in the world, known for its iconic landmarks like the Eiffel Tower, Louvre Museum, Notre-Dame Cathedral, and more. Paris is also the capital of the \u00CEle-de-France region and is a major global center for art, fashion, gastronomy, and culture."
-          },
-          "seed": {
-            "type": "integer"
-          },
-          "finish_reason": {
-            "$ref": "#/components/schemas/FinishReason"
-          },
-          "logprobs": {
-            "$ref": "#/components/schemas/LogprobsPart"
-          }
-        }
+      "AudioFileBinary": {
+        "type": "string",
+        "description": "Audio file uploaded as binary. Maximum upload size 80 MB (requests above this are rejected with HTTP 413). For larger payloads, host the file and submit a URL instead.",
+        "format": "binary"
       },
-      "PromptPartItem": {
-        "type": "object",
-        "properties": {
-          "text": {
-            "type": "string",
-            "example": "\u003Cs\u003E[INST] What is the capital of France? [/INST]"
-          },
-          "logprobs": {
-            "$ref": "#/components/schemas/LogprobsPart"
-          }
-        }
+      "AudioFileUrl": {
+        "type": "string",
+        "description": "Public HTTPS URL the server fetches the audio from. Server-side fetch limit is 1 GB; downloads exceeding the cap fail with \u0060file_too_large\u0060.",
+        "format": "uri"
       },
       "CreateVideoBody": {
         "title": "Create video request",
@@ -27092,6 +27152,62 @@
           }
         }
       },
+      "PromptPartItem": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string",
+            "example": "\u003Cs\u003E[INST] What is the capital of France? [/INST]"
+          },
+          "logprobs": {
+            "$ref": "#/components/schemas/LogprobsPart"
+          }
+        }
+      },
+      "CompletionChoicesDataItem": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string",
+            "example": "The capital of France is Paris. It\u0027s located in the north-central part of the country and is one of the most populous and visited cities in the world, known for its iconic landmarks like the Eiffel Tower, Louvre Museum, Notre-Dame Cathedral, and more. Paris is also the capital of the \u00CEle-de-France region and is a major global center for art, fashion, gastronomy, and culture."
+          },
+          "seed": {
+            "type": "integer"
+          },
+          "finish_reason": {
+            "$ref": "#/components/schemas/FinishReason"
+          },
+          "logprobs": {
+            "$ref": "#/components/schemas/LogprobsPart"
+          }
+        }
+      },
+      "ChatCompletionChoicesDataItem": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string"
+          },
+          "index": {
+            "type": "integer"
+          },
+          "seed": {
+            "type": "integer"
+          },
+          "finish_reason": {
+            "$ref": "#/components/schemas/FinishReason"
+          },
+          "message": {
+            "$ref": "#/components/schemas/ChatCompletionMessage"
+          },
+          "logprobs": {
+            "$ref": "#/components/schemas/ChatCompletionChoicesDataItemLogprobs"
+          },
+          "top_logprobs": {
+            "$ref": "#/components/schemas/ChatCompletionChoicesDataItemTopLogprobs"
+          }
+        }
+      },
       "DeDeploymentSummaryAutoscaling": {
         "type": "object",
         "properties": {
@@ -27124,6 +27240,12 @@
               "$ref": "#/components/schemas/DeScalingMetric"
             },
             "description": "Metrics and targets that drive replica recommendations. When omitted, the platform uses concurrent in-flight requests per replica."
+          },
+          "scaleUp": {
+            "$ref": "#/components/schemas/DeAutoscalingScaleUp"
+          },
+          "scaleDown": {
+            "$ref": "#/components/schemas/DeAutoscalingScaleDown"
           }
         },
         "description": "Autoscaling configuration for the deployment.",
@@ -27161,6 +27283,12 @@
               "$ref": "#/components/schemas/DeScalingMetric"
             },
             "description": "Metrics and targets that drive replica recommendations. When omitted, the platform uses concurrent in-flight requests per replica."
+          },
+          "scaleUp": {
+            "$ref": "#/components/schemas/DeAutoscalingScaleUp"
+          },
+          "scaleDown": {
+            "$ref": "#/components/schemas/DeAutoscalingScaleDown"
           }
         },
         "description": "Autoscaling configuration for the deployment."
@@ -27206,6 +27334,12 @@
               "$ref": "#/components/schemas/DeScalingMetric"
             },
             "description": "Metrics and targets that drive replica recommendations. When omitted, the platform uses concurrent in-flight requests per replica."
+          },
+          "scaleUp": {
+            "$ref": "#/components/schemas/DeAutoscalingScaleUp"
+          },
+          "scaleDown": {
+            "$ref": "#/components/schemas/DeAutoscalingScaleDown"
           }
         },
         "description": "Updated autoscaling configuration."
@@ -27242,6 +27376,12 @@
               "$ref": "#/components/schemas/DeScalingMetric"
             },
             "description": "Metrics and targets that drive replica recommendations. When omitted, the platform uses concurrent in-flight requests per replica."
+          },
+          "scaleUp": {
+            "$ref": "#/components/schemas/DeAutoscalingScaleUp"
+          },
+          "scaleDown": {
+            "$ref": "#/components/schemas/DeAutoscalingScaleDown"
           }
         },
         "description": "Replica bounds, timing windows, and metrics that control horizontal scaling."
@@ -27722,6 +27862,38 @@
         },
         "description": "Aggregated metrics over the time range."
       },
+      "DeAutoscalingScaleUp": {
+        "type": "object",
+        "properties": {
+          "policies": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DeScalingPolicy"
+            },
+            "description": "Non-empty lists replace the existing policies. To clear policies, include\n\u0060autoscaling.scaleDown.policies\u0060 or \u0060autoscaling.scaleUp.policies\u0060 in the update mask\nand supply an empty scaling rules object or \u0060policies: []\u0060."
+          },
+          "selectPolicy": {
+            "$ref": "#/components/schemas/DeScalingRulesSelectPolicy"
+          }
+        },
+        "description": "Rate limits applied when scaling up. Stabilization remains controlled by \u0060scaleUpWindow\u0060.\nOmitted fields are preserved on update; a non-empty policy list replaces the previous list.\nTo clear policies or reset the selector, explicitly mask that leaf field. Empty lists in\nparent-only updates are treated as omitted."
+      },
+      "DeAutoscalingScaleDown": {
+        "type": "object",
+        "properties": {
+          "policies": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DeScalingPolicy"
+            },
+            "description": "Non-empty lists replace the existing policies. To clear policies, include\n\u0060autoscaling.scaleDown.policies\u0060 or \u0060autoscaling.scaleUp.policies\u0060 in the update mask\nand supply an empty scaling rules object or \u0060policies: []\u0060."
+          },
+          "selectPolicy": {
+            "$ref": "#/components/schemas/DeScalingRulesSelectPolicy"
+          }
+        },
+        "description": "Rate limits applied when scaling down. Stabilization remains controlled by \u0060scaleDownWindow\u0060.\nOmitted fields are preserved on update; a non-empty policy list replaces the previous list.\nTo clear policies or reset the selector, explicitly mask that leaf field. Empty lists in\nparent-only updates are treated as omitted."
+      },
       "DeEndpointMetricsTimeRange": {
         "type": "object",
         "properties": {
@@ -28150,35 +28322,6 @@
           }
         },
         "description": "Controls which (if any) function is called by the model. By default uses \u0060auto\u0060, which lets the model pick between generating a message or calling a function."
-      },
-      "ChatCompletionChoicesDataItemLogprobs": {
-        "type": "object",
-        "properties": {
-          "token_ids": {
-            "type": "array",
-            "items": {
-              "type": "number"
-            },
-            "description": "List of token IDs corresponding to the logprobs"
-          },
-          "tokens": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "List of token strings"
-          },
-          "token_logprobs": {
-            "type": "array",
-            "items": {
-              "type": "number"
-            },
-            "description": "List of token log probabilities"
-          },
-          "top_logprobs": {
-            "$ref": "#/components/schemas/ChatCompletionChoicesDataItemLogprobsTopLogprobs"
-          }
-        }
       },
       "ChatCompletionUserMessageContentMultimodalItem": {
         "type": "object",
@@ -29223,6 +29366,35 @@
           }
         },
         "description": "Type is the new volume type (currently only \u0022readOnly\u0022 is supported)"
+      },
+      "ChatCompletionChoicesDataItemLogprobs": {
+        "type": "object",
+        "properties": {
+          "token_ids": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "description": "List of token IDs corresponding to the logprobs"
+          },
+          "tokens": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of token strings"
+          },
+          "token_logprobs": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "description": "List of token log probabilities"
+          },
+          "top_logprobs": {
+            "$ref": "#/components/schemas/ChatCompletionChoicesDataItemLogprobsTopLogprobs"
+          }
+        }
       },
       "DePlacementOneOf1Inline": {
         "type": "object",
@@ -32789,13 +32961,6 @@
         "type": "object",
         "description": "Additional configuration to pass to model engine."
       },
-      "ChatCompletionChoicesDataItemTopLogprobs": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "number"
-        },
-        "description": "Top log probabilities for the tokens."
-      },
       "ChatCompletionResponseObject": {
         "const": null,
         "enum": [
@@ -33153,6 +33318,13 @@
           "type": "string"
         },
         "description": "Resource identifiers for attribution, varying by product."
+      },
+      "ChatCompletionChoicesDataItemTopLogprobs": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "number"
+        },
+        "description": "Top log probabilities for the tokens."
       },
       "ChatCompletionChoicesDataItemLogprobsTopLogprobs": {
         "type": "object",
@@ -34763,6 +34935,57 @@
             {
               "value": "DRAFT_SPECULATOR_TYPE_PHOENIX",
               "name": "DraftSpeculatorTypePhoenix"
+            }
+          ]
+        }
+      },
+      "DeScalingPolicyType": {
+        "enum": [
+          "SCALING_POLICY_TYPE_PODS",
+          "SCALING_POLICY_TYPE_PERCENT"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Whether \u0060value\u0060 is a replica count or a percentage of the replica count at the start\nof the trailing period. Scaling events within that period count against the allowance;\npercentages are rounded to whole replicas.",
+        "x-ms-enum": {
+          "name": "DeScalingPolicyType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "SCALING_POLICY_TYPE_PODS",
+              "name": "ScalingPolicyTypePods"
+            },
+            {
+              "value": "SCALING_POLICY_TYPE_PERCENT",
+              "name": "ScalingPolicyTypePercent"
+            }
+          ]
+        }
+      },
+      "DeScalingRulesSelectPolicy": {
+        "enum": [
+          "SCALING_POLICY_SELECT_MAX",
+          "SCALING_POLICY_SELECT_MIN",
+          "SCALING_POLICY_SELECT_DISABLED"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "\u0060SCALING_POLICY_SELECT_MIN\u0060 chooses the policy allowing the smallest replica change;\n\u0060SCALING_POLICY_SELECT_MAX\u0060 chooses the largest. These are caps, not guaranteed changes.\n\u0060SCALING_POLICY_SELECT_DISABLED\u0060 holds this direction steady while replica bounds still apply.\nOmitted preserves the existing selector on update. When no selector is configured,\nauthored policies use MAX; with no policies configured, the platform defaults apply.\nTo reset the selector, include \u0060autoscaling.scaleDown.selectPolicy\u0060 or\n\u0060autoscaling.scaleUp.selectPolicy\u0060 in the update mask and omit \u0060selectPolicy\u0060.\nClear both policies and \u0060selectPolicy\u0060 to restore inherited defaults.",
+        "x-ms-enum": {
+          "name": "DeScalingRulesSelectPolicy",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "SCALING_POLICY_SELECT_MAX",
+              "name": "ScalingPolicySelectMax"
+            },
+            {
+              "value": "SCALING_POLICY_SELECT_MIN",
+              "name": "ScalingPolicySelectMin"
+            },
+            {
+              "value": "SCALING_POLICY_SELECT_DISABLED",
+              "name": "ScalingPolicySelectDisabled"
             }
           ]
         }
