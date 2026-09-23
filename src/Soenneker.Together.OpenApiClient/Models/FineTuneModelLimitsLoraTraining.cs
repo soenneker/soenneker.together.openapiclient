@@ -15,6 +15,8 @@ namespace Soenneker.Together.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Default LoRA rank applied when a fine-tune request omits training_type.</summary>
+        public int? DefaultRank { get; set; }
         /// <summary>Maximum batch size for SFT LoRA training.</summary>
         public int? MaxBatchSize { get; set; }
         /// <summary>Maximum batch size for DPO LoRA training.</summary>
@@ -56,6 +58,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "default_rank", n => { DefaultRank = n.GetIntValue(); } },
                 { "max_batch_size", n => { MaxBatchSize = n.GetIntValue(); } },
                 { "max_batch_size_dpo", n => { MaxBatchSizeDpo = n.GetIntValue(); } },
                 { "max_rank", n => { MaxRank = n.GetIntValue(); } },
@@ -70,6 +73,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteIntValue("default_rank", DefaultRank);
             writer.WriteIntValue("max_batch_size", MaxBatchSize);
             writer.WriteIntValue("max_batch_size_dpo", MaxBatchSizeDpo);
             writer.WriteIntValue("max_rank", MaxRank);

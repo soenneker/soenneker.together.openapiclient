@@ -30,6 +30,8 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public global::Soenneker.Together.OpenApiClient.Models.UpdateDeploymentRequestAutoscaling Autoscaling { get; set; }
 #endif
+        /// <summary>Controls how replicas above reserved capacity behave. `stable` replicas stay running after scale-up; `preemptible` replicas may be evicted during capacity contention.</summary>
+        public global::Soenneker.Together.OpenApiClient.Models.UpdateDeploymentRequestCapacityType? CapacityType { get; set; }
         /// <summary>Command overrides the container&apos;s ENTRYPOINT. Provide as an array (e.g., [&quot;/bin/sh&quot;, &quot;-c&quot;])</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -131,6 +133,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             {
                 { "args", n => { Args = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "autoscaling", n => { Autoscaling = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.UpdateDeploymentRequestAutoscaling>(global::Soenneker.Together.OpenApiClient.Models.UpdateDeploymentRequestAutoscaling.CreateFromDiscriminatorValue); } },
+                { "capacity_type", n => { CapacityType = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.UpdateDeploymentRequestCapacityType>(); } },
                 { "command", n => { Command = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "cpu", n => { Cpu = n.GetDoubleValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
@@ -158,6 +161,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("args", Args);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.UpdateDeploymentRequestAutoscaling>("autoscaling", Autoscaling);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.UpdateDeploymentRequestCapacityType>("capacity_type", CapacityType);
             writer.WriteCollectionOfPrimitiveValues<string>("command", Command);
             writer.WriteDoubleValue("cpu", Cpu);
             writer.WriteStringValue("description", Description);

@@ -25986,6 +25986,9 @@
           "autoscaling": {
             "$ref": "#/components/schemas/CreateDeploymentRequestAutoscaling"
           },
+          "capacity_type": {
+            "$ref": "#/components/schemas/CreateDeploymentRequestCapacityType"
+          },
           "command": {
             "type": "array",
             "items": {
@@ -26156,6 +26159,9 @@
           },
           "autoscaling": {
             "$ref": "#/components/schemas/DeploymentResponseItemAutoscaling"
+          },
+          "capacity_type": {
+            "$ref": "#/components/schemas/DeploymentResponseItemCapacityType"
           },
           "command": {
             "type": "array",
@@ -26504,6 +26510,9 @@
           },
           "autoscaling": {
             "$ref": "#/components/schemas/UpdateDeploymentRequestAutoscaling"
+          },
+          "capacity_type": {
+            "$ref": "#/components/schemas/UpdateDeploymentRequestCapacityType"
           },
           "command": {
             "type": "array",
@@ -30300,6 +30309,7 @@
           "max_batch_size_dpo",
           "min_batch_size",
           "max_rank",
+          "default_rank",
           "target_modules"
         ],
         "type": "object",
@@ -30319,6 +30329,10 @@
           "max_rank": {
             "type": "integer",
             "description": "Maximum LoRA rank."
+          },
+          "default_rank": {
+            "type": "integer",
+            "description": "Default LoRA rank applied when a fine-tune request omits training_type."
           },
           "target_modules": {
             "type": "array",
@@ -37048,6 +37062,29 @@
           ]
         }
       },
+      "CreateDeploymentRequestCapacityType": {
+        "enum": [
+          "stable",
+          "preemptible"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Controls how replicas above reserved capacity behave. \u0060stable\u0060 replicas stay running after scale-up; \u0060preemptible\u0060 replicas may be evicted during capacity contention.",
+        "x-ms-enum": {
+          "name": "CreateDeploymentRequestCapacityType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "stable",
+              "name": "Stable"
+            },
+            {
+              "value": "preemptible",
+              "name": "Preemptible"
+            }
+          ]
+        }
+      },
       "CreateDeploymentRequestGpuType": {
         "enum": [
           "h100-80gb",
@@ -37077,6 +37114,29 @@
             {
               "value": "b200-192gb",
               "name": "B200192Gb"
+            }
+          ]
+        }
+      },
+      "DeploymentResponseItemCapacityType": {
+        "enum": [
+          "stable",
+          "preemptible"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Controls how replicas above reserved capacity behave. \u0060stable\u0060 replicas stay running after scale-up; \u0060preemptible\u0060 replicas may be evicted during capacity contention.",
+        "x-ms-enum": {
+          "name": "DeploymentResponseItemCapacityType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "stable",
+              "name": "Stable"
+            },
+            {
+              "value": "preemptible",
+              "name": "Preemptible"
             }
           ]
         }
@@ -37155,6 +37215,29 @@
         "additionalProperties": false,
         "description": "Metric must be CustomMetric",
         "example": "CustomMetric"
+      },
+      "UpdateDeploymentRequestCapacityType": {
+        "enum": [
+          "stable",
+          "preemptible"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Controls how replicas above reserved capacity behave. \u0060stable\u0060 replicas stay running after scale-up; \u0060preemptible\u0060 replicas may be evicted during capacity contention.",
+        "x-ms-enum": {
+          "name": "UpdateDeploymentRequestCapacityType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "stable",
+              "name": "Stable"
+            },
+            {
+              "value": "preemptible",
+              "name": "Preemptible"
+            }
+          ]
+        }
       },
       "UpdateDeploymentRequestGpuType": {
         "enum": [
