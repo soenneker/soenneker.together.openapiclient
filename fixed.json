@@ -11149,7 +11149,7 @@
             "schema": {
               "type": "integer",
               "description": "Maximum number of resources to return (1-100)",
-              "default": "20"
+              "default": 20
             }
           },
           {
@@ -11324,7 +11324,7 @@
           "RL"
         ],
         "summary": "Stop model resources",
-        "description": "Stops every session attached to the resource and tears down its GPU pods.",
+        "description": "Stops the model resource and releases its allocated compute. If active training sessions are attached, the request fails unless \u0060force=true\u0060. A forced stop also stops all attached training sessions.",
         "operationId": "StopModelResources",
         "parameters": [
           {
@@ -11341,7 +11341,7 @@
             "in": "query",
             "schema": {
               "type": "boolean",
-              "description": "Stop the resource even if active training sessions are attached",
+              "description": "When true, also stop all attached training sessions. When false, the request fails if any training sessions are active.",
               "default": false
             }
           }
@@ -11396,7 +11396,7 @@
             "schema": {
               "type": "integer",
               "description": "Maximum number of sessions to return (1-100)",
-              "default": "20"
+              "default": 20
             }
           },
           {
@@ -11892,6 +11892,15 @@
               "type": "string",
               "description": "Training session ID"
             }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Required key that makes retries return the original operation; use a new key for changed request bodies."
+            }
           }
         ],
         "requestBody": {
@@ -11944,6 +11953,15 @@
             "schema": {
               "type": "string",
               "description": "Training session ID"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Required key that makes retries return the original operation; use a new key for changed request bodies."
             }
           }
         ],
@@ -12050,6 +12068,15 @@
               "type": "string",
               "description": "Training session ID"
             }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Required key that makes retries return the original operation; use a new key for changed request bodies."
+            }
           }
         ],
         "requestBody": {
@@ -12102,6 +12129,15 @@
             "schema": {
               "type": "string",
               "description": "Training session ID"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Required key that makes retries return the original operation; use a new key for changed request bodies."
             }
           }
         ],
@@ -12156,6 +12192,15 @@
               "type": "string",
               "description": "Training session ID"
             }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Required key that makes retries return the original operation; use a new key for changed request bodies."
+            }
           }
         ],
         "requestBody": {
@@ -12208,6 +12253,15 @@
             "schema": {
               "type": "string",
               "description": "Training session ID"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Required key that makes retries return the original operation; use a new key for changed request bodies."
             }
           }
         ],
@@ -12303,6 +12357,15 @@
             "schema": {
               "type": "string",
               "description": "Training session ID"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Required key that makes retries return the original operation; use a new key for changed request bodies."
             }
           }
         ],
@@ -12413,7 +12476,7 @@
             "schema": {
               "type": "integer",
               "description": "Maximum number of checkpoints to return (1-100)",
-              "default": "20"
+              "default": 20
             }
           },
           {
@@ -14655,7 +14718,15 @@
             "items": {
               "$ref": "#/components/schemas/DePreviewWarning"
             },
-            "description": "Non-blocking findings to surface next to the form. An empty list means the shown values are safe to submit as-is."
+            "description": "Findings to surface next to the form when a later gate will refuse the spec or a standing guarantee is lost. An empty list means the shown values are safe to submit as-is; render message for unrecognized codes."
+          },
+          "landingMinReplicas": {
+            "type": "integer",
+            "description": "Expected autoscaling minimum replicas for the completed target; unset while the final target replicas cannot be resolved."
+          },
+          "landingMaxReplicas": {
+            "type": "integer",
+            "description": "Expected autoscaling maximum replicas for the completed target; unset while the final target replicas cannot be resolved."
           }
         },
         "description": "Completed create-form state \u2014 the caller\u0027s spec with defaulted values filled in, the steps the rollout is expected to walk, and the capacity context the defaults were computed from. Display only.",
@@ -14707,14 +14778,14 @@
         "properties": {
           "code": {
             "type": "string",
-            "description": "Machine-readable warning code, such as START_WILL_REJECT, ROLLOUT_WILL_RAISE_TARGET_MAX, FINAL_BELOW_INHERITED_MIN, or FINAL_BELOW_SOURCE_MIN. Render message for unrecognized codes."
+            "description": "Machine-readable warning code. Current vocabulary is START_WILL_REJECT, FINAL_BELOW_SOURCE_MIN, and FIRST_STEP_AT_SEED; render message for unrecognized codes."
           },
           "message": {
             "type": "string",
             "description": "Plain-language description of the finding, safe to show users as-is."
           }
         },
-        "description": "A non-blocking finding attached to a rollout defaults preview."
+        "description": "A non-blocking finding attached to a rollout defaults preview; expected end-state facts are structured fields on RolloutDefaultsPreview."
       },
       "DePauseInfo": {
         "required": [
@@ -16176,9 +16247,32 @@
           },
           "headroom": {
             "$ref": "#/components/schemas/DeRegionHeadroom"
+          },
+          "compliance": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DeComplianceAvailability"
+            },
+            "description": "Compliance regimes certified in this region with best-effort headroom for each policy. Entries can overlap; read the entry matching the deployment policy instead of summing entries."
           }
         },
         "description": "Region where an instance type is offered."
+      },
+      "DeComplianceAvailability": {
+        "required": [
+          "policy",
+          "headroom"
+        ],
+        "type": "object",
+        "properties": {
+          "policy": {
+            "$ref": "#/components/schemas/DeComplianceAvailabilityPolicy"
+          },
+          "headroom": {
+            "$ref": "#/components/schemas/DeComplianceAvailabilityHeadroom"
+          }
+        },
+        "description": "Compliance-specific regional availability for one instance type policy."
       },
       "DeHeadroom": {
         "required": [
@@ -17328,13 +17422,7 @@
           },
           "return_routed_experts": {
             "type": "boolean",
-            "description": "When true, capture the mixture-of-experts routing decisions made while generating and return them in \u0060SampledSequence.routed_experts\u0060, so training can reuse the same expert selection. Only available on mixture-of-experts models; ignored otherwise. The captured buffer scales with sequence length, so leave it off unless you replay routing during training.",
-            "default": false,
-            "example": false
-          },
-          "return_routed_experts_object_uri": {
-            "type": "boolean",
-            "description": "When true together with \u0060return_routed_experts\u0060, return each routing capture as a backend-owned \u0060object_uri\u0060 plus shape instead of inline base64 data. Clients that do not opt in keep the legacy inline response.",
+            "description": "When true, enable reuse of the expert selections from sampled sequences during training. Only supported for mixture-of-experts models; ignored for other models.",
             "default": false,
             "example": false
           }
@@ -17607,7 +17695,7 @@
           "base_model": {
             "type": "string",
             "description": "Base model the resource is provisioned for",
-            "example": "Qwen/Qwen3-0.6B"
+            "example": "Qwen/Qwen3.5-4B"
           },
           "compute_config": {
             "$ref": "#/components/schemas/RlComputeConfig"
@@ -17701,8 +17789,8 @@
         "properties": {
           "base_model": {
             "type": "string",
-            "description": "Base model to provision the resource for",
-            "example": "Qwen/Qwen3-0.6B"
+            "description": "Base model to provision the resource for, selected from /rl/supported-models",
+            "example": "Qwen/Qwen3.5-4B"
           },
           "compute_config": {
             "$ref": "#/components/schemas/RlComputeConfigCreateRequest"
@@ -17849,7 +17937,7 @@
           "base_model": {
             "type": "string",
             "description": "Base model identifier to pass as base_model when creating a model resource",
-            "example": "Qwen/Qwen3-0.6B"
+            "example": "Qwen/Qwen3.5-4B"
           },
           "default_gpu_type": {
             "$ref": "#/components/schemas/RlSupportedModelDefaultGpuType"
@@ -17920,7 +18008,8 @@
           "LOSS_TYPE_IMPORTANCE_SAMPLING",
           "LOSS_TYPE_PPO",
           "LOSS_TYPE_CISPO",
-          "LOSS_TYPE_DRO"
+          "LOSS_TYPE_DRO",
+          "LOSS_TYPE_DPPO"
         ],
         "type": "string",
         "additionalProperties": false,
@@ -17956,6 +18045,10 @@
             {
               "value": "LOSS_TYPE_DRO",
               "name": "LossTypeDro"
+            },
+            {
+              "value": "LOSS_TYPE_DPPO",
+              "name": "LossTypeDppo"
             }
           ]
         }
@@ -18103,14 +18196,14 @@
         "properties": {
           "clip_low_threshold": {
             "type": "number",
-            "description": "Lower absolute bound for the importance ratio; the clipped ratio is applied as a detached coefficient",
+            "description": "Lower bound for clipping the importance-sampling ratio.",
             "format": "float",
             "default": 0,
             "example": 0
           },
           "clip_high_threshold": {
             "type": "number",
-            "description": "Upper absolute bound for the importance ratio; the clipped ratio is applied as a detached coefficient",
+            "description": "Upper bound for clipping the importance-sampling ratio.",
             "format": "float",
             "default": 4,
             "example": 4
@@ -18130,6 +18223,30 @@
             "example": 0.05
           }
         }
+      },
+      "RlDppoLossParams": {
+        "type": "object",
+        "properties": {
+          "delta_low": {
+            "maximum": 1,
+            "minimum": 0,
+            "type": "number",
+            "description": "Probability-change limit for tokens with negative advantage. Measured in probability space, not log-probability space. Must be in [0, 1]. Defaults to 0.15.",
+            "format": "float",
+            "default": 0.15,
+            "example": 0.15
+          },
+          "delta_high": {
+            "maximum": 1,
+            "minimum": 0,
+            "type": "number",
+            "description": "Probability-change limit for tokens with positive advantage. Measured in probability space, not log-probability space. Must be in [0, 1]. Defaults to 0.15.",
+            "format": "float",
+            "default": 0.15,
+            "example": 0.15
+          }
+        },
+        "description": "Parameters for DPPO loss. Both probability-change limits must be in [0, 1] and default to 0.15."
       },
       "RlLossConfig": {
         "required": [
@@ -18154,6 +18271,9 @@
           },
           "dro_params": {
             "$ref": "#/components/schemas/RlDroLossParams"
+          },
+          "dppo_params": {
+            "$ref": "#/components/schemas/RlDppoLossParams"
           }
         }
       },
@@ -18199,14 +18319,14 @@
             "items": {
               "type": "integer"
             },
-            "description": "Reserved for Tinker schema compatibility; current training operations reject sparse tensors."
+            "description": "Unsupported for training operations. Omit this field."
           },
           "sparse_col_indices": {
             "type": "array",
             "items": {
               "type": "integer"
             },
-            "description": "Reserved for Tinker schema compatibility; current training operations reject sparse tensors."
+            "description": "Unsupported for training operations. Omit this field."
           }
         },
         "description": "A tensor encoded as flattened row-major values, with an optional shape."
@@ -18224,8 +18344,12 @@
           "loss_fn_inputs": {
             "$ref": "#/components/schemas/RlTrainingSampleLossFnInputsProperty"
           },
-          "routed_experts": {
-            "$ref": "#/components/schemas/RlRoutedExperts"
+          "routed_experts_key": {
+            "maxLength": 256,
+            "minLength": 1,
+            "pattern": "^routing/[A-Za-z0-9._-]\u002B/[0-9a-f]{32}\\.[1-9][0-9]*$",
+            "type": "string",
+            "description": "Opaque key returned with a sampled sequence. Pass it unchanged with the corresponding training sample to reuse the same expert selections. The selections must cover the entire training sample or all but its final token. Training fails if the key is no longer available."
           }
         }
       },
@@ -18272,32 +18396,6 @@
           }
         },
         "description": "The most likely alternative tokens at a single prompt position, as two parallel arrays of equal length. Both are empty for a position with no conditioning context, such as position 0."
-      },
-      "RlRoutedExperts": {
-        "required": [
-          "shape"
-        ],
-        "type": "object",
-        "properties": {
-          "data": {
-            "type": "string",
-            "description": "Legacy base64-encoded contiguous int32 routing buffer, row-major over (token, layer, width).",
-            "format": "byte"
-          },
-          "object_uri": {
-            "type": "string",
-            "description": "Backend-owned S3/R2 object URI containing the contiguous int32 routing buffer. Clients relay this URI unchanged; the manager validates and downloads it before training.",
-            "format": "uri"
-          },
-          "shape": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/RlRoutedExpertsShapeItem"
-            },
-            "description": "Buffer shape as \u0060[num_tokens, num_layers, width]\u0060."
-          }
-        },
-        "description": "Mixture-of-experts routing decisions captured while generating, so training can reuse the same expert selection. Exactly one source is set\u2014legacy inline \u0060data\u0060, or a backend-owned \u0060object_uri\u0060 that the manager hydrates before training. The contiguous int32 buffer is reshaped by \u0060shape\u0060, which is always \u0060[num_tokens, num_layers, width]\u0060; packed buffers carry fp32-bitcast routing weights in the trailing top-k columns."
       },
       "RlOptimStepOperation": {
         "required": [
@@ -18481,8 +18579,9 @@
             "format": "int32",
             "example": 1024
           },
-          "routed_experts": {
-            "$ref": "#/components/schemas/RlRoutedExperts"
+          "routed_experts_key": {
+            "type": "string",
+            "description": "Opaque key for reusing this sequence\u0027s expert selections during training. Pass it unchanged with the corresponding training sample. Absent for non-mixture-of-experts models or when \u0060return_routed_experts\u0060 is disabled."
           }
         },
         "description": "A single generated completion sequence with tokens and logprobs"
@@ -18737,7 +18836,7 @@
         "properties": {
           "resume_from_checkpoint_id": {
             "type": "string",
-            "description": "Checkpoint ID to resume from",
+            "description": "Checkpoint ID to resume from. LoRA training checkpoints may resume on another model resource with compatible base-model weights. Full-weight training checkpoints require the original base model.",
             "example": "123e4567-e89b-12d3-a456-426614174000"
           },
           "resume_from_hf_checkpoint": {
@@ -18750,7 +18849,7 @@
           },
           "model_resources_id": {
             "type": "string",
-            "description": "Model resource to attach the session to. The session runs on that resource\u0027s GPU pods.",
+            "description": "ID of the model resource to use for this training session.",
             "example": "123e4567-e89b-12d3-a456-426614174000"
           },
           "display_name": {
@@ -18964,7 +19063,7 @@
             "example": true
           }
         },
-        "description": "Session-scoped policy and weight versions. Comparable to \u0060policy_segments[].version\u0060 on sample results. Resets if the session is resumed or its training runtime restarts."
+        "description": "Policy and weight versions for this training session. Compare these with \u0060policy_segments[].version\u0060 on sample results from the same session. Versions may reset after session recovery or resume."
       },
       "RlTrainingSession": {
         "required": [
@@ -19042,13 +19141,13 @@
           },
           "model_resources_id": {
             "type": "string",
-            "description": "Model resource this session is attached to. The session runs on that resource\u0027s GPU pods.",
+            "description": "ID of the model resource used by this training session.",
             "example": "123e4567-e89b-12d3-a456-426614174000"
           },
           "base_model": {
             "type": "string",
             "description": "Base model the session trains, taken from the model resource it is attached to",
-            "example": "Qwen/Qwen3-0.6B"
+            "example": "Qwen/Qwen3.5-4B"
           },
           "created_by": {
             "type": "string",
@@ -19202,7 +19301,7 @@
           "eps": {
             "type": "number",
             "description": "Epsilon for numerical stability",
-            "default": 1E-08,
+            "default": 0.00000001,
             "example": 0.00000001
           },
           "weight_decay": {
@@ -19511,7 +19610,7 @@
           "base_model": {
             "type": "string",
             "description": "Base model the checkpoint was trained from",
-            "example": "Qwen/Qwen3-0.6B"
+            "example": "Qwen/Qwen3.5-4B"
           },
           "type": {
             "$ref": "#/components/schemas/RlCheckpointType"
@@ -20983,8 +21082,13 @@
           "project_id": {
             "type": "string",
             "description": "Project ID that will own the volume. When omitted, the caller\u0027s default project is used."
+          },
+          "instance_cluster_id": {
+            "type": "string",
+            "description": "Cluster ID to pin the volume to the same substrate as that GPU cluster."
           }
-        }
+        },
+        "description": "Request body for creating a shared volume."
       },
       "GpuClustersSharedVolumeDeleteResponse": {
         "required": [
@@ -24415,7 +24519,7 @@
           },
           "lora_trainable_modules": {
             "type": "string",
-            "description": "Comma-separated LoRA target modules. Use \u0060all-linear\u0060 for model defaults; MoE expert modules (\u0060w_up\u0060, \u0060w_gate\u0060, \u0060w_down\u0060) can be combined with attention modules on compatible models. Fine-tunes that target any expert module produce adapter-only output.",
+            "description": "Comma-separated LoRA target modules. Use \u0060all-linear\u0060 for model defaults; MoE expert modules (\u0060w_up\u0060, \u0060w_gate\u0060, \u0060w_down\u0060) can be combined with attention modules on compatible models. Fine-tuning jobs that target expert modules produce adapter-only output unless the selected model supports merged expert LoRA output.",
             "default": "all-linear"
           }
         },
@@ -27831,7 +27935,33 @@
             "$ref": "#/components/schemas/DeHeadroomRelation"
           }
         },
-        "description": "Best-effort replica headroom for this region. Omitted when unavailable."
+        "description": "Best-effort replica headroom across every cluster in this region, attested or not. Read \u0060compliance\u0060 for compliance-scoped headroom. Omitted when unavailable."
+      },
+      "DeComplianceAvailabilityPolicy": {
+        "type": "object",
+        "properties": {
+          "hipaa": {
+            "type": "boolean",
+            "description": "Restrict placement to HIPAA-attested clusters."
+          }
+        },
+        "description": "Compliance regimes certified by the clusters counted in this entry."
+      },
+      "DeComplianceAvailabilityHeadroom": {
+        "required": [
+          "relation"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "integer",
+            "description": "Capped count of replicas that currently fit."
+          },
+          "relation": {
+            "$ref": "#/components/schemas/DeHeadroomRelation"
+          }
+        },
+        "description": "Best-effort replica headroom on clusters certified for at least this policy."
       },
       "DeAnalyticsDataMetrics": {
         "type": "object",
@@ -27929,21 +28059,10 @@
             "type": "integer"
           }
         ],
-        "description": "Random seed for reproducible sampling for the same prompt and model state. Per-completion seeds remain stable if the request is split across generator replicas.",
+        "description": "Random seed for reproducible sampling for the same prompt and model state.",
         "example": "42"
       },
       "RlEncodedTextChunkTokensItem": {
-        "type": "object",
-        "oneOf": [
-          {
-            "type": "string"
-          },
-          {
-            "type": "integer"
-          }
-        ]
-      },
-      "RlRoutedExpertsShapeItem": {
         "type": "object",
         "oneOf": [
           {
@@ -28613,7 +28732,7 @@
           },
           "lora_trainable_modules": {
             "type": "string",
-            "description": "Comma-separated LoRA target modules. Use \u0060all-linear\u0060 for model defaults; MoE expert modules (\u0060w_up\u0060, \u0060w_gate\u0060, \u0060w_down\u0060) can be combined with attention modules on compatible models. Fine-tunes that target any expert module produce adapter-only output.",
+            "description": "Comma-separated LoRA target modules. Use \u0060all-linear\u0060 for model defaults; MoE expert modules (\u0060w_up\u0060, \u0060w_gate\u0060, \u0060w_down\u0060) can be combined with attention modules on compatible models. Fine-tuning jobs that target expert modules produce adapter-only output unless the selected model supports merged expert LoRA output.",
             "default": "all-linear"
           }
         }
@@ -28644,7 +28763,7 @@
           },
           "lora_trainable_modules": {
             "type": "string",
-            "description": "Comma-separated LoRA target modules. Use \u0060all-linear\u0060 for model defaults; MoE expert modules (\u0060w_up\u0060, \u0060w_gate\u0060, \u0060w_down\u0060) can be combined with attention modules on compatible models. Fine-tunes that target any expert module produce adapter-only output.",
+            "description": "Comma-separated LoRA target modules. Use \u0060all-linear\u0060 for model defaults; MoE expert modules (\u0060w_up\u0060, \u0060w_gate\u0060, \u0060w_down\u0060) can be combined with attention modules on compatible models. Fine-tuning jobs that target expert modules produce adapter-only output unless the selected model supports merged expert LoRA output.",
             "default": "all-linear"
           }
         },
@@ -32317,7 +32436,7 @@
           },
           "lora_trainable_modules": {
             "type": "string",
-            "description": "Comma-separated LoRA target modules. Use \u0060all-linear\u0060 for model defaults; MoE expert modules (\u0060w_up\u0060, \u0060w_gate\u0060, \u0060w_down\u0060) can be combined with attention modules on compatible models. Fine-tunes that target any expert module produce adapter-only output.",
+            "description": "Comma-separated LoRA target modules. Use \u0060all-linear\u0060 for model defaults; MoE expert modules (\u0060w_up\u0060, \u0060w_gate\u0060, \u0060w_down\u0060) can be combined with attention modules on compatible models. Fine-tuning jobs that target expert modules produce adapter-only output unless the selected model supports merged expert LoRA output.",
             "default": "all-linear"
           }
         },
@@ -32389,7 +32508,7 @@
           },
           "lora_trainable_modules": {
             "type": "string",
-            "description": "Comma-separated LoRA target modules. Use \u0060all-linear\u0060 for model defaults; MoE expert modules (\u0060w_up\u0060, \u0060w_gate\u0060, \u0060w_down\u0060) can be combined with attention modules on compatible models. Fine-tunes that target any expert module produce adapter-only output.",
+            "description": "Comma-separated LoRA target modules. Use \u0060all-linear\u0060 for model defaults; MoE expert modules (\u0060w_up\u0060, \u0060w_gate\u0060, \u0060w_down\u0060) can be combined with attention modules on compatible models. Fine-tuning jobs that target expert modules produce adapter-only output unless the selected model supports merged expert LoRA output.",
             "default": "all-linear"
           }
         },

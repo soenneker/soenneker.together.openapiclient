@@ -40,7 +40,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionMetadata Metadata { get; set; }
 #endif
-        /// <summary>Model resource to attach the session to. The session runs on that resource&apos;s GPU pods.</summary>
+        /// <summary>ID of the model resource to use for this training session.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ModelResourcesId { get; set; }
@@ -48,7 +48,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string ModelResourcesId { get; set; }
 #endif
-        /// <summary>Checkpoint ID to resume from</summary>
+        /// <summary>Checkpoint ID to resume from. LoRA training checkpoints may resume on another model resource with compatible base-model weights. Full-weight training checkpoints require the original base model.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ResumeFromCheckpointId { get; set; }

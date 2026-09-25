@@ -30,13 +30,13 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public global::Soenneker.Together.OpenApiClient.Models.RlModelInput ModelInput { get; set; }
 #endif
-        /// <summary>Mixture-of-experts routing decisions captured while generating, so training can reuse the same expert selection. Exactly one source is set—legacy inline `data`, or a backend-owned `object_uri` that the manager hydrates before training. The contiguous int32 buffer is reshaped by `shape`, which is always `[num_tokens, num_layers, width]`; packed buffers carry fp32-bitcast routing weights in the trailing top-k columns.</summary>
+        /// <summary>Opaque key returned with a sampled sequence. Pass it unchanged with the corresponding training sample to reuse the same expert selections. The selections must cover the entire training sample or all but its final token. Training fails if the key is no longer available.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RlRoutedExperts? RoutedExperts { get; set; }
+        public string? RoutedExpertsKey { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.RlRoutedExperts RoutedExperts { get; set; }
+        public string RoutedExpertsKey { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlTrainingSample"/> and sets the default values.
@@ -65,7 +65,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             {
                 { "loss_fn_inputs", n => { LossFnInputs = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlTrainingSampleLossFnInputsProperty>(global::Soenneker.Together.OpenApiClient.Models.RlTrainingSampleLossFnInputsProperty.CreateFromDiscriminatorValue); } },
                 { "model_input", n => { ModelInput = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlModelInput>(global::Soenneker.Together.OpenApiClient.Models.RlModelInput.CreateFromDiscriminatorValue); } },
-                { "routed_experts", n => { RoutedExperts = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlRoutedExperts>(global::Soenneker.Together.OpenApiClient.Models.RlRoutedExperts.CreateFromDiscriminatorValue); } },
+                { "routed_experts_key", n => { RoutedExpertsKey = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -77,7 +77,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlTrainingSampleLossFnInputsProperty>("loss_fn_inputs", LossFnInputs);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlModelInput>("model_input", ModelInput);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlRoutedExperts>("routed_experts", RoutedExperts);
+            writer.WriteStringValue("routed_experts_key", RoutedExpertsKey);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

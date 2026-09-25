@@ -7,13 +7,22 @@ using System.IO;
 using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
+    /// <summary>
+    /// Request body for creating a shared volume.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class GpuClustersSharedVolumeCreateRequest : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Cluster ID to pin the volume to the same substrate as that GPU cluster.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? InstanceClusterId { get; set; }
+#nullable restore
+#else
+        public string InstanceClusterId { get; set; }
+#endif
         /// <summary>When true, the shared volume is not deleted when the cluster is decommissioned.</summary>
         public bool? IsLifecycleIndependent { get; set; }
         /// <summary>Project ID that will own the volume. When omitted, the caller&apos;s default project is used.</summary>
@@ -67,6 +76,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "instance_cluster_id", n => { InstanceClusterId = n.GetStringValue(); } },
                 { "is_lifecycle_independent", n => { IsLifecycleIndependent = n.GetBoolValue(); } },
                 { "project_id", n => { ProjectId = n.GetStringValue(); } },
                 { "region", n => { Region = n.GetStringValue(); } },
@@ -81,6 +91,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("instance_cluster_id", InstanceClusterId);
             writer.WriteBoolValue("is_lifecycle_independent", IsLifecycleIndependent);
             writer.WriteStringValue("project_id", ProjectId);
             writer.WriteStringValue("region", Region);

@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
     /// <summary>
-    /// Session-scoped policy and weight versions. Comparable to `policy_segments[].version` on sample results. Resets if the session is resumed or its training runtime restarts.
+    /// Policy and weight versions for this training session. Compare these with `policy_segments[].version` on sample results from the same session. Versions may reset after session recovery or resume.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RlSessionPolicyState : IAdditionalDataHolder, IParsable

@@ -132,7 +132,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public DateTimeOffset? ReservationEndTime { get; set; }
         /// <summary>Reservation start time of the cluster. This field is required for SCHEDULED billing to specify the reservation start time for the cluster. If not provided, the cluster provisions immediately.</summary>
         public DateTimeOffset? ReservationStartTime { get; set; }
-        /// <summary>The shared_volume property</summary>
+        /// <summary>Request body for creating a shared volume.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolumeCreateRequest? SharedVolume { get; set; }

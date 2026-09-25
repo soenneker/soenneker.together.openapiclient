@@ -34,7 +34,7 @@ namespace Soenneker.Together.OpenApiClient.Rl.ModelResources.Item.Stop
         {
         }
         /// <summary>
-        /// Stops every session attached to the resource and tears down its GPU pods.
+        /// Stops the model resource and releases its allocated compute. If active training sessions are attached, the request fails unless `force=true`. A forced stop also stops all attached training sessions.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.RlModelResources"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -57,7 +57,7 @@ namespace Soenneker.Together.OpenApiClient.Rl.ModelResources.Item.Stop
             return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.RlModelResources>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.RlModelResources.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Stops every session attached to the resource and tears down its GPU pods.
+        /// Stops the model resource and releases its allocated compute. If active training sessions are attached, the request fails unless `force=true`. A forced stop also stops all attached training sessions.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -85,7 +85,7 @@ namespace Soenneker.Together.OpenApiClient.Rl.ModelResources.Item.Stop
             return new global::Soenneker.Together.OpenApiClient.Rl.ModelResources.Item.Stop.StopRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Stops every session attached to the resource and tears down its GPU pods.
+        /// Stops the model resource and releases its allocated compute. If active training sessions are attached, the request fails unless `force=true`. A forced stop also stops all attached training sessions.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class StopRequestBuilderPostQueryParameters 

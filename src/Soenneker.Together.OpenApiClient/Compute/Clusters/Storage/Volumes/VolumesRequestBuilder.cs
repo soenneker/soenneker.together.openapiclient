@@ -68,7 +68,7 @@ namespace Soenneker.Together.OpenApiClient.Compute.Clusters.Storage.Volumes
         /// Instant Clusters supports long-lived, resizable in-DC shared storage with user data persistence.You can dynamically create and attach volumes to your cluster at cluster creation time, and resize as your data grows.All shared storage is backed by multi-NIC bare metal paths, ensuring high-throughput and low-latency performance for shared storage.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolume"/></returns>
-        /// <param name="body">The request body</param>
+        /// <param name="body">Request body for creating a shared volume.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -127,7 +127,7 @@ namespace Soenneker.Together.OpenApiClient.Compute.Clusters.Storage.Volumes
         /// Instant Clusters supports long-lived, resizable in-DC shared storage with user data persistence.You can dynamically create and attach volumes to your cluster at cluster creation time, and resize as your data grows.All shared storage is backed by multi-NIC bare metal paths, ensuring high-throughput and low-latency performance for shared storage.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">The request body</param>
+        /// <param name="body">Request body for creating a shared volume.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

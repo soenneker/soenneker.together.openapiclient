@@ -35,5 +35,9 @@ namespace Soenneker.Together.OpenApiClient.Models
         #pragma warning disable CS1591
         LossTypeDro,
         #pragma warning restore CS1591
+        [EnumMember(Value = "LOSS_TYPE_DPPO")]
+        #pragma warning disable CS1591
+        LossTypeDppo,
+        #pragma warning restore CS1591
     }
 }

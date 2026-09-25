@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
     /// <summary>
-    /// Best-effort replica headroom for this region. Omitted when unavailable.
+    /// Best-effort replica headroom across every cluster in this region, attested or not. Read `compliance` for compliance-scoped headroom. Omitted when unavailable.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DeRegionHeadroom : IAdditionalDataHolder, IParsable

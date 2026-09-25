@@ -14,9 +14,9 @@ namespace Soenneker.Together.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Upper absolute bound for the importance ratio; the clipped ratio is applied as a detached coefficient</summary>
+        /// <summary>Upper bound for clipping the importance-sampling ratio.</summary>
         public float? ClipHighThreshold { get; set; }
-        /// <summary>Lower absolute bound for the importance ratio; the clipped ratio is applied as a detached coefficient</summary>
+        /// <summary>Lower bound for clipping the importance-sampling ratio.</summary>
         public float? ClipLowThreshold { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlCispoLossParams"/> and sets the default values.

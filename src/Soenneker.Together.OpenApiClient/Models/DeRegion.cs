@@ -15,7 +15,15 @@ namespace Soenneker.Together.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Best-effort replica headroom for this region. Omitted when unavailable.</summary>
+        /// <summary>Compliance regimes certified in this region with best-effort headroom for each policy. Entries can overlap; read the entry matching the deployment policy instead of summing entries.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.Together.OpenApiClient.Models.DeComplianceAvailability>? Compliance { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.Together.OpenApiClient.Models.DeComplianceAvailability> Compliance { get; set; }
+#endif
+        /// <summary>Best-effort replica headroom across every cluster in this region, attested or not. Read `compliance` for compliance-scoped headroom. Omitted when unavailable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Together.OpenApiClient.Models.DeRegionHeadroom? Headroom { get; set; }
@@ -56,6 +64,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "compliance", n => { Compliance = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.DeComplianceAvailability>(global::Soenneker.Together.OpenApiClient.Models.DeComplianceAvailability.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "headroom", n => { Headroom = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeRegionHeadroom>(global::Soenneker.Together.OpenApiClient.Models.DeRegionHeadroom.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
             };
@@ -67,6 +76,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.DeComplianceAvailability>("compliance", Compliance);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeRegionHeadroom>("headroom", Headroom);
             writer.WriteStringValue("name", Name);
             writer.WriteAdditionalData(AdditionalData);

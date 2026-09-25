@@ -27,6 +27,10 @@ namespace Soenneker.Together.OpenApiClient.Models
         public int? EstimatedSeedPercent { get; set; }
         /// <summary>True when both deployments stand in the endpoint traffic split, so the rollout resumes from the current split rather than from zero. See warnings for standing split shapes that StartRollout will still reject.</summary>
         public bool? FrozenPair { get; set; }
+        /// <summary>Expected autoscaling maximum replicas for the completed target; unset while the final target replicas cannot be resolved.</summary>
+        public int? LandingMaxReplicas { get; set; }
+        /// <summary>Expected autoscaling minimum replicas for the completed target; unset while the final target replicas cannot be resolved.</summary>
+        public int? LandingMinReplicas { get; set; }
         /// <summary>Source deployment replica count the defaults were computed from. Zero is a real value.</summary>
         public int? SourceReplicas { get; set; }
         /// <summary>The caller&apos;s spec with defaulted values filled in for display. canary.steps is echoed exactly as sent; the suggested ladder is returned in estimatedEffectiveSteps instead.</summary>
@@ -43,7 +47,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public int? TargetMinReplicas { get; set; }
         /// <summary>Target deployment replica count the defaults were computed from. Zero is a real value.</summary>
         public int? TargetReplicas { get; set; }
-        /// <summary>Non-blocking findings to surface next to the form. An empty list means the shown values are safe to submit as-is.</summary>
+        /// <summary>Findings to surface next to the form when a later gate will refuse the spec or a standing guarantee is lost. An empty list means the shown values are safe to submit as-is; render message for unrecognized codes.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Together.OpenApiClient.Models.DePreviewWarning>? Warnings { get; set; }
@@ -79,6 +83,8 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "estimatedEffectiveSteps", n => { EstimatedEffectiveSteps = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.DeRolloutStep>(global::Soenneker.Together.OpenApiClient.Models.DeRolloutStep.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "estimatedSeedPercent", n => { EstimatedSeedPercent = n.GetIntValue(); } },
                 { "frozenPair", n => { FrozenPair = n.GetBoolValue(); } },
+                { "landingMaxReplicas", n => { LandingMaxReplicas = n.GetIntValue(); } },
+                { "landingMinReplicas", n => { LandingMinReplicas = n.GetIntValue(); } },
                 { "sourceReplicas", n => { SourceReplicas = n.GetIntValue(); } },
                 { "spec", n => { Spec = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeRolloutDefaultsPreviewSpec>(global::Soenneker.Together.OpenApiClient.Models.DeRolloutDefaultsPreviewSpec.CreateFromDiscriminatorValue); } },
                 { "targetMaxReplicas", n => { TargetMaxReplicas = n.GetIntValue(); } },
@@ -97,6 +103,8 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.DeRolloutStep>("estimatedEffectiveSteps", EstimatedEffectiveSteps);
             writer.WriteIntValue("estimatedSeedPercent", EstimatedSeedPercent);
             writer.WriteBoolValue("frozenPair", FrozenPair);
+            writer.WriteIntValue("landingMaxReplicas", LandingMaxReplicas);
+            writer.WriteIntValue("landingMinReplicas", LandingMinReplicas);
             writer.WriteIntValue("sourceReplicas", SourceReplicas);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeRolloutDefaultsPreviewSpec>("spec", Spec);
             writer.WriteIntValue("targetMaxReplicas", TargetMaxReplicas);

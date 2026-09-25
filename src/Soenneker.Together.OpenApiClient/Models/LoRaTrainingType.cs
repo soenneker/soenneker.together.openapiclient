@@ -21,7 +21,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public double? LoraDropout { get; set; }
         /// <summary>Rank of the LoRA adapter matrices.</summary>
         public int? LoraR { get; set; }
-        /// <summary>Comma-separated LoRA target modules. Use `all-linear` for model defaults; MoE expert modules (`w_up`, `w_gate`, `w_down`) can be combined with attention modules on compatible models. Fine-tunes that target any expert module produce adapter-only output.</summary>
+        /// <summary>Comma-separated LoRA target modules. Use `all-linear` for model defaults; MoE expert modules (`w_up`, `w_gate`, `w_down`) can be combined with attention modules on compatible models. Fine-tuning jobs that target expert modules produce adapter-only output unless the selected model supports merged expert LoRA output.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? LoraTrainableModules { get; set; }

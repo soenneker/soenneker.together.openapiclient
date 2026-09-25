@@ -81,7 +81,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionMetadata Metadata { get; set; }
 #endif
-        /// <summary>Model resource this session is attached to. The session runs on that resource&apos;s GPU pods.</summary>
+        /// <summary>ID of the model resource used by this training session.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ModelResourcesId { get; set; }
@@ -89,7 +89,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string ModelResourcesId { get; set; }
 #endif
-        /// <summary>Session-scoped policy and weight versions. Comparable to `policy_segments[].version` on sample results. Resets if the session is resumed or its training runtime restarts.</summary>
+        /// <summary>Policy and weight versions for this training session. Compare these with `policy_segments[].version` on sample results from the same session. Versions may reset after session recovery or resume.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Together.OpenApiClient.Models.RlSessionPolicyState? PolicyState { get; set; }
