@@ -96,6 +96,14 @@ namespace Soenneker.Together.OpenApiClient.Models
         public double? Memory { get; set; }
         /// <summary>MinReplicas is the minimum number of replicas to run for this deployment</summary>
         public int? MinReplicas { get; set; }
+        /// <summary>Model weights mounted into this deployment, including the pinned revisions.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.Together.OpenApiClient.Models.ModelMount>? ModelMounts { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.Together.OpenApiClient.Models.ModelMount> ModelMounts { get; set; }
+#endif
         /// <summary>Name is the name of the deployment</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -176,6 +184,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "max_replicas", n => { MaxReplicas = n.GetIntValue(); } },
                 { "memory", n => { Memory = n.GetDoubleValue(); } },
                 { "min_replicas", n => { MinReplicas = n.GetIntValue(); } },
+                { "model_mounts", n => { ModelMounts = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.ModelMount>(global::Soenneker.Together.OpenApiClient.Models.ModelMount.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "object", n => { Object = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItemObject>(); } },
                 { "port", n => { Port = n.GetIntValue(); } },
@@ -212,6 +221,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteIntValue("max_replicas", MaxReplicas);
             writer.WriteDoubleValue("memory", Memory);
             writer.WriteIntValue("min_replicas", MinReplicas);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.ModelMount>("model_mounts", ModelMounts);
             writer.WriteStringValue("name", Name);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItemObject>("object", Object);
             writer.WriteIntValue("port", Port);

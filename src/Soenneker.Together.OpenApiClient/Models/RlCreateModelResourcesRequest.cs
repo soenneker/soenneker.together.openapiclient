@@ -23,6 +23,14 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string BaseModel { get; set; }
 #endif
+        /// <summary>Model in this project&apos;s model registry whose weights the resource trains in place of the base model&apos;s own. It must be a full-weight model.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? BaseWeightsRef { get; set; }
+#nullable restore
+#else
+        public string BaseWeightsRef { get; set; }
+#endif
         /// <summary>Compute layout to provision for a model resource</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -68,6 +76,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "base_model", n => { BaseModel = n.GetStringValue(); } },
+                { "base_weights_ref", n => { BaseWeightsRef = n.GetStringValue(); } },
                 { "compute_config", n => { ComputeConfig = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlComputeConfigCreateRequest>(global::Soenneker.Together.OpenApiClient.Models.RlComputeConfigCreateRequest.CreateFromDiscriminatorValue); } },
                 { "lora_enabled", n => { LoraEnabled = n.GetBoolValue(); } },
                 { "optimizer_config", n => { OptimizerConfig = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlOptimizerConfig>(global::Soenneker.Together.OpenApiClient.Models.RlOptimizerConfig.CreateFromDiscriminatorValue); } },
@@ -81,6 +90,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("base_model", BaseModel);
+            writer.WriteStringValue("base_weights_ref", BaseWeightsRef);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlComputeConfigCreateRequest>("compute_config", ComputeConfig);
             writer.WriteBoolValue("lora_enabled", LoraEnabled);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlOptimizerConfig>("optimizer_config", OptimizerConfig);

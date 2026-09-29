@@ -23,6 +23,14 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string BaseModel { get; set; }
 #endif
+        /// <summary>Model-registry model whose weights the resource trains in place of the base model&apos;s own, pinned to the revision resolved when the resource was created. Absent when the resource trains the base model&apos;s own weights.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? BaseWeightsRef { get; set; }
+#nullable restore
+#else
+        public string BaseWeightsRef { get; set; }
+#endif
         /// <summary>Compute layout for a model resource</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -97,6 +105,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "base_model", n => { BaseModel = n.GetStringValue(); } },
+                { "base_weights_ref", n => { BaseWeightsRef = n.GetStringValue(); } },
                 { "compute_config", n => { ComputeConfig = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlComputeConfig>(global::Soenneker.Together.OpenApiClient.Models.RlComputeConfig.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetStringValue(); } },
@@ -116,6 +125,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("base_model", BaseModel);
+            writer.WriteStringValue("base_weights_ref", BaseWeightsRef);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlComputeConfig>("compute_config", ComputeConfig);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteStringValue("created_by", CreatedBy);

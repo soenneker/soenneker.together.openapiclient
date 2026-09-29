@@ -84,6 +84,14 @@ namespace Soenneker.Together.OpenApiClient.Models
         public double? Memory { get; set; }
         /// <summary>MinReplicas is the minimum number of container instances to run. Defaults to 1 if not specified</summary>
         public int? MinReplicas { get; set; }
+        /// <summary>Model weights to preload from Together&apos;s model registry into the container. At most one mount is supported, and it cannot be used with volumes.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.Together.OpenApiClient.Models.ModelMount>? ModelMounts { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.Together.OpenApiClient.Models.ModelMount> ModelMounts { get; set; }
+#endif
         /// <summary>Name is the unique identifier for your deployment. Must contain lowercase letters, numbers, or hyphens, start with a lowercase letter or number, and be 4-63 characters. It cannot be changed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -145,6 +153,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "max_replicas", n => { MaxReplicas = n.GetIntValue(); } },
                 { "memory", n => { Memory = n.GetDoubleValue(); } },
                 { "min_replicas", n => { MinReplicas = n.GetIntValue(); } },
+                { "model_mounts", n => { ModelMounts = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.ModelMount>(global::Soenneker.Together.OpenApiClient.Models.ModelMount.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "port", n => { Port = n.GetIntValue(); } },
                 { "storage", n => { Storage = n.GetIntValue(); } },
@@ -173,6 +182,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteIntValue("max_replicas", MaxReplicas);
             writer.WriteDoubleValue("memory", Memory);
             writer.WriteIntValue("min_replicas", MinReplicas);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.ModelMount>("model_mounts", ModelMounts);
             writer.WriteStringValue("name", Name);
             writer.WriteIntValue("port", Port);
             writer.WriteIntValue("storage", Storage);

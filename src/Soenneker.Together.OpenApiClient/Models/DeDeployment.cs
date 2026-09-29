@@ -79,6 +79,14 @@ namespace Soenneker.Together.OpenApiClient.Models
 #endif
         /// <summary>Minutes without an inference request before the deployment stops automatically. Omitted or 0 means automatic stopping is disabled.</summary>
         public int? InactiveTimeout { get; set; }
+        /// <summary>Maximum number of inference requests that may be in flight to a single replica. If omitted, the platform uses one less than the config&apos;s per-replica concurrency limit to reserve a health-check slot. Values above that maximum are reduced on create and update; 0 means unlimited when the config limit is 1 or less. Changes take effect without restarting replicas.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? MaxConcurrentRequestsPerReplica { get; set; }
+#nullable restore
+#else
+        public string MaxConcurrentRequestsPerReplica { get; set; }
+#endif
         /// <summary>Pinned model resource in the form `projects/{projectId}/models/{modelId}/revisions/{revisionId}`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -207,6 +215,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "hardware", n => { Hardware = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "inactiveTimeout", n => { InactiveTimeout = n.GetIntValue(); } },
+                { "maxConcurrentRequestsPerReplica", n => { MaxConcurrentRequestsPerReplica = n.GetStringValue(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
                 { "modelId", n => { ModelId = n.GetStringValue(); } },
                 { "modelRevisionId", n => { ModelRevisionId = n.GetStringValue(); } },
@@ -235,6 +244,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteStringValue("endpointId", EndpointId);
             writer.WriteStringValue("etag", Etag);
             writer.WriteIntValue("inactiveTimeout", InactiveTimeout);
+            writer.WriteStringValue("maxConcurrentRequestsPerReplica", MaxConcurrentRequestsPerReplica);
             writer.WriteStringValue("model", Model);
             writer.WriteStringValue("modelId", ModelId);
             writer.WriteStringValue("modelRevisionId", ModelRevisionId);

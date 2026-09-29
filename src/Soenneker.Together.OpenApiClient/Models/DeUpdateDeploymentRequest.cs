@@ -33,6 +33,14 @@ namespace Soenneker.Together.OpenApiClient.Models
 #endif
         /// <summary>Updated inactive timeout in minutes. Use 0 to disable automatic stopping; otherwise accepted values are 30 through 1440.</summary>
         public int? InactiveTimeout { get; set; }
+        /// <summary>Updated maximum number of inference requests that may be in flight to a single replica. Values above the deployment config&apos;s per-replica concurrency limit minus one are reduced on update; 0 means unlimited when the config limit is 1 or less. Changes take effect without restarting replicas.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? MaxConcurrentRequestsPerReplica { get; set; }
+#nullable restore
+#else
+        public string MaxConcurrentRequestsPerReplica { get; set; }
+#endif
         /// <summary>Updated endpoint string.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -69,6 +77,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "autoscaling", n => { Autoscaling = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeUpdateDeploymentRequestAutoscaling>(global::Soenneker.Together.OpenApiClient.Models.DeUpdateDeploymentRequestAutoscaling.CreateFromDiscriminatorValue); } },
                 { "etag", n => { Etag = n.GetStringValue(); } },
                 { "inactiveTimeout", n => { InactiveTimeout = n.GetIntValue(); } },
+                { "maxConcurrentRequestsPerReplica", n => { MaxConcurrentRequestsPerReplica = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
             };
         }
@@ -82,6 +91,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeUpdateDeploymentRequestAutoscaling>("autoscaling", Autoscaling);
             writer.WriteStringValue("etag", Etag);
             writer.WriteIntValue("inactiveTimeout", InactiveTimeout);
+            writer.WriteStringValue("maxConcurrentRequestsPerReplica", MaxConcurrentRequestsPerReplica);
             writer.WriteStringValue("name", Name);
             writer.WriteAdditionalData(AdditionalData);
         }
