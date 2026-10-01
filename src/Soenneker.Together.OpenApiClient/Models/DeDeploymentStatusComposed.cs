@@ -15,6 +15,14 @@ namespace Soenneker.Together.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Status totals broken down by dimension. Omitted when the breakdown cannot be determined.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Together.OpenApiClient.Models.DeDeploymentStatusDetails? Details { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Together.OpenApiClient.Models.DeDeploymentStatusDetails Details { get; set; }
+#endif
         /// <summary>Human-readable explanation of the current state.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -54,6 +62,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "details", n => { Details = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeDeploymentStatusDetails>(global::Soenneker.Together.OpenApiClient.Models.DeDeploymentStatusDetails.CreateFromDiscriminatorValue); } },
                 { "message", n => { Message = n.GetStringValue(); } },
                 { "readyReplicas", n => { ReadyReplicas = n.GetIntValue(); } },
                 { "scheduledReplicas", n => { ScheduledReplicas = n.GetIntValue(); } },
@@ -67,6 +76,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeDeploymentStatusDetails>("details", Details);
             writer.WriteStringValue("message", Message);
             writer.WriteIntValue("readyReplicas", ReadyReplicas);
             writer.WriteIntValue("scheduledReplicas", ScheduledReplicas);

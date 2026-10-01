@@ -7,10 +7,11 @@ using System.IO;
 using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
+    /// <summary>
+    /// Content currently available on a volume version.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class VolumeContent : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -21,6 +22,14 @@ namespace Soenneker.Together.OpenApiClient.Models
 #nullable restore
 #else
         public List<global::Soenneker.Together.OpenApiClient.Models.FileInfo> Files { get; set; }
+#endif
+        /// <summary>External source Together copied into this volume version.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Together.OpenApiClient.Models.VolumeOrigin? Origin { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Together.OpenApiClient.Models.VolumeOrigin Origin { get; set; }
 #endif
         /// <summary>SourcePrefix is the file path prefix for the content to be preloaded into the volume</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -58,6 +67,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "files", n => { Files = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.FileInfo>(global::Soenneker.Together.OpenApiClient.Models.FileInfo.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "origin", n => { Origin = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.VolumeOrigin>(global::Soenneker.Together.OpenApiClient.Models.VolumeOrigin.CreateFromDiscriminatorValue); } },
                 { "source_prefix", n => { SourcePrefix = n.GetStringValue(); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.FilesType>(); } },
             };
@@ -70,6 +80,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.FileInfo>("files", Files);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.VolumeOrigin>("origin", Origin);
             writer.WriteStringValue("source_prefix", SourcePrefix);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.FilesType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);

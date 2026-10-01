@@ -4,6 +4,8 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.Together.OpenApiClient.Deployments.Item.Logs;
+using Soenneker.Together.OpenApiClient.Deployments.Item.Revisions;
+using Soenneker.Together.OpenApiClient.Deployments.Item.Rollback;
 using Soenneker.Together.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -22,6 +24,16 @@ namespace Soenneker.Together.OpenApiClient.Deployments.Item
         public global::Soenneker.Together.OpenApiClient.Deployments.Item.Logs.LogsRequestBuilder Logs
         {
             get => new global::Soenneker.Together.OpenApiClient.Deployments.Item.Logs.LogsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The revisions property</summary>
+        public global::Soenneker.Together.OpenApiClient.Deployments.Item.Revisions.RevisionsRequestBuilder Revisions
+        {
+            get => new global::Soenneker.Together.OpenApiClient.Deployments.Item.Revisions.RevisionsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The rollback property</summary>
+        public global::Soenneker.Together.OpenApiClient.Deployments.Item.Rollback.RollbackRequestBuilder Rollback
+        {
+            get => new global::Soenneker.Together.OpenApiClient.Deployments.Item.Rollback.RollbackRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Deployments.Item.DeploymentsItemRequestBuilder"/> and sets the default values.

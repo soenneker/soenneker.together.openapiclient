@@ -14,7 +14,7 @@ namespace Soenneker.Together.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The content property</summary>
+        /// <summary>Content currently available on a volume version.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Together.OpenApiClient.Models.VolumeContent? Content { get; set; }
@@ -63,6 +63,16 @@ namespace Soenneker.Together.OpenApiClient.Models
 #nullable restore
 #else
         public string Object { get; set; }
+#endif
+        /// <summary>Status of the current volume version.</summary>
+        public global::Soenneker.Together.OpenApiClient.Models.VolumeStatus? Status { get; set; }
+        /// <summary>Message explaining why the current volume version failed, when applicable.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? StatusMessage { get; set; }
+#nullable restore
+#else
+        public string StatusMessage { get; set; }
 #endif
         /// <summary>The type property</summary>
         public global::Soenneker.Together.OpenApiClient.Models.VolumeType? Type { get; set; }
@@ -114,6 +124,8 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "mounted_by", n => { MountedBy = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "object", n => { Object = n.GetStringValue(); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.VolumeStatus>(); } },
+                { "status_message", n => { StatusMessage = n.GetStringValue(); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.VolumeType>(); } },
                 { "updated_at", n => { UpdatedAt = n.GetStringValue(); } },
                 { "version_history", n => { VersionHistory = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.VolumeResponseItemVersionHistoryProperty>(global::Soenneker.Together.OpenApiClient.Models.VolumeResponseItemVersionHistoryProperty.CreateFromDiscriminatorValue); } },
@@ -133,6 +145,8 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("mounted_by", MountedBy);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("object", Object);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.VolumeStatus>("status", Status);
+            writer.WriteStringValue("status_message", StatusMessage);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.VolumeType>("type", Type);
             writer.WriteStringValue("updated_at", UpdatedAt);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.VolumeResponseItemVersionHistoryProperty>("version_history", VersionHistory);

@@ -5365,6 +5365,231 @@
         ]
       }
     },
+    "/deployments/{id}/revisions": {
+      "get": {
+        "tags": [
+          "Deployments"
+        ],
+        "summary": "List revision history events of a deployment",
+        "description": "Returns the revision history of the deployment, in descending order. Defaults to the most recent events.\nOnly the 200 most recent events are retained per deployment; paginating past that returns an empty list.",
+        "operationId": "GetDeploymentsByIdRevisions",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Deployment ID or name."
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "description": "Maximum number of events to return (default 10, max 100)."
+            }
+          },
+          {
+            "name": "before",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "description": "Return only events with event_number strictly less than this value for pagination."
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Revision history",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RevisionEventListResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid pagination parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetDeploymentsByIdRevisions400ResponseSchema"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Deployment not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetDeploymentsByIdRevisions404ResponseSchema"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetDeploymentsByIdRevisions500ResponseSchema"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/deployments/{id}/revisions/{revisionIdentifier}": {
+      "get": {
+        "tags": [
+          "Deployments"
+        ],
+        "summary": "Get the full configuration of a specific revision",
+        "description": "Returns the deployment configuration defined by the specified revision.\nOnly the 50 most recent revisions per deployment retain their configuration; older revisions return 404 even while they still appear in the revision history.\nThe deployment\u0027s currently active revision is always available, regardless of age.",
+        "operationId": "GetDeploymentsByIdRevisionsByRevisionIdentifier",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Deployment ID or name."
+            }
+          },
+          {
+            "name": "revisionIdentifier",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Revision number or revision ID."
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Configuration of the specified revision",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RevisionDetailResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid revision identifier",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetDeploymentsByIdRevisionsByRevisionIdentifier400ResponseSchema"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Deployment not found, or revision not found / no longer retained",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetDeploymentsByIdRevisionsByRevisionIdentifier404ResponseSchema"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetDeploymentsByIdRevisionsByRevisionIdentifier500ResponseSchema"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/deployments/{id}/rollback": {
+      "post": {
+        "tags": [
+          "Deployments"
+        ],
+        "summary": "Roll back a deployment to a previous revision",
+        "description": "Re-applies the spec of a previous revision. Pods running the target revision will be retained. Other pods will be drained and restarted with the target revision.\nOnly the 50 most recent revisions per deployment can be rolled back to; older targets return 404.",
+        "operationId": "PostDeploymentsByIdRollback",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Deployment ID or name."
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Revision identifier (revision number or UUID)",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RollbackDeploymentRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Deployment after rollback",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeploymentResponseItem"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostDeploymentsByIdRollback400ResponseSchema"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Deployment not found, or revision not found / no longer retained",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostDeploymentsByIdRollback404ResponseSchema"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostDeploymentsByIdRollback500ResponseSchema"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/deployments/secrets": {
       "get": {
         "tags": [
@@ -7270,6 +7495,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/FinetuneResponseTruncated"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "The fine-tuning service is shutting down and cannot accept new jobs.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
                 }
               }
             }
@@ -14229,7 +14464,7 @@
           },
           "desiredReplicas": {
             "type": "integer",
-            "description": "Number of replicas the autoscaler currently wants across all regions.",
+            "description": "Number of replicas the autoscaler currently wants across all regions. Not settable on\nany request; steer it through \u0060autoscaling.minReplicas\u0060 and \u0060autoscaling.maxReplicas\u0060.",
             "readOnly": true
           },
           "status": {
@@ -16626,9 +16861,51 @@
           "scheduledReplicas": {
             "type": "integer",
             "description": "Replicas the scheduler has placed on clusters."
+          },
+          "details": {
+            "$ref": "#/components/schemas/DeDeploymentStatusDetails"
           }
         },
         "description": "Current status of a deployment, derived at read time from internal state."
+      },
+      "DeStatusDetails": {
+        "required": [
+          "region"
+        ],
+        "type": "object",
+        "properties": {
+          "region": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DeRegionStatus"
+            },
+            "description": "Regions where the deployment is actually scheduled or serving replicas, sorted by region."
+          }
+        },
+        "description": "Deployment status broken down by each supported dimension."
+      },
+      "DeRegionStatus": {
+        "required": [
+          "region",
+          "scheduledReplicas",
+          "readyReplicas"
+        ],
+        "type": "object",
+        "properties": {
+          "region": {
+            "type": "string",
+            "description": "Region name using the same vocabulary accepted by inline placement regions."
+          },
+          "scheduledReplicas": {
+            "type": "integer",
+            "description": "Replicas the scheduler has placed in this region."
+          },
+          "readyReplicas": {
+            "type": "integer",
+            "description": "Replicas serving traffic in this region."
+          }
+        },
+        "description": "Realized scheduled and ready replica counts for one deployment region."
       },
       "DeRuntimeInfo": {
         "type": "object",
@@ -26410,6 +26687,202 @@
           }
         }
       },
+      "RevisionDetailResponse": {
+        "required": [
+          "object",
+          "revision_id",
+          "image",
+          "min_replicas",
+          "max_replicas",
+          "port",
+          "protocol",
+          "capacity_type",
+          "command",
+          "args",
+          "environment_variables",
+          "volumes",
+          "gpu_type",
+          "gpu_count",
+          "cpu",
+          "memory",
+          "storage",
+          "health_check_path",
+          "created_at"
+        ],
+        "type": "object",
+        "properties": {
+          "object": {
+            "$ref": "#/components/schemas/RevisionDetailResponseObject"
+          },
+          "revision_id": {
+            "type": "string",
+            "description": "Unique revision identifier."
+          },
+          "image": {
+            "type": "string",
+            "description": "Container image used by this revision."
+          },
+          "min_replicas": {
+            "type": "integer",
+            "description": "Minimum number of replicas configured for this revision."
+          },
+          "max_replicas": {
+            "type": "integer",
+            "description": "Maximum number of replicas configured for this revision."
+          },
+          "port": {
+            "type": "integer",
+            "description": "Container port exposed by this revision."
+          },
+          "protocol": {
+            "type": "string",
+            "description": "Network protocol served by the deployment revision."
+          },
+          "capacity_type": {
+            "$ref": "#/components/schemas/RevisionDetailResponseCapacityType"
+          },
+          "command": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Entrypoint command run by the container."
+          },
+          "args": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Arguments passed to the container command."
+          },
+          "environment_variables": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EnvironmentVariable"
+            },
+            "description": "Environment variables configured on this revision."
+          },
+          "volumes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/VolumeMount"
+            },
+            "description": "Volume mounts attached to this revision."
+          },
+          "gpu_type": {
+            "type": "string",
+            "description": "GPU hardware type configured for this revision."
+          },
+          "gpu_count": {
+            "type": "integer",
+            "description": "Number of GPUs allocated to each replica."
+          },
+          "cpu": {
+            "type": "number",
+            "description": "CPU cores allocated to each replica."
+          },
+          "memory": {
+            "type": "number",
+            "description": "Memory allocated to each replica in GiB."
+          },
+          "storage": {
+            "type": "integer",
+            "description": "Ephemeral storage allocated to each replica."
+          },
+          "health_check_path": {
+            "type": "string",
+            "description": "HTTP path used for health checks."
+          },
+          "autoscaling": {
+            "$ref": "#/components/schemas/RevisionDetailResponseAutoscaling"
+          },
+          "termination_grace_period_seconds": {
+            "type": "integer",
+            "description": "Seconds to wait for graceful shutdown before forcefully terminating a replica."
+          },
+          "created_at": {
+            "type": "string",
+            "description": "Time when this revision was created.",
+            "format": "date-time"
+          }
+        },
+        "description": "Deployment configuration captured for one retained revision."
+      },
+      "RevisionEventItem": {
+        "required": [
+          "object",
+          "event_number",
+          "revision_id",
+          "revision_number",
+          "image",
+          "action",
+          "activated_at"
+        ],
+        "type": "object",
+        "properties": {
+          "object": {
+            "$ref": "#/components/schemas/RevisionEventItemObject"
+          },
+          "event_number": {
+            "type": "integer",
+            "description": "Monotonic event number in the deployment\u0027s revision history."
+          },
+          "revision_id": {
+            "type": "string",
+            "description": "Revision ID activated by this event."
+          },
+          "revision_number": {
+            "type": "integer",
+            "description": "Human-readable per-deployment revision counter."
+          },
+          "image": {
+            "type": "string",
+            "description": "Container image of the revision activated by this event."
+          },
+          "action": {
+            "$ref": "#/components/schemas/RevisionEventItemAction"
+          },
+          "activated_at": {
+            "type": "string",
+            "description": "Time when this revision became active.",
+            "format": "date-time"
+          }
+        },
+        "description": "One entry in a deployment\u0027s revision history."
+      },
+      "RevisionEventListResponse": {
+        "required": [
+          "data",
+          "object"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RevisionEventItem"
+            },
+            "description": "Revision events, newest first."
+          },
+          "object": {
+            "$ref": "#/components/schemas/RevisionEventListResponseObject"
+          }
+        },
+        "description": "Revision history events for a deployment, newest first."
+      },
+      "RollbackDeploymentRequest": {
+        "required": [
+          "revision_identifier"
+        ],
+        "type": "object",
+        "properties": {
+          "revision_identifier": {
+            "type": "string",
+            "description": "Revision number or revision ID to roll back to."
+          }
+        },
+        "description": "Request body identifying the deployment revision to roll back to."
+      },
       "DeploymentStatus": {
         "enum": [
           "Updating",
@@ -26833,6 +27306,7 @@
         "type": "object",
         "properties": {
           "content": {
+            "description": "Content currently available on a volume version.",
             "$ref": "#/components/schemas/VolumeContent"
           },
           "created_at": {
@@ -26863,6 +27337,14 @@
             "type": "string",
             "description": "Object is the type identifier for this response (always \u0022volume\u0022)"
           },
+          "status": {
+            "description": "Status of the current volume version.",
+            "$ref": "#/components/schemas/VolumeStatus"
+          },
+          "status_message": {
+            "type": "string",
+            "description": "Message explaining why the current volume version failed, when applicable."
+          },
           "type": {
             "$ref": "#/components/schemas/VolumeType"
           },
@@ -26879,7 +27361,7 @@
         "type": "object",
         "properties": {
           "content": {
-            "description": "Content specifies the new content to preload to this volume.",
+            "description": "Content configuration used to create this version.",
             "$ref": "#/components/schemas/VolumeContentRequest"
           },
           "mounted_by": {
@@ -26887,19 +27369,34 @@
             "type": "array",
             "items": {
               "type": "string"
-            }
+            },
+            "description": "Deployment IDs currently mounting this version."
+          },
+          "status": {
+            "description": "Status of this volume version.",
+            "$ref": "#/components/schemas/VolumeStatus"
+          },
+          "status_message": {
+            "type": "string",
+            "description": "Message explaining why this volume version failed, when applicable."
           },
           "version": {
-            "type": "integer"
+            "type": "integer",
+            "description": "Numeric version identifier for this volume content."
           }
-        }
+        },
+        "description": "Metadata for a previous volume version."
       },
       "VolumeContentRequest": {
         "type": "object",
         "properties": {
+          "origin": {
+            "description": "External source Together copies into a new volume version; mutually exclusive with source_prefix.",
+            "$ref": "#/components/schemas/VolumeOrigin"
+          },
           "source_prefix": {
             "type": "string",
-            "description": "SourcePrefix is the file path prefix for the content to be preloaded into the volume",
+            "description": "SourcePrefix is the file path prefix for the content to be preloaded into the volume. Mutually exclusive with Origin",
             "example": "models/"
           },
           "type": {
@@ -26919,6 +27416,10 @@
             },
             "description": "Files is the list of files to preload into the volume, if the volume content type is \u0022files\u0022."
           },
+          "origin": {
+            "description": "External source Together copied into this volume version.",
+            "$ref": "#/components/schemas/VolumeOrigin"
+          },
           "source_prefix": {
             "type": "string",
             "description": "SourcePrefix is the file path prefix for the content to be preloaded into the volume",
@@ -26927,6 +27428,79 @@
           "type": {
             "$ref": "#/components/schemas/FilesType"
           }
+        },
+        "description": "Content currently available on a volume version."
+      },
+      "S3Origin": {
+        "required": [
+          "role_arn",
+          "uri"
+        ],
+        "type": "object",
+        "properties": {
+          "role_arn": {
+            "type": "string",
+            "description": "IAM role ARN Together assumes to read the S3 bucket or prefix.",
+            "example": "arn:aws:iam::123456789012:role/together-volumes"
+          },
+          "uri": {
+            "type": "string",
+            "description": "S3 bucket or prefix to copy into the volume.",
+            "example": "s3://my-bucket/models/custom-weights"
+          }
+        },
+        "description": "S3 source configuration for volume sync."
+      },
+      "VolumeOrigin": {
+        "required": [
+          "s3"
+        ],
+        "type": "object",
+        "properties": {
+          "s3": {
+            "description": "S3 bucket or prefix source for the volume sync.",
+            "$ref": "#/components/schemas/S3Origin"
+          }
+        },
+        "description": "External source Together copies into a new volume version."
+      },
+      "VolumeStatus": {
+        "enum": [
+          "ready",
+          "pending",
+          "syncing",
+          "failed"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Status of a volume version. Only ready versions can be mounted.",
+        "x-enum-varnames": [
+          "VolumeStatusReady",
+          "VolumeStatusPending",
+          "VolumeStatusSyncing",
+          "VolumeStatusFailed"
+        ],
+        "x-ms-enum": {
+          "name": "VolumeStatus",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "ready",
+              "name": "Ready"
+            },
+            {
+              "value": "pending",
+              "name": "Pending"
+            },
+            {
+              "value": "syncing",
+              "name": "Syncing"
+            },
+            {
+              "value": "failed",
+              "name": "Failed"
+            }
+          ]
         }
       },
       "FileInfo": {
@@ -27612,6 +28186,9 @@
           "scheduledReplicas": {
             "type": "integer",
             "description": "Replicas the scheduler has placed on clusters."
+          },
+          "details": {
+            "$ref": "#/components/schemas/DeDeploymentStatusDetails"
           }
         },
         "description": "Current lifecycle state and observed replica counts.",
@@ -28101,6 +28678,22 @@
           }
         },
         "description": "Rate limits applied when scaling down. Stabilization remains controlled by \u0060scaleDownWindow\u0060.\nOmitted fields are preserved on update; a non-empty policy list replaces the previous list.\nTo clear policies or reset the selector, explicitly mask that leaf field. Empty lists in\nparent-only updates are treated as omitted."
+      },
+      "DeDeploymentStatusDetails": {
+        "required": [
+          "region"
+        ],
+        "type": "object",
+        "properties": {
+          "region": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DeRegionStatus"
+            },
+            "description": "Regions where the deployment is actually scheduled or serving replicas, sorted by region."
+          }
+        },
+        "description": "Status totals broken down by dimension. Omitted when the breakdown cannot be determined."
       },
       "DeEndpointMetricsTimeRange": {
         "type": "object",
@@ -29424,9 +30017,13 @@
       "CreateVolumeRequestContent": {
         "type": "object",
         "properties": {
+          "origin": {
+            "description": "External source Together copies into a new volume version; mutually exclusive with source_prefix.",
+            "$ref": "#/components/schemas/VolumeOrigin"
+          },
           "source_prefix": {
             "type": "string",
-            "description": "SourcePrefix is the file path prefix for the content to be preloaded into the volume",
+            "description": "SourcePrefix is the file path prefix for the content to be preloaded into the volume. Mutually exclusive with Origin",
             "example": "models/"
           },
           "type": {
@@ -29502,6 +30099,42 @@
           "DeploymentStatusScaledToZero"
         ]
       },
+      "RevisionDetailResponseAutoscaling": {
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/HttpAutoscalingConfig"
+          },
+          {
+            "$ref": "#/components/schemas/QueueAutoscalingConfig"
+          },
+          {
+            "$ref": "#/components/schemas/CustomMetricAutoscalingConfig"
+          }
+        ],
+        "properties": {
+          "target": {
+            "type": "number",
+            "description": "Target is the threshold value. Default: 100 for HTTPTotalRequests, 500 (ms) for HTTPAvgRequestDuration",
+            "example": 100
+          },
+          "time_interval_minutes": {
+            "type": "integer",
+            "description": "TimeIntervalMinutes is the rate window in minutes. Default: 10",
+            "example": 10
+          },
+          "model": {
+            "type": "string",
+            "description": "Model overrides the model name for queue status lookup. Defaults to the deployment app name"
+          },
+          "custom_metric_name": {
+            "type": "string",
+            "description": "CustomMetricName is the Prometheus metric name. Must match [a-zA-Z_:][a-zA-Z0-9_:]*",
+            "example": "my_custom_metric"
+          }
+        },
+        "description": "Autoscaling configuration captured for this revision."
+      },
       "UpdateDeploymentRequestAutoscaling": {
         "type": "object",
         "oneOf": [
@@ -29541,9 +30174,13 @@
       "UpdateVolumeRequestContent": {
         "type": "object",
         "properties": {
+          "origin": {
+            "description": "External source Together copies into a new volume version; mutually exclusive with source_prefix.",
+            "$ref": "#/components/schemas/VolumeOrigin"
+          },
           "source_prefix": {
             "type": "string",
-            "description": "SourcePrefix is the file path prefix for the content to be preloaded into the volume",
+            "description": "SourcePrefix is the file path prefix for the content to be preloaded into the volume. Mutually exclusive with Origin",
             "example": "models/"
           },
           "type": {
@@ -31116,6 +31753,33 @@
       "GetDeploymentsByIdLogs500Response": {
         "type": "object"
       },
+      "GetDeploymentsByIdRevisions400Response": {
+        "type": "object"
+      },
+      "GetDeploymentsByIdRevisions404Response": {
+        "type": "object"
+      },
+      "GetDeploymentsByIdRevisions500Response": {
+        "type": "object"
+      },
+      "GetDeploymentsByIdRevisionsByRevisionIdentifier400Response": {
+        "type": "object"
+      },
+      "GetDeploymentsByIdRevisionsByRevisionIdentifier404Response": {
+        "type": "object"
+      },
+      "GetDeploymentsByIdRevisionsByRevisionIdentifier500Response": {
+        "type": "object"
+      },
+      "PostDeploymentsByIdRollback400Response": {
+        "type": "object"
+      },
+      "PostDeploymentsByIdRollback404Response": {
+        "type": "object"
+      },
+      "PostDeploymentsByIdRollback500Response": {
+        "type": "object"
+      },
       "GetDeploymentsSecrets500Response": {
         "type": "object"
       },
@@ -31321,7 +31985,7 @@
           },
           "file_name": {
             "type": "string",
-            "description": "The name of the file being uploaded",
+            "description": "The name of the file being uploaded. Must be valid UTF-8, must not contain null characters, and must not exceed 128 bytes.",
             "example": "dataset.csv"
           },
           "file_type": {
@@ -32193,6 +32857,33 @@
         "type": "object"
       },
       "GetDeploymentsByIdLogs500ResponseSchema": {
+        "type": "object"
+      },
+      "GetDeploymentsByIdRevisions400ResponseSchema": {
+        "type": "object"
+      },
+      "GetDeploymentsByIdRevisions404ResponseSchema": {
+        "type": "object"
+      },
+      "GetDeploymentsByIdRevisions500ResponseSchema": {
+        "type": "object"
+      },
+      "GetDeploymentsByIdRevisionsByRevisionIdentifier400ResponseSchema": {
+        "type": "object"
+      },
+      "GetDeploymentsByIdRevisionsByRevisionIdentifier404ResponseSchema": {
+        "type": "object"
+      },
+      "GetDeploymentsByIdRevisionsByRevisionIdentifier500ResponseSchema": {
+        "type": "object"
+      },
+      "PostDeploymentsByIdRollback400ResponseSchema": {
+        "type": "object"
+      },
+      "PostDeploymentsByIdRollback404ResponseSchema": {
+        "type": "object"
+      },
+      "PostDeploymentsByIdRollback500ResponseSchema": {
         "type": "object"
       },
       "GetDeploymentsSecrets500ResponseSchema": {
@@ -33425,6 +34116,60 @@
           "$ref": "#/components/schemas/ReplicaEvent"
         },
         "description": "ReplicaEvents is a mapping of replica names or IDs to their status events"
+      },
+      "RevisionDetailResponseObject": {
+        "const": null,
+        "enum": [
+          "revision"
+        ],
+        "type": "object",
+        "description": "The object type, which is always \u0060revision\u0060.",
+        "x-ms-enum": {
+          "name": "RevisionDetailResponseObject",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "revision",
+              "name": "Revision"
+            }
+          ]
+        }
+      },
+      "RevisionEventItemObject": {
+        "const": null,
+        "enum": [
+          "revision_event"
+        ],
+        "type": "object",
+        "description": "The object type, which is always \u0060revision_event\u0060.",
+        "x-ms-enum": {
+          "name": "RevisionEventItemObject",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "revision_event",
+              "name": "RevisionEvent"
+            }
+          ]
+        }
+      },
+      "RevisionEventListResponseObject": {
+        "const": null,
+        "enum": [
+          "list"
+        ],
+        "type": "object",
+        "description": "The object type, which is always \u0060list\u0060.",
+        "x-ms-enum": {
+          "name": "RevisionEventListResponseObject",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "list",
+              "name": "List"
+            }
+          ]
+        }
       },
       "ListSecretsResponseObject": {
         "const": null,
@@ -37358,6 +38103,62 @@
             {
               "value": "b200-192gb",
               "name": "B200192Gb"
+            }
+          ]
+        }
+      },
+      "RevisionDetailResponseCapacityType": {
+        "enum": [
+          "stable",
+          "preemptible"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Capacity behavior for replicas above reserved capacity.",
+        "x-ms-enum": {
+          "name": "RevisionDetailResponseCapacityType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "stable",
+              "name": "Stable"
+            },
+            {
+              "value": "preemptible",
+              "name": "Preemptible"
+            }
+          ]
+        }
+      },
+      "RevisionEventItemAction": {
+        "enum": [
+          "create",
+          "update",
+          "system",
+          "rollback"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "How this revision became active.",
+        "x-ms-enum": {
+          "name": "RevisionEventItemAction",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "create",
+              "name": "Create"
+            },
+            {
+              "value": "update",
+              "name": "Update"
+            },
+            {
+              "value": "system",
+              "name": "System"
+            },
+            {
+              "value": "rollback",
+              "name": "Rollback"
             }
           ]
         }

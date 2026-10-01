@@ -41,7 +41,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #endif
         /// <summary>Timestamp when the deployment was created.</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
-        /// <summary>Number of replicas the autoscaler currently wants across all regions.</summary>
+        /// <summary>Number of replicas the autoscaler currently wants across all regions. Not settable onany request; steer it through `autoscaling.minReplicas` and `autoscaling.maxReplicas`.</summary>
         public int? DesiredReplicas { get; private set; }
         /// <summary>ID of the endpoint that contains the deployment.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
