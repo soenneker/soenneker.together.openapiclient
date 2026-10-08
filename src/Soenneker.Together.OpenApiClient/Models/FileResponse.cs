@@ -42,11 +42,11 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Deprecated. Whether file has been fully uploaded.</summary>
         [Obsolete("")]
         public bool? Processed { get; set; }
-        /// <summary>Lifecycle state of the file validation pipeline. Files fornon-`fine-tune` purposes skip validation.</summary>
+        /// <summary>Lifecycle state of the file validation pipeline. Files forpurposes that do not require validation skip validation.</summary>
         public global::Soenneker.Together.OpenApiClient.Models.FileProcessingStatus? ProcessingStatus { get; set; }
         /// <summary>The purpose of the file as it was uploaded.</summary>
         public global::Soenneker.Together.OpenApiClient.Models.FilePurpose? Purpose { get; set; }
-        /// <summary>Report produced by the file validation pipeline. Present oncevalidation has run; absent on files that bypassed validation(non-`fine-tune` purposes) or have not yet been validated.</summary>
+        /// <summary>Report produced by the file validation pipeline. Present oncevalidation has run; absent on files that bypassed validationor have not yet been validated.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Together.OpenApiClient.Models.FileValidationReport? ValidationReport { get; set; }

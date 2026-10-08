@@ -11,6 +11,10 @@ namespace Soenneker.Together.OpenApiClient.Models
         #pragma warning disable CS1591
         FineTune,
         #pragma warning restore CS1591
+        [EnumMember(Value = "calibration")]
+        #pragma warning disable CS1591
+        Calibration,
+        #pragma warning restore CS1591
         [EnumMember(Value = "eval")]
         #pragma warning disable CS1591
         Eval,

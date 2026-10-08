@@ -22,7 +22,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string DisplayName { get; set; }
 #endif
-        /// <summary>Whether to restore optimizer state and step from a training checkpoint. Omitted or true restores them; false loads weights only with a fresh optimizer and step 0. Not valid for inference or HuggingFace checkpoints, which have no optimizer state.</summary>
+        /// <summary>Whether to restore optimizer state and step from a training checkpoint. Omitted or true restores them; false loads weights only with a fresh optimizer and step 0. Not valid for inference checkpoints, which have no optimizer state.</summary>
         public bool? LoadOptimizer { get; set; }
         /// <summary>LoRA adapter configuration</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -56,14 +56,6 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string ResumeFromCheckpointId { get; set; }
 #endif
-        /// <summary>HuggingFace repo (or hf://) to resume model weights from. Accepts either a full model or a PEFT adapter directory. Mutually exclusive with resume_from_checkpoint_id.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? ResumeFromHfCheckpoint { get; set; }
-#nullable restore
-#else
-        public string ResumeFromHfCheckpoint { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlStartTrainingSessionRequest"/> and sets the default values.
         /// </summary>
@@ -95,7 +87,6 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionMetadata>(global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionMetadata.CreateFromDiscriminatorValue); } },
                 { "model_resources_id", n => { ModelResourcesId = n.GetStringValue(); } },
                 { "resume_from_checkpoint_id", n => { ResumeFromCheckpointId = n.GetStringValue(); } },
-                { "resume_from_hf_checkpoint", n => { ResumeFromHfCheckpoint = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -111,7 +102,6 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionMetadata>("metadata", Metadata);
             writer.WriteStringValue("model_resources_id", ModelResourcesId);
             writer.WriteStringValue("resume_from_checkpoint_id", ResumeFromCheckpointId);
-            writer.WriteStringValue("resume_from_hf_checkpoint", ResumeFromHfCheckpoint);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

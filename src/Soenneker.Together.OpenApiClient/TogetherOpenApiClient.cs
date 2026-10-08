@@ -31,6 +31,7 @@ using Soenneker.Together.OpenApiClient.Queue;
 using Soenneker.Together.OpenApiClient.Realtime;
 using Soenneker.Together.OpenApiClient.Rerank;
 using Soenneker.Together.OpenApiClient.Rl;
+using Soenneker.Together.OpenApiClient.Shaping;
 using Soenneker.Together.OpenApiClient.SupportedModels;
 using Soenneker.Together.OpenApiClient.Tci;
 using Soenneker.Together.OpenApiClient.Videos;
@@ -172,6 +173,11 @@ namespace Soenneker.Together.OpenApiClient
         public global::Soenneker.Together.OpenApiClient.Rl.RlRequestBuilder Rl
         {
             get => new global::Soenneker.Together.OpenApiClient.Rl.RlRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The shaping property</summary>
+        public global::Soenneker.Together.OpenApiClient.Shaping.ShapingRequestBuilder Shaping
+        {
+            get => new global::Soenneker.Together.OpenApiClient.Shaping.ShapingRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The supportedModels property</summary>
         public global::Soenneker.Together.OpenApiClient.SupportedModels.SupportedModelsRequestBuilder SupportedModels

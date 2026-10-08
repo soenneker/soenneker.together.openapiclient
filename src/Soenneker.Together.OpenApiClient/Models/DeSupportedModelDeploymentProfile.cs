@@ -13,6 +13,8 @@ namespace Soenneker.Together.OpenApiClient.Models
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DeSupportedModelDeploymentProfile : IAdditionalDataHolder, IParsable
     {
+        /// <summary>Adapter serving mode for deployments created from this profile; omitted when no certified config is pinned.</summary>
+        public global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelDeploymentProfileAdapterMode? AdapterMode { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Certified configuration revision identifier.</summary>
@@ -125,6 +127,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "adapterMode", n => { AdapterMode = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelDeploymentProfileAdapterMode>(); } },
                 { "certifiedConfigRevisionId", n => { CertifiedConfigRevisionId = n.GetStringValue(); } },
                 { "certifiedModelRevisionId", n => { CertifiedModelRevisionId = n.GetStringValue(); } },
                 { "config", n => { Config = n.GetStringValue(); } },
@@ -146,6 +149,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelDeploymentProfileAdapterMode>("adapterMode", AdapterMode);
             writer.WriteStringValue("certifiedConfigRevisionId", CertifiedConfigRevisionId);
             writer.WriteStringValue("certifiedModelRevisionId", CertifiedModelRevisionId);
             writer.WriteStringValue("config", Config);

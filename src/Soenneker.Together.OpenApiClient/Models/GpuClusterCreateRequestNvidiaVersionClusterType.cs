@@ -5,7 +5,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 {
     /// <summary>Type of cluster to create.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum GpuClusterCreateRequestClusterType
+    public enum GpuClusterCreateRequestNvidiaVersionClusterType
     {
         [EnumMember(Value = "KUBERNETES")]
         #pragma warning disable CS1591

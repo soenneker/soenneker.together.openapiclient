@@ -4814,6 +4814,13 @@
             }
           },
           {
+            "name": "adapterMode",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/SupportedModelsServiceListSupportedModelsAdapterModeParameter"
+            }
+          },
+          {
             "name": "limit",
             "in": "query",
             "schema": {
@@ -8335,6 +8342,414 @@
         ]
       }
     },
+    "/shaping": {
+      "get": {
+        "tags": [
+          "Shaping"
+        ],
+        "summary": "List shaping jobs",
+        "description": "List shaping jobs owned by the caller\u0027s project.",
+        "operationId": "ListShapingJobs",
+        "responses": {
+          "200": {
+            "description": "List of shaping jobs.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShapingJobsList"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid API key.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/shaping/prepare-for-fp4-inference": {
+      "post": {
+        "tags": [
+          "Shaping"
+        ],
+        "summary": "Prepare a fine-tuned model for FP4 inference",
+        "description": "Merges a fine-tuned adapter into its base model and prepares the result for FP4 inference. The adapter is resolved when the request is made, so a request naming a model that does not exist in the project, is not an adapter, was not produced by fine-tuning, has no base model to merge into, or uses an unsupported base model is rejected with 400 rather than accepted and failed later. The run is priced before it is created, and a project that cannot cover it is answered 402.\n",
+        "operationId": "CreateQuantizationJob",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QuantizationRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Quantization job created successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuantizationJob"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid API key.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "The project cannot cover the estimated price of the run.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The project is blocked and cannot start a run.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Preparing models for FP4 inference is not available.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/shaping/prepare-for-fp4-inference/estimate": {
+      "post": {
+        "tags": [
+          "Shaping"
+        ],
+        "summary": "Estimate FP4 preparation cost",
+        "description": "Reports the price and expected wall-clock time for preparing the named adapter without creating a job. The request body is the same as POST /shaping/prepare-for-fp4-inference, so a caller can price exactly the job it is about to submit.\n",
+        "operationId": "EstimateQuantizationJob",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QuantizationRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Estimate for the described job.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuantizationEstimate"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid API key.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Preparing models for FP4 inference is not available.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/shaping/{id}": {
+      "get": {
+        "tags": [
+          "Shaping"
+        ],
+        "summary": "Get shaping job",
+        "description": "Retrieve a shaping job owned by the caller\u0027s project.",
+        "operationId": "GetShapingJob",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "pattern": "^shp-quant-[a-f0-9-]\u002B$",
+              "type": "string",
+              "description": "Shaping job ID beginning with \u0060shp-quant-\u0060."
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Shaping job retrieved successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuantizationJob"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid API key.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Shaping job not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/shaping/{id}/cancel": {
+      "post": {
+        "tags": [
+          "Shaping"
+        ],
+        "summary": "Cancel shaping job",
+        "description": "Request cancellation of a shaping job owned by the caller\u0027s project.",
+        "operationId": "CancelShapingJob",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "pattern": "^shp-quant-[a-f0-9-]\u002B$",
+              "type": "string",
+              "description": "Shaping job ID beginning with \u0060shp-quant-\u0060."
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Cancellation requested successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuantizationJob"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid API key.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Shaping job not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/shaping/{id}/events": {
+      "get": {
+        "tags": [
+          "Shaping"
+        ],
+        "summary": "List shaping job events",
+        "description": "List events for a shaping job owned by the caller\u0027s project.",
+        "operationId": "GetShapingEvents",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "pattern": "^shp-quant-[a-f0-9-]\u002B$",
+              "type": "string",
+              "description": "Shaping job ID beginning with \u0060shp-quant-\u0060."
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Events retrieved successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EventsList"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid API key.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Shaping job not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/rerank": {
       "post": {
         "tags": [
@@ -11455,6 +11870,16 @@
               }
             }
           },
+          "429": {
+            "description": "Model resource create request rejected because the organization GPU quota was exceeded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          },
           "default": {
             "description": "An unexpected error response.",
             "content": {
@@ -12685,8 +13110,8 @@
         "tags": [
           "RL"
         ],
-        "summary": "List training checkpoints",
-        "description": "Lists training checkpoints owned by the caller. Filter by session or base model to recover a checkpoint ID for resume. Inference checkpoints are not included; they remain on the training session and in the model catalog.",
+        "summary": "List checkpoints",
+        "description": "Lists training and inference checkpoints owned by the caller, newest first. Filter by type, session, or base model, for example to recover a checkpoint ID for resume.",
         "operationId": "ListCheckpoints",
         "parameters": [
           {
@@ -12721,11 +13146,18 @@
               "type": "string",
               "description": "Cursor for pagination (ID of the last checkpoint from the previous page)"
             }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/ListCheckpointsTypeParameter"
+            }
           }
         ],
         "responses": {
           "200": {
-            "description": "List of training checkpoints",
+            "description": "List of checkpoints",
             "content": {
               "application/json": {
                 "schema": {
@@ -13484,6 +13916,116 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ListPassiveHealthCheckAlertsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/projects": {
+      "get": {
+        "tags": [
+          "Projects"
+        ],
+        "summary": "List available projects",
+        "description": "Retrieve a list of accessible projects.",
+        "operationId": "ListProjects",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "description": "Maximum number of user projects in the page."
+            }
+          },
+          {
+            "name": "after",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "description": "Paginate the response utilizing a responses next_cursor field."
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListProjectsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Resource exhausted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Request timed out",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
                 }
               }
             }
@@ -14481,7 +15023,8 @@
           "adapterModelId",
           "desiredRevisionId",
           "perCluster",
-          "etag"
+          "etag",
+          "id"
         ],
         "type": "object",
         "properties": {
@@ -14511,6 +15054,10 @@
           "desiredRevision": {
             "type": "string",
             "description": "Resource name of the adapter model revision pinned on the deployment, using projects/{projectId}/models/{adapterModelId}/revisions/{revisionId}."
+          },
+          "id": {
+            "type": "string",
+            "description": "Row identifier for this adapter attachment; changes if the adapter is removed and re-added."
           }
         },
         "description": "Adapter attached to a deployment with desired revision and observed load state."
@@ -14582,6 +15129,14 @@
           "realizedRevision": {
             "type": "string",
             "description": "Resource name of the adapter model revision currently loaded in this cluster, using projects/{projectId}/models/{adapterModelId}/revisions/{revisionId}."
+          },
+          "adapterValid": {
+            "type": "boolean",
+            "description": "Optional inference-probe verdict for this adapter on this cluster; absent until validation concludes."
+          },
+          "adapterValidReason": {
+            "type": "string",
+            "description": "Human-readable probe rejection detail when adapterValid is false."
           }
         },
         "description": "Controller-reported load state for an adapter on one deployment cluster."
@@ -14745,7 +15300,7 @@
       },
       "DeRollingConfig": {
         "type": "object",
-        "description": "Rolling strategy configuration for capacity-preserving batches that ramp target replicas up while draining source replicas.",
+        "description": "Rolling strategy configuration for small batches that ramp target replicas up while shrinking source replicas to what their remaining traffic share needs.",
         "x-stainless-empty-object": true
       },
       "DeCanaryConfig": {
@@ -15533,6 +16088,9 @@
           "modelName": {
             "type": "string",
             "description": "Fully-qualified deploy model name in the form \u0060{projectSlug}/{modelName}\u0060, such as \u0060Qwen/Qwen3.5-9B-FP8\u0060; empty when no public model is linked."
+          },
+          "adapterMode": {
+            "$ref": "#/components/schemas/DeSupportedModelDeploymentProfileAdapterMode"
           }
         },
         "description": "Certified deployment profile for a supported model."
@@ -19140,11 +19698,6 @@
             "description": "Checkpoint ID to resume from. LoRA training checkpoints may resume on another model resource with compatible base-model weights. Full-weight training checkpoints require the original base model.",
             "example": "123e4567-e89b-12d3-a456-426614174000"
           },
-          "resume_from_hf_checkpoint": {
-            "type": "string",
-            "description": "HuggingFace repo (or hf://) to resume model weights from. Accepts either a full model or a PEFT adapter directory. Mutually exclusive with resume_from_checkpoint_id.",
-            "example": "your-org/llama-3-8b-finetuned"
-          },
           "lora_config": {
             "$ref": "#/components/schemas/RlLoraConfig"
           },
@@ -19164,7 +19717,7 @@
           },
           "load_optimizer": {
             "type": "boolean",
-            "description": "Whether to restore optimizer state and step from a training checkpoint. Omitted or true restores them; false loads weights only with a fresh optimizer and step 0. Not valid for inference or HuggingFace checkpoints, which have no optimizer state.",
+            "description": "Whether to restore optimizer state and step from a training checkpoint. Omitted or true restores them; false loads weights only with a fresh optimizer and step 0. Not valid for inference checkpoints, which have no optimizer state.",
             "example": true
           }
         }
@@ -19684,14 +20237,12 @@
       },
       "RlInferenceCheckpointResult": {
         "required": [
-          "model_name"
+          "checkpoint"
         ],
         "type": "object",
         "properties": {
-          "model_name": {
-            "type": "string",
-            "description": "Registered model name for downloading the checkpoint",
-            "example": "username/Meta-Llama-3-8B-rl-step-42-20260216"
+          "checkpoint": {
+            "$ref": "#/components/schemas/RlInferenceCheckpoint"
           }
         },
         "description": "Result of an inference checkpoint operation"
@@ -19724,42 +20275,37 @@
         },
         "description": "Saved inference checkpoint"
       },
-      "RlInferenceCheckpointRegistration": {
+      "RlModelRegistryArtifact": {
         "required": [
-          "model_name",
-          "registered_at"
+          "id",
+          "revision_id"
         ],
         "type": "object",
         "properties": {
-          "model_name": {
+          "id": {
             "type": "string",
-            "description": "Registered model name for downloading the checkpoint",
-            "example": "username/Meta-Llama-3-8B-rl-step-42-20260216"
+            "description": "ID of the model in the Together model registry, as used by the models API",
+            "example": "ml_abc123"
           },
-          "registered_at": {
+          "revision_id": {
             "type": "string",
-            "description": "Timestamp when the model was registered",
-            "format": "date-time",
-            "example": "2026-01-02T00:00:00Z"
-          },
-          "model_object_id": {
-            "type": "string",
-            "description": "Together model registry object ID for the model checkpoint (e.g. \u0060ml_...\u0060), set on full-weight training sessions"
-          },
-          "model_object_revision_id": {
-            "type": "string",
-            "description": "Together model registry revision ID for the model checkpoint (e.g. \u0060rv_...\u0060)"
-          },
-          "adapter_object_id": {
-            "type": "string",
-            "description": "Together model registry object ID for the adapter checkpoint (e.g. \u0060ml_...\u0060), set on LoRA training sessions"
-          },
-          "adapter_object_revision_id": {
-            "type": "string",
-            "description": "Together model registry revision ID for the adapter checkpoint (e.g. \u0060rv_...\u0060)"
+            "description": "Revision of the model that holds this checkpoint",
+            "example": "rv_def456"
           }
         },
-        "description": "Model registration details for an inference checkpoint"
+        "description": "A specific revision of a model in the Together model registry"
+      },
+      "RlInferenceCheckpointRegistration": {
+        "type": "object",
+        "properties": {
+          "model": {
+            "$ref": "#/components/schemas/RlModelRegistryArtifact"
+          },
+          "adapter": {
+            "$ref": "#/components/schemas/RlModelRegistryArtifact"
+          }
+        },
+        "description": "Where an inference checkpoint\u0027s weights are stored in the Together model registry. At least one of \u0060model\u0060 and \u0060adapter\u0060 is set."
       },
       "RlTrainingCheckpoint": {
         "required": [
@@ -19784,41 +20330,22 @@
             "example": "2026-01-02T00:00:00Z"
           },
           "registration": {
-            "$ref": "#/components/schemas/RlTrainingCheckpointRegistration"
+            "$ref": "#/components/schemas/RlModelRegistryArtifact"
           }
         },
         "description": "Saved training checkpoint"
       },
-      "RlTrainingCheckpointRegistration": {
-        "required": [
-          "object_id"
-        ],
-        "type": "object",
-        "properties": {
-          "object_id": {
-            "type": "string",
-            "description": "Together model registry object ID for the training checkpoint artifact (e.g. \u0060ml_...\u0060)"
-          },
-          "object_revision_id": {
-            "type": "string",
-            "description": "Together model registry revision ID for the training checkpoint artifact (e.g. \u0060rv_...\u0060), empty when the upload reported no revision"
-          }
-        },
-        "description": "Together model registry details for a training checkpoint"
-      },
       "RlTrainingCheckpointResult": {
         "required": [
-          "checkpoint_id"
+          "checkpoint"
         ],
         "type": "object",
         "properties": {
-          "checkpoint_id": {
-            "type": "string",
-            "description": "ID of the saved training checkpoint (use for resume via Start)",
-            "example": "550e8400-e29b-41d4-a716-446655440000"
+          "checkpoint": {
+            "$ref": "#/components/schemas/RlTrainingCheckpoint"
           }
         },
-        "description": "Result of a save training checkpoint operation"
+        "description": "Result of a training checkpoint operation"
       },
       "RlTrainingCheckpointOperation": {
         "required": [
@@ -19842,7 +20369,7 @@
             "$ref": "#/components/schemas/RlTrainingOperationError"
           }
         },
-        "description": "Async save training checkpoint operation"
+        "description": "Async training checkpoint operation"
       },
       "RlCheckpointsListResponse": {
         "required": [
@@ -19856,13 +20383,13 @@
             "items": {
               "$ref": "#/components/schemas/RlCheckpoint"
             },
-            "description": "Training checkpoints in this page"
+            "description": "Checkpoints in this page"
           },
           "meta": {
             "$ref": "#/components/schemas/RlListMeta"
           }
         },
-        "description": "A page of training checkpoints"
+        "description": "A page of checkpoints"
       },
       "RlCheckpointType": {
         "enum": [
@@ -19929,6 +20456,12 @@
             "description": "Timestamp when the checkpoint was created",
             "format": "date-time",
             "example": "2026-01-02T00:00:00Z"
+          },
+          "inference_registration": {
+            "$ref": "#/components/schemas/RlInferenceCheckpointRegistration"
+          },
+          "training_registration": {
+            "$ref": "#/components/schemas/RlModelRegistryArtifact"
           }
         },
         "description": "Metadata for a saved checkpoint"
@@ -20056,53 +20589,25 @@
         }
       },
       "GpuClusterCreateRequest": {
-        "required": [
-          "region",
-          "gpu_type",
-          "num_gpus",
-          "cluster_name",
-          "billing_type"
-        ],
         "type": "object",
         "anyOf": [
           {
-            "required": [
-              "nvidia_version_id"
-            ],
-            "type": "object",
-            "not": {
-              "anyOf": [
-                {
-                  "required": [
-                    "cuda_version"
-                  ]
-                },
-                {
-                  "required": [
-                    "nvidia_driver_version"
-                  ]
-                }
-              ]
-            }
+            "$ref": "#/components/schemas/GpuClusterCreateRequestNvidiaVersion"
           },
           {
-            "required": [
-              "cuda_version",
-              "nvidia_driver_version"
-            ],
-            "type": "object"
+            "$ref": "#/components/schemas/GpuClusterCreateRequestLegacyNvidia"
           }
         ],
         "properties": {
           "cluster_type": {
-            "$ref": "#/components/schemas/GpuClusterCreateRequestClusterType"
+            "$ref": "#/components/schemas/GpuClusterCreateRequestNvidiaVersionClusterType"
           },
           "region": {
             "type": "string",
             "description": "Region to create the GPU cluster in. Usable regions can be found from \u0060client.clusters.list_regions()\u0060"
           },
           "gpu_type": {
-            "$ref": "#/components/schemas/GpuClusterCreateRequestGpuType"
+            "$ref": "#/components/schemas/GpuClusterCreateRequestNvidiaVersionGpuType"
           },
           "num_gpus": {
             "type": "integer",
@@ -20125,7 +20630,7 @@
             "description": "ID of an existing volume to use with the cluster creation."
           },
           "billing_type": {
-            "$ref": "#/components/schemas/GpuClusterCreateRequestBillingType"
+            "$ref": "#/components/schemas/GpuClusterCreateRequestNvidiaVersionBillingType"
           },
           "auto_scaled": {
             "type": "boolean",
@@ -20215,6 +20720,425 @@
           }
         },
         "description": "GPU Cluster create request"
+      },
+      "GpuClusterCreateRequestNvidiaVersion": {
+        "required": [
+          "region",
+          "gpu_type",
+          "num_gpus",
+          "cluster_name",
+          "billing_type"
+        ],
+        "type": "object",
+        "allOf": [
+          {
+            "required": [
+              "nvidia_version_id"
+            ],
+            "type": "object",
+            "not": {
+              "anyOf": [
+                {
+                  "required": [
+                    "cuda_version"
+                  ]
+                },
+                {
+                  "required": [
+                    "nvidia_driver_version"
+                  ]
+                }
+              ]
+            }
+          }
+        ],
+        "properties": {
+          "cluster_type": {
+            "$ref": "#/components/schemas/GpuClusterCreateRequestNvidiaVersionClusterType"
+          },
+          "region": {
+            "type": "string",
+            "description": "Region to create the GPU cluster in. Usable regions can be found from \u0060client.clusters.list_regions()\u0060"
+          },
+          "gpu_type": {
+            "$ref": "#/components/schemas/GpuClusterCreateRequestNvidiaVersionGpuType"
+          },
+          "num_gpus": {
+            "type": "integer",
+            "description": "Number of GPUs to allocate in the cluster. This must be multiple of 8. For example, 8, 16 or 24"
+          },
+          "cluster_name": {
+            "type": "string",
+            "description": "Name of the GPU cluster."
+          },
+          "duration_days": {
+            "type": "integer",
+            "description": "Duration in days to keep the cluster running.",
+            "x-stainless-terraform-configurability": "computed"
+          },
+          "shared_volume": {
+            "$ref": "#/components/schemas/GpuClustersSharedVolumeCreateRequest"
+          },
+          "volume_id": {
+            "type": "string",
+            "description": "ID of an existing volume to use with the cluster creation."
+          },
+          "billing_type": {
+            "$ref": "#/components/schemas/GpuClusterCreateRequestNvidiaVersionBillingType"
+          },
+          "auto_scaled": {
+            "type": "boolean",
+            "description": "Whether GPU cluster should be auto-scaled based on the workload. By default, it is not auto-scaled.",
+            "default": false,
+            "deprecated": true
+          },
+          "auto_scale_max_gpus": {
+            "type": "integer",
+            "description": "Maximum number of GPUs to which the cluster can be auto-scaled up. This field is required if auto_scaled is true."
+          },
+          "slurm_shm_size_gib": {
+            "type": "integer",
+            "description": "Shared memory size in GiB for Slurm cluster. This field is required if cluster_type is SLURM."
+          },
+          "capacity_pool_id": {
+            "type": "string",
+            "description": "ID of the capacity pool to use for the cluster. This field is optional and only applicable if the cluster is created from a capacity pool."
+          },
+          "reservation_start_time": {
+            "type": "string",
+            "description": "Reservation start time of the cluster. This field is required for SCHEDULED billing to specify the reservation start time for the cluster. If not provided, the cluster provisions immediately.",
+            "format": "date-time"
+          },
+          "reservation_end_time": {
+            "type": "string",
+            "description": "Reservation end time of the cluster. This field is required for SCHEDULED billing to specify the reservation end time for the cluster.",
+            "format": "date-time"
+          },
+          "install_traefik": {
+            "type": "boolean",
+            "description": "Whether to install Traefik ingress controller in the cluster. This field is only applicable for Kubernetes clusters and is false by default.",
+            "default": false
+          },
+          "cuda_version": {
+            "type": "string",
+            "description": "Legacy CUDA selector for this cluster. Bare semantic values such as 12.5 select ubuntu-22.04; existing OS-suffixed values remain accepted for compatibility. Must be paired with nvidia_driver_version. Prefer nvidia_version_id for new integrations."
+          },
+          "nvidia_driver_version": {
+            "type": "string",
+            "description": "Legacy NVIDIA driver selector for this cluster. For example, 550. Must be paired with cuda_version. Prefer nvidia_version_id for new integrations."
+          },
+          "nvidia_version_id": {
+            "type": "string",
+            "description": "Canonical region-specific NVIDIA version ID. If cuda_version and nvidia_driver_version are also set, they must resolve to the same catalog entry."
+          },
+          "slurm_image": {
+            "type": "string",
+            "description": "Custom Slurm image for Slurm clusters."
+          },
+          "oidc_config": {
+            "$ref": "#/components/schemas/OidcConfig"
+          },
+          "project_id": {
+            "type": "string",
+            "description": "Project ID for the cluster. If not set, the project from the request context is used."
+          },
+          "acceptance_tests_params": {
+            "description": "AcceptanceTestsParams groups all GPU acceptance test options when enabled is true.",
+            "$ref": "#/components/schemas/AcceptanceTestsParams"
+          },
+          "cluster_config": {
+            "$ref": "#/components/schemas/InstanceClusterConfig"
+          },
+          "num_capacity_pool_gpus": {
+            "type": "integer",
+            "description": "Number of GPUs to allocate from the capacity pool. Must be a multiple of 8 and not exceed num_gpus."
+          },
+          "auto_scale": {
+            "type": "boolean",
+            "description": "Whether to enable auto-scaling for the cluster. If true, the cluster will automatically scale the number of GPU worker nodes between num_gpus and auto_scale_max_gpus based on the workload."
+          },
+          "num_preemptible_gpus": {
+            "type": "integer",
+            "description": "Number of preemptible GPUs to request alongside on-demand capacity. Must be a multiple of 8. Preemptible nodes are cheaper but may be reclaimed when on-demand capacity is needed elsewhere; the system fulfills this asynchronously and surfaces the actual count in allocated_preemptible_gpus."
+          },
+          "num_reserved_gpus": {
+            "type": "integer",
+            "description": "Number of prepaid (PLG) reserved GPUs for this cluster. When omitted for RESERVED billing on create, the server defaults this to num_gpus."
+          },
+          "add_ons": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AddOnCreateRequest"
+            },
+            "description": "Add-ons to enable on the cluster at creation time."
+          }
+        },
+        "description": "Create a cluster with a canonical NVIDIA version id. Do not also set cuda_version or nvidia_driver_version."
+      },
+      "GpuClusterCreateRequestLegacyNvidia": {
+        "required": [
+          "region",
+          "gpu_type",
+          "num_gpus",
+          "cluster_name",
+          "billing_type",
+          "cuda_version",
+          "nvidia_driver_version"
+        ],
+        "type": "object",
+        "properties": {
+          "cluster_type": {
+            "$ref": "#/components/schemas/GpuClusterCreateRequestNvidiaVersionClusterType"
+          },
+          "region": {
+            "type": "string",
+            "description": "Region to create the GPU cluster in. Usable regions can be found from \u0060client.clusters.list_regions()\u0060"
+          },
+          "gpu_type": {
+            "$ref": "#/components/schemas/GpuClusterCreateRequestNvidiaVersionGpuType"
+          },
+          "num_gpus": {
+            "type": "integer",
+            "description": "Number of GPUs to allocate in the cluster. This must be multiple of 8. For example, 8, 16 or 24"
+          },
+          "cluster_name": {
+            "type": "string",
+            "description": "Name of the GPU cluster."
+          },
+          "duration_days": {
+            "type": "integer",
+            "description": "Duration in days to keep the cluster running.",
+            "x-stainless-terraform-configurability": "computed"
+          },
+          "shared_volume": {
+            "$ref": "#/components/schemas/GpuClustersSharedVolumeCreateRequest"
+          },
+          "volume_id": {
+            "type": "string",
+            "description": "ID of an existing volume to use with the cluster creation."
+          },
+          "billing_type": {
+            "$ref": "#/components/schemas/GpuClusterCreateRequestNvidiaVersionBillingType"
+          },
+          "auto_scaled": {
+            "type": "boolean",
+            "description": "Whether GPU cluster should be auto-scaled based on the workload. By default, it is not auto-scaled.",
+            "default": false,
+            "deprecated": true
+          },
+          "auto_scale_max_gpus": {
+            "type": "integer",
+            "description": "Maximum number of GPUs to which the cluster can be auto-scaled up. This field is required if auto_scaled is true."
+          },
+          "slurm_shm_size_gib": {
+            "type": "integer",
+            "description": "Shared memory size in GiB for Slurm cluster. This field is required if cluster_type is SLURM."
+          },
+          "capacity_pool_id": {
+            "type": "string",
+            "description": "ID of the capacity pool to use for the cluster. This field is optional and only applicable if the cluster is created from a capacity pool."
+          },
+          "reservation_start_time": {
+            "type": "string",
+            "description": "Reservation start time of the cluster. This field is required for SCHEDULED billing to specify the reservation start time for the cluster. If not provided, the cluster provisions immediately.",
+            "format": "date-time"
+          },
+          "reservation_end_time": {
+            "type": "string",
+            "description": "Reservation end time of the cluster. This field is required for SCHEDULED billing to specify the reservation end time for the cluster.",
+            "format": "date-time"
+          },
+          "install_traefik": {
+            "type": "boolean",
+            "description": "Whether to install Traefik ingress controller in the cluster. This field is only applicable for Kubernetes clusters and is false by default.",
+            "default": false
+          },
+          "cuda_version": {
+            "type": "string",
+            "description": "Legacy CUDA selector for this cluster. Bare semantic values such as 12.5 select ubuntu-22.04; existing OS-suffixed values remain accepted for compatibility. Must be paired with nvidia_driver_version. Prefer nvidia_version_id for new integrations."
+          },
+          "nvidia_driver_version": {
+            "type": "string",
+            "description": "Legacy NVIDIA driver selector for this cluster. For example, 550. Must be paired with cuda_version. Prefer nvidia_version_id for new integrations."
+          },
+          "nvidia_version_id": {
+            "type": "string",
+            "description": "Canonical region-specific NVIDIA version ID. If cuda_version and nvidia_driver_version are also set, they must resolve to the same catalog entry."
+          },
+          "slurm_image": {
+            "type": "string",
+            "description": "Custom Slurm image for Slurm clusters."
+          },
+          "oidc_config": {
+            "$ref": "#/components/schemas/OidcConfig"
+          },
+          "project_id": {
+            "type": "string",
+            "description": "Project ID for the cluster. If not set, the project from the request context is used."
+          },
+          "acceptance_tests_params": {
+            "description": "AcceptanceTestsParams groups all GPU acceptance test options when enabled is true.",
+            "$ref": "#/components/schemas/AcceptanceTestsParams"
+          },
+          "cluster_config": {
+            "$ref": "#/components/schemas/InstanceClusterConfig"
+          },
+          "num_capacity_pool_gpus": {
+            "type": "integer",
+            "description": "Number of GPUs to allocate from the capacity pool. Must be a multiple of 8 and not exceed num_gpus."
+          },
+          "auto_scale": {
+            "type": "boolean",
+            "description": "Whether to enable auto-scaling for the cluster. If true, the cluster will automatically scale the number of GPU worker nodes between num_gpus and auto_scale_max_gpus based on the workload."
+          },
+          "num_preemptible_gpus": {
+            "type": "integer",
+            "description": "Number of preemptible GPUs to request alongside on-demand capacity. Must be a multiple of 8. Preemptible nodes are cheaper but may be reclaimed when on-demand capacity is needed elsewhere; the system fulfills this asynchronously and surfaces the actual count in allocated_preemptible_gpus."
+          },
+          "num_reserved_gpus": {
+            "type": "integer",
+            "description": "Number of prepaid (PLG) reserved GPUs for this cluster. When omitted for RESERVED billing on create, the server defaults this to num_gpus."
+          },
+          "add_ons": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AddOnCreateRequest"
+            },
+            "description": "Add-ons to enable on the cluster at creation time."
+          }
+        },
+        "description": "Create a cluster with the legacy CUDA and NVIDIA driver selectors. nvidia_version_id may also be set when it resolves to the same catalog entry."
+      },
+      "GpuClusterCreateRequestCommon": {
+        "required": [
+          "region",
+          "gpu_type",
+          "num_gpus",
+          "cluster_name",
+          "billing_type"
+        ],
+        "type": "object",
+        "properties": {
+          "cluster_type": {
+            "$ref": "#/components/schemas/GpuClusterCreateRequestNvidiaVersionClusterType"
+          },
+          "region": {
+            "type": "string",
+            "description": "Region to create the GPU cluster in. Usable regions can be found from \u0060client.clusters.list_regions()\u0060"
+          },
+          "gpu_type": {
+            "$ref": "#/components/schemas/GpuClusterCreateRequestNvidiaVersionGpuType"
+          },
+          "num_gpus": {
+            "type": "integer",
+            "description": "Number of GPUs to allocate in the cluster. This must be multiple of 8. For example, 8, 16 or 24"
+          },
+          "cluster_name": {
+            "type": "string",
+            "description": "Name of the GPU cluster."
+          },
+          "duration_days": {
+            "type": "integer",
+            "description": "Duration in days to keep the cluster running.",
+            "x-stainless-terraform-configurability": "computed"
+          },
+          "shared_volume": {
+            "$ref": "#/components/schemas/GpuClustersSharedVolumeCreateRequest"
+          },
+          "volume_id": {
+            "type": "string",
+            "description": "ID of an existing volume to use with the cluster creation."
+          },
+          "billing_type": {
+            "$ref": "#/components/schemas/GpuClusterCreateRequestNvidiaVersionBillingType"
+          },
+          "auto_scaled": {
+            "type": "boolean",
+            "description": "Whether GPU cluster should be auto-scaled based on the workload. By default, it is not auto-scaled.",
+            "default": false,
+            "deprecated": true
+          },
+          "auto_scale_max_gpus": {
+            "type": "integer",
+            "description": "Maximum number of GPUs to which the cluster can be auto-scaled up. This field is required if auto_scaled is true."
+          },
+          "slurm_shm_size_gib": {
+            "type": "integer",
+            "description": "Shared memory size in GiB for Slurm cluster. This field is required if cluster_type is SLURM."
+          },
+          "capacity_pool_id": {
+            "type": "string",
+            "description": "ID of the capacity pool to use for the cluster. This field is optional and only applicable if the cluster is created from a capacity pool."
+          },
+          "reservation_start_time": {
+            "type": "string",
+            "description": "Reservation start time of the cluster. This field is required for SCHEDULED billing to specify the reservation start time for the cluster. If not provided, the cluster provisions immediately.",
+            "format": "date-time"
+          },
+          "reservation_end_time": {
+            "type": "string",
+            "description": "Reservation end time of the cluster. This field is required for SCHEDULED billing to specify the reservation end time for the cluster.",
+            "format": "date-time"
+          },
+          "install_traefik": {
+            "type": "boolean",
+            "description": "Whether to install Traefik ingress controller in the cluster. This field is only applicable for Kubernetes clusters and is false by default.",
+            "default": false
+          },
+          "cuda_version": {
+            "type": "string",
+            "description": "Legacy CUDA selector for this cluster. Bare semantic values such as 12.5 select ubuntu-22.04; existing OS-suffixed values remain accepted for compatibility. Must be paired with nvidia_driver_version. Prefer nvidia_version_id for new integrations."
+          },
+          "nvidia_driver_version": {
+            "type": "string",
+            "description": "Legacy NVIDIA driver selector for this cluster. For example, 550. Must be paired with cuda_version. Prefer nvidia_version_id for new integrations."
+          },
+          "nvidia_version_id": {
+            "type": "string",
+            "description": "Canonical region-specific NVIDIA version ID. If cuda_version and nvidia_driver_version are also set, they must resolve to the same catalog entry."
+          },
+          "slurm_image": {
+            "type": "string",
+            "description": "Custom Slurm image for Slurm clusters."
+          },
+          "oidc_config": {
+            "$ref": "#/components/schemas/OidcConfig"
+          },
+          "project_id": {
+            "type": "string",
+            "description": "Project ID for the cluster. If not set, the project from the request context is used."
+          },
+          "acceptance_tests_params": {
+            "description": "AcceptanceTestsParams groups all GPU acceptance test options when enabled is true.",
+            "$ref": "#/components/schemas/AcceptanceTestsParams"
+          },
+          "cluster_config": {
+            "$ref": "#/components/schemas/InstanceClusterConfig"
+          },
+          "num_capacity_pool_gpus": {
+            "type": "integer",
+            "description": "Number of GPUs to allocate from the capacity pool. Must be a multiple of 8 and not exceed num_gpus."
+          },
+          "auto_scale": {
+            "type": "boolean",
+            "description": "Whether to enable auto-scaling for the cluster. If true, the cluster will automatically scale the number of GPU worker nodes between num_gpus and auto_scale_max_gpus based on the workload."
+          },
+          "num_preemptible_gpus": {
+            "type": "integer",
+            "description": "Number of preemptible GPUs to request alongside on-demand capacity. Must be a multiple of 8. Preemptible nodes are cheaper but may be reclaimed when on-demand capacity is needed elsewhere; the system fulfills this asynchronously and surfaces the actual count in allocated_preemptible_gpus."
+          },
+          "num_reserved_gpus": {
+            "type": "integer",
+            "description": "Number of prepaid (PLG) reserved GPUs for this cluster. When omitted for RESERVED billing on create, the server defaults this to num_gpus."
+          },
+          "add_ons": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AddOnCreateRequest"
+            },
+            "description": "Add-ons to enable on the cluster at creation time."
+          }
+        }
       },
       "GpuClusterGpuWorkerNode": {
         "required": [
@@ -23508,11 +24432,11 @@
             "$ref": "#/components/schemas/FileType"
           },
           "processing_status": {
-            "description": "Lifecycle state of the file validation pipeline. Files for\nnon-\u0060fine-tune\u0060 purposes skip validation.\n",
+            "description": "Lifecycle state of the file validation pipeline. Files for\npurposes that do not require validation skip validation.\n",
             "$ref": "#/components/schemas/FileProcessingStatus"
           },
           "validation_report": {
-            "description": "Report produced by the file validation pipeline. Present once\nvalidation has run; absent on files that bypassed validation\n(non-\u0060fine-tune\u0060 purposes) or have not yet been validated.\n",
+            "description": "Report produced by the file validation pipeline. Present once\nvalidation has run; absent on files that bypassed validation\nor have not yet been validated.\n",
             "$ref": "#/components/schemas/FileValidationReport"
           }
         },
@@ -23615,7 +24539,7 @@
             "description": "Human-readable validation error message. Only present when\n\u0060error_type\u0060 is set (i.e. user-correctable failures).\n"
           }
         },
-        "description": "Validation outcome for a fine-tune training file, produced by the\nfile validation pipeline.\n"
+        "description": "Validation outcome for a fine-tune or calibration file, produced by\nthe file validation pipeline.\n"
       },
       "FileList": {
         "required": [
@@ -23634,6 +24558,7 @@
       "FilePurpose": {
         "enum": [
           "fine-tune",
+          "calibration",
           "eval",
           "batch-api"
         ],
@@ -23648,6 +24573,10 @@
             {
               "value": "fine-tune",
               "name": "FineTune"
+            },
+            {
+              "value": "calibration",
+              "name": "Calibration"
             },
             {
               "value": "eval",
@@ -24782,6 +25711,465 @@
           }
         },
         "description": "A checkpoint available for a fine-tuning job."
+      },
+      "ShapingJobType": {
+        "enum": [
+          "quantization"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Kind of shaping job.",
+        "x-ms-enum": {
+          "name": "ShapingJobType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "quantization",
+              "name": "Quantization"
+            }
+          ]
+        }
+      },
+      "ShapingJobStatus": {
+        "enum": [
+          "pending",
+          "queued",
+          "running",
+          "completed",
+          "cancelled",
+          "cancel_requested",
+          "error",
+          "user_error"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Lifecycle status of a shaping job.",
+        "x-ms-enum": {
+          "name": "ShapingJobStatus",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "pending",
+              "name": "Pending"
+            },
+            {
+              "value": "queued",
+              "name": "Queued"
+            },
+            {
+              "value": "running",
+              "name": "Running"
+            },
+            {
+              "value": "completed",
+              "name": "Completed"
+            },
+            {
+              "value": "cancelled",
+              "name": "Cancelled"
+            },
+            {
+              "value": "cancel_requested",
+              "name": "CancelRequested"
+            },
+            {
+              "value": "error",
+              "name": "Error"
+            },
+            {
+              "value": "user_error",
+              "name": "UserError"
+            }
+          ]
+        }
+      },
+      "EventLevel": {
+        "enum": [
+          "Info",
+          "Warning",
+          "Error"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Severity level for a shaping event."
+      },
+      "BaseShapingJob": {
+        "required": [
+          "id",
+          "job_type",
+          "status",
+          "created_at",
+          "updated_at",
+          "user_id"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "pattern": "^shp-quant-[a-f0-9-]\u002B$",
+            "type": "string",
+            "description": "Unique shaping job ID."
+          },
+          "job_type": {
+            "description": "Type of shaping job.",
+            "$ref": "#/components/schemas/ShapingJobType"
+          },
+          "status": {
+            "description": "Current job status.",
+            "$ref": "#/components/schemas/ShapingJobStatus"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "Time when the job was created.",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "Time when the job was last updated.",
+            "format": "date-time"
+          },
+          "user_id": {
+            "type": "string",
+            "description": "User that created the job."
+          }
+        },
+        "description": "Public fields common to shaping jobs."
+      },
+      "QuantizationRequest": {
+        "required": [
+          "inputs"
+        ],
+        "type": "object",
+        "properties": {
+          "inputs": {
+            "description": "Adapter inputs to prepare.",
+            "$ref": "#/components/schemas/QuantizationPipelineInputs"
+          }
+        },
+        "description": "Request body for preparing an adapter for FP4 inference."
+      },
+      "QuantizationEstimate": {
+        "required": [
+          "price_usd",
+          "time_hours",
+          "credit_limit",
+          "allowed_to_proceed"
+        ],
+        "type": "object",
+        "properties": {
+          "price_usd": {
+            "type": "number",
+            "description": "Expected total run cost in US dollars.",
+            "format": "double",
+            "example": 28.76
+          },
+          "time_hours": {
+            "type": "number",
+            "description": "Expected wall-clock run time in hours, excluding queue time.",
+            "format": "double",
+            "example": 4
+          },
+          "credit_limit": {
+            "type": "number",
+            "description": "Project credit limit in US dollars.",
+            "format": "double",
+            "example": 500
+          },
+          "allowed_to_proceed": {
+            "type": "boolean",
+            "description": "Whether a create request at this price would be accepted.",
+            "example": true
+          }
+        },
+        "description": "Price and duration estimate for a quantization job."
+      },
+      "QuantizationPipelineInputs": {
+        "required": [
+          "adapter_object_id"
+        ],
+        "type": "object",
+        "properties": {
+          "adapter_object_id": {
+            "pattern": "^ml_.\u002B",
+            "type": "string",
+            "description": "Model object ID of the adapter to prepare."
+          },
+          "adapter_revision_id": {
+            "pattern": "^rv_.\u002B",
+            "type": "string",
+            "description": "Adapter revision ID to prepare. Omit to use the adapter\u0027s current revision."
+          },
+          "calibration_file_id": {
+            "pattern": "^file-.\u002B",
+            "type": "string",
+            "description": "Conversation dataset file ID to use for calibration. Upload it first with \u0060POST /v1/files\u0060 using purpose \u0060calibration\u0060 and file type \u0060jsonl\u0060. Each JSONL row must contain a \u0060messages\u0060 array and may contain a \u0060tools\u0060 array.\nWhen provided, the job draws half of the calibration corpus from this file and half from a general-text corpus. When omitted, the job calibrates on the general-text corpus only.\nThe request is rejected unless the file exists in the request project, has finished uploading, has passed files API validation as a conversation dataset, is not empty, and is at most 64 MiB. A \u0060fine-tune\u0060 purpose file is also accepted so a training file can be reused.\n",
+            "example": "file-5f1b0c7a-2d19-4a3e-9c60-8ab41c2f7d35"
+          }
+        },
+        "description": "Adapter identifiers to prepare.",
+        "example": {
+          "adapter_object_id": "ml_CeG3fF6pyEViU8dE8pk7R",
+          "adapter_revision_id": "rv_CeG3faPBj2ABwbAaHPTmx",
+          "calibration_file_id": "file-5f1b0c7a-2d19-4a3e-9c60-8ab41c2f7d35"
+        }
+      },
+      "QuantizationPipelineConfiguration": {
+        "required": [
+          "user_id",
+          "adapter_project_id",
+          "adapter_revision_id",
+          "adapter_model_name",
+          "base_object_id",
+          "base_revision_id",
+          "base_model_name"
+        ],
+        "type": "object",
+        "properties": {
+          "user_id": {
+            "type": "string",
+            "description": "User whose scope is used to fetch the adapter weights.",
+            "example": "user_CKfewYkQBpaEmN7wuQS3W"
+          },
+          "adapter_project_id": {
+            "type": "string",
+            "description": "Project that owns the adapter.",
+            "example": "proj_CczF9KYFantA84sNYDTJd"
+          },
+          "adapter_revision_id": {
+            "type": "string",
+            "description": "Adapter revision selected for preparation.",
+            "example": "rv_CeERyXMBQCJTRC1yqGTpk"
+          },
+          "adapter_model_name": {
+            "type": "string",
+            "description": "Qualified adapter model name.",
+            "example": "ft-qa-artifacts/glm-5.3-e2e-test-adapter"
+          },
+          "base_object_id": {
+            "type": "string",
+            "description": "Model object ID of the adapter\u0027s base model.",
+            "example": "ml_CbJ9yCnij7A47b1xkpioB"
+          },
+          "base_revision_id": {
+            "type": "string",
+            "description": "Revision ID of the adapter\u0027s base model.",
+            "example": "rv_CbJ9yNrws93VQrZum1fTE"
+          },
+          "base_model_name": {
+            "type": "string",
+            "description": "Qualified name of the base model.",
+            "example": "zai-org/GLM-5.3-NVFP4"
+          }
+        },
+        "description": "Server-resolved configuration for a quantization job.",
+        "readOnly": true
+      },
+      "QuantizationPipelineSpec": {
+        "required": [
+          "inputs",
+          "configuration"
+        ],
+        "type": "object",
+        "properties": {
+          "inputs": {
+            "description": "Adapter inputs requested by the caller.",
+            "$ref": "#/components/schemas/QuantizationPipelineInputs"
+          },
+          "configuration": {
+            "description": "Server-resolved configuration for the run.",
+            "$ref": "#/components/schemas/QuantizationPipelineConfiguration"
+          }
+        },
+        "description": "Stored job specification containing the request and resolved configuration."
+      },
+      "QuantizationResults": {
+        "type": "object",
+        "properties": {
+          "model_object_id": {
+            "type": "string",
+            "description": "Model object ID registered by the job."
+          },
+          "model_revision_id": {
+            "type": "string",
+            "description": "Model revision ID registered by the job."
+          }
+        },
+        "description": "Model artifact produced by a completed quantization job."
+      },
+      "QuantizationJob": {
+        "required": [
+          "id",
+          "job_type",
+          "status",
+          "created_at",
+          "updated_at",
+          "user_id",
+          "params",
+          "events"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "pattern": "^shp-quant-[a-f0-9-]\u002B$",
+            "type": "string",
+            "description": "Unique shaping job ID."
+          },
+          "job_type": {
+            "description": "Type of shaping job.",
+            "$ref": "#/components/schemas/ShapingJobType"
+          },
+          "status": {
+            "description": "Current job status.",
+            "$ref": "#/components/schemas/ShapingJobStatus"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "Time when the job was created.",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "Time when the job was last updated.",
+            "format": "date-time"
+          },
+          "user_id": {
+            "type": "string",
+            "description": "User that created the job."
+          },
+          "params": {
+            "description": "Job specification.",
+            "$ref": "#/components/schemas/QuantizationPipelineSpec"
+          },
+          "results": {
+            "description": "Model artifacts produced by the job.",
+            "$ref": "#/components/schemas/QuantizationResults"
+          },
+          "events": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/QuantizationEvent"
+            },
+            "description": "Events emitted by the job."
+          }
+        },
+        "description": "Quantization job that prepares an adapter for FP4 inference."
+      },
+      "BaseShapingEvent": {
+        "required": [
+          "object",
+          "created_at",
+          "level",
+          "message",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "object": {
+            "$ref": "#/components/schemas/ShapingObject"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "Time when the event was created.",
+            "format": "date-time"
+          },
+          "level": {
+            "description": "Event severity level.",
+            "$ref": "#/components/schemas/EventLevel"
+          },
+          "message": {
+            "type": "string",
+            "description": "Human-readable event message."
+          },
+          "type": {
+            "type": "string",
+            "description": "Event type identifier."
+          },
+          "hash": {
+            "type": "string",
+            "description": "Event hash used for deduplication."
+          }
+        },
+        "description": "Public fields common to shaping events."
+      },
+      "QuantizationEvent": {
+        "required": [
+          "object",
+          "created_at",
+          "level",
+          "message",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "object": {
+            "$ref": "#/components/schemas/ShapingObject"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "Time when the event was created.",
+            "format": "date-time"
+          },
+          "level": {
+            "description": "Event severity level.",
+            "$ref": "#/components/schemas/EventLevel"
+          },
+          "message": {
+            "type": "string",
+            "description": "Human-readable event message."
+          },
+          "type": {
+            "type": "string",
+            "description": "Event type identifier."
+          },
+          "hash": {
+            "type": "string",
+            "description": "Event hash used for deduplication."
+          },
+          "result": {
+            "description": "Result attached to completion events.",
+            "$ref": "#/components/schemas/QuantizationResults"
+          }
+        },
+        "description": "Event emitted by a quantization job."
+      },
+      "EventsList": {
+        "required": [
+          "data",
+          "object"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/QuantizationEvent"
+            },
+            "description": "Shaping events."
+          },
+          "object": {
+            "$ref": "#/components/schemas/ListObject"
+          }
+        },
+        "description": "List response containing shaping events."
+      },
+      "ShapingJobsList": {
+        "required": [
+          "data",
+          "object"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/QuantizationJob"
+            },
+            "description": "Shaping jobs."
+          },
+          "object": {
+            "$ref": "#/components/schemas/ListObject"
+          }
+        },
+        "description": "List response containing shaping jobs."
       },
       "FullTrainingType": {
         "required": [
@@ -27782,6 +29170,63 @@
           }
         }
       },
+      "Project": {
+        "required": [
+          "id",
+          "name",
+          "slug",
+          "organization_id",
+          "organization_name"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique project identifier."
+          },
+          "name": {
+            "type": "string",
+            "description": "Display name of the project."
+          },
+          "slug": {
+            "type": "string",
+            "description": "Customer-facing project slug."
+          },
+          "organization_id": {
+            "type": "string",
+            "description": "ID of the organization that owns the project."
+          },
+          "organization_name": {
+            "type": "string",
+            "description": "Display name of the organization that owns the project."
+          }
+        },
+        "description": "A project the authenticated caller can access."
+      },
+      "ListProjectsResponse": {
+        "required": [
+          "object",
+          "data",
+          "next_cursor"
+        ],
+        "type": "object",
+        "properties": {
+          "object": {
+            "$ref": "#/components/schemas/ListProjectsResponseObject"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Project"
+            }
+          },
+          "next_cursor": {
+            "type": "string",
+            "description": "Opaque cursor for the next page. Empty when this is the last page."
+          }
+        },
+        "description": "One page of projects available to the authenticated caller."
+      },
       "BillingUsageReport": {
         "required": [
           "object",
@@ -29480,6 +30925,44 @@
             "$ref": "#/components/schemas/FinetuneEventLevels"
           }
         }
+      },
+      "QuantizationJobAllOf2": {
+        "required": [
+          "params",
+          "events"
+        ],
+        "type": "object",
+        "properties": {
+          "params": {
+            "description": "Job specification.",
+            "$ref": "#/components/schemas/QuantizationPipelineSpec"
+          },
+          "results": {
+            "description": "Model artifacts produced by the job.",
+            "$ref": "#/components/schemas/QuantizationResults"
+          },
+          "events": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/QuantizationEvent"
+            },
+            "description": "Events emitted by the job."
+          }
+        },
+        "description": "Quantization job that prepares an adapter for FP4 inference."
+      },
+      "QuantizationEventAllOf2": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/QuantizationEventAllOf2Type"
+          },
+          "result": {
+            "description": "Result attached to completion events.",
+            "$ref": "#/components/schemas/QuantizationResults"
+          }
+        },
+        "description": "Event emitted by a quantization job."
       },
       "TrainingMethodSftTrainOnInputs": {
         "type": "boolean",
@@ -34252,6 +35735,24 @@
         "type": "object",
         "description": "Freeform model output, populated when the job reaches done status. Contents are model-specific."
       },
+      "ListProjectsResponseObject": {
+        "const": null,
+        "enum": [
+          "list"
+        ],
+        "type": "object",
+        "description": "Object type. Always \u0060list\u0060.",
+        "x-ms-enum": {
+          "name": "ListProjectsResponseObject",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "list",
+              "name": "List"
+            }
+          ]
+        }
+      },
       "BillingUsageLineItemPricingDimensionsProperty": {
         "type": "object",
         "additionalProperties": {
@@ -35182,6 +36683,34 @@
             {
               "value": "ENFORCEMENT_PREFERRED",
               "name": "EnforcementPreferred"
+            }
+          ]
+        }
+      },
+      "DeSupportedModelDeploymentProfileAdapterMode": {
+        "enum": [
+          "ADAPTER_MODE_FIXED",
+          "ADAPTER_MODE_DYNAMIC",
+          "ADAPTER_MODE_DISABLED"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Adapter serving mode for deployments created from this profile; omitted when no certified config is pinned.",
+        "x-ms-enum": {
+          "name": "DeSupportedModelDeploymentProfileAdapterMode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "ADAPTER_MODE_FIXED",
+              "name": "AdapterModeFixed"
+            },
+            {
+              "value": "ADAPTER_MODE_DYNAMIC",
+              "name": "AdapterModeDynamic"
+            },
+            {
+              "value": "ADAPTER_MODE_DISABLED",
+              "name": "AdapterModeDisabled"
             }
           ]
         }
@@ -36143,7 +37672,7 @@
           ]
         }
       },
-      "GpuClusterCreateRequestClusterType": {
+      "GpuClusterCreateRequestNvidiaVersionClusterType": {
         "enum": [
           "KUBERNETES",
           "SLURM"
@@ -36152,7 +37681,7 @@
         "additionalProperties": false,
         "description": "Type of cluster to create.",
         "x-ms-enum": {
-          "name": "GpuClusterCreateRequestClusterType",
+          "name": "GpuClusterCreateRequestNvidiaVersionClusterType",
           "modelAsString": false,
           "values": [
             {
@@ -36166,7 +37695,7 @@
           ]
         }
       },
-      "GpuClusterCreateRequestGpuType": {
+      "GpuClusterCreateRequestNvidiaVersionGpuType": {
         "enum": [
           "H100_SXM",
           "H200_SXM",
@@ -36180,7 +37709,7 @@
         "additionalProperties": false,
         "description": "Type of GPU to use in the cluster",
         "x-ms-enum": {
-          "name": "GpuClusterCreateRequestGpuType",
+          "name": "GpuClusterCreateRequestNvidiaVersionGpuType",
           "modelAsString": false,
           "values": [
             {
@@ -36214,7 +37743,7 @@
           ]
         }
       },
-      "GpuClusterCreateRequestBillingType": {
+      "GpuClusterCreateRequestNvidiaVersionBillingType": {
         "enum": [
           "RESERVED",
           "ON_DEMAND",
@@ -36225,7 +37754,7 @@
         "description": "RESERVED billing types allow you to specify the duration of the cluster reservation via the duration_days field.\nON_DEMAND billing types will give you ownership of the cluster until you delete it.\nSCHEDULED_CAPACITY billing types allow you to reserve capacity for a scheduled time window. You must specify the reservation_start_time and reservation_end_time with this request.\n",
         "x-stainless-terraform-configurability": "computed",
         "x-ms-enum": {
-          "name": "GpuClusterCreateRequestBillingType",
+          "name": "GpuClusterCreateRequestNvidiaVersionBillingType",
           "modelAsString": false,
           "values": [
             {
@@ -37261,7 +38790,10 @@
           "image",
           "embedding",
           "moderation",
-          "rerank"
+          "rerank",
+          "audio",
+          "transcribe",
+          "video"
         ],
         "type": "string",
         "additionalProperties": false,
@@ -37297,6 +38829,18 @@
             {
               "value": "rerank",
               "name": "Rerank"
+            },
+            {
+              "value": "audio",
+              "name": "Audio"
+            },
+            {
+              "value": "transcribe",
+              "name": "Transcribe"
+            },
+            {
+              "value": "video",
+              "name": "Video"
             }
           ]
         }
@@ -37453,6 +38997,42 @@
             {
               "value": "adapter",
               "name": "Adapter"
+            }
+          ]
+        }
+      },
+      "ShapingObject": {
+        "const": null,
+        "enum": [
+          "shaping"
+        ],
+        "type": "string",
+        "description": "Object type, always \u0060shaping\u0060.",
+        "x-ms-enum": {
+          "name": "ShapingObject",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "shaping",
+              "name": "Shaping"
+            }
+          ]
+        }
+      },
+      "ListObject": {
+        "const": null,
+        "enum": [
+          "list"
+        ],
+        "type": "string",
+        "description": "Object type, always \u0060list\u0060.",
+        "x-ms-enum": {
+          "name": "ListObject",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "list",
+              "name": "List"
             }
           ]
         }
@@ -38351,23 +39931,6 @@
           ]
         }
       },
-      "ListObject": {
-        "const": null,
-        "enum": [
-          "list"
-        ],
-        "type": "string",
-        "x-ms-enum": {
-          "name": "ListObject",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "list",
-              "name": "List"
-            }
-          ]
-        }
-      },
       "UsdCurrency": {
         "const": null,
         "enum": [
@@ -38479,6 +40042,64 @@
             {
               "value": "togethercomputer/m2-bert-80M-8k-retrieval",
               "name": "TogethercomputerM2Bert80M8KRetrieval"
+            }
+          ]
+        }
+      },
+      "QuantizationEventAllOf2Type": {
+        "enum": [
+          "SHAPING_ERROR",
+          "SHAPING_USER_ERROR",
+          "QUANTIZATION_JOB_START",
+          "QUANTIZATION_MODEL_DOWNLOAD_COMPLETE",
+          "QUANTIZATION_MERGE_COMPLETE",
+          "QUANTIZATION_QUANTIZE_PROCESS_START",
+          "QUANTIZATION_QUANTIZE_PROCESS_COMPLETE",
+          "QUANTIZATION_MODEL_UPLOAD_COMPLETE",
+          "QUANTIZATION_JOB_COMPLETE"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Quantization event type.",
+        "x-ms-enum": {
+          "name": "QuantizationEventAllOf2Type",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "SHAPING_ERROR",
+              "name": "ShapingError"
+            },
+            {
+              "value": "SHAPING_USER_ERROR",
+              "name": "ShapingUserError"
+            },
+            {
+              "value": "QUANTIZATION_JOB_START",
+              "name": "QuantizationJobStart"
+            },
+            {
+              "value": "QUANTIZATION_MODEL_DOWNLOAD_COMPLETE",
+              "name": "QuantizationModelDownloadComplete"
+            },
+            {
+              "value": "QUANTIZATION_MERGE_COMPLETE",
+              "name": "QuantizationMergeComplete"
+            },
+            {
+              "value": "QUANTIZATION_QUANTIZE_PROCESS_START",
+              "name": "QuantizationQuantizeProcessStart"
+            },
+            {
+              "value": "QUANTIZATION_QUANTIZE_PROCESS_COMPLETE",
+              "name": "QuantizationQuantizeProcessComplete"
+            },
+            {
+              "value": "QUANTIZATION_MODEL_UPLOAD_COMPLETE",
+              "name": "QuantizationModelUploadComplete"
+            },
+            {
+              "value": "QUANTIZATION_JOB_COMPLETE",
+              "name": "QuantizationJobComplete"
             }
           ]
         }
@@ -39404,6 +41025,34 @@
           ]
         }
       },
+      "SupportedModelsServiceListSupportedModelsAdapterModeParameter": {
+        "enum": [
+          "ADAPTER_MODE_FIXED",
+          "ADAPTER_MODE_DYNAMIC",
+          "ADAPTER_MODE_DISABLED"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Filter models to those with a deployment profile in the selected adapter serving mode.",
+        "x-ms-enum": {
+          "name": "SupportedModelsServiceListSupportedModelsAdapterModeParameter",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "ADAPTER_MODE_FIXED",
+              "name": "AdapterModeFixed"
+            },
+            {
+              "value": "ADAPTER_MODE_DYNAMIC",
+              "name": "AdapterModeDynamic"
+            },
+            {
+              "value": "ADAPTER_MODE_DISABLED",
+              "name": "AdapterModeDisabled"
+            }
+          ]
+        }
+      },
       "GetFinetuneDownloadCheckpointParameter": {
         "enum": [
           "merged",
@@ -39598,6 +41247,29 @@
             {
               "value": "TRAINING_SESSION_STATUS_EXPIRED",
               "name": "TrainingSessionStatusExpired"
+            }
+          ]
+        }
+      },
+      "ListCheckpointsTypeParameter": {
+        "enum": [
+          "CHECKPOINT_TYPE_TRAINING",
+          "CHECKPOINT_TYPE_INFERENCE"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Only return checkpoints of this type. CHECKPOINT_TYPE_TRAINING is the full training state (weights and optimizer state), for resuming a training session with its optimizer state; CHECKPOINT_TYPE_INFERENCE is a model ready for serving or download, also added to your models. When set, it must be CHECKPOINT_TYPE_TRAINING or CHECKPOINT_TYPE_INFERENCE; when omitted, checkpoints of both types are returned.",
+        "x-ms-enum": {
+          "name": "ListCheckpointsTypeParameter",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "CHECKPOINT_TYPE_TRAINING",
+              "name": "CheckpointTypeTraining"
+            },
+            {
+              "value": "CHECKPOINT_TYPE_INFERENCE",
+              "name": "CheckpointTypeInference"
             }
           ]
         }

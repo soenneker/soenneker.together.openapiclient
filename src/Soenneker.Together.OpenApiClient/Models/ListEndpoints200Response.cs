@@ -22,7 +22,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public List<global::Soenneker.Together.OpenApiClient.Models.ListEndpoint> Data { get; set; }
 #endif
-        /// <summary>The object property</summary>
+        /// <summary>Object type, always `list`.</summary>
         public global::Soenneker.Together.OpenApiClient.Models.ListObject? Object { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.ListEndpoints200Response"/> and sets the default values.

@@ -8,45 +8,37 @@ using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
     /// <summary>
-    /// Together model registry details for a training checkpoint
+    /// Request body for preparing an adapter for FP4 inference.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class RlTrainingCheckpointRegistration : IAdditionalDataHolder, IParsable
+    public partial class QuantizationRequest : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Together model registry object ID for the training checkpoint artifact (e.g. `ml_...`)</summary>
+        /// <summary>Adapter inputs to prepare.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ObjectId { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.QuantizationPipelineInputs? Inputs { get; set; }
 #nullable restore
 #else
-        public string ObjectId { get; set; }
-#endif
-        /// <summary>Together model registry revision ID for the training checkpoint artifact (e.g. `rv_...`), empty when the upload reported no revision</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? ObjectRevisionId { get; set; }
-#nullable restore
-#else
-        public string ObjectRevisionId { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.QuantizationPipelineInputs Inputs { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlTrainingCheckpointRegistration"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.QuantizationRequest"/> and sets the default values.
         /// </summary>
-        public RlTrainingCheckpointRegistration()
+        public QuantizationRequest()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.RlTrainingCheckpointRegistration"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.QuantizationRequest"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Together.OpenApiClient.Models.RlTrainingCheckpointRegistration CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Together.OpenApiClient.Models.QuantizationRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.RlTrainingCheckpointRegistration();
+            return new global::Soenneker.Together.OpenApiClient.Models.QuantizationRequest();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -56,8 +48,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "object_id", n => { ObjectId = n.GetStringValue(); } },
-                { "object_revision_id", n => { ObjectRevisionId = n.GetStringValue(); } },
+                { "inputs", n => { Inputs = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.QuantizationPipelineInputs>(global::Soenneker.Together.OpenApiClient.Models.QuantizationPipelineInputs.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -67,8 +58,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("object_id", ObjectId);
-            writer.WriteStringValue("object_revision_id", ObjectRevisionId);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.QuantizationPipelineInputs>("inputs", Inputs);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

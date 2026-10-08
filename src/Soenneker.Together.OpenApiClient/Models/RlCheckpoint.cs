@@ -33,6 +33,14 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string Id { get; set; }
 #endif
+        /// <summary>Where an inference checkpoint&apos;s weights are stored in the Together model registry. At least one of `model` and `adapter` is set.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Together.OpenApiClient.Models.RlInferenceCheckpointRegistration? InferenceRegistration { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Together.OpenApiClient.Models.RlInferenceCheckpointRegistration InferenceRegistration { get; set; }
+#endif
         /// <summary>LoRA rank of the session that produced this checkpoint. Absent for full-weight sessions and for checkpoints saved before this field was recorded.</summary>
         public int? LoraRank { get; set; }
         /// <summary>Training session that produced the checkpoint</summary>
@@ -50,6 +58,14 @@ namespace Soenneker.Together.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.Together.OpenApiClient.Models.RlCheckpointStep Step { get; set; }
+#endif
+        /// <summary>A specific revision of a model in the Together model registry</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Together.OpenApiClient.Models.RlModelRegistryArtifact? TrainingRegistration { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Together.OpenApiClient.Models.RlModelRegistryArtifact TrainingRegistration { get; set; }
 #endif
         /// <summary>Whether a checkpoint is saved for training resume or inference download.</summary>
         public global::Soenneker.Together.OpenApiClient.Models.RlCheckpointType? Type { get; set; }
@@ -81,9 +97,11 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "base_model", n => { BaseModel = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
+                { "inference_registration", n => { InferenceRegistration = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlInferenceCheckpointRegistration>(global::Soenneker.Together.OpenApiClient.Models.RlInferenceCheckpointRegistration.CreateFromDiscriminatorValue); } },
                 { "lora_rank", n => { LoraRank = n.GetIntValue(); } },
                 { "session_id", n => { SessionId = n.GetStringValue(); } },
                 { "step", n => { Step = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlCheckpointStep>(global::Soenneker.Together.OpenApiClient.Models.RlCheckpointStep.CreateFromDiscriminatorValue); } },
+                { "training_registration", n => { TrainingRegistration = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlModelRegistryArtifact>(global::Soenneker.Together.OpenApiClient.Models.RlModelRegistryArtifact.CreateFromDiscriminatorValue); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlCheckpointType>(); } },
             };
         }
@@ -97,9 +115,11 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteStringValue("base_model", BaseModel);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteStringValue("id", Id);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlInferenceCheckpointRegistration>("inference_registration", InferenceRegistration);
             writer.WriteIntValue("lora_rank", LoraRank);
             writer.WriteStringValue("session_id", SessionId);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlCheckpointStep>("step", Step);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlModelRegistryArtifact>("training_registration", TrainingRegistration);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlCheckpointType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }

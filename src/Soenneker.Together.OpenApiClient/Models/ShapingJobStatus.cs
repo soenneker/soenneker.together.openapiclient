@@ -3,37 +3,41 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
-    /// <summary>Type of GPU to use in the cluster</summary>
+    /// <summary>Current job status.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum GpuClusterCreateRequestGpuType
+    public enum ShapingJobStatus
     {
-        [EnumMember(Value = "H100_SXM")]
+        [EnumMember(Value = "pending")]
         #pragma warning disable CS1591
-        H100Sxm,
+        Pending,
         #pragma warning restore CS1591
-        [EnumMember(Value = "H200_SXM")]
+        [EnumMember(Value = "queued")]
         #pragma warning disable CS1591
-        H200Sxm,
+        Queued,
         #pragma warning restore CS1591
-        [EnumMember(Value = "RTX_6000_PCI")]
+        [EnumMember(Value = "running")]
         #pragma warning disable CS1591
-        Rtx6000Pci,
+        Running,
         #pragma warning restore CS1591
-        [EnumMember(Value = "L40_PCIE")]
+        [EnumMember(Value = "completed")]
         #pragma warning disable CS1591
-        L40Pcie,
+        Completed,
         #pragma warning restore CS1591
-        [EnumMember(Value = "B200_SXM")]
+        [EnumMember(Value = "cancelled")]
         #pragma warning disable CS1591
-        B200Sxm,
+        Cancelled,
         #pragma warning restore CS1591
-        [EnumMember(Value = "H100_SXM_INF")]
+        [EnumMember(Value = "cancel_requested")]
         #pragma warning disable CS1591
-        H100SxmInf,
+        CancelRequested,
         #pragma warning restore CS1591
-        [EnumMember(Value = "B300_SXM")]
+        [EnumMember(Value = "error")]
         #pragma warning disable CS1591
-        B300Sxm,
+        Error,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "user_error")]
+        #pragma warning disable CS1591
+        UserError,
         #pragma warning restore CS1591
     }
 }

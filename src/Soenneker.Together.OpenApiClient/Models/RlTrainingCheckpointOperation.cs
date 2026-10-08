@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
     /// <summary>
-    /// Async save training checkpoint operation
+    /// Async training checkpoint operation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RlTrainingCheckpointOperation : IAdditionalDataHolder, IParsable
@@ -31,7 +31,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string Id { get; set; }
 #endif
-        /// <summary>Result of a save training checkpoint operation</summary>
+        /// <summary>Result of a training checkpoint operation</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Together.OpenApiClient.Models.RlTrainingCheckpointResult? Output { get; set; }

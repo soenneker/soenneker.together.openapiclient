@@ -44,7 +44,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string NextCursor { get; set; }
 #endif
-        /// <summary>The object property</summary>
+        /// <summary>Object type, always `list`.</summary>
         public global::Soenneker.Together.OpenApiClient.Models.ListObject? Object { get; set; }
         /// <summary>ID of the organization the report belongs to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

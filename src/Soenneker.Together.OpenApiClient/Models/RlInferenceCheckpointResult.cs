@@ -15,13 +15,13 @@ namespace Soenneker.Together.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Registered model name for downloading the checkpoint</summary>
+        /// <summary>Saved inference checkpoint</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ModelName { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlInferenceCheckpoint? Checkpoint { get; set; }
 #nullable restore
 #else
-        public string ModelName { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlInferenceCheckpoint Checkpoint { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlInferenceCheckpointResult"/> and sets the default values.
@@ -48,7 +48,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "model_name", n => { ModelName = n.GetStringValue(); } },
+                { "checkpoint", n => { Checkpoint = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlInferenceCheckpoint>(global::Soenneker.Together.OpenApiClient.Models.RlInferenceCheckpoint.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -58,7 +58,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("model_name", ModelName);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlInferenceCheckpoint>("checkpoint", Checkpoint);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

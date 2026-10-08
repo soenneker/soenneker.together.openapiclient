@@ -8,55 +8,29 @@ using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
     /// <summary>
-    /// Model registration details for an inference checkpoint
+    /// Where an inference checkpoint&apos;s weights are stored in the Together model registry. At least one of `model` and `adapter` is set.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RlInferenceCheckpointRegistration : IAdditionalDataHolder, IParsable
     {
-        /// <summary>Together model registry object ID for the adapter checkpoint (e.g. `ml_...`), set on LoRA training sessions</summary>
+        /// <summary>A specific revision of a model in the Together model registry</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AdapterObjectId { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlModelRegistryArtifact? Adapter { get; set; }
 #nullable restore
 #else
-        public string AdapterObjectId { get; set; }
-#endif
-        /// <summary>Together model registry revision ID for the adapter checkpoint (e.g. `rv_...`)</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? AdapterObjectRevisionId { get; set; }
-#nullable restore
-#else
-        public string AdapterObjectRevisionId { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlModelRegistryArtifact Adapter { get; set; }
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Registered model name for downloading the checkpoint</summary>
+        /// <summary>A specific revision of a model in the Together model registry</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ModelName { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlModelRegistryArtifact? Model { get; set; }
 #nullable restore
 #else
-        public string ModelName { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlModelRegistryArtifact Model { get; set; }
 #endif
-        /// <summary>Together model registry object ID for the model checkpoint (e.g. `ml_...`), set on full-weight training sessions</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? ModelObjectId { get; set; }
-#nullable restore
-#else
-        public string ModelObjectId { get; set; }
-#endif
-        /// <summary>Together model registry revision ID for the model checkpoint (e.g. `rv_...`)</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? ModelObjectRevisionId { get; set; }
-#nullable restore
-#else
-        public string ModelObjectRevisionId { get; set; }
-#endif
-        /// <summary>Timestamp when the model was registered</summary>
-        public DateTimeOffset? RegisteredAt { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlInferenceCheckpointRegistration"/> and sets the default values.
         /// </summary>
@@ -82,12 +56,8 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "adapter_object_id", n => { AdapterObjectId = n.GetStringValue(); } },
-                { "adapter_object_revision_id", n => { AdapterObjectRevisionId = n.GetStringValue(); } },
-                { "model_name", n => { ModelName = n.GetStringValue(); } },
-                { "model_object_id", n => { ModelObjectId = n.GetStringValue(); } },
-                { "model_object_revision_id", n => { ModelObjectRevisionId = n.GetStringValue(); } },
-                { "registered_at", n => { RegisteredAt = n.GetDateTimeOffsetValue(); } },
+                { "adapter", n => { Adapter = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlModelRegistryArtifact>(global::Soenneker.Together.OpenApiClient.Models.RlModelRegistryArtifact.CreateFromDiscriminatorValue); } },
+                { "model", n => { Model = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlModelRegistryArtifact>(global::Soenneker.Together.OpenApiClient.Models.RlModelRegistryArtifact.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -97,12 +67,8 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("adapter_object_id", AdapterObjectId);
-            writer.WriteStringValue("adapter_object_revision_id", AdapterObjectRevisionId);
-            writer.WriteStringValue("model_name", ModelName);
-            writer.WriteStringValue("model_object_id", ModelObjectId);
-            writer.WriteStringValue("model_object_revision_id", ModelObjectRevisionId);
-            writer.WriteDateTimeOffsetValue("registered_at", RegisteredAt);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlModelRegistryArtifact>("adapter", Adapter);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlModelRegistryArtifact>("model", Model);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

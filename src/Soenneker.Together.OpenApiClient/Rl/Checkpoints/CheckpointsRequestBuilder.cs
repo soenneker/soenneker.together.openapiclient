@@ -35,7 +35,7 @@ namespace Soenneker.Together.OpenApiClient.Rl.Checkpoints
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public CheckpointsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/rl/checkpoints{?after*,base_model*,limit*,session_id*}", pathParameters)
+        public CheckpointsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/rl/checkpoints{?after*,base_model*,limit*,session_id*,type*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,11 +43,11 @@ namespace Soenneker.Together.OpenApiClient.Rl.Checkpoints
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public CheckpointsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/rl/checkpoints{?after*,base_model*,limit*,session_id*}", rawUrl)
+        public CheckpointsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/rl/checkpoints{?after*,base_model*,limit*,session_id*,type*}", rawUrl)
         {
         }
         /// <summary>
-        /// Lists training checkpoints owned by the caller. Filter by session or base model to recover a checkpoint ID for resume. Inference checkpoints are not included; they remain on the training session and in the model catalog.
+        /// Lists training and inference checkpoints owned by the caller, newest first. Filter by type, session, or base model, for example to recover a checkpoint ID for resume.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.RlCheckpointsListResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -70,7 +70,7 @@ namespace Soenneker.Together.OpenApiClient.Rl.Checkpoints
             return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.RlCheckpointsListResponse>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.RlCheckpointsListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Lists training checkpoints owned by the caller. Filter by session or base model to recover a checkpoint ID for resume. Inference checkpoints are not included; they remain on the training session and in the model catalog.
+        /// Lists training and inference checkpoints owned by the caller, newest first. Filter by type, session, or base model, for example to recover a checkpoint ID for resume.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -98,7 +98,7 @@ namespace Soenneker.Together.OpenApiClient.Rl.Checkpoints
             return new global::Soenneker.Together.OpenApiClient.Rl.Checkpoints.CheckpointsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Lists training checkpoints owned by the caller. Filter by session or base model to recover a checkpoint ID for resume. Inference checkpoints are not included; they remain on the training session and in the model catalog.
+        /// Lists training and inference checkpoints owned by the caller, newest first. Filter by type, session, or base model, for example to recover a checkpoint ID for resume.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class CheckpointsRequestBuilderGetQueryParameters 
@@ -146,6 +146,10 @@ namespace Soenneker.Together.OpenApiClient.Rl.Checkpoints
             public string SessionId { get; set; }
             #pragma warning restore CS1591
 #endif
+            #pragma warning disable CS1591
+            [QueryParameter("type")]
+            public global::Soenneker.Together.OpenApiClient.Models.ListCheckpointsTypeParameter? Type { get; set; }
+            #pragma warning restore CS1591
         }
     }
 }

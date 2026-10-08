@@ -36,5 +36,17 @@ namespace Soenneker.Together.OpenApiClient.Models
         #pragma warning disable CS1591
         Rerank,
         #pragma warning restore CS1591
+        [EnumMember(Value = "audio")]
+        #pragma warning disable CS1591
+        Audio,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "transcribe")]
+        #pragma warning disable CS1591
+        Transcribe,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "video")]
+        #pragma warning disable CS1591
+        Video,
+        #pragma warning restore CS1591
     }
 }

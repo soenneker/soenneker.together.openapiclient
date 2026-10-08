@@ -29,6 +29,16 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string AdapterModelId { get; set; }
 #endif
+        /// <summary>Optional inference-probe verdict for this adapter on this cluster; absent until validation concludes.</summary>
+        public bool? AdapterValid { get; set; }
+        /// <summary>Human-readable probe rejection detail when adapterValid is false.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? AdapterValidReason { get; set; }
+#nullable restore
+#else
+        public string AdapterValidReason { get; set; }
+#endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Cluster reporting this adapter status.</summary>
@@ -118,6 +128,8 @@ namespace Soenneker.Together.OpenApiClient.Models
             {
                 { "adapterModel", n => { AdapterModel = n.GetStringValue(); } },
                 { "adapterModelId", n => { AdapterModelId = n.GetStringValue(); } },
+                { "adapterValid", n => { AdapterValid = n.GetBoolValue(); } },
+                { "adapterValidReason", n => { AdapterValidReason = n.GetStringValue(); } },
                 { "clusterId", n => { ClusterId = n.GetStringValue(); } },
                 { "failedPodCount", n => { FailedPodCount = n.GetIntValue(); } },
                 { "loadedAt", n => { LoadedAt = n.GetDateTimeOffsetValue(); } },
@@ -141,6 +153,8 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("adapterModel", AdapterModel);
             writer.WriteStringValue("adapterModelId", AdapterModelId);
+            writer.WriteBoolValue("adapterValid", AdapterValid);
+            writer.WriteStringValue("adapterValidReason", AdapterValidReason);
             writer.WriteStringValue("clusterId", ClusterId);
             writer.WriteIntValue("failedPodCount", FailedPodCount);
             writer.WriteDateTimeOffsetValue("loadedAt", LoadedAt);

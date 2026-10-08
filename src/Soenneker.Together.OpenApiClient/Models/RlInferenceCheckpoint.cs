@@ -25,7 +25,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string Id { get; set; }
 #endif
-        /// <summary>Model registration details for an inference checkpoint</summary>
+        /// <summary>Where an inference checkpoint&apos;s weights are stored in the Together model registry. At least one of `model` and `adapter` is set.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Together.OpenApiClient.Models.RlInferenceCheckpointRegistration? Registration { get; set; }

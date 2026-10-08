@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
-    /// <summary>Lifecycle state of the file validation pipeline. Files fornon-`fine-tune` purposes skip validation.</summary>
+    /// <summary>Lifecycle state of the file validation pipeline. Files forpurposes that do not require validation skip validation.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum FileProcessingStatus
     {

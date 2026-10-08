@@ -8,20 +8,20 @@ using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
     /// <summary>
-    /// Result of a save training checkpoint operation
+    /// Result of a training checkpoint operation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RlTrainingCheckpointResult : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>ID of the saved training checkpoint (use for resume via Start)</summary>
+        /// <summary>Saved training checkpoint</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CheckpointId { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlTrainingCheckpoint? Checkpoint { get; set; }
 #nullable restore
 #else
-        public string CheckpointId { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlTrainingCheckpoint Checkpoint { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlTrainingCheckpointResult"/> and sets the default values.
@@ -48,7 +48,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "checkpoint_id", n => { CheckpointId = n.GetStringValue(); } },
+                { "checkpoint", n => { Checkpoint = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlTrainingCheckpoint>(global::Soenneker.Together.OpenApiClient.Models.RlTrainingCheckpoint.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -58,7 +58,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("checkpoint_id", CheckpointId);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlTrainingCheckpoint>("checkpoint", Checkpoint);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

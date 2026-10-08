@@ -55,6 +55,14 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string Etag { get; set; }
 #endif
+        /// <summary>Row identifier for this adapter attachment; changes if the adapter is removed and re-added.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Id { get; set; }
+#nullable restore
+#else
+        public string Id { get; set; }
+#endif
         /// <summary>Per-cluster adapter load state reported by the controller.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -93,6 +101,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "desiredRevision", n => { DesiredRevision = n.GetStringValue(); } },
                 { "desiredRevisionId", n => { DesiredRevisionId = n.GetStringValue(); } },
                 { "etag", n => { Etag = n.GetStringValue(); } },
+                { "id", n => { Id = n.GetStringValue(); } },
                 { "perCluster", n => { PerCluster = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.DeDeploymentAdapterStatus>(global::Soenneker.Together.OpenApiClient.Models.DeDeploymentAdapterStatus.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
@@ -108,6 +117,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteStringValue("desiredRevision", DesiredRevision);
             writer.WriteStringValue("desiredRevisionId", DesiredRevisionId);
             writer.WriteStringValue("etag", Etag);
+            writer.WriteStringValue("id", Id);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.DeDeploymentAdapterStatus>("perCluster", PerCluster);
             writer.WriteAdditionalData(AdditionalData);
         }
