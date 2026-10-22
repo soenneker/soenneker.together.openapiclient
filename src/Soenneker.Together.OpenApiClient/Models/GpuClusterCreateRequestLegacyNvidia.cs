@@ -33,10 +33,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #endif
         /// <summary>Whether to enable auto-scaling for the cluster. If true, the cluster will automatically scale the number of GPU worker nodes between num_gpus and auto_scale_max_gpus based on the workload.</summary>
         public bool? AutoScale { get; set; }
-        /// <summary>Whether GPU cluster should be auto-scaled based on the workload. By default, it is not auto-scaled.</summary>
-        [Obsolete("")]
-        public bool? AutoScaled { get; set; }
-        /// <summary>Maximum number of GPUs to which the cluster can be auto-scaled up. This field is required if auto_scaled is true.</summary>
+        /// <summary>Maximum number of GPUs to which the cluster can be auto-scaled up.</summary>
         public int? AutoScaleMaxGpus { get; set; }
         /// <summary>RESERVED billing types allow you to specify the duration of the cluster reservation via the duration_days field.ON_DEMAND billing types will give you ownership of the cluster until you delete it.SCHEDULED_CAPACITY billing types allow you to reserve capacity for a scheduled time window. You must specify the reservation_start_time and reservation_end_time with this request.</summary>
         public global::Soenneker.Together.OpenApiClient.Models.GpuClusterCreateRequestNvidiaVersionBillingType? BillingType { get; set; }
@@ -164,7 +161,6 @@ namespace Soenneker.Together.OpenApiClient.Models
         public GpuClusterCreateRequestLegacyNvidia()
         {
             AdditionalData = new Dictionary<string, object>();
-            AutoScaled = false;
             InstallTraefik = false;
         }
         /// <summary>
@@ -189,7 +185,6 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "add_ons", n => { AddOns = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.AddOnCreateRequest>(global::Soenneker.Together.OpenApiClient.Models.AddOnCreateRequest.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "auto_scale", n => { AutoScale = n.GetBoolValue(); } },
                 { "auto_scale_max_gpus", n => { AutoScaleMaxGpus = n.GetIntValue(); } },
-                { "auto_scaled", n => { AutoScaled = n.GetBoolValue(); } },
                 { "billing_type", n => { BillingType = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.GpuClusterCreateRequestNvidiaVersionBillingType>(); } },
                 { "capacity_pool_id", n => { CapacityPoolId = n.GetStringValue(); } },
                 { "cluster_config", n => { ClusterConfig = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.InstanceClusterConfig>(global::Soenneker.Together.OpenApiClient.Models.InstanceClusterConfig.CreateFromDiscriminatorValue); } },
@@ -226,7 +221,6 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.AcceptanceTestsParams>("acceptance_tests_params", AcceptanceTestsParams);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.AddOnCreateRequest>("add_ons", AddOns);
             writer.WriteBoolValue("auto_scale", AutoScale);
-            writer.WriteBoolValue("auto_scaled", AutoScaled);
             writer.WriteIntValue("auto_scale_max_gpus", AutoScaleMaxGpus);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.GpuClusterCreateRequestNvidiaVersionBillingType>("billing_type", BillingType);
             writer.WriteStringValue("capacity_pool_id", CapacityPoolId);

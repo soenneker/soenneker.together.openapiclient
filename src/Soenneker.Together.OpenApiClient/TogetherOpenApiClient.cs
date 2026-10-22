@@ -6,37 +6,9 @@ using Microsoft.Kiota.Serialization.Form;
 using Microsoft.Kiota.Serialization.Json;
 using Microsoft.Kiota.Serialization.Multipart;
 using Microsoft.Kiota.Serialization.Text;
-using Soenneker.Together.OpenApiClient.Audio;
-using Soenneker.Together.OpenApiClient.Batches;
-using Soenneker.Together.OpenApiClient.Billing;
-using Soenneker.Together.OpenApiClient.Chat;
-using Soenneker.Together.OpenApiClient.Clusters;
-using Soenneker.Together.OpenApiClient.Completions;
-using Soenneker.Together.OpenApiClient.Compute;
-using Soenneker.Together.OpenApiClient.Deployments;
-using Soenneker.Together.OpenApiClient.Embeddings;
-using Soenneker.Together.OpenApiClient.Endpoints;
-using Soenneker.Together.OpenApiClient.Evaluation;
-using Soenneker.Together.OpenApiClient.Files;
-using Soenneker.Together.OpenApiClient.FineTunes;
-using Soenneker.Together.OpenApiClient.Finetune;
-using Soenneker.Together.OpenApiClient.Hardware;
-using Soenneker.Together.OpenApiClient.Images;
-using Soenneker.Together.OpenApiClient.Jobs;
-using Soenneker.Together.OpenApiClient.ModelsRequests;
-using Soenneker.Together.OpenApiClient.Organizations;
-using Soenneker.Together.OpenApiClient.Projects;
-using Soenneker.Together.OpenApiClient.Public;
-using Soenneker.Together.OpenApiClient.Queue;
-using Soenneker.Together.OpenApiClient.Realtime;
-using Soenneker.Together.OpenApiClient.Rerank;
-using Soenneker.Together.OpenApiClient.Rl;
-using Soenneker.Together.OpenApiClient.Shaping;
-using Soenneker.Together.OpenApiClient.SupportedModels;
-using Soenneker.Together.OpenApiClient.Tci;
-using Soenneker.Together.OpenApiClient.Videos;
-using Soenneker.Together.OpenApiClient.Voices;
-using Soenneker.Together.OpenApiClient.Whoami;
+using Soenneker.Together.OpenApiClient.V1;
+using Soenneker.Together.OpenApiClient.V2;
+using Soenneker.Together.OpenApiClient.V3;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -49,160 +21,20 @@ namespace Soenneker.Together.OpenApiClient
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TogetherOpenApiClient : BaseRequestBuilder
     {
-        /// <summary>The audio property</summary>
-        public global::Soenneker.Together.OpenApiClient.Audio.AudioRequestBuilder Audio
+        /// <summary>The v1 property</summary>
+        public global::Soenneker.Together.OpenApiClient.V1.V1RequestBuilder V1
         {
-            get => new global::Soenneker.Together.OpenApiClient.Audio.AudioRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Soenneker.Together.OpenApiClient.V1.V1RequestBuilder(PathParameters, RequestAdapter);
         }
-        /// <summary>The batches property</summary>
-        public global::Soenneker.Together.OpenApiClient.Batches.BatchesRequestBuilder Batches
+        /// <summary>The v2 property</summary>
+        public global::Soenneker.Together.OpenApiClient.V2.V2RequestBuilder V2
         {
-            get => new global::Soenneker.Together.OpenApiClient.Batches.BatchesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Soenneker.Together.OpenApiClient.V2.V2RequestBuilder(PathParameters, RequestAdapter);
         }
-        /// <summary>The billing property</summary>
-        public global::Soenneker.Together.OpenApiClient.Billing.BillingRequestBuilder Billing
+        /// <summary>The v3 property</summary>
+        public global::Soenneker.Together.OpenApiClient.V3.V3RequestBuilder V3
         {
-            get => new global::Soenneker.Together.OpenApiClient.Billing.BillingRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The chat property</summary>
-        public global::Soenneker.Together.OpenApiClient.Chat.ChatRequestBuilder Chat
-        {
-            get => new global::Soenneker.Together.OpenApiClient.Chat.ChatRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The clusters property</summary>
-        public global::Soenneker.Together.OpenApiClient.Clusters.ClustersRequestBuilder Clusters
-        {
-            get => new global::Soenneker.Together.OpenApiClient.Clusters.ClustersRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The completions property</summary>
-        public global::Soenneker.Together.OpenApiClient.Completions.CompletionsRequestBuilder Completions
-        {
-            get => new global::Soenneker.Together.OpenApiClient.Completions.CompletionsRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The compute property</summary>
-        public global::Soenneker.Together.OpenApiClient.Compute.ComputeRequestBuilder Compute
-        {
-            get => new global::Soenneker.Together.OpenApiClient.Compute.ComputeRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The deployments property</summary>
-        public global::Soenneker.Together.OpenApiClient.Deployments.DeploymentsRequestBuilder Deployments
-        {
-            get => new global::Soenneker.Together.OpenApiClient.Deployments.DeploymentsRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The embeddings property</summary>
-        public global::Soenneker.Together.OpenApiClient.Embeddings.EmbeddingsRequestBuilder Embeddings
-        {
-            get => new global::Soenneker.Together.OpenApiClient.Embeddings.EmbeddingsRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The endpoints property</summary>
-        public global::Soenneker.Together.OpenApiClient.Endpoints.EndpointsRequestBuilder Endpoints
-        {
-            get => new global::Soenneker.Together.OpenApiClient.Endpoints.EndpointsRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The evaluation property</summary>
-        public global::Soenneker.Together.OpenApiClient.Evaluation.EvaluationRequestBuilder Evaluation
-        {
-            get => new global::Soenneker.Together.OpenApiClient.Evaluation.EvaluationRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The files property</summary>
-        public global::Soenneker.Together.OpenApiClient.Files.FilesRequestBuilder Files
-        {
-            get => new global::Soenneker.Together.OpenApiClient.Files.FilesRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The finetune property</summary>
-        public global::Soenneker.Together.OpenApiClient.Finetune.FinetuneRequestBuilder Finetune
-        {
-            get => new global::Soenneker.Together.OpenApiClient.Finetune.FinetuneRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The fineTunes property</summary>
-        public global::Soenneker.Together.OpenApiClient.FineTunes.FineTunesRequestBuilder FineTunes
-        {
-            get => new global::Soenneker.Together.OpenApiClient.FineTunes.FineTunesRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The hardware property</summary>
-        public global::Soenneker.Together.OpenApiClient.Hardware.HardwareRequestBuilder Hardware
-        {
-            get => new global::Soenneker.Together.OpenApiClient.Hardware.HardwareRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The images property</summary>
-        public global::Soenneker.Together.OpenApiClient.Images.ImagesRequestBuilder Images
-        {
-            get => new global::Soenneker.Together.OpenApiClient.Images.ImagesRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The jobs property</summary>
-        public global::Soenneker.Together.OpenApiClient.Jobs.JobsRequestBuilder Jobs
-        {
-            get => new global::Soenneker.Together.OpenApiClient.Jobs.JobsRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The models property</summary>
-        public global::Soenneker.Together.OpenApiClient.ModelsRequests.ModelsRequestBuilder Models
-        {
-            get => new global::Soenneker.Together.OpenApiClient.ModelsRequests.ModelsRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The organizations property</summary>
-        public global::Soenneker.Together.OpenApiClient.Organizations.OrganizationsRequestBuilder Organizations
-        {
-            get => new global::Soenneker.Together.OpenApiClient.Organizations.OrganizationsRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The projects property</summary>
-        public global::Soenneker.Together.OpenApiClient.Projects.ProjectsRequestBuilder Projects
-        {
-            get => new global::Soenneker.Together.OpenApiClient.Projects.ProjectsRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The public property</summary>
-        public global::Soenneker.Together.OpenApiClient.Public.PublicRequestBuilder Public
-        {
-            get => new global::Soenneker.Together.OpenApiClient.Public.PublicRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The queue property</summary>
-        public global::Soenneker.Together.OpenApiClient.Queue.QueueRequestBuilder Queue
-        {
-            get => new global::Soenneker.Together.OpenApiClient.Queue.QueueRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The realtime property</summary>
-        public global::Soenneker.Together.OpenApiClient.Realtime.RealtimeRequestBuilder Realtime
-        {
-            get => new global::Soenneker.Together.OpenApiClient.Realtime.RealtimeRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The rerank property</summary>
-        public global::Soenneker.Together.OpenApiClient.Rerank.RerankRequestBuilder Rerank
-        {
-            get => new global::Soenneker.Together.OpenApiClient.Rerank.RerankRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The rl property</summary>
-        public global::Soenneker.Together.OpenApiClient.Rl.RlRequestBuilder Rl
-        {
-            get => new global::Soenneker.Together.OpenApiClient.Rl.RlRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The shaping property</summary>
-        public global::Soenneker.Together.OpenApiClient.Shaping.ShapingRequestBuilder Shaping
-        {
-            get => new global::Soenneker.Together.OpenApiClient.Shaping.ShapingRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The supportedModels property</summary>
-        public global::Soenneker.Together.OpenApiClient.SupportedModels.SupportedModelsRequestBuilder SupportedModels
-        {
-            get => new global::Soenneker.Together.OpenApiClient.SupportedModels.SupportedModelsRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The tci property</summary>
-        public global::Soenneker.Together.OpenApiClient.Tci.TciRequestBuilder Tci
-        {
-            get => new global::Soenneker.Together.OpenApiClient.Tci.TciRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The videos property</summary>
-        public global::Soenneker.Together.OpenApiClient.Videos.VideosRequestBuilder Videos
-        {
-            get => new global::Soenneker.Together.OpenApiClient.Videos.VideosRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The voices property</summary>
-        public global::Soenneker.Together.OpenApiClient.Voices.VoicesRequestBuilder Voices
-        {
-            get => new global::Soenneker.Together.OpenApiClient.Voices.VoicesRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The whoami property</summary>
-        public global::Soenneker.Together.OpenApiClient.Whoami.WhoamiRequestBuilder Whoami
-        {
-            get => new global::Soenneker.Together.OpenApiClient.Whoami.WhoamiRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Soenneker.Together.OpenApiClient.V3.V3RequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.TogetherOpenApiClient"/> and sets the default values.
@@ -219,7 +51,7 @@ namespace Soenneker.Together.OpenApiClient
             ApiClientBuilder.RegisterDefaultDeserializer<FormParseNodeFactory>();
             if (string.IsNullOrEmpty(RequestAdapter.BaseUrl))
             {
-                RequestAdapter.BaseUrl = "https://api.together.ai/v1";
+                RequestAdapter.BaseUrl = "https://api.together.ai";
             }
             PathParameters.TryAdd("baseurl", RequestAdapter.BaseUrl);
         }

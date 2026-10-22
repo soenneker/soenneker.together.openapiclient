@@ -55,7 +55,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string Etag { get; set; }
 #endif
-        /// <summary>Row identifier for this adapter attachment; changes if the adapter is removed and re-added.</summary>
+        /// <summary>Adapter attachment `dad_` id used by get, update, and remove; stale ids never address a replacement after remove and re-add.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Id { get; set; }

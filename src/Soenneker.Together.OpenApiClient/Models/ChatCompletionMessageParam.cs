@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.Together.OpenApiClient.Models.ChatCompletionAssistantMessageParam"/>, <see cref="global::Soenneker.Together.OpenApiClient.Models.ChatCompletionFunctionMessageParam"/>, <see cref="global::Soenneker.Together.OpenApiClient.Models.ChatCompletionSystemMessageParam"/>, <see cref="global::Soenneker.Together.OpenApiClient.Models.ChatCompletionToolMessageParam"/>, <see cref="global::Soenneker.Together.OpenApiClient.Models.ChatCompletionUserMessageParam"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.Together.OpenApiClient.Models.ChatCompletionAssistantMessageParam"/>, <see cref="global::Soenneker.Together.OpenApiClient.Models.ChatCompletionSystemMessageParam"/>, <see cref="global::Soenneker.Together.OpenApiClient.Models.ChatCompletionToolMessageParam"/>, <see cref="global::Soenneker.Together.OpenApiClient.Models.ChatCompletionUserMessageParam"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ChatCompletionMessageParam : IComposedTypeWrapper, IParsable
@@ -20,14 +20,6 @@ namespace Soenneker.Together.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionAssistantMessageParam ChatCompletionAssistantMessageParam { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.ChatCompletionFunctionMessageParam"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionFunctionMessageParam? ChatCompletionFunctionMessageParam { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionFunctionMessageParam ChatCompletionFunctionMessageParam { get; set; }
 #endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.ChatCompletionSystemMessageParam"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -67,10 +59,6 @@ namespace Soenneker.Together.OpenApiClient.Models
             {
                 result.ChatCompletionAssistantMessageParam = new global::Soenneker.Together.OpenApiClient.Models.ChatCompletionAssistantMessageParam();
             }
-            else if("ChatCompletionFunctionMessageParam".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.ChatCompletionFunctionMessageParam = new global::Soenneker.Together.OpenApiClient.Models.ChatCompletionFunctionMessageParam();
-            }
             else if("ChatCompletionSystemMessageParam".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ChatCompletionSystemMessageParam = new global::Soenneker.Together.OpenApiClient.Models.ChatCompletionSystemMessageParam();
@@ -94,10 +82,6 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ChatCompletionAssistantMessageParam != null)
             {
                 return ChatCompletionAssistantMessageParam.GetFieldDeserializers();
-            }
-            else if(ChatCompletionFunctionMessageParam != null)
-            {
-                return ChatCompletionFunctionMessageParam.GetFieldDeserializers();
             }
             else if(ChatCompletionSystemMessageParam != null)
             {
@@ -123,10 +107,6 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ChatCompletionAssistantMessageParam != null)
             {
                 writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionAssistantMessageParam>(null, ChatCompletionAssistantMessageParam);
-            }
-            else if(ChatCompletionFunctionMessageParam != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionFunctionMessageParam>(null, ChatCompletionFunctionMessageParam);
             }
             else if(ChatCompletionSystemMessageParam != null)
             {

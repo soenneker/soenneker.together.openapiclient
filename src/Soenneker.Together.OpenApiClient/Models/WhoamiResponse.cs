@@ -7,76 +7,52 @@ using System.IO;
 using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
+    /// <summary>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.Together.OpenApiClient.Models.WhoamiOrgApiKey"/>, <see cref="global::Soenneker.Together.OpenApiClient.Models.WhoamiProjectApiKey"/>, <see cref="global::Soenneker.Together.OpenApiClient.Models.WhoamiUserJwt"/>, <see cref="global::Soenneker.Together.OpenApiClient.Models.WhoamiUserOrgJwt"/>, <see cref="global::Soenneker.Together.OpenApiClient.Models.WhoamiUserOrgProjectJwt"/>
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
-    public partial class WhoamiResponse : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
+    public partial class WhoamiResponse : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The ID of the API key that authenticated the request.</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.WhoamiOrgApiKey"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ApiKeyId { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.WhoamiOrgApiKey? WhoamiOrgApiKey { get; set; }
 #nullable restore
 #else
-        public string ApiKeyId { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.WhoamiOrgApiKey WhoamiOrgApiKey { get; set; }
 #endif
-        /// <summary>The ID of the organization that owns the project.</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.WhoamiProjectApiKey"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? OrganizationId { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.WhoamiProjectApiKey? WhoamiProjectApiKey { get; set; }
 #nullable restore
 #else
-        public string OrganizationId { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.WhoamiProjectApiKey WhoamiProjectApiKey { get; set; }
 #endif
-        /// <summary>Human-readable name of the organization.</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.WhoamiUserJwt"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? OrganizationName { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.WhoamiUserJwt? WhoamiUserJwt { get; set; }
 #nullable restore
 #else
-        public string OrganizationName { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.WhoamiUserJwt WhoamiUserJwt { get; set; }
 #endif
-        /// <summary>The ID of the project the API key is scoped to.</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.WhoamiUserOrgJwt"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ProjectId { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.WhoamiUserOrgJwt? WhoamiUserOrgJwt { get; set; }
 #nullable restore
 #else
-        public string ProjectId { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.WhoamiUserOrgJwt WhoamiUserOrgJwt { get; set; }
 #endif
-        /// <summary>Human-readable name of the project.</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.WhoamiUserOrgProjectJwt"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ProjectName { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.WhoamiUserOrgProjectJwt? WhoamiUserOrgProjectJwt { get; set; }
 #nullable restore
 #else
-        public string ProjectName { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.WhoamiUserOrgProjectJwt WhoamiUserOrgProjectJwt { get; set; }
 #endif
-        /// <summary>DNS-friendly project identifier. Used with an endpoint slug as `&lt;project_slug&gt;/&lt;endpoint_slug&gt;` to form the `model` value in dedicated endpoint inference calls.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? ProjectSlug { get; set; }
-#nullable restore
-#else
-        public string ProjectSlug { get; set; }
-#endif
-        /// <summary>The ID of the authenticated user, if available.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? UserId { get; set; }
-#nullable restore
-#else
-        public string UserId { get; set; }
-#endif
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.WhoamiResponse"/> and sets the default values.
-        /// </summary>
-        public WhoamiResponse()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -85,7 +61,29 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.WhoamiResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.WhoamiResponse();
+            var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
+            var result = new global::Soenneker.Together.OpenApiClient.Models.WhoamiResponse();
+            if("org_api_key".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.WhoamiOrgApiKey = new global::Soenneker.Together.OpenApiClient.Models.WhoamiOrgApiKey();
+            }
+            else if("project_api_key".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.WhoamiProjectApiKey = new global::Soenneker.Together.OpenApiClient.Models.WhoamiProjectApiKey();
+            }
+            else if("user_jwt".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.WhoamiUserJwt = new global::Soenneker.Together.OpenApiClient.Models.WhoamiUserJwt();
+            }
+            else if("user_org_jwt".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.WhoamiUserOrgJwt = new global::Soenneker.Together.OpenApiClient.Models.WhoamiUserOrgJwt();
+            }
+            else if("user_org_project_jwt".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.WhoamiUserOrgProjectJwt = new global::Soenneker.Together.OpenApiClient.Models.WhoamiUserOrgProjectJwt();
+            }
+            return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -93,16 +91,27 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            if(WhoamiOrgApiKey != null)
             {
-                { "api_key_id", n => { ApiKeyId = n.GetStringValue(); } },
-                { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
-                { "organization_name", n => { OrganizationName = n.GetStringValue(); } },
-                { "project_id", n => { ProjectId = n.GetStringValue(); } },
-                { "project_name", n => { ProjectName = n.GetStringValue(); } },
-                { "project_slug", n => { ProjectSlug = n.GetStringValue(); } },
-                { "user_id", n => { UserId = n.GetStringValue(); } },
-            };
+                return WhoamiOrgApiKey.GetFieldDeserializers();
+            }
+            else if(WhoamiProjectApiKey != null)
+            {
+                return WhoamiProjectApiKey.GetFieldDeserializers();
+            }
+            else if(WhoamiUserJwt != null)
+            {
+                return WhoamiUserJwt.GetFieldDeserializers();
+            }
+            else if(WhoamiUserOrgJwt != null)
+            {
+                return WhoamiUserOrgJwt.GetFieldDeserializers();
+            }
+            else if(WhoamiUserOrgProjectJwt != null)
+            {
+                return WhoamiUserOrgProjectJwt.GetFieldDeserializers();
+            }
+            return new Dictionary<string, Action<IParseNode>>();
         }
         /// <summary>
         /// Serializes information the current object
@@ -111,14 +120,26 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("api_key_id", ApiKeyId);
-            writer.WriteStringValue("organization_id", OrganizationId);
-            writer.WriteStringValue("organization_name", OrganizationName);
-            writer.WriteStringValue("project_id", ProjectId);
-            writer.WriteStringValue("project_name", ProjectName);
-            writer.WriteStringValue("project_slug", ProjectSlug);
-            writer.WriteStringValue("user_id", UserId);
-            writer.WriteAdditionalData(AdditionalData);
+            if(WhoamiOrgApiKey != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.WhoamiOrgApiKey>(null, WhoamiOrgApiKey);
+            }
+            else if(WhoamiProjectApiKey != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.WhoamiProjectApiKey>(null, WhoamiProjectApiKey);
+            }
+            else if(WhoamiUserJwt != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.WhoamiUserJwt>(null, WhoamiUserJwt);
+            }
+            else if(WhoamiUserOrgJwt != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.WhoamiUserOrgJwt>(null, WhoamiUserOrgJwt);
+            }
+            else if(WhoamiUserOrgProjectJwt != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.WhoamiUserOrgProjectJwt>(null, WhoamiUserOrgProjectJwt);
+            }
         }
     }
 }

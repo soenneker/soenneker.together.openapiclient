@@ -77,6 +77,14 @@ namespace Soenneker.Together.OpenApiClient.Models
 #endif
         /// <summary>Lifecycle status of a model resource</summary>
         public global::Soenneker.Together.OpenApiClient.Models.RlModelResourcesStatus? Status { get; set; }
+        /// <summary>Details of a model resource&apos;s current status</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Together.OpenApiClient.Models.RlModelResourcesStatusDetails? StatusDetails { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Together.OpenApiClient.Models.RlModelResourcesStatusDetails StatusDetails { get; set; }
+#endif
         /// <summary>Timestamp when the model resource was last updated</summary>
         public DateTimeOffset? UpdatedAt { get; set; }
         /// <summary>
@@ -114,6 +122,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "lora_enabled", n => { LoraEnabled = n.GetBoolValue(); } },
                 { "optimizer_config", n => { OptimizerConfig = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlOptimizerConfig>(global::Soenneker.Together.OpenApiClient.Models.RlOptimizerConfig.CreateFromDiscriminatorValue); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlModelResourcesStatus>(); } },
+                { "status_details", n => { StatusDetails = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlModelResourcesStatusDetails>(global::Soenneker.Together.OpenApiClient.Models.RlModelResourcesStatusDetails.CreateFromDiscriminatorValue); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
         }
@@ -134,6 +143,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteBoolValue("lora_enabled", LoraEnabled);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlOptimizerConfig>("optimizer_config", OptimizerConfig);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlModelResourcesStatus>("status", Status);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlModelResourcesStatusDetails>("status_details", StatusDetails);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
             writer.WriteAdditionalData(AdditionalData);
         }

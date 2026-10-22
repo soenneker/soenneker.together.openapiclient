@@ -99,9 +99,6 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string Quantization { get; set; }
 #endif
-        /// <summary>Deprecated. Use `parallelism`. Legacy tensor-parallel shard count for the profile.</summary>
-        [Obsolete("")]
-        public int? TensorParallelSize { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelDeploymentProfile"/> and sets the default values.
         /// </summary>
@@ -139,7 +136,6 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "performanceBenchmarks", n => { PerformanceBenchmarks = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelPerformanceBenchmarks>(global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelPerformanceBenchmarks.CreateFromDiscriminatorValue); } },
                 { "profileId", n => { ProfileId = n.GetStringValue(); } },
                 { "quantization", n => { Quantization = n.GetStringValue(); } },
-                { "tensorParallelSize", n => { TensorParallelSize = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -161,7 +157,6 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelPerformanceBenchmarks>("performanceBenchmarks", PerformanceBenchmarks);
             writer.WriteStringValue("profileId", ProfileId);
             writer.WriteStringValue("quantization", Quantization);
-            writer.WriteIntValue("tensorParallelSize", TensorParallelSize);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

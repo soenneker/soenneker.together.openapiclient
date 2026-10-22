@@ -39,9 +39,6 @@ namespace Soenneker.Together.OpenApiClient.Models
 #endif
         /// <summary>The object type, which is always `file`.</summary>
         public global::Soenneker.Together.OpenApiClient.Models.FileResponseObject? Object { get; set; }
-        /// <summary>Deprecated. Whether file has been fully uploaded.</summary>
-        [Obsolete("")]
-        public bool? Processed { get; set; }
         /// <summary>Lifecycle state of the file validation pipeline. Files forpurposes that do not require validation skip validation.</summary>
         public global::Soenneker.Together.OpenApiClient.Models.FileProcessingStatus? ProcessingStatus { get; set; }
         /// <summary>The purpose of the file as it was uploaded.</summary>
@@ -85,7 +82,6 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "filename", n => { Filename = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "object", n => { Object = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.FileResponseObject>(); } },
-                { "Processed", n => { Processed = n.GetBoolValue(); } },
                 { "processing_status", n => { ProcessingStatus = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.FileProcessingStatus>(); } },
                 { "purpose", n => { Purpose = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.FilePurpose>(); } },
                 { "validation_report", n => { ValidationReport = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.FileValidationReport>(global::Soenneker.Together.OpenApiClient.Models.FileValidationReport.CreateFromDiscriminatorValue); } },
@@ -104,7 +100,6 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.FileType>("FileType", FileType);
             writer.WriteStringValue("id", Id);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.FileResponseObject>("object", Object);
-            writer.WriteBoolValue("Processed", Processed);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.FileProcessingStatus>("processing_status", ProcessingStatus);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.FilePurpose>("purpose", Purpose);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.FileValidationReport>("validation_report", ValidationReport);

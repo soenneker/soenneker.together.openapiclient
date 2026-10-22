@@ -17,15 +17,6 @@ namespace Soenneker.Together.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Frames per second. Defaults to 24.</summary>
         public int? Fps { get; set; }
-        /// <summary>Deprecated: use media.frame_images instead. Array of images to guide video generation, similar to keyframes.</summary>
-        [Obsolete("")]
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<global::Soenneker.Together.OpenApiClient.Models.VideoFrameImageInput>? FrameImages { get; set; }
-#nullable restore
-#else
-        public List<global::Soenneker.Together.OpenApiClient.Models.VideoFrameImageInput> FrameImages { get; set; }
-#endif
         /// <summary>Whether to generate audio for the video.</summary>
         public bool? GenerateAudio { get; set; }
         /// <summary>Controls how closely the video generation follows your prompt. Higher values make the model adhere more strictly to your text description, while lower values allow more creative freedom. guidence_scale affects both visual content and temporal consistency.Recommended range is 6.0-10.0 for most video models. Values above 12 may cause over-guidance artifacts or unnatural motion patterns.</summary>
@@ -76,15 +67,6 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string Ratio { get; set; }
 #endif
-        /// <summary>Deprecated: use media.reference_images instead. Unlike frame_images which constrain specific timeline positions, reference images guide the general appearance that should appear consistently across the video.</summary>
-        [Obsolete("")]
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<string>? ReferenceImages { get; set; }
-#nullable restore
-#else
-        public List<string> ReferenceImages { get; set; }
-#endif
         /// <summary>Video resolution.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -133,7 +115,6 @@ namespace Soenneker.Together.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "fps", n => { Fps = n.GetIntValue(); } },
-                { "frame_images", n => { FrameImages = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.VideoFrameImageInput>(global::Soenneker.Together.OpenApiClient.Models.VideoFrameImageInput.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "generate_audio", n => { GenerateAudio = n.GetBoolValue(); } },
                 { "guidance_scale", n => { GuidanceScale = n.GetIntValue(); } },
                 { "height", n => { Height = n.GetIntValue(); } },
@@ -144,7 +125,6 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "output_quality", n => { OutputQuality = n.GetIntValue(); } },
                 { "prompt", n => { Prompt = n.GetStringValue(); } },
                 { "ratio", n => { Ratio = n.GetStringValue(); } },
-                { "reference_images", n => { ReferenceImages = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "resolution", n => { Resolution = n.GetStringValue(); } },
                 { "seconds", n => { Seconds = n.GetStringValue(); } },
                 { "seed", n => { Seed = n.GetIntValue(); } },
@@ -160,7 +140,6 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("fps", Fps);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.VideoFrameImageInput>("frame_images", FrameImages);
             writer.WriteBoolValue("generate_audio", GenerateAudio);
             writer.WriteIntValue("guidance_scale", GuidanceScale);
             writer.WriteIntValue("height", Height);
@@ -171,7 +150,6 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteIntValue("output_quality", OutputQuality);
             writer.WriteStringValue("prompt", Prompt);
             writer.WriteStringValue("ratio", Ratio);
-            writer.WriteCollectionOfPrimitiveValues<string>("reference_images", ReferenceImages);
             writer.WriteStringValue("resolution", Resolution);
             writer.WriteStringValue("seconds", Seconds);
             writer.WriteIntValue("seed", Seed);

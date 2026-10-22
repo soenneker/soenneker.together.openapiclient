@@ -106,7 +106,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #endif
         /// <summary>The install_traefik property</summary>
         public bool? InstallTraefik { get; set; }
-        /// <summary>Whether the cluster is managed inside a substrate environment.</summary>
+        /// <summary>Whether the cluster runs on the Together-managed GPU cluster platform.</summary>
         public bool? IsInSubstrate { get; set; }
         /// <summary>The kube_config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

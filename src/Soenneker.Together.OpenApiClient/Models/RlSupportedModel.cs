@@ -32,7 +32,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public List<global::Soenneker.Together.OpenApiClient.Models.RlSupportedModelComputeConfig> ComputeConfigs { get; set; }
 #endif
         /// <summary>GPU type used when model-resource creation omits gpu_type.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.RlSupportedModelDefaultGpuType? DefaultGpuType { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.B200SxmDefaultGpuType? DefaultGpuType { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlSupportedModel"/> and sets the default values.
         /// </summary>
@@ -60,7 +60,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             {
                 { "base_model", n => { BaseModel = n.GetStringValue(); } },
                 { "compute_configs", n => { ComputeConfigs = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RlSupportedModelComputeConfig>(global::Soenneker.Together.OpenApiClient.Models.RlSupportedModelComputeConfig.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "default_gpu_type", n => { DefaultGpuType = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlSupportedModelDefaultGpuType>(); } },
+                { "default_gpu_type", n => { DefaultGpuType = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.B200SxmDefaultGpuType>(); } },
             };
         }
         /// <summary>
@@ -72,7 +72,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("base_model", BaseModel);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RlSupportedModelComputeConfig>("compute_configs", ComputeConfigs);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlSupportedModelDefaultGpuType>("default_gpu_type", DefaultGpuType);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.B200SxmDefaultGpuType>("default_gpu_type", DefaultGpuType);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

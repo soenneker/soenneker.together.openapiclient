@@ -23,7 +23,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public global::Soenneker.Together.OpenApiClient.Models.QuantizationPipelineConfiguration Configuration { get; private set; }
 #endif
-        /// <summary>Adapter inputs requested by the caller.</summary>
+        /// <summary>Inputs requested by the caller.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Together.OpenApiClient.Models.QuantizationPipelineInputs? Inputs { get; set; }

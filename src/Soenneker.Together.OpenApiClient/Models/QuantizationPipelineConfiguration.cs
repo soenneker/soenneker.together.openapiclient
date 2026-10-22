@@ -8,35 +8,11 @@ using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
     /// <summary>
-    /// Server-resolved configuration for a quantization job.
+    /// Server-resolved configuration for a quantization job. The `adapter_*` fields are the deprecated names of the `model_*` ones, with the same values.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class QuantizationPipelineConfiguration : IAdditionalDataHolder, IParsable
     {
-        /// <summary>Qualified adapter model name.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? AdapterModelName { get; set; }
-#nullable restore
-#else
-        public string AdapterModelName { get; set; }
-#endif
-        /// <summary>Project that owns the adapter.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? AdapterProjectId { get; set; }
-#nullable restore
-#else
-        public string AdapterProjectId { get; set; }
-#endif
-        /// <summary>Adapter revision selected for preparation.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? AdapterRevisionId { get; set; }
-#nullable restore
-#else
-        public string AdapterRevisionId { get; set; }
-#endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Qualified name of the base model.</summary>
@@ -47,7 +23,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string BaseModelName { get; set; }
 #endif
-        /// <summary>Model object ID of the adapter&apos;s base model.</summary>
+        /// <summary>Model object ID of the base model the prepared model was fine-tuned from.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? BaseObjectId { get; set; }
@@ -55,7 +31,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string BaseObjectId { get; set; }
 #endif
-        /// <summary>Revision ID of the adapter&apos;s base model.</summary>
+        /// <summary>Revision ID of that base model.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? BaseRevisionId { get; set; }
@@ -63,7 +39,31 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string BaseRevisionId { get; set; }
 #endif
-        /// <summary>User whose scope is used to fetch the adapter weights.</summary>
+        /// <summary>Qualified name of the model, which the produced model is named after.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ModelName { get; set; }
+#nullable restore
+#else
+        public string ModelName { get; set; }
+#endif
+        /// <summary>Project the model belongs to.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ModelProjectId { get; set; }
+#nullable restore
+#else
+        public string ModelProjectId { get; set; }
+#endif
+        /// <summary>Revision of the model selected for preparation.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ModelRevisionId { get; set; }
+#nullable restore
+#else
+        public string ModelRevisionId { get; set; }
+#endif
+        /// <summary>User whose scope is used to fetch the model weights.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? UserId { get; set; }
@@ -96,12 +96,12 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "adapter_model_name", n => { AdapterModelName = n.GetStringValue(); } },
-                { "adapter_project_id", n => { AdapterProjectId = n.GetStringValue(); } },
-                { "adapter_revision_id", n => { AdapterRevisionId = n.GetStringValue(); } },
                 { "base_model_name", n => { BaseModelName = n.GetStringValue(); } },
                 { "base_object_id", n => { BaseObjectId = n.GetStringValue(); } },
                 { "base_revision_id", n => { BaseRevisionId = n.GetStringValue(); } },
+                { "model_name", n => { ModelName = n.GetStringValue(); } },
+                { "model_project_id", n => { ModelProjectId = n.GetStringValue(); } },
+                { "model_revision_id", n => { ModelRevisionId = n.GetStringValue(); } },
                 { "user_id", n => { UserId = n.GetStringValue(); } },
             };
         }
@@ -112,12 +112,12 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("adapter_model_name", AdapterModelName);
-            writer.WriteStringValue("adapter_project_id", AdapterProjectId);
-            writer.WriteStringValue("adapter_revision_id", AdapterRevisionId);
             writer.WriteStringValue("base_model_name", BaseModelName);
             writer.WriteStringValue("base_object_id", BaseObjectId);
             writer.WriteStringValue("base_revision_id", BaseRevisionId);
+            writer.WriteStringValue("model_name", ModelName);
+            writer.WriteStringValue("model_project_id", ModelProjectId);
+            writer.WriteStringValue("model_revision_id", ModelRevisionId);
             writer.WriteStringValue("user_id", UserId);
             writer.WriteAdditionalData(AdditionalData);
         }

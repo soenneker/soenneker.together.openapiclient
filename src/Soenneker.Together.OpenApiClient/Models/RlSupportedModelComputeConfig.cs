@@ -23,8 +23,8 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public global::Soenneker.Together.OpenApiClient.Models.RlModelGeneratorConfig GeneratorConfig { get; set; }
 #endif
-        /// <summary>GPU type this configuration provisions.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.RlSupportedModelComputeConfigGpuType? GpuType { get; set; }
+        /// <summary>GPU type to provision. Omit to use the model&apos;s default GPU type.</summary>
+        public global::Soenneker.Together.OpenApiClient.Models.B200SxmGpuType? GpuType { get; set; }
         /// <summary>Training capabilities and limits for a model on one GPU type. Each sub-mode is present only when the model supports that training mode.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -59,7 +59,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "generator_config", n => { GeneratorConfig = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlModelGeneratorConfig>(global::Soenneker.Together.OpenApiClient.Models.RlModelGeneratorConfig.CreateFromDiscriminatorValue); } },
-                { "gpu_type", n => { GpuType = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlSupportedModelComputeConfigGpuType>(); } },
+                { "gpu_type", n => { GpuType = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.B200SxmGpuType>(); } },
                 { "trainer_config", n => { TrainerConfig = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlModelTrainerConfig>(global::Soenneker.Together.OpenApiClient.Models.RlModelTrainerConfig.CreateFromDiscriminatorValue); } },
             };
         }
@@ -71,7 +71,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlModelGeneratorConfig>("generator_config", GeneratorConfig);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlSupportedModelComputeConfigGpuType>("gpu_type", GpuType);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.B200SxmGpuType>("gpu_type", GpuType);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlModelTrainerConfig>("trainer_config", TrainerConfig);
             writer.WriteAdditionalData(AdditionalData);
         }

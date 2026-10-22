@@ -8,27 +8,11 @@ using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
     /// <summary>
-    /// Adapter identifiers to prepare.
+    /// The model to prepare: an adapter or a full model. A request names it by the `model_*` fields or the deprecated `adapter_*` fields, never a mix of the two, and gives a revision only beside the ID it belongs to. A job returns both names, with the same values.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class QuantizationPipelineInputs : IAdditionalDataHolder, IParsable
     {
-        /// <summary>Model object ID of the adapter to prepare.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? AdapterObjectId { get; set; }
-#nullable restore
-#else
-        public string AdapterObjectId { get; set; }
-#endif
-        /// <summary>Adapter revision ID to prepare. Omit to use the adapter&apos;s current revision.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? AdapterRevisionId { get; set; }
-#nullable restore
-#else
-        public string AdapterRevisionId { get; set; }
-#endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Conversation dataset file ID to use for calibration. Upload it first with `POST /v1/files` using purpose `calibration` and file type `jsonl`. Each JSONL row must contain a `messages` array and may contain a `tools` array.When provided, the job draws half of the calibration corpus from this file and half from a general-text corpus. When omitted, the job calibrates on the general-text corpus only.The request is rejected unless the file exists in the request project, has finished uploading, has passed files API validation as a conversation dataset, is not empty, and is at most 64 MiB. A `fine-tune` purpose file is also accepted so a training file can be reused.</summary>
@@ -38,6 +22,22 @@ namespace Soenneker.Together.OpenApiClient.Models
 #nullable restore
 #else
         public string CalibrationFileId { get; set; }
+#endif
+        /// <summary>Model object ID of the model to prepare. It names the input model; it is not the `results.model_object_id` of a job, which names the model the job produced.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ModelObjectId { get; set; }
+#nullable restore
+#else
+        public string ModelObjectId { get; set; }
+#endif
+        /// <summary>Revision ID of the model to prepare. Omit to use the model&apos;s current revision. Only valid with `model_object_id`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ModelRevisionId { get; set; }
+#nullable restore
+#else
+        public string ModelRevisionId { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.QuantizationPipelineInputs"/> and sets the default values.
@@ -64,9 +64,9 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "adapter_object_id", n => { AdapterObjectId = n.GetStringValue(); } },
-                { "adapter_revision_id", n => { AdapterRevisionId = n.GetStringValue(); } },
                 { "calibration_file_id", n => { CalibrationFileId = n.GetStringValue(); } },
+                { "model_object_id", n => { ModelObjectId = n.GetStringValue(); } },
+                { "model_revision_id", n => { ModelRevisionId = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -76,9 +76,9 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("adapter_object_id", AdapterObjectId);
-            writer.WriteStringValue("adapter_revision_id", AdapterRevisionId);
             writer.WriteStringValue("calibration_file_id", CalibrationFileId);
+            writer.WriteStringValue("model_object_id", ModelObjectId);
+            writer.WriteStringValue("model_revision_id", ModelRevisionId);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

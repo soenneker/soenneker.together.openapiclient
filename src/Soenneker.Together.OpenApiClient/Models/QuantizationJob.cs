@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
     /// <summary>
-    /// Quantization job that prepares an adapter for FP4 inference.
+    /// Quantization job that prepares a fine-tuned model for FP4 inference.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class QuantizationJob : IAdditionalDataHolder, IParsable
