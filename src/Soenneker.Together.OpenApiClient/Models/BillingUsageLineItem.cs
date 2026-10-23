@@ -14,6 +14,14 @@ namespace Soenneker.Together.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Credit covering this usage. Omitted for uncovered usage.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Together.OpenApiClient.Models.BillingUsageLineItemAppliedCredit? AppliedCredit { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Together.OpenApiClient.Models.BillingUsageLineItemAppliedCredit AppliedCredit { get; set; }
+#endif
         /// <summary>Resource identifiers for attribution, varying by product.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -87,6 +95,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "applied_credit", n => { AppliedCredit = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.BillingUsageLineItemAppliedCredit>(global::Soenneker.Together.OpenApiClient.Models.BillingUsageLineItemAppliedCredit.CreateFromDiscriminatorValue); } },
                 { "attributes", n => { Attributes = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.BillingUsageLineItemAttributesProperty>(global::Soenneker.Together.OpenApiClient.Models.BillingUsageLineItemAttributesProperty.CreateFromDiscriminatorValue); } },
                 { "cost", n => { Cost = n.GetStringValue(); } },
                 { "pricing_dimensions", n => { PricingDimensions = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.BillingUsageLineItemPricingDimensionsProperty>(global::Soenneker.Together.OpenApiClient.Models.BillingUsageLineItemPricingDimensionsProperty.CreateFromDiscriminatorValue); } },
@@ -102,6 +111,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.BillingUsageLineItemAppliedCredit>("applied_credit", AppliedCredit);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.BillingUsageLineItemAttributesProperty>("attributes", Attributes);
             writer.WriteStringValue("cost", Cost);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.BillingUsageLineItemPricingDimensionsProperty>("pricing_dimensions", PricingDimensions);
