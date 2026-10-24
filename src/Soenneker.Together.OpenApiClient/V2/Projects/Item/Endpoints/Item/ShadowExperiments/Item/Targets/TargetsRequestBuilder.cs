@@ -13,7 +13,7 @@ using System;
 namespace Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints.Item.ShadowExperiments.Item.Targets
 {
     /// <summary>
-    /// Builds and executes requests for operations under \v2\projects\{projectId}\endpoints\{endpoint-id}\shadowExperiments\{experiment-id}\targets
+    /// Builds and executes requests for operations under \v2\projects\{projectId}\endpoints\{id}\shadowExperiments\{id2}\targets
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TargetsRequestBuilder : BaseRequestBuilder
@@ -26,7 +26,7 @@ namespace Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints.Item.Shado
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("id", position);
+                urlTplParams.Add("id3", position);
                 return new global::Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints.Item.ShadowExperiments.Item.Targets.Item.TargetsItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
@@ -35,7 +35,7 @@ namespace Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints.Item.Shado
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public TargetsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/projects/{projectId}/endpoints/{endpoint%2Did}/shadowExperiments/{experiment%2Did}/targets{?after*,limit*}", pathParameters)
+        public TargetsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/projects/{projectId}/endpoints/{id}/shadowExperiments/{id2}/targets{?after*,limit*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints.Item.Shado
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public TargetsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/projects/{projectId}/endpoints/{endpoint%2Did}/shadowExperiments/{experiment%2Did}/targets{?after*,limit*}", rawUrl)
+        public TargetsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/projects/{projectId}/endpoints/{id}/shadowExperiments/{id2}/targets{?after*,limit*}", rawUrl)
         {
         }
         /// <summary>

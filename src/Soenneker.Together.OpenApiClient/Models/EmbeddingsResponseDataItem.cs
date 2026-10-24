@@ -25,7 +25,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>The index property</summary>
         public int? Index { get; set; }
         /// <summary>The object type, which is always `embedding`.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.EmbeddingsResponseDataItemObject? Object { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.EmbeddingObject? Object { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.EmbeddingsResponseDataItem"/> and sets the default values.
         /// </summary>
@@ -53,7 +53,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             {
                 { "embedding", n => { Embedding = n.GetCollectionOfPrimitiveValues<double?>()?.AsList(); } },
                 { "index", n => { Index = n.GetIntValue(); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.EmbeddingsResponseDataItemObject>(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.EmbeddingObject>(); } },
             };
         }
         /// <summary>
@@ -65,7 +65,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<double?>("embedding", Embedding);
             writer.WriteIntValue("index", Index);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.EmbeddingsResponseDataItemObject>("object", Object);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.EmbeddingObject>("object", Object);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

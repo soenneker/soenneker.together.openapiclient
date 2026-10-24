@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints.Item.ShadowExperiments.Item.Targets.Item
 {
     /// <summary>
-    /// Builds and executes requests for operations under \v2\projects\{projectId}\endpoints\{endpoint-id}\shadowExperiments\{experiment-id}\targets\{id}
+    /// Builds and executes requests for operations under \v2\projects\{projectId}\endpoints\{id}\shadowExperiments\{id2}\targets\{id3}
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TargetsItemRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints.Item.Shado
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public TargetsItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/projects/{projectId}/endpoints/{endpoint%2Did}/shadowExperiments/{experiment%2Did}/targets/{id}{?etag*}", pathParameters)
+        public TargetsItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/projects/{projectId}/endpoints/{id}/shadowExperiments/{id2}/targets/{id3}{?etag*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,24 +30,24 @@ namespace Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints.Item.Shado
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public TargetsItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/projects/{projectId}/endpoints/{endpoint%2Did}/shadowExperiments/{experiment%2Did}/targets/{id}{?etag*}", rawUrl)
+        public TargetsItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/projects/{projectId}/endpoints/{id}/shadowExperiments/{id2}/targets/{id3}{?etag*}", rawUrl)
         {
         }
         /// <summary>
         /// Removes a target from a shadow experiment without deleting the underlying deployment.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.ShadowExperimentServiceDeleteTarget200Response"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.DeDeleteResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.ErrorData">When receiving a 400 status code</exception>
         /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.ErrorData">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Together.OpenApiClient.Models.ShadowExperimentServiceDeleteTarget200Response?> DeleteAsync(Action<RequestConfiguration<global::Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints.Item.ShadowExperiments.Item.Targets.Item.TargetsItemRequestBuilder.TargetsItemRequestBuilderDeleteQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Together.OpenApiClient.Models.DeDeleteResponse?> DeleteAsync(Action<RequestConfiguration<global::Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints.Item.ShadowExperiments.Item.Targets.Item.TargetsItemRequestBuilder.TargetsItemRequestBuilderDeleteQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Together.OpenApiClient.Models.ShadowExperimentServiceDeleteTarget200Response> DeleteAsync(Action<RequestConfiguration<global::Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints.Item.ShadowExperiments.Item.Targets.Item.TargetsItemRequestBuilder.TargetsItemRequestBuilderDeleteQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Together.OpenApiClient.Models.DeDeleteResponse> DeleteAsync(Action<RequestConfiguration<global::Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints.Item.ShadowExperiments.Item.Targets.Item.TargetsItemRequestBuilder.TargetsItemRequestBuilderDeleteQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
@@ -56,7 +56,7 @@ namespace Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints.Item.Shado
                 { "400", global::Soenneker.Together.OpenApiClient.Models.ErrorData.CreateFromDiscriminatorValue },
                 { "XXX", global::Soenneker.Together.OpenApiClient.Models.ErrorData.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.ShadowExperimentServiceDeleteTarget200Response>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.ShadowExperimentServiceDeleteTarget200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.DeDeleteResponse>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.DeDeleteResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Retrieves one target configured to receive mirrored requests from a shadow experiment.
@@ -164,7 +164,7 @@ namespace Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints.Item.Shado
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
-            var requestInfo = new RequestInformation(Method.PATCH, "{+baseurl}/v2/projects/{projectId}/endpoints/{endpoint%2Did}/shadowExperiments/{experiment%2Did}/targets/{id}?updateMask={updateMask}", PathParameters);
+            var requestInfo = new RequestInformation(Method.PATCH, "{+baseurl}/v2/projects/{projectId}/endpoints/{id}/shadowExperiments/{id2}/targets/{id3}?updateMask={updateMask}", PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);

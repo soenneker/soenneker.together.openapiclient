@@ -24,7 +24,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public List<global::Soenneker.Together.OpenApiClient.Models.QuantizationEvent> Data { get; set; }
 #endif
         /// <summary>Object type, always `list`.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.ListObject? Object { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.EventsListObject? Object { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.EventsList"/> and sets the default values.
         /// </summary>
@@ -51,7 +51,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "data", n => { Data = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.QuantizationEvent>(global::Soenneker.Together.OpenApiClient.Models.QuantizationEvent.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.ListObject>(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.EventsListObject>(); } },
             };
         }
         /// <summary>
@@ -62,7 +62,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.QuantizationEvent>("data", Data);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.ListObject>("object", Object);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.EventsListObject>("object", Object);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

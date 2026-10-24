@@ -13,21 +13,21 @@ using System;
 namespace Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints.Item.Deployments
 {
     /// <summary>
-    /// Builds and executes requests for operations under \v2\projects\{projectId}\endpoints\{endpoint-id}\deployments
+    /// Builds and executes requests for operations under \v2\projects\{projectId}\endpoints\{id}\deployments
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DeploymentsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.Together.OpenApiClient.v2.projects.item.endpoints.item.deployments.item collection</summary>
         /// <param name="position">Unique identifier of the item</param>
-        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints.Item.Deployments.Item.DeploymentItemRequestBuilder"/></returns>
-        public global::Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints.Item.Deployments.Item.DeploymentItemRequestBuilder this[string position]
+        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints.Item.Deployments.Item.DeploymentsItemRequestBuilder"/></returns>
+        public global::Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints.Item.Deployments.Item.DeploymentsItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("deployment%2Did", position);
-                return new global::Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints.Item.Deployments.Item.DeploymentItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("id2", position);
+                return new global::Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints.Item.Deployments.Item.DeploymentsItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
@@ -35,7 +35,7 @@ namespace Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints.Item.Deplo
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public DeploymentsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/projects/{projectId}/endpoints/{endpoint%2Did}/deployments{?after*,filter*,limit*,orderBy*,validateOnly*}", pathParameters)
+        public DeploymentsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/projects/{projectId}/endpoints/{id}/deployments{?after*,filter*,limit*,orderBy*,validateOnly*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints.Item.Deplo
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public DeploymentsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/projects/{projectId}/endpoints/{endpoint%2Did}/deployments{?after*,filter*,limit*,orderBy*,validateOnly*}", rawUrl)
+        public DeploymentsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/projects/{projectId}/endpoints/{id}/deployments{?after*,filter*,limit*,orderBy*,validateOnly*}", rawUrl)
         {
         }
         /// <summary>

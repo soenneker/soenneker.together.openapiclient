@@ -18,10 +18,10 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Array of audio inputs. Each element accepts a URL string or an object with an &quot;audio&quot; key.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Together.OpenApiClient.Models.VideoMediaAudioInputsItem>? AudioInputs { get; set; }
+        public List<string>? AudioInputs { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Together.OpenApiClient.Models.VideoMediaAudioInputsItem> AudioInputs { get; set; }
+        public List<string> AudioInputs { get; set; }
 #endif
         /// <summary>Array of images to guide video generation at specific timeline positions.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -88,7 +88,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "audio_inputs", n => { AudioInputs = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.VideoMediaAudioInputsItem>(global::Soenneker.Together.OpenApiClient.Models.VideoMediaAudioInputsItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "audio_inputs", n => { AudioInputs = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "frame_images", n => { FrameImages = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.VideoFrameImageInput>(global::Soenneker.Together.OpenApiClient.Models.VideoFrameImageInput.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "frame_videos", n => { FrameVideos = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.VideoRef>(global::Soenneker.Together.OpenApiClient.Models.VideoRef.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "reference_images", n => { ReferenceImages = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
@@ -103,7 +103,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.VideoMediaAudioInputsItem>("audio_inputs", AudioInputs);
+            writer.WriteCollectionOfPrimitiveValues<string>("audio_inputs", AudioInputs);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.VideoFrameImageInput>("frame_images", FrameImages);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.VideoRef>("frame_videos", FrameVideos);
             writer.WriteCollectionOfPrimitiveValues<string>("reference_images", ReferenceImages);

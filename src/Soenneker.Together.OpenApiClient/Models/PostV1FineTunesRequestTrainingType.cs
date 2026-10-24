@@ -37,9 +37,16 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.PostV1FineTunesRequestTrainingType CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
+            var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
             var result = new global::Soenneker.Together.OpenApiClient.Models.PostV1FineTunesRequestTrainingType();
-            result.FullTrainingType = new global::Soenneker.Together.OpenApiClient.Models.FullTrainingType();
-            result.LoRaTrainingType = new global::Soenneker.Together.OpenApiClient.Models.LoRaTrainingType();
+            if("Full".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.FullTrainingType = new global::Soenneker.Together.OpenApiClient.Models.FullTrainingType();
+            }
+            else if("Lora".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.LoRaTrainingType = new global::Soenneker.Together.OpenApiClient.Models.LoRaTrainingType();
+            }
             return result;
         }
         /// <summary>
@@ -48,9 +55,13 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(FullTrainingType != null || LoRaTrainingType != null)
+            if(FullTrainingType != null)
             {
-                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(FullTrainingType, LoRaTrainingType);
+                return FullTrainingType.GetFieldDeserializers();
+            }
+            else if(LoRaTrainingType != null)
+            {
+                return LoRaTrainingType.GetFieldDeserializers();
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -61,7 +72,14 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.FullTrainingType>(null, FullTrainingType, LoRaTrainingType);
+            if(FullTrainingType != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.FullTrainingType>(null, FullTrainingType);
+            }
+            else if(LoRaTrainingType != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.LoRaTrainingType>(null, LoRaTrainingType);
+            }
         }
     }
 }

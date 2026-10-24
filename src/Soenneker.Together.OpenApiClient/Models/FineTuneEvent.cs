@@ -35,13 +35,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>For early_stopped events, the selected best-checkpoint step when a finite best metric exists. If early_stopping_best_metric_value is null, this is the halt step.</summary>
         public int? EarlyStoppingBestStep { get; set; }
         /// <summary>The level property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
         public global::Soenneker.Together.OpenApiClient.Models.FineTuneEventLevel? Level { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Together.OpenApiClient.Models.FineTuneEventLevel Level { get; set; }
-#endif
         /// <summary>The message property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -115,7 +109,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "created_at", n => { CreatedAt = n.GetStringValue(); } },
                 { "early_stopping_best_metric_value", n => { EarlyStoppingBestMetricValue = n.GetDoubleValue(); } },
                 { "early_stopping_best_step", n => { EarlyStoppingBestStep = n.GetIntValue(); } },
-                { "level", n => { Level = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.FineTuneEventLevel>(global::Soenneker.Together.OpenApiClient.Models.FineTuneEventLevel.CreateFromDiscriminatorValue); } },
+                { "level", n => { Level = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.FineTuneEventLevel>(); } },
                 { "message", n => { Message = n.GetStringValue(); } },
                 { "model_path", n => { ModelPath = n.GetStringValue(); } },
                 { "object", n => { Object = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.FineTuneEventObject>(); } },
@@ -139,7 +133,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteStringValue("created_at", CreatedAt);
             writer.WriteDoubleValue("early_stopping_best_metric_value", EarlyStoppingBestMetricValue);
             writer.WriteIntValue("early_stopping_best_step", EarlyStoppingBestStep);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.FineTuneEventLevel>("level", Level);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.FineTuneEventLevel>("level", Level);
             writer.WriteStringValue("message", Message);
             writer.WriteStringValue("model_path", ModelPath);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.FineTuneEventObject>("object", Object);

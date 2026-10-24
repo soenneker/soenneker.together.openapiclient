@@ -48,17 +48,17 @@ namespace Soenneker.Together.OpenApiClient.V2.Projects.Item.ModelsRequests.Item
         /// <summary>
         /// Permanently deletes a custom model resource. The model must not be in use by an active deployment.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.VolumeServiceDeleteModel200Response"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.DeDeleteResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.ErrorData">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Together.OpenApiClient.Models.VolumeServiceDeleteModel200Response?> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Together.OpenApiClient.Models.DeDeleteResponse?> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Together.OpenApiClient.Models.VolumeServiceDeleteModel200Response> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Together.OpenApiClient.Models.DeDeleteResponse> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
@@ -66,7 +66,7 @@ namespace Soenneker.Together.OpenApiClient.V2.Projects.Item.ModelsRequests.Item
             {
                 { "XXX", global::Soenneker.Together.OpenApiClient.Models.ErrorData.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.VolumeServiceDeleteModel200Response>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.VolumeServiceDeleteModel200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.DeDeleteResponse>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.DeDeleteResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Retrieves a custom model&apos;s metadata, visibility, weight information, and base-model relationship.

@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints.Item.Deployments.Item.Adapters.Item
 {
     /// <summary>
-    /// Builds and executes requests for operations under \v2\projects\{projectId}\endpoints\{endpoint-id}\deployments\{deployment-id}\adapters\{id}
+    /// Builds and executes requests for operations under \v2\projects\{projectId}\endpoints\{id}\deployments\{id2}\adapters\{id3}
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AdaptersItemRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints.Item.Deplo
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AdaptersItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/projects/{projectId}/endpoints/{endpoint%2Did}/deployments/{deployment%2Did}/adapters/{id}", pathParameters)
+        public AdaptersItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/projects/{projectId}/endpoints/{id}/deployments/{id2}/adapters/{id3}", pathParameters)
         {
         }
         /// <summary>
@@ -30,23 +30,23 @@ namespace Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints.Item.Deplo
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AdaptersItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/projects/{projectId}/endpoints/{endpoint%2Did}/deployments/{deployment%2Did}/adapters/{id}", rawUrl)
+        public AdaptersItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/projects/{projectId}/endpoints/{id}/deployments/{id2}/adapters/{id3}", rawUrl)
         {
         }
         /// <summary>
         /// Detaches an adapter attachment by its `dad_` id using its row-level etag for optimistic concurrency.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.DeploymentServiceRemoveAdapter200Response"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.DeDeleteResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.ErrorData">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Together.OpenApiClient.Models.DeploymentServiceRemoveAdapter200Response?> DeleteAsync(Action<RequestConfiguration<global::Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints.Item.Deployments.Item.Adapters.Item.AdaptersItemRequestBuilder.AdaptersItemRequestBuilderDeleteQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Together.OpenApiClient.Models.DeDeleteResponse?> DeleteAsync(Action<RequestConfiguration<global::Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints.Item.Deployments.Item.Adapters.Item.AdaptersItemRequestBuilder.AdaptersItemRequestBuilderDeleteQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Together.OpenApiClient.Models.DeploymentServiceRemoveAdapter200Response> DeleteAsync(Action<RequestConfiguration<global::Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints.Item.Deployments.Item.Adapters.Item.AdaptersItemRequestBuilder.AdaptersItemRequestBuilderDeleteQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Together.OpenApiClient.Models.DeDeleteResponse> DeleteAsync(Action<RequestConfiguration<global::Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints.Item.Deployments.Item.Adapters.Item.AdaptersItemRequestBuilder.AdaptersItemRequestBuilderDeleteQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
@@ -54,7 +54,7 @@ namespace Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints.Item.Deplo
             {
                 { "XXX", global::Soenneker.Together.OpenApiClient.Models.ErrorData.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.DeploymentServiceRemoveAdapter200Response>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.DeploymentServiceRemoveAdapter200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.DeDeleteResponse>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.DeDeleteResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Gets an adapter attachment by its `dad_` id and returns its per-cluster load state.
@@ -118,7 +118,7 @@ namespace Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints.Item.Deplo
         public RequestInformation ToDeleteRequestInformation(Action<RequestConfiguration<global::Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints.Item.Deployments.Item.Adapters.Item.AdaptersItemRequestBuilder.AdaptersItemRequestBuilderDeleteQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.DELETE, "{+baseurl}/v2/projects/{projectId}/endpoints/{endpoint%2Did}/deployments/{deployment%2Did}/adapters/{id}?etag={etag}", PathParameters);
+            var requestInfo = new RequestInformation(Method.DELETE, "{+baseurl}/v2/projects/{projectId}/endpoints/{id}/deployments/{id2}/adapters/{id3}?etag={etag}", PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;

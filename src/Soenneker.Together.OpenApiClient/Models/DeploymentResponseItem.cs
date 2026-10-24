@@ -113,7 +113,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string Name { get; set; }
 #endif
         /// <summary>The object type, which is always `deployment`.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItemObject? Object { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeploymentObject? Object { get; set; }
         /// <summary>Port is the container port that the deployment exposes</summary>
         public int? Port { get; set; }
         /// <summary>ReadyReplicas is the current number of replicas that are in the Ready state</summary>
@@ -186,7 +186,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "min_replicas", n => { MinReplicas = n.GetIntValue(); } },
                 { "model_mounts", n => { ModelMounts = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.ModelMount>(global::Soenneker.Together.OpenApiClient.Models.ModelMount.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItemObject>(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeploymentObject>(); } },
                 { "port", n => { Port = n.GetIntValue(); } },
                 { "ready_replicas", n => { ReadyReplicas = n.GetIntValue(); } },
                 { "replica_events", n => { ReplicaEvents = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItemReplicaEventsProperty>(global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItemReplicaEventsProperty.CreateFromDiscriminatorValue); } },
@@ -223,7 +223,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteIntValue("min_replicas", MinReplicas);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.ModelMount>("model_mounts", ModelMounts);
             writer.WriteStringValue("name", Name);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItemObject>("object", Object);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeploymentObject>("object", Object);
             writer.WriteIntValue("port", Port);
             writer.WriteIntValue("ready_replicas", ReadyReplicas);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItemReplicaEventsProperty>("replica_events", ReplicaEvents);

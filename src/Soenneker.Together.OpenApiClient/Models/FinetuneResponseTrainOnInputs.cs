@@ -8,27 +8,15 @@ using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseTrainOnInputsBranch1"/>, <see cref="global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseTrainOnInputsWrapper"/>
+    /// Composed type wrapper for classes <see cref="bool"/>, <see cref="global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseTrainOnInputsOneOf2"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class FinetuneResponseTrainOnInputs : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseTrainOnInputsBranch1"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseTrainOnInputsBranch1? FinetuneResponseTrainOnInputsBranch1 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseTrainOnInputsBranch1 FinetuneResponseTrainOnInputsBranch1 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseTrainOnInputsWrapper"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseTrainOnInputsWrapper? FinetuneResponseTrainOnInputsWrapper { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseTrainOnInputsWrapper FinetuneResponseTrainOnInputsWrapper { get; set; }
-#endif
+        /// <summary>Composed type representation for type <see cref="bool"/></summary>
+        public bool? Boolean { get; set; }
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseTrainOnInputsOneOf2"/></summary>
+        public global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseTrainOnInputsOneOf2? FinetuneResponseTrainOnInputsOneOf2 { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -39,13 +27,13 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseTrainOnInputs();
-            if("FinetuneResponseTrainOnInputsBranch1".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if(parseNode.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseTrainOnInputsOneOf2>() is global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseTrainOnInputsOneOf2 finetuneResponseTrainOnInputsOneOf2Value)
             {
-                result.FinetuneResponseTrainOnInputsBranch1 = new global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseTrainOnInputsBranch1();
+                result.FinetuneResponseTrainOnInputsOneOf2 = finetuneResponseTrainOnInputsOneOf2Value;
             }
-            else if("FinetuneResponseTrainOnInputsWrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if(parseNode.GetBoolValue() is bool booleanValue)
             {
-                result.FinetuneResponseTrainOnInputsWrapper = new global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseTrainOnInputsWrapper();
+                result.Boolean = booleanValue;
             }
             return result;
         }
@@ -55,14 +43,6 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(FinetuneResponseTrainOnInputsBranch1 != null)
-            {
-                return FinetuneResponseTrainOnInputsBranch1.GetFieldDeserializers();
-            }
-            else if(FinetuneResponseTrainOnInputsWrapper != null)
-            {
-                return FinetuneResponseTrainOnInputsWrapper.GetFieldDeserializers();
-            }
             return new Dictionary<string, Action<IParseNode>>();
         }
         /// <summary>
@@ -72,13 +52,13 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(FinetuneResponseTrainOnInputsBranch1 != null)
+            if(FinetuneResponseTrainOnInputsOneOf2 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseTrainOnInputsBranch1>(null, FinetuneResponseTrainOnInputsBranch1);
+                writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseTrainOnInputsOneOf2>(null, FinetuneResponseTrainOnInputsOneOf2);
             }
-            else if(FinetuneResponseTrainOnInputsWrapper != null)
+            else if(Boolean != null)
             {
-                writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseTrainOnInputsWrapper>(null, FinetuneResponseTrainOnInputsWrapper);
+                writer.WriteBoolValue(null, Boolean);
             }
         }
     }

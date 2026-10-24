@@ -32,7 +32,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string NextCursor { get; set; }
 #endif
         /// <summary>Object type. Always `list`.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.DeListPublicEndpointsResponseObject? Object { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.ListObject? Object { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.DeListPublicEndpointsResponse"/> and sets the default values.
         /// </summary>
@@ -60,7 +60,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             {
                 { "data", n => { Data = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.DePublicEndpoint>(global::Soenneker.Together.OpenApiClient.Models.DePublicEndpoint.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "next_cursor", n => { NextCursor = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeListPublicEndpointsResponseObject>(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.ListObject>(); } },
             };
         }
         /// <summary>
@@ -72,7 +72,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.DePublicEndpoint>("data", Data);
             writer.WriteStringValue("next_cursor", NextCursor);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeListPublicEndpointsResponseObject>("object", Object);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.ListObject>("object", Object);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

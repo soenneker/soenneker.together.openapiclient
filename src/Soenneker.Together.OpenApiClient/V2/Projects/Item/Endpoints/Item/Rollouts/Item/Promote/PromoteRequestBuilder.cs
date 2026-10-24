@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints.Item.Rollouts.Item.Promote
 {
     /// <summary>
-    /// Builds and executes requests for operations under \v2\projects\{projectId}\endpoints\{endpoint-id}\rollouts\{id}\promote
+    /// Builds and executes requests for operations under \v2\projects\{projectId}\endpoints\{id}\rollouts\{id2}\promote
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PromoteRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints.Item.Rollo
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public PromoteRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/projects/{projectId}/endpoints/{endpoint%2Did}/rollouts/{id}/promote", pathParameters)
+        public PromoteRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/projects/{projectId}/endpoints/{id}/rollouts/{id2}/promote", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints.Item.Rollo
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public PromoteRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/projects/{projectId}/endpoints/{endpoint%2Did}/rollouts/{id}/promote", rawUrl)
+        public PromoteRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/projects/{projectId}/endpoints/{id}/rollouts/{id2}/promote", rawUrl)
         {
         }
         /// <summary>

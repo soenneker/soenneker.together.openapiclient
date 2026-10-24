@@ -8,18 +8,18 @@ using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestToolChoiceBranch1"/>, <see cref="global::Soenneker.Together.OpenApiClient.Models.ToolChoice"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.Together.OpenApiClient.Models.ToolChoice"/>, <see cref="string"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ChatCompletionRequestToolChoice : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestToolChoiceBranch1"/></summary>
+        /// <summary>Composed type representation for type <see cref="string"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestToolChoiceBranch1? ChatCompletionRequestToolChoiceBranch1 { get; set; }
+        public string? String { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestToolChoiceBranch1 ChatCompletionRequestToolChoiceBranch1 { get; set; }
+        public string String { get; set; }
 #endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.ToolChoice"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -39,13 +39,13 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestToolChoice();
-            if("ChatCompletionRequestToolChoiceBranch1".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.ChatCompletionRequestToolChoiceBranch1 = new global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestToolChoiceBranch1();
-            }
-            else if("ToolChoice".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("ToolChoice".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ToolChoice = new global::Soenneker.Together.OpenApiClient.Models.ToolChoice();
+            }
+            else if(parseNode.GetStringValue() is string stringValue)
+            {
+                result.String = stringValue;
             }
             return result;
         }
@@ -55,11 +55,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(ChatCompletionRequestToolChoiceBranch1 != null)
-            {
-                return ChatCompletionRequestToolChoiceBranch1.GetFieldDeserializers();
-            }
-            else if(ToolChoice != null)
+            if(ToolChoice != null)
             {
                 return ToolChoice.GetFieldDeserializers();
             }
@@ -72,13 +68,13 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(ChatCompletionRequestToolChoiceBranch1 != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestToolChoiceBranch1>(null, ChatCompletionRequestToolChoiceBranch1);
-            }
-            else if(ToolChoice != null)
+            if(ToolChoice != null)
             {
                 writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ToolChoice>(null, ToolChoice);
+            }
+            else if(String != null)
+            {
+                writer.WriteStringValue(null, String);
             }
         }
     }

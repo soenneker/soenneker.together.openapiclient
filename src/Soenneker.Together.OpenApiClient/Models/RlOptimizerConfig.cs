@@ -16,10 +16,10 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Adam optimizer configuration</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RlOptimizerConfigAdam? Adam { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlAdamConfig? Adam { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.RlOptimizerConfigAdam Adam { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlAdamConfig Adam { get; set; }
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -56,7 +56,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "adam", n => { Adam = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlOptimizerConfigAdam>(global::Soenneker.Together.OpenApiClient.Models.RlOptimizerConfigAdam.CreateFromDiscriminatorValue); } },
+                { "adam", n => { Adam = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlAdamConfig>(global::Soenneker.Together.OpenApiClient.Models.RlAdamConfig.CreateFromDiscriminatorValue); } },
                 { "muon", n => { Muon = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlMuonConfig>(global::Soenneker.Together.OpenApiClient.Models.RlMuonConfig.CreateFromDiscriminatorValue); } },
             };
         }
@@ -67,7 +67,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlOptimizerConfigAdam>("adam", Adam);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlAdamConfig>("adam", Adam);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlMuonConfig>("muon", Muon);
             writer.WriteAdditionalData(AdditionalData);
         }

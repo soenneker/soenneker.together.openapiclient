@@ -25,10 +25,10 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Cross-entropy loss parameters (currently empty).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RlLossConfigCrossEntropyParams? CrossEntropyParams { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlCrossEntropyLossParams? CrossEntropyParams { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.RlLossConfigCrossEntropyParams CrossEntropyParams { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlCrossEntropyLossParams CrossEntropyParams { get; set; }
 #endif
         /// <summary>Parameters for DPPO loss. Both probability-change limits must be in [0, 1] and default to 0.15.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -90,7 +90,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "cispo_params", n => { CispoParams = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlCispoLossParams>(global::Soenneker.Together.OpenApiClient.Models.RlCispoLossParams.CreateFromDiscriminatorValue); } },
-                { "cross_entropy_params", n => { CrossEntropyParams = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlLossConfigCrossEntropyParams>(global::Soenneker.Together.OpenApiClient.Models.RlLossConfigCrossEntropyParams.CreateFromDiscriminatorValue); } },
+                { "cross_entropy_params", n => { CrossEntropyParams = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlCrossEntropyLossParams>(global::Soenneker.Together.OpenApiClient.Models.RlCrossEntropyLossParams.CreateFromDiscriminatorValue); } },
                 { "dppo_params", n => { DppoParams = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlDppoLossParams>(global::Soenneker.Together.OpenApiClient.Models.RlDppoLossParams.CreateFromDiscriminatorValue); } },
                 { "dro_params", n => { DroParams = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlDroLossParams>(global::Soenneker.Together.OpenApiClient.Models.RlDroLossParams.CreateFromDiscriminatorValue); } },
                 { "grpo_params", n => { GrpoParams = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlGrpoLossParams>(global::Soenneker.Together.OpenApiClient.Models.RlGrpoLossParams.CreateFromDiscriminatorValue); } },
@@ -106,7 +106,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlCispoLossParams>("cispo_params", CispoParams);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlLossConfigCrossEntropyParams>("cross_entropy_params", CrossEntropyParams);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlCrossEntropyLossParams>("cross_entropy_params", CrossEntropyParams);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlDppoLossParams>("dppo_params", DppoParams);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlDroLossParams>("dro_params", DroParams);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlGrpoLossParams>("grpo_params", GrpoParams);

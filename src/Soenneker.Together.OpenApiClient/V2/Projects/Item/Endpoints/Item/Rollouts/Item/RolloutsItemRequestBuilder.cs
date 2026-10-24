@@ -17,7 +17,7 @@ using System;
 namespace Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints.Item.Rollouts.Item
 {
     /// <summary>
-    /// Builds and executes requests for operations under \v2\projects\{projectId}\endpoints\{endpoint-id}\rollouts\{id}
+    /// Builds and executes requests for operations under \v2\projects\{projectId}\endpoints\{id}\rollouts\{id2}
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RolloutsItemRequestBuilder : BaseRequestBuilder
@@ -52,7 +52,7 @@ namespace Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints.Item.Rollo
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public RolloutsItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/projects/{projectId}/endpoints/{endpoint%2Did}/rollouts/{id}{?etag*}", pathParameters)
+        public RolloutsItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/projects/{projectId}/endpoints/{id}/rollouts/{id2}{?etag*}", pathParameters)
         {
         }
         /// <summary>
@@ -60,23 +60,23 @@ namespace Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints.Item.Rollo
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public RolloutsItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/projects/{projectId}/endpoints/{endpoint%2Did}/rollouts/{id}{?etag*}", rawUrl)
+        public RolloutsItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/projects/{projectId}/endpoints/{id}/rollouts/{id2}{?etag*}", rawUrl)
         {
         }
         /// <summary>
         /// Deletes a rollout record. An active rollout must be aborted or completed before it can be deleted.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.RolloutServiceDeleteRollout200Response"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.DeDeleteResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.ErrorData">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Together.OpenApiClient.Models.RolloutServiceDeleteRollout200Response?> DeleteAsync(Action<RequestConfiguration<global::Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints.Item.Rollouts.Item.RolloutsItemRequestBuilder.RolloutsItemRequestBuilderDeleteQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Together.OpenApiClient.Models.DeDeleteResponse?> DeleteAsync(Action<RequestConfiguration<global::Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints.Item.Rollouts.Item.RolloutsItemRequestBuilder.RolloutsItemRequestBuilderDeleteQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Together.OpenApiClient.Models.RolloutServiceDeleteRollout200Response> DeleteAsync(Action<RequestConfiguration<global::Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints.Item.Rollouts.Item.RolloutsItemRequestBuilder.RolloutsItemRequestBuilderDeleteQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Together.OpenApiClient.Models.DeDeleteResponse> DeleteAsync(Action<RequestConfiguration<global::Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints.Item.Rollouts.Item.RolloutsItemRequestBuilder.RolloutsItemRequestBuilderDeleteQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
@@ -84,7 +84,7 @@ namespace Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints.Item.Rollo
             {
                 { "XXX", global::Soenneker.Together.OpenApiClient.Models.ErrorData.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.RolloutServiceDeleteRollout200Response>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.RolloutServiceDeleteRollout200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.DeDeleteResponse>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.DeDeleteResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Retrieves a rollout&apos;s strategy, lifecycle state, current traffic percentage, step history, and metric-gate results.

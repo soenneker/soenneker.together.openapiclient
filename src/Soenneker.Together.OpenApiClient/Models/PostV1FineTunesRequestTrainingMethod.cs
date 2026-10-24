@@ -37,13 +37,13 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.PostV1FineTunesRequestTrainingMethod CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
+            var mappingValue = parseNode.GetChildNode("method")?.GetStringValue();
             var result = new global::Soenneker.Together.OpenApiClient.Models.PostV1FineTunesRequestTrainingMethod();
-            if("TrainingMethodDpo".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("dpo".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.TrainingMethodDpo = new global::Soenneker.Together.OpenApiClient.Models.TrainingMethodDpo();
             }
-            else if("TrainingMethodSft".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("sft".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.TrainingMethodSft = new global::Soenneker.Together.OpenApiClient.Models.TrainingMethodSft();
             }

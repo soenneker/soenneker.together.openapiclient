@@ -44,8 +44,8 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string NextCursor { get; set; }
 #endif
-        /// <summary>Object type, always `list`.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.ListObject? Object { get; set; }
+        /// <summary>The object property</summary>
+        public global::Soenneker.Together.OpenApiClient.Models.BillingUsageReportObject? Object { get; set; }
         /// <summary>ID of the organization the report belongs to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -85,7 +85,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "earliest_window_start", n => { EarliestWindowStart = n.GetDateTimeOffsetValue(); } },
                 { "latest_window_end", n => { LatestWindowEnd = n.GetDateTimeOffsetValue(); } },
                 { "next_cursor", n => { NextCursor = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.ListObject>(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.BillingUsageReportObject>(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
             };
         }
@@ -102,7 +102,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("earliest_window_start", EarliestWindowStart);
             writer.WriteDateTimeOffsetValue("latest_window_end", LatestWindowEnd);
             writer.WriteStringValue("next_cursor", NextCursor);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.ListObject>("object", Object);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.BillingUsageReportObject>("object", Object);
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -8,26 +8,20 @@ using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.Together.OpenApiClient.Models.AudioSpeechRequestModelBranch2"/>, <see cref="global::Soenneker.Together.OpenApiClient.Models.AudioSpeechRequestModelWrapper"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.Together.OpenApiClient.Models.AudioSpeechRequestModelAnyOf1"/>, <see cref="string"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AudioSpeechRequestModel : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.AudioSpeechRequestModelBranch2"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.AudioSpeechRequestModelAnyOf1"/></summary>
+        public global::Soenneker.Together.OpenApiClient.Models.AudioSpeechRequestModelAnyOf1? AudioSpeechRequestModelAnyOf1 { get; set; }
+        /// <summary>Composed type representation for type <see cref="string"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.AudioSpeechRequestModelBranch2? AudioSpeechRequestModelBranch2 { get; set; }
+        public string? String { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.AudioSpeechRequestModelBranch2 AudioSpeechRequestModelBranch2 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.AudioSpeechRequestModelWrapper"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.AudioSpeechRequestModelWrapper? AudioSpeechRequestModelWrapper { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Together.OpenApiClient.Models.AudioSpeechRequestModelWrapper AudioSpeechRequestModelWrapper { get; set; }
+        public string String { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -38,8 +32,14 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var result = new global::Soenneker.Together.OpenApiClient.Models.AudioSpeechRequestModel();
-            result.AudioSpeechRequestModelBranch2 = new global::Soenneker.Together.OpenApiClient.Models.AudioSpeechRequestModelBranch2();
-            result.AudioSpeechRequestModelWrapper = new global::Soenneker.Together.OpenApiClient.Models.AudioSpeechRequestModelWrapper();
+            if(parseNode.GetStringValue() is string stringValue)
+            {
+                result.String = stringValue;
+            }
+            else if(parseNode.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.AudioSpeechRequestModelAnyOf1>() is global::Soenneker.Together.OpenApiClient.Models.AudioSpeechRequestModelAnyOf1 audioSpeechRequestModelAnyOf1Value)
+            {
+                result.AudioSpeechRequestModelAnyOf1 = audioSpeechRequestModelAnyOf1Value;
+            }
             return result;
         }
         /// <summary>
@@ -48,10 +48,6 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(AudioSpeechRequestModelBranch2 != null || AudioSpeechRequestModelWrapper != null)
-            {
-                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(AudioSpeechRequestModelBranch2, AudioSpeechRequestModelWrapper);
-            }
             return new Dictionary<string, Action<IParseNode>>();
         }
         /// <summary>
@@ -61,7 +57,14 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.AudioSpeechRequestModelBranch2>(null, AudioSpeechRequestModelBranch2, AudioSpeechRequestModelWrapper);
+            if(String != null)
+            {
+                writer.WriteStringValue(null, String);
+            }
+            else if(AudioSpeechRequestModelAnyOf1 != null)
+            {
+                writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.AudioSpeechRequestModelAnyOf1>(null, AudioSpeechRequestModelAnyOf1);
+            }
         }
     }
 }

@@ -13,21 +13,21 @@ using System;
 namespace Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints.Item.ShadowExperiments
 {
     /// <summary>
-    /// Builds and executes requests for operations under \v2\projects\{projectId}\endpoints\{endpoint-id}\shadowExperiments
+    /// Builds and executes requests for operations under \v2\projects\{projectId}\endpoints\{id}\shadowExperiments
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ShadowExperimentsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.Together.OpenApiClient.v2.projects.item.endpoints.item.shadowExperiments.item collection</summary>
         /// <param name="position">Unique identifier of the item</param>
-        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints.Item.ShadowExperiments.Item.ExperimentItemRequestBuilder"/></returns>
-        public global::Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints.Item.ShadowExperiments.Item.ExperimentItemRequestBuilder this[string position]
+        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints.Item.ShadowExperiments.Item.ShadowExperimentsItemRequestBuilder"/></returns>
+        public global::Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints.Item.ShadowExperiments.Item.ShadowExperimentsItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("experiment%2Did", position);
-                return new global::Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints.Item.ShadowExperiments.Item.ExperimentItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("id2", position);
+                return new global::Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints.Item.ShadowExperiments.Item.ShadowExperimentsItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
@@ -35,7 +35,7 @@ namespace Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints.Item.Shado
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ShadowExperimentsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/projects/{projectId}/endpoints/{endpoint%2Did}/shadowExperiments{?after*,includeTargets*,limit*}", pathParameters)
+        public ShadowExperimentsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/projects/{projectId}/endpoints/{id}/shadowExperiments{?after*,includeTargets*,limit*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints.Item.Shado
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ShadowExperimentsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/projects/{projectId}/endpoints/{endpoint%2Did}/shadowExperiments{?after*,includeTargets*,limit*}", rawUrl)
+        public ShadowExperimentsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/projects/{projectId}/endpoints/{id}/shadowExperiments{?after*,includeTargets*,limit*}", rawUrl)
         {
         }
         /// <summary>

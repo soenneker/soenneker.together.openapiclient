@@ -86,7 +86,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Minimum number of replicas configured for this revision.</summary>
         public int? MinReplicas { get; set; }
         /// <summary>The object type, which is always `revision`.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.RevisionDetailResponseObject? Object { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RevisionObject? Object { get; set; }
         /// <summary>Container port exposed by this revision.</summary>
         public int? Port { get; set; }
         /// <summary>Network protocol served by the deployment revision.</summary>
@@ -156,7 +156,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "max_replicas", n => { MaxReplicas = n.GetIntValue(); } },
                 { "memory", n => { Memory = n.GetDoubleValue(); } },
                 { "min_replicas", n => { MinReplicas = n.GetIntValue(); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.RevisionDetailResponseObject>(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.RevisionObject>(); } },
                 { "port", n => { Port = n.GetIntValue(); } },
                 { "protocol", n => { Protocol = n.GetStringValue(); } },
                 { "revision_id", n => { RevisionId = n.GetStringValue(); } },
@@ -186,7 +186,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteIntValue("max_replicas", MaxReplicas);
             writer.WriteDoubleValue("memory", Memory);
             writer.WriteIntValue("min_replicas", MinReplicas);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.RevisionDetailResponseObject>("object", Object);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.RevisionObject>("object", Object);
             writer.WriteIntValue("port", Port);
             writer.WriteStringValue("protocol", Protocol);
             writer.WriteStringValue("revision_id", RevisionId);

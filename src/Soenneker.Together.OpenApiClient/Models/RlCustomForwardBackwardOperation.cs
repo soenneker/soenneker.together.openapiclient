@@ -34,10 +34,10 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Result of a custom forward-backward pass operation</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RlCustomForwardBackwardOperationOutput? Output { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlCustomForwardBackwardResult? Output { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.RlCustomForwardBackwardOperationOutput Output { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlCustomForwardBackwardResult Output { get; set; }
 #endif
         /// <summary>The status property</summary>
         public global::Soenneker.Together.OpenApiClient.Models.RlTrainingOperationStatus? Status { get; set; }
@@ -68,7 +68,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             {
                 { "error", n => { Error = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlTrainingOperationError>(global::Soenneker.Together.OpenApiClient.Models.RlTrainingOperationError.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "output", n => { Output = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlCustomForwardBackwardOperationOutput>(global::Soenneker.Together.OpenApiClient.Models.RlCustomForwardBackwardOperationOutput.CreateFromDiscriminatorValue); } },
+                { "output", n => { Output = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlCustomForwardBackwardResult>(global::Soenneker.Together.OpenApiClient.Models.RlCustomForwardBackwardResult.CreateFromDiscriminatorValue); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlTrainingOperationStatus>(); } },
             };
         }
@@ -81,7 +81,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlTrainingOperationError>("error", Error);
             writer.WriteStringValue("id", Id);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlCustomForwardBackwardOperationOutput>("output", Output);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlCustomForwardBackwardResult>("output", Output);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlTrainingOperationStatus>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }

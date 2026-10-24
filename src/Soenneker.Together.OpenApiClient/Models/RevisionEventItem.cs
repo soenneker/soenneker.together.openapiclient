@@ -30,7 +30,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string Image { get; set; }
 #endif
         /// <summary>The object type, which is always `revision_event`.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.RevisionEventItemObject? Object { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RevisionEventObject? Object { get; set; }
         /// <summary>Revision ID activated by this event.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -70,7 +70,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "activated_at", n => { ActivatedAt = n.GetDateTimeOffsetValue(); } },
                 { "event_number", n => { EventNumber = n.GetIntValue(); } },
                 { "image", n => { Image = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.RevisionEventItemObject>(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.RevisionEventObject>(); } },
                 { "revision_id", n => { RevisionId = n.GetStringValue(); } },
                 { "revision_number", n => { RevisionNumber = n.GetIntValue(); } },
             };
@@ -86,7 +86,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("activated_at", ActivatedAt);
             writer.WriteIntValue("event_number", EventNumber);
             writer.WriteStringValue("image", Image);
-            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.RevisionEventItemObject>("object", Object);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.RevisionEventObject>("object", Object);
             writer.WriteStringValue("revision_id", RevisionId);
             writer.WriteIntValue("revision_number", RevisionNumber);
             writer.WriteAdditionalData(AdditionalData);

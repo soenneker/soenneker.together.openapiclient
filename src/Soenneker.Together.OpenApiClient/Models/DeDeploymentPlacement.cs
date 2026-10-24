@@ -8,36 +8,27 @@ using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
     /// <summary>
-    /// Placement controls where a deployment is scheduled.
+    /// Composed type wrapper for classes <see cref="global::Soenneker.Together.OpenApiClient.Models.DeDeploymentPlacementMember1"/>, <see cref="global::Soenneker.Together.OpenApiClient.Models.DeDeploymentPlacementMember2"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class DeDeploymentPlacement : IAdditionalDataHolder, IParsable
+    public partial class DeDeploymentPlacement : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Inline placement parameters evaluated at deploy time.</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.DeDeploymentPlacementMember1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.DePlacementOneOf1Inline? Inline { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeDeploymentPlacementMember1? DeDeploymentPlacementMember1 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.DePlacementOneOf1Inline Inline { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeDeploymentPlacementMember1 DeDeploymentPlacementMember1 { get; set; }
 #endif
-        /// <summary>UID of a saved placement profile.</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.DeDeploymentPlacementMember2"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Profile { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeDeploymentPlacementMember2? DeDeploymentPlacementMember2 { get; set; }
 #nullable restore
 #else
-        public string Profile { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeDeploymentPlacementMember2 DeDeploymentPlacementMember2 { get; set; }
 #endif
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.DeDeploymentPlacement"/> and sets the default values.
-        /// </summary>
-        public DeDeploymentPlacement()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -46,7 +37,9 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.DeDeploymentPlacement CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.DeDeploymentPlacement();
+            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
+            var result = new global::Soenneker.Together.OpenApiClient.Models.DeDeploymentPlacement();
+            return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -54,11 +47,15 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            if(DeDeploymentPlacementMember1 != null)
             {
-                { "inline", n => { Inline = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.DePlacementOneOf1Inline>(global::Soenneker.Together.OpenApiClient.Models.DePlacementOneOf1Inline.CreateFromDiscriminatorValue); } },
-                { "profile", n => { Profile = n.GetStringValue(); } },
-            };
+                return DeDeploymentPlacementMember1.GetFieldDeserializers();
+            }
+            else if(DeDeploymentPlacementMember2 != null)
+            {
+                return DeDeploymentPlacementMember2.GetFieldDeserializers();
+            }
+            return new Dictionary<string, Action<IParseNode>>();
         }
         /// <summary>
         /// Serializes information the current object
@@ -67,9 +64,14 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DePlacementOneOf1Inline>("inline", Inline);
-            writer.WriteStringValue("profile", Profile);
-            writer.WriteAdditionalData(AdditionalData);
+            if(DeDeploymentPlacementMember1 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeDeploymentPlacementMember1>(null, DeDeploymentPlacementMember1);
+            }
+            else if(DeDeploymentPlacementMember2 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeDeploymentPlacementMember2>(null, DeDeploymentPlacementMember2);
+            }
         }
     }
 }

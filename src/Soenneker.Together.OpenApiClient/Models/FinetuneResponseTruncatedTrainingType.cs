@@ -37,13 +37,13 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseTruncatedTrainingType CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
+            var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
             var result = new global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseTruncatedTrainingType();
-            if("FullTrainingType".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("Full".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.FullTrainingType = new global::Soenneker.Together.OpenApiClient.Models.FullTrainingType();
             }
-            else if("LoRaTrainingType".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("Lora".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.LoRaTrainingType = new global::Soenneker.Together.OpenApiClient.Models.LoRaTrainingType();
             }

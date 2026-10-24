@@ -45,14 +45,8 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public global::Soenneker.Together.OpenApiClient.Models.QuantizationResults Result { get; set; }
 #endif
-        /// <summary>Event type identifier.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Type { get; set; }
-#nullable restore
-#else
-        public string Type { get; set; }
-#endif
+        /// <summary>Quantization event type.</summary>
+        public global::Soenneker.Together.OpenApiClient.Models.QuantizationEventType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.QuantizationEvent"/> and sets the default values.
         /// </summary>
@@ -84,7 +78,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "message", n => { Message = n.GetStringValue(); } },
                 { "object", n => { Object = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.ShapingObject>(); } },
                 { "result", n => { Result = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.QuantizationResults>(global::Soenneker.Together.OpenApiClient.Models.QuantizationResults.CreateFromDiscriminatorValue); } },
-                { "type", n => { Type = n.GetStringValue(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.QuantizationEventType>(); } },
             };
         }
         /// <summary>
@@ -100,7 +94,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteStringValue("message", Message);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.ShapingObject>("object", Object);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.QuantizationResults>("result", Result);
-            writer.WriteStringValue("type", Type);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.QuantizationEventType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

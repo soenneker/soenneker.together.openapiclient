@@ -33,20 +33,20 @@ namespace Soenneker.Together.OpenApiClient.V1.Compute.Clusters.Item.Addons.Item
         public WithAddonItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v1/compute/clusters/{clusterId}/addons/{addonId}", rawUrl)
         {
         }
-        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.InstanceClusterAddOnServiceDelete200Response"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.ClusterAddOnDeleteResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Together.OpenApiClient.Models.InstanceClusterAddOnServiceDelete200Response?> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Together.OpenApiClient.Models.ClusterAddOnDeleteResponse?> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Together.OpenApiClient.Models.InstanceClusterAddOnServiceDelete200Response> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Together.OpenApiClient.Models.ClusterAddOnDeleteResponse> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.InstanceClusterAddOnServiceDelete200Response>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.InstanceClusterAddOnServiceDelete200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.ClusterAddOnDeleteResponse>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.ClusterAddOnDeleteResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.AddOnInfo"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>

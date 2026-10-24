@@ -8,27 +8,15 @@ using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.Together.OpenApiClient.Models.VideoFrameImageInputFrameBranch1"/>, <see cref="global::Soenneker.Together.OpenApiClient.Models.VideoFrameImageInputFrameWrapper"/>
+    /// Composed type wrapper for classes <see cref="double"/>, <see cref="global::Soenneker.Together.OpenApiClient.Models.VideoFrameImageInputFrameAnyOf2"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class VideoFrameImageInputFrame : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.VideoFrameImageInputFrameBranch1"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.VideoFrameImageInputFrameBranch1? VideoFrameImageInputFrameBranch1 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Together.OpenApiClient.Models.VideoFrameImageInputFrameBranch1 VideoFrameImageInputFrameBranch1 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.VideoFrameImageInputFrameWrapper"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.VideoFrameImageInputFrameWrapper? VideoFrameImageInputFrameWrapper { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Together.OpenApiClient.Models.VideoFrameImageInputFrameWrapper VideoFrameImageInputFrameWrapper { get; set; }
-#endif
+        /// <summary>Composed type representation for type <see cref="double"/></summary>
+        public double? Double { get; set; }
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.VideoFrameImageInputFrameAnyOf2"/></summary>
+        public global::Soenneker.Together.OpenApiClient.Models.VideoFrameImageInputFrameAnyOf2? VideoFrameImageInputFrameAnyOf2 { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -38,8 +26,14 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var result = new global::Soenneker.Together.OpenApiClient.Models.VideoFrameImageInputFrame();
-            result.VideoFrameImageInputFrameBranch1 = new global::Soenneker.Together.OpenApiClient.Models.VideoFrameImageInputFrameBranch1();
-            result.VideoFrameImageInputFrameWrapper = new global::Soenneker.Together.OpenApiClient.Models.VideoFrameImageInputFrameWrapper();
+            if(parseNode.GetDoubleValue() is double doubleValue)
+            {
+                result.Double = doubleValue;
+            }
+            else if(parseNode.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.VideoFrameImageInputFrameAnyOf2>() is global::Soenneker.Together.OpenApiClient.Models.VideoFrameImageInputFrameAnyOf2 videoFrameImageInputFrameAnyOf2Value)
+            {
+                result.VideoFrameImageInputFrameAnyOf2 = videoFrameImageInputFrameAnyOf2Value;
+            }
             return result;
         }
         /// <summary>
@@ -48,10 +42,6 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(VideoFrameImageInputFrameBranch1 != null || VideoFrameImageInputFrameWrapper != null)
-            {
-                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(VideoFrameImageInputFrameBranch1, VideoFrameImageInputFrameWrapper);
-            }
             return new Dictionary<string, Action<IParseNode>>();
         }
         /// <summary>
@@ -61,7 +51,14 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.VideoFrameImageInputFrameBranch1>(null, VideoFrameImageInputFrameBranch1, VideoFrameImageInputFrameWrapper);
+            if(Double != null)
+            {
+                writer.WriteDoubleValue(null, Double);
+            }
+            else if(VideoFrameImageInputFrameAnyOf2 != null)
+            {
+                writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.VideoFrameImageInputFrameAnyOf2>(null, VideoFrameImageInputFrameAnyOf2);
+            }
         }
     }
 }

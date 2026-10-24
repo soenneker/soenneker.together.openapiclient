@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
     /// <summary>
-    /// Strategy, metric gates, timing, and cleanup policy for shifting traffic between two deployments under one endpoint.
+    /// The caller&apos;s spec with defaulted values filled in for display. canary.steps is echoed exactly as sent; the suggested ladder is returned in estimatedEffectiveSteps instead.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DeRolloutDefaultsPreviewSpec : IAdditionalDataHolder, IParsable

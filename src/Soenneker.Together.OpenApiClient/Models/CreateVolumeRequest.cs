@@ -31,13 +31,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string Name { get; set; }
 #endif
         /// <summary>Type is the volume type (currently only &quot;readOnly&quot; is supported)</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
         public global::Soenneker.Together.OpenApiClient.Models.CreateVolumeRequestType? Type { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Together.OpenApiClient.Models.CreateVolumeRequestType Type { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.CreateVolumeRequest"/> and sets the default values.
         /// </summary>
@@ -65,7 +59,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             {
                 { "content", n => { Content = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.CreateVolumeRequestContent>(global::Soenneker.Together.OpenApiClient.Models.CreateVolumeRequestContent.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.CreateVolumeRequestType>(global::Soenneker.Together.OpenApiClient.Models.CreateVolumeRequestType.CreateFromDiscriminatorValue); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.CreateVolumeRequestType>(); } },
             };
         }
         /// <summary>
@@ -77,7 +71,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.CreateVolumeRequestContent>("content", Content);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.CreateVolumeRequestType>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.CreateVolumeRequestType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

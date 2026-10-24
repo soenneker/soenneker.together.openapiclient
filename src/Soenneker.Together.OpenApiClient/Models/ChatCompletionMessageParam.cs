@@ -53,21 +53,21 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.ChatCompletionMessageParam CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
+            var mappingValue = parseNode.GetChildNode("role")?.GetStringValue();
             var result = new global::Soenneker.Together.OpenApiClient.Models.ChatCompletionMessageParam();
-            if("ChatCompletionAssistantMessageParam".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("assistant".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ChatCompletionAssistantMessageParam = new global::Soenneker.Together.OpenApiClient.Models.ChatCompletionAssistantMessageParam();
             }
-            else if("ChatCompletionSystemMessageParam".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("system".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ChatCompletionSystemMessageParam = new global::Soenneker.Together.OpenApiClient.Models.ChatCompletionSystemMessageParam();
             }
-            else if("ChatCompletionToolMessageParam".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("tool".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ChatCompletionToolMessageParam = new global::Soenneker.Together.OpenApiClient.Models.ChatCompletionToolMessageParam();
             }
-            else if("ChatCompletionUserMessageParam".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("user".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ChatCompletionUserMessageParam = new global::Soenneker.Together.OpenApiClient.Models.ChatCompletionUserMessageParam();
             }

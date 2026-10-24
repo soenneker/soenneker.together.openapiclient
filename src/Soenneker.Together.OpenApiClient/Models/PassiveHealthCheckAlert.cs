@@ -34,10 +34,10 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Legacy Alertmanager annotations as key-value strings.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.PassiveHealthCheckAlertAnnotationsProperty? Annotations { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.PassiveHealthCheckAlertAnnotationsProperty? Annotations { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.PassiveHealthCheckAlertAnnotationsProperty Annotations { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.PassiveHealthCheckAlertAnnotationsProperty Annotations { get; private set; }
 #endif
         /// <summary>Cluster UUID the alert was raised against.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -130,7 +130,6 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.PassiveHealthCheckAlertAnnotationsProperty>("annotations", Annotations);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -8,27 +8,15 @@ using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseBatchSizeBranch1"/>, <see cref="global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseBatchSizeWrapper"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseBatchSizeOneOf2"/>, <see cref="int"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class FinetuneResponseBatchSize : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseBatchSizeBranch1"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseBatchSizeBranch1? FinetuneResponseBatchSizeBranch1 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseBatchSizeBranch1 FinetuneResponseBatchSizeBranch1 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseBatchSizeWrapper"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseBatchSizeWrapper? FinetuneResponseBatchSizeWrapper { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseBatchSizeWrapper FinetuneResponseBatchSizeWrapper { get; set; }
-#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseBatchSizeOneOf2"/></summary>
+        public global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseBatchSizeOneOf2? FinetuneResponseBatchSizeOneOf2 { get; set; }
+        /// <summary>Composed type representation for type <see cref="int"/></summary>
+        public int? Integer { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -39,13 +27,13 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseBatchSize();
-            if("FinetuneResponseBatchSizeBranch1".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if(parseNode.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseBatchSizeOneOf2>() is global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseBatchSizeOneOf2 finetuneResponseBatchSizeOneOf2Value)
             {
-                result.FinetuneResponseBatchSizeBranch1 = new global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseBatchSizeBranch1();
+                result.FinetuneResponseBatchSizeOneOf2 = finetuneResponseBatchSizeOneOf2Value;
             }
-            else if("FinetuneResponseBatchSizeWrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if(parseNode.GetIntValue() is int integerValue)
             {
-                result.FinetuneResponseBatchSizeWrapper = new global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseBatchSizeWrapper();
+                result.Integer = integerValue;
             }
             return result;
         }
@@ -55,14 +43,6 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(FinetuneResponseBatchSizeBranch1 != null)
-            {
-                return FinetuneResponseBatchSizeBranch1.GetFieldDeserializers();
-            }
-            else if(FinetuneResponseBatchSizeWrapper != null)
-            {
-                return FinetuneResponseBatchSizeWrapper.GetFieldDeserializers();
-            }
             return new Dictionary<string, Action<IParseNode>>();
         }
         /// <summary>
@@ -72,13 +52,13 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(FinetuneResponseBatchSizeBranch1 != null)
+            if(FinetuneResponseBatchSizeOneOf2 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseBatchSizeBranch1>(null, FinetuneResponseBatchSizeBranch1);
+                writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseBatchSizeOneOf2>(null, FinetuneResponseBatchSizeOneOf2);
             }
-            else if(FinetuneResponseBatchSizeWrapper != null)
+            else if(Integer != null)
             {
-                writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.FinetuneResponseBatchSizeWrapper>(null, FinetuneResponseBatchSizeWrapper);
+                writer.WriteIntValue(null, Integer);
             }
         }
     }

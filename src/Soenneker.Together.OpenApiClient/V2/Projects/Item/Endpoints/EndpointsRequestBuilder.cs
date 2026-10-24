@@ -20,14 +20,14 @@ namespace Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints
     {
         /// <summary>Gets an item from the Soenneker.Together.OpenApiClient.v2.projects.item.endpoints.item collection</summary>
         /// <param name="position">Unique identifier of the item</param>
-        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints.Item.EndpointItemRequestBuilder"/></returns>
-        public global::Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints.Item.EndpointItemRequestBuilder this[string position]
+        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints.Item.EndpointsItemRequestBuilder"/></returns>
+        public global::Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints.Item.EndpointsItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("endpoint%2Did", position);
-                return new global::Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints.Item.EndpointItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("id", position);
+                return new global::Soenneker.Together.OpenApiClient.V2.Projects.Item.Endpoints.Item.EndpointsItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>

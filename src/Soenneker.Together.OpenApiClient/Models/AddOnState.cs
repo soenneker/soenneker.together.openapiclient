@@ -18,42 +18,42 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>The dashboard property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.AddOnStateDashboard? Dashboard { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DashboardState? Dashboard { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.AddOnStateDashboard Dashboard { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DashboardState Dashboard { get; set; }
 #endif
-        /// <summary>Runtime state for the Headlamp Kubernetes dashboard cluster add-on.</summary>
+        /// <summary>State for the Headlamp Kubernetes dashboard add-on.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.AddOnStateHeadlamp? Headlamp { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.HeadlampState? Headlamp { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.AddOnStateHeadlamp Headlamp { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.HeadlampState Headlamp { get; set; }
 #endif
         /// <summary>The ingress property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.AddOnStateIngress? Ingress { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.IngressState? Ingress { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.AddOnStateIngress Ingress { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.IngressState Ingress { get; set; }
 #endif
-        /// <summary>Runtime state for the Slurm Web cluster add-on.</summary>
+        /// <summary>State for the Slurm Web add-on.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.AddOnStateSlurmWeb? SlurmWeb { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.SlurmWebState? SlurmWeb { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.AddOnStateSlurmWeb SlurmWeb { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.SlurmWebState SlurmWeb { get; set; }
 #endif
-        /// <summary>Runtime state for the Model Aware TorchPass cluster add-on.</summary>
+        /// <summary>State for the Model Aware TorchPass add-on.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.AddOnStateTorchpass? Torchpass { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.TorchpassState? Torchpass { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.AddOnStateTorchpass Torchpass { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.TorchpassState Torchpass { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.AddOnState"/> and sets the default values.
@@ -80,11 +80,11 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "dashboard", n => { Dashboard = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.AddOnStateDashboard>(global::Soenneker.Together.OpenApiClient.Models.AddOnStateDashboard.CreateFromDiscriminatorValue); } },
-                { "headlamp", n => { Headlamp = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.AddOnStateHeadlamp>(global::Soenneker.Together.OpenApiClient.Models.AddOnStateHeadlamp.CreateFromDiscriminatorValue); } },
-                { "ingress", n => { Ingress = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.AddOnStateIngress>(global::Soenneker.Together.OpenApiClient.Models.AddOnStateIngress.CreateFromDiscriminatorValue); } },
-                { "slurm_web", n => { SlurmWeb = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.AddOnStateSlurmWeb>(global::Soenneker.Together.OpenApiClient.Models.AddOnStateSlurmWeb.CreateFromDiscriminatorValue); } },
-                { "torchpass", n => { Torchpass = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.AddOnStateTorchpass>(global::Soenneker.Together.OpenApiClient.Models.AddOnStateTorchpass.CreateFromDiscriminatorValue); } },
+                { "dashboard", n => { Dashboard = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.DashboardState>(global::Soenneker.Together.OpenApiClient.Models.DashboardState.CreateFromDiscriminatorValue); } },
+                { "headlamp", n => { Headlamp = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.HeadlampState>(global::Soenneker.Together.OpenApiClient.Models.HeadlampState.CreateFromDiscriminatorValue); } },
+                { "ingress", n => { Ingress = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.IngressState>(global::Soenneker.Together.OpenApiClient.Models.IngressState.CreateFromDiscriminatorValue); } },
+                { "slurm_web", n => { SlurmWeb = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.SlurmWebState>(global::Soenneker.Together.OpenApiClient.Models.SlurmWebState.CreateFromDiscriminatorValue); } },
+                { "torchpass", n => { Torchpass = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.TorchpassState>(global::Soenneker.Together.OpenApiClient.Models.TorchpassState.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -94,11 +94,11 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.AddOnStateDashboard>("dashboard", Dashboard);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.AddOnStateHeadlamp>("headlamp", Headlamp);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.AddOnStateIngress>("ingress", Ingress);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.AddOnStateSlurmWeb>("slurm_web", SlurmWeb);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.AddOnStateTorchpass>("torchpass", Torchpass);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DashboardState>("dashboard", Dashboard);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.HeadlampState>("headlamp", Headlamp);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.IngressState>("ingress", Ingress);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.SlurmWebState>("slurm_web", SlurmWeb);
+            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.TorchpassState>("torchpass", Torchpass);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

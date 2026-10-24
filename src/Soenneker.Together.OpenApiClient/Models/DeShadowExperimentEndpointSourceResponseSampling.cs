@@ -8,52 +8,43 @@ using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
     /// <summary>
-    /// Sampling strategy returned for endpoint-level shadow traffic.
+    /// Composed type wrapper for classes <see cref="global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingMember1"/>, <see cref="global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingMember2"/>, <see cref="global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingMember3"/>, <see cref="global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingMember4"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class DeShadowExperimentEndpointSourceResponseSampling : IAdditionalDataHolder, IParsable
+    public partial class DeShadowExperimentEndpointSourceResponseSampling : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Adaptive sticky-key sampling toward a target QPS.</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingMember1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentSamplingResponseOneOf4AdaptiveKeyBased? AdaptiveKeyBased { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingMember1? DeShadowExperimentEndpointSourceResponseSamplingMember1 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentSamplingResponseOneOf4AdaptiveKeyBased AdaptiveKeyBased { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingMember1 DeShadowExperimentEndpointSourceResponseSamplingMember1 { get; set; }
 #endif
-        /// <summary>Adaptive random sampling toward a target QPS.</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingMember2"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentSamplingResponseOneOf3AdaptiveUniform? AdaptiveUniform { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingMember2? DeShadowExperimentEndpointSourceResponseSamplingMember2 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentSamplingResponseOneOf3AdaptiveUniform AdaptiveUniform { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingMember2 DeShadowExperimentEndpointSourceResponseSamplingMember2 { get; set; }
 #endif
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Fixed sampling by a sticky request key.</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingMember3"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentSamplingResponseOneOf2KeyBased? KeyBased { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingMember3? DeShadowExperimentEndpointSourceResponseSamplingMember3 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentSamplingResponseOneOf2KeyBased KeyBased { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingMember3 DeShadowExperimentEndpointSourceResponseSamplingMember3 { get; set; }
 #endif
-        /// <summary>Fixed random request sampling.</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingMember4"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentSamplingResponseOneOf1Uniform? Uniform { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingMember4? DeShadowExperimentEndpointSourceResponseSamplingMember4 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentSamplingResponseOneOf1Uniform Uniform { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingMember4 DeShadowExperimentEndpointSourceResponseSamplingMember4 { get; set; }
 #endif
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSampling"/> and sets the default values.
-        /// </summary>
-        public DeShadowExperimentEndpointSourceResponseSampling()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -62,7 +53,9 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSampling CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSampling();
+            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
+            var result = new global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSampling();
+            return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -70,13 +63,23 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            if(DeShadowExperimentEndpointSourceResponseSamplingMember1 != null)
             {
-                { "adaptiveKeyBased", n => { AdaptiveKeyBased = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentSamplingResponseOneOf4AdaptiveKeyBased>(global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentSamplingResponseOneOf4AdaptiveKeyBased.CreateFromDiscriminatorValue); } },
-                { "adaptiveUniform", n => { AdaptiveUniform = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentSamplingResponseOneOf3AdaptiveUniform>(global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentSamplingResponseOneOf3AdaptiveUniform.CreateFromDiscriminatorValue); } },
-                { "keyBased", n => { KeyBased = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentSamplingResponseOneOf2KeyBased>(global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentSamplingResponseOneOf2KeyBased.CreateFromDiscriminatorValue); } },
-                { "uniform", n => { Uniform = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentSamplingResponseOneOf1Uniform>(global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentSamplingResponseOneOf1Uniform.CreateFromDiscriminatorValue); } },
-            };
+                return DeShadowExperimentEndpointSourceResponseSamplingMember1.GetFieldDeserializers();
+            }
+            else if(DeShadowExperimentEndpointSourceResponseSamplingMember2 != null)
+            {
+                return DeShadowExperimentEndpointSourceResponseSamplingMember2.GetFieldDeserializers();
+            }
+            else if(DeShadowExperimentEndpointSourceResponseSamplingMember3 != null)
+            {
+                return DeShadowExperimentEndpointSourceResponseSamplingMember3.GetFieldDeserializers();
+            }
+            else if(DeShadowExperimentEndpointSourceResponseSamplingMember4 != null)
+            {
+                return DeShadowExperimentEndpointSourceResponseSamplingMember4.GetFieldDeserializers();
+            }
+            return new Dictionary<string, Action<IParseNode>>();
         }
         /// <summary>
         /// Serializes information the current object
@@ -85,11 +88,22 @@ namespace Soenneker.Together.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentSamplingResponseOneOf4AdaptiveKeyBased>("adaptiveKeyBased", AdaptiveKeyBased);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentSamplingResponseOneOf3AdaptiveUniform>("adaptiveUniform", AdaptiveUniform);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentSamplingResponseOneOf2KeyBased>("keyBased", KeyBased);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentSamplingResponseOneOf1Uniform>("uniform", Uniform);
-            writer.WriteAdditionalData(AdditionalData);
+            if(DeShadowExperimentEndpointSourceResponseSamplingMember1 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingMember1>(null, DeShadowExperimentEndpointSourceResponseSamplingMember1);
+            }
+            else if(DeShadowExperimentEndpointSourceResponseSamplingMember2 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingMember2>(null, DeShadowExperimentEndpointSourceResponseSamplingMember2);
+            }
+            else if(DeShadowExperimentEndpointSourceResponseSamplingMember3 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingMember3>(null, DeShadowExperimentEndpointSourceResponseSamplingMember3);
+            }
+            else if(DeShadowExperimentEndpointSourceResponseSamplingMember4 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingMember4>(null, DeShadowExperimentEndpointSourceResponseSamplingMember4);
+            }
         }
     }
 }
