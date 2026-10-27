@@ -6831,7 +6831,24 @@
               }
             }
           }
-        }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "Python",
+            "label": "Together AI SDK (Python)",
+            "source": "import httpx\nfrom together import Together\n\nclient = Together()\n\n# The SDK has no dedicated method for this endpoint yet, so call it with\n# the client\u0027s generic GET helper. The API redirects to a signed URL,\n# which the client follows, so the response body is the file itself.\nresponse = client.get(\u0022/v1/deployments/storage/model.tar.gz\u0022, cast_to=httpx.Response)\nwith open(\u0022model.tar.gz\u0022, \u0022wb\u0022) as f:\n    f.write(response.content)\n"
+          },
+          {
+            "lang": "TypeScript",
+            "label": "Together AI SDK (TypeScript)",
+            "source": "import { writeFile } from \u0022node:fs/promises\u0022;\nimport Together from \u0022together-ai\u0022;\n\nconst client = new Together();\n\n// The SDK has no dedicated method for this endpoint yet, so call it with\n// the client\u0027s generic GET helper. The API redirects to a signed URL,\n// which the client follows, so the response body is the file itself.\nconst response = await client.get(\u0022/v1/deployments/storage/model.tar.gz\u0022).asResponse();\nawait writeFile(\u0022model.tar.gz\u0022, Buffer.from(await response.arrayBuffer()));\n"
+          },
+          {
+            "lang": "JavaScript",
+            "label": "Together AI SDK (JavaScript)",
+            "source": "import { writeFile } from \u0022node:fs/promises\u0022;\nimport Together from \u0022together-ai\u0022;\n\nconst client = new Together();\n\n// The SDK has no dedicated method for this endpoint yet, so call it with\n// the client\u0027s generic GET helper. The API redirects to a signed URL,\n// which the client follows, so the response body is the file itself.\nconst response = await client.get(\u0022/v1/deployments/storage/model.tar.gz\u0022).asResponse();\nawait writeFile(\u0022model.tar.gz\u0022, Buffer.from(await response.arrayBuffer()));\n"
+          }
+        ]
       }
     },
     "/v1/deployments/storage/{filename}/url": {
