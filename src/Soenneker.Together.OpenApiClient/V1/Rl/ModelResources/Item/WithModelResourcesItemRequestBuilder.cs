@@ -4,6 +4,7 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.Together.OpenApiClient.Models;
+using Soenneker.Together.OpenApiClient.V1.Rl.ModelResources.Item.ExtendExpiry;
 using Soenneker.Together.OpenApiClient.V1.Rl.ModelResources.Item.Stop;
 using System.Collections.Generic;
 using System.IO;
@@ -18,6 +19,11 @@ namespace Soenneker.Together.OpenApiClient.V1.Rl.ModelResources.Item
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class WithModelResourcesItemRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The extendExpiry property</summary>
+        public global::Soenneker.Together.OpenApiClient.V1.Rl.ModelResources.Item.ExtendExpiry.ExtendExpiryRequestBuilder ExtendExpiry
+        {
+            get => new global::Soenneker.Together.OpenApiClient.V1.Rl.ModelResources.Item.ExtendExpiry.ExtendExpiryRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The stop property</summary>
         public global::Soenneker.Together.OpenApiClient.V1.Rl.ModelResources.Item.Stop.StopRequestBuilder Stop
         {

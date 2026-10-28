@@ -38,6 +38,8 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string ValueFromSecret { get; set; }
 #endif
+        /// <summary>ValueFromSecretExpiresAt is the ISO8601 timestamp when the referenced secret expires and is deleted. Read-only, ignored in requests</summary>
+        public DateTimeOffset? ValueFromSecretExpiresAt { get; private set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.EnvironmentVariable"/> and sets the default values.
         /// </summary>
@@ -66,6 +68,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "value", n => { Value = n.GetStringValue(); } },
                 { "value_from_secret", n => { ValueFromSecret = n.GetStringValue(); } },
+                { "value_from_secret_expires_at", n => { ValueFromSecretExpiresAt = n.GetDateTimeOffsetValue(); } },
             };
         }
         /// <summary>

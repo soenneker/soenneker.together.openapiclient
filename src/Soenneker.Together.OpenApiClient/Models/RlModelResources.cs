@@ -57,6 +57,8 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public global::Soenneker.Together.OpenApiClient.Models.RlModelResourcesError Error { get; set; }
 #endif
+        /// <summary>The earliest time the resource can stop for inactivity, which also expires its sessions. It is the resource&apos;s last activity plus `inactive_timeout` seconds. Becoming ready, a session start and every operation on any of its sessions count as activity, and the resource does not stop while an operation is running. An extend expiry call can move it later. It never moves earlier. Refreshed about once a minute. Set while the resource is ready.</summary>
+        public DateTimeOffset? ExpiresAt { get; set; }
         /// <summary>Unique identifier for the model resource</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -65,6 +67,8 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string Id { get; set; }
 #endif
+        /// <summary>Seconds without activity after which the resource stops and its sessions expire. Every operation on any of its sessions restarts the count.</summary>
+        public int? InactiveTimeout { get; set; }
         /// <summary>Whether the resource hosts LoRA sessions or a full-weight session</summary>
         public bool? LoraEnabled { get; set; }
         /// <summary>Optimizer configuration</summary>
@@ -118,7 +122,9 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetStringValue(); } },
                 { "error", n => { Error = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlModelResourcesError>(global::Soenneker.Together.OpenApiClient.Models.RlModelResourcesError.CreateFromDiscriminatorValue); } },
+                { "expires_at", n => { ExpiresAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
+                { "inactive_timeout", n => { InactiveTimeout = n.GetIntValue(); } },
                 { "lora_enabled", n => { LoraEnabled = n.GetBoolValue(); } },
                 { "optimizer_config", n => { OptimizerConfig = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlOptimizerConfig>(global::Soenneker.Together.OpenApiClient.Models.RlOptimizerConfig.CreateFromDiscriminatorValue); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlModelResourcesStatus>(); } },
@@ -139,7 +145,9 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteStringValue("created_by", CreatedBy);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlModelResourcesError>("error", Error);
+            writer.WriteDateTimeOffsetValue("expires_at", ExpiresAt);
             writer.WriteStringValue("id", Id);
+            writer.WriteIntValue("inactive_timeout", InactiveTimeout);
             writer.WriteBoolValue("lora_enabled", LoraEnabled);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlOptimizerConfig>("optimizer_config", OptimizerConfig);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlModelResourcesStatus>("status", Status);

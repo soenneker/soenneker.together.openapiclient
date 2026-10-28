@@ -12057,8 +12057,7 @@
             "in": "query",
             "schema": {
               "type": "boolean",
-              "description": "When true, also stop all attached training sessions. When false, the request fails if any training sessions are active.",
-              "default": false
+              "description": "When true, also stop all attached training sessions. When false, the request fails if any training sessions are active."
             }
           }
         ],
@@ -12089,6 +12088,67 @@
             "lang": "Python",
             "label": "Together AI SDK (Python)",
             "source": "from together import Together\n\nclient = Together()\n\nresource = client.post_training.model_resources.stop(\u0022\u003CMODEL_RESOURCES_ID\u003E\u0022)\nprint(resource.status)\n"
+          }
+        ]
+      }
+    },
+    "/v1/rl/model-resources/{modelResourcesId}/extend-expiry": {
+      "post": {
+        "tags": [
+          "RL"
+        ],
+        "summary": "Extend model resources expiry",
+        "description": "Keeps a ready model resource from stopping for inactivity for at least the given number of seconds from now. It moves the resource\u0027s \u0060expires_at\u0060 to at least that time, and never earlier. Every operation on the resource\u0027s sessions already keeps it up for \u0060inactive_timeout\u0060 seconds, so use this only to stay up longer without operations, for example while you compute rewards. Fails if the resource is not ready.",
+        "operationId": "ExtendModelResourcesExpiry",
+        "parameters": [
+          {
+            "name": "modelResourcesId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "ID of the model resource",
+              "default": false
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RlExtendModelResourcesExpiryRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Model resource details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RlModelResources"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorData"
+                }
+              }
+            }
+          }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "Python",
+            "label": "Together AI SDK (Python)",
+            "source": "from together import Together\n\nclient = Together()\n\nresource = client.post_training.model_resources.extend_expiry(\n    \u0022\u003CMODEL_RESOURCES_ID\u003E\u0022,\n    seconds=7200,\n)\nprint(resource.status, resource.expires_at)\n"
           }
         ]
       }
@@ -18901,7 +18961,8 @@
           "created_at",
           "updated_at",
           "optimizer_config",
-          "created_by"
+          "created_by",
+          "inactive_timeout"
         ],
         "type": "object",
         "properties": {
@@ -18956,6 +19017,17 @@
             "type": "string",
             "description": "ID of the user who created the model resource",
             "example": "user_123"
+          },
+          "inactive_timeout": {
+            "type": "integer",
+            "description": "Seconds without activity after which the resource stops and its sessions expire. Every operation on any of its sessions restarts the count.",
+            "example": 3600
+          },
+          "expires_at": {
+            "type": "string",
+            "description": "The earliest time the resource can stop for inactivity, which also expires its sessions. It is the resource\u0027s last activity plus \u0060inactive_timeout\u0060 seconds. Becoming ready, a session start and every operation on any of its sessions count as activity, and the resource does not stop while an operation is running. An extend expiry call can move it later. It never moves earlier. Refreshed about once a minute. Set while the resource is ready.",
+            "format": "date-time",
+            "example": "2026-01-02T01:00:05Z"
           }
         },
         "description": "Allocated GPU resources that training sessions attach to"
@@ -19053,9 +19125,33 @@
           },
           "optimizer_config": {
             "$ref": "#/components/schemas/RlOptimizerConfig"
+          },
+          "inactive_timeout": {
+            "maximum": 86400,
+            "minimum": 300,
+            "type": "integer",
+            "description": "Seconds without activity after which the resource stops and its sessions expire, counted from when it becomes ready and from its last activity. Every operation on any of its sessions restarts the count, and an extend expiry call can keep it up longer.",
+            "default": 3600,
+            "example": 3600
           }
         },
         "description": "Request to provision a standalone model resource"
+      },
+      "RlExtendModelResourcesExpiryRequest": {
+        "required": [
+          "seconds"
+        ],
+        "type": "object",
+        "properties": {
+          "seconds": {
+            "maximum": 86400,
+            "minimum": 60,
+            "type": "integer",
+            "description": "Seconds from now the resource must not stop for inactivity.",
+            "example": 7200
+          }
+        },
+        "description": "Request to keep a model resource from stopping for inactivity"
       },
       "RlModelResourcesEstimateCostResponse": {
         "required": [
@@ -21839,6 +21935,7 @@
             "items": {
               "$ref": "#/components/schemas/InstanceTypesResponseTypesItem"
             },
+            "description": "Available GPU instance types.",
             "error": {
               "$ref": "#/components/schemas/ErrorResponse"
             }
@@ -27310,6 +27407,12 @@
             "type": "string",
             "description": "ProjectID is ignored - the project is automatically determined from your authentication"
           },
+          "ttl_seconds": {
+            "maximum": 1209600,
+            "minimum": 86400,
+            "type": "integer",
+            "description": "TTLSeconds is how long the secret lives before it is deleted, between 86400 (1 day) and 1209600 (14 days)"
+          },
           "value": {
             "minLength": 1,
             "type": "string",
@@ -27723,6 +27826,12 @@
           "value_from_secret": {
             "type": "string",
             "description": "ValueFromSecret references a secret by name or ID to use as the value. Use this for sensitive values like API keys or passwords. Either Value or ValueFromSecret must be set, but not both"
+          },
+          "value_from_secret_expires_at": {
+            "type": "string",
+            "description": "ValueFromSecretExpiresAt is the ISO8601 timestamp when the referenced secret expires and is deleted. Read-only, ignored in requests",
+            "format": "date-time",
+            "readOnly": true
           }
         }
       },
@@ -27921,6 +28030,11 @@
             "type": "string",
             "description": "Description is a human-readable description of the secret\u0027s purpose"
           },
+          "expires_at": {
+            "type": "string",
+            "description": "ExpiresAt is the ISO8601 timestamp when this secret expires and is deleted. Changing the value extends it. Omitted for secrets that never expire",
+            "format": "date-time"
+          },
           "id": {
             "type": "string",
             "description": "ID is the unique identifier for this secret"
@@ -27935,6 +28049,10 @@
           },
           "object": {
             "$ref": "#/components/schemas/SecretObject"
+          },
+          "ttl_seconds": {
+            "type": "integer",
+            "description": "TTLSeconds is the secret\u0027s lifetime in seconds. Omitted when no TTL is set"
           },
           "updated_at": {
             "type": "string",
@@ -28063,6 +28181,12 @@
           "project_id": {
             "type": "string",
             "description": "ProjectID is ignored - the project is automatically determined from your authentication"
+          },
+          "ttl_seconds": {
+            "maximum": 1209600,
+            "minimum": 86400,
+            "type": "integer",
+            "description": "TTLSeconds sets a new lifetime and restarts the expiry from now, between 86400 (1 day) and 1209600 (14 days)"
           },
           "value": {
             "minLength": 1,
@@ -35132,7 +35256,8 @@
           "L40_PCIE",
           "B200_SXM",
           "H100_SXM_INF",
-          "B300_SXM"
+          "B300_SXM",
+          "GB200_SXM"
         ],
         "type": "string",
         "description": "Type of GPU to use in the cluster",
@@ -35167,6 +35292,10 @@
             {
               "value": "B300_SXM",
               "name": "B300Sxm"
+            },
+            {
+              "value": "GB200_SXM",
+              "name": "Gb200Sxm"
             }
           ]
         }
@@ -35229,9 +35358,11 @@
           "L40_PCIE",
           "B200_SXM",
           "H100_SXM_INF",
-          "B300_SXM"
+          "B300_SXM",
+          "GB200_SXM"
         ],
         "type": "string",
+        "description": "Type of GPU used by the cluster.",
         "x-ms-enum": {
           "name": "GpuClusterInfoGpuType",
           "modelAsString": false,
@@ -35263,6 +35394,10 @@
             {
               "value": "B300_SXM",
               "name": "B300Sxm"
+            },
+            {
+              "value": "GB200_SXM",
+              "name": "Gb200Sxm"
             }
           ]
         }
@@ -35341,7 +35476,8 @@
           "L40_PCIE",
           "B200_SXM",
           "H100_SXM_INF",
-          "B300_SXM"
+          "B300_SXM",
+          "GB200_SXM"
         ],
         "type": "string",
         "x-ms-enum": {
@@ -35375,6 +35511,10 @@
             {
               "value": "B300_SXM",
               "name": "B300Sxm"
+            },
+            {
+              "value": "GB200_SXM",
+              "name": "Gb200Sxm"
             }
           ]
         }

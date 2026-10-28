@@ -39,6 +39,8 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public global::Soenneker.Together.OpenApiClient.Models.RlComputeConfigCreateRequest ComputeConfig { get; set; }
 #endif
+        /// <summary>Seconds without activity after which the resource stops and its sessions expire, counted from when it becomes ready and from its last activity. Every operation on any of its sessions restarts the count, and an extend expiry call can keep it up longer.</summary>
+        public int? InactiveTimeout { get; set; }
         /// <summary>Whether the resource hosts LoRA sessions or a single full-weight session</summary>
         public bool? LoraEnabled { get; set; }
         /// <summary>Optimizer configuration</summary>
@@ -55,6 +57,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public RlCreateModelResourcesRequest()
         {
             AdditionalData = new Dictionary<string, object>();
+            InactiveTimeout = 3600;
             LoraEnabled = true;
         }
         /// <summary>
@@ -78,6 +81,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "base_model", n => { BaseModel = n.GetStringValue(); } },
                 { "base_weights_ref", n => { BaseWeightsRef = n.GetStringValue(); } },
                 { "compute_config", n => { ComputeConfig = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlComputeConfigCreateRequest>(global::Soenneker.Together.OpenApiClient.Models.RlComputeConfigCreateRequest.CreateFromDiscriminatorValue); } },
+                { "inactive_timeout", n => { InactiveTimeout = n.GetIntValue(); } },
                 { "lora_enabled", n => { LoraEnabled = n.GetBoolValue(); } },
                 { "optimizer_config", n => { OptimizerConfig = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlOptimizerConfig>(global::Soenneker.Together.OpenApiClient.Models.RlOptimizerConfig.CreateFromDiscriminatorValue); } },
             };
@@ -92,6 +96,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteStringValue("base_model", BaseModel);
             writer.WriteStringValue("base_weights_ref", BaseWeightsRef);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlComputeConfigCreateRequest>("compute_config", ComputeConfig);
+            writer.WriteIntValue("inactive_timeout", InactiveTimeout);
             writer.WriteBoolValue("lora_enabled", LoraEnabled);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlOptimizerConfig>("optimizer_config", OptimizerConfig);
             writer.WriteAdditionalData(AdditionalData);

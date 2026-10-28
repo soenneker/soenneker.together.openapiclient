@@ -38,6 +38,8 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string ProjectId { get; set; }
 #endif
+        /// <summary>TTLSeconds sets a new lifetime and restarts the expiry from now, between 86400 (1 day) and 1209600 (14 days)</summary>
+        public int? TtlSeconds { get; set; }
         /// <summary>Value is the new sensitive data to store securely. Updating this replaces the existing secret value.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -74,6 +76,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "project_id", n => { ProjectId = n.GetStringValue(); } },
+                { "ttl_seconds", n => { TtlSeconds = n.GetIntValue(); } },
                 { "value", n => { Value = n.GetStringValue(); } },
             };
         }
@@ -87,6 +90,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteStringValue("description", Description);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("project_id", ProjectId);
+            writer.WriteIntValue("ttl_seconds", TtlSeconds);
             writer.WriteStringValue("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }

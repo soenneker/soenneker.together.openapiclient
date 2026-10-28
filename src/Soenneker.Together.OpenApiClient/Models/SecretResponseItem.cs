@@ -38,6 +38,8 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string Description { get; set; }
 #endif
+        /// <summary>ExpiresAt is the ISO8601 timestamp when this secret expires and is deleted. Changing the value extends it. Omitted for secrets that never expire</summary>
+        public DateTimeOffset? ExpiresAt { get; set; }
         /// <summary>ID is the unique identifier for this secret</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -64,6 +66,8 @@ namespace Soenneker.Together.OpenApiClient.Models
 #endif
         /// <summary>The object type, which is always `secret`.</summary>
         public global::Soenneker.Together.OpenApiClient.Models.SecretObject? Object { get; set; }
+        /// <summary>TTLSeconds is the secret&apos;s lifetime in seconds. Omitted when no TTL is set</summary>
+        public int? TtlSeconds { get; set; }
         /// <summary>UpdatedAt is the ISO8601 timestamp when this secret was last updated</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -100,10 +104,12 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "created_at", n => { CreatedAt = n.GetStringValue(); } },
                 { "created_by", n => { CreatedBy = n.GetStringValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
+                { "expires_at", n => { ExpiresAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "last_updated_by", n => { LastUpdatedBy = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "object", n => { Object = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.SecretObject>(); } },
+                { "ttl_seconds", n => { TtlSeconds = n.GetIntValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetStringValue(); } },
             };
         }
@@ -117,10 +123,12 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteStringValue("created_at", CreatedAt);
             writer.WriteStringValue("created_by", CreatedBy);
             writer.WriteStringValue("description", Description);
+            writer.WriteDateTimeOffsetValue("expires_at", ExpiresAt);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("last_updated_by", LastUpdatedBy);
             writer.WriteStringValue("name", Name);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.SecretObject>("object", Object);
+            writer.WriteIntValue("ttl_seconds", TtlSeconds);
             writer.WriteStringValue("updated_at", UpdatedAt);
             writer.WriteAdditionalData(AdditionalData);
         }

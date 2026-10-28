@@ -94,7 +94,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public int? DurationHours { get; set; }
         /// <summary>Timestamp when the cluster first reached the Ready phase.</summary>
         public DateTimeOffset? FirstReadyAt { get; set; }
-        /// <summary>The gpu_type property</summary>
+        /// <summary>Type of GPU used by the cluster.</summary>
         public global::Soenneker.Together.OpenApiClient.Models.GpuClusterInfoGpuType? GpuType { get; set; }
         /// <summary>The gpu_worker_nodes property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

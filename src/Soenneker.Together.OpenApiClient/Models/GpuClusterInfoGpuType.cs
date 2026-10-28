@@ -3,10 +3,9 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
+    /// <summary>Type of GPU used by the cluster.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public enum GpuClusterInfoGpuType
-    #pragma warning restore CS1591
     {
         [EnumMember(Value = "H100_SXM")]
         #pragma warning disable CS1591
@@ -35,6 +34,10 @@ namespace Soenneker.Together.OpenApiClient.Models
         [EnumMember(Value = "B300_SXM")]
         #pragma warning disable CS1591
         B300Sxm,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "GB200_SXM")]
+        #pragma warning disable CS1591
+        Gb200Sxm,
         #pragma warning restore CS1591
     }
 }
