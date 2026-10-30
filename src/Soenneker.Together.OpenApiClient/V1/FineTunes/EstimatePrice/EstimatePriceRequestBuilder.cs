@@ -55,6 +55,8 @@ namespace Soenneker.Together.OpenApiClient.V1.FineTunes.EstimatePrice
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "500", global::Soenneker.Together.OpenApiClient.Models.ErrorData.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.PostV1FineTunesEstimatePrice200Response>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.PostV1FineTunesEstimatePrice200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

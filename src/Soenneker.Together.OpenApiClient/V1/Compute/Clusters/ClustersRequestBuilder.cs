@@ -68,7 +68,7 @@ namespace Soenneker.Together.OpenApiClient.V1.Compute.Clusters
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.GpuClusters>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.GpuClusters.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.GpuClusters>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.GpuClusters.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Create an Instant Cluster on Together&apos;s high-performance GPU clusters.With features like on-demand scaling, long-lived resizable high-bandwidth shared DC-local storage,Kubernetes and Slurm cluster flavors, a REST API, and Terraform support,you can run workloads flexibly without complex infrastructure management.
@@ -88,7 +88,7 @@ namespace Soenneker.Together.OpenApiClient.V1.Compute.Clusters
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.GpuClusterInfo>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.GpuClusterInfo.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.GpuClusterInfo>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.GpuClusterInfo.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// List all GPU clusters.

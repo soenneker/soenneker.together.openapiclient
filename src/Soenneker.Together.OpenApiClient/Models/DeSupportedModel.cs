@@ -12,191 +12,270 @@ namespace Soenneker.Together.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DeSupportedModel : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("architecture") is { } nullNodeArchitecture && nullNodeArchitecture.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Architecture = null;
+            if (parseNode.GetChildNode("baseModel") is { } nullNodeBaseModel && nullNodeBaseModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaseModel = null;
+            if (parseNode.GetChildNode("baseModelId") is { } nullNodeBaseModelId && nullNodeBaseModelId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaseModelId = null;
+            if (parseNode.GetChildNode("capabilities") is { } nullNodeCapabilities && nullNodeCapabilities.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Capabilities = null;
+            if (parseNode.GetChildNode("contextLength") is { } nullNodeContextLength && nullNodeContextLength.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ContextLength = null;
+            if (parseNode.GetChildNode("createdAt") is { } nullNodeCreatedAt && nullNodeCreatedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreatedAt = null;
+            if (parseNode.GetChildNode("deploymentProfiles") is { } nullNodeDeploymentProfiles && nullNodeDeploymentProfiles.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeploymentProfiles = null;
+            if (parseNode.GetChildNode("description") is { } nullNodeDescription && nullNodeDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Description = null;
+            if (parseNode.GetChildNode("displayName") is { } nullNodeDisplayName && nullNodeDisplayName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DisplayName = null;
+            if (parseNode.GetChildNode("displayType") is { } nullNodeDisplayType && nullNodeDisplayType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DisplayType = null;
+            if (parseNode.GetChildNode("familyId") is { } nullNodeFamilyId && nullNodeFamilyId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FamilyId = null;
+            if (parseNode.GetChildNode("features") is { } nullNodeFeatures && nullNodeFeatures.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Features = null;
+            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("inputFormat") is { } nullNodeInputFormat && nullNodeInputFormat.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InputFormat = null;
+            if (parseNode.GetChildNode("inputModalities") is { } nullNodeInputModalities && nullNodeInputModalities.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InputModalities = null;
+            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("outputFormat") is { } nullNodeOutputFormat && nullNodeOutputFormat.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OutputFormat = null;
+            if (parseNode.GetChildNode("outputModalities") is { } nullNodeOutputModalities && nullNodeOutputModalities.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OutputModalities = null;
+            if (parseNode.GetChildNode("pricing") is { } nullNodePricing && nullNodePricing.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Pricing = null;
+            if (parseNode.GetChildNode("products") is { } nullNodeProducts && nullNodeProducts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Products = null;
+            if (parseNode.GetChildNode("publisher") is { } nullNodePublisher && nullNodePublisher.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Publisher = null;
+            if (parseNode.GetChildNode("serverlessEndpoint") is { } nullNodeServerlessEndpoint && nullNodeServerlessEndpoint.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ServerlessEndpoint = null;
+            if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
+            if (parseNode.GetChildNode("tags") is { } nullNodeTags && nullNodeTags.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tags = null;
+            if (parseNode.GetChildNode("updatedAt") is { } nullNodeUpdatedAt && nullNodeUpdatedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UpdatedAt = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Model architecture from the underlying weights metadata.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Architecture { get; set; }
+        public string? Architecture { get => _explicitNullValueArchitecture; set { _explicitNullValueArchitecture = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("architecture"); else _explicitNullProperties?.Remove("architecture"); } }
+        private string? _explicitNullValueArchitecture = default!;
 #nullable restore
 #else
-        public string Architecture { get; set; }
+        public string Architecture { get => _explicitNullValueArchitecture; set { _explicitNullValueArchitecture = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("architecture"); else _explicitNullProperties?.Remove("architecture"); } }
+        private string _explicitNullValueArchitecture = default!;
 #endif
         /// <summary>Resource name for the base model as `projects/{projectId}/models/{modelId}`; empty when unresolved.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BaseModel { get; set; }
+        public string? BaseModel { get => _explicitNullValueBaseModel; set { _explicitNullValueBaseModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseModel"); else _explicitNullProperties?.Remove("baseModel"); } }
+        private string? _explicitNullValueBaseModel = default!;
 #nullable restore
 #else
-        public string BaseModel { get; set; }
+        public string BaseModel { get => _explicitNullValueBaseModel; set { _explicitNullValueBaseModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseModel"); else _explicitNullProperties?.Remove("baseModel"); } }
+        private string _explicitNullValueBaseModel = default!;
 #endif
         /// <summary>Bare model ID for the architecture&apos;s base model; empty when no base model is linked.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BaseModelId { get; set; }
+        public string? BaseModelId { get => _explicitNullValueBaseModelId; set { _explicitNullValueBaseModelId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseModelId"); else _explicitNullProperties?.Remove("baseModelId"); } }
+        private string? _explicitNullValueBaseModelId = default!;
 #nullable restore
 #else
-        public string BaseModelId { get; set; }
+        public string BaseModelId { get => _explicitNullValueBaseModelId; set { _explicitNullValueBaseModelId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseModelId"); else _explicitNullProperties?.Remove("baseModelId"); } }
+        private string _explicitNullValueBaseModelId = default!;
 #endif
         /// <summary>High-level tasks the model supports.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelCapabilitiesItem?>? Capabilities { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelCapabilitiesItem?>? Capabilities { get => _explicitNullValueCapabilities; set { _explicitNullValueCapabilities = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("capabilities"); else _explicitNullProperties?.Remove("capabilities"); } }
+        private List<global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelCapabilitiesItem?>? _explicitNullValueCapabilities = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelCapabilitiesItem?> Capabilities { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelCapabilitiesItem?> Capabilities { get => _explicitNullValueCapabilities; set { _explicitNullValueCapabilities = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("capabilities"); else _explicitNullProperties?.Remove("capabilities"); } }
+        private List<global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelCapabilitiesItem?> _explicitNullValueCapabilities = default!;
 #endif
         /// <summary>Maximum context length from the underlying weights metadata.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ContextLength { get; set; }
+        public string? ContextLength { get => _explicitNullValueContextLength; set { _explicitNullValueContextLength = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("contextLength"); else _explicitNullProperties?.Remove("contextLength"); } }
+        private string? _explicitNullValueContextLength = default!;
 #nullable restore
 #else
-        public string ContextLength { get; set; }
+        public string ContextLength { get => _explicitNullValueContextLength; set { _explicitNullValueContextLength = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("contextLength"); else _explicitNullProperties?.Remove("contextLength"); } }
+        private string _explicitNullValueContextLength = default!;
 #endif
         /// <summary>Timestamp when the catalog entry was created.</summary>
-        public DateTimeOffset? CreatedAt { get; set; }
+        public DateTimeOffset? CreatedAt { get => _explicitNullValueCreatedAt; set { _explicitNullValueCreatedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("createdAt"); else _explicitNullProperties?.Remove("createdAt"); } }
+        private DateTimeOffset? _explicitNullValueCreatedAt = default!;
         /// <summary>Certified deployment profiles available for the model.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelDeploymentProfile>? DeploymentProfiles { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelDeploymentProfile>? DeploymentProfiles { get => _explicitNullValueDeploymentProfiles; set { _explicitNullValueDeploymentProfiles = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deploymentProfiles"); else _explicitNullProperties?.Remove("deploymentProfiles"); } }
+        private List<global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelDeploymentProfile>? _explicitNullValueDeploymentProfiles = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelDeploymentProfile> DeploymentProfiles { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelDeploymentProfile> DeploymentProfiles { get => _explicitNullValueDeploymentProfiles; set { _explicitNullValueDeploymentProfiles = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deploymentProfiles"); else _explicitNullProperties?.Remove("deploymentProfiles"); } }
+        private List<global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelDeploymentProfile> _explicitNullValueDeploymentProfiles = default!;
 #endif
         /// <summary>Human-readable model description.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Description { get; set; }
+        public string? Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string? _explicitNullValueDescription = default!;
 #nullable restore
 #else
-        public string Description { get; set; }
+        public string Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string _explicitNullValueDescription = default!;
 #endif
         /// <summary>Catalog-controlled human-readable model name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DisplayName { get; set; }
+        public string? DisplayName { get => _explicitNullValueDisplayName; set { _explicitNullValueDisplayName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("displayName"); else _explicitNullProperties?.Remove("displayName"); } }
+        private string? _explicitNullValueDisplayName = default!;
 #nullable restore
 #else
-        public string DisplayName { get; set; }
+        public string DisplayName { get => _explicitNullValueDisplayName; set { _explicitNullValueDisplayName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("displayName"); else _explicitNullProperties?.Remove("displayName"); } }
+        private string _explicitNullValueDisplayName = default!;
 #endif
         /// <summary>UI-facing model type badge, such as chat, language, code, image, embedding, rerank, moderation, audio, video, or transcribe.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DisplayType { get; set; }
+        public string? DisplayType { get => _explicitNullValueDisplayType; set { _explicitNullValueDisplayType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("displayType"); else _explicitNullProperties?.Remove("displayType"); } }
+        private string? _explicitNullValueDisplayType = default!;
 #nullable restore
 #else
-        public string DisplayType { get; set; }
+        public string DisplayType { get => _explicitNullValueDisplayType; set { _explicitNullValueDisplayType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("displayType"); else _explicitNullProperties?.Remove("displayType"); } }
+        private string _explicitNullValueDisplayType = default!;
 #endif
         /// <summary>Model family identifier for related catalog entries.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FamilyId { get; set; }
+        public string? FamilyId { get => _explicitNullValueFamilyId; set { _explicitNullValueFamilyId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("familyId"); else _explicitNullProperties?.Remove("familyId"); } }
+        private string? _explicitNullValueFamilyId = default!;
 #nullable restore
 #else
-        public string FamilyId { get; set; }
+        public string FamilyId { get => _explicitNullValueFamilyId; set { _explicitNullValueFamilyId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("familyId"); else _explicitNullProperties?.Remove("familyId"); } }
+        private string _explicitNullValueFamilyId = default!;
 #endif
         /// <summary>Advanced features exposed by the model.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelFeaturesItem?>? Features { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelFeaturesItem?>? Features { get => _explicitNullValueFeatures; set { _explicitNullValueFeatures = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("features"); else _explicitNullProperties?.Remove("features"); } }
+        private List<global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelFeaturesItem?>? _explicitNullValueFeatures = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelFeaturesItem?> Features { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelFeaturesItem?> Features { get => _explicitNullValueFeatures; set { _explicitNullValueFeatures = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("features"); else _explicitNullProperties?.Remove("features"); } }
+        private List<global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelFeaturesItem?> _explicitNullValueFeatures = default!;
 #endif
         /// <summary>Unique ID of the deployable Together-hosted base model.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Id { get; set; }
+        public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string? _explicitNullValueId = default!;
 #nullable restore
 #else
-        public string Id { get; set; }
+        public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string _explicitNullValueId = default!;
 #endif
         /// <summary>Preferred input format for the model.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? InputFormat { get; set; }
+        public string? InputFormat { get => _explicitNullValueInputFormat; set { _explicitNullValueInputFormat = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inputFormat"); else _explicitNullProperties?.Remove("inputFormat"); } }
+        private string? _explicitNullValueInputFormat = default!;
 #nullable restore
 #else
-        public string InputFormat { get; set; }
+        public string InputFormat { get => _explicitNullValueInputFormat; set { _explicitNullValueInputFormat = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inputFormat"); else _explicitNullProperties?.Remove("inputFormat"); } }
+        private string _explicitNullValueInputFormat = default!;
 #endif
         /// <summary>Input modalities supported by the model.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelInputModalitiesItem?>? InputModalities { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelInputModalitiesItem?>? InputModalities { get => _explicitNullValueInputModalities; set { _explicitNullValueInputModalities = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inputModalities"); else _explicitNullProperties?.Remove("inputModalities"); } }
+        private List<global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelInputModalitiesItem?>? _explicitNullValueInputModalities = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelInputModalitiesItem?> InputModalities { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelInputModalitiesItem?> InputModalities { get => _explicitNullValueInputModalities; set { _explicitNullValueInputModalities = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inputModalities"); else _explicitNullProperties?.Remove("inputModalities"); } }
+        private List<global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelInputModalitiesItem?> _explicitNullValueInputModalities = default!;
 #endif
         /// <summary>Catalog-controlled HF model ID used for inference.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>Preferred output format for the model.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? OutputFormat { get; set; }
+        public string? OutputFormat { get => _explicitNullValueOutputFormat; set { _explicitNullValueOutputFormat = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("outputFormat"); else _explicitNullProperties?.Remove("outputFormat"); } }
+        private string? _explicitNullValueOutputFormat = default!;
 #nullable restore
 #else
-        public string OutputFormat { get; set; }
+        public string OutputFormat { get => _explicitNullValueOutputFormat; set { _explicitNullValueOutputFormat = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("outputFormat"); else _explicitNullProperties?.Remove("outputFormat"); } }
+        private string _explicitNullValueOutputFormat = default!;
 #endif
         /// <summary>Output modalities produced by the model.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelOutputModalitiesItem?>? OutputModalities { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelOutputModalitiesItem?>? OutputModalities { get => _explicitNullValueOutputModalities; set { _explicitNullValueOutputModalities = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("outputModalities"); else _explicitNullProperties?.Remove("outputModalities"); } }
+        private List<global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelOutputModalitiesItem?>? _explicitNullValueOutputModalities = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelOutputModalitiesItem?> OutputModalities { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelOutputModalitiesItem?> OutputModalities { get => _explicitNullValueOutputModalities; set { _explicitNullValueOutputModalities = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("outputModalities"); else _explicitNullProperties?.Remove("outputModalities"); } }
+        private List<global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelOutputModalitiesItem?> _explicitNullValueOutputModalities = default!;
 #endif
         /// <summary>Serverless token pricing for a supported model.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelPricing? Pricing { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelPricing? Pricing { get => _explicitNullValuePricing; set { _explicitNullValuePricing = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pricing"); else _explicitNullProperties?.Remove("pricing"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelPricing? _explicitNullValuePricing = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelPricing Pricing { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelPricing Pricing { get => _explicitNullValuePricing; set { _explicitNullValuePricing = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pricing"); else _explicitNullProperties?.Remove("pricing"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelPricing _explicitNullValuePricing = default!;
 #endif
         /// <summary>Product surfaces where the model is offered.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelProductsItem?>? Products { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelProductsItem?>? Products { get => _explicitNullValueProducts; set { _explicitNullValueProducts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("products"); else _explicitNullProperties?.Remove("products"); } }
+        private List<global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelProductsItem?>? _explicitNullValueProducts = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelProductsItem?> Products { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelProductsItem?> Products { get => _explicitNullValueProducts; set { _explicitNullValueProducts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("products"); else _explicitNullProperties?.Remove("products"); } }
+        private List<global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelProductsItem?> _explicitNullValueProducts = default!;
 #endif
         /// <summary>Organization or publisher associated with the model.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Publisher { get; set; }
+        public string? Publisher { get => _explicitNullValuePublisher; set { _explicitNullValuePublisher = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("publisher"); else _explicitNullProperties?.Remove("publisher"); } }
+        private string? _explicitNullValuePublisher = default!;
 #nullable restore
 #else
-        public string Publisher { get; set; }
+        public string Publisher { get => _explicitNullValuePublisher; set { _explicitNullValuePublisher = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("publisher"); else _explicitNullProperties?.Remove("publisher"); } }
+        private string _explicitNullValuePublisher = default!;
 #endif
         /// <summary>Serverless endpoint name for inference, if available.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ServerlessEndpoint { get; set; }
+        public string? ServerlessEndpoint { get => _explicitNullValueServerlessEndpoint; set { _explicitNullValueServerlessEndpoint = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("serverlessEndpoint"); else _explicitNullProperties?.Remove("serverlessEndpoint"); } }
+        private string? _explicitNullValueServerlessEndpoint = default!;
 #nullable restore
 #else
-        public string ServerlessEndpoint { get; set; }
+        public string ServerlessEndpoint { get => _explicitNullValueServerlessEndpoint; set { _explicitNullValueServerlessEndpoint = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("serverlessEndpoint"); else _explicitNullProperties?.Remove("serverlessEndpoint"); } }
+        private string _explicitNullValueServerlessEndpoint = default!;
 #endif
         /// <summary>Catalog recommendation status for the model.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelStatus? Status { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelStatus? _explicitNullValueStatus = default!;
         /// <summary>Searchable catalog tags for the model.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Tags { get; set; }
+        public List<string>? Tags { get => _explicitNullValueTags; set { _explicitNullValueTags = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tags"); else _explicitNullProperties?.Remove("tags"); } }
+        private List<string>? _explicitNullValueTags = default!;
 #nullable restore
 #else
-        public List<string> Tags { get; set; }
+        public List<string> Tags { get => _explicitNullValueTags; set { _explicitNullValueTags = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tags"); else _explicitNullProperties?.Remove("tags"); } }
+        private List<string> _explicitNullValueTags = default!;
 #endif
         /// <summary>Timestamp when the catalog entry was last updated.</summary>
-        public DateTimeOffset? UpdatedAt { get; set; }
+        public DateTimeOffset? UpdatedAt { get => _explicitNullValueUpdatedAt; set { _explicitNullValueUpdatedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("updatedAt"); else _explicitNullProperties?.Remove("updatedAt"); } }
+        private DateTimeOffset? _explicitNullValueUpdatedAt = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.DeSupportedModel"/> and sets the default values.
         /// </summary>
@@ -212,7 +291,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.DeSupportedModel CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.DeSupportedModel();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.DeSupportedModel(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -281,6 +360,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelStatus>("status", Status);
             writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
             writer.WriteDateTimeOffsetValue("updatedAt", UpdatedAt);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

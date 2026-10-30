@@ -12,80 +12,114 @@ namespace Soenneker.Together.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DeAnalyticsDataMetrics : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("deploymentMetrics") is { } nullNodeDeploymentMetrics && nullNodeDeploymentMetrics.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeploymentMetrics = null;
+            if (parseNode.GetChildNode("endpointId") is { } nullNodeEndpointId && nullNodeEndpointId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EndpointId = null;
+            if (parseNode.GetChildNode("errorMetrics") is { } nullNodeErrorMetrics && nullNodeErrorMetrics.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ErrorMetrics = null;
+            if (parseNode.GetChildNode("latencyMetrics") is { } nullNodeLatencyMetrics && nullNodeLatencyMetrics.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LatencyMetrics = null;
+            if (parseNode.GetChildNode("requestMetrics") is { } nullNodeRequestMetrics && nullNodeRequestMetrics.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequestMetrics = null;
+            if (parseNode.GetChildNode("resourceUtilization") is { } nullNodeResourceUtilization && nullNodeResourceUtilization.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResourceUtilization = null;
+            if (parseNode.GetChildNode("throughputMetrics") is { } nullNodeThroughputMetrics && nullNodeThroughputMetrics.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ThroughputMetrics = null;
+            if (parseNode.GetChildNode("timeRange") is { } nullNodeTimeRange && nullNodeTimeRange.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TimeRange = null;
+            if (parseNode.GetChildNode("tokenMetrics") is { } nullNodeTokenMetrics && nullNodeTokenMetrics.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TokenMetrics = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Per-deployment breakdown, if the endpoint has multiple deployments.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Together.OpenApiClient.Models.DeDeploymentMetrics>? DeploymentMetrics { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.DeDeploymentMetrics>? DeploymentMetrics { get => _explicitNullValueDeploymentMetrics; set { _explicitNullValueDeploymentMetrics = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deploymentMetrics"); else _explicitNullProperties?.Remove("deploymentMetrics"); } }
+        private List<global::Soenneker.Together.OpenApiClient.Models.DeDeploymentMetrics>? _explicitNullValueDeploymentMetrics = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Together.OpenApiClient.Models.DeDeploymentMetrics> DeploymentMetrics { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.DeDeploymentMetrics> DeploymentMetrics { get => _explicitNullValueDeploymentMetrics; set { _explicitNullValueDeploymentMetrics = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deploymentMetrics"); else _explicitNullProperties?.Remove("deploymentMetrics"); } }
+        private List<global::Soenneker.Together.OpenApiClient.Models.DeDeploymentMetrics> _explicitNullValueDeploymentMetrics = default!;
 #endif
         /// <summary>The endpoint these metrics describe.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EndpointId { get; set; }
+        public string? EndpointId { get => _explicitNullValueEndpointId; set { _explicitNullValueEndpointId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("endpointId"); else _explicitNullProperties?.Remove("endpointId"); } }
+        private string? _explicitNullValueEndpointId = default!;
 #nullable restore
 #else
-        public string EndpointId { get; set; }
+        public string EndpointId { get => _explicitNullValueEndpointId; set { _explicitNullValueEndpointId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("endpointId"); else _explicitNullProperties?.Remove("endpointId"); } }
+        private string _explicitNullValueEndpointId = default!;
 #endif
         /// <summary>Error rate and aggregate counts by error type. Individual error samples are not included.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.DeErrorMetrics? ErrorMetrics { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeErrorMetrics? ErrorMetrics { get => _explicitNullValueErrorMetrics; set { _explicitNullValueErrorMetrics = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("errorMetrics"); else _explicitNullProperties?.Remove("errorMetrics"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.DeErrorMetrics? _explicitNullValueErrorMetrics = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.DeErrorMetrics ErrorMetrics { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeErrorMetrics ErrorMetrics { get => _explicitNullValueErrorMetrics; set { _explicitNullValueErrorMetrics = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("errorMetrics"); else _explicitNullProperties?.Remove("errorMetrics"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.DeErrorMetrics _explicitNullValueErrorMetrics = default!;
 #endif
         /// <summary>Time-to-first-token, end-to-end, and inter-token latency percentiles in milliseconds.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.DeLatencyMetrics? LatencyMetrics { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeLatencyMetrics? LatencyMetrics { get => _explicitNullValueLatencyMetrics; set { _explicitNullValueLatencyMetrics = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latencyMetrics"); else _explicitNullProperties?.Remove("latencyMetrics"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.DeLatencyMetrics? _explicitNullValueLatencyMetrics = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.DeLatencyMetrics LatencyMetrics { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeLatencyMetrics LatencyMetrics { get => _explicitNullValueLatencyMetrics; set { _explicitNullValueLatencyMetrics = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latencyMetrics"); else _explicitNullProperties?.Remove("latencyMetrics"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.DeLatencyMetrics _explicitNullValueLatencyMetrics = default!;
 #endif
         /// <summary>Request counts, rate, and status-code distribution over a time range.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.DeRequestMetrics? RequestMetrics { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeRequestMetrics? RequestMetrics { get => _explicitNullValueRequestMetrics; set { _explicitNullValueRequestMetrics = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("requestMetrics"); else _explicitNullProperties?.Remove("requestMetrics"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.DeRequestMetrics? _explicitNullValueRequestMetrics = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.DeRequestMetrics RequestMetrics { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeRequestMetrics RequestMetrics { get => _explicitNullValueRequestMetrics; set { _explicitNullValueRequestMetrics = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("requestMetrics"); else _explicitNullProperties?.Remove("requestMetrics"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.DeRequestMetrics _explicitNullValueRequestMetrics = default!;
 #endif
         /// <summary>Average compute, memory, and network utilization for replicas over a time range.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.DeResourceUtilization? ResourceUtilization { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeResourceUtilization? ResourceUtilization { get => _explicitNullValueResourceUtilization; set { _explicitNullValueResourceUtilization = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resourceUtilization"); else _explicitNullProperties?.Remove("resourceUtilization"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.DeResourceUtilization? _explicitNullValueResourceUtilization = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.DeResourceUtilization ResourceUtilization { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeResourceUtilization ResourceUtilization { get => _explicitNullValueResourceUtilization; set { _explicitNullValueResourceUtilization = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resourceUtilization"); else _explicitNullProperties?.Remove("resourceUtilization"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.DeResourceUtilization _explicitNullValueResourceUtilization = default!;
 #endif
         /// <summary>Token, request, and batching throughput over a time range.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.DeThroughputMetrics? ThroughputMetrics { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeThroughputMetrics? ThroughputMetrics { get => _explicitNullValueThroughputMetrics; set { _explicitNullValueThroughputMetrics = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("throughputMetrics"); else _explicitNullProperties?.Remove("throughputMetrics"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.DeThroughputMetrics? _explicitNullValueThroughputMetrics = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.DeThroughputMetrics ThroughputMetrics { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeThroughputMetrics ThroughputMetrics { get => _explicitNullValueThroughputMetrics; set { _explicitNullValueThroughputMetrics = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("throughputMetrics"); else _explicitNullProperties?.Remove("throughputMetrics"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.DeThroughputMetrics _explicitNullValueThroughputMetrics = default!;
 #endif
         /// <summary>Time range covered by the metrics.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.DeEndpointMetricsTimeRange? TimeRange { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeEndpointMetricsTimeRange? TimeRange { get => _explicitNullValueTimeRange; set { _explicitNullValueTimeRange = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timeRange"); else _explicitNullProperties?.Remove("timeRange"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.DeEndpointMetricsTimeRange? _explicitNullValueTimeRange = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.DeEndpointMetricsTimeRange TimeRange { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeEndpointMetricsTimeRange TimeRange { get => _explicitNullValueTimeRange; set { _explicitNullValueTimeRange = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timeRange"); else _explicitNullProperties?.Remove("timeRange"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.DeEndpointMetricsTimeRange _explicitNullValueTimeRange = default!;
 #endif
         /// <summary>Aggregate and per-request token usage over a time range.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.DeTokenMetrics? TokenMetrics { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeTokenMetrics? TokenMetrics { get => _explicitNullValueTokenMetrics; set { _explicitNullValueTokenMetrics = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tokenMetrics"); else _explicitNullProperties?.Remove("tokenMetrics"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.DeTokenMetrics? _explicitNullValueTokenMetrics = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.DeTokenMetrics TokenMetrics { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeTokenMetrics TokenMetrics { get => _explicitNullValueTokenMetrics; set { _explicitNullValueTokenMetrics = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tokenMetrics"); else _explicitNullProperties?.Remove("tokenMetrics"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.DeTokenMetrics _explicitNullValueTokenMetrics = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.DeAnalyticsDataMetrics"/> and sets the default values.
@@ -102,7 +136,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.DeAnalyticsDataMetrics CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.DeAnalyticsDataMetrics();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.DeAnalyticsDataMetrics(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -139,6 +173,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeThroughputMetrics>("throughputMetrics", ThroughputMetrics);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeEndpointMetricsTimeRange>("timeRange", TimeRange);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeTokenMetrics>("tokenMetrics", TokenMetrics);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

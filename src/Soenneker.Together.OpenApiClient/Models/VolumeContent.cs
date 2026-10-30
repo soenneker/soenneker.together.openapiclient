@@ -12,35 +12,53 @@ namespace Soenneker.Together.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class VolumeContent : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("files") is { } nullNodeFiles && nullNodeFiles.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Files = null;
+            if (parseNode.GetChildNode("origin") is { } nullNodeOrigin && nullNodeOrigin.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Origin = null;
+            if (parseNode.GetChildNode("source_prefix") is { } nullNodeSourcePrefix && nullNodeSourcePrefix.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourcePrefix = null;
+            if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Files is the list of files to preload into the volume, if the volume content type is &quot;files&quot;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Together.OpenApiClient.Models.FileInfo>? Files { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.FileInfo>? Files { get => _explicitNullValueFiles; set { _explicitNullValueFiles = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("files"); else _explicitNullProperties?.Remove("files"); } }
+        private List<global::Soenneker.Together.OpenApiClient.Models.FileInfo>? _explicitNullValueFiles = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Together.OpenApiClient.Models.FileInfo> Files { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.FileInfo> Files { get => _explicitNullValueFiles; set { _explicitNullValueFiles = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("files"); else _explicitNullProperties?.Remove("files"); } }
+        private List<global::Soenneker.Together.OpenApiClient.Models.FileInfo> _explicitNullValueFiles = default!;
 #endif
         /// <summary>External source Together copied into this volume version.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.VolumeOrigin? Origin { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.VolumeOrigin? Origin { get => _explicitNullValueOrigin; set { _explicitNullValueOrigin = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("origin"); else _explicitNullProperties?.Remove("origin"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.VolumeOrigin? _explicitNullValueOrigin = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.VolumeOrigin Origin { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.VolumeOrigin Origin { get => _explicitNullValueOrigin; set { _explicitNullValueOrigin = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("origin"); else _explicitNullProperties?.Remove("origin"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.VolumeOrigin _explicitNullValueOrigin = default!;
 #endif
         /// <summary>SourcePrefix is the file path prefix for the content to be preloaded into the volume</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SourcePrefix { get; set; }
+        public string? SourcePrefix { get => _explicitNullValueSourcePrefix; set { _explicitNullValueSourcePrefix = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_prefix"); else _explicitNullProperties?.Remove("source_prefix"); } }
+        private string? _explicitNullValueSourcePrefix = default!;
 #nullable restore
 #else
-        public string SourcePrefix { get; set; }
+        public string SourcePrefix { get => _explicitNullValueSourcePrefix; set { _explicitNullValueSourcePrefix = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_prefix"); else _explicitNullProperties?.Remove("source_prefix"); } }
+        private string _explicitNullValueSourcePrefix = default!;
 #endif
         /// <summary>Type is the content type (currently only &quot;files&quot; is supported which allows preloading files uploaded via Files API into the volume)</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.FilesType? Type { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.FilesType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.FilesType? _explicitNullValueType = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.VolumeContent"/> and sets the default values.
         /// </summary>
@@ -56,7 +74,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.VolumeContent CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.VolumeContent();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.VolumeContent(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -83,6 +101,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.VolumeOrigin>("origin", Origin);
             writer.WriteStringValue("source_prefix", SourcePrefix);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.FilesType>("type", Type);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

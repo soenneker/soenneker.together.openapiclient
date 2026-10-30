@@ -12,13 +12,24 @@ namespace Soenneker.Together.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RlComputeConfig : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("gpu_type") is { } nullNodeGpuType && nullNodeGpuType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GpuType = null;
+            if (parseNode.GetChildNode("num_generator_replicas") is { } nullNodeNumGeneratorReplicas && nullNodeNumGeneratorReplicas.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NumGeneratorReplicas = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>GPU type selected for this resource.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.RlComputeConfigGpuType? GpuType { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlComputeConfigGpuType? GpuType { get => _explicitNullValueGpuType; set { _explicitNullValueGpuType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gpu_type"); else _explicitNullProperties?.Remove("gpu_type"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlComputeConfigGpuType? _explicitNullValueGpuType = default!;
         /// <summary>Number of generator replicas. 0 means the resource runs the trainer only, with no generator.</summary>
-        public int? NumGeneratorReplicas { get; set; }
+        public int? NumGeneratorReplicas { get => _explicitNullValueNumGeneratorReplicas; set { _explicitNullValueNumGeneratorReplicas = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("num_generator_replicas"); else _explicitNullProperties?.Remove("num_generator_replicas"); } }
+        private int? _explicitNullValueNumGeneratorReplicas = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlComputeConfig"/> and sets the default values.
         /// </summary>
@@ -34,7 +45,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.RlComputeConfig CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.RlComputeConfig();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.RlComputeConfig(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -57,6 +68,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlComputeConfigGpuType>("gpu_type", GpuType);
             writer.WriteIntValue("num_generator_replicas", NumGeneratorReplicas);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

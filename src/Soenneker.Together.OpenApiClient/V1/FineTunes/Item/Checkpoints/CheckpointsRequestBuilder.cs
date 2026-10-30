@@ -49,7 +49,7 @@ namespace Soenneker.Together.OpenApiClient.V1.FineTunes.Item.Checkpoints
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.FinetuneListCheckpoints>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.FinetuneListCheckpoints.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.FinetuneListCheckpoints>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.FinetuneListCheckpoints.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// List the checkpoints for a single fine-tuning job.

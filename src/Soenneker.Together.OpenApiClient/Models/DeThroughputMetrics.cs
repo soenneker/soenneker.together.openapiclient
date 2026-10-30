@@ -12,17 +12,32 @@ namespace Soenneker.Together.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DeThroughputMetrics : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("avgBatchDepth") is { } nullNodeAvgBatchDepth && nullNodeAvgBatchDepth.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AvgBatchDepth = null;
+            if (parseNode.GetChildNode("avgBatchSize") is { } nullNodeAvgBatchSize && nullNodeAvgBatchSize.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AvgBatchSize = null;
+            if (parseNode.GetChildNode("requestsPerSecond") is { } nullNodeRequestsPerSecond && nullNodeRequestsPerSecond.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequestsPerSecond = null;
+            if (parseNode.GetChildNode("tokensPerSecond") is { } nullNodeTokensPerSecond && nullNodeTokensPerSecond.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TokensPerSecond = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Average number of batches queued or in flight in the serving engine.</summary>
-        public double? AvgBatchDepth { get; set; }
+        public double? AvgBatchDepth { get => _explicitNullValueAvgBatchDepth; set { _explicitNullValueAvgBatchDepth = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("avgBatchDepth"); else _explicitNullProperties?.Remove("avgBatchDepth"); } }
+        private double? _explicitNullValueAvgBatchDepth = default!;
         /// <summary>Average number of requests processed in each runtime batch.</summary>
-        public double? AvgBatchSize { get; set; }
+        public double? AvgBatchSize { get => _explicitNullValueAvgBatchSize; set { _explicitNullValueAvgBatchSize = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("avgBatchSize"); else _explicitNullProperties?.Remove("avgBatchSize"); } }
+        private double? _explicitNullValueAvgBatchSize = default!;
         /// <summary>Average completed requests per second.</summary>
-        public double? RequestsPerSecond { get; set; }
+        public double? RequestsPerSecond { get => _explicitNullValueRequestsPerSecond; set { _explicitNullValueRequestsPerSecond = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("requestsPerSecond"); else _explicitNullProperties?.Remove("requestsPerSecond"); } }
+        private double? _explicitNullValueRequestsPerSecond = default!;
         /// <summary>Average generated tokens per second.</summary>
-        public double? TokensPerSecond { get; set; }
+        public double? TokensPerSecond { get => _explicitNullValueTokensPerSecond; set { _explicitNullValueTokensPerSecond = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tokensPerSecond"); else _explicitNullProperties?.Remove("tokensPerSecond"); } }
+        private double? _explicitNullValueTokensPerSecond = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.DeThroughputMetrics"/> and sets the default values.
         /// </summary>
@@ -38,7 +53,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.DeThroughputMetrics CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.DeThroughputMetrics();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.DeThroughputMetrics(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -65,6 +80,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteDoubleValue("avgBatchSize", AvgBatchSize);
             writer.WriteDoubleValue("requestsPerSecond", RequestsPerSecond);
             writer.WriteDoubleValue("tokensPerSecond", TokensPerSecond);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

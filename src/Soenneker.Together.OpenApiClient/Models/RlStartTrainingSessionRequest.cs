@@ -11,50 +11,74 @@ namespace Soenneker.Together.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class RlStartTrainingSessionRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("display_name") is { } nullNodeDisplayName && nullNodeDisplayName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DisplayName = null;
+            if (parseNode.GetChildNode("load_optimizer") is { } nullNodeLoadOptimizer && nullNodeLoadOptimizer.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LoadOptimizer = null;
+            if (parseNode.GetChildNode("lora_config") is { } nullNodeLoraConfig && nullNodeLoraConfig.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LoraConfig = null;
+            if (parseNode.GetChildNode("metadata") is { } nullNodeMetadata && nullNodeMetadata.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Metadata = null;
+            if (parseNode.GetChildNode("model_resources_id") is { } nullNodeModelResourcesId && nullNodeModelResourcesId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModelResourcesId = null;
+            if (parseNode.GetChildNode("resume_from_checkpoint_id") is { } nullNodeResumeFromCheckpointId && nullNodeResumeFromCheckpointId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResumeFromCheckpointId = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Optional display name used to identify the training session</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DisplayName { get; set; }
+        public string? DisplayName { get => _explicitNullValueDisplayName; set { _explicitNullValueDisplayName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("display_name"); else _explicitNullProperties?.Remove("display_name"); } }
+        private string? _explicitNullValueDisplayName = default!;
 #nullable restore
 #else
-        public string DisplayName { get; set; }
+        public string DisplayName { get => _explicitNullValueDisplayName; set { _explicitNullValueDisplayName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("display_name"); else _explicitNullProperties?.Remove("display_name"); } }
+        private string _explicitNullValueDisplayName = default!;
 #endif
         /// <summary>Whether to restore optimizer state and step from a training checkpoint. Omitted or true restores them; false loads weights only with a fresh optimizer and step 0. Not valid for inference checkpoints, which have no optimizer state.</summary>
-        public bool? LoadOptimizer { get; set; }
+        public bool? LoadOptimizer { get => _explicitNullValueLoadOptimizer; set { _explicitNullValueLoadOptimizer = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("load_optimizer"); else _explicitNullProperties?.Remove("load_optimizer"); } }
+        private bool? _explicitNullValueLoadOptimizer = default!;
         /// <summary>LoRA adapter configuration</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RlLoraConfig? LoraConfig { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlLoraConfig? LoraConfig { get => _explicitNullValueLoraConfig; set { _explicitNullValueLoraConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lora_config"); else _explicitNullProperties?.Remove("lora_config"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlLoraConfig? _explicitNullValueLoraConfig = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.RlLoraConfig LoraConfig { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlLoraConfig LoraConfig { get => _explicitNullValueLoraConfig; set { _explicitNullValueLoraConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lora_config"); else _explicitNullProperties?.Remove("lora_config"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlLoraConfig _explicitNullValueLoraConfig = default!;
 #endif
         /// <summary>Auxiliary metadata associated with a training session</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionMetadata? Metadata { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionMetadata? Metadata { get => _explicitNullValueMetadata; set { _explicitNullValueMetadata = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metadata"); else _explicitNullProperties?.Remove("metadata"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionMetadata? _explicitNullValueMetadata = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionMetadata Metadata { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionMetadata Metadata { get => _explicitNullValueMetadata; set { _explicitNullValueMetadata = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metadata"); else _explicitNullProperties?.Remove("metadata"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionMetadata _explicitNullValueMetadata = default!;
 #endif
         /// <summary>ID of the model resource to use for this training session.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ModelResourcesId { get; set; }
+        public string? ModelResourcesId { get => _explicitNullValueModelResourcesId; set { _explicitNullValueModelResourcesId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_resources_id"); else _explicitNullProperties?.Remove("model_resources_id"); } }
+        private string? _explicitNullValueModelResourcesId = default!;
 #nullable restore
 #else
-        public string ModelResourcesId { get; set; }
+        public string ModelResourcesId { get => _explicitNullValueModelResourcesId; set { _explicitNullValueModelResourcesId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_resources_id"); else _explicitNullProperties?.Remove("model_resources_id"); } }
+        private string _explicitNullValueModelResourcesId = default!;
 #endif
         /// <summary>Checkpoint ID to resume from. LoRA training checkpoints may resume on another model resource with compatible base-model weights. Full-weight training checkpoints require the original base model.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ResumeFromCheckpointId { get; set; }
+        public string? ResumeFromCheckpointId { get => _explicitNullValueResumeFromCheckpointId; set { _explicitNullValueResumeFromCheckpointId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resume_from_checkpoint_id"); else _explicitNullProperties?.Remove("resume_from_checkpoint_id"); } }
+        private string? _explicitNullValueResumeFromCheckpointId = default!;
 #nullable restore
 #else
-        public string ResumeFromCheckpointId { get; set; }
+        public string ResumeFromCheckpointId { get => _explicitNullValueResumeFromCheckpointId; set { _explicitNullValueResumeFromCheckpointId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resume_from_checkpoint_id"); else _explicitNullProperties?.Remove("resume_from_checkpoint_id"); } }
+        private string _explicitNullValueResumeFromCheckpointId = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlStartTrainingSessionRequest"/> and sets the default values.
@@ -71,7 +95,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.RlStartTrainingSessionRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.RlStartTrainingSessionRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.RlStartTrainingSessionRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -102,6 +126,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionMetadata>("metadata", Metadata);
             writer.WriteStringValue("model_resources_id", ModelResourcesId);
             writer.WriteStringValue("resume_from_checkpoint_id", ResumeFromCheckpointId);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

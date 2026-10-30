@@ -73,6 +73,8 @@ namespace Soenneker.Together.OpenApiClient.V1.Deployments.Item
             {
                 { "404", global::Soenneker.Together.OpenApiClient.Models.DeleteV1DeploymentsById404ResponseSchema.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Together.OpenApiClient.Models.DeleteV1DeploymentsById500ResponseSchema.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.DeleteV1DeploymentsById200ResponseSchema>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.DeleteV1DeploymentsById200ResponseSchema.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -98,6 +100,8 @@ namespace Soenneker.Together.OpenApiClient.V1.Deployments.Item
             {
                 { "404", global::Soenneker.Together.OpenApiClient.Models.GetV1DeploymentsById404ResponseSchema.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Together.OpenApiClient.Models.GetV1DeploymentsById500ResponseSchema.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItem>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItem.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -127,6 +131,8 @@ namespace Soenneker.Together.OpenApiClient.V1.Deployments.Item
                 { "400", global::Soenneker.Together.OpenApiClient.Models.PatchV1DeploymentsById400ResponseSchema.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.Together.OpenApiClient.Models.PatchV1DeploymentsById404ResponseSchema.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Together.OpenApiClient.Models.PatchV1DeploymentsById500ResponseSchema.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItem>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItem.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

@@ -11,19 +11,36 @@ namespace Soenneker.Together.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class RlGrpoLossParams : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("agg_type") is { } nullNodeAggType && nullNodeAggType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AggType = null;
+            if (parseNode.GetChildNode("beta") is { } nullNodeBeta && nullNodeBeta.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Beta = null;
+            if (parseNode.GetChildNode("clip_high_threshold") is { } nullNodeClipHighThreshold && nullNodeClipHighThreshold.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClipHighThreshold = null;
+            if (parseNode.GetChildNode("clip_low_threshold") is { } nullNodeClipLowThreshold && nullNodeClipLowThreshold.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClipLowThreshold = null;
+            if (parseNode.GetChildNode("ratio_type") is { } nullNodeRatioType && nullNodeRatioType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RatioType = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The agg_type property</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.RlGrpoLossAggregationType? AggType { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlGrpoLossAggregationType? AggType { get => _explicitNullValueAggType; set { _explicitNullValueAggType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agg_type"); else _explicitNullProperties?.Remove("agg_type"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlGrpoLossAggregationType? _explicitNullValueAggType = default!;
         /// <summary>KL penalty coefficient</summary>
-        public double? Beta { get; set; }
+        public double? Beta { get => _explicitNullValueBeta; set { _explicitNullValueBeta = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("beta"); else _explicitNullProperties?.Remove("beta"); } }
+        private double? _explicitNullValueBeta = default!;
         /// <summary>Upper clip threshold for the importance-sampling ratio. The ratio is clamped to this bound; tighter clipping makes policy updates more conservative. Must be &gt;= 1.</summary>
-        public float? ClipHighThreshold { get; set; }
+        public float? ClipHighThreshold { get => _explicitNullValueClipHighThreshold; set { _explicitNullValueClipHighThreshold = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("clip_high_threshold"); else _explicitNullProperties?.Remove("clip_high_threshold"); } }
+        private float? _explicitNullValueClipHighThreshold = default!;
         /// <summary>Lower clip threshold for the importance-sampling ratio. The ratio is clamped to this bound; tighter clipping makes policy updates more conservative. Must be &lt;= 1.</summary>
-        public float? ClipLowThreshold { get; set; }
+        public float? ClipLowThreshold { get => _explicitNullValueClipLowThreshold; set { _explicitNullValueClipLowThreshold = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("clip_low_threshold"); else _explicitNullProperties?.Remove("clip_low_threshold"); } }
+        private float? _explicitNullValueClipLowThreshold = default!;
         /// <summary>Controls whether GRPO loss uses token-level or sequence-level importance ratios.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.RlGrpoLossRatioType? RatioType { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlGrpoLossRatioType? RatioType { get => _explicitNullValueRatioType; set { _explicitNullValueRatioType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ratio_type"); else _explicitNullProperties?.Remove("ratio_type"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlGrpoLossRatioType? _explicitNullValueRatioType = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlGrpoLossParams"/> and sets the default values.
         /// </summary>
@@ -42,7 +59,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.RlGrpoLossParams CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.RlGrpoLossParams();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.RlGrpoLossParams(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -71,6 +88,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteFloatValue("clip_high_threshold", ClipHighThreshold);
             writer.WriteFloatValue("clip_low_threshold", ClipLowThreshold);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlGrpoLossRatioType>("ratio_type", RatioType);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

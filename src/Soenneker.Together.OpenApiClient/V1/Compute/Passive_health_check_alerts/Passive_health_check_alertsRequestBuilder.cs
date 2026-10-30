@@ -49,7 +49,7 @@ namespace Soenneker.Together.OpenApiClient.V1.Compute.Passive_health_check_alert
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.ListPassiveHealthCheckAlertsResponse>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.ListPassiveHealthCheckAlertsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.ListPassiveHealthCheckAlertsResponse>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.ListPassiveHealthCheckAlertsResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Lists passive health check alerts. Filters combine across axes; empty values skip that axis.

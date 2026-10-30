@@ -12,21 +12,40 @@ namespace Soenneker.Together.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RlAdamParams : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("beta1") is { } nullNodeBeta1 && nullNodeBeta1.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Beta1 = null;
+            if (parseNode.GetChildNode("beta2") is { } nullNodeBeta2 && nullNodeBeta2.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Beta2 = null;
+            if (parseNode.GetChildNode("eps") is { } nullNodeEps && nullNodeEps.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Eps = null;
+            if (parseNode.GetChildNode("grad_clip_norm") is { } nullNodeGradClipNorm && nullNodeGradClipNorm.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GradClipNorm = null;
+            if (parseNode.GetChildNode("learning_rate") is { } nullNodeLearningRate && nullNodeLearningRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LearningRate = null;
+            if (parseNode.GetChildNode("weight_decay") is { } nullNodeWeightDecay && nullNodeWeightDecay.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WeightDecay = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Exponential decay rate for the first-moment estimate</summary>
-        public double? Beta1 { get; set; }
+        public double? Beta1 { get => _explicitNullValueBeta1; set { _explicitNullValueBeta1 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("beta1"); else _explicitNullProperties?.Remove("beta1"); } }
+        private double? _explicitNullValueBeta1 = default!;
         /// <summary>Exponential decay rate for the second-moment estimate</summary>
-        public double? Beta2 { get; set; }
+        public double? Beta2 { get => _explicitNullValueBeta2; set { _explicitNullValueBeta2 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("beta2"); else _explicitNullProperties?.Remove("beta2"); } }
+        private double? _explicitNullValueBeta2 = default!;
         /// <summary>Epsilon for numerical stability</summary>
-        public double? Eps { get; set; }
+        public double? Eps { get => _explicitNullValueEps; set { _explicitNullValueEps = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("eps"); else _explicitNullProperties?.Remove("eps"); } }
+        private double? _explicitNullValueEps = default!;
         /// <summary>Maximum gradient norm for this step, gradients across all model parameters are clipped to this value. Set to 0 to disable gradient clipping. When unset, gradients are clipped to the session default (1.0).</summary>
-        public double? GradClipNorm { get; set; }
+        public double? GradClipNorm { get => _explicitNullValueGradClipNorm; set { _explicitNullValueGradClipNorm = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("grad_clip_norm"); else _explicitNullProperties?.Remove("grad_clip_norm"); } }
+        private double? _explicitNullValueGradClipNorm = default!;
         /// <summary>Learning rate for the Adam-tuned parameters</summary>
-        public double? LearningRate { get; set; }
+        public double? LearningRate { get => _explicitNullValueLearningRate; set { _explicitNullValueLearningRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("learning_rate"); else _explicitNullProperties?.Remove("learning_rate"); } }
+        private double? _explicitNullValueLearningRate = default!;
         /// <summary>Weight decay coefficient</summary>
-        public double? WeightDecay { get; set; }
+        public double? WeightDecay { get => _explicitNullValueWeightDecay; set { _explicitNullValueWeightDecay = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("weight_decay"); else _explicitNullProperties?.Remove("weight_decay"); } }
+        private double? _explicitNullValueWeightDecay = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlAdamParams"/> and sets the default values.
         /// </summary>
@@ -47,7 +66,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.RlAdamParams CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.RlAdamParams();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.RlAdamParams(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -78,6 +97,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteDoubleValue("grad_clip_norm", GradClipNorm);
             writer.WriteDoubleValue("learning_rate", LearningRate);
             writer.WriteDoubleValue("weight_decay", WeightDecay);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

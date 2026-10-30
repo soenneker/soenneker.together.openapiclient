@@ -12,61 +12,105 @@ namespace Soenneker.Together.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class FineTuneModelLimits : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("default_gradient_accumulation_steps") is { } nullNodeDefaultGradientAccumulationSteps && nullNodeDefaultGradientAccumulationSteps.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultGradientAccumulationSteps = null;
+            if (parseNode.GetChildNode("full_training") is { } nullNodeFullTraining && nullNodeFullTraining.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FullTraining = null;
+            if (parseNode.GetChildNode("lora_training") is { } nullNodeLoraTraining && nullNodeLoraTraining.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LoraTraining = null;
+            if (parseNode.GetChildNode("max_learning_rate") is { } nullNodeMaxLearningRate && nullNodeMaxLearningRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxLearningRate = null;
+            if (parseNode.GetChildNode("max_num_checkpoints") is { } nullNodeMaxNumCheckpoints && nullNodeMaxNumCheckpoints.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxNumCheckpoints = null;
+            if (parseNode.GetChildNode("max_num_epochs") is { } nullNodeMaxNumEpochs && nullNodeMaxNumEpochs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxNumEpochs = null;
+            if (parseNode.GetChildNode("max_num_evals") is { } nullNodeMaxNumEvals && nullNodeMaxNumEvals.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxNumEvals = null;
+            if (parseNode.GetChildNode("max_seq_length_dpo") is { } nullNodeMaxSeqLengthDpo && nullNodeMaxSeqLengthDpo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxSeqLengthDpo = null;
+            if (parseNode.GetChildNode("max_seq_length_sft") is { } nullNodeMaxSeqLengthSft && nullNodeMaxSeqLengthSft.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxSeqLengthSft = null;
+            if (parseNode.GetChildNode("merge_output_lora") is { } nullNodeMergeOutputLora && nullNodeMergeOutputLora.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MergeOutputLora = null;
+            if (parseNode.GetChildNode("min_learning_rate") is { } nullNodeMinLearningRate && nullNodeMinLearningRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MinLearningRate = null;
+            if (parseNode.GetChildNode("min_max_seq_length") is { } nullNodeMinMaxSeqLength && nullNodeMinMaxSeqLength.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MinMaxSeqLength = null;
+            if (parseNode.GetChildNode("model_name") is { } nullNodeModelName && nullNodeModelName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModelName = null;
+            if (parseNode.GetChildNode("supports_full_training") is { } nullNodeSupportsFullTraining && nullNodeSupportsFullTraining.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SupportsFullTraining = null;
+            if (parseNode.GetChildNode("supports_reasoning") is { } nullNodeSupportsReasoning && nullNodeSupportsReasoning.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SupportsReasoning = null;
+            if (parseNode.GetChildNode("supports_tools") is { } nullNodeSupportsTools && nullNodeSupportsTools.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SupportsTools = null;
+            if (parseNode.GetChildNode("supports_vision") is { } nullNodeSupportsVision && nullNodeSupportsVision.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SupportsVision = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Default gradient accumulation steps used when a fine-tune request omits the value or sets it to 0.</summary>
-        public int? DefaultGradientAccumulationSteps { get; set; }
+        public int? DefaultGradientAccumulationSteps { get => _explicitNullValueDefaultGradientAccumulationSteps; set { _explicitNullValueDefaultGradientAccumulationSteps = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_gradient_accumulation_steps"); else _explicitNullProperties?.Remove("default_gradient_accumulation_steps"); } }
+        private int? _explicitNullValueDefaultGradientAccumulationSteps = default!;
         /// <summary>Limits for full training.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.FineTuneModelLimitsFullTraining? FullTraining { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.FineTuneModelLimitsFullTraining? FullTraining { get => _explicitNullValueFullTraining; set { _explicitNullValueFullTraining = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("full_training"); else _explicitNullProperties?.Remove("full_training"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.FineTuneModelLimitsFullTraining? _explicitNullValueFullTraining = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.FineTuneModelLimitsFullTraining FullTraining { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.FineTuneModelLimitsFullTraining FullTraining { get => _explicitNullValueFullTraining; set { _explicitNullValueFullTraining = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("full_training"); else _explicitNullProperties?.Remove("full_training"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.FineTuneModelLimitsFullTraining _explicitNullValueFullTraining = default!;
 #endif
         /// <summary>Limits for LoRA training.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.FineTuneModelLimitsLoraTraining? LoraTraining { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.FineTuneModelLimitsLoraTraining? LoraTraining { get => _explicitNullValueLoraTraining; set { _explicitNullValueLoraTraining = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lora_training"); else _explicitNullProperties?.Remove("lora_training"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.FineTuneModelLimitsLoraTraining? _explicitNullValueLoraTraining = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.FineTuneModelLimitsLoraTraining LoraTraining { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.FineTuneModelLimitsLoraTraining LoraTraining { get => _explicitNullValueLoraTraining; set { _explicitNullValueLoraTraining = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lora_training"); else _explicitNullProperties?.Remove("lora_training"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.FineTuneModelLimitsLoraTraining _explicitNullValueLoraTraining = default!;
 #endif
         /// <summary>Maximum learning rate.</summary>
-        public double? MaxLearningRate { get; set; }
+        public double? MaxLearningRate { get => _explicitNullValueMaxLearningRate; set { _explicitNullValueMaxLearningRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_learning_rate"); else _explicitNullProperties?.Remove("max_learning_rate"); } }
+        private double? _explicitNullValueMaxLearningRate = default!;
         /// <summary>Maximum number of checkpoints that can be saved during a fine-tuning job.</summary>
-        public int? MaxNumCheckpoints { get; set; }
+        public int? MaxNumCheckpoints { get => _explicitNullValueMaxNumCheckpoints; set { _explicitNullValueMaxNumCheckpoints = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_num_checkpoints"); else _explicitNullProperties?.Remove("max_num_checkpoints"); } }
+        private int? _explicitNullValueMaxNumCheckpoints = default!;
         /// <summary>Maximum number of training epochs.</summary>
-        public int? MaxNumEpochs { get; set; }
+        public int? MaxNumEpochs { get => _explicitNullValueMaxNumEpochs; set { _explicitNullValueMaxNumEpochs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_num_epochs"); else _explicitNullProperties?.Remove("max_num_epochs"); } }
+        private int? _explicitNullValueMaxNumEpochs = default!;
         /// <summary>Maximum number of evaluations.</summary>
-        public int? MaxNumEvals { get; set; }
+        public int? MaxNumEvals { get => _explicitNullValueMaxNumEvals; set { _explicitNullValueMaxNumEvals = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_num_evals"); else _explicitNullProperties?.Remove("max_num_evals"); } }
+        private int? _explicitNullValueMaxNumEvals = default!;
         /// <summary>Maximum sequence length supported for DPO training.</summary>
-        public int? MaxSeqLengthDpo { get; set; }
+        public int? MaxSeqLengthDpo { get => _explicitNullValueMaxSeqLengthDpo; set { _explicitNullValueMaxSeqLengthDpo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_seq_length_dpo"); else _explicitNullProperties?.Remove("max_seq_length_dpo"); } }
+        private int? _explicitNullValueMaxSeqLengthDpo = default!;
         /// <summary>Maximum sequence length supported for SFT training.</summary>
-        public int? MaxSeqLengthSft { get; set; }
+        public int? MaxSeqLengthSft { get => _explicitNullValueMaxSeqLengthSft; set { _explicitNullValueMaxSeqLengthSft = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_seq_length_sft"); else _explicitNullProperties?.Remove("max_seq_length_sft"); } }
+        private int? _explicitNullValueMaxSeqLengthSft = default!;
         /// <summary>Whether a merged checkpoint (the base model with the trained LoRA adapter fused in) is produced for LoRA fine-tunes of this model, in addition to the standalone adapter.</summary>
-        public bool? MergeOutputLora { get; set; }
+        public bool? MergeOutputLora { get => _explicitNullValueMergeOutputLora; set { _explicitNullValueMergeOutputLora = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("merge_output_lora"); else _explicitNullProperties?.Remove("merge_output_lora"); } }
+        private bool? _explicitNullValueMergeOutputLora = default!;
         /// <summary>Minimum learning rate.</summary>
-        public double? MinLearningRate { get; set; }
+        public double? MinLearningRate { get => _explicitNullValueMinLearningRate; set { _explicitNullValueMinLearningRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("min_learning_rate"); else _explicitNullProperties?.Remove("min_learning_rate"); } }
+        private double? _explicitNullValueMinLearningRate = default!;
         /// <summary>Minimum value allowed for the max_seq_length hyperparameter.</summary>
-        public int? MinMaxSeqLength { get; set; }
+        public int? MinMaxSeqLength { get => _explicitNullValueMinMaxSeqLength; set { _explicitNullValueMinMaxSeqLength = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("min_max_seq_length"); else _explicitNullProperties?.Remove("min_max_seq_length"); } }
+        private int? _explicitNullValueMinMaxSeqLength = default!;
         /// <summary>The name of the model.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ModelName { get; set; }
+        public string? ModelName { get => _explicitNullValueModelName; set { _explicitNullValueModelName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_name"); else _explicitNullProperties?.Remove("model_name"); } }
+        private string? _explicitNullValueModelName = default!;
 #nullable restore
 #else
-        public string ModelName { get; set; }
+        public string ModelName { get => _explicitNullValueModelName; set { _explicitNullValueModelName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_name"); else _explicitNullProperties?.Remove("model_name"); } }
+        private string _explicitNullValueModelName = default!;
 #endif
         /// <summary>Whether the model supports full (non-LoRA) fine-tuning. When false, only LoRA fine-tuning is available and the full_training limits are reported as zero.</summary>
-        public bool? SupportsFullTraining { get; set; }
+        public bool? SupportsFullTraining { get => _explicitNullValueSupportsFullTraining; set { _explicitNullValueSupportsFullTraining = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supports_full_training"); else _explicitNullProperties?.Remove("supports_full_training"); } }
+        private bool? _explicitNullValueSupportsFullTraining = default!;
         /// <summary>Whether the model supports reasoning.</summary>
-        public bool? SupportsReasoning { get; set; }
+        public bool? SupportsReasoning { get => _explicitNullValueSupportsReasoning; set { _explicitNullValueSupportsReasoning = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supports_reasoning"); else _explicitNullProperties?.Remove("supports_reasoning"); } }
+        private bool? _explicitNullValueSupportsReasoning = default!;
         /// <summary>Whether the model supports tool/function calling.</summary>
-        public bool? SupportsTools { get; set; }
+        public bool? SupportsTools { get => _explicitNullValueSupportsTools; set { _explicitNullValueSupportsTools = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supports_tools"); else _explicitNullProperties?.Remove("supports_tools"); } }
+        private bool? _explicitNullValueSupportsTools = default!;
         /// <summary>Whether the model supports vision/multimodal inputs.</summary>
-        public bool? SupportsVision { get; set; }
+        public bool? SupportsVision { get => _explicitNullValueSupportsVision; set { _explicitNullValueSupportsVision = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supports_vision"); else _explicitNullProperties?.Remove("supports_vision"); } }
+        private bool? _explicitNullValueSupportsVision = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.FineTuneModelLimits"/> and sets the default values.
         /// </summary>
@@ -82,7 +126,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.FineTuneModelLimits CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.FineTuneModelLimits();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.FineTuneModelLimits(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -135,6 +179,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteBoolValue("supports_reasoning", SupportsReasoning);
             writer.WriteBoolValue("supports_tools", SupportsTools);
             writer.WriteBoolValue("supports_vision", SupportsVision);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

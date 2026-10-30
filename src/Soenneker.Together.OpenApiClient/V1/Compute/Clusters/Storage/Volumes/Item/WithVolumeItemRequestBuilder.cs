@@ -49,7 +49,7 @@ namespace Soenneker.Together.OpenApiClient.V1.Compute.Clusters.Storage.Volumes.I
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolumeDeleteResponse>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolumeDeleteResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolumeDeleteResponse>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolumeDeleteResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Retrieve information about a specific shared volume.
@@ -67,7 +67,7 @@ namespace Soenneker.Together.OpenApiClient.V1.Compute.Clusters.Storage.Volumes.I
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolume>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolume.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolume>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolume.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Delete a shared volume. Note that if this volume is attached to a cluster, deleting will fail.

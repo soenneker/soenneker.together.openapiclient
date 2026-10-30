@@ -8,42 +8,47 @@ using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingMember1"/>, <see cref="global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingMember2"/>, <see cref="global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingMember3"/>, <see cref="global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingMember4"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingOneOf1"/>, <see cref="global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingOneOf2"/>, <see cref="global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingOneOf3"/>, <see cref="global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingOneOf4"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DeShadowExperimentEndpointSourceResponseSampling : IComposedTypeWrapper, IParsable
-    {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingMember1"/></summary>
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingOneOf1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingMember1? DeShadowExperimentEndpointSourceResponseSamplingMember1 { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingOneOf1? DeShadowExperimentEndpointSourceResponseSamplingOneOf1 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingMember1 DeShadowExperimentEndpointSourceResponseSamplingMember1 { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingOneOf1 DeShadowExperimentEndpointSourceResponseSamplingOneOf1 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingMember2"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingOneOf2"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingMember2? DeShadowExperimentEndpointSourceResponseSamplingMember2 { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingOneOf2? DeShadowExperimentEndpointSourceResponseSamplingOneOf2 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingMember2 DeShadowExperimentEndpointSourceResponseSamplingMember2 { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingOneOf2 DeShadowExperimentEndpointSourceResponseSamplingOneOf2 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingMember3"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingOneOf3"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingMember3? DeShadowExperimentEndpointSourceResponseSamplingMember3 { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingOneOf3? DeShadowExperimentEndpointSourceResponseSamplingOneOf3 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingMember3 DeShadowExperimentEndpointSourceResponseSamplingMember3 { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingOneOf3 DeShadowExperimentEndpointSourceResponseSamplingOneOf3 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingMember4"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingOneOf4"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingMember4? DeShadowExperimentEndpointSourceResponseSamplingMember4 { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingOneOf4? DeShadowExperimentEndpointSourceResponseSamplingOneOf4 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingMember4 DeShadowExperimentEndpointSourceResponseSamplingMember4 { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingOneOf4 DeShadowExperimentEndpointSourceResponseSamplingOneOf4 { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -55,7 +60,34 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSampling();
-            return result;
+            if("DeShadowExperimentEndpointSourceResponseSamplingOneOf1".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("DeShadowExperimentEndpointSourceResponseSamplingOneOf2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("DeShadowExperimentEndpointSourceResponseSamplingOneOf3".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("DeShadowExperimentEndpointSourceResponseSamplingOneOf4".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("uniform") != null))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("keyBased") != null))();
+            bool matchesUnionBranch2 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("adaptiveUniform") != null))();
+            bool matchesUnionBranch3 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("adaptiveKeyBased") != null))();
+            if (result.DeShadowExperimentEndpointSourceResponseSamplingOneOf1 == null && result.DeShadowExperimentEndpointSourceResponseSamplingOneOf2 == null && result.DeShadowExperimentEndpointSourceResponseSamplingOneOf3 == null && result.DeShadowExperimentEndpointSourceResponseSamplingOneOf4 == null && matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3) result.DeShadowExperimentEndpointSourceResponseSamplingOneOf1 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingOneOf1(), parseNode);
+            if (result.DeShadowExperimentEndpointSourceResponseSamplingOneOf1 == null && result.DeShadowExperimentEndpointSourceResponseSamplingOneOf2 == null && result.DeShadowExperimentEndpointSourceResponseSamplingOneOf3 == null && result.DeShadowExperimentEndpointSourceResponseSamplingOneOf4 == null && matchesUnionBranch1 && !matchesUnionBranch0 && !matchesUnionBranch2 && !matchesUnionBranch3) result.DeShadowExperimentEndpointSourceResponseSamplingOneOf2 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingOneOf2(), parseNode);
+            if (result.DeShadowExperimentEndpointSourceResponseSamplingOneOf1 == null && result.DeShadowExperimentEndpointSourceResponseSamplingOneOf2 == null && result.DeShadowExperimentEndpointSourceResponseSamplingOneOf3 == null && result.DeShadowExperimentEndpointSourceResponseSamplingOneOf4 == null && matchesUnionBranch2 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch3) result.DeShadowExperimentEndpointSourceResponseSamplingOneOf3 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingOneOf3(), parseNode);
+            if (result.DeShadowExperimentEndpointSourceResponseSamplingOneOf1 == null && result.DeShadowExperimentEndpointSourceResponseSamplingOneOf2 == null && result.DeShadowExperimentEndpointSourceResponseSamplingOneOf3 == null && result.DeShadowExperimentEndpointSourceResponseSamplingOneOf4 == null && matchesUnionBranch3 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2) result.DeShadowExperimentEndpointSourceResponseSamplingOneOf4 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingOneOf4(), parseNode);
+            if (result.DeShadowExperimentEndpointSourceResponseSamplingOneOf1 == null && result.DeShadowExperimentEndpointSourceResponseSamplingOneOf2 == null && result.DeShadowExperimentEndpointSourceResponseSamplingOneOf3 == null && result.DeShadowExperimentEndpointSourceResponseSamplingOneOf4 == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -63,21 +95,21 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(DeShadowExperimentEndpointSourceResponseSamplingMember1 != null)
+            if(DeShadowExperimentEndpointSourceResponseSamplingOneOf1 != null)
             {
-                return DeShadowExperimentEndpointSourceResponseSamplingMember1.GetFieldDeserializers();
+                return DeShadowExperimentEndpointSourceResponseSamplingOneOf1.GetFieldDeserializers();
             }
-            else if(DeShadowExperimentEndpointSourceResponseSamplingMember2 != null)
+            else if(DeShadowExperimentEndpointSourceResponseSamplingOneOf2 != null)
             {
-                return DeShadowExperimentEndpointSourceResponseSamplingMember2.GetFieldDeserializers();
+                return DeShadowExperimentEndpointSourceResponseSamplingOneOf2.GetFieldDeserializers();
             }
-            else if(DeShadowExperimentEndpointSourceResponseSamplingMember3 != null)
+            else if(DeShadowExperimentEndpointSourceResponseSamplingOneOf3 != null)
             {
-                return DeShadowExperimentEndpointSourceResponseSamplingMember3.GetFieldDeserializers();
+                return DeShadowExperimentEndpointSourceResponseSamplingOneOf3.GetFieldDeserializers();
             }
-            else if(DeShadowExperimentEndpointSourceResponseSamplingMember4 != null)
+            else if(DeShadowExperimentEndpointSourceResponseSamplingOneOf4 != null)
             {
-                return DeShadowExperimentEndpointSourceResponseSamplingMember4.GetFieldDeserializers();
+                return DeShadowExperimentEndpointSourceResponseSamplingOneOf4.GetFieldDeserializers();
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -87,22 +119,33 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (DeShadowExperimentEndpointSourceResponseSamplingOneOf1 == null && DeShadowExperimentEndpointSourceResponseSamplingOneOf2 == null && DeShadowExperimentEndpointSourceResponseSamplingOneOf3 == null && DeShadowExperimentEndpointSourceResponseSamplingOneOf4 == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (DeShadowExperimentEndpointSourceResponseSamplingOneOf1 != null && DeShadowExperimentEndpointSourceResponseSamplingOneOf2 == null && DeShadowExperimentEndpointSourceResponseSamplingOneOf3 == null && DeShadowExperimentEndpointSourceResponseSamplingOneOf4 == null) { if (DeShadowExperimentEndpointSourceResponseSamplingOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DeShadowExperimentEndpointSourceResponseSamplingOneOf1); return; }
+            if (DeShadowExperimentEndpointSourceResponseSamplingOneOf2 != null && DeShadowExperimentEndpointSourceResponseSamplingOneOf1 == null && DeShadowExperimentEndpointSourceResponseSamplingOneOf3 == null && DeShadowExperimentEndpointSourceResponseSamplingOneOf4 == null) { if (DeShadowExperimentEndpointSourceResponseSamplingOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DeShadowExperimentEndpointSourceResponseSamplingOneOf2); return; }
+            if (DeShadowExperimentEndpointSourceResponseSamplingOneOf3 != null && DeShadowExperimentEndpointSourceResponseSamplingOneOf1 == null && DeShadowExperimentEndpointSourceResponseSamplingOneOf2 == null && DeShadowExperimentEndpointSourceResponseSamplingOneOf4 == null) { if (DeShadowExperimentEndpointSourceResponseSamplingOneOf3 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DeShadowExperimentEndpointSourceResponseSamplingOneOf3); return; }
+            if (DeShadowExperimentEndpointSourceResponseSamplingOneOf4 != null && DeShadowExperimentEndpointSourceResponseSamplingOneOf1 == null && DeShadowExperimentEndpointSourceResponseSamplingOneOf2 == null && DeShadowExperimentEndpointSourceResponseSamplingOneOf3 == null) { if (DeShadowExperimentEndpointSourceResponseSamplingOneOf4 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DeShadowExperimentEndpointSourceResponseSamplingOneOf4); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(DeShadowExperimentEndpointSourceResponseSamplingMember1 != null)
+            if(DeShadowExperimentEndpointSourceResponseSamplingOneOf1 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingMember1>(null, DeShadowExperimentEndpointSourceResponseSamplingMember1);
+                if (DeShadowExperimentEndpointSourceResponseSamplingOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingOneOf1>(null, DeShadowExperimentEndpointSourceResponseSamplingOneOf1);
             }
-            else if(DeShadowExperimentEndpointSourceResponseSamplingMember2 != null)
+            else if(DeShadowExperimentEndpointSourceResponseSamplingOneOf2 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingMember2>(null, DeShadowExperimentEndpointSourceResponseSamplingMember2);
+                if (DeShadowExperimentEndpointSourceResponseSamplingOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingOneOf2>(null, DeShadowExperimentEndpointSourceResponseSamplingOneOf2);
             }
-            else if(DeShadowExperimentEndpointSourceResponseSamplingMember3 != null)
+            else if(DeShadowExperimentEndpointSourceResponseSamplingOneOf3 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingMember3>(null, DeShadowExperimentEndpointSourceResponseSamplingMember3);
+                if (DeShadowExperimentEndpointSourceResponseSamplingOneOf3 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingOneOf3>(null, DeShadowExperimentEndpointSourceResponseSamplingOneOf3);
             }
-            else if(DeShadowExperimentEndpointSourceResponseSamplingMember4 != null)
+            else if(DeShadowExperimentEndpointSourceResponseSamplingOneOf4 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingMember4>(null, DeShadowExperimentEndpointSourceResponseSamplingMember4);
+                if (DeShadowExperimentEndpointSourceResponseSamplingOneOf4 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentEndpointSourceResponseSamplingOneOf4>(null, DeShadowExperimentEndpointSourceResponseSamplingOneOf4);
             }
         }
     }

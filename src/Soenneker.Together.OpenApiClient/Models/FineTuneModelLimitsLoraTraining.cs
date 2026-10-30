@@ -12,26 +12,46 @@ namespace Soenneker.Together.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class FineTuneModelLimitsLoraTraining : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("default_rank") is { } nullNodeDefaultRank && nullNodeDefaultRank.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultRank = null;
+            if (parseNode.GetChildNode("max_batch_size") is { } nullNodeMaxBatchSize && nullNodeMaxBatchSize.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxBatchSize = null;
+            if (parseNode.GetChildNode("max_batch_size_dpo") is { } nullNodeMaxBatchSizeDpo && nullNodeMaxBatchSizeDpo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxBatchSizeDpo = null;
+            if (parseNode.GetChildNode("max_rank") is { } nullNodeMaxRank && nullNodeMaxRank.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxRank = null;
+            if (parseNode.GetChildNode("min_batch_size") is { } nullNodeMinBatchSize && nullNodeMinBatchSize.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MinBatchSize = null;
+            if (parseNode.GetChildNode("target_modules") is { } nullNodeTargetModules && nullNodeTargetModules.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TargetModules = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Default LoRA rank applied when a fine-tune request omits training_type.</summary>
-        public int? DefaultRank { get; set; }
+        public int? DefaultRank { get => _explicitNullValueDefaultRank; set { _explicitNullValueDefaultRank = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_rank"); else _explicitNullProperties?.Remove("default_rank"); } }
+        private int? _explicitNullValueDefaultRank = default!;
         /// <summary>Maximum batch size for SFT LoRA training.</summary>
-        public int? MaxBatchSize { get; set; }
+        public int? MaxBatchSize { get => _explicitNullValueMaxBatchSize; set { _explicitNullValueMaxBatchSize = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_batch_size"); else _explicitNullProperties?.Remove("max_batch_size"); } }
+        private int? _explicitNullValueMaxBatchSize = default!;
         /// <summary>Maximum batch size for DPO LoRA training.</summary>
-        public int? MaxBatchSizeDpo { get; set; }
+        public int? MaxBatchSizeDpo { get => _explicitNullValueMaxBatchSizeDpo; set { _explicitNullValueMaxBatchSizeDpo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_batch_size_dpo"); else _explicitNullProperties?.Remove("max_batch_size_dpo"); } }
+        private int? _explicitNullValueMaxBatchSizeDpo = default!;
         /// <summary>Maximum LoRA rank.</summary>
-        public int? MaxRank { get; set; }
+        public int? MaxRank { get => _explicitNullValueMaxRank; set { _explicitNullValueMaxRank = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_rank"); else _explicitNullProperties?.Remove("max_rank"); } }
+        private int? _explicitNullValueMaxRank = default!;
         /// <summary>Minimum batch size for LoRA training.</summary>
-        public int? MinBatchSize { get; set; }
+        public int? MinBatchSize { get => _explicitNullValueMinBatchSize; set { _explicitNullValueMinBatchSize = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("min_batch_size"); else _explicitNullProperties?.Remove("min_batch_size"); } }
+        private int? _explicitNullValueMinBatchSize = default!;
         /// <summary>Available target modules for LoRA.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? TargetModules { get; set; }
+        public List<string>? TargetModules { get => _explicitNullValueTargetModules; set { _explicitNullValueTargetModules = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_modules"); else _explicitNullProperties?.Remove("target_modules"); } }
+        private List<string>? _explicitNullValueTargetModules = default!;
 #nullable restore
 #else
-        public List<string> TargetModules { get; set; }
+        public List<string> TargetModules { get => _explicitNullValueTargetModules; set { _explicitNullValueTargetModules = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_modules"); else _explicitNullProperties?.Remove("target_modules"); } }
+        private List<string> _explicitNullValueTargetModules = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.FineTuneModelLimitsLoraTraining"/> and sets the default values.
@@ -48,7 +68,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.FineTuneModelLimitsLoraTraining CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.FineTuneModelLimitsLoraTraining();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.FineTuneModelLimitsLoraTraining(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -79,6 +99,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteIntValue("max_rank", MaxRank);
             writer.WriteIntValue("min_batch_size", MinBatchSize);
             writer.WriteCollectionOfPrimitiveValues<string>("target_modules", TargetModules);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

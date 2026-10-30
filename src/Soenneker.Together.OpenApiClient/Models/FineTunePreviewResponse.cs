@@ -12,31 +12,50 @@ namespace Soenneker.Together.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class FineTunePreviewResponse : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("dataset_format") is { } nullNodeDatasetFormat && nullNodeDatasetFormat.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DatasetFormat = null;
+            if (parseNode.GetChildNode("max_seq_length") is { } nullNodeMaxSeqLength && nullNodeMaxSeqLength.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxSeqLength = null;
+            if (parseNode.GetChildNode("model") is { } nullNodeModel && nullNodeModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Model = null;
+            if (parseNode.GetChildNode("rows") is { } nullNodeRows && nullNodeRows.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Rows = null;
+            if (parseNode.GetChildNode("train_on_inputs") is { } nullNodeTrainOnInputs && nullNodeTrainOnInputs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TrainOnInputs = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Detected SFT dataset format for the sampled rows.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.FineTunePreviewResponseDatasetFormat? DatasetFormat { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.FineTunePreviewResponseDatasetFormat? DatasetFormat { get => _explicitNullValueDatasetFormat; set { _explicitNullValueDatasetFormat = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dataset_format"); else _explicitNullProperties?.Remove("dataset_format"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.FineTunePreviewResponseDatasetFormat? _explicitNullValueDatasetFormat = default!;
         /// <summary>Maximum sequence length configured for the requested model.</summary>
-        public int? MaxSeqLength { get; set; }
+        public int? MaxSeqLength { get => _explicitNullValueMaxSeqLength; set { _explicitNullValueMaxSeqLength = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_seq_length"); else _explicitNullProperties?.Remove("max_seq_length"); } }
+        private int? _explicitNullValueMaxSeqLength = default!;
         /// <summary>Name of the base model used to tokenize the sampled rows.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Model { get; set; }
+        public string? Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private string? _explicitNullValueModel = default!;
 #nullable restore
 #else
-        public string Model { get; set; }
+        public string Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private string _explicitNullValueModel = default!;
 #endif
         /// <summary>Tokenized preview rows, in the same order as the sampled training file rows.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Together.OpenApiClient.Models.FineTunePreviewRow>? Rows { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.FineTunePreviewRow>? Rows { get => _explicitNullValueRows; set { _explicitNullValueRows = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rows"); else _explicitNullProperties?.Remove("rows"); } }
+        private List<global::Soenneker.Together.OpenApiClient.Models.FineTunePreviewRow>? _explicitNullValueRows = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Together.OpenApiClient.Models.FineTunePreviewRow> Rows { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.FineTunePreviewRow> Rows { get => _explicitNullValueRows; set { _explicitNullValueRows = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rows"); else _explicitNullProperties?.Remove("rows"); } }
+        private List<global::Soenneker.Together.OpenApiClient.Models.FineTunePreviewRow> _explicitNullValueRows = default!;
 #endif
         /// <summary>Whether prompt or user-message tokens contribute to training loss.</summary>
-        public bool? TrainOnInputs { get; set; }
+        public bool? TrainOnInputs { get => _explicitNullValueTrainOnInputs; set { _explicitNullValueTrainOnInputs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("train_on_inputs"); else _explicitNullProperties?.Remove("train_on_inputs"); } }
+        private bool? _explicitNullValueTrainOnInputs = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.FineTunePreviewResponse"/> and sets the default values.
         /// </summary>
@@ -52,7 +71,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.FineTunePreviewResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.FineTunePreviewResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.FineTunePreviewResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -81,6 +100,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteStringValue("model", Model);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.FineTunePreviewRow>("rows", Rows);
             writer.WriteBoolValue("train_on_inputs", TrainOnInputs);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

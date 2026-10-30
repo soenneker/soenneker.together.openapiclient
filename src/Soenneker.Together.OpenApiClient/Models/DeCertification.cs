@@ -12,63 +12,94 @@ namespace Soenneker.Together.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DeCertification : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("certificationType") is { } nullNodeCertificationType && nullNodeCertificationType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CertificationType = null;
+            if (parseNode.GetChildNode("certifiedAt") is { } nullNodeCertifiedAt && nullNodeCertifiedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CertifiedAt = null;
+            if (parseNode.GetChildNode("certifiedBy") is { } nullNodeCertifiedBy && nullNodeCertifiedBy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CertifiedBy = null;
+            if (parseNode.GetChildNode("draftModel") is { } nullNodeDraftModel && nullNodeDraftModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DraftModel = null;
+            if (parseNode.GetChildNode("draftModelRevisionId") is { } nullNodeDraftModelRevisionId && nullNodeDraftModelRevisionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DraftModelRevisionId = null;
+            if (parseNode.GetChildNode("model") is { } nullNodeModel && nullNodeModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Model = null;
+            if (parseNode.GetChildNode("modelRevisionId") is { } nullNodeModelRevisionId && nullNodeModelRevisionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModelRevisionId = null;
+            if (parseNode.GetChildNode("notes") is { } nullNodeNotes && nullNodeNotes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Notes = null;
+            if (parseNode.GetChildNode("target") is { } nullNodeTarget && nullNodeTarget.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Target = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether the model and config combination passed certification.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.DeCertificationCertificationType? CertificationType { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeCertificationCertificationType? CertificationType { get => _explicitNullValueCertificationType; set { _explicitNullValueCertificationType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("certificationType"); else _explicitNullProperties?.Remove("certificationType"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.DeCertificationCertificationType? _explicitNullValueCertificationType = default!;
         /// <summary>Time when the certification decision was recorded.</summary>
-        public DateTimeOffset? CertifiedAt { get; set; }
+        public DateTimeOffset? CertifiedAt { get => _explicitNullValueCertifiedAt; set { _explicitNullValueCertifiedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("certifiedAt"); else _explicitNullProperties?.Remove("certifiedAt"); } }
+        private DateTimeOffset? _explicitNullValueCertifiedAt = default!;
         /// <summary>Service or reviewer that recorded the certification.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CertifiedBy { get; set; }
+        public string? CertifiedBy { get => _explicitNullValueCertifiedBy; set { _explicitNullValueCertifiedBy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("certifiedBy"); else _explicitNullProperties?.Remove("certifiedBy"); } }
+        private string? _explicitNullValueCertifiedBy = default!;
 #nullable restore
 #else
-        public string CertifiedBy { get; set; }
+        public string CertifiedBy { get => _explicitNullValueCertifiedBy; set { _explicitNullValueCertifiedBy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("certifiedBy"); else _explicitNullProperties?.Remove("certifiedBy"); } }
+        private string _explicitNullValueCertifiedBy = default!;
 #endif
         /// <summary>Resource name of the certified draft model.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DraftModel { get; set; }
+        public string? DraftModel { get => _explicitNullValueDraftModel; set { _explicitNullValueDraftModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("draftModel"); else _explicitNullProperties?.Remove("draftModel"); } }
+        private string? _explicitNullValueDraftModel = default!;
 #nullable restore
 #else
-        public string DraftModel { get; set; }
+        public string DraftModel { get => _explicitNullValueDraftModel; set { _explicitNullValueDraftModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("draftModel"); else _explicitNullProperties?.Remove("draftModel"); } }
+        private string _explicitNullValueDraftModel = default!;
 #endif
         /// <summary>Revision identifier of the certified draft model.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DraftModelRevisionId { get; set; }
+        public string? DraftModelRevisionId { get => _explicitNullValueDraftModelRevisionId; set { _explicitNullValueDraftModelRevisionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("draftModelRevisionId"); else _explicitNullProperties?.Remove("draftModelRevisionId"); } }
+        private string? _explicitNullValueDraftModelRevisionId = default!;
 #nullable restore
 #else
-        public string DraftModelRevisionId { get; set; }
+        public string DraftModelRevisionId { get => _explicitNullValueDraftModelRevisionId; set { _explicitNullValueDraftModelRevisionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("draftModelRevisionId"); else _explicitNullProperties?.Remove("draftModelRevisionId"); } }
+        private string _explicitNullValueDraftModelRevisionId = default!;
 #endif
         /// <summary>Resource name of the certified model.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Model { get; set; }
+        public string? Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private string? _explicitNullValueModel = default!;
 #nullable restore
 #else
-        public string Model { get; set; }
+        public string Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private string _explicitNullValueModel = default!;
 #endif
         /// <summary>Revision identifier of the certified model.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ModelRevisionId { get; set; }
+        public string? ModelRevisionId { get => _explicitNullValueModelRevisionId; set { _explicitNullValueModelRevisionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modelRevisionId"); else _explicitNullProperties?.Remove("modelRevisionId"); } }
+        private string? _explicitNullValueModelRevisionId = default!;
 #nullable restore
 #else
-        public string ModelRevisionId { get; set; }
+        public string ModelRevisionId { get => _explicitNullValueModelRevisionId; set { _explicitNullValueModelRevisionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modelRevisionId"); else _explicitNullProperties?.Remove("modelRevisionId"); } }
+        private string _explicitNullValueModelRevisionId = default!;
 #endif
         /// <summary>Human-readable certification notes or limitations.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Notes { get; set; }
+        public string? Notes { get => _explicitNullValueNotes; set { _explicitNullValueNotes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("notes"); else _explicitNullProperties?.Remove("notes"); } }
+        private string? _explicitNullValueNotes = default!;
 #nullable restore
 #else
-        public string Notes { get; set; }
+        public string Notes { get => _explicitNullValueNotes; set { _explicitNullValueNotes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("notes"); else _explicitNullProperties?.Remove("notes"); } }
+        private string _explicitNullValueNotes = default!;
 #endif
         /// <summary>Product or serving environment for which the combination was evaluated.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.DeCertificationTarget? Target { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeCertificationTarget? Target { get => _explicitNullValueTarget; set { _explicitNullValueTarget = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target"); else _explicitNullProperties?.Remove("target"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.DeCertificationTarget? _explicitNullValueTarget = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.DeCertification"/> and sets the default values.
         /// </summary>
@@ -84,7 +115,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.DeCertification CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.DeCertification();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.DeCertification(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -121,6 +152,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteStringValue("modelRevisionId", ModelRevisionId);
             writer.WriteStringValue("notes", Notes);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeCertificationTarget>("target", Target);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

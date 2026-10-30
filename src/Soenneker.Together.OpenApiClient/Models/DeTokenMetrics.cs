@@ -12,28 +12,45 @@ namespace Soenneker.Together.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DeTokenMetrics : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("avgInputTokens") is { } nullNodeAvgInputTokens && nullNodeAvgInputTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AvgInputTokens = null;
+            if (parseNode.GetChildNode("avgOutputTokens") is { } nullNodeAvgOutputTokens && nullNodeAvgOutputTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AvgOutputTokens = null;
+            if (parseNode.GetChildNode("totalInputTokens") is { } nullNodeTotalInputTokens && nullNodeTotalInputTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalInputTokens = null;
+            if (parseNode.GetChildNode("totalOutputTokens") is { } nullNodeTotalOutputTokens && nullNodeTotalOutputTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalOutputTokens = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Average input tokens per request.</summary>
-        public double? AvgInputTokens { get; set; }
+        public double? AvgInputTokens { get => _explicitNullValueAvgInputTokens; set { _explicitNullValueAvgInputTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("avgInputTokens"); else _explicitNullProperties?.Remove("avgInputTokens"); } }
+        private double? _explicitNullValueAvgInputTokens = default!;
         /// <summary>Average output tokens per request.</summary>
-        public double? AvgOutputTokens { get; set; }
+        public double? AvgOutputTokens { get => _explicitNullValueAvgOutputTokens; set { _explicitNullValueAvgOutputTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("avgOutputTokens"); else _explicitNullProperties?.Remove("avgOutputTokens"); } }
+        private double? _explicitNullValueAvgOutputTokens = default!;
         /// <summary>Total input tokens processed during the time range.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TotalInputTokens { get; set; }
+        public string? TotalInputTokens { get => _explicitNullValueTotalInputTokens; set { _explicitNullValueTotalInputTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("totalInputTokens"); else _explicitNullProperties?.Remove("totalInputTokens"); } }
+        private string? _explicitNullValueTotalInputTokens = default!;
 #nullable restore
 #else
-        public string TotalInputTokens { get; set; }
+        public string TotalInputTokens { get => _explicitNullValueTotalInputTokens; set { _explicitNullValueTotalInputTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("totalInputTokens"); else _explicitNullProperties?.Remove("totalInputTokens"); } }
+        private string _explicitNullValueTotalInputTokens = default!;
 #endif
         /// <summary>Total output tokens generated during the time range.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TotalOutputTokens { get; set; }
+        public string? TotalOutputTokens { get => _explicitNullValueTotalOutputTokens; set { _explicitNullValueTotalOutputTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("totalOutputTokens"); else _explicitNullProperties?.Remove("totalOutputTokens"); } }
+        private string? _explicitNullValueTotalOutputTokens = default!;
 #nullable restore
 #else
-        public string TotalOutputTokens { get; set; }
+        public string TotalOutputTokens { get => _explicitNullValueTotalOutputTokens; set { _explicitNullValueTotalOutputTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("totalOutputTokens"); else _explicitNullProperties?.Remove("totalOutputTokens"); } }
+        private string _explicitNullValueTotalOutputTokens = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.DeTokenMetrics"/> and sets the default values.
@@ -50,7 +67,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.DeTokenMetrics CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.DeTokenMetrics();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.DeTokenMetrics(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -77,6 +94,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteDoubleValue("avgOutputTokens", AvgOutputTokens);
             writer.WriteStringValue("totalInputTokens", TotalInputTokens);
             writer.WriteStringValue("totalOutputTokens", TotalOutputTokens);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -12,16 +12,26 @@ namespace Soenneker.Together.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RlLossFnOutput : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("tensors") is { } nullNodeTensors && nullNodeTensors.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tensors = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Output tensors keyed by name. Built-in losses return `logprobs`: the model&apos;s float32 per-token log-probabilities under the current policy, one value per token of the sample&apos;s input. Positions excluded from the loss, such as zero-weight positions, are masked to zero rather than true log-probabilities.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RlLossFnOutputTensorsProperty? Tensors { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlLossFnOutputTensorsProperty? Tensors { get => _explicitNullValueTensors; set { _explicitNullValueTensors = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tensors"); else _explicitNullProperties?.Remove("tensors"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlLossFnOutputTensorsProperty? _explicitNullValueTensors = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.RlLossFnOutputTensorsProperty Tensors { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlLossFnOutputTensorsProperty Tensors { get => _explicitNullValueTensors; set { _explicitNullValueTensors = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tensors"); else _explicitNullProperties?.Remove("tensors"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlLossFnOutputTensorsProperty _explicitNullValueTensors = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlLossFnOutput"/> and sets the default values.
@@ -38,7 +48,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.RlLossFnOutput CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.RlLossFnOutput();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.RlLossFnOutput(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -59,6 +69,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlLossFnOutputTensorsProperty>("tensors", Tensors);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

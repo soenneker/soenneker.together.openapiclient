@@ -11,129 +11,201 @@ namespace Soenneker.Together.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ChatCompletionRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("chat_template_kwargs") is { } nullNodeChatTemplateKwargs && nullNodeChatTemplateKwargs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChatTemplateKwargs = null;
+            if (parseNode.GetChildNode("compliance") is { } nullNodeCompliance && nullNodeCompliance.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Compliance = null;
+            if (parseNode.GetChildNode("context_length_exceeded_behavior") is { } nullNodeContextLengthExceededBehavior && nullNodeContextLengthExceededBehavior.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ContextLengthExceededBehavior = null;
+            if (parseNode.GetChildNode("echo") is { } nullNodeEcho && nullNodeEcho.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Echo = null;
+            if (parseNode.GetChildNode("frequency_penalty") is { } nullNodeFrequencyPenalty && nullNodeFrequencyPenalty.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FrequencyPenalty = null;
+            if (parseNode.GetChildNode("function_call") is { } nullNodeFunctionCall && nullNodeFunctionCall.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FunctionCall = null;
+            if (parseNode.GetChildNode("logit_bias") is { } nullNodeLogitBias && nullNodeLogitBias.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LogitBias = null;
+            if (parseNode.GetChildNode("logprobs") is { } nullNodeLogprobs && nullNodeLogprobs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Logprobs = null;
+            if (parseNode.GetChildNode("max_tokens") is { } nullNodeMaxTokens && nullNodeMaxTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxTokens = null;
+            if (parseNode.GetChildNode("messages") is { } nullNodeMessages && nullNodeMessages.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Messages = null;
+            if (parseNode.GetChildNode("min_p") is { } nullNodeMinP && nullNodeMinP.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MinP = null;
+            if (parseNode.GetChildNode("model") is { } nullNodeModel && nullNodeModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Model = null;
+            if (parseNode.GetChildNode("n") is { } nullNodeN && nullNodeN.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) N = null;
+            if (parseNode.GetChildNode("presence_penalty") is { } nullNodePresencePenalty && nullNodePresencePenalty.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PresencePenalty = null;
+            if (parseNode.GetChildNode("reasoning") is { } nullNodeReasoning && nullNodeReasoning.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Reasoning = null;
+            if (parseNode.GetChildNode("reasoning_effort") is { } nullNodeReasoningEffort && nullNodeReasoningEffort.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReasoningEffort = null;
+            if (parseNode.GetChildNode("repetition_penalty") is { } nullNodeRepetitionPenalty && nullNodeRepetitionPenalty.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RepetitionPenalty = null;
+            if (parseNode.GetChildNode("response_format") is { } nullNodeResponseFormat && nullNodeResponseFormat.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResponseFormat = null;
+            if (parseNode.GetChildNode("safety_model") is { } nullNodeSafetyModel && nullNodeSafetyModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SafetyModel = null;
+            if (parseNode.GetChildNode("seed") is { } nullNodeSeed && nullNodeSeed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Seed = null;
+            if (parseNode.GetChildNode("stop") is { } nullNodeStop && nullNodeStop.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Stop = null;
+            if (parseNode.GetChildNode("stream") is { } nullNodeStream && nullNodeStream.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Stream = null;
+            if (parseNode.GetChildNode("temperature") is { } nullNodeTemperature && nullNodeTemperature.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Temperature = null;
+            if (parseNode.GetChildNode("tool_choice") is { } nullNodeToolChoice && nullNodeToolChoice.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ToolChoice = null;
+            if (parseNode.GetChildNode("tools") is { } nullNodeTools && nullNodeTools.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tools = null;
+            if (parseNode.GetChildNode("top_k") is { } nullNodeTopK && nullNodeTopK.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TopK = null;
+            if (parseNode.GetChildNode("top_p") is { } nullNodeTopP && nullNodeTopP.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TopP = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Additional configuration to pass to model engine.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestChatTemplateKwargsProperty? ChatTemplateKwargs { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestChatTemplateKwargsProperty? ChatTemplateKwargs { get => _explicitNullValueChatTemplateKwargs; set { _explicitNullValueChatTemplateKwargs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chat_template_kwargs"); else _explicitNullProperties?.Remove("chat_template_kwargs"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestChatTemplateKwargsProperty? _explicitNullValueChatTemplateKwargs = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestChatTemplateKwargsProperty ChatTemplateKwargs { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestChatTemplateKwargsProperty ChatTemplateKwargs { get => _explicitNullValueChatTemplateKwargs; set { _explicitNullValueChatTemplateKwargs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chat_template_kwargs"); else _explicitNullProperties?.Remove("chat_template_kwargs"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestChatTemplateKwargsProperty _explicitNullValueChatTemplateKwargs = default!;
 #endif
         /// <summary>The compliance property</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.HipaaCompliance? Compliance { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.HipaaCompliance? Compliance { get => _explicitNullValueCompliance; set { _explicitNullValueCompliance = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("compliance"); else _explicitNullProperties?.Remove("compliance"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.HipaaCompliance? _explicitNullValueCompliance = default!;
         /// <summary>Defines the behavior of the API when max_tokens exceed the maximum context length of the model. When set to &apos;error&apos;, the API returns 400 with an appropriate error message. When set to &apos;truncate&apos;, overrides max_tokens with the maximum context length of the model.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestContextLengthExceededBehavior? ContextLengthExceededBehavior { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestContextLengthExceededBehavior? ContextLengthExceededBehavior { get => _explicitNullValueContextLengthExceededBehavior; set { _explicitNullValueContextLengthExceededBehavior = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("context_length_exceeded_behavior"); else _explicitNullProperties?.Remove("context_length_exceeded_behavior"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestContextLengthExceededBehavior? _explicitNullValueContextLengthExceededBehavior = default!;
         /// <summary>If true, the response contains the prompt. Can be used with `logprobs` to return prompt logprobs.</summary>
-        public bool? Echo { get; set; }
+        public bool? Echo { get => _explicitNullValueEcho; set { _explicitNullValueEcho = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("echo"); else _explicitNullProperties?.Remove("echo"); } }
+        private bool? _explicitNullValueEcho = default!;
         /// <summary>A number between -2.0 and 2.0 where a positive value decreases the likelihood of repeating tokens that have already been mentioned.</summary>
-        public double? FrequencyPenalty { get; set; }
+        public double? FrequencyPenalty { get => _explicitNullValueFrequencyPenalty; set { _explicitNullValueFrequencyPenalty = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("frequency_penalty"); else _explicitNullProperties?.Remove("frequency_penalty"); } }
+        private double? _explicitNullValueFrequencyPenalty = default!;
         /// <summary>The function_call property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestFunctionCall? FunctionCall { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestFunctionCall? FunctionCall { get => _explicitNullValueFunctionCall; set { _explicitNullValueFunctionCall = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("function_call"); else _explicitNullProperties?.Remove("function_call"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestFunctionCall? _explicitNullValueFunctionCall = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestFunctionCall FunctionCall { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestFunctionCall FunctionCall { get => _explicitNullValueFunctionCall; set { _explicitNullValueFunctionCall = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("function_call"); else _explicitNullProperties?.Remove("function_call"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestFunctionCall _explicitNullValueFunctionCall = default!;
 #endif
         /// <summary>Adjusts the likelihood of specific tokens appearing in the generated output.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestLogitBiasProperty? LogitBias { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestLogitBiasProperty? LogitBias { get => _explicitNullValueLogitBias; set { _explicitNullValueLogitBias = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("logit_bias"); else _explicitNullProperties?.Remove("logit_bias"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestLogitBiasProperty? _explicitNullValueLogitBias = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestLogitBiasProperty LogitBias { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestLogitBiasProperty LogitBias { get => _explicitNullValueLogitBias; set { _explicitNullValueLogitBias = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("logit_bias"); else _explicitNullProperties?.Remove("logit_bias"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestLogitBiasProperty _explicitNullValueLogitBias = default!;
 #endif
         /// <summary>An integer between 0 and 20 of the top k tokens to return log probabilities for at each generation step, instead of only the sampled token. Log probabilities help assess model confidence in token predictions.</summary>
-        public int? Logprobs { get; set; }
+        public int? Logprobs { get => _explicitNullValueLogprobs; set { _explicitNullValueLogprobs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("logprobs"); else _explicitNullProperties?.Remove("logprobs"); } }
+        private int? _explicitNullValueLogprobs = default!;
         /// <summary>The maximum number of tokens to generate.</summary>
-        public int? MaxTokens { get; set; }
+        public int? MaxTokens { get => _explicitNullValueMaxTokens; set { _explicitNullValueMaxTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_tokens"); else _explicitNullProperties?.Remove("max_tokens"); } }
+        private int? _explicitNullValueMaxTokens = default!;
         /// <summary>A list of messages comprising the conversation so far.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionMessageParam>? Messages { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionMessageParam>? Messages { get => _explicitNullValueMessages; set { _explicitNullValueMessages = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("messages"); else _explicitNullProperties?.Remove("messages"); } }
+        private List<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionMessageParam>? _explicitNullValueMessages = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionMessageParam> Messages { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionMessageParam> Messages { get => _explicitNullValueMessages; set { _explicitNullValueMessages = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("messages"); else _explicitNullProperties?.Remove("messages"); } }
+        private List<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionMessageParam> _explicitNullValueMessages = default!;
 #endif
         /// <summary>A number between 0 and 1 that can be used as an alternative to top_p and top-k.</summary>
-        public double? MinP { get; set; }
+        public double? MinP { get => _explicitNullValueMinP; set { _explicitNullValueMinP = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("min_p"); else _explicitNullProperties?.Remove("min_p"); } }
+        private double? _explicitNullValueMinP = default!;
         /// <summary>The name of the model to query.&lt;br&gt; &lt;br&gt; [See all of Together AI&apos;s chat models](https://docs.together.ai/docs/serverless-models#chat-models)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Model { get; set; }
+        public string? Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private string? _explicitNullValueModel = default!;
 #nullable restore
 #else
-        public string Model { get; set; }
+        public string Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private string _explicitNullValueModel = default!;
 #endif
         /// <summary>The number of completions to generate for each prompt.</summary>
-        public int? N { get; set; }
+        public int? N { get => _explicitNullValueN; set { _explicitNullValueN = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("n"); else _explicitNullProperties?.Remove("n"); } }
+        private int? _explicitNullValueN = default!;
         /// <summary>A number between -2.0 and 2.0 where a positive value increases the likelihood of a model talking about new topics.</summary>
-        public double? PresencePenalty { get; set; }
+        public double? PresencePenalty { get => _explicitNullValuePresencePenalty; set { _explicitNullValuePresencePenalty = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("presence_penalty"); else _explicitNullProperties?.Remove("presence_penalty"); } }
+        private double? _explicitNullValuePresencePenalty = default!;
         /// <summary>For models that support toggling reasoning functionality, this object can be used to control that functionality.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestReasoning? Reasoning { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestReasoning? Reasoning { get => _explicitNullValueReasoning; set { _explicitNullValueReasoning = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reasoning"); else _explicitNullProperties?.Remove("reasoning"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestReasoning? _explicitNullValueReasoning = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestReasoning Reasoning { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestReasoning Reasoning { get => _explicitNullValueReasoning; set { _explicitNullValueReasoning = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reasoning"); else _explicitNullProperties?.Remove("reasoning"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestReasoning _explicitNullValueReasoning = default!;
 #endif
         /// <summary>Controls the level of reasoning effort the model should apply when generating responses. Higher values may result in more thoughtful and detailed responses but may take longer to generate.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestReasoningEffort? ReasoningEffort { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestReasoningEffort? ReasoningEffort { get => _explicitNullValueReasoningEffort; set { _explicitNullValueReasoningEffort = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reasoning_effort"); else _explicitNullProperties?.Remove("reasoning_effort"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestReasoningEffort? _explicitNullValueReasoningEffort = default!;
         /// <summary>A number that controls the diversity of generated text by reducing the likelihood of repeated sequences. Higher values decrease repetition.</summary>
-        public double? RepetitionPenalty { get; set; }
+        public double? RepetitionPenalty { get => _explicitNullValueRepetitionPenalty; set { _explicitNullValueRepetitionPenalty = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repetition_penalty"); else _explicitNullProperties?.Remove("repetition_penalty"); } }
+        private double? _explicitNullValueRepetitionPenalty = default!;
         /// <summary>An object specifying the format that the model must output.Setting to `{ &quot;type&quot;: &quot;json_schema&quot;, &quot;json_schema&quot;: {...} }` enablesStructured Outputs which ensures the model will match your supplied JSONschema. Learn more in the [Structured Outputsguide](https://docs.together.ai/docs/json-mode).Setting to `{ &quot;type&quot;: &quot;json_object&quot; }` enables the older JSON mode, whichensures the message the model generates is valid JSON. Using `json_schema`is preferred for models that support it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestResponseFormat? ResponseFormat { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestResponseFormat? ResponseFormat { get => _explicitNullValueResponseFormat; set { _explicitNullValueResponseFormat = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("response_format"); else _explicitNullProperties?.Remove("response_format"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestResponseFormat? _explicitNullValueResponseFormat = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestResponseFormat ResponseFormat { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestResponseFormat ResponseFormat { get => _explicitNullValueResponseFormat; set { _explicitNullValueResponseFormat = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("response_format"); else _explicitNullProperties?.Remove("response_format"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestResponseFormat _explicitNullValueResponseFormat = default!;
 #endif
         /// <summary>The name of the moderation model used to validate tokens. Choose from the available moderation models found [here](https://docs.together.ai/docs/inference-models#moderation-models).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SafetyModel { get; set; }
+        public string? SafetyModel { get => _explicitNullValueSafetyModel; set { _explicitNullValueSafetyModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("safety_model"); else _explicitNullProperties?.Remove("safety_model"); } }
+        private string? _explicitNullValueSafetyModel = default!;
 #nullable restore
 #else
-        public string SafetyModel { get; set; }
+        public string SafetyModel { get => _explicitNullValueSafetyModel; set { _explicitNullValueSafetyModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("safety_model"); else _explicitNullProperties?.Remove("safety_model"); } }
+        private string _explicitNullValueSafetyModel = default!;
 #endif
         /// <summary>Seed value for reproducibility.</summary>
-        public int? Seed { get; set; }
+        public int? Seed { get => _explicitNullValueSeed; set { _explicitNullValueSeed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("seed"); else _explicitNullProperties?.Remove("seed"); } }
+        private int? _explicitNullValueSeed = default!;
         /// <summary>A list of string sequences that truncate (stop) inference text output. For example, &quot;&lt;/s&gt;&quot; stops generation as soon as the model generates the given token.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Stop { get; set; }
+        public List<string>? Stop { get => _explicitNullValueStop; set { _explicitNullValueStop = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stop"); else _explicitNullProperties?.Remove("stop"); } }
+        private List<string>? _explicitNullValueStop = default!;
 #nullable restore
 #else
-        public List<string> Stop { get; set; }
+        public List<string> Stop { get => _explicitNullValueStop; set { _explicitNullValueStop = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stop"); else _explicitNullProperties?.Remove("stop"); } }
+        private List<string> _explicitNullValueStop = default!;
 #endif
         /// <summary>If true, stream tokens as Server-Sent Events as the model generates them instead of waiting for the full model response. The stream terminates with `data: [DONE]`. If false, return a single JSON object containing the results.</summary>
-        public bool? Stream { get; set; }
+        public bool? Stream { get => _explicitNullValueStream; set { _explicitNullValueStream = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stream"); else _explicitNullProperties?.Remove("stream"); } }
+        private bool? _explicitNullValueStream = default!;
         /// <summary>A decimal number from 0-1 that determines the degree of randomness in the response. A temperature less than 1 favors more correctness and is appropriate for question answering or summarization. A value closer to 1 introduces more randomness in the output.</summary>
-        public double? Temperature { get; set; }
+        public double? Temperature { get => _explicitNullValueTemperature; set { _explicitNullValueTemperature = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("temperature"); else _explicitNullProperties?.Remove("temperature"); } }
+        private double? _explicitNullValueTemperature = default!;
         /// <summary>Controls which (if any) function is called by the model. By default uses `auto`, which lets the model pick between generating a message or calling a function.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestToolChoice? ToolChoice { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestToolChoice? ToolChoice { get => _explicitNullValueToolChoice; set { _explicitNullValueToolChoice = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tool_choice"); else _explicitNullProperties?.Remove("tool_choice"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestToolChoice? _explicitNullValueToolChoice = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestToolChoice ToolChoice { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestToolChoice ToolChoice { get => _explicitNullValueToolChoice; set { _explicitNullValueToolChoice = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tool_choice"); else _explicitNullProperties?.Remove("tool_choice"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestToolChoice _explicitNullValueToolChoice = default!;
 #endif
         /// <summary>A list of tools the model may call. Currently, only functions are supported as a tool. Use this to provide a list of functions the model may generate JSON inputs for.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Together.OpenApiClient.Models.ToolsPart>? Tools { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.ToolsPart>? Tools { get => _explicitNullValueTools; set { _explicitNullValueTools = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tools"); else _explicitNullProperties?.Remove("tools"); } }
+        private List<global::Soenneker.Together.OpenApiClient.Models.ToolsPart>? _explicitNullValueTools = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Together.OpenApiClient.Models.ToolsPart> Tools { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.ToolsPart> Tools { get => _explicitNullValueTools; set { _explicitNullValueTools = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tools"); else _explicitNullProperties?.Remove("tools"); } }
+        private List<global::Soenneker.Together.OpenApiClient.Models.ToolsPart> _explicitNullValueTools = default!;
 #endif
         /// <summary>An integer that&apos;s used to limit the number of choices for the next predicted word or token. It specifies the maximum number of tokens to consider at each step, based on their probability of occurrence. This technique helps to speed up the generation process and can improve the quality of the generated text by focusing on the most likely options.</summary>
-        public int? TopK { get; set; }
+        public int? TopK { get => _explicitNullValueTopK; set { _explicitNullValueTopK = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("top_k"); else _explicitNullProperties?.Remove("top_k"); } }
+        private int? _explicitNullValueTopK = default!;
         /// <summary>A percentage (also called the nucleus parameter) that&apos;s used to dynamically adjust the number of choices for each predicted token based on the cumulative probabilities. It specifies a probability threshold below which all less likely tokens are filtered out. This technique helps maintain diversity and generate more fluent and natural-sounding text.</summary>
-        public double? TopP { get; set; }
+        public double? TopP { get => _explicitNullValueTopP; set { _explicitNullValueTopP = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("top_p"); else _explicitNullProperties?.Remove("top_p"); } }
+        private double? _explicitNullValueTopP = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequest"/> and sets the default values.
         /// </summary>
@@ -149,7 +221,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -222,6 +294,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.ToolsPart>("tools", Tools);
             writer.WriteIntValue("top_k", TopK);
             writer.WriteDoubleValue("top_p", TopP);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

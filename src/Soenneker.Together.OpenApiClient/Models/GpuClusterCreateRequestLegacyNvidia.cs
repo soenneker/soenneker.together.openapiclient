@@ -12,148 +12,225 @@ namespace Soenneker.Together.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class GpuClusterCreateRequestLegacyNvidia : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("acceptance_tests_params") is { } nullNodeAcceptanceTestsParams && nullNodeAcceptanceTestsParams.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AcceptanceTestsParams = null;
+            if (parseNode.GetChildNode("add_ons") is { } nullNodeAddOns && nullNodeAddOns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AddOns = null;
+            if (parseNode.GetChildNode("auto_scale") is { } nullNodeAutoScale && nullNodeAutoScale.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AutoScale = null;
+            if (parseNode.GetChildNode("auto_scale_max_gpus") is { } nullNodeAutoScaleMaxGpus && nullNodeAutoScaleMaxGpus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AutoScaleMaxGpus = null;
+            if (parseNode.GetChildNode("billing_type") is { } nullNodeBillingType && nullNodeBillingType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BillingType = null;
+            if (parseNode.GetChildNode("capacity_pool_id") is { } nullNodeCapacityPoolId && nullNodeCapacityPoolId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CapacityPoolId = null;
+            if (parseNode.GetChildNode("cluster_config") is { } nullNodeClusterConfig && nullNodeClusterConfig.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClusterConfig = null;
+            if (parseNode.GetChildNode("cluster_name") is { } nullNodeClusterName && nullNodeClusterName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClusterName = null;
+            if (parseNode.GetChildNode("cluster_type") is { } nullNodeClusterType && nullNodeClusterType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClusterType = null;
+            if (parseNode.GetChildNode("cuda_version") is { } nullNodeCudaVersion && nullNodeCudaVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CudaVersion = null;
+            if (parseNode.GetChildNode("duration_days") is { } nullNodeDurationDays && nullNodeDurationDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DurationDays = null;
+            if (parseNode.GetChildNode("gpu_type") is { } nullNodeGpuType && nullNodeGpuType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GpuType = null;
+            if (parseNode.GetChildNode("install_traefik") is { } nullNodeInstallTraefik && nullNodeInstallTraefik.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InstallTraefik = null;
+            if (parseNode.GetChildNode("num_capacity_pool_gpus") is { } nullNodeNumCapacityPoolGpus && nullNodeNumCapacityPoolGpus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NumCapacityPoolGpus = null;
+            if (parseNode.GetChildNode("num_gpus") is { } nullNodeNumGpus && nullNodeNumGpus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NumGpus = null;
+            if (parseNode.GetChildNode("num_preemptible_gpus") is { } nullNodeNumPreemptibleGpus && nullNodeNumPreemptibleGpus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NumPreemptibleGpus = null;
+            if (parseNode.GetChildNode("num_reserved_gpus") is { } nullNodeNumReservedGpus && nullNodeNumReservedGpus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NumReservedGpus = null;
+            if (parseNode.GetChildNode("nvidia_driver_version") is { } nullNodeNvidiaDriverVersion && nullNodeNvidiaDriverVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NvidiaDriverVersion = null;
+            if (parseNode.GetChildNode("nvidia_version_id") is { } nullNodeNvidiaVersionId && nullNodeNvidiaVersionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NvidiaVersionId = null;
+            if (parseNode.GetChildNode("oidc_config") is { } nullNodeOidcConfig && nullNodeOidcConfig.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OidcConfig = null;
+            if (parseNode.GetChildNode("project_id") is { } nullNodeProjectId && nullNodeProjectId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProjectId = null;
+            if (parseNode.GetChildNode("region") is { } nullNodeRegion && nullNodeRegion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Region = null;
+            if (parseNode.GetChildNode("reservation_end_time") is { } nullNodeReservationEndTime && nullNodeReservationEndTime.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReservationEndTime = null;
+            if (parseNode.GetChildNode("reservation_start_time") is { } nullNodeReservationStartTime && nullNodeReservationStartTime.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReservationStartTime = null;
+            if (parseNode.GetChildNode("shared_volume") is { } nullNodeSharedVolume && nullNodeSharedVolume.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SharedVolume = null;
+            if (parseNode.GetChildNode("slurm_image") is { } nullNodeSlurmImage && nullNodeSlurmImage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SlurmImage = null;
+            if (parseNode.GetChildNode("slurm_shm_size_gib") is { } nullNodeSlurmShmSizeGib && nullNodeSlurmShmSizeGib.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SlurmShmSizeGib = null;
+            if (parseNode.GetChildNode("volume_id") is { } nullNodeVolumeId && nullNodeVolumeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VolumeId = null;
+        }
+
         /// <summary>AcceptanceTestsParams groups all GPU acceptance test options when enabled is true.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.AcceptanceTestsParams? AcceptanceTestsParams { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.AcceptanceTestsParams? AcceptanceTestsParams { get => _explicitNullValueAcceptanceTestsParams; set { _explicitNullValueAcceptanceTestsParams = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("acceptance_tests_params"); else _explicitNullProperties?.Remove("acceptance_tests_params"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.AcceptanceTestsParams? _explicitNullValueAcceptanceTestsParams = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.AcceptanceTestsParams AcceptanceTestsParams { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.AcceptanceTestsParams AcceptanceTestsParams { get => _explicitNullValueAcceptanceTestsParams; set { _explicitNullValueAcceptanceTestsParams = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("acceptance_tests_params"); else _explicitNullProperties?.Remove("acceptance_tests_params"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.AcceptanceTestsParams _explicitNullValueAcceptanceTestsParams = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Add-ons to enable on the cluster at creation time.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Together.OpenApiClient.Models.AddOnCreateRequest>? AddOns { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.AddOnCreateRequest>? AddOns { get => _explicitNullValueAddOns; set { _explicitNullValueAddOns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("add_ons"); else _explicitNullProperties?.Remove("add_ons"); } }
+        private List<global::Soenneker.Together.OpenApiClient.Models.AddOnCreateRequest>? _explicitNullValueAddOns = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Together.OpenApiClient.Models.AddOnCreateRequest> AddOns { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.AddOnCreateRequest> AddOns { get => _explicitNullValueAddOns; set { _explicitNullValueAddOns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("add_ons"); else _explicitNullProperties?.Remove("add_ons"); } }
+        private List<global::Soenneker.Together.OpenApiClient.Models.AddOnCreateRequest> _explicitNullValueAddOns = default!;
 #endif
         /// <summary>Whether to enable auto-scaling for the cluster. If true, the cluster will automatically scale the number of GPU worker nodes between num_gpus and auto_scale_max_gpus based on the workload.</summary>
-        public bool? AutoScale { get; set; }
+        public bool? AutoScale { get => _explicitNullValueAutoScale; set { _explicitNullValueAutoScale = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("auto_scale"); else _explicitNullProperties?.Remove("auto_scale"); } }
+        private bool? _explicitNullValueAutoScale = default!;
         /// <summary>Maximum number of GPUs to which the cluster can be auto-scaled up.</summary>
-        public int? AutoScaleMaxGpus { get; set; }
+        public int? AutoScaleMaxGpus { get => _explicitNullValueAutoScaleMaxGpus; set { _explicitNullValueAutoScaleMaxGpus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("auto_scale_max_gpus"); else _explicitNullProperties?.Remove("auto_scale_max_gpus"); } }
+        private int? _explicitNullValueAutoScaleMaxGpus = default!;
         /// <summary>RESERVED billing types allow you to specify the duration of the cluster reservation via the duration_days field.ON_DEMAND billing types will give you ownership of the cluster until you delete it.SCHEDULED_CAPACITY billing types allow you to reserve capacity for a scheduled time window. You must specify the reservation_start_time and reservation_end_time with this request.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.GpuClusterCreateRequestNvidiaVersionBillingType? BillingType { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.GpuClusterCreateRequestNvidiaVersionBillingType? BillingType { get => _explicitNullValueBillingType; set { _explicitNullValueBillingType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("billing_type"); else _explicitNullProperties?.Remove("billing_type"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.GpuClusterCreateRequestNvidiaVersionBillingType? _explicitNullValueBillingType = default!;
         /// <summary>ID of the capacity pool to use for the cluster. This field is optional and only applicable if the cluster is created from a capacity pool.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CapacityPoolId { get; set; }
+        public string? CapacityPoolId { get => _explicitNullValueCapacityPoolId; set { _explicitNullValueCapacityPoolId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("capacity_pool_id"); else _explicitNullProperties?.Remove("capacity_pool_id"); } }
+        private string? _explicitNullValueCapacityPoolId = default!;
 #nullable restore
 #else
-        public string CapacityPoolId { get; set; }
+        public string CapacityPoolId { get => _explicitNullValueCapacityPoolId; set { _explicitNullValueCapacityPoolId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("capacity_pool_id"); else _explicitNullProperties?.Remove("capacity_pool_id"); } }
+        private string _explicitNullValueCapacityPoolId = default!;
 #endif
         /// <summary>The cluster_config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.InstanceClusterConfig? ClusterConfig { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.InstanceClusterConfig? ClusterConfig { get => _explicitNullValueClusterConfig; set { _explicitNullValueClusterConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cluster_config"); else _explicitNullProperties?.Remove("cluster_config"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.InstanceClusterConfig? _explicitNullValueClusterConfig = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.InstanceClusterConfig ClusterConfig { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.InstanceClusterConfig ClusterConfig { get => _explicitNullValueClusterConfig; set { _explicitNullValueClusterConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cluster_config"); else _explicitNullProperties?.Remove("cluster_config"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.InstanceClusterConfig _explicitNullValueClusterConfig = default!;
 #endif
         /// <summary>Name of the GPU cluster.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ClusterName { get; set; }
+        public string? ClusterName { get => _explicitNullValueClusterName; set { _explicitNullValueClusterName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cluster_name"); else _explicitNullProperties?.Remove("cluster_name"); } }
+        private string? _explicitNullValueClusterName = default!;
 #nullable restore
 #else
-        public string ClusterName { get; set; }
+        public string ClusterName { get => _explicitNullValueClusterName; set { _explicitNullValueClusterName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cluster_name"); else _explicitNullProperties?.Remove("cluster_name"); } }
+        private string _explicitNullValueClusterName = default!;
 #endif
         /// <summary>Type of cluster to create.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.GpuClusterCreateRequestNvidiaVersionClusterType? ClusterType { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.GpuClusterCreateRequestNvidiaVersionClusterType? ClusterType { get => _explicitNullValueClusterType; set { _explicitNullValueClusterType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cluster_type"); else _explicitNullProperties?.Remove("cluster_type"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.GpuClusterCreateRequestNvidiaVersionClusterType? _explicitNullValueClusterType = default!;
         /// <summary>Legacy CUDA selector for this cluster. Bare semantic values such as 12.5 select ubuntu-22.04; existing OS-suffixed values remain accepted for compatibility. Must be paired with nvidia_driver_version. Prefer nvidia_version_id for new integrations.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CudaVersion { get; set; }
+        public string? CudaVersion { get => _explicitNullValueCudaVersion; set { _explicitNullValueCudaVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cuda_version"); else _explicitNullProperties?.Remove("cuda_version"); } }
+        private string? _explicitNullValueCudaVersion = default!;
 #nullable restore
 #else
-        public string CudaVersion { get; set; }
+        public string CudaVersion { get => _explicitNullValueCudaVersion; set { _explicitNullValueCudaVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cuda_version"); else _explicitNullProperties?.Remove("cuda_version"); } }
+        private string _explicitNullValueCudaVersion = default!;
 #endif
         /// <summary>Duration in days to keep the cluster running.</summary>
-        public int? DurationDays { get; set; }
+        public int? DurationDays { get => _explicitNullValueDurationDays; set { _explicitNullValueDurationDays = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("duration_days"); else _explicitNullProperties?.Remove("duration_days"); } }
+        private int? _explicitNullValueDurationDays = default!;
         /// <summary>Type of GPU to use in the cluster</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.GpuClusterCreateRequestNvidiaVersionGpuType? GpuType { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.GpuClusterCreateRequestNvidiaVersionGpuType? GpuType { get => _explicitNullValueGpuType; set { _explicitNullValueGpuType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gpu_type"); else _explicitNullProperties?.Remove("gpu_type"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.GpuClusterCreateRequestNvidiaVersionGpuType? _explicitNullValueGpuType = default!;
         /// <summary>Whether to install Traefik ingress controller in the cluster. This field is only applicable for Kubernetes clusters and is false by default.</summary>
-        public bool? InstallTraefik { get; set; }
+        public bool? InstallTraefik { get => _explicitNullValueInstallTraefik; set { _explicitNullValueInstallTraefik = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("install_traefik"); else _explicitNullProperties?.Remove("install_traefik"); } }
+        private bool? _explicitNullValueInstallTraefik = default!;
         /// <summary>Number of GPUs to allocate from the capacity pool. Must be a multiple of 8 and not exceed num_gpus.</summary>
-        public int? NumCapacityPoolGpus { get; set; }
+        public int? NumCapacityPoolGpus { get => _explicitNullValueNumCapacityPoolGpus; set { _explicitNullValueNumCapacityPoolGpus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("num_capacity_pool_gpus"); else _explicitNullProperties?.Remove("num_capacity_pool_gpus"); } }
+        private int? _explicitNullValueNumCapacityPoolGpus = default!;
         /// <summary>Number of GPUs to allocate in the cluster. This must be multiple of 8. For example, 8, 16 or 24</summary>
-        public int? NumGpus { get; set; }
+        public int? NumGpus { get => _explicitNullValueNumGpus; set { _explicitNullValueNumGpus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("num_gpus"); else _explicitNullProperties?.Remove("num_gpus"); } }
+        private int? _explicitNullValueNumGpus = default!;
         /// <summary>Number of preemptible GPUs to request alongside on-demand capacity. Must be a multiple of 8. Preemptible nodes are cheaper but may be reclaimed when on-demand capacity is needed elsewhere; the system fulfills this asynchronously and surfaces the actual count in allocated_preemptible_gpus.</summary>
-        public int? NumPreemptibleGpus { get; set; }
+        public int? NumPreemptibleGpus { get => _explicitNullValueNumPreemptibleGpus; set { _explicitNullValueNumPreemptibleGpus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("num_preemptible_gpus"); else _explicitNullProperties?.Remove("num_preemptible_gpus"); } }
+        private int? _explicitNullValueNumPreemptibleGpus = default!;
         /// <summary>Number of prepaid (PLG) reserved GPUs for this cluster. When omitted for RESERVED billing on create, the server defaults this to num_gpus.</summary>
-        public int? NumReservedGpus { get; set; }
+        public int? NumReservedGpus { get => _explicitNullValueNumReservedGpus; set { _explicitNullValueNumReservedGpus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("num_reserved_gpus"); else _explicitNullProperties?.Remove("num_reserved_gpus"); } }
+        private int? _explicitNullValueNumReservedGpus = default!;
         /// <summary>Legacy NVIDIA driver selector for this cluster. For example, 550. Must be paired with cuda_version. Prefer nvidia_version_id for new integrations.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? NvidiaDriverVersion { get; set; }
+        public string? NvidiaDriverVersion { get => _explicitNullValueNvidiaDriverVersion; set { _explicitNullValueNvidiaDriverVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nvidia_driver_version"); else _explicitNullProperties?.Remove("nvidia_driver_version"); } }
+        private string? _explicitNullValueNvidiaDriverVersion = default!;
 #nullable restore
 #else
-        public string NvidiaDriverVersion { get; set; }
+        public string NvidiaDriverVersion { get => _explicitNullValueNvidiaDriverVersion; set { _explicitNullValueNvidiaDriverVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nvidia_driver_version"); else _explicitNullProperties?.Remove("nvidia_driver_version"); } }
+        private string _explicitNullValueNvidiaDriverVersion = default!;
 #endif
         /// <summary>Canonical region-specific NVIDIA version ID. If cuda_version and nvidia_driver_version are also set, they must resolve to the same catalog entry.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? NvidiaVersionId { get; set; }
+        public string? NvidiaVersionId { get => _explicitNullValueNvidiaVersionId; set { _explicitNullValueNvidiaVersionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nvidia_version_id"); else _explicitNullProperties?.Remove("nvidia_version_id"); } }
+        private string? _explicitNullValueNvidiaVersionId = default!;
 #nullable restore
 #else
-        public string NvidiaVersionId { get; set; }
+        public string NvidiaVersionId { get => _explicitNullValueNvidiaVersionId; set { _explicitNullValueNvidiaVersionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nvidia_version_id"); else _explicitNullProperties?.Remove("nvidia_version_id"); } }
+        private string _explicitNullValueNvidiaVersionId = default!;
 #endif
         /// <summary>The oidc_config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.OidcConfig? OidcConfig { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.OidcConfig? OidcConfig { get => _explicitNullValueOidcConfig; set { _explicitNullValueOidcConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("oidc_config"); else _explicitNullProperties?.Remove("oidc_config"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.OidcConfig? _explicitNullValueOidcConfig = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.OidcConfig OidcConfig { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.OidcConfig OidcConfig { get => _explicitNullValueOidcConfig; set { _explicitNullValueOidcConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("oidc_config"); else _explicitNullProperties?.Remove("oidc_config"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.OidcConfig _explicitNullValueOidcConfig = default!;
 #endif
         /// <summary>Project ID for the cluster. If not set, the project from the request context is used.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ProjectId { get; set; }
+        public string? ProjectId { get => _explicitNullValueProjectId; set { _explicitNullValueProjectId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("project_id"); else _explicitNullProperties?.Remove("project_id"); } }
+        private string? _explicitNullValueProjectId = default!;
 #nullable restore
 #else
-        public string ProjectId { get; set; }
+        public string ProjectId { get => _explicitNullValueProjectId; set { _explicitNullValueProjectId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("project_id"); else _explicitNullProperties?.Remove("project_id"); } }
+        private string _explicitNullValueProjectId = default!;
 #endif
         /// <summary>Region to create the GPU cluster in. Usable regions can be found from `client.clusters.list_regions()`</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Region { get; set; }
+        public string? Region { get => _explicitNullValueRegion; set { _explicitNullValueRegion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("region"); else _explicitNullProperties?.Remove("region"); } }
+        private string? _explicitNullValueRegion = default!;
 #nullable restore
 #else
-        public string Region { get; set; }
+        public string Region { get => _explicitNullValueRegion; set { _explicitNullValueRegion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("region"); else _explicitNullProperties?.Remove("region"); } }
+        private string _explicitNullValueRegion = default!;
 #endif
         /// <summary>Reservation end time of the cluster. This field is required for SCHEDULED billing to specify the reservation end time for the cluster.</summary>
-        public DateTimeOffset? ReservationEndTime { get; set; }
+        public DateTimeOffset? ReservationEndTime { get => _explicitNullValueReservationEndTime; set { _explicitNullValueReservationEndTime = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reservation_end_time"); else _explicitNullProperties?.Remove("reservation_end_time"); } }
+        private DateTimeOffset? _explicitNullValueReservationEndTime = default!;
         /// <summary>Reservation start time of the cluster. This field is required for SCHEDULED billing to specify the reservation start time for the cluster. If not provided, the cluster provisions immediately.</summary>
-        public DateTimeOffset? ReservationStartTime { get; set; }
+        public DateTimeOffset? ReservationStartTime { get => _explicitNullValueReservationStartTime; set { _explicitNullValueReservationStartTime = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reservation_start_time"); else _explicitNullProperties?.Remove("reservation_start_time"); } }
+        private DateTimeOffset? _explicitNullValueReservationStartTime = default!;
         /// <summary>Request body for creating a shared volume.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolumeCreateRequest? SharedVolume { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolumeCreateRequest? SharedVolume { get => _explicitNullValueSharedVolume; set { _explicitNullValueSharedVolume = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("shared_volume"); else _explicitNullProperties?.Remove("shared_volume"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolumeCreateRequest? _explicitNullValueSharedVolume = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolumeCreateRequest SharedVolume { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolumeCreateRequest SharedVolume { get => _explicitNullValueSharedVolume; set { _explicitNullValueSharedVolume = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("shared_volume"); else _explicitNullProperties?.Remove("shared_volume"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolumeCreateRequest _explicitNullValueSharedVolume = default!;
 #endif
         /// <summary>Custom Slurm image for Slurm clusters.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SlurmImage { get; set; }
+        public string? SlurmImage { get => _explicitNullValueSlurmImage; set { _explicitNullValueSlurmImage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slurm_image"); else _explicitNullProperties?.Remove("slurm_image"); } }
+        private string? _explicitNullValueSlurmImage = default!;
 #nullable restore
 #else
-        public string SlurmImage { get; set; }
+        public string SlurmImage { get => _explicitNullValueSlurmImage; set { _explicitNullValueSlurmImage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slurm_image"); else _explicitNullProperties?.Remove("slurm_image"); } }
+        private string _explicitNullValueSlurmImage = default!;
 #endif
         /// <summary>Shared memory size in GiB for Slurm cluster. This field is required if cluster_type is SLURM.</summary>
-        public int? SlurmShmSizeGib { get; set; }
+        public int? SlurmShmSizeGib { get => _explicitNullValueSlurmShmSizeGib; set { _explicitNullValueSlurmShmSizeGib = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slurm_shm_size_gib"); else _explicitNullProperties?.Remove("slurm_shm_size_gib"); } }
+        private int? _explicitNullValueSlurmShmSizeGib = default!;
         /// <summary>ID of an existing volume to use with the cluster creation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? VolumeId { get; set; }
+        public string? VolumeId { get => _explicitNullValueVolumeId; set { _explicitNullValueVolumeId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("volume_id"); else _explicitNullProperties?.Remove("volume_id"); } }
+        private string? _explicitNullValueVolumeId = default!;
 #nullable restore
 #else
-        public string VolumeId { get; set; }
+        public string VolumeId { get => _explicitNullValueVolumeId; set { _explicitNullValueVolumeId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("volume_id"); else _explicitNullProperties?.Remove("volume_id"); } }
+        private string _explicitNullValueVolumeId = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.GpuClusterCreateRequestLegacyNvidia"/> and sets the default values.
@@ -171,7 +248,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.GpuClusterCreateRequestLegacyNvidia CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.GpuClusterCreateRequestLegacyNvidia();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.GpuClusterCreateRequestLegacyNvidia(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -246,6 +323,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteStringValue("slurm_image", SlurmImage);
             writer.WriteIntValue("slurm_shm_size_gib", SlurmShmSizeGib);
             writer.WriteStringValue("volume_id", VolumeId);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

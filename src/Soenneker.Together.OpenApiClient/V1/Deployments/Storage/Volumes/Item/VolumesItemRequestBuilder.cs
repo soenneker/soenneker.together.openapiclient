@@ -55,6 +55,8 @@ namespace Soenneker.Together.OpenApiClient.V1.Deployments.Storage.Volumes.Item
             {
                 { "404", global::Soenneker.Together.OpenApiClient.Models.DeleteV1DeploymentsStorageVolumesById404ResponseSchema.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Together.OpenApiClient.Models.DeleteV1DeploymentsStorageVolumesById500ResponseSchema.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.DeleteV1DeploymentsStorageVolumesById200ResponseSchema>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.DeleteV1DeploymentsStorageVolumesById200ResponseSchema.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -82,6 +84,8 @@ namespace Soenneker.Together.OpenApiClient.V1.Deployments.Storage.Volumes.Item
                 { "400", global::Soenneker.Together.OpenApiClient.Models.GetV1DeploymentsStorageVolumesById400ResponseSchema.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.Together.OpenApiClient.Models.GetV1DeploymentsStorageVolumesById404ResponseSchema.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Together.OpenApiClient.Models.GetV1DeploymentsStorageVolumesById500ResponseSchema.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.VolumeResponseItem>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.VolumeResponseItem.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -111,6 +115,8 @@ namespace Soenneker.Together.OpenApiClient.V1.Deployments.Storage.Volumes.Item
                 { "400", global::Soenneker.Together.OpenApiClient.Models.PatchV1DeploymentsStorageVolumesById400ResponseSchema.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.Together.OpenApiClient.Models.PatchV1DeploymentsStorageVolumesById404ResponseSchema.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Together.OpenApiClient.Models.PatchV1DeploymentsStorageVolumesById500ResponseSchema.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.VolumeResponseItem>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.VolumeResponseItem.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

@@ -12,29 +12,46 @@ namespace Soenneker.Together.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DeDeploymentRuntimeInfo : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("engineType") is { } nullNodeEngineType && nullNodeEngineType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EngineType = null;
+            if (parseNode.GetChildNode("engineVersion") is { } nullNodeEngineVersion && nullNodeEngineVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EngineVersion = null;
+            if (parseNode.GetChildNode("functionCallingSupported") is { } nullNodeFunctionCallingSupported && nullNodeFunctionCallingSupported.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FunctionCallingSupported = null;
+            if (parseNode.GetChildNode("structuredOutputSupported") is { } nullNodeStructuredOutputSupported && nullNodeStructuredOutputSupported.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StructuredOutputSupported = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Serving engine, such as `vllm`, `trtllm`, or `sglang`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EngineType { get; set; }
+        public string? EngineType { get => _explicitNullValueEngineType; set { _explicitNullValueEngineType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("engineType"); else _explicitNullProperties?.Remove("engineType"); } }
+        private string? _explicitNullValueEngineType = default!;
 #nullable restore
 #else
-        public string EngineType { get; set; }
+        public string EngineType { get => _explicitNullValueEngineType; set { _explicitNullValueEngineType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("engineType"); else _explicitNullProperties?.Remove("engineType"); } }
+        private string _explicitNullValueEngineType = default!;
 #endif
         /// <summary>Version of the serving engine.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EngineVersion { get; set; }
+        public string? EngineVersion { get => _explicitNullValueEngineVersion; set { _explicitNullValueEngineVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("engineVersion"); else _explicitNullProperties?.Remove("engineVersion"); } }
+        private string? _explicitNullValueEngineVersion = default!;
 #nullable restore
 #else
-        public string EngineVersion { get; set; }
+        public string EngineVersion { get => _explicitNullValueEngineVersion; set { _explicitNullValueEngineVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("engineVersion"); else _explicitNullProperties?.Remove("engineVersion"); } }
+        private string _explicitNullValueEngineVersion = default!;
 #endif
         /// <summary>Whether the runtime accepts tool and function-calling requests.</summary>
-        public bool? FunctionCallingSupported { get; set; }
+        public bool? FunctionCallingSupported { get => _explicitNullValueFunctionCallingSupported; set { _explicitNullValueFunctionCallingSupported = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("functionCallingSupported"); else _explicitNullProperties?.Remove("functionCallingSupported"); } }
+        private bool? _explicitNullValueFunctionCallingSupported = default!;
         /// <summary>Whether the runtime can constrain generation to a structured output schema.</summary>
-        public bool? StructuredOutputSupported { get; set; }
+        public bool? StructuredOutputSupported { get => _explicitNullValueStructuredOutputSupported; set { _explicitNullValueStructuredOutputSupported = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("structuredOutputSupported"); else _explicitNullProperties?.Remove("structuredOutputSupported"); } }
+        private bool? _explicitNullValueStructuredOutputSupported = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.DeDeploymentRuntimeInfo"/> and sets the default values.
         /// </summary>
@@ -50,7 +67,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.DeDeploymentRuntimeInfo CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.DeDeploymentRuntimeInfo();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.DeDeploymentRuntimeInfo(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -77,6 +94,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteStringValue("engineVersion", EngineVersion);
             writer.WriteBoolValue("functionCallingSupported", FunctionCallingSupported);
             writer.WriteBoolValue("structuredOutputSupported", StructuredOutputSupported);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

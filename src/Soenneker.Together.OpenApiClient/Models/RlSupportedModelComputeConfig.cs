@@ -12,26 +12,41 @@ namespace Soenneker.Together.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RlSupportedModelComputeConfig : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("generator_config") is { } nullNodeGeneratorConfig && nullNodeGeneratorConfig.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GeneratorConfig = null;
+            if (parseNode.GetChildNode("gpu_type") is { } nullNodeGpuType && nullNodeGpuType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GpuType = null;
+            if (parseNode.GetChildNode("trainer_config") is { } nullNodeTrainerConfig && nullNodeTrainerConfig.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TrainerConfig = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Inference capabilities and limits for a model on one GPU type. If present, the model can be provisioned with one or more generator replicas.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RlModelGeneratorConfig? GeneratorConfig { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlModelGeneratorConfig? GeneratorConfig { get => _explicitNullValueGeneratorConfig; set { _explicitNullValueGeneratorConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("generator_config"); else _explicitNullProperties?.Remove("generator_config"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlModelGeneratorConfig? _explicitNullValueGeneratorConfig = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.RlModelGeneratorConfig GeneratorConfig { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlModelGeneratorConfig GeneratorConfig { get => _explicitNullValueGeneratorConfig; set { _explicitNullValueGeneratorConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("generator_config"); else _explicitNullProperties?.Remove("generator_config"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlModelGeneratorConfig _explicitNullValueGeneratorConfig = default!;
 #endif
         /// <summary>GPU type to provision. Omit to use the model&apos;s default GPU type.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.B200SxmGpuType? GpuType { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.B200SxmGpuType? GpuType { get => _explicitNullValueGpuType; set { _explicitNullValueGpuType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gpu_type"); else _explicitNullProperties?.Remove("gpu_type"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.B200SxmGpuType? _explicitNullValueGpuType = default!;
         /// <summary>Training capabilities and limits for a model on one GPU type. Each sub-mode is present only when the model supports that training mode.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RlModelTrainerConfig? TrainerConfig { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlModelTrainerConfig? TrainerConfig { get => _explicitNullValueTrainerConfig; set { _explicitNullValueTrainerConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trainer_config"); else _explicitNullProperties?.Remove("trainer_config"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlModelTrainerConfig? _explicitNullValueTrainerConfig = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.RlModelTrainerConfig TrainerConfig { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlModelTrainerConfig TrainerConfig { get => _explicitNullValueTrainerConfig; set { _explicitNullValueTrainerConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trainer_config"); else _explicitNullProperties?.Remove("trainer_config"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlModelTrainerConfig _explicitNullValueTrainerConfig = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlSupportedModelComputeConfig"/> and sets the default values.
@@ -48,7 +63,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.RlSupportedModelComputeConfig CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.RlSupportedModelComputeConfig();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.RlSupportedModelComputeConfig(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -73,6 +88,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlModelGeneratorConfig>("generator_config", GeneratorConfig);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.B200SxmGpuType>("gpu_type", GpuType);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlModelTrainerConfig>("trainer_config", TrainerConfig);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -12,27 +12,42 @@ namespace Soenneker.Together.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DeAddAdapterRequest : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("adapterModelId") is { } nullNodeAdapterModelId && nullNodeAdapterModelId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AdapterModelId = null;
+            if (parseNode.GetChildNode("adapterRevisionId") is { } nullNodeAdapterRevisionId && nullNodeAdapterRevisionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AdapterRevisionId = null;
+            if (parseNode.GetChildNode("force") is { } nullNodeForce && nullNodeForce.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Force = null;
+        }
+
         /// <summary>Adapter model identifier to attach.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AdapterModelId { get; set; }
+        public string? AdapterModelId { get => _explicitNullValueAdapterModelId; set { _explicitNullValueAdapterModelId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("adapterModelId"); else _explicitNullProperties?.Remove("adapterModelId"); } }
+        private string? _explicitNullValueAdapterModelId = default!;
 #nullable restore
 #else
-        public string AdapterModelId { get; set; }
+        public string AdapterModelId { get => _explicitNullValueAdapterModelId; set { _explicitNullValueAdapterModelId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("adapterModelId"); else _explicitNullProperties?.Remove("adapterModelId"); } }
+        private string _explicitNullValueAdapterModelId = default!;
 #endif
         /// <summary>Optional adapter revision to pin. If omitted, the latest revision is resolved at request time.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AdapterRevisionId { get; set; }
+        public string? AdapterRevisionId { get => _explicitNullValueAdapterRevisionId; set { _explicitNullValueAdapterRevisionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("adapterRevisionId"); else _explicitNullProperties?.Remove("adapterRevisionId"); } }
+        private string? _explicitNullValueAdapterRevisionId = default!;
 #nullable restore
 #else
-        public string AdapterRevisionId { get; set; }
+        public string AdapterRevisionId { get => _explicitNullValueAdapterRevisionId; set { _explicitNullValueAdapterRevisionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("adapterRevisionId"); else _explicitNullProperties?.Remove("adapterRevisionId"); } }
+        private string _explicitNullValueAdapterRevisionId = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether to evict the oldest adapter if the deployment is at adapter capacity.</summary>
-        public bool? Force { get; set; }
+        public bool? Force { get => _explicitNullValueForce; set { _explicitNullValueForce = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("force"); else _explicitNullProperties?.Remove("force"); } }
+        private bool? _explicitNullValueForce = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.DeAddAdapterRequest"/> and sets the default values.
         /// </summary>
@@ -48,7 +63,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.DeAddAdapterRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.DeAddAdapterRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.DeAddAdapterRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -73,6 +88,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteStringValue("adapterModelId", AdapterModelId);
             writer.WriteStringValue("adapterRevisionId", AdapterRevisionId);
             writer.WriteBoolValue("force", Force);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

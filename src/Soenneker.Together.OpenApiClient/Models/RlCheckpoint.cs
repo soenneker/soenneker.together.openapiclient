@@ -12,63 +12,94 @@ namespace Soenneker.Together.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RlCheckpoint : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("base_model") is { } nullNodeBaseModel && nullNodeBaseModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaseModel = null;
+            if (parseNode.GetChildNode("created_at") is { } nullNodeCreatedAt && nullNodeCreatedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreatedAt = null;
+            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("inference_registration") is { } nullNodeInferenceRegistration && nullNodeInferenceRegistration.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InferenceRegistration = null;
+            if (parseNode.GetChildNode("lora_rank") is { } nullNodeLoraRank && nullNodeLoraRank.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LoraRank = null;
+            if (parseNode.GetChildNode("session_id") is { } nullNodeSessionId && nullNodeSessionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SessionId = null;
+            if (parseNode.GetChildNode("step") is { } nullNodeStep && nullNodeStep.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Step = null;
+            if (parseNode.GetChildNode("training_registration") is { } nullNodeTrainingRegistration && nullNodeTrainingRegistration.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TrainingRegistration = null;
+            if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Base model the checkpoint was trained from</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BaseModel { get; set; }
+        public string? BaseModel { get => _explicitNullValueBaseModel; set { _explicitNullValueBaseModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("base_model"); else _explicitNullProperties?.Remove("base_model"); } }
+        private string? _explicitNullValueBaseModel = default!;
 #nullable restore
 #else
-        public string BaseModel { get; set; }
+        public string BaseModel { get => _explicitNullValueBaseModel; set { _explicitNullValueBaseModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("base_model"); else _explicitNullProperties?.Remove("base_model"); } }
+        private string _explicitNullValueBaseModel = default!;
 #endif
         /// <summary>Timestamp when the checkpoint was created</summary>
-        public DateTimeOffset? CreatedAt { get; set; }
+        public DateTimeOffset? CreatedAt { get => _explicitNullValueCreatedAt; set { _explicitNullValueCreatedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_at"); else _explicitNullProperties?.Remove("created_at"); } }
+        private DateTimeOffset? _explicitNullValueCreatedAt = default!;
         /// <summary>Unique identifier for the checkpoint</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Id { get; set; }
+        public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string? _explicitNullValueId = default!;
 #nullable restore
 #else
-        public string Id { get; set; }
+        public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string _explicitNullValueId = default!;
 #endif
         /// <summary>Where an inference checkpoint&apos;s weights are stored in the Together model registry. At least one of `model` and `adapter` is set.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RlInferenceCheckpointRegistration? InferenceRegistration { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlInferenceCheckpointRegistration? InferenceRegistration { get => _explicitNullValueInferenceRegistration; set { _explicitNullValueInferenceRegistration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inference_registration"); else _explicitNullProperties?.Remove("inference_registration"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlInferenceCheckpointRegistration? _explicitNullValueInferenceRegistration = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.RlInferenceCheckpointRegistration InferenceRegistration { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlInferenceCheckpointRegistration InferenceRegistration { get => _explicitNullValueInferenceRegistration; set { _explicitNullValueInferenceRegistration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inference_registration"); else _explicitNullProperties?.Remove("inference_registration"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlInferenceCheckpointRegistration _explicitNullValueInferenceRegistration = default!;
 #endif
         /// <summary>LoRA rank of the session that produced this checkpoint. Absent for full-weight sessions and for checkpoints saved before this field was recorded.</summary>
-        public int? LoraRank { get; set; }
+        public int? LoraRank { get => _explicitNullValueLoraRank; set { _explicitNullValueLoraRank = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lora_rank"); else _explicitNullProperties?.Remove("lora_rank"); } }
+        private int? _explicitNullValueLoraRank = default!;
         /// <summary>Training session that produced the checkpoint</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SessionId { get; set; }
+        public string? SessionId { get => _explicitNullValueSessionId; set { _explicitNullValueSessionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("session_id"); else _explicitNullProperties?.Remove("session_id"); } }
+        private string? _explicitNullValueSessionId = default!;
 #nullable restore
 #else
-        public string SessionId { get; set; }
+        public string SessionId { get => _explicitNullValueSessionId; set { _explicitNullValueSessionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("session_id"); else _explicitNullProperties?.Remove("session_id"); } }
+        private string _explicitNullValueSessionId = default!;
 #endif
         /// <summary>Training step at time of save</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RlCheckpointStep? Step { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlCheckpointStep? Step { get => _explicitNullValueStep; set { _explicitNullValueStep = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("step"); else _explicitNullProperties?.Remove("step"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlCheckpointStep? _explicitNullValueStep = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.RlCheckpointStep Step { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlCheckpointStep Step { get => _explicitNullValueStep; set { _explicitNullValueStep = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("step"); else _explicitNullProperties?.Remove("step"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlCheckpointStep _explicitNullValueStep = default!;
 #endif
         /// <summary>A specific revision of a model in the Together model registry</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RlModelRegistryArtifact? TrainingRegistration { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlModelRegistryArtifact? TrainingRegistration { get => _explicitNullValueTrainingRegistration; set { _explicitNullValueTrainingRegistration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("training_registration"); else _explicitNullProperties?.Remove("training_registration"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlModelRegistryArtifact? _explicitNullValueTrainingRegistration = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.RlModelRegistryArtifact TrainingRegistration { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlModelRegistryArtifact TrainingRegistration { get => _explicitNullValueTrainingRegistration; set { _explicitNullValueTrainingRegistration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("training_registration"); else _explicitNullProperties?.Remove("training_registration"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlModelRegistryArtifact _explicitNullValueTrainingRegistration = default!;
 #endif
         /// <summary>Whether a checkpoint is saved for training resume or inference download.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.RlCheckpointType? Type { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlCheckpointType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlCheckpointType? _explicitNullValueType = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlCheckpoint"/> and sets the default values.
         /// </summary>
@@ -84,7 +115,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.RlCheckpoint CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.RlCheckpoint();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.RlCheckpoint(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -121,6 +152,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlCheckpointStep>("step", Step);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlModelRegistryArtifact>("training_registration", TrainingRegistration);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlCheckpointType>("type", Type);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

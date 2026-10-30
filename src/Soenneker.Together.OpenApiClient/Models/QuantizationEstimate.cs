@@ -12,17 +12,32 @@ namespace Soenneker.Together.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class QuantizationEstimate : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("allowed_to_proceed") is { } nullNodeAllowedToProceed && nullNodeAllowedToProceed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowedToProceed = null;
+            if (parseNode.GetChildNode("credit_limit") is { } nullNodeCreditLimit && nullNodeCreditLimit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreditLimit = null;
+            if (parseNode.GetChildNode("price_usd") is { } nullNodePriceUsd && nullNodePriceUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PriceUsd = null;
+            if (parseNode.GetChildNode("time_hours") is { } nullNodeTimeHours && nullNodeTimeHours.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TimeHours = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether a create request at this price would be accepted.</summary>
-        public bool? AllowedToProceed { get; set; }
+        public bool? AllowedToProceed { get => _explicitNullValueAllowedToProceed; set { _explicitNullValueAllowedToProceed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowed_to_proceed"); else _explicitNullProperties?.Remove("allowed_to_proceed"); } }
+        private bool? _explicitNullValueAllowedToProceed = default!;
         /// <summary>Project credit limit in US dollars.</summary>
-        public double? CreditLimit { get; set; }
+        public double? CreditLimit { get => _explicitNullValueCreditLimit; set { _explicitNullValueCreditLimit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("credit_limit"); else _explicitNullProperties?.Remove("credit_limit"); } }
+        private double? _explicitNullValueCreditLimit = default!;
         /// <summary>Expected total run cost in US dollars.</summary>
-        public double? PriceUsd { get; set; }
+        public double? PriceUsd { get => _explicitNullValuePriceUsd; set { _explicitNullValuePriceUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("price_usd"); else _explicitNullProperties?.Remove("price_usd"); } }
+        private double? _explicitNullValuePriceUsd = default!;
         /// <summary>Expected wall-clock run time in hours, excluding queue time.</summary>
-        public double? TimeHours { get; set; }
+        public double? TimeHours { get => _explicitNullValueTimeHours; set { _explicitNullValueTimeHours = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("time_hours"); else _explicitNullProperties?.Remove("time_hours"); } }
+        private double? _explicitNullValueTimeHours = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.QuantizationEstimate"/> and sets the default values.
         /// </summary>
@@ -38,7 +53,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.QuantizationEstimate CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.QuantizationEstimate();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.QuantizationEstimate(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -65,6 +80,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteDoubleValue("credit_limit", CreditLimit);
             writer.WriteDoubleValue("price_usd", PriceUsd);
             writer.WriteDoubleValue("time_hours", TimeHours);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

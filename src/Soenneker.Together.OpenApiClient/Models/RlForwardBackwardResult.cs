@@ -12,26 +12,41 @@ namespace Soenneker.Together.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RlForwardBackwardResult : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("loss") is { } nullNodeLoss && nullNodeLoss.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Loss = null;
+            if (parseNode.GetChildNode("loss_fn_outputs") is { } nullNodeLossFnOutputs && nullNodeLossFnOutputs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LossFnOutputs = null;
+            if (parseNode.GetChildNode("metrics") is { } nullNodeMetrics && nullNodeMetrics.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Metrics = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Loss value</summary>
-        public double? Loss { get; set; }
+        public double? Loss { get => _explicitNullValueLoss; set { _explicitNullValueLoss = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("loss"); else _explicitNullProperties?.Remove("loss"); } }
+        private double? _explicitNullValueLoss = default!;
         /// <summary>Per-sample loss function outputs, in request order. Empty unless the request set `return_loss_fn_outputs`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Together.OpenApiClient.Models.RlLossFnOutput>? LossFnOutputs { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.RlLossFnOutput>? LossFnOutputs { get => _explicitNullValueLossFnOutputs; set { _explicitNullValueLossFnOutputs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("loss_fn_outputs"); else _explicitNullProperties?.Remove("loss_fn_outputs"); } }
+        private List<global::Soenneker.Together.OpenApiClient.Models.RlLossFnOutput>? _explicitNullValueLossFnOutputs = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Together.OpenApiClient.Models.RlLossFnOutput> LossFnOutputs { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.RlLossFnOutput> LossFnOutputs { get => _explicitNullValueLossFnOutputs; set { _explicitNullValueLossFnOutputs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("loss_fn_outputs"); else _explicitNullProperties?.Remove("loss_fn_outputs"); } }
+        private List<global::Soenneker.Together.OpenApiClient.Models.RlLossFnOutput> _explicitNullValueLossFnOutputs = default!;
 #endif
         /// <summary>Loss-specific metrics (e.g., KL divergence, clip fraction for GRPO)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RlForwardBackwardResultMetricsProperty? Metrics { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlForwardBackwardResultMetricsProperty? Metrics { get => _explicitNullValueMetrics; set { _explicitNullValueMetrics = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metrics"); else _explicitNullProperties?.Remove("metrics"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlForwardBackwardResultMetricsProperty? _explicitNullValueMetrics = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.RlForwardBackwardResultMetricsProperty Metrics { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlForwardBackwardResultMetricsProperty Metrics { get => _explicitNullValueMetrics; set { _explicitNullValueMetrics = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metrics"); else _explicitNullProperties?.Remove("metrics"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlForwardBackwardResultMetricsProperty _explicitNullValueMetrics = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlForwardBackwardResult"/> and sets the default values.
@@ -48,7 +63,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.RlForwardBackwardResult CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.RlForwardBackwardResult();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.RlForwardBackwardResult(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -73,6 +88,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteDoubleValue("loss", Loss);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RlLossFnOutput>("loss_fn_outputs", LossFnOutputs);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlForwardBackwardResultMetricsProperty>("metrics", Metrics);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

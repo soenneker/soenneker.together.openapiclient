@@ -12,16 +12,26 @@ namespace Soenneker.Together.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RlInferenceCheckpointResult : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("checkpoint") is { } nullNodeCheckpoint && nullNodeCheckpoint.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Checkpoint = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Saved inference checkpoint</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RlInferenceCheckpoint? Checkpoint { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlInferenceCheckpoint? Checkpoint { get => _explicitNullValueCheckpoint; set { _explicitNullValueCheckpoint = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("checkpoint"); else _explicitNullProperties?.Remove("checkpoint"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlInferenceCheckpoint? _explicitNullValueCheckpoint = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.RlInferenceCheckpoint Checkpoint { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlInferenceCheckpoint Checkpoint { get => _explicitNullValueCheckpoint; set { _explicitNullValueCheckpoint = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("checkpoint"); else _explicitNullProperties?.Remove("checkpoint"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlInferenceCheckpoint _explicitNullValueCheckpoint = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlInferenceCheckpointResult"/> and sets the default values.
@@ -38,7 +48,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.RlInferenceCheckpointResult CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.RlInferenceCheckpointResult();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.RlInferenceCheckpointResult(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -59,6 +69,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlInferenceCheckpoint>("checkpoint", Checkpoint);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

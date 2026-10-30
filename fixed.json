@@ -7469,11 +7469,19 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
+                  "format": "binary"
+                },
+                "x-client-original-success-schema": {
                   "$ref": "#/components/schemas/ChatCompletionResponse"
                 }
               },
               "text/event-stream": {
                 "schema": {
+                  "type": "string",
+                  "format": "binary"
+                },
+                "x-client-original-success-schema": {
                   "$ref": "#/components/schemas/ChatCompletionStream"
                 }
               }
@@ -7592,11 +7600,19 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
+                  "format": "binary"
+                },
+                "x-client-original-success-schema": {
                   "$ref": "#/components/schemas/CompletionResponse"
                 }
               },
               "text/event-stream": {
                 "schema": {
+                  "type": "string",
+                  "format": "binary"
+                },
+                "x-client-original-success-schema": {
                   "$ref": "#/components/schemas/CompletionStream"
                 }
               }
@@ -8354,7 +8370,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PostV1FineTunesPreview400Response"
+                  "$ref": "#/components/schemas/PostV1FineTunesPreview400ResponseError"
                 }
               }
             }
@@ -9675,21 +9691,37 @@
             "content": {
               "application/octet-stream": {
                 "schema": {
+                  "type": "string",
+                  "format": "binary"
+                },
+                "x-client-original-success-schema": {
                   "$ref": "#/components/schemas/AudioSpeech200OctetStreamResponseSchema"
                 }
               },
               "audio/wav": {
                 "schema": {
+                  "type": "string",
+                  "format": "binary"
+                },
+                "x-client-original-success-schema": {
                   "$ref": "#/components/schemas/AudioSpeech200WavResponseSchema"
                 }
               },
               "audio/mpeg": {
                 "schema": {
+                  "type": "string",
+                  "format": "binary"
+                },
+                "x-client-original-success-schema": {
                   "$ref": "#/components/schemas/AudioSpeech200MpegResponseSchema"
                 }
               },
               "text/event-stream": {
                 "schema": {
+                  "type": "string",
+                  "format": "binary"
+                },
+                "x-client-original-success-schema": {
                   "$ref": "#/components/schemas/AudioSpeechStreamResponse"
                 }
               }
@@ -28836,9 +28868,6 @@
         }
       },
       "WhoamiResponse": {
-        "required": [
-          "type"
-        ],
         "oneOf": [
           {
             "$ref": "#/components/schemas/WhoamiProjectApiKey"
@@ -28856,13 +28885,8 @@
             "$ref": "#/components/schemas/WhoamiUserOrgProjectJwt"
           }
         ],
-        "properties": {
-          "type": {
-            "type": "string"
-          }
-        },
         "description": "The caller. \u0060type\u0060 names the variant and which fields are present.",
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "type",
           "mapping": {
             "project_api_key": "#/components/schemas/WhoamiProjectApiKey",
@@ -29208,27 +29232,10 @@
         "description": "Placement policy to use when scheduling the deployment.",
         "oneOf": [
           {
-            "type": "object",
-            "properties": {
-              "inline": {
-                "$ref": "#/components/schemas/DePlacementOneOf1Inline"
-              }
-            },
-            "required": [
-              "inline"
-            ]
+            "$ref": "#/components/schemas/DeCreateDeploymentRequestPlacementOneOf1"
           },
           {
-            "type": "object",
-            "properties": {
-              "profile": {
-                "type": "string",
-                "description": "UID of a saved placement profile."
-              }
-            },
-            "required": [
-              "profile"
-            ]
+            "$ref": "#/components/schemas/DeCreateDeploymentRequestPlacementOneOf2"
           }
         ]
       },
@@ -29376,27 +29383,10 @@
         "description": "Region constraints used to schedule the deployment\u0027s replicas.",
         "oneOf": [
           {
-            "type": "object",
-            "properties": {
-              "inline": {
-                "$ref": "#/components/schemas/DePlacementOneOf1Inline"
-              }
-            },
-            "required": [
-              "inline"
-            ]
+            "$ref": "#/components/schemas/DeDeploymentPlacementOneOf1"
           },
           {
-            "type": "object",
-            "properties": {
-              "profile": {
-                "type": "string",
-                "description": "UID of a saved placement profile."
-              }
-            },
-            "required": [
-              "profile"
-            ]
+            "$ref": "#/components/schemas/DeDeploymentPlacementOneOf2"
           }
         ]
       },
@@ -29699,48 +29689,16 @@
         "description": "Sampling strategy applied to endpoint traffic.",
         "oneOf": [
           {
-            "type": "object",
-            "properties": {
-              "uniform": {
-                "$ref": "#/components/schemas/DeShadowExperimentSamplingOneOf1Uniform"
-              }
-            },
-            "required": [
-              "uniform"
-            ]
+            "$ref": "#/components/schemas/DeShadowExperimentEndpointSourceSamplingOneOf1"
           },
           {
-            "type": "object",
-            "properties": {
-              "keyBased": {
-                "$ref": "#/components/schemas/DeShadowExperimentSamplingOneOf2KeyBased"
-              }
-            },
-            "required": [
-              "keyBased"
-            ]
+            "$ref": "#/components/schemas/DeShadowExperimentEndpointSourceSamplingOneOf2"
           },
           {
-            "type": "object",
-            "properties": {
-              "adaptiveUniform": {
-                "$ref": "#/components/schemas/DeShadowExperimentSamplingOneOf3AdaptiveUniform"
-              }
-            },
-            "required": [
-              "adaptiveUniform"
-            ]
+            "$ref": "#/components/schemas/DeShadowExperimentEndpointSourceSamplingOneOf3"
           },
           {
-            "type": "object",
-            "properties": {
-              "adaptiveKeyBased": {
-                "$ref": "#/components/schemas/DeShadowExperimentSamplingOneOf4AdaptiveKeyBased"
-              }
-            },
-            "required": [
-              "adaptiveKeyBased"
-            ]
+            "$ref": "#/components/schemas/DeShadowExperimentEndpointSourceSamplingOneOf4"
           }
         ]
       },
@@ -29760,48 +29718,16 @@
         "description": "Resolved sampling strategy applied to endpoint traffic.",
         "oneOf": [
           {
-            "type": "object",
-            "properties": {
-              "uniform": {
-                "$ref": "#/components/schemas/DeShadowExperimentSamplingResponseOneOf1Uniform"
-              }
-            },
-            "required": [
-              "uniform"
-            ]
+            "$ref": "#/components/schemas/DeShadowExperimentEndpointSourceResponseSamplingOneOf1"
           },
           {
-            "type": "object",
-            "properties": {
-              "keyBased": {
-                "$ref": "#/components/schemas/DeShadowExperimentSamplingResponseOneOf2KeyBased"
-              }
-            },
-            "required": [
-              "keyBased"
-            ]
+            "$ref": "#/components/schemas/DeShadowExperimentEndpointSourceResponseSamplingOneOf2"
           },
           {
-            "type": "object",
-            "properties": {
-              "adaptiveUniform": {
-                "$ref": "#/components/schemas/DeShadowExperimentSamplingResponseOneOf3AdaptiveUniform"
-              }
-            },
-            "required": [
-              "adaptiveUniform"
-            ]
+            "$ref": "#/components/schemas/DeShadowExperimentEndpointSourceResponseSamplingOneOf3"
           },
           {
-            "type": "object",
-            "properties": {
-              "adaptiveKeyBased": {
-                "$ref": "#/components/schemas/DeShadowExperimentSamplingResponseOneOf4AdaptiveKeyBased"
-              }
-            },
-            "required": [
-              "adaptiveKeyBased"
-            ]
+            "$ref": "#/components/schemas/DeShadowExperimentEndpointSourceResponseSamplingOneOf4"
           }
         ]
       },
@@ -30396,9 +30322,6 @@
         ]
       },
       "ChatCompletionRequestResponseFormat": {
-        "required": [
-          "type"
-        ],
         "anyOf": [
           {
             "$ref": "#/components/schemas/ResponseFormatText"
@@ -30410,13 +30333,8 @@
             "$ref": "#/components/schemas/ResponseFormatJsonObject"
           }
         ],
-        "properties": {
-          "type": {
-            "type": "string"
-          }
-        },
         "description": "An object specifying the format that the model must output.\n\nSetting to \u0060{ \u0022type\u0022: \u0022json_schema\u0022, \u0022json_schema\u0022: {...} }\u0060 enables\nStructured Outputs which ensures the model will match your supplied JSON\nschema. Learn more in the [Structured Outputs\nguide](https://docs.together.ai/docs/json-mode).\n\nSetting to \u0060{ \u0022type\u0022: \u0022json_object\u0022 }\u0060 enables the older JSON mode, which\nensures the message the model generates is valid JSON. Using \u0060json_schema\u0060\nis preferred for models that support it.\n",
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "type",
           "mapping": {
             "ResponseFormatText": "#/components/schemas/ResponseFormatText",
@@ -30603,9 +30521,6 @@
         "example": "Our solar system orbits the Milky Way galaxy at about 515,000 mph"
       },
       "ImageResponseDataItem": {
-        "required": [
-          "type"
-        ],
         "oneOf": [
           {
             "$ref": "#/components/schemas/ImageResponseDataB64"
@@ -30614,12 +30529,7 @@
             "$ref": "#/components/schemas/ImageResponseDataUrl"
           }
         ],
-        "properties": {
-          "type": {
-            "type": "string"
-          }
-        },
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "type",
           "mapping": {
             "ImageResponseDataB64": "#/components/schemas/ImageResponseDataB64",
@@ -38936,6 +38846,156 @@
               "name": "Hour"
             }
           ]
+        }
+      },
+      "DeCreateDeploymentRequestPlacementOneOf1": {
+        "type": "object",
+        "properties": {
+          "inline": {
+            "$ref": "#/components/schemas/DePlacementOneOf1Inline"
+          }
+        },
+        "required": [
+          "inline"
+        ]
+      },
+      "DeCreateDeploymentRequestPlacementOneOf2": {
+        "type": "object",
+        "properties": {
+          "profile": {
+            "type": "string",
+            "description": "UID of a saved placement profile."
+          }
+        },
+        "required": [
+          "profile"
+        ]
+      },
+      "DeDeploymentPlacementOneOf1": {
+        "type": "object",
+        "properties": {
+          "inline": {
+            "$ref": "#/components/schemas/DePlacementOneOf1Inline"
+          }
+        },
+        "required": [
+          "inline"
+        ]
+      },
+      "DeDeploymentPlacementOneOf2": {
+        "type": "object",
+        "properties": {
+          "profile": {
+            "type": "string",
+            "description": "UID of a saved placement profile."
+          }
+        },
+        "required": [
+          "profile"
+        ]
+      },
+      "DeShadowExperimentEndpointSourceSamplingOneOf1": {
+        "type": "object",
+        "properties": {
+          "uniform": {
+            "$ref": "#/components/schemas/DeShadowExperimentSamplingOneOf1Uniform"
+          }
+        },
+        "required": [
+          "uniform"
+        ]
+      },
+      "DeShadowExperimentEndpointSourceSamplingOneOf2": {
+        "type": "object",
+        "properties": {
+          "keyBased": {
+            "$ref": "#/components/schemas/DeShadowExperimentSamplingOneOf2KeyBased"
+          }
+        },
+        "required": [
+          "keyBased"
+        ]
+      },
+      "DeShadowExperimentEndpointSourceSamplingOneOf3": {
+        "type": "object",
+        "properties": {
+          "adaptiveUniform": {
+            "$ref": "#/components/schemas/DeShadowExperimentSamplingOneOf3AdaptiveUniform"
+          }
+        },
+        "required": [
+          "adaptiveUniform"
+        ]
+      },
+      "DeShadowExperimentEndpointSourceSamplingOneOf4": {
+        "type": "object",
+        "properties": {
+          "adaptiveKeyBased": {
+            "$ref": "#/components/schemas/DeShadowExperimentSamplingOneOf4AdaptiveKeyBased"
+          }
+        },
+        "required": [
+          "adaptiveKeyBased"
+        ]
+      },
+      "DeShadowExperimentEndpointSourceResponseSamplingOneOf1": {
+        "type": "object",
+        "properties": {
+          "uniform": {
+            "$ref": "#/components/schemas/DeShadowExperimentSamplingResponseOneOf1Uniform"
+          }
+        },
+        "required": [
+          "uniform"
+        ]
+      },
+      "DeShadowExperimentEndpointSourceResponseSamplingOneOf2": {
+        "type": "object",
+        "properties": {
+          "keyBased": {
+            "$ref": "#/components/schemas/DeShadowExperimentSamplingResponseOneOf2KeyBased"
+          }
+        },
+        "required": [
+          "keyBased"
+        ]
+      },
+      "DeShadowExperimentEndpointSourceResponseSamplingOneOf3": {
+        "type": "object",
+        "properties": {
+          "adaptiveUniform": {
+            "$ref": "#/components/schemas/DeShadowExperimentSamplingResponseOneOf3AdaptiveUniform"
+          }
+        },
+        "required": [
+          "adaptiveUniform"
+        ]
+      },
+      "DeShadowExperimentEndpointSourceResponseSamplingOneOf4": {
+        "type": "object",
+        "properties": {
+          "adaptiveKeyBased": {
+            "$ref": "#/components/schemas/DeShadowExperimentSamplingResponseOneOf4AdaptiveKeyBased"
+          }
+        },
+        "required": [
+          "adaptiveKeyBased"
+        ]
+      },
+      "PostV1FineTunesPreview400ResponseError": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "Human-readable error message."
+          },
+          "detail": {
+            "type": "string",
+            "description": "Human-readable error detail."
+          }
+        },
+        "x-client-original-error-schema": {
+          "$ref": "#/components/schemas/PostV1FineTunesPreview400Response"
         }
       }
     },

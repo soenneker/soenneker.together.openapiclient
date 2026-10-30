@@ -11,39 +11,61 @@ namespace Soenneker.Together.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class EvaluationScoreParameters : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("input_data_file_path") is { } nullNodeInputDataFilePath && nullNodeInputDataFilePath.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InputDataFilePath = null;
+            if (parseNode.GetChildNode("judge") is { } nullNodeJudge && nullNodeJudge.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Judge = null;
+            if (parseNode.GetChildNode("max_score") is { } nullNodeMaxScore && nullNodeMaxScore.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxScore = null;
+            if (parseNode.GetChildNode("min_score") is { } nullNodeMinScore && nullNodeMinScore.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MinScore = null;
+            if (parseNode.GetChildNode("model_to_evaluate") is { } nullNodeModelToEvaluate && nullNodeModelToEvaluate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModelToEvaluate = null;
+            if (parseNode.GetChildNode("pass_threshold") is { } nullNodePassThreshold && nullNodePassThreshold.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PassThreshold = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Data file ID</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? InputDataFilePath { get; set; }
+        public string? InputDataFilePath { get => _explicitNullValueInputDataFilePath; set { _explicitNullValueInputDataFilePath = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_data_file_path"); else _explicitNullProperties?.Remove("input_data_file_path"); } }
+        private string? _explicitNullValueInputDataFilePath = default!;
 #nullable restore
 #else
-        public string InputDataFilePath { get; set; }
+        public string InputDataFilePath { get => _explicitNullValueInputDataFilePath; set { _explicitNullValueInputDataFilePath = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_data_file_path"); else _explicitNullProperties?.Remove("input_data_file_path"); } }
+        private string _explicitNullValueInputDataFilePath = default!;
 #endif
         /// <summary>The judge property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.EvaluationJudgeModelConfig? Judge { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.EvaluationJudgeModelConfig? Judge { get => _explicitNullValueJudge; set { _explicitNullValueJudge = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("judge"); else _explicitNullProperties?.Remove("judge"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.EvaluationJudgeModelConfig? _explicitNullValueJudge = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.EvaluationJudgeModelConfig Judge { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.EvaluationJudgeModelConfig Judge { get => _explicitNullValueJudge; set { _explicitNullValueJudge = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("judge"); else _explicitNullProperties?.Remove("judge"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.EvaluationJudgeModelConfig _explicitNullValueJudge = default!;
 #endif
         /// <summary>Maximum possible score</summary>
-        public double? MaxScore { get; set; }
+        public double? MaxScore { get => _explicitNullValueMaxScore; set { _explicitNullValueMaxScore = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_score"); else _explicitNullProperties?.Remove("max_score"); } }
+        private double? _explicitNullValueMaxScore = default!;
         /// <summary>Minimum possible score</summary>
-        public double? MinScore { get; set; }
+        public double? MinScore { get => _explicitNullValueMinScore; set { _explicitNullValueMinScore = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("min_score"); else _explicitNullProperties?.Remove("min_score"); } }
+        private double? _explicitNullValueMinScore = default!;
         /// <summary>The model_to_evaluate property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.EvaluationModelOrString? ModelToEvaluate { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.EvaluationModelOrString? ModelToEvaluate { get => _explicitNullValueModelToEvaluate; set { _explicitNullValueModelToEvaluate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_to_evaluate"); else _explicitNullProperties?.Remove("model_to_evaluate"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.EvaluationModelOrString? _explicitNullValueModelToEvaluate = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.EvaluationModelOrString ModelToEvaluate { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.EvaluationModelOrString ModelToEvaluate { get => _explicitNullValueModelToEvaluate; set { _explicitNullValueModelToEvaluate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_to_evaluate"); else _explicitNullProperties?.Remove("model_to_evaluate"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.EvaluationModelOrString _explicitNullValueModelToEvaluate = default!;
 #endif
         /// <summary>Score threshold for passing</summary>
-        public double? PassThreshold { get; set; }
+        public double? PassThreshold { get => _explicitNullValuePassThreshold; set { _explicitNullValuePassThreshold = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pass_threshold"); else _explicitNullProperties?.Remove("pass_threshold"); } }
+        private double? _explicitNullValuePassThreshold = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.EvaluationScoreParameters"/> and sets the default values.
         /// </summary>
@@ -59,7 +81,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.EvaluationScoreParameters CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.EvaluationScoreParameters();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.EvaluationScoreParameters(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -90,6 +112,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteDoubleValue("min_score", MinScore);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.EvaluationModelOrString>("model_to_evaluate", ModelToEvaluate);
             writer.WriteDoubleValue("pass_threshold", PassThreshold);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

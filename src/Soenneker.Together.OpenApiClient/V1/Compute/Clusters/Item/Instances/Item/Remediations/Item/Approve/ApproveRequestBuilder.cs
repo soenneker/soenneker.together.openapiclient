@@ -51,7 +51,7 @@ namespace Soenneker.Together.OpenApiClient.V1.Compute.Clusters.Item.Instances.It
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.Remediation>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.Remediation.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.Remediation>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.Remediation.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Approves a pending remediation.Only remediations with state PENDING_APPROVAL can be approved.On APPROVE: state changes to PENDING and the remediation process begins.The reviewed_by, review_time, and review_comment fields are populatedon the remediation after approval.

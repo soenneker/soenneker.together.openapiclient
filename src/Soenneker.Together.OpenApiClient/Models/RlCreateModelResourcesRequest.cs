@@ -12,44 +12,67 @@ namespace Soenneker.Together.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RlCreateModelResourcesRequest : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("base_model") is { } nullNodeBaseModel && nullNodeBaseModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaseModel = null;
+            if (parseNode.GetChildNode("base_weights_ref") is { } nullNodeBaseWeightsRef && nullNodeBaseWeightsRef.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaseWeightsRef = null;
+            if (parseNode.GetChildNode("compute_config") is { } nullNodeComputeConfig && nullNodeComputeConfig.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ComputeConfig = null;
+            if (parseNode.GetChildNode("inactive_timeout") is { } nullNodeInactiveTimeout && nullNodeInactiveTimeout.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InactiveTimeout = null;
+            if (parseNode.GetChildNode("lora_enabled") is { } nullNodeLoraEnabled && nullNodeLoraEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LoraEnabled = null;
+            if (parseNode.GetChildNode("optimizer_config") is { } nullNodeOptimizerConfig && nullNodeOptimizerConfig.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OptimizerConfig = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Base model to provision the resource for, selected from /rl/supported-models</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BaseModel { get; set; }
+        public string? BaseModel { get => _explicitNullValueBaseModel; set { _explicitNullValueBaseModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("base_model"); else _explicitNullProperties?.Remove("base_model"); } }
+        private string? _explicitNullValueBaseModel = default!;
 #nullable restore
 #else
-        public string BaseModel { get; set; }
+        public string BaseModel { get => _explicitNullValueBaseModel; set { _explicitNullValueBaseModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("base_model"); else _explicitNullProperties?.Remove("base_model"); } }
+        private string _explicitNullValueBaseModel = default!;
 #endif
         /// <summary>Model in this project&apos;s model registry whose weights the resource trains in place of the base model&apos;s own. It must be a full-weight model.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BaseWeightsRef { get; set; }
+        public string? BaseWeightsRef { get => _explicitNullValueBaseWeightsRef; set { _explicitNullValueBaseWeightsRef = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("base_weights_ref"); else _explicitNullProperties?.Remove("base_weights_ref"); } }
+        private string? _explicitNullValueBaseWeightsRef = default!;
 #nullable restore
 #else
-        public string BaseWeightsRef { get; set; }
+        public string BaseWeightsRef { get => _explicitNullValueBaseWeightsRef; set { _explicitNullValueBaseWeightsRef = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("base_weights_ref"); else _explicitNullProperties?.Remove("base_weights_ref"); } }
+        private string _explicitNullValueBaseWeightsRef = default!;
 #endif
         /// <summary>Compute layout to provision for a model resource</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RlComputeConfigCreateRequest? ComputeConfig { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlComputeConfigCreateRequest? ComputeConfig { get => _explicitNullValueComputeConfig; set { _explicitNullValueComputeConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("compute_config"); else _explicitNullProperties?.Remove("compute_config"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlComputeConfigCreateRequest? _explicitNullValueComputeConfig = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.RlComputeConfigCreateRequest ComputeConfig { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlComputeConfigCreateRequest ComputeConfig { get => _explicitNullValueComputeConfig; set { _explicitNullValueComputeConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("compute_config"); else _explicitNullProperties?.Remove("compute_config"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlComputeConfigCreateRequest _explicitNullValueComputeConfig = default!;
 #endif
         /// <summary>Seconds without activity after which the resource stops and its sessions expire, counted from when it becomes ready and from its last activity. Every operation on any of its sessions restarts the count, and an extend expiry call can keep it up longer.</summary>
-        public int? InactiveTimeout { get; set; }
+        public int? InactiveTimeout { get => _explicitNullValueInactiveTimeout; set { _explicitNullValueInactiveTimeout = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inactive_timeout"); else _explicitNullProperties?.Remove("inactive_timeout"); } }
+        private int? _explicitNullValueInactiveTimeout = default!;
         /// <summary>Whether the resource hosts LoRA sessions or a single full-weight session</summary>
-        public bool? LoraEnabled { get; set; }
+        public bool? LoraEnabled { get => _explicitNullValueLoraEnabled; set { _explicitNullValueLoraEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lora_enabled"); else _explicitNullProperties?.Remove("lora_enabled"); } }
+        private bool? _explicitNullValueLoraEnabled = default!;
         /// <summary>Optimizer configuration</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RlOptimizerConfig? OptimizerConfig { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlOptimizerConfig? OptimizerConfig { get => _explicitNullValueOptimizerConfig; set { _explicitNullValueOptimizerConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("optimizer_config"); else _explicitNullProperties?.Remove("optimizer_config"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlOptimizerConfig? _explicitNullValueOptimizerConfig = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.RlOptimizerConfig OptimizerConfig { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlOptimizerConfig OptimizerConfig { get => _explicitNullValueOptimizerConfig; set { _explicitNullValueOptimizerConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("optimizer_config"); else _explicitNullProperties?.Remove("optimizer_config"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlOptimizerConfig _explicitNullValueOptimizerConfig = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlCreateModelResourcesRequest"/> and sets the default values.
@@ -68,7 +91,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.RlCreateModelResourcesRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.RlCreateModelResourcesRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.RlCreateModelResourcesRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -99,6 +122,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteIntValue("inactive_timeout", InactiveTimeout);
             writer.WriteBoolValue("lora_enabled", LoraEnabled);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlOptimizerConfig>("optimizer_config", OptimizerConfig);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

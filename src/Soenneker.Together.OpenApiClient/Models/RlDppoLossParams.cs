@@ -12,13 +12,24 @@ namespace Soenneker.Together.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RlDppoLossParams : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("delta_high") is { } nullNodeDeltaHigh && nullNodeDeltaHigh.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeltaHigh = null;
+            if (parseNode.GetChildNode("delta_low") is { } nullNodeDeltaLow && nullNodeDeltaLow.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeltaLow = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Probability-change limit for tokens with positive advantage. Measured in probability space, not log-probability space. Must be in [0, 1]. Defaults to 0.15.</summary>
-        public float? DeltaHigh { get; set; }
+        public float? DeltaHigh { get => _explicitNullValueDeltaHigh; set { _explicitNullValueDeltaHigh = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("delta_high"); else _explicitNullProperties?.Remove("delta_high"); } }
+        private float? _explicitNullValueDeltaHigh = default!;
         /// <summary>Probability-change limit for tokens with negative advantage. Measured in probability space, not log-probability space. Must be in [0, 1]. Defaults to 0.15.</summary>
-        public float? DeltaLow { get; set; }
+        public float? DeltaLow { get => _explicitNullValueDeltaLow; set { _explicitNullValueDeltaLow = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("delta_low"); else _explicitNullProperties?.Remove("delta_low"); } }
+        private float? _explicitNullValueDeltaLow = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlDppoLossParams"/> and sets the default values.
         /// </summary>
@@ -36,7 +47,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.RlDppoLossParams CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.RlDppoLossParams();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.RlDppoLossParams(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -59,6 +70,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteFloatValue("delta_high", DeltaHigh);
             writer.WriteFloatValue("delta_low", DeltaLow);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

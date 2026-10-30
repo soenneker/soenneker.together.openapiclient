@@ -12,44 +12,67 @@ namespace Soenneker.Together.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class GpuClustersSharedVolumeCreateRequest : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("instance_cluster_id") is { } nullNodeInstanceClusterId && nullNodeInstanceClusterId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InstanceClusterId = null;
+            if (parseNode.GetChildNode("is_lifecycle_independent") is { } nullNodeIsLifecycleIndependent && nullNodeIsLifecycleIndependent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsLifecycleIndependent = null;
+            if (parseNode.GetChildNode("project_id") is { } nullNodeProjectId && nullNodeProjectId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProjectId = null;
+            if (parseNode.GetChildNode("region") is { } nullNodeRegion && nullNodeRegion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Region = null;
+            if (parseNode.GetChildNode("size_tib") is { } nullNodeSizeTib && nullNodeSizeTib.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SizeTib = null;
+            if (parseNode.GetChildNode("volume_name") is { } nullNodeVolumeName && nullNodeVolumeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VolumeName = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Cluster ID to place the volume on the same infrastructure as that GPU cluster.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? InstanceClusterId { get; set; }
+        public string? InstanceClusterId { get => _explicitNullValueInstanceClusterId; set { _explicitNullValueInstanceClusterId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("instance_cluster_id"); else _explicitNullProperties?.Remove("instance_cluster_id"); } }
+        private string? _explicitNullValueInstanceClusterId = default!;
 #nullable restore
 #else
-        public string InstanceClusterId { get; set; }
+        public string InstanceClusterId { get => _explicitNullValueInstanceClusterId; set { _explicitNullValueInstanceClusterId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("instance_cluster_id"); else _explicitNullProperties?.Remove("instance_cluster_id"); } }
+        private string _explicitNullValueInstanceClusterId = default!;
 #endif
         /// <summary>When true, the shared volume is not deleted when the cluster is decommissioned.</summary>
-        public bool? IsLifecycleIndependent { get; set; }
+        public bool? IsLifecycleIndependent { get => _explicitNullValueIsLifecycleIndependent; set { _explicitNullValueIsLifecycleIndependent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_lifecycle_independent"); else _explicitNullProperties?.Remove("is_lifecycle_independent"); } }
+        private bool? _explicitNullValueIsLifecycleIndependent = default!;
         /// <summary>Project ID that will own the volume. When omitted, the caller&apos;s default project is used.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ProjectId { get; set; }
+        public string? ProjectId { get => _explicitNullValueProjectId; set { _explicitNullValueProjectId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("project_id"); else _explicitNullProperties?.Remove("project_id"); } }
+        private string? _explicitNullValueProjectId = default!;
 #nullable restore
 #else
-        public string ProjectId { get; set; }
+        public string ProjectId { get => _explicitNullValueProjectId; set { _explicitNullValueProjectId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("project_id"); else _explicitNullProperties?.Remove("project_id"); } }
+        private string _explicitNullValueProjectId = default!;
 #endif
         /// <summary>Region name. Usable regions can be found from `clusters.list_regions()`</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Region { get; set; }
+        public string? Region { get => _explicitNullValueRegion; set { _explicitNullValueRegion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("region"); else _explicitNullProperties?.Remove("region"); } }
+        private string? _explicitNullValueRegion = default!;
 #nullable restore
 #else
-        public string Region { get; set; }
+        public string Region { get => _explicitNullValueRegion; set { _explicitNullValueRegion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("region"); else _explicitNullProperties?.Remove("region"); } }
+        private string _explicitNullValueRegion = default!;
 #endif
         /// <summary>Volume size in whole tebibytes (TiB).</summary>
-        public int? SizeTib { get; set; }
+        public int? SizeTib { get => _explicitNullValueSizeTib; set { _explicitNullValueSizeTib = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("size_tib"); else _explicitNullProperties?.Remove("size_tib"); } }
+        private int? _explicitNullValueSizeTib = default!;
         /// <summary>User provided name of the volume.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? VolumeName { get; set; }
+        public string? VolumeName { get => _explicitNullValueVolumeName; set { _explicitNullValueVolumeName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("volume_name"); else _explicitNullProperties?.Remove("volume_name"); } }
+        private string? _explicitNullValueVolumeName = default!;
 #nullable restore
 #else
-        public string VolumeName { get; set; }
+        public string VolumeName { get => _explicitNullValueVolumeName; set { _explicitNullValueVolumeName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("volume_name"); else _explicitNullProperties?.Remove("volume_name"); } }
+        private string _explicitNullValueVolumeName = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolumeCreateRequest"/> and sets the default values.
@@ -66,7 +89,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolumeCreateRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolumeCreateRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolumeCreateRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -97,6 +120,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteStringValue("region", Region);
             writer.WriteIntValue("size_tib", SizeTib);
             writer.WriteStringValue("volume_name", VolumeName);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

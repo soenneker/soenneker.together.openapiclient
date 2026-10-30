@@ -70,6 +70,8 @@ namespace Soenneker.Together.OpenApiClient.V1.Deployments.Item.Revisions
                 { "400", global::Soenneker.Together.OpenApiClient.Models.GetV1DeploymentsByIdRevisions400ResponseSchema.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.Together.OpenApiClient.Models.GetV1DeploymentsByIdRevisions404ResponseSchema.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Together.OpenApiClient.Models.GetV1DeploymentsByIdRevisions500ResponseSchema.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.RevisionEventListResponse>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.RevisionEventListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

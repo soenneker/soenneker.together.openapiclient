@@ -11,32 +11,48 @@ namespace Soenneker.Together.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class RlTrainingSample : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("loss_fn_inputs") is { } nullNodeLossFnInputs && nullNodeLossFnInputs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LossFnInputs = null;
+            if (parseNode.GetChildNode("model_input") is { } nullNodeModelInput && nullNodeModelInput.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModelInput = null;
+            if (parseNode.GetChildNode("routed_experts_key") is { } nullNodeRoutedExpertsKey && nullNodeRoutedExpertsKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RoutedExpertsKey = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Per-token loss tensors keyed by name. Include `target_tokens` and the inputs required by the selected loss. Each tensor must declare `int64` or `float32`, be one-dimensional, and have the same length.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RlTrainingSampleLossFnInputsProperty? LossFnInputs { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlTrainingSampleLossFnInputsProperty? LossFnInputs { get => _explicitNullValueLossFnInputs; set { _explicitNullValueLossFnInputs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("loss_fn_inputs"); else _explicitNullProperties?.Remove("loss_fn_inputs"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlTrainingSampleLossFnInputsProperty? _explicitNullValueLossFnInputs = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.RlTrainingSampleLossFnInputsProperty LossFnInputs { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlTrainingSampleLossFnInputsProperty LossFnInputs { get => _explicitNullValueLossFnInputs; set { _explicitNullValueLossFnInputs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("loss_fn_inputs"); else _explicitNullProperties?.Remove("loss_fn_inputs"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlTrainingSampleLossFnInputsProperty _explicitNullValueLossFnInputs = default!;
 #endif
         /// <summary>The model_input property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RlModelInput? ModelInput { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlModelInput? ModelInput { get => _explicitNullValueModelInput; set { _explicitNullValueModelInput = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_input"); else _explicitNullProperties?.Remove("model_input"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlModelInput? _explicitNullValueModelInput = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.RlModelInput ModelInput { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlModelInput ModelInput { get => _explicitNullValueModelInput; set { _explicitNullValueModelInput = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_input"); else _explicitNullProperties?.Remove("model_input"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlModelInput _explicitNullValueModelInput = default!;
 #endif
         /// <summary>Opaque key returned with a sampled sequence. Pass it unchanged with the corresponding training sample to reuse the same expert selections. The selections must cover the entire training sample or all but its final token. Training fails if the key is no longer available.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RoutedExpertsKey { get; set; }
+        public string? RoutedExpertsKey { get => _explicitNullValueRoutedExpertsKey; set { _explicitNullValueRoutedExpertsKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("routed_experts_key"); else _explicitNullProperties?.Remove("routed_experts_key"); } }
+        private string? _explicitNullValueRoutedExpertsKey = default!;
 #nullable restore
 #else
-        public string RoutedExpertsKey { get; set; }
+        public string RoutedExpertsKey { get => _explicitNullValueRoutedExpertsKey; set { _explicitNullValueRoutedExpertsKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("routed_experts_key"); else _explicitNullProperties?.Remove("routed_experts_key"); } }
+        private string _explicitNullValueRoutedExpertsKey = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlTrainingSample"/> and sets the default values.
@@ -53,7 +69,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.RlTrainingSample CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.RlTrainingSample();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.RlTrainingSample(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -78,6 +94,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlTrainingSampleLossFnInputsProperty>("loss_fn_inputs", LossFnInputs);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlModelInput>("model_input", ModelInput);
             writer.WriteStringValue("routed_experts_key", RoutedExpertsKey);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

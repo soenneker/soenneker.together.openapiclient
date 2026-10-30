@@ -12,48 +12,80 @@ namespace Soenneker.Together.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DeRolloutDefaultsPreview : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("estimatedEffectiveSteps") is { } nullNodeEstimatedEffectiveSteps && nullNodeEstimatedEffectiveSteps.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EstimatedEffectiveSteps = null;
+            if (parseNode.GetChildNode("estimatedSeedPercent") is { } nullNodeEstimatedSeedPercent && nullNodeEstimatedSeedPercent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EstimatedSeedPercent = null;
+            if (parseNode.GetChildNode("frozenPair") is { } nullNodeFrozenPair && nullNodeFrozenPair.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FrozenPair = null;
+            if (parseNode.GetChildNode("landingMaxReplicas") is { } nullNodeLandingMaxReplicas && nullNodeLandingMaxReplicas.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LandingMaxReplicas = null;
+            if (parseNode.GetChildNode("landingMinReplicas") is { } nullNodeLandingMinReplicas && nullNodeLandingMinReplicas.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LandingMinReplicas = null;
+            if (parseNode.GetChildNode("sourceReplicas") is { } nullNodeSourceReplicas && nullNodeSourceReplicas.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceReplicas = null;
+            if (parseNode.GetChildNode("spec") is { } nullNodeSpec && nullNodeSpec.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Spec = null;
+            if (parseNode.GetChildNode("targetMaxReplicas") is { } nullNodeTargetMaxReplicas && nullNodeTargetMaxReplicas.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TargetMaxReplicas = null;
+            if (parseNode.GetChildNode("targetMinReplicas") is { } nullNodeTargetMinReplicas && nullNodeTargetMinReplicas.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TargetMinReplicas = null;
+            if (parseNode.GetChildNode("targetReplicas") is { } nullNodeTargetReplicas && nullNodeTargetReplicas.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TargetReplicas = null;
+            if (parseNode.GetChildNode("warnings") is { } nullNodeWarnings && nullNodeWarnings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Warnings = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Steps the rollout is expected to walk when the caller leaves steps unset. Display only. Empty when the caller supplied steps or no ladder applies.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Together.OpenApiClient.Models.DeRolloutStep>? EstimatedEffectiveSteps { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.DeRolloutStep>? EstimatedEffectiveSteps { get => _explicitNullValueEstimatedEffectiveSteps; set { _explicitNullValueEstimatedEffectiveSteps = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("estimatedEffectiveSteps"); else _explicitNullProperties?.Remove("estimatedEffectiveSteps"); } }
+        private List<global::Soenneker.Together.OpenApiClient.Models.DeRolloutStep>? _explicitNullValueEstimatedEffectiveSteps = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Together.OpenApiClient.Models.DeRolloutStep> EstimatedEffectiveSteps { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.DeRolloutStep> EstimatedEffectiveSteps { get => _explicitNullValueEstimatedEffectiveSteps; set { _explicitNullValueEstimatedEffectiveSteps = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("estimatedEffectiveSteps"); else _explicitNullProperties?.Remove("estimatedEffectiveSteps"); } }
+        private List<global::Soenneker.Together.OpenApiClient.Models.DeRolloutStep> _explicitNullValueEstimatedEffectiveSteps = default!;
 #endif
         /// <summary>Percentage of the pair&apos;s traffic currently reaching the target, the floor the suggested steps start above. Unset when not a frozen pair or unknown; 0 is a real measurement.</summary>
-        public int? EstimatedSeedPercent { get; set; }
+        public int? EstimatedSeedPercent { get => _explicitNullValueEstimatedSeedPercent; set { _explicitNullValueEstimatedSeedPercent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("estimatedSeedPercent"); else _explicitNullProperties?.Remove("estimatedSeedPercent"); } }
+        private int? _explicitNullValueEstimatedSeedPercent = default!;
         /// <summary>True when both deployments stand in the endpoint traffic split, so the rollout resumes from the current split rather than from zero. See warnings for standing split shapes that StartRollout will still reject.</summary>
-        public bool? FrozenPair { get; set; }
+        public bool? FrozenPair { get => _explicitNullValueFrozenPair; set { _explicitNullValueFrozenPair = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("frozenPair"); else _explicitNullProperties?.Remove("frozenPair"); } }
+        private bool? _explicitNullValueFrozenPair = default!;
         /// <summary>Expected autoscaling maximum replicas for the completed target; unset while the final target replicas cannot be resolved.</summary>
-        public int? LandingMaxReplicas { get; set; }
+        public int? LandingMaxReplicas { get => _explicitNullValueLandingMaxReplicas; set { _explicitNullValueLandingMaxReplicas = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("landingMaxReplicas"); else _explicitNullProperties?.Remove("landingMaxReplicas"); } }
+        private int? _explicitNullValueLandingMaxReplicas = default!;
         /// <summary>Expected autoscaling minimum replicas for the completed target; unset while the final target replicas cannot be resolved.</summary>
-        public int? LandingMinReplicas { get; set; }
+        public int? LandingMinReplicas { get => _explicitNullValueLandingMinReplicas; set { _explicitNullValueLandingMinReplicas = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("landingMinReplicas"); else _explicitNullProperties?.Remove("landingMinReplicas"); } }
+        private int? _explicitNullValueLandingMinReplicas = default!;
         /// <summary>Source deployment replica count the defaults were computed from. Zero is a real value.</summary>
-        public int? SourceReplicas { get; set; }
+        public int? SourceReplicas { get => _explicitNullValueSourceReplicas; set { _explicitNullValueSourceReplicas = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sourceReplicas"); else _explicitNullProperties?.Remove("sourceReplicas"); } }
+        private int? _explicitNullValueSourceReplicas = default!;
         /// <summary>The caller&apos;s spec with defaulted values filled in for display. canary.steps is echoed exactly as sent; the suggested ladder is returned in estimatedEffectiveSteps instead.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.DeRolloutDefaultsPreviewSpec? Spec { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeRolloutDefaultsPreviewSpec? Spec { get => _explicitNullValueSpec; set { _explicitNullValueSpec = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("spec"); else _explicitNullProperties?.Remove("spec"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.DeRolloutDefaultsPreviewSpec? _explicitNullValueSpec = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.DeRolloutDefaultsPreviewSpec Spec { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeRolloutDefaultsPreviewSpec Spec { get => _explicitNullValueSpec; set { _explicitNullValueSpec = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("spec"); else _explicitNullProperties?.Remove("spec"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.DeRolloutDefaultsPreviewSpec _explicitNullValueSpec = default!;
 #endif
         /// <summary>Target deployment autoscaling maximum replica count. Zero is a real value.</summary>
-        public int? TargetMaxReplicas { get; set; }
+        public int? TargetMaxReplicas { get => _explicitNullValueTargetMaxReplicas; set { _explicitNullValueTargetMaxReplicas = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("targetMaxReplicas"); else _explicitNullProperties?.Remove("targetMaxReplicas"); } }
+        private int? _explicitNullValueTargetMaxReplicas = default!;
         /// <summary>Target deployment autoscaling minimum replica count. Zero is a real value.</summary>
-        public int? TargetMinReplicas { get; set; }
+        public int? TargetMinReplicas { get => _explicitNullValueTargetMinReplicas; set { _explicitNullValueTargetMinReplicas = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("targetMinReplicas"); else _explicitNullProperties?.Remove("targetMinReplicas"); } }
+        private int? _explicitNullValueTargetMinReplicas = default!;
         /// <summary>Target deployment replica count the defaults were computed from. Zero is a real value.</summary>
-        public int? TargetReplicas { get; set; }
+        public int? TargetReplicas { get => _explicitNullValueTargetReplicas; set { _explicitNullValueTargetReplicas = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("targetReplicas"); else _explicitNullProperties?.Remove("targetReplicas"); } }
+        private int? _explicitNullValueTargetReplicas = default!;
         /// <summary>Findings to surface next to the form when a later gate will refuse the spec or a standing guarantee is lost. An empty list means the shown values are safe to submit as-is; render message for unrecognized codes.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Together.OpenApiClient.Models.DePreviewWarning>? Warnings { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.DePreviewWarning>? Warnings { get => _explicitNullValueWarnings; set { _explicitNullValueWarnings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("warnings"); else _explicitNullProperties?.Remove("warnings"); } }
+        private List<global::Soenneker.Together.OpenApiClient.Models.DePreviewWarning>? _explicitNullValueWarnings = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Together.OpenApiClient.Models.DePreviewWarning> Warnings { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.DePreviewWarning> Warnings { get => _explicitNullValueWarnings; set { _explicitNullValueWarnings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("warnings"); else _explicitNullProperties?.Remove("warnings"); } }
+        private List<global::Soenneker.Together.OpenApiClient.Models.DePreviewWarning> _explicitNullValueWarnings = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.DeRolloutDefaultsPreview"/> and sets the default values.
@@ -70,7 +102,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.DeRolloutDefaultsPreview CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.DeRolloutDefaultsPreview();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.DeRolloutDefaultsPreview(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -111,6 +143,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteIntValue("targetMinReplicas", TargetMinReplicas);
             writer.WriteIntValue("targetReplicas", TargetReplicas);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.DePreviewWarning>("warnings", Warnings);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

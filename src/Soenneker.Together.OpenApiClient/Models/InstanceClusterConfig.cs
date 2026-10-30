@@ -11,57 +11,87 @@ namespace Soenneker.Together.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class InstanceClusterConfig : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("gpu_operator_version") is { } nullNodeGpuOperatorVersion && nullNodeGpuOperatorVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GpuOperatorVersion = null;
+            if (parseNode.GetChildNode("ingress") is { } nullNodeIngress && nullNodeIngress.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Ingress = null;
+            if (parseNode.GetChildNode("jumphost_enabled") is { } nullNodeJumphostEnabled && nullNodeJumphostEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) JumphostEnabled = null;
+            if (parseNode.GetChildNode("kubernetes_dashboard_enabled") is { } nullNodeKubernetesDashboardEnabled && nullNodeKubernetesDashboardEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) KubernetesDashboardEnabled = null;
+            if (parseNode.GetChildNode("load_balancer") is { } nullNodeLoadBalancer && nullNodeLoadBalancer.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LoadBalancer = null;
+            if (parseNode.GetChildNode("network_operator_version") is { } nullNodeNetworkOperatorVersion && nullNodeNetworkOperatorVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NetworkOperatorVersion = null;
+            if (parseNode.GetChildNode("observability") is { } nullNodeObservability && nullNodeObservability.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Observability = null;
+            if (parseNode.GetChildNode("slurm_startup_scripts") is { } nullNodeSlurmStartupScripts && nullNodeSlurmStartupScripts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SlurmStartupScripts = null;
+            if (parseNode.GetChildNode("ssh_ca_enabled") is { } nullNodeSshCaEnabled && nullNodeSshCaEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SshCaEnabled = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>NVIDIA GPU Operator chart/version for the tenant cluster (e.g. v24.6.2). When omitted, a service default is applied.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? GpuOperatorVersion { get; set; }
+        public string? GpuOperatorVersion { get => _explicitNullValueGpuOperatorVersion; set { _explicitNullValueGpuOperatorVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gpu_operator_version"); else _explicitNullProperties?.Remove("gpu_operator_version"); } }
+        private string? _explicitNullValueGpuOperatorVersion = default!;
 #nullable restore
 #else
-        public string GpuOperatorVersion { get; set; }
+        public string GpuOperatorVersion { get => _explicitNullValueGpuOperatorVersion; set { _explicitNullValueGpuOperatorVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gpu_operator_version"); else _explicitNullProperties?.Remove("gpu_operator_version"); } }
+        private string _explicitNullValueGpuOperatorVersion = default!;
 #endif
         /// <summary>The ingress property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.ClusterIngressConfig? Ingress { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.ClusterIngressConfig? Ingress { get => _explicitNullValueIngress; set { _explicitNullValueIngress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ingress"); else _explicitNullProperties?.Remove("ingress"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.ClusterIngressConfig? _explicitNullValueIngress = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.ClusterIngressConfig Ingress { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.ClusterIngressConfig Ingress { get => _explicitNullValueIngress; set { _explicitNullValueIngress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ingress"); else _explicitNullProperties?.Remove("ingress"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.ClusterIngressConfig _explicitNullValueIngress = default!;
 #endif
         /// <summary>The jumphost_enabled property</summary>
-        public bool? JumphostEnabled { get; set; }
+        public bool? JumphostEnabled { get => _explicitNullValueJumphostEnabled; set { _explicitNullValueJumphostEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("jumphost_enabled"); else _explicitNullProperties?.Remove("jumphost_enabled"); } }
+        private bool? _explicitNullValueJumphostEnabled = default!;
         /// <summary>The kubernetes_dashboard_enabled property</summary>
-        public bool? KubernetesDashboardEnabled { get; set; }
+        public bool? KubernetesDashboardEnabled { get => _explicitNullValueKubernetesDashboardEnabled; set { _explicitNullValueKubernetesDashboardEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kubernetes_dashboard_enabled"); else _explicitNullProperties?.Remove("kubernetes_dashboard_enabled"); } }
+        private bool? _explicitNullValueKubernetesDashboardEnabled = default!;
         /// <summary>The load_balancer property</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.InstanceClusterConfigLoadBalancer? LoadBalancer { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.InstanceClusterConfigLoadBalancer? LoadBalancer { get => _explicitNullValueLoadBalancer; set { _explicitNullValueLoadBalancer = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("load_balancer"); else _explicitNullProperties?.Remove("load_balancer"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.InstanceClusterConfigLoadBalancer? _explicitNullValueLoadBalancer = default!;
         /// <summary>NVIDIA Network Operator chart/version for the tenant cluster (e.g. v24.7.0). When omitted, a service default is applied.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? NetworkOperatorVersion { get; set; }
+        public string? NetworkOperatorVersion { get => _explicitNullValueNetworkOperatorVersion; set { _explicitNullValueNetworkOperatorVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("network_operator_version"); else _explicitNullProperties?.Remove("network_operator_version"); } }
+        private string? _explicitNullValueNetworkOperatorVersion = default!;
 #nullable restore
 #else
-        public string NetworkOperatorVersion { get; set; }
+        public string NetworkOperatorVersion { get => _explicitNullValueNetworkOperatorVersion; set { _explicitNullValueNetworkOperatorVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("network_operator_version"); else _explicitNullProperties?.Remove("network_operator_version"); } }
+        private string _explicitNullValueNetworkOperatorVersion = default!;
 #endif
         /// <summary>The observability property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.ObservabilityConfig? Observability { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.ObservabilityConfig? Observability { get => _explicitNullValueObservability; set { _explicitNullValueObservability = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("observability"); else _explicitNullProperties?.Remove("observability"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.ObservabilityConfig? _explicitNullValueObservability = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.ObservabilityConfig Observability { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.ObservabilityConfig Observability { get => _explicitNullValueObservability; set { _explicitNullValueObservability = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("observability"); else _explicitNullProperties?.Remove("observability"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.ObservabilityConfig _explicitNullValueObservability = default!;
 #endif
         /// <summary>SlurmStartupScripts carries optional Slurm lifecycle scripts (prolog/epilog, init, extra conf).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.SlurmStartupScripts? SlurmStartupScripts { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.SlurmStartupScripts? SlurmStartupScripts { get => _explicitNullValueSlurmStartupScripts; set { _explicitNullValueSlurmStartupScripts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slurm_startup_scripts"); else _explicitNullProperties?.Remove("slurm_startup_scripts"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.SlurmStartupScripts? _explicitNullValueSlurmStartupScripts = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.SlurmStartupScripts SlurmStartupScripts { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.SlurmStartupScripts SlurmStartupScripts { get => _explicitNullValueSlurmStartupScripts; set { _explicitNullValueSlurmStartupScripts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slurm_startup_scripts"); else _explicitNullProperties?.Remove("slurm_startup_scripts"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.SlurmStartupScripts _explicitNullValueSlurmStartupScripts = default!;
 #endif
         /// <summary>Whether this cluster uses a per-cluster SSH certificate authority for OIDC-signed SSH access.</summary>
-        public bool? SshCaEnabled { get; set; }
+        public bool? SshCaEnabled { get => _explicitNullValueSshCaEnabled; set { _explicitNullValueSshCaEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ssh_ca_enabled"); else _explicitNullProperties?.Remove("ssh_ca_enabled"); } }
+        private bool? _explicitNullValueSshCaEnabled = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.InstanceClusterConfig"/> and sets the default values.
         /// </summary>
@@ -77,7 +107,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.InstanceClusterConfig CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.InstanceClusterConfig();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.InstanceClusterConfig(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -114,6 +144,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.ObservabilityConfig>("observability", Observability);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.SlurmStartupScripts>("slurm_startup_scripts", SlurmStartupScripts);
             writer.WriteBoolValue("ssh_ca_enabled", SshCaEnabled);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

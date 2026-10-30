@@ -12,25 +12,43 @@ namespace Soenneker.Together.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RlLoraConfig : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("alpha") is { } nullNodeAlpha && nullNodeAlpha.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Alpha = null;
+            if (parseNode.GetChildNode("dropout") is { } nullNodeDropout && nullNodeDropout.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Dropout = null;
+            if (parseNode.GetChildNode("rank") is { } nullNodeRank && nullNodeRank.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Rank = null;
+            if (parseNode.GetChildNode("seed") is { } nullNodeSeed && nullNodeSeed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Seed = null;
+            if (parseNode.GetChildNode("train_unembed") is { } nullNodeTrainUnembed && nullNodeTrainUnembed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TrainUnembed = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Alpha of the LoRA adapter</summary>
-        public int? Alpha { get; set; }
+        public int? Alpha { get => _explicitNullValueAlpha; set { _explicitNullValueAlpha = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("alpha"); else _explicitNullProperties?.Remove("alpha"); } }
+        private int? _explicitNullValueAlpha = default!;
         /// <summary>Dropout of the LoRA adapter</summary>
-        public double? Dropout { get; set; }
+        public double? Dropout { get => _explicitNullValueDropout; set { _explicitNullValueDropout = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dropout"); else _explicitNullProperties?.Remove("dropout"); } }
+        private double? _explicitNullValueDropout = default!;
         /// <summary>Rank of the LoRA adapter</summary>
-        public int? Rank { get; set; }
+        public int? Rank { get => _explicitNullValueRank; set { _explicitNullValueRank = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rank"); else _explicitNullProperties?.Remove("rank"); } }
+        private int? _explicitNullValueRank = default!;
         /// <summary>Random seed for initializing LoRA adapter weights. Ignored when LoRA is disabled or the session resumes from a checkpoint.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RlLoraConfigSeed? Seed { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlLoraConfigSeed? Seed { get => _explicitNullValueSeed; set { _explicitNullValueSeed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("seed"); else _explicitNullProperties?.Remove("seed"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlLoraConfigSeed? _explicitNullValueSeed = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.RlLoraConfigSeed Seed { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlLoraConfigSeed Seed { get => _explicitNullValueSeed; set { _explicitNullValueSeed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("seed"); else _explicitNullProperties?.Remove("seed"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlLoraConfigSeed _explicitNullValueSeed = default!;
 #endif
         /// <summary>Whether to also train a LoRA adapter on the output head. Defaults to true.</summary>
-        public bool? TrainUnembed { get; set; }
+        public bool? TrainUnembed { get => _explicitNullValueTrainUnembed; set { _explicitNullValueTrainUnembed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("train_unembed"); else _explicitNullProperties?.Remove("train_unembed"); } }
+        private bool? _explicitNullValueTrainUnembed = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlLoraConfig"/> and sets the default values.
         /// </summary>
@@ -50,7 +68,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.RlLoraConfig CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.RlLoraConfig();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.RlLoraConfig(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -79,6 +97,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteIntValue("rank", Rank);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlLoraConfigSeed>("seed", Seed);
             writer.WriteBoolValue("train_unembed", TrainUnembed);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

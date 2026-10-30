@@ -12,48 +12,70 @@ namespace Soenneker.Together.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AddOnState : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("dashboard") is { } nullNodeDashboard && nullNodeDashboard.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Dashboard = null;
+            if (parseNode.GetChildNode("headlamp") is { } nullNodeHeadlamp && nullNodeHeadlamp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Headlamp = null;
+            if (parseNode.GetChildNode("ingress") is { } nullNodeIngress && nullNodeIngress.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Ingress = null;
+            if (parseNode.GetChildNode("slurm_web") is { } nullNodeSlurmWeb && nullNodeSlurmWeb.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SlurmWeb = null;
+            if (parseNode.GetChildNode("torchpass") is { } nullNodeTorchpass && nullNodeTorchpass.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Torchpass = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The dashboard property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.DashboardState? Dashboard { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DashboardState? Dashboard { get => _explicitNullValueDashboard; set { _explicitNullValueDashboard = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dashboard"); else _explicitNullProperties?.Remove("dashboard"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.DashboardState? _explicitNullValueDashboard = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.DashboardState Dashboard { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DashboardState Dashboard { get => _explicitNullValueDashboard; set { _explicitNullValueDashboard = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dashboard"); else _explicitNullProperties?.Remove("dashboard"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.DashboardState _explicitNullValueDashboard = default!;
 #endif
         /// <summary>State for the Headlamp Kubernetes dashboard add-on.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.HeadlampState? Headlamp { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.HeadlampState? Headlamp { get => _explicitNullValueHeadlamp; set { _explicitNullValueHeadlamp = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("headlamp"); else _explicitNullProperties?.Remove("headlamp"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.HeadlampState? _explicitNullValueHeadlamp = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.HeadlampState Headlamp { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.HeadlampState Headlamp { get => _explicitNullValueHeadlamp; set { _explicitNullValueHeadlamp = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("headlamp"); else _explicitNullProperties?.Remove("headlamp"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.HeadlampState _explicitNullValueHeadlamp = default!;
 #endif
         /// <summary>The ingress property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.IngressState? Ingress { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.IngressState? Ingress { get => _explicitNullValueIngress; set { _explicitNullValueIngress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ingress"); else _explicitNullProperties?.Remove("ingress"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.IngressState? _explicitNullValueIngress = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.IngressState Ingress { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.IngressState Ingress { get => _explicitNullValueIngress; set { _explicitNullValueIngress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ingress"); else _explicitNullProperties?.Remove("ingress"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.IngressState _explicitNullValueIngress = default!;
 #endif
         /// <summary>State for the Slurm Web add-on.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.SlurmWebState? SlurmWeb { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.SlurmWebState? SlurmWeb { get => _explicitNullValueSlurmWeb; set { _explicitNullValueSlurmWeb = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slurm_web"); else _explicitNullProperties?.Remove("slurm_web"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.SlurmWebState? _explicitNullValueSlurmWeb = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.SlurmWebState SlurmWeb { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.SlurmWebState SlurmWeb { get => _explicitNullValueSlurmWeb; set { _explicitNullValueSlurmWeb = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slurm_web"); else _explicitNullProperties?.Remove("slurm_web"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.SlurmWebState _explicitNullValueSlurmWeb = default!;
 #endif
         /// <summary>State for the Model Aware TorchPass add-on.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.TorchpassState? Torchpass { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.TorchpassState? Torchpass { get => _explicitNullValueTorchpass; set { _explicitNullValueTorchpass = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("torchpass"); else _explicitNullProperties?.Remove("torchpass"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.TorchpassState? _explicitNullValueTorchpass = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.TorchpassState Torchpass { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.TorchpassState Torchpass { get => _explicitNullValueTorchpass; set { _explicitNullValueTorchpass = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("torchpass"); else _explicitNullProperties?.Remove("torchpass"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.TorchpassState _explicitNullValueTorchpass = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.AddOnState"/> and sets the default values.
@@ -70,7 +92,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.AddOnState CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.AddOnState();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.AddOnState(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -99,6 +121,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.IngressState>("ingress", Ingress);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.SlurmWebState>("slurm_web", SlurmWeb);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.TorchpassState>("torchpass", Torchpass);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

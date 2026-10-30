@@ -12,27 +12,52 @@ namespace Soenneker.Together.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DeLatencyMetrics : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("itlP50Ms") is { } nullNodeItlP50Ms && nullNodeItlP50Ms.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ItlP50Ms = null;
+            if (parseNode.GetChildNode("itlP90Ms") is { } nullNodeItlP90Ms && nullNodeItlP90Ms.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ItlP90Ms = null;
+            if (parseNode.GetChildNode("itlP99Ms") is { } nullNodeItlP99Ms && nullNodeItlP99Ms.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ItlP99Ms = null;
+            if (parseNode.GetChildNode("latencyP50Ms") is { } nullNodeLatencyP50Ms && nullNodeLatencyP50Ms.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LatencyP50Ms = null;
+            if (parseNode.GetChildNode("latencyP90Ms") is { } nullNodeLatencyP90Ms && nullNodeLatencyP90Ms.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LatencyP90Ms = null;
+            if (parseNode.GetChildNode("latencyP99Ms") is { } nullNodeLatencyP99Ms && nullNodeLatencyP99Ms.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LatencyP99Ms = null;
+            if (parseNode.GetChildNode("ttftP50Ms") is { } nullNodeTtftP50Ms && nullNodeTtftP50Ms.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TtftP50Ms = null;
+            if (parseNode.GetChildNode("ttftP90Ms") is { } nullNodeTtftP90Ms && nullNodeTtftP90Ms.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TtftP90Ms = null;
+            if (parseNode.GetChildNode("ttftP99Ms") is { } nullNodeTtftP99Ms && nullNodeTtftP99Ms.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TtftP99Ms = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>50th-percentile inter-token latency, in milliseconds.</summary>
-        public double? ItlP50Ms { get; set; }
+        public double? ItlP50Ms { get => _explicitNullValueItlP50Ms; set { _explicitNullValueItlP50Ms = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("itlP50Ms"); else _explicitNullProperties?.Remove("itlP50Ms"); } }
+        private double? _explicitNullValueItlP50Ms = default!;
         /// <summary>90th-percentile inter-token latency, in milliseconds.</summary>
-        public double? ItlP90Ms { get; set; }
+        public double? ItlP90Ms { get => _explicitNullValueItlP90Ms; set { _explicitNullValueItlP90Ms = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("itlP90Ms"); else _explicitNullProperties?.Remove("itlP90Ms"); } }
+        private double? _explicitNullValueItlP90Ms = default!;
         /// <summary>99th-percentile inter-token latency, in milliseconds.</summary>
-        public double? ItlP99Ms { get; set; }
+        public double? ItlP99Ms { get => _explicitNullValueItlP99Ms; set { _explicitNullValueItlP99Ms = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("itlP99Ms"); else _explicitNullProperties?.Remove("itlP99Ms"); } }
+        private double? _explicitNullValueItlP99Ms = default!;
         /// <summary>50th-percentile end-to-end request latency, in milliseconds.</summary>
-        public double? LatencyP50Ms { get; set; }
+        public double? LatencyP50Ms { get => _explicitNullValueLatencyP50Ms; set { _explicitNullValueLatencyP50Ms = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latencyP50Ms"); else _explicitNullProperties?.Remove("latencyP50Ms"); } }
+        private double? _explicitNullValueLatencyP50Ms = default!;
         /// <summary>90th-percentile end-to-end request latency, in milliseconds.</summary>
-        public double? LatencyP90Ms { get; set; }
+        public double? LatencyP90Ms { get => _explicitNullValueLatencyP90Ms; set { _explicitNullValueLatencyP90Ms = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latencyP90Ms"); else _explicitNullProperties?.Remove("latencyP90Ms"); } }
+        private double? _explicitNullValueLatencyP90Ms = default!;
         /// <summary>99th-percentile end-to-end request latency, in milliseconds.</summary>
-        public double? LatencyP99Ms { get; set; }
+        public double? LatencyP99Ms { get => _explicitNullValueLatencyP99Ms; set { _explicitNullValueLatencyP99Ms = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latencyP99Ms"); else _explicitNullProperties?.Remove("latencyP99Ms"); } }
+        private double? _explicitNullValueLatencyP99Ms = default!;
         /// <summary>50th-percentile time to first token, in milliseconds.</summary>
-        public double? TtftP50Ms { get; set; }
+        public double? TtftP50Ms { get => _explicitNullValueTtftP50Ms; set { _explicitNullValueTtftP50Ms = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ttftP50Ms"); else _explicitNullProperties?.Remove("ttftP50Ms"); } }
+        private double? _explicitNullValueTtftP50Ms = default!;
         /// <summary>90th-percentile time to first token, in milliseconds.</summary>
-        public double? TtftP90Ms { get; set; }
+        public double? TtftP90Ms { get => _explicitNullValueTtftP90Ms; set { _explicitNullValueTtftP90Ms = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ttftP90Ms"); else _explicitNullProperties?.Remove("ttftP90Ms"); } }
+        private double? _explicitNullValueTtftP90Ms = default!;
         /// <summary>99th-percentile time to first token, in milliseconds.</summary>
-        public double? TtftP99Ms { get; set; }
+        public double? TtftP99Ms { get => _explicitNullValueTtftP99Ms; set { _explicitNullValueTtftP99Ms = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ttftP99Ms"); else _explicitNullProperties?.Remove("ttftP99Ms"); } }
+        private double? _explicitNullValueTtftP99Ms = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.DeLatencyMetrics"/> and sets the default values.
         /// </summary>
@@ -48,7 +73,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.DeLatencyMetrics CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.DeLatencyMetrics();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.DeLatencyMetrics(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -85,6 +110,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteDoubleValue("ttftP50Ms", TtftP50Ms);
             writer.WriteDoubleValue("ttftP90Ms", TtftP90Ms);
             writer.WriteDoubleValue("ttftP99Ms", TtftP99Ms);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

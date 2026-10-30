@@ -12,24 +12,37 @@ namespace Soenneker.Together.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RlInferenceCheckpointRegistration : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("adapter") is { } nullNodeAdapter && nullNodeAdapter.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Adapter = null;
+            if (parseNode.GetChildNode("model") is { } nullNodeModel && nullNodeModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Model = null;
+        }
+
         /// <summary>A specific revision of a model in the Together model registry</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RlModelRegistryArtifact? Adapter { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlModelRegistryArtifact? Adapter { get => _explicitNullValueAdapter; set { _explicitNullValueAdapter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("adapter"); else _explicitNullProperties?.Remove("adapter"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlModelRegistryArtifact? _explicitNullValueAdapter = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.RlModelRegistryArtifact Adapter { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlModelRegistryArtifact Adapter { get => _explicitNullValueAdapter; set { _explicitNullValueAdapter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("adapter"); else _explicitNullProperties?.Remove("adapter"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlModelRegistryArtifact _explicitNullValueAdapter = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>A specific revision of a model in the Together model registry</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RlModelRegistryArtifact? Model { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlModelRegistryArtifact? Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlModelRegistryArtifact? _explicitNullValueModel = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.RlModelRegistryArtifact Model { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlModelRegistryArtifact Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlModelRegistryArtifact _explicitNullValueModel = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlInferenceCheckpointRegistration"/> and sets the default values.
@@ -46,7 +59,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.RlInferenceCheckpointRegistration CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.RlInferenceCheckpointRegistration();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.RlInferenceCheckpointRegistration(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -69,6 +82,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlModelRegistryArtifact>("adapter", Adapter);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlModelRegistryArtifact>("model", Model);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

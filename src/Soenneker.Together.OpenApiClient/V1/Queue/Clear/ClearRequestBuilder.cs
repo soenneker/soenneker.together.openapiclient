@@ -59,6 +59,8 @@ namespace Soenneker.Together.OpenApiClient.V1.Queue.Clear
                 { "400", global::Soenneker.Together.OpenApiClient.Models.QueueError.CreateFromDiscriminatorValue },
                 { "401", global::Soenneker.Together.OpenApiClient.Models.QueueError.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Together.OpenApiClient.Models.QueueError.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.QueueClearResponse>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.QueueClearResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

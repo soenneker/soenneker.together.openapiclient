@@ -11,75 +11,118 @@ namespace Soenneker.Together.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class PostV1ImagesGenerationsRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("disable_safety_checker") is { } nullNodeDisableSafetyChecker && nullNodeDisableSafetyChecker.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DisableSafetyChecker = null;
+            if (parseNode.GetChildNode("guidance_scale") is { } nullNodeGuidanceScale && nullNodeGuidanceScale.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GuidanceScale = null;
+            if (parseNode.GetChildNode("height") is { } nullNodeHeight && nullNodeHeight.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Height = null;
+            if (parseNode.GetChildNode("image_loras") is { } nullNodeImageLoras && nullNodeImageLoras.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ImageLoras = null;
+            if (parseNode.GetChildNode("image_url") is { } nullNodeImageUrl && nullNodeImageUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ImageUrl = null;
+            if (parseNode.GetChildNode("model") is { } nullNodeModel && nullNodeModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Model = null;
+            if (parseNode.GetChildNode("n") is { } nullNodeN && nullNodeN.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) N = null;
+            if (parseNode.GetChildNode("negative_prompt") is { } nullNodeNegativePrompt && nullNodeNegativePrompt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NegativePrompt = null;
+            if (parseNode.GetChildNode("output_format") is { } nullNodeOutputFormat && nullNodeOutputFormat.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OutputFormat = null;
+            if (parseNode.GetChildNode("prompt") is { } nullNodePrompt && nullNodePrompt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Prompt = null;
+            if (parseNode.GetChildNode("reference_images") is { } nullNodeReferenceImages && nullNodeReferenceImages.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReferenceImages = null;
+            if (parseNode.GetChildNode("response_format") is { } nullNodeResponseFormat && nullNodeResponseFormat.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResponseFormat = null;
+            if (parseNode.GetChildNode("seed") is { } nullNodeSeed && nullNodeSeed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Seed = null;
+            if (parseNode.GetChildNode("steps") is { } nullNodeSteps && nullNodeSteps.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Steps = null;
+            if (parseNode.GetChildNode("width") is { } nullNodeWidth && nullNodeWidth.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Width = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>If true, disables the safety checker for image generation.</summary>
-        public bool? DisableSafetyChecker { get; set; }
+        public bool? DisableSafetyChecker { get => _explicitNullValueDisableSafetyChecker; set { _explicitNullValueDisableSafetyChecker = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("disable_safety_checker"); else _explicitNullProperties?.Remove("disable_safety_checker"); } }
+        private bool? _explicitNullValueDisableSafetyChecker = default!;
         /// <summary>Adjusts the alignment of the generated image with the input prompt. Higher values (e.g., 8-10) make the output more faithful to the prompt, while lower values (e.g., 1-5) encourage more creative freedom.</summary>
-        public double? GuidanceScale { get; set; }
+        public double? GuidanceScale { get => _explicitNullValueGuidanceScale; set { _explicitNullValueGuidanceScale = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("guidance_scale"); else _explicitNullProperties?.Remove("guidance_scale"); } }
+        private double? _explicitNullValueGuidanceScale = default!;
         /// <summary>Height of the image to generate in number of pixels.</summary>
-        public int? Height { get; set; }
+        public int? Height { get => _explicitNullValueHeight; set { _explicitNullValueHeight = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("height"); else _explicitNullProperties?.Remove("height"); } }
+        private int? _explicitNullValueHeight = default!;
         /// <summary>An array of objects that define LoRAs (Low-Rank Adaptations) to influence the generated image.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Together.OpenApiClient.Models.PostV1ImagesGenerationsRequestImageLorasItem>? ImageLoras { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.PostV1ImagesGenerationsRequestImageLorasItem>? ImageLoras { get => _explicitNullValueImageLoras; set { _explicitNullValueImageLoras = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("image_loras"); else _explicitNullProperties?.Remove("image_loras"); } }
+        private List<global::Soenneker.Together.OpenApiClient.Models.PostV1ImagesGenerationsRequestImageLorasItem>? _explicitNullValueImageLoras = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Together.OpenApiClient.Models.PostV1ImagesGenerationsRequestImageLorasItem> ImageLoras { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.PostV1ImagesGenerationsRequestImageLorasItem> ImageLoras { get => _explicitNullValueImageLoras; set { _explicitNullValueImageLoras = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("image_loras"); else _explicitNullProperties?.Remove("image_loras"); } }
+        private List<global::Soenneker.Together.OpenApiClient.Models.PostV1ImagesGenerationsRequestImageLorasItem> _explicitNullValueImageLoras = default!;
 #endif
         /// <summary>URL of an image to use for image models that support it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ImageUrl { get; set; }
+        public string? ImageUrl { get => _explicitNullValueImageUrl; set { _explicitNullValueImageUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("image_url"); else _explicitNullProperties?.Remove("image_url"); } }
+        private string? _explicitNullValueImageUrl = default!;
 #nullable restore
 #else
-        public string ImageUrl { get; set; }
+        public string ImageUrl { get => _explicitNullValueImageUrl; set { _explicitNullValueImageUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("image_url"); else _explicitNullProperties?.Remove("image_url"); } }
+        private string _explicitNullValueImageUrl = default!;
 #endif
         /// <summary>The model to use for image generation.&lt;br&gt; &lt;br&gt; [See all of Together AI&apos;s image models](https://docs.together.ai/docs/serverless-models#image-models)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.PostV1ImagesGenerationsRequestModel? Model { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.PostV1ImagesGenerationsRequestModel? Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.PostV1ImagesGenerationsRequestModel? _explicitNullValueModel = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.PostV1ImagesGenerationsRequestModel Model { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.PostV1ImagesGenerationsRequestModel Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.PostV1ImagesGenerationsRequestModel _explicitNullValueModel = default!;
 #endif
         /// <summary>Number of image results to generate.</summary>
-        public int? N { get; set; }
+        public int? N { get => _explicitNullValueN; set { _explicitNullValueN = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("n"); else _explicitNullProperties?.Remove("n"); } }
+        private int? _explicitNullValueN = default!;
         /// <summary>The prompt or prompts not to guide the image generation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? NegativePrompt { get; set; }
+        public string? NegativePrompt { get => _explicitNullValueNegativePrompt; set { _explicitNullValueNegativePrompt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("negative_prompt"); else _explicitNullProperties?.Remove("negative_prompt"); } }
+        private string? _explicitNullValueNegativePrompt = default!;
 #nullable restore
 #else
-        public string NegativePrompt { get; set; }
+        public string NegativePrompt { get => _explicitNullValueNegativePrompt; set { _explicitNullValueNegativePrompt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("negative_prompt"); else _explicitNullProperties?.Remove("negative_prompt"); } }
+        private string _explicitNullValueNegativePrompt = default!;
 #endif
         /// <summary>The format of the image response. Can be either be `jpeg` or `png`. Defaults to `jpeg`.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.PostV1ImagesGenerationsRequestOutputFormat? OutputFormat { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.PostV1ImagesGenerationsRequestOutputFormat? OutputFormat { get => _explicitNullValueOutputFormat; set { _explicitNullValueOutputFormat = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("output_format"); else _explicitNullProperties?.Remove("output_format"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.PostV1ImagesGenerationsRequestOutputFormat? _explicitNullValueOutputFormat = default!;
         /// <summary>A description of the desired images. Maximum length varies by model.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Prompt { get; set; }
+        public string? Prompt { get => _explicitNullValuePrompt; set { _explicitNullValuePrompt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prompt"); else _explicitNullProperties?.Remove("prompt"); } }
+        private string? _explicitNullValuePrompt = default!;
 #nullable restore
 #else
-        public string Prompt { get; set; }
+        public string Prompt { get => _explicitNullValuePrompt; set { _explicitNullValuePrompt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prompt"); else _explicitNullProperties?.Remove("prompt"); } }
+        private string _explicitNullValuePrompt = default!;
 #endif
         /// <summary>An array of image URLs that guide the overall appearance and style of the generated image. These reference images influence the visual characteristics consistently across the generation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? ReferenceImages { get; set; }
+        public List<string>? ReferenceImages { get => _explicitNullValueReferenceImages; set { _explicitNullValueReferenceImages = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reference_images"); else _explicitNullProperties?.Remove("reference_images"); } }
+        private List<string>? _explicitNullValueReferenceImages = default!;
 #nullable restore
 #else
-        public List<string> ReferenceImages { get; set; }
+        public List<string> ReferenceImages { get => _explicitNullValueReferenceImages; set { _explicitNullValueReferenceImages = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reference_images"); else _explicitNullProperties?.Remove("reference_images"); } }
+        private List<string> _explicitNullValueReferenceImages = default!;
 #endif
         /// <summary>Format of the image response. Can be either a base64 string or a URL.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.PostV1ImagesGenerationsRequestResponseFormat? ResponseFormat { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.PostV1ImagesGenerationsRequestResponseFormat? ResponseFormat { get => _explicitNullValueResponseFormat; set { _explicitNullValueResponseFormat = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("response_format"); else _explicitNullProperties?.Remove("response_format"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.PostV1ImagesGenerationsRequestResponseFormat? _explicitNullValueResponseFormat = default!;
         /// <summary>Seed used for generation. Can be used to reproduce image generations.</summary>
-        public int? Seed { get; set; }
+        public int? Seed { get => _explicitNullValueSeed; set { _explicitNullValueSeed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("seed"); else _explicitNullProperties?.Remove("seed"); } }
+        private int? _explicitNullValueSeed = default!;
         /// <summary>Number of generation steps.</summary>
-        public int? Steps { get; set; }
+        public int? Steps { get => _explicitNullValueSteps; set { _explicitNullValueSteps = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("steps"); else _explicitNullProperties?.Remove("steps"); } }
+        private int? _explicitNullValueSteps = default!;
         /// <summary>Width of the image to generate in number of pixels.</summary>
-        public int? Width { get; set; }
+        public int? Width { get => _explicitNullValueWidth; set { _explicitNullValueWidth = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("width"); else _explicitNullProperties?.Remove("width"); } }
+        private int? _explicitNullValueWidth = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.PostV1ImagesGenerationsRequest"/> and sets the default values.
         /// </summary>
@@ -100,7 +143,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.PostV1ImagesGenerationsRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.PostV1ImagesGenerationsRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.PostV1ImagesGenerationsRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -149,6 +192,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteIntValue("seed", Seed);
             writer.WriteIntValue("steps", Steps);
             writer.WriteIntValue("width", Width);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -12,32 +12,57 @@ namespace Soenneker.Together.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DeDeployment : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("autoscaling") is { } nullNodeAutoscaling && nullNodeAutoscaling.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Autoscaling = null;
+            if (parseNode.GetChildNode("config") is { } nullNodeConfig && nullNodeConfig.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Config = null;
+            if (parseNode.GetChildNode("configId") is { } nullNodeConfigId && nullNodeConfigId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConfigId = null;
+            if (parseNode.GetChildNode("endpointId") is { } nullNodeEndpointId && nullNodeEndpointId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EndpointId = null;
+            if (parseNode.GetChildNode("etag") is { } nullNodeEtag && nullNodeEtag.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Etag = null;
+            if (parseNode.GetChildNode("inactiveTimeout") is { } nullNodeInactiveTimeout && nullNodeInactiveTimeout.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InactiveTimeout = null;
+            if (parseNode.GetChildNode("maxConcurrentRequestsPerReplica") is { } nullNodeMaxConcurrentRequestsPerReplica && nullNodeMaxConcurrentRequestsPerReplica.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxConcurrentRequestsPerReplica = null;
+            if (parseNode.GetChildNode("model") is { } nullNodeModel && nullNodeModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Model = null;
+            if (parseNode.GetChildNode("modelId") is { } nullNodeModelId && nullNodeModelId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModelId = null;
+            if (parseNode.GetChildNode("modelRevisionId") is { } nullNodeModelRevisionId && nullNodeModelRevisionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModelRevisionId = null;
+            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("placement") is { } nullNodePlacement && nullNodePlacement.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Placement = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Replica bounds, timing windows, and metrics that control horizontal scaling.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.DeDeploymentAutoscaling? Autoscaling { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeDeploymentAutoscaling? Autoscaling { get => _explicitNullValueAutoscaling; set { _explicitNullValueAutoscaling = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("autoscaling"); else _explicitNullProperties?.Remove("autoscaling"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.DeDeploymentAutoscaling? _explicitNullValueAutoscaling = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.DeDeploymentAutoscaling Autoscaling { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeDeploymentAutoscaling Autoscaling { get => _explicitNullValueAutoscaling; set { _explicitNullValueAutoscaling = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("autoscaling"); else _explicitNullProperties?.Remove("autoscaling"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.DeDeploymentAutoscaling _explicitNullValueAutoscaling = default!;
 #endif
         /// <summary>Immutable config revision in the form `projects/{projectId}/configs/{configRevisionId}`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Config { get; set; }
+        public string? Config { get => _explicitNullValueConfig; set { _explicitNullValueConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("config"); else _explicitNullProperties?.Remove("config"); } }
+        private string? _explicitNullValueConfig = default!;
 #nullable restore
 #else
-        public string Config { get; set; }
+        public string Config { get => _explicitNullValueConfig; set { _explicitNullValueConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("config"); else _explicitNullProperties?.Remove("config"); } }
+        private string _explicitNullValueConfig = default!;
 #endif
         /// <summary>Deprecated. Use `config`. Config revision identifier, populated during migration.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ConfigId { get; set; }
+        public string? ConfigId { get => _explicitNullValueConfigId; set { _explicitNullValueConfigId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("configId"); else _explicitNullProperties?.Remove("configId"); } }
+        private string? _explicitNullValueConfigId = default!;
 #nullable restore
 #else
-        public string ConfigId { get; set; }
+        public string ConfigId { get => _explicitNullValueConfigId; set { _explicitNullValueConfigId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("configId"); else _explicitNullProperties?.Remove("configId"); } }
+        private string _explicitNullValueConfigId = default!;
 #endif
         /// <summary>Timestamp when the deployment was created.</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
@@ -46,20 +71,24 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>ID of the endpoint that contains the deployment.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EndpointId { get; set; }
+        public string? EndpointId { get => _explicitNullValueEndpointId; set { _explicitNullValueEndpointId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("endpointId"); else _explicitNullProperties?.Remove("endpointId"); } }
+        private string? _explicitNullValueEndpointId = default!;
 #nullable restore
 #else
-        public string EndpointId { get; set; }
+        public string EndpointId { get => _explicitNullValueEndpointId; set { _explicitNullValueEndpointId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("endpointId"); else _explicitNullProperties?.Remove("endpointId"); } }
+        private string _explicitNullValueEndpointId = default!;
 #endif
         /// <summary>Estimated fraction in [0, 1] of endpoint traffic that reaches this deployment under the current routing configuration. Absent or unrouted deployments are 0.</summary>
         public double? EstimatedEffectiveTrafficShare { get; private set; }
         /// <summary>Opaque version tag for optimistic concurrency control. Supply on update/delete to ensure consistent read-modify-write. If not set, the write overwrites based on current state.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Etag { get; set; }
+        public string? Etag { get => _explicitNullValueEtag; set { _explicitNullValueEtag = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("etag"); else _explicitNullProperties?.Remove("etag"); } }
+        private string? _explicitNullValueEtag = default!;
 #nullable restore
 #else
-        public string Etag { get; set; }
+        public string Etag { get => _explicitNullValueEtag; set { _explicitNullValueEtag = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("etag"); else _explicitNullProperties?.Remove("etag"); } }
+        private string _explicitNullValueEtag = default!;
 #endif
         /// <summary>Hardware selected by the deployment config, including GPU type and count.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -78,54 +107,67 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string Id { get; private set; }
 #endif
         /// <summary>Minutes without an inference request before the deployment stops automatically. Omitted or 0 means automatic stopping is disabled.</summary>
-        public int? InactiveTimeout { get; set; }
+        public int? InactiveTimeout { get => _explicitNullValueInactiveTimeout; set { _explicitNullValueInactiveTimeout = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inactiveTimeout"); else _explicitNullProperties?.Remove("inactiveTimeout"); } }
+        private int? _explicitNullValueInactiveTimeout = default!;
         /// <summary>Maximum number of inference requests that may be in flight to a single replica. If omitted, the platform uses one less than the config&apos;s per-replica concurrency limit to reserve a health-check slot. Values above that maximum are reduced on create and update; 0 means unlimited when the config limit is 1 or less. Changes take effect without restarting replicas.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MaxConcurrentRequestsPerReplica { get; set; }
+        public string? MaxConcurrentRequestsPerReplica { get => _explicitNullValueMaxConcurrentRequestsPerReplica; set { _explicitNullValueMaxConcurrentRequestsPerReplica = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maxConcurrentRequestsPerReplica"); else _explicitNullProperties?.Remove("maxConcurrentRequestsPerReplica"); } }
+        private string? _explicitNullValueMaxConcurrentRequestsPerReplica = default!;
 #nullable restore
 #else
-        public string MaxConcurrentRequestsPerReplica { get; set; }
+        public string MaxConcurrentRequestsPerReplica { get => _explicitNullValueMaxConcurrentRequestsPerReplica; set { _explicitNullValueMaxConcurrentRequestsPerReplica = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maxConcurrentRequestsPerReplica"); else _explicitNullProperties?.Remove("maxConcurrentRequestsPerReplica"); } }
+        private string _explicitNullValueMaxConcurrentRequestsPerReplica = default!;
 #endif
         /// <summary>Pinned model resource in the form `projects/{projectId}/models/{modelId}/revisions/{revisionId}`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Model { get; set; }
+        public string? Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private string? _explicitNullValueModel = default!;
 #nullable restore
 #else
-        public string Model { get; set; }
+        public string Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private string _explicitNullValueModel = default!;
 #endif
         /// <summary>Deprecated. Use `model`. Model identifier being served, populated during migration.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ModelId { get; set; }
+        public string? ModelId { get => _explicitNullValueModelId; set { _explicitNullValueModelId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modelId"); else _explicitNullProperties?.Remove("modelId"); } }
+        private string? _explicitNullValueModelId = default!;
 #nullable restore
 #else
-        public string ModelId { get; set; }
+        public string ModelId { get => _explicitNullValueModelId; set { _explicitNullValueModelId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modelId"); else _explicitNullProperties?.Remove("modelId"); } }
+        private string _explicitNullValueModelId = default!;
 #endif
         /// <summary>Deprecated. Use `model` with a /revisions/{revisionId} segment. Pin to a specific model revision.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ModelRevisionId { get; set; }
+        public string? ModelRevisionId { get => _explicitNullValueModelRevisionId; set { _explicitNullValueModelRevisionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modelRevisionId"); else _explicitNullProperties?.Remove("modelRevisionId"); } }
+        private string? _explicitNullValueModelRevisionId = default!;
 #nullable restore
 #else
-        public string ModelRevisionId { get; set; }
+        public string ModelRevisionId { get => _explicitNullValueModelRevisionId; set { _explicitNullValueModelRevisionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modelRevisionId"); else _explicitNullProperties?.Remove("modelRevisionId"); } }
+        private string _explicitNullValueModelRevisionId = default!;
 #endif
         /// <summary>Project- and endpoint-qualified deployment name in the form `&lt;project_slug&gt;/&lt;endpoint_name&gt;/&lt;deployment_name&gt;`. Pass it as `model` in an inference request to target this deployment directly instead of using the endpoint&apos;s traffic split.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>Region constraints used to schedule the deployment&apos;s replicas.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.DeDeploymentPlacement? Placement { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeDeploymentPlacement? Placement { get => _explicitNullValuePlacement; set { _explicitNullValuePlacement = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("placement"); else _explicitNullProperties?.Remove("placement"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.DeDeploymentPlacement? _explicitNullValuePlacement = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.DeDeploymentPlacement Placement { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeDeploymentPlacement Placement { get => _explicitNullValuePlacement; set { _explicitNullValuePlacement = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("placement"); else _explicitNullProperties?.Remove("placement"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.DeDeploymentPlacement _explicitNullValuePlacement = default!;
 #endif
         /// <summary>ID of the project that owns the deployment.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -194,7 +236,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.DeDeployment CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.DeDeployment();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.DeDeployment(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -250,6 +292,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteStringValue("modelRevisionId", ModelRevisionId);
             writer.WriteStringValue("name", Name);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeDeploymentPlacement>("placement", Placement);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -11,43 +11,66 @@ namespace Soenneker.Together.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class RerankRequest : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("documents") is { } nullNodeDocuments && nullNodeDocuments.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Documents = null;
+            if (parseNode.GetChildNode("model") is { } nullNodeModel && nullNodeModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Model = null;
+            if (parseNode.GetChildNode("query") is { } nullNodeQuery && nullNodeQuery.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Query = null;
+            if (parseNode.GetChildNode("rank_fields") is { } nullNodeRankFields && nullNodeRankFields.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RankFields = null;
+            if (parseNode.GetChildNode("return_documents") is { } nullNodeReturnDocuments && nullNodeReturnDocuments.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReturnDocuments = null;
+            if (parseNode.GetChildNode("top_n") is { } nullNodeTopN && nullNodeTopN.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TopN = null;
+        }
+
         /// <summary>List of documents, which can be either strings or objects.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RerankRequestDocuments? Documents { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RerankRequestDocuments? Documents { get => _explicitNullValueDocuments; set { _explicitNullValueDocuments = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("documents"); else _explicitNullProperties?.Remove("documents"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RerankRequestDocuments? _explicitNullValueDocuments = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.RerankRequestDocuments Documents { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RerankRequestDocuments Documents { get => _explicitNullValueDocuments; set { _explicitNullValueDocuments = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("documents"); else _explicitNullProperties?.Remove("documents"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RerankRequestDocuments _explicitNullValueDocuments = default!;
 #endif
         /// <summary>The model to be used for the rerank request.&lt;br&gt; &lt;br&gt; [See all of Together AI&apos;s rerank models](https://docs.together.ai/docs/serverless-models#rerank-models)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RerankRequestModel? Model { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RerankRequestModel? Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RerankRequestModel? _explicitNullValueModel = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.RerankRequestModel Model { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RerankRequestModel Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RerankRequestModel _explicitNullValueModel = default!;
 #endif
         /// <summary>The search query to be used for ranking.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Query { get; set; }
+        public string? Query { get => _explicitNullValueQuery; set { _explicitNullValueQuery = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query"); else _explicitNullProperties?.Remove("query"); } }
+        private string? _explicitNullValueQuery = default!;
 #nullable restore
 #else
-        public string Query { get; set; }
+        public string Query { get => _explicitNullValueQuery; set { _explicitNullValueQuery = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query"); else _explicitNullProperties?.Remove("query"); } }
+        private string _explicitNullValueQuery = default!;
 #endif
         /// <summary>List of keys in the JSON Object document to rank by. Defaults to use all supplied keys for ranking.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? RankFields { get; set; }
+        public List<string>? RankFields { get => _explicitNullValueRankFields; set { _explicitNullValueRankFields = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rank_fields"); else _explicitNullProperties?.Remove("rank_fields"); } }
+        private List<string>? _explicitNullValueRankFields = default!;
 #nullable restore
 #else
-        public List<string> RankFields { get; set; }
+        public List<string> RankFields { get => _explicitNullValueRankFields; set { _explicitNullValueRankFields = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rank_fields"); else _explicitNullProperties?.Remove("rank_fields"); } }
+        private List<string> _explicitNullValueRankFields = default!;
 #endif
         /// <summary>Whether to return supplied documents with the response.</summary>
-        public bool? ReturnDocuments { get; set; }
+        public bool? ReturnDocuments { get => _explicitNullValueReturnDocuments; set { _explicitNullValueReturnDocuments = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("return_documents"); else _explicitNullProperties?.Remove("return_documents"); } }
+        private bool? _explicitNullValueReturnDocuments = default!;
         /// <summary>The number of top results to return.</summary>
-        public int? TopN { get; set; }
+        public int? TopN { get => _explicitNullValueTopN; set { _explicitNullValueTopN = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("top_n"); else _explicitNullProperties?.Remove("top_n"); } }
+        private int? _explicitNullValueTopN = default!;
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -56,7 +79,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.RerankRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.RerankRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.RerankRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -86,7 +109,8 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteStringValue("query", Query);
             writer.WriteCollectionOfPrimitiveValues<string>("rank_fields", RankFields);
             writer.WriteBoolValue("return_documents", ReturnDocuments);
-            writer.WriteIntValue("top_n", TopN);
+            writer.WriteIntValue("top_n", TopN);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

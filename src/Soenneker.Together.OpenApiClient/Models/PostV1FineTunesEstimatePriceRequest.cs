@@ -11,60 +11,89 @@ namespace Soenneker.Together.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class PostV1FineTunesEstimatePriceRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("from_checkpoint") is { } nullNodeFromCheckpoint && nullNodeFromCheckpoint.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FromCheckpoint = null;
+            if (parseNode.GetChildNode("model") is { } nullNodeModel && nullNodeModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Model = null;
+            if (parseNode.GetChildNode("n_epochs") is { } nullNodeNEpochs && nullNodeNEpochs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NEpochs = null;
+            if (parseNode.GetChildNode("n_evals") is { } nullNodeNEvals && nullNodeNEvals.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NEvals = null;
+            if (parseNode.GetChildNode("training_file") is { } nullNodeTrainingFile && nullNodeTrainingFile.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TrainingFile = null;
+            if (parseNode.GetChildNode("training_method") is { } nullNodeTrainingMethod && nullNodeTrainingMethod.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TrainingMethod = null;
+            if (parseNode.GetChildNode("training_type") is { } nullNodeTrainingType && nullNodeTrainingType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TrainingType = null;
+            if (parseNode.GetChildNode("validation_file") is { } nullNodeValidationFile && nullNodeValidationFile.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ValidationFile = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The checkpoint identifier to continue training from a previous fine-tuning job. Format is `{$JOB_ID}` or `{$OUTPUT_MODEL_NAME}` or `{$JOB_ID}:{$STEP}` or `{$OUTPUT_MODEL_NAME}:{$STEP}`. The step value is optional; without it, uses the final checkpoint.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FromCheckpoint { get; set; }
+        public string? FromCheckpoint { get => _explicitNullValueFromCheckpoint; set { _explicitNullValueFromCheckpoint = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("from_checkpoint"); else _explicitNullProperties?.Remove("from_checkpoint"); } }
+        private string? _explicitNullValueFromCheckpoint = default!;
 #nullable restore
 #else
-        public string FromCheckpoint { get; set; }
+        public string FromCheckpoint { get => _explicitNullValueFromCheckpoint; set { _explicitNullValueFromCheckpoint = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("from_checkpoint"); else _explicitNullProperties?.Remove("from_checkpoint"); } }
+        private string _explicitNullValueFromCheckpoint = default!;
 #endif
         /// <summary>Name of the base model to run fine-tune job on</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Model { get; set; }
+        public string? Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private string? _explicitNullValueModel = default!;
 #nullable restore
 #else
-        public string Model { get; set; }
+        public string Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private string _explicitNullValueModel = default!;
 #endif
         /// <summary>Number of complete passes through the training dataset (higher values may improve results but increase cost and risk of overfitting)</summary>
-        public int? NEpochs { get; set; }
+        public int? NEpochs { get => _explicitNullValueNEpochs; set { _explicitNullValueNEpochs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("n_epochs"); else _explicitNullProperties?.Remove("n_epochs"); } }
+        private int? _explicitNullValueNEpochs = default!;
         /// <summary>Number of evaluations to be run on a given validation set during training</summary>
-        public int? NEvals { get; set; }
+        public int? NEvals { get => _explicitNullValueNEvals; set { _explicitNullValueNEvals = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("n_evals"); else _explicitNullProperties?.Remove("n_evals"); } }
+        private int? _explicitNullValueNEvals = default!;
         /// <summary>File-ID of a training file uploaded to the Together API</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TrainingFile { get; set; }
+        public string? TrainingFile { get => _explicitNullValueTrainingFile; set { _explicitNullValueTrainingFile = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("training_file"); else _explicitNullProperties?.Remove("training_file"); } }
+        private string? _explicitNullValueTrainingFile = default!;
 #nullable restore
 #else
-        public string TrainingFile { get; set; }
+        public string TrainingFile { get => _explicitNullValueTrainingFile; set { _explicitNullValueTrainingFile = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("training_file"); else _explicitNullProperties?.Remove("training_file"); } }
+        private string _explicitNullValueTrainingFile = default!;
 #endif
         /// <summary>The training method to use. &apos;sft&apos; for Supervised Fine-Tuning or &apos;dpo&apos; for Direct Preference Optimization.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.PostV1FineTunesEstimatePriceRequestTrainingMethod? TrainingMethod { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.PostV1FineTunesEstimatePriceRequestTrainingMethod? TrainingMethod { get => _explicitNullValueTrainingMethod; set { _explicitNullValueTrainingMethod = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("training_method"); else _explicitNullProperties?.Remove("training_method"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.PostV1FineTunesEstimatePriceRequestTrainingMethod? _explicitNullValueTrainingMethod = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.PostV1FineTunesEstimatePriceRequestTrainingMethod TrainingMethod { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.PostV1FineTunesEstimatePriceRequestTrainingMethod TrainingMethod { get => _explicitNullValueTrainingMethod; set { _explicitNullValueTrainingMethod = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("training_method"); else _explicitNullProperties?.Remove("training_method"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.PostV1FineTunesEstimatePriceRequestTrainingMethod _explicitNullValueTrainingMethod = default!;
 #endif
         /// <summary>The training type to use. Defaults to LoRA if not provided.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.PostV1FineTunesEstimatePriceRequestTrainingType? TrainingType { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.PostV1FineTunesEstimatePriceRequestTrainingType? TrainingType { get => _explicitNullValueTrainingType; set { _explicitNullValueTrainingType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("training_type"); else _explicitNullProperties?.Remove("training_type"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.PostV1FineTunesEstimatePriceRequestTrainingType? _explicitNullValueTrainingType = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.PostV1FineTunesEstimatePriceRequestTrainingType TrainingType { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.PostV1FineTunesEstimatePriceRequestTrainingType TrainingType { get => _explicitNullValueTrainingType; set { _explicitNullValueTrainingType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("training_type"); else _explicitNullProperties?.Remove("training_type"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.PostV1FineTunesEstimatePriceRequestTrainingType _explicitNullValueTrainingType = default!;
 #endif
         /// <summary>File-ID of a validation file uploaded to the Together API</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ValidationFile { get; set; }
+        public string? ValidationFile { get => _explicitNullValueValidationFile; set { _explicitNullValueValidationFile = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("validation_file"); else _explicitNullProperties?.Remove("validation_file"); } }
+        private string? _explicitNullValueValidationFile = default!;
 #nullable restore
 #else
-        public string ValidationFile { get; set; }
+        public string ValidationFile { get => _explicitNullValueValidationFile; set { _explicitNullValueValidationFile = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("validation_file"); else _explicitNullProperties?.Remove("validation_file"); } }
+        private string _explicitNullValueValidationFile = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.PostV1FineTunesEstimatePriceRequest"/> and sets the default values.
@@ -83,7 +112,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.PostV1FineTunesEstimatePriceRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.PostV1FineTunesEstimatePriceRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.PostV1FineTunesEstimatePriceRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -118,6 +147,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.PostV1FineTunesEstimatePriceRequestTrainingMethod>("training_method", TrainingMethod);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.PostV1FineTunesEstimatePriceRequestTrainingType>("training_type", TrainingType);
             writer.WriteStringValue("validation_file", ValidationFile);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

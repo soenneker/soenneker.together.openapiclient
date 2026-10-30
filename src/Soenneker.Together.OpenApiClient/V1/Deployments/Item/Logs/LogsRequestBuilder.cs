@@ -55,6 +55,8 @@ namespace Soenneker.Together.OpenApiClient.V1.Deployments.Item.Logs
             {
                 { "404", global::Soenneker.Together.OpenApiClient.Models.GetV1DeploymentsByIdLogs404ResponseSchema.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Together.OpenApiClient.Models.GetV1DeploymentsByIdLogs500ResponseSchema.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.DeploymentLogs>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.DeploymentLogs.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

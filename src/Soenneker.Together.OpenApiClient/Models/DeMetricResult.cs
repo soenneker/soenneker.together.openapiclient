@@ -12,45 +12,78 @@ namespace Soenneker.Together.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DeMetricResult : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("check") is { } nullNodeCheck && nullNodeCheck.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Check = null;
+            if (parseNode.GetChildNode("direction") is { } nullNodeDirection && nullNodeDirection.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Direction = null;
+            if (parseNode.GetChildNode("failureReason") is { } nullNodeFailureReason && nullNodeFailureReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FailureReason = null;
+            if (parseNode.GetChildNode("maxRegressionPercent") is { } nullNodeMaxRegressionPercent && nullNodeMaxRegressionPercent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxRegressionPercent = null;
+            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("operator") is { } nullNodeOperator && nullNodeOperator.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Operator = null;
+            if (parseNode.GetChildNode("percentile") is { } nullNodePercentile && nullNodePercentile.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Percentile = null;
+            if (parseNode.GetChildNode("sourceValue") is { } nullNodeSourceValue && nullNodeSourceValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceValue = null;
+            if (parseNode.GetChildNode("stat") is { } nullNodeStat && nullNodeStat.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Stat = null;
+            if (parseNode.GetChildNode("targetValue") is { } nullNodeTargetValue && nullNodeTargetValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TargetValue = null;
+            if (parseNode.GetChildNode("threshold") is { } nullNodeThreshold && nullNodeThreshold.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Threshold = null;
+            if (parseNode.GetChildNode("verdict") is { } nullNodeVerdict && nullNodeVerdict.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Verdict = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Evaluation form used by the metric rule.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.DeMetricResultCheck? Check { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeMetricResultCheck? Check { get => _explicitNullValueCheck; set { _explicitNullValueCheck = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("check"); else _explicitNullProperties?.Remove("check"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.DeMetricResultCheck? _explicitNullValueCheck = default!;
         /// <summary>Direction that indicates whether higher or lower values are worse.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.DeMetricResultDirection? Direction { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeMetricResultDirection? Direction { get => _explicitNullValueDirection; set { _explicitNullValueDirection = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("direction"); else _explicitNullProperties?.Remove("direction"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.DeMetricResultDirection? _explicitNullValueDirection = default!;
         /// <summary>Rule-specific failure text. Set only when verdict is METRIC_VERDICT_BREACHED and the gate recorded one.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FailureReason { get; set; }
+        public string? FailureReason { get => _explicitNullValueFailureReason; set { _explicitNullValueFailureReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failureReason"); else _explicitNullProperties?.Remove("failureReason"); } }
+        private string? _explicitNullValueFailureReason = default!;
 #nullable restore
 #else
-        public string FailureReason { get; set; }
+        public string FailureReason { get => _explicitNullValueFailureReason; set { _explicitNullValueFailureReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failureReason"); else _explicitNullProperties?.Remove("failureReason"); } }
+        private string _explicitNullValueFailureReason = default!;
 #endif
         /// <summary>Regression percentage limit used when check is METRIC_CHECK_TYPE_REGRESSION.</summary>
-        public double? MaxRegressionPercent { get; set; }
+        public double? MaxRegressionPercent { get => _explicitNullValueMaxRegressionPercent; set { _explicitNullValueMaxRegressionPercent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maxRegressionPercent"); else _explicitNullProperties?.Remove("maxRegressionPercent"); } }
+        private double? _explicitNullValueMaxRegressionPercent = default!;
         /// <summary>Metric name as exported to the observability backend.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>Threshold comparison operator.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.DeMetricResultOperator? Operator { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeMetricResultOperator? Operator { get => _explicitNullValueOperator; set { _explicitNullValueOperator = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("operator"); else _explicitNullProperties?.Remove("operator"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.DeMetricResultOperator? _explicitNullValueOperator = default!;
         /// <summary>Percentile value, such as 99. Set only when stat is METRIC_STAT_TYPE_PERCENTILE.</summary>
-        public int? Percentile { get; set; }
+        public int? Percentile { get => _explicitNullValuePercentile; set { _explicitNullValuePercentile = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("percentile"); else _explicitNullProperties?.Remove("percentile"); } }
+        private int? _explicitNullValuePercentile = default!;
         /// <summary>Observed source baseline. Set only for regression checks with a recorded observation; a 0 reading serializes explicitly.</summary>
-        public double? SourceValue { get; set; }
+        public double? SourceValue { get => _explicitNullValueSourceValue; set { _explicitNullValueSourceValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sourceValue"); else _explicitNullProperties?.Remove("sourceValue"); } }
+        private double? _explicitNullValueSourceValue = default!;
         /// <summary>Aggregation used for the metric.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.DeMetricResultStat? Stat { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeMetricResultStat? Stat { get => _explicitNullValueStat; set { _explicitNullValueStat = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stat"); else _explicitNullProperties?.Remove("stat"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.DeMetricResultStat? _explicitNullValueStat = default!;
         /// <summary>Observed target value. Set when the gate recorded an observation; absent on synthesized unavailable results. A 0 reading serializes explicitly.</summary>
-        public double? TargetValue { get; set; }
+        public double? TargetValue { get => _explicitNullValueTargetValue; set { _explicitNullValueTargetValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("targetValue"); else _explicitNullProperties?.Remove("targetValue"); } }
+        private double? _explicitNullValueTargetValue = default!;
         /// <summary>Threshold criteria used when check is METRIC_CHECK_TYPE_THRESHOLD.</summary>
-        public double? Threshold { get; set; }
+        public double? Threshold { get => _explicitNullValueThreshold; set { _explicitNullValueThreshold = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("threshold"); else _explicitNullProperties?.Remove("threshold"); } }
+        private double? _explicitNullValueThreshold = default!;
         /// <summary>Rule decision recorded by the metric gate. Absent when no decision was recorded.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.DeMetricResultVerdict? Verdict { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeMetricResultVerdict? Verdict { get => _explicitNullValueVerdict; set { _explicitNullValueVerdict = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("verdict"); else _explicitNullProperties?.Remove("verdict"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.DeMetricResultVerdict? _explicitNullValueVerdict = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.DeMetricResult"/> and sets the default values.
         /// </summary>
@@ -66,7 +99,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.DeMetricResult CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.DeMetricResult();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.DeMetricResult(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -109,6 +142,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteDoubleValue("targetValue", TargetValue);
             writer.WriteDoubleValue("threshold", Threshold);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeMetricResultVerdict>("verdict", Verdict);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

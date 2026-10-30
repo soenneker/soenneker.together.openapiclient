@@ -11,32 +11,53 @@ namespace Soenneker.Together.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class EvaluationScoreResults : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("aggregated_scores") is { } nullNodeAggregatedScores && nullNodeAggregatedScores.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AggregatedScores = null;
+            if (parseNode.GetChildNode("failed_samples") is { } nullNodeFailedSamples && nullNodeFailedSamples.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FailedSamples = null;
+            if (parseNode.GetChildNode("generation_fail_count") is { } nullNodeGenerationFailCount && nullNodeGenerationFailCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GenerationFailCount = null;
+            if (parseNode.GetChildNode("invalid_score_count") is { } nullNodeInvalidScoreCount && nullNodeInvalidScoreCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InvalidScoreCount = null;
+            if (parseNode.GetChildNode("judge_fail_count") is { } nullNodeJudgeFailCount && nullNodeJudgeFailCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) JudgeFailCount = null;
+            if (parseNode.GetChildNode("result_file_id") is { } nullNodeResultFileId && nullNodeResultFileId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResultFileId = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The aggregated_scores property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.EvaluationScoreResultsAggregatedScores? AggregatedScores { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.EvaluationScoreResultsAggregatedScores? AggregatedScores { get => _explicitNullValueAggregatedScores; set { _explicitNullValueAggregatedScores = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("aggregated_scores"); else _explicitNullProperties?.Remove("aggregated_scores"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.EvaluationScoreResultsAggregatedScores? _explicitNullValueAggregatedScores = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.EvaluationScoreResultsAggregatedScores AggregatedScores { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.EvaluationScoreResultsAggregatedScores AggregatedScores { get => _explicitNullValueAggregatedScores; set { _explicitNullValueAggregatedScores = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("aggregated_scores"); else _explicitNullProperties?.Remove("aggregated_scores"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.EvaluationScoreResultsAggregatedScores _explicitNullValueAggregatedScores = default!;
 #endif
         /// <summary>number of failed samples generated from model</summary>
-        public double? FailedSamples { get; set; }
+        public double? FailedSamples { get => _explicitNullValueFailedSamples; set { _explicitNullValueFailedSamples = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failed_samples"); else _explicitNullProperties?.Remove("failed_samples"); } }
+        private double? _explicitNullValueFailedSamples = default!;
         /// <summary>Number of failed generations.</summary>
-        public double? GenerationFailCount { get; set; }
+        public double? GenerationFailCount { get => _explicitNullValueGenerationFailCount; set { _explicitNullValueGenerationFailCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("generation_fail_count"); else _explicitNullProperties?.Remove("generation_fail_count"); } }
+        private double? _explicitNullValueGenerationFailCount = default!;
         /// <summary>number of invalid scores generated from model</summary>
-        public double? InvalidScoreCount { get; set; }
+        public double? InvalidScoreCount { get => _explicitNullValueInvalidScoreCount; set { _explicitNullValueInvalidScoreCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("invalid_score_count"); else _explicitNullProperties?.Remove("invalid_score_count"); } }
+        private double? _explicitNullValueInvalidScoreCount = default!;
         /// <summary>Number of failed judge generations</summary>
-        public double? JudgeFailCount { get; set; }
+        public double? JudgeFailCount { get => _explicitNullValueJudgeFailCount; set { _explicitNullValueJudgeFailCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("judge_fail_count"); else _explicitNullProperties?.Remove("judge_fail_count"); } }
+        private double? _explicitNullValueJudgeFailCount = default!;
         /// <summary>Data File ID</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ResultFileId { get; set; }
+        public string? ResultFileId { get => _explicitNullValueResultFileId; set { _explicitNullValueResultFileId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("result_file_id"); else _explicitNullProperties?.Remove("result_file_id"); } }
+        private string? _explicitNullValueResultFileId = default!;
 #nullable restore
 #else
-        public string ResultFileId { get; set; }
+        public string ResultFileId { get => _explicitNullValueResultFileId; set { _explicitNullValueResultFileId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("result_file_id"); else _explicitNullProperties?.Remove("result_file_id"); } }
+        private string _explicitNullValueResultFileId = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.EvaluationScoreResults"/> and sets the default values.
@@ -53,7 +74,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.EvaluationScoreResults CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.EvaluationScoreResults();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.EvaluationScoreResults(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -84,6 +105,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteDoubleValue("invalid_score_count", InvalidScoreCount);
             writer.WriteDoubleValue("judge_fail_count", JudgeFailCount);
             writer.WriteStringValue("result_file_id", ResultFileId);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

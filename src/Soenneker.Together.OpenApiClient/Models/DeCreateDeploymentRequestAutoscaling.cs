@@ -12,60 +12,89 @@ namespace Soenneker.Together.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DeCreateDeploymentRequestAutoscaling : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("maxReplicas") is { } nullNodeMaxReplicas && nullNodeMaxReplicas.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxReplicas = null;
+            if (parseNode.GetChildNode("minReplicas") is { } nullNodeMinReplicas && nullNodeMinReplicas.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MinReplicas = null;
+            if (parseNode.GetChildNode("scaleDown") is { } nullNodeScaleDown && nullNodeScaleDown.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScaleDown = null;
+            if (parseNode.GetChildNode("scaleDownWindow") is { } nullNodeScaleDownWindow && nullNodeScaleDownWindow.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScaleDownWindow = null;
+            if (parseNode.GetChildNode("scaleToZeroWindow") is { } nullNodeScaleToZeroWindow && nullNodeScaleToZeroWindow.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScaleToZeroWindow = null;
+            if (parseNode.GetChildNode("scaleUp") is { } nullNodeScaleUp && nullNodeScaleUp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScaleUp = null;
+            if (parseNode.GetChildNode("scaleUpWindow") is { } nullNodeScaleUpWindow && nullNodeScaleUpWindow.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScaleUpWindow = null;
+            if (parseNode.GetChildNode("scalingMetrics") is { } nullNodeScalingMetrics && nullNodeScalingMetrics.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScalingMetrics = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Maximum number of replicas. Defaults to `minReplicas`; omitting it on update preserves the current value.</summary>
-        public int? MaxReplicas { get; set; }
+        public int? MaxReplicas { get => _explicitNullValueMaxReplicas; set { _explicitNullValueMaxReplicas = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maxReplicas"); else _explicitNullProperties?.Remove("maxReplicas"); } }
+        private int? _explicitNullValueMaxReplicas = default!;
         /// <summary>Minimum number of replicas. Omit on update to preserve the current value. Set both `minReplicas` and `maxReplicas` to `0` to stop the deployment.</summary>
-        public int? MinReplicas { get; set; }
+        public int? MinReplicas { get => _explicitNullValueMinReplicas; set { _explicitNullValueMinReplicas = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("minReplicas"); else _explicitNullProperties?.Remove("minReplicas"); } }
+        private int? _explicitNullValueMinReplicas = default!;
         /// <summary>Rate limits applied when scaling down. Stabilization remains controlled by `scaleDownWindow`.Omitted fields are preserved on update; a non-empty policy list replaces the previous list.To clear policies or reset the selector, explicitly mask that leaf field. Empty lists inparent-only updates are treated as omitted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.DeAutoscalingScaleDown? ScaleDown { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeAutoscalingScaleDown? ScaleDown { get => _explicitNullValueScaleDown; set { _explicitNullValueScaleDown = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scaleDown"); else _explicitNullProperties?.Remove("scaleDown"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.DeAutoscalingScaleDown? _explicitNullValueScaleDown = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.DeAutoscalingScaleDown ScaleDown { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeAutoscalingScaleDown ScaleDown { get => _explicitNullValueScaleDown; set { _explicitNullValueScaleDown = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scaleDown"); else _explicitNullProperties?.Remove("scaleDown"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.DeAutoscalingScaleDown _explicitNullValueScaleDown = default!;
 #endif
         /// <summary>Time a lower replica recommendation must remain stable before scaling down. Defaults to `5m`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ScaleDownWindow { get; set; }
+        public string? ScaleDownWindow { get => _explicitNullValueScaleDownWindow; set { _explicitNullValueScaleDownWindow = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scaleDownWindow"); else _explicitNullProperties?.Remove("scaleDownWindow"); } }
+        private string? _explicitNullValueScaleDownWindow = default!;
 #nullable restore
 #else
-        public string ScaleDownWindow { get; set; }
+        public string ScaleDownWindow { get => _explicitNullValueScaleDownWindow; set { _explicitNullValueScaleDownWindow = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scaleDownWindow"); else _explicitNullProperties?.Remove("scaleDownWindow"); } }
+        private string _explicitNullValueScaleDownWindow = default!;
 #endif
         /// <summary>Idle period after which the deployment automatically stops and releases its replicas.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ScaleToZeroWindow { get; set; }
+        public string? ScaleToZeroWindow { get => _explicitNullValueScaleToZeroWindow; set { _explicitNullValueScaleToZeroWindow = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scaleToZeroWindow"); else _explicitNullProperties?.Remove("scaleToZeroWindow"); } }
+        private string? _explicitNullValueScaleToZeroWindow = default!;
 #nullable restore
 #else
-        public string ScaleToZeroWindow { get; set; }
+        public string ScaleToZeroWindow { get => _explicitNullValueScaleToZeroWindow; set { _explicitNullValueScaleToZeroWindow = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scaleToZeroWindow"); else _explicitNullProperties?.Remove("scaleToZeroWindow"); } }
+        private string _explicitNullValueScaleToZeroWindow = default!;
 #endif
         /// <summary>Rate limits applied when scaling up. Stabilization remains controlled by `scaleUpWindow`.Omitted fields are preserved on update; a non-empty policy list replaces the previous list.To clear policies or reset the selector, explicitly mask that leaf field. Empty lists inparent-only updates are treated as omitted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.DeAutoscalingScaleUp? ScaleUp { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeAutoscalingScaleUp? ScaleUp { get => _explicitNullValueScaleUp; set { _explicitNullValueScaleUp = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scaleUp"); else _explicitNullProperties?.Remove("scaleUp"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.DeAutoscalingScaleUp? _explicitNullValueScaleUp = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.DeAutoscalingScaleUp ScaleUp { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeAutoscalingScaleUp ScaleUp { get => _explicitNullValueScaleUp; set { _explicitNullValueScaleUp = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scaleUp"); else _explicitNullProperties?.Remove("scaleUp"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.DeAutoscalingScaleUp _explicitNullValueScaleUp = default!;
 #endif
         /// <summary>Stabilization window before scaling up.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ScaleUpWindow { get; set; }
+        public string? ScaleUpWindow { get => _explicitNullValueScaleUpWindow; set { _explicitNullValueScaleUpWindow = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scaleUpWindow"); else _explicitNullProperties?.Remove("scaleUpWindow"); } }
+        private string? _explicitNullValueScaleUpWindow = default!;
 #nullable restore
 #else
-        public string ScaleUpWindow { get; set; }
+        public string ScaleUpWindow { get => _explicitNullValueScaleUpWindow; set { _explicitNullValueScaleUpWindow = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scaleUpWindow"); else _explicitNullProperties?.Remove("scaleUpWindow"); } }
+        private string _explicitNullValueScaleUpWindow = default!;
 #endif
         /// <summary>Metrics and targets that drive replica recommendations. When omitted, the platform uses concurrent in-flight requests per replica.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Together.OpenApiClient.Models.DeScalingMetric>? ScalingMetrics { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.DeScalingMetric>? ScalingMetrics { get => _explicitNullValueScalingMetrics; set { _explicitNullValueScalingMetrics = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scalingMetrics"); else _explicitNullProperties?.Remove("scalingMetrics"); } }
+        private List<global::Soenneker.Together.OpenApiClient.Models.DeScalingMetric>? _explicitNullValueScalingMetrics = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Together.OpenApiClient.Models.DeScalingMetric> ScalingMetrics { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.DeScalingMetric> ScalingMetrics { get => _explicitNullValueScalingMetrics; set { _explicitNullValueScalingMetrics = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scalingMetrics"); else _explicitNullProperties?.Remove("scalingMetrics"); } }
+        private List<global::Soenneker.Together.OpenApiClient.Models.DeScalingMetric> _explicitNullValueScalingMetrics = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.DeCreateDeploymentRequestAutoscaling"/> and sets the default values.
@@ -82,7 +111,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.DeCreateDeploymentRequestAutoscaling CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.DeCreateDeploymentRequestAutoscaling();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.DeCreateDeploymentRequestAutoscaling(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -117,6 +146,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeAutoscalingScaleUp>("scaleUp", ScaleUp);
             writer.WriteStringValue("scaleUpWindow", ScaleUpWindow);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.DeScalingMetric>("scalingMetrics", ScalingMetrics);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

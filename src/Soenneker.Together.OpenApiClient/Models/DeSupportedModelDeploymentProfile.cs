@@ -12,92 +12,133 @@ namespace Soenneker.Together.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DeSupportedModelDeploymentProfile : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("adapterMode") is { } nullNodeAdapterMode && nullNodeAdapterMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AdapterMode = null;
+            if (parseNode.GetChildNode("certifiedConfigRevisionId") is { } nullNodeCertifiedConfigRevisionId && nullNodeCertifiedConfigRevisionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CertifiedConfigRevisionId = null;
+            if (parseNode.GetChildNode("certifiedModelRevisionId") is { } nullNodeCertifiedModelRevisionId && nullNodeCertifiedModelRevisionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CertifiedModelRevisionId = null;
+            if (parseNode.GetChildNode("config") is { } nullNodeConfig && nullNodeConfig.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Config = null;
+            if (parseNode.GetChildNode("gpuCount") is { } nullNodeGpuCount && nullNodeGpuCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GpuCount = null;
+            if (parseNode.GetChildNode("gpuType") is { } nullNodeGpuType && nullNodeGpuType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GpuType = null;
+            if (parseNode.GetChildNode("model") is { } nullNodeModel && nullNodeModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Model = null;
+            if (parseNode.GetChildNode("modelName") is { } nullNodeModelName && nullNodeModelName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModelName = null;
+            if (parseNode.GetChildNode("parallelism") is { } nullNodeParallelism && nullNodeParallelism.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Parallelism = null;
+            if (parseNode.GetChildNode("performanceBenchmarks") is { } nullNodePerformanceBenchmarks && nullNodePerformanceBenchmarks.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PerformanceBenchmarks = null;
+            if (parseNode.GetChildNode("profileId") is { } nullNodeProfileId && nullNodeProfileId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProfileId = null;
+            if (parseNode.GetChildNode("quantization") is { } nullNodeQuantization && nullNodeQuantization.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Quantization = null;
+        }
+
         /// <summary>Adapter serving mode for deployments created from this profile; omitted when no certified config is pinned.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelDeploymentProfileAdapterMode? AdapterMode { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelDeploymentProfileAdapterMode? AdapterMode { get => _explicitNullValueAdapterMode; set { _explicitNullValueAdapterMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("adapterMode"); else _explicitNullProperties?.Remove("adapterMode"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelDeploymentProfileAdapterMode? _explicitNullValueAdapterMode = default!;
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Certified configuration revision identifier.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CertifiedConfigRevisionId { get; set; }
+        public string? CertifiedConfigRevisionId { get => _explicitNullValueCertifiedConfigRevisionId; set { _explicitNullValueCertifiedConfigRevisionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("certifiedConfigRevisionId"); else _explicitNullProperties?.Remove("certifiedConfigRevisionId"); } }
+        private string? _explicitNullValueCertifiedConfigRevisionId = default!;
 #nullable restore
 #else
-        public string CertifiedConfigRevisionId { get; set; }
+        public string CertifiedConfigRevisionId { get => _explicitNullValueCertifiedConfigRevisionId; set { _explicitNullValueCertifiedConfigRevisionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("certifiedConfigRevisionId"); else _explicitNullProperties?.Remove("certifiedConfigRevisionId"); } }
+        private string _explicitNullValueCertifiedConfigRevisionId = default!;
 #endif
         /// <summary>Certified model weight revision identifier, if available.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CertifiedModelRevisionId { get; set; }
+        public string? CertifiedModelRevisionId { get => _explicitNullValueCertifiedModelRevisionId; set { _explicitNullValueCertifiedModelRevisionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("certifiedModelRevisionId"); else _explicitNullProperties?.Remove("certifiedModelRevisionId"); } }
+        private string? _explicitNullValueCertifiedModelRevisionId = default!;
 #nullable restore
 #else
-        public string CertifiedModelRevisionId { get; set; }
+        public string CertifiedModelRevisionId { get => _explicitNullValueCertifiedModelRevisionId; set { _explicitNullValueCertifiedModelRevisionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("certifiedModelRevisionId"); else _explicitNullProperties?.Remove("certifiedModelRevisionId"); } }
+        private string _explicitNullValueCertifiedModelRevisionId = default!;
 #endif
         /// <summary>Certified config revision in the form `projects/{projectId}/configs/{configRevisionId}`. Omitted when the profile does not pin a config.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Config { get; set; }
+        public string? Config { get => _explicitNullValueConfig; set { _explicitNullValueConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("config"); else _explicitNullProperties?.Remove("config"); } }
+        private string? _explicitNullValueConfig = default!;
 #nullable restore
 #else
-        public string Config { get; set; }
+        public string Config { get => _explicitNullValueConfig; set { _explicitNullValueConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("config"); else _explicitNullProperties?.Remove("config"); } }
+        private string _explicitNullValueConfig = default!;
 #endif
         /// <summary>Number of GPUs required by the profile.</summary>
-        public int? GpuCount { get; set; }
+        public int? GpuCount { get => _explicitNullValueGpuCount; set { _explicitNullValueGpuCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gpuCount"); else _explicitNullProperties?.Remove("gpuCount"); } }
+        private int? _explicitNullValueGpuCount = default!;
         /// <summary>GPU instance type for the profile.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? GpuType { get; set; }
+        public string? GpuType { get => _explicitNullValueGpuType; set { _explicitNullValueGpuType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gpuType"); else _explicitNullProperties?.Remove("gpuType"); } }
+        private string? _explicitNullValueGpuType = default!;
 #nullable restore
 #else
-        public string GpuType { get; set; }
+        public string GpuType { get => _explicitNullValueGpuType; set { _explicitNullValueGpuType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gpuType"); else _explicitNullProperties?.Remove("gpuType"); } }
+        private string _explicitNullValueGpuType = default!;
 #endif
         /// <summary>Deployable model resource in the form `projects/{projectId}/models/{modelId}[/revisions/{revisionId}]`. Omitted when the profile does not pin model weights.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Model { get; set; }
+        public string? Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private string? _explicitNullValueModel = default!;
 #nullable restore
 #else
-        public string Model { get; set; }
+        public string Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private string _explicitNullValueModel = default!;
 #endif
         /// <summary>Fully-qualified deploy model name in the form `{projectSlug}/{modelName}`, such as `Qwen/Qwen3.5-9B-FP8`; empty when no public model is linked.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ModelName { get; set; }
+        public string? ModelName { get => _explicitNullValueModelName; set { _explicitNullValueModelName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modelName"); else _explicitNullProperties?.Remove("modelName"); } }
+        private string? _explicitNullValueModelName = default!;
 #nullable restore
 #else
-        public string ModelName { get; set; }
+        public string ModelName { get => _explicitNullValueModelName; set { _explicitNullValueModelName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modelName"); else _explicitNullProperties?.Remove("modelName"); } }
+        private string _explicitNullValueModelName = default!;
 #endif
         /// <summary>Free-form parallelism spec for the profile, such as TP8, TP4, EP, or PD; supersedes tensor_parallel_size.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Parallelism { get; set; }
+        public string? Parallelism { get => _explicitNullValueParallelism; set { _explicitNullValueParallelism = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("parallelism"); else _explicitNullProperties?.Remove("parallelism"); } }
+        private string? _explicitNullValueParallelism = default!;
 #nullable restore
 #else
-        public string Parallelism { get; set; }
+        public string Parallelism { get => _explicitNullValueParallelism; set { _explicitNullValueParallelism = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("parallelism"); else _explicitNullProperties?.Remove("parallelism"); } }
+        private string _explicitNullValueParallelism = default!;
 #endif
         /// <summary>Performance benchmark metrics for a supported model profile.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelPerformanceBenchmarks? PerformanceBenchmarks { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelPerformanceBenchmarks? PerformanceBenchmarks { get => _explicitNullValuePerformanceBenchmarks; set { _explicitNullValuePerformanceBenchmarks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("performanceBenchmarks"); else _explicitNullProperties?.Remove("performanceBenchmarks"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelPerformanceBenchmarks? _explicitNullValuePerformanceBenchmarks = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelPerformanceBenchmarks PerformanceBenchmarks { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelPerformanceBenchmarks PerformanceBenchmarks { get => _explicitNullValuePerformanceBenchmarks; set { _explicitNullValuePerformanceBenchmarks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("performanceBenchmarks"); else _explicitNullProperties?.Remove("performanceBenchmarks"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelPerformanceBenchmarks _explicitNullValuePerformanceBenchmarks = default!;
 #endif
         /// <summary>Stable profile identifier, usually the certified config id.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ProfileId { get; set; }
+        public string? ProfileId { get => _explicitNullValueProfileId; set { _explicitNullValueProfileId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("profileId"); else _explicitNullProperties?.Remove("profileId"); } }
+        private string? _explicitNullValueProfileId = default!;
 #nullable restore
 #else
-        public string ProfileId { get; set; }
+        public string ProfileId { get => _explicitNullValueProfileId; set { _explicitNullValueProfileId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("profileId"); else _explicitNullProperties?.Remove("profileId"); } }
+        private string _explicitNullValueProfileId = default!;
 #endif
         /// <summary>Quantization method for the profile, if available.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Quantization { get; set; }
+        public string? Quantization { get => _explicitNullValueQuantization; set { _explicitNullValueQuantization = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quantization"); else _explicitNullProperties?.Remove("quantization"); } }
+        private string? _explicitNullValueQuantization = default!;
 #nullable restore
 #else
-        public string Quantization { get; set; }
+        public string Quantization { get => _explicitNullValueQuantization; set { _explicitNullValueQuantization = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quantization"); else _explicitNullProperties?.Remove("quantization"); } }
+        private string _explicitNullValueQuantization = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelDeploymentProfile"/> and sets the default values.
@@ -114,7 +155,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelDeploymentProfile CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelDeploymentProfile();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelDeploymentProfile(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -157,6 +198,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelPerformanceBenchmarks>("performanceBenchmarks", PerformanceBenchmarks);
             writer.WriteStringValue("profileId", ProfileId);
             writer.WriteStringValue("quantization", Quantization);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

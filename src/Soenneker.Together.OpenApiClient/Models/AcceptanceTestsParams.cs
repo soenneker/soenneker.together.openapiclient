@@ -12,25 +12,48 @@ namespace Soenneker.Together.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AcceptanceTestsParams : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("dcgm_diag_level") is { } nullNodeDcgmDiagLevel && nullNodeDcgmDiagLevel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DcgmDiagLevel = null;
+            if (parseNode.GetChildNode("dcgm_diag_skipped") is { } nullNodeDcgmDiagSkipped && nullNodeDcgmDiagSkipped.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DcgmDiagSkipped = null;
+            if (parseNode.GetChildNode("enabled") is { } nullNodeEnabled && nullNodeEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enabled = null;
+            if (parseNode.GetChildNode("gpu_burn_duration") is { } nullNodeGpuBurnDuration && nullNodeGpuBurnDuration.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GpuBurnDuration = null;
+            if (parseNode.GetChildNode("gpu_burn_skipped") is { } nullNodeGpuBurnSkipped && nullNodeGpuBurnSkipped.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GpuBurnSkipped = null;
+            if (parseNode.GetChildNode("nccl_multi_node_skipped") is { } nullNodeNcclMultiNodeSkipped && nullNodeNcclMultiNodeSkipped.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NcclMultiNodeSkipped = null;
+            if (parseNode.GetChildNode("nccl_single_node_skipped") is { } nullNodeNcclSingleNodeSkipped && nullNodeNcclSingleNodeSkipped.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NcclSingleNodeSkipped = null;
+            if (parseNode.GetChildNode("storage_skipped") is { } nullNodeStorageSkipped && nullNodeStorageSkipped.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StorageSkipped = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>DCGM diagnostic depth. SHORT = readiness; MEDIUM = default; LONG = system validation; EXTENDED = memtest. An omitted value selects MEDIUM when enabled.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.AcceptanceTestsParamsDcgmDiagLevel? DcgmDiagLevel { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.AcceptanceTestsParamsDcgmDiagLevel? DcgmDiagLevel { get => _explicitNullValueDcgmDiagLevel; set { _explicitNullValueDcgmDiagLevel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dcgm_diag_level"); else _explicitNullProperties?.Remove("dcgm_diag_level"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.AcceptanceTestsParamsDcgmDiagLevel? _explicitNullValueDcgmDiagLevel = default!;
         /// <summary>Skip DCGM diagnostics acceptance test.</summary>
-        public bool? DcgmDiagSkipped { get; set; }
+        public bool? DcgmDiagSkipped { get => _explicitNullValueDcgmDiagSkipped; set { _explicitNullValueDcgmDiagSkipped = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dcgm_diag_skipped"); else _explicitNullProperties?.Remove("dcgm_diag_skipped"); } }
+        private bool? _explicitNullValueDcgmDiagSkipped = default!;
         /// <summary>Whether to run GPU acceptance tests during cluster bring-up.</summary>
-        public bool? Enabled { get; set; }
+        public bool? Enabled { get => _explicitNullValueEnabled; set { _explicitNullValueEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enabled"); else _explicitNullProperties?.Remove("enabled"); } }
+        private bool? _explicitNullValueEnabled = default!;
         /// <summary>GPU burn duration in seconds; 0 means use the default when enabled.</summary>
-        public int? GpuBurnDuration { get; set; }
+        public int? GpuBurnDuration { get => _explicitNullValueGpuBurnDuration; set { _explicitNullValueGpuBurnDuration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gpu_burn_duration"); else _explicitNullProperties?.Remove("gpu_burn_duration"); } }
+        private int? _explicitNullValueGpuBurnDuration = default!;
         /// <summary>Skip GPU burn acceptance test.</summary>
-        public bool? GpuBurnSkipped { get; set; }
+        public bool? GpuBurnSkipped { get => _explicitNullValueGpuBurnSkipped; set { _explicitNullValueGpuBurnSkipped = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gpu_burn_skipped"); else _explicitNullProperties?.Remove("gpu_burn_skipped"); } }
+        private bool? _explicitNullValueGpuBurnSkipped = default!;
         /// <summary>Skip NCCL multi-node acceptance test.</summary>
-        public bool? NcclMultiNodeSkipped { get; set; }
+        public bool? NcclMultiNodeSkipped { get => _explicitNullValueNcclMultiNodeSkipped; set { _explicitNullValueNcclMultiNodeSkipped = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nccl_multi_node_skipped"); else _explicitNullProperties?.Remove("nccl_multi_node_skipped"); } }
+        private bool? _explicitNullValueNcclMultiNodeSkipped = default!;
         /// <summary>Skip NCCL single-node acceptance test.</summary>
-        public bool? NcclSingleNodeSkipped { get; set; }
+        public bool? NcclSingleNodeSkipped { get => _explicitNullValueNcclSingleNodeSkipped; set { _explicitNullValueNcclSingleNodeSkipped = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nccl_single_node_skipped"); else _explicitNullProperties?.Remove("nccl_single_node_skipped"); } }
+        private bool? _explicitNullValueNcclSingleNodeSkipped = default!;
         /// <summary>Skip storage-performance acceptance test.</summary>
-        public bool? StorageSkipped { get; set; }
+        public bool? StorageSkipped { get => _explicitNullValueStorageSkipped; set { _explicitNullValueStorageSkipped = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("storage_skipped"); else _explicitNullProperties?.Remove("storage_skipped"); } }
+        private bool? _explicitNullValueStorageSkipped = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.AcceptanceTestsParams"/> and sets the default values.
         /// </summary>
@@ -46,7 +69,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.AcceptanceTestsParams CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.AcceptanceTestsParams();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.AcceptanceTestsParams(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -81,6 +104,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteBoolValue("nccl_multi_node_skipped", NcclMultiNodeSkipped);
             writer.WriteBoolValue("nccl_single_node_skipped", NcclSingleNodeSkipped);
             writer.WriteBoolValue("storage_skipped", StorageSkipped);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

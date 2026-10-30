@@ -62,7 +62,7 @@ namespace Soenneker.Together.OpenApiClient.V1.Compute.Clusters.Storage.Volumes
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolumes>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolumes.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolumes>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolumes.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Instant Clusters supports long-lived, resizable in-DC shared storage with user data persistence.You can dynamically create and attach volumes to your cluster at cluster creation time, and resize as your data grows.All shared storage is backed by multi-NIC bare metal paths, ensuring high-throughput and low-latency performance for shared storage.
@@ -82,7 +82,7 @@ namespace Soenneker.Together.OpenApiClient.V1.Compute.Clusters.Storage.Volumes
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolume>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolume.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolume>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolume.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Update the configuration of an existing shared volume.
@@ -102,7 +102,7 @@ namespace Soenneker.Together.OpenApiClient.V1.Compute.Clusters.Storage.Volumes
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPutRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolume>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolume.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolume>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolume.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// List all shared volumes.

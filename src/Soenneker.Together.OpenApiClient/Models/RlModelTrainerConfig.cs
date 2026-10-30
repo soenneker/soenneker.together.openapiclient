@@ -12,24 +12,37 @@ namespace Soenneker.Together.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RlModelTrainerConfig : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("full") is { } nullNodeFull && nullNodeFull.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Full = null;
+            if (parseNode.GetChildNode("lora") is { } nullNodeLora && nullNodeLora.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Lora = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Full-weight training config. If present, the model supports full-weight training.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RlModelFullModeConfig? Full { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlModelFullModeConfig? Full { get => _explicitNullValueFull; set { _explicitNullValueFull = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("full"); else _explicitNullProperties?.Remove("full"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlModelFullModeConfig? _explicitNullValueFull = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.RlModelFullModeConfig Full { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlModelFullModeConfig Full { get => _explicitNullValueFull; set { _explicitNullValueFull = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("full"); else _explicitNullProperties?.Remove("full"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlModelFullModeConfig _explicitNullValueFull = default!;
 #endif
         /// <summary>LoRA training config. If present, the model supports LoRA training.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RlModelLoraModeConfig? Lora { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlModelLoraModeConfig? Lora { get => _explicitNullValueLora; set { _explicitNullValueLora = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lora"); else _explicitNullProperties?.Remove("lora"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlModelLoraModeConfig? _explicitNullValueLora = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.RlModelLoraModeConfig Lora { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlModelLoraModeConfig Lora { get => _explicitNullValueLora; set { _explicitNullValueLora = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lora"); else _explicitNullProperties?.Remove("lora"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlModelLoraModeConfig _explicitNullValueLora = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlModelTrainerConfig"/> and sets the default values.
@@ -46,7 +59,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.RlModelTrainerConfig CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.RlModelTrainerConfig();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.RlModelTrainerConfig(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -69,6 +82,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlModelFullModeConfig>("full", Full);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlModelLoraModeConfig>("lora", Lora);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

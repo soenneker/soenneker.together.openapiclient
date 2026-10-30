@@ -11,28 +11,45 @@ namespace Soenneker.Together.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class GpuClustersSharedVolume : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("size_tib") is { } nullNodeSizeTib && nullNodeSizeTib.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SizeTib = null;
+            if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
+            if (parseNode.GetChildNode("volume_id") is { } nullNodeVolumeId && nullNodeVolumeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VolumeId = null;
+            if (parseNode.GetChildNode("volume_name") is { } nullNodeVolumeName && nullNodeVolumeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VolumeName = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Size of the volume in TiB.</summary>
-        public int? SizeTib { get; set; }
+        public int? SizeTib { get => _explicitNullValueSizeTib; set { _explicitNullValueSizeTib = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("size_tib"); else _explicitNullProperties?.Remove("size_tib"); } }
+        private int? _explicitNullValueSizeTib = default!;
         /// <summary>Current status of the shared volume.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolumeStatus? Status { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolumeStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolumeStatus? _explicitNullValueStatus = default!;
         /// <summary>ID of the volume.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? VolumeId { get; set; }
+        public string? VolumeId { get => _explicitNullValueVolumeId; set { _explicitNullValueVolumeId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("volume_id"); else _explicitNullProperties?.Remove("volume_id"); } }
+        private string? _explicitNullValueVolumeId = default!;
 #nullable restore
 #else
-        public string VolumeId { get; set; }
+        public string VolumeId { get => _explicitNullValueVolumeId; set { _explicitNullValueVolumeId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("volume_id"); else _explicitNullProperties?.Remove("volume_id"); } }
+        private string _explicitNullValueVolumeId = default!;
 #endif
         /// <summary>User provided name of the volume.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? VolumeName { get; set; }
+        public string? VolumeName { get => _explicitNullValueVolumeName; set { _explicitNullValueVolumeName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("volume_name"); else _explicitNullProperties?.Remove("volume_name"); } }
+        private string? _explicitNullValueVolumeName = default!;
 #nullable restore
 #else
-        public string VolumeName { get; set; }
+        public string VolumeName { get => _explicitNullValueVolumeName; set { _explicitNullValueVolumeName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("volume_name"); else _explicitNullProperties?.Remove("volume_name"); } }
+        private string _explicitNullValueVolumeName = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolume"/> and sets the default values.
@@ -49,7 +66,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolume CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolume();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolume(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -76,6 +93,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.GpuClustersSharedVolumeStatus>("status", Status);
             writer.WriteStringValue("volume_id", VolumeId);
             writer.WriteStringValue("volume_name", VolumeName);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

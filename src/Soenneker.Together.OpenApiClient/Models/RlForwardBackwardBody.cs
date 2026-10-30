@@ -11,28 +11,45 @@ namespace Soenneker.Together.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class RlForwardBackwardBody : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("forward_only") is { } nullNodeForwardOnly && nullNodeForwardOnly.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ForwardOnly = null;
+            if (parseNode.GetChildNode("loss") is { } nullNodeLoss && nullNodeLoss.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Loss = null;
+            if (parseNode.GetChildNode("return_loss_fn_outputs") is { } nullNodeReturnLossFnOutputs && nullNodeReturnLossFnOutputs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReturnLossFnOutputs = null;
+            if (parseNode.GetChildNode("samples") is { } nullNodeSamples && nullNodeSamples.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Samples = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Run the forward pass only: report the loss and metrics, and the per-sample outputs when requested, without accumulating gradients. Defaults to false. Pair it with `return_loss_fn_outputs` to score a batch and read back its per-token log-probabilities.</summary>
-        public bool? ForwardOnly { get; set; }
+        public bool? ForwardOnly { get => _explicitNullValueForwardOnly; set { _explicitNullValueForwardOnly = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("forward_only"); else _explicitNullProperties?.Remove("forward_only"); } }
+        private bool? _explicitNullValueForwardOnly = default!;
         /// <summary>The loss property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RlLossConfig? Loss { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlLossConfig? Loss { get => _explicitNullValueLoss; set { _explicitNullValueLoss = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("loss"); else _explicitNullProperties?.Remove("loss"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlLossConfig? _explicitNullValueLoss = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.RlLossConfig Loss { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlLossConfig Loss { get => _explicitNullValueLoss; set { _explicitNullValueLoss = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("loss"); else _explicitNullProperties?.Remove("loss"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlLossConfig _explicitNullValueLoss = default!;
 #endif
         /// <summary>Return the loss function&apos;s per-sample output tensors alongside the loss and metrics. Defaults to false. Enabling it increases the response size substantially for large batches and reduces step throughput, so leave it unset for ordinary training steps.</summary>
-        public bool? ReturnLossFnOutputs { get; set; }
+        public bool? ReturnLossFnOutputs { get => _explicitNullValueReturnLossFnOutputs; set { _explicitNullValueReturnLossFnOutputs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("return_loss_fn_outputs"); else _explicitNullProperties?.Remove("return_loss_fn_outputs"); } }
+        private bool? _explicitNullValueReturnLossFnOutputs = default!;
         /// <summary>Batch of training samples to process</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Together.OpenApiClient.Models.RlTrainingSample>? Samples { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.RlTrainingSample>? Samples { get => _explicitNullValueSamples; set { _explicitNullValueSamples = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("samples"); else _explicitNullProperties?.Remove("samples"); } }
+        private List<global::Soenneker.Together.OpenApiClient.Models.RlTrainingSample>? _explicitNullValueSamples = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Together.OpenApiClient.Models.RlTrainingSample> Samples { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.RlTrainingSample> Samples { get => _explicitNullValueSamples; set { _explicitNullValueSamples = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("samples"); else _explicitNullProperties?.Remove("samples"); } }
+        private List<global::Soenneker.Together.OpenApiClient.Models.RlTrainingSample> _explicitNullValueSamples = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlForwardBackwardBody"/> and sets the default values.
@@ -49,7 +66,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.RlForwardBackwardBody CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.RlForwardBackwardBody();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.RlForwardBackwardBody(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -76,6 +93,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlLossConfig>("loss", Loss);
             writer.WriteBoolValue("return_loss_fn_outputs", ReturnLossFnOutputs);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RlTrainingSample>("samples", Samples);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

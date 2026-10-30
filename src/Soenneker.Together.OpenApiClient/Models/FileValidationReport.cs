@@ -12,51 +12,85 @@ namespace Soenneker.Together.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class FileValidationReport : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("dataset_format") is { } nullNodeDatasetFormat && nullNodeDatasetFormat.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DatasetFormat = null;
+            if (parseNode.GetChildNode("dataset_has_message_weights") is { } nullNodeDatasetHasMessageWeights && nullNodeDatasetHasMessageWeights.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DatasetHasMessageWeights = null;
+            if (parseNode.GetChildNode("dataset_has_parallel_tool_calls") is { } nullNodeDatasetHasParallelToolCalls && nullNodeDatasetHasParallelToolCalls.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DatasetHasParallelToolCalls = null;
+            if (parseNode.GetChildNode("dataset_has_reasoning") is { } nullNodeDatasetHasReasoning && nullNodeDatasetHasReasoning.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DatasetHasReasoning = null;
+            if (parseNode.GetChildNode("dataset_has_sample_weights") is { } nullNodeDatasetHasSampleWeights && nullNodeDatasetHasSampleWeights.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DatasetHasSampleWeights = null;
+            if (parseNode.GetChildNode("dataset_has_tools") is { } nullNodeDatasetHasTools && nullNodeDatasetHasTools.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DatasetHasTools = null;
+            if (parseNode.GetChildNode("dataset_is_multimodal") is { } nullNodeDatasetIsMultimodal && nullNodeDatasetIsMultimodal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DatasetIsMultimodal = null;
+            if (parseNode.GetChildNode("error") is { } nullNodeError && nullNodeError.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Error = null;
+            if (parseNode.GetChildNode("error_type") is { } nullNodeErrorType && nullNodeErrorType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ErrorType = null;
+            if (parseNode.GetChildNode("file_id") is { } nullNodeFileId && nullNodeFileId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FileId = null;
+            if (parseNode.GetChildNode("nlines") is { } nullNodeNlines && nullNodeNlines.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Nlines = null;
+            if (parseNode.GetChildNode("valid") is { } nullNodeValid && nullNodeValid.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Valid = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Detected dataset format (e.g. `CONVERSATION`, `INSTRUCTION`).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DatasetFormat { get; set; }
+        public string? DatasetFormat { get => _explicitNullValueDatasetFormat; set { _explicitNullValueDatasetFormat = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dataset_format"); else _explicitNullProperties?.Remove("dataset_format"); } }
+        private string? _explicitNullValueDatasetFormat = default!;
 #nullable restore
 #else
-        public string DatasetFormat { get; set; }
+        public string DatasetFormat { get => _explicitNullValueDatasetFormat; set { _explicitNullValueDatasetFormat = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dataset_format"); else _explicitNullProperties?.Remove("dataset_format"); } }
+        private string _explicitNullValueDatasetFormat = default!;
 #endif
         /// <summary>Whether the dataset carries per-message weights (only possible for `CONVERSATION` format).</summary>
-        public bool? DatasetHasMessageWeights { get; set; }
+        public bool? DatasetHasMessageWeights { get => _explicitNullValueDatasetHasMessageWeights; set { _explicitNullValueDatasetHasMessageWeights = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dataset_has_message_weights"); else _explicitNullProperties?.Remove("dataset_has_message_weights"); } }
+        private bool? _explicitNullValueDatasetHasMessageWeights = default!;
         /// <summary>Whether the dataset contains parallel tool-use messages.</summary>
-        public bool? DatasetHasParallelToolCalls { get; set; }
+        public bool? DatasetHasParallelToolCalls { get => _explicitNullValueDatasetHasParallelToolCalls; set { _explicitNullValueDatasetHasParallelToolCalls = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dataset_has_parallel_tool_calls"); else _explicitNullProperties?.Remove("dataset_has_parallel_tool_calls"); } }
+        private bool? _explicitNullValueDatasetHasParallelToolCalls = default!;
         /// <summary>Whether the dataset contains reasoning content.</summary>
-        public bool? DatasetHasReasoning { get; set; }
+        public bool? DatasetHasReasoning { get => _explicitNullValueDatasetHasReasoning; set { _explicitNullValueDatasetHasReasoning = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dataset_has_reasoning"); else _explicitNullProperties?.Remove("dataset_has_reasoning"); } }
+        private bool? _explicitNullValueDatasetHasReasoning = default!;
         /// <summary>Whether the dataset carries per-sample weights.</summary>
-        public bool? DatasetHasSampleWeights { get; set; }
+        public bool? DatasetHasSampleWeights { get => _explicitNullValueDatasetHasSampleWeights; set { _explicitNullValueDatasetHasSampleWeights = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dataset_has_sample_weights"); else _explicitNullProperties?.Remove("dataset_has_sample_weights"); } }
+        private bool? _explicitNullValueDatasetHasSampleWeights = default!;
         /// <summary>Whether the dataset contains tool-use messages.</summary>
-        public bool? DatasetHasTools { get; set; }
+        public bool? DatasetHasTools { get => _explicitNullValueDatasetHasTools; set { _explicitNullValueDatasetHasTools = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dataset_has_tools"); else _explicitNullProperties?.Remove("dataset_has_tools"); } }
+        private bool? _explicitNullValueDatasetHasTools = default!;
         /// <summary>Whether the dataset contains multimodal content.</summary>
-        public bool? DatasetIsMultimodal { get; set; }
+        public bool? DatasetIsMultimodal { get => _explicitNullValueDatasetIsMultimodal; set { _explicitNullValueDatasetIsMultimodal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dataset_is_multimodal"); else _explicitNullProperties?.Remove("dataset_is_multimodal"); } }
+        private bool? _explicitNullValueDatasetIsMultimodal = default!;
         /// <summary>Human-readable validation error message. Only present when`error_type` is set (i.e. user-correctable failures).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Error { get; set; }
+        public string? Error { get => _explicitNullValueError; set { _explicitNullValueError = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error"); else _explicitNullProperties?.Remove("error"); } }
+        private string? _explicitNullValueError = default!;
 #nullable restore
 #else
-        public string Error { get; set; }
+        public string Error { get => _explicitNullValueError; set { _explicitNullValueError = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error"); else _explicitNullProperties?.Remove("error"); } }
+        private string _explicitNullValueError = default!;
 #endif
         /// <summary>Category of validation failure.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.InvalidFormatErrorType? ErrorType { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.InvalidFormatErrorType? ErrorType { get => _explicitNullValueErrorType; set { _explicitNullValueErrorType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error_type"); else _explicitNullProperties?.Remove("error_type"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.InvalidFormatErrorType? _explicitNullValueErrorType = default!;
         /// <summary>ID of the file this report describes.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FileId { get; set; }
+        public string? FileId { get => _explicitNullValueFileId; set { _explicitNullValueFileId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("file_id"); else _explicitNullProperties?.Remove("file_id"); } }
+        private string? _explicitNullValueFileId = default!;
 #nullable restore
 #else
-        public string FileId { get; set; }
+        public string FileId { get => _explicitNullValueFileId; set { _explicitNullValueFileId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("file_id"); else _explicitNullProperties?.Remove("file_id"); } }
+        private string _explicitNullValueFileId = default!;
 #endif
         /// <summary>Number of lines (records) in the dataset.</summary>
-        public int? Nlines { get; set; }
+        public int? Nlines { get => _explicitNullValueNlines; set { _explicitNullValueNlines = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nlines"); else _explicitNullProperties?.Remove("nlines"); } }
+        private int? _explicitNullValueNlines = default!;
         /// <summary>Whether the file passed validation.</summary>
-        public bool? Valid { get; set; }
+        public bool? Valid { get => _explicitNullValueValid; set { _explicitNullValueValid = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("valid"); else _explicitNullProperties?.Remove("valid"); } }
+        private bool? _explicitNullValueValid = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.FileValidationReport"/> and sets the default values.
         /// </summary>
@@ -72,7 +106,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.FileValidationReport CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.FileValidationReport();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.FileValidationReport(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -115,6 +149,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteStringValue("file_id", FileId);
             writer.WriteIntValue("nlines", Nlines);
             writer.WriteBoolValue("valid", Valid);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

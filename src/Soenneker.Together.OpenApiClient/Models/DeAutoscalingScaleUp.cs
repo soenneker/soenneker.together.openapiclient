@@ -12,19 +12,31 @@ namespace Soenneker.Together.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DeAutoscalingScaleUp : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("policies") is { } nullNodePolicies && nullNodePolicies.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Policies = null;
+            if (parseNode.GetChildNode("selectPolicy") is { } nullNodeSelectPolicy && nullNodeSelectPolicy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SelectPolicy = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Non-empty lists replace the existing policies. To clear policies, include`autoscaling.scaleDown.policies` or `autoscaling.scaleUp.policies` in the update maskand supply an empty scaling rules object or `policies: []`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Together.OpenApiClient.Models.DeScalingPolicy>? Policies { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.DeScalingPolicy>? Policies { get => _explicitNullValuePolicies; set { _explicitNullValuePolicies = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("policies"); else _explicitNullProperties?.Remove("policies"); } }
+        private List<global::Soenneker.Together.OpenApiClient.Models.DeScalingPolicy>? _explicitNullValuePolicies = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Together.OpenApiClient.Models.DeScalingPolicy> Policies { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.DeScalingPolicy> Policies { get => _explicitNullValuePolicies; set { _explicitNullValuePolicies = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("policies"); else _explicitNullProperties?.Remove("policies"); } }
+        private List<global::Soenneker.Together.OpenApiClient.Models.DeScalingPolicy> _explicitNullValuePolicies = default!;
 #endif
         /// <summary>`SCALING_POLICY_SELECT_MIN` chooses the policy allowing the smallest replica change;`SCALING_POLICY_SELECT_MAX` chooses the largest. These are caps, not guaranteed changes.`SCALING_POLICY_SELECT_DISABLED` holds this direction steady while replica bounds still apply.Omitted preserves the existing selector on update. When no selector is configured,authored policies use MAX; with no policies configured, the platform defaults apply.To reset the selector, include `autoscaling.scaleDown.selectPolicy` or`autoscaling.scaleUp.selectPolicy` in the update mask and omit `selectPolicy`.Clear both policies and `selectPolicy` to restore inherited defaults.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.DeScalingRulesSelectPolicy? SelectPolicy { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeScalingRulesSelectPolicy? SelectPolicy { get => _explicitNullValueSelectPolicy; set { _explicitNullValueSelectPolicy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("selectPolicy"); else _explicitNullProperties?.Remove("selectPolicy"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.DeScalingRulesSelectPolicy? _explicitNullValueSelectPolicy = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.DeAutoscalingScaleUp"/> and sets the default values.
         /// </summary>
@@ -40,7 +52,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.DeAutoscalingScaleUp CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.DeAutoscalingScaleUp();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.DeAutoscalingScaleUp(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -63,6 +75,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.DeScalingPolicy>("policies", Policies);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeScalingRulesSelectPolicy>("selectPolicy", SelectPolicy);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

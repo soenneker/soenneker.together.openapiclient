@@ -11,59 +11,86 @@ namespace Soenneker.Together.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class RlLossConfig : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("cispo_params") is { } nullNodeCispoParams && nullNodeCispoParams.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CispoParams = null;
+            if (parseNode.GetChildNode("cross_entropy_params") is { } nullNodeCrossEntropyParams && nullNodeCrossEntropyParams.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CrossEntropyParams = null;
+            if (parseNode.GetChildNode("dppo_params") is { } nullNodeDppoParams && nullNodeDppoParams.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DppoParams = null;
+            if (parseNode.GetChildNode("dro_params") is { } nullNodeDroParams && nullNodeDroParams.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DroParams = null;
+            if (parseNode.GetChildNode("grpo_params") is { } nullNodeGrpoParams && nullNodeGrpoParams.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GrpoParams = null;
+            if (parseNode.GetChildNode("ppo_params") is { } nullNodePpoParams && nullNodePpoParams.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PpoParams = null;
+            if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The cispo_params property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RlCispoLossParams? CispoParams { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlCispoLossParams? CispoParams { get => _explicitNullValueCispoParams; set { _explicitNullValueCispoParams = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cispo_params"); else _explicitNullProperties?.Remove("cispo_params"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlCispoLossParams? _explicitNullValueCispoParams = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.RlCispoLossParams CispoParams { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlCispoLossParams CispoParams { get => _explicitNullValueCispoParams; set { _explicitNullValueCispoParams = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cispo_params"); else _explicitNullProperties?.Remove("cispo_params"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlCispoLossParams _explicitNullValueCispoParams = default!;
 #endif
         /// <summary>Cross-entropy loss parameters (currently empty).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RlCrossEntropyLossParams? CrossEntropyParams { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlCrossEntropyLossParams? CrossEntropyParams { get => _explicitNullValueCrossEntropyParams; set { _explicitNullValueCrossEntropyParams = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cross_entropy_params"); else _explicitNullProperties?.Remove("cross_entropy_params"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlCrossEntropyLossParams? _explicitNullValueCrossEntropyParams = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.RlCrossEntropyLossParams CrossEntropyParams { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlCrossEntropyLossParams CrossEntropyParams { get => _explicitNullValueCrossEntropyParams; set { _explicitNullValueCrossEntropyParams = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cross_entropy_params"); else _explicitNullProperties?.Remove("cross_entropy_params"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlCrossEntropyLossParams _explicitNullValueCrossEntropyParams = default!;
 #endif
         /// <summary>Parameters for DPPO loss. Both probability-change limits must be in [0, 1] and default to 0.15.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RlDppoLossParams? DppoParams { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlDppoLossParams? DppoParams { get => _explicitNullValueDppoParams; set { _explicitNullValueDppoParams = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dppo_params"); else _explicitNullProperties?.Remove("dppo_params"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlDppoLossParams? _explicitNullValueDppoParams = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.RlDppoLossParams DppoParams { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlDppoLossParams DppoParams { get => _explicitNullValueDppoParams; set { _explicitNullValueDppoParams = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dppo_params"); else _explicitNullProperties?.Remove("dppo_params"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlDppoLossParams _explicitNullValueDppoParams = default!;
 #endif
         /// <summary>The dro_params property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RlDroLossParams? DroParams { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlDroLossParams? DroParams { get => _explicitNullValueDroParams; set { _explicitNullValueDroParams = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dro_params"); else _explicitNullProperties?.Remove("dro_params"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlDroLossParams? _explicitNullValueDroParams = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.RlDroLossParams DroParams { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlDroLossParams DroParams { get => _explicitNullValueDroParams; set { _explicitNullValueDroParams = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dro_params"); else _explicitNullProperties?.Remove("dro_params"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlDroLossParams _explicitNullValueDroParams = default!;
 #endif
         /// <summary>The grpo_params property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RlGrpoLossParams? GrpoParams { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlGrpoLossParams? GrpoParams { get => _explicitNullValueGrpoParams; set { _explicitNullValueGrpoParams = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("grpo_params"); else _explicitNullProperties?.Remove("grpo_params"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlGrpoLossParams? _explicitNullValueGrpoParams = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.RlGrpoLossParams GrpoParams { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlGrpoLossParams GrpoParams { get => _explicitNullValueGrpoParams; set { _explicitNullValueGrpoParams = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("grpo_params"); else _explicitNullProperties?.Remove("grpo_params"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlGrpoLossParams _explicitNullValueGrpoParams = default!;
 #endif
         /// <summary>The ppo_params property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RlPpoLossParams? PpoParams { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlPpoLossParams? PpoParams { get => _explicitNullValuePpoParams; set { _explicitNullValuePpoParams = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ppo_params"); else _explicitNullProperties?.Remove("ppo_params"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlPpoLossParams? _explicitNullValuePpoParams = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.RlPpoLossParams PpoParams { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlPpoLossParams PpoParams { get => _explicitNullValuePpoParams; set { _explicitNullValuePpoParams = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ppo_params"); else _explicitNullProperties?.Remove("ppo_params"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlPpoLossParams _explicitNullValuePpoParams = default!;
 #endif
         /// <summary>Type of loss function used for RL training.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.RlLossType? Type { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlLossType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlLossType? _explicitNullValueType = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlLossConfig"/> and sets the default values.
         /// </summary>
@@ -79,7 +106,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.RlLossConfig CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.RlLossConfig();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.RlLossConfig(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -112,6 +139,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlGrpoLossParams>("grpo_params", GrpoParams);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlPpoLossParams>("ppo_params", PpoParams);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlLossType>("type", Type);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

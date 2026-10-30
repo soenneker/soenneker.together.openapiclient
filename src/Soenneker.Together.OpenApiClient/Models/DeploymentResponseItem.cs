@@ -11,136 +11,211 @@ namespace Soenneker.Together.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class DeploymentResponseItem : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("args") is { } nullNodeArgs && nullNodeArgs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Args = null;
+            if (parseNode.GetChildNode("autoscaling") is { } nullNodeAutoscaling && nullNodeAutoscaling.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Autoscaling = null;
+            if (parseNode.GetChildNode("capacity_type") is { } nullNodeCapacityType && nullNodeCapacityType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CapacityType = null;
+            if (parseNode.GetChildNode("command") is { } nullNodeCommand && nullNodeCommand.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Command = null;
+            if (parseNode.GetChildNode("cpu") is { } nullNodeCpu && nullNodeCpu.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Cpu = null;
+            if (parseNode.GetChildNode("created_at") is { } nullNodeCreatedAt && nullNodeCreatedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreatedAt = null;
+            if (parseNode.GetChildNode("description") is { } nullNodeDescription && nullNodeDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Description = null;
+            if (parseNode.GetChildNode("desired_replicas") is { } nullNodeDesiredReplicas && nullNodeDesiredReplicas.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DesiredReplicas = null;
+            if (parseNode.GetChildNode("environment_variables") is { } nullNodeEnvironmentVariables && nullNodeEnvironmentVariables.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EnvironmentVariables = null;
+            if (parseNode.GetChildNode("gpu_count") is { } nullNodeGpuCount && nullNodeGpuCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GpuCount = null;
+            if (parseNode.GetChildNode("gpu_type") is { } nullNodeGpuType && nullNodeGpuType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GpuType = null;
+            if (parseNode.GetChildNode("health_check_path") is { } nullNodeHealthCheckPath && nullNodeHealthCheckPath.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HealthCheckPath = null;
+            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("image") is { } nullNodeImage && nullNodeImage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Image = null;
+            if (parseNode.GetChildNode("max_replicas") is { } nullNodeMaxReplicas && nullNodeMaxReplicas.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxReplicas = null;
+            if (parseNode.GetChildNode("memory") is { } nullNodeMemory && nullNodeMemory.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Memory = null;
+            if (parseNode.GetChildNode("min_replicas") is { } nullNodeMinReplicas && nullNodeMinReplicas.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MinReplicas = null;
+            if (parseNode.GetChildNode("model_mounts") is { } nullNodeModelMounts && nullNodeModelMounts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModelMounts = null;
+            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("object") is { } nullNodeObject && nullNodeObject.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Object = null;
+            if (parseNode.GetChildNode("port") is { } nullNodePort && nullNodePort.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Port = null;
+            if (parseNode.GetChildNode("ready_replicas") is { } nullNodeReadyReplicas && nullNodeReadyReplicas.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReadyReplicas = null;
+            if (parseNode.GetChildNode("replica_events") is { } nullNodeReplicaEvents && nullNodeReplicaEvents.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReplicaEvents = null;
+            if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
+            if (parseNode.GetChildNode("storage") is { } nullNodeStorage && nullNodeStorage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Storage = null;
+            if (parseNode.GetChildNode("termination_grace_period_seconds") is { } nullNodeTerminationGracePeriodSeconds && nullNodeTerminationGracePeriodSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TerminationGracePeriodSeconds = null;
+            if (parseNode.GetChildNode("updated_at") is { } nullNodeUpdatedAt && nullNodeUpdatedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UpdatedAt = null;
+            if (parseNode.GetChildNode("volumes") is { } nullNodeVolumes && nullNodeVolumes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Volumes = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Args are the arguments passed to the container&apos;s command</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Args { get; set; }
+        public List<string>? Args { get => _explicitNullValueArgs; set { _explicitNullValueArgs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("args"); else _explicitNullProperties?.Remove("args"); } }
+        private List<string>? _explicitNullValueArgs = default!;
 #nullable restore
 #else
-        public List<string> Args { get; set; }
+        public List<string> Args { get => _explicitNullValueArgs; set { _explicitNullValueArgs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("args"); else _explicitNullProperties?.Remove("args"); } }
+        private List<string> _explicitNullValueArgs = default!;
 #endif
         /// <summary>Autoscaling contains autoscaling configuration parameters for this deployment. Omitted when autoscaling is disabled (nil)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItemAutoscaling? Autoscaling { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItemAutoscaling? Autoscaling { get => _explicitNullValueAutoscaling; set { _explicitNullValueAutoscaling = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("autoscaling"); else _explicitNullProperties?.Remove("autoscaling"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItemAutoscaling? _explicitNullValueAutoscaling = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItemAutoscaling Autoscaling { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItemAutoscaling Autoscaling { get => _explicitNullValueAutoscaling; set { _explicitNullValueAutoscaling = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("autoscaling"); else _explicitNullProperties?.Remove("autoscaling"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItemAutoscaling _explicitNullValueAutoscaling = default!;
 #endif
         /// <summary>Controls how replicas above reserved capacity behave. `stable` replicas stay running after scale-up; `preemptible` replicas may be evicted during capacity contention.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItemCapacityType? CapacityType { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItemCapacityType? CapacityType { get => _explicitNullValueCapacityType; set { _explicitNullValueCapacityType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("capacity_type"); else _explicitNullProperties?.Remove("capacity_type"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItemCapacityType? _explicitNullValueCapacityType = default!;
         /// <summary>Command is the entrypoint command run in the container</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Command { get; set; }
+        public List<string>? Command { get => _explicitNullValueCommand; set { _explicitNullValueCommand = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("command"); else _explicitNullProperties?.Remove("command"); } }
+        private List<string>? _explicitNullValueCommand = default!;
 #nullable restore
 #else
-        public List<string> Command { get; set; }
+        public List<string> Command { get => _explicitNullValueCommand; set { _explicitNullValueCommand = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("command"); else _explicitNullProperties?.Remove("command"); } }
+        private List<string> _explicitNullValueCommand = default!;
 #endif
         /// <summary>CPU is the amount of CPU resource allocated to each replica in cores (fractional value is allowed)</summary>
-        public double? Cpu { get; set; }
+        public double? Cpu { get => _explicitNullValueCpu; set { _explicitNullValueCpu = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cpu"); else _explicitNullProperties?.Remove("cpu"); } }
+        private double? _explicitNullValueCpu = default!;
         /// <summary>CreatedAt is the ISO8601 timestamp when this deployment was created</summary>
-        public DateTimeOffset? CreatedAt { get; set; }
+        public DateTimeOffset? CreatedAt { get => _explicitNullValueCreatedAt; set { _explicitNullValueCreatedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_at"); else _explicitNullProperties?.Remove("created_at"); } }
+        private DateTimeOffset? _explicitNullValueCreatedAt = default!;
         /// <summary>Description provides a human-readable explanation of the deployment&apos;s purpose or content</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Description { get; set; }
+        public string? Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string? _explicitNullValueDescription = default!;
 #nullable restore
 #else
-        public string Description { get; set; }
+        public string Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string _explicitNullValueDescription = default!;
 #endif
         /// <summary>DesiredReplicas is the number of replicas that the orchestrator is targeting</summary>
-        public int? DesiredReplicas { get; set; }
+        public int? DesiredReplicas { get => _explicitNullValueDesiredReplicas; set { _explicitNullValueDesiredReplicas = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("desired_replicas"); else _explicitNullProperties?.Remove("desired_replicas"); } }
+        private int? _explicitNullValueDesiredReplicas = default!;
         /// <summary>EnvironmentVariables is a list of environment variables set in the container</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Together.OpenApiClient.Models.EnvironmentVariable>? EnvironmentVariables { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.EnvironmentVariable>? EnvironmentVariables { get => _explicitNullValueEnvironmentVariables; set { _explicitNullValueEnvironmentVariables = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("environment_variables"); else _explicitNullProperties?.Remove("environment_variables"); } }
+        private List<global::Soenneker.Together.OpenApiClient.Models.EnvironmentVariable>? _explicitNullValueEnvironmentVariables = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Together.OpenApiClient.Models.EnvironmentVariable> EnvironmentVariables { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.EnvironmentVariable> EnvironmentVariables { get => _explicitNullValueEnvironmentVariables; set { _explicitNullValueEnvironmentVariables = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("environment_variables"); else _explicitNullProperties?.Remove("environment_variables"); } }
+        private List<global::Soenneker.Together.OpenApiClient.Models.EnvironmentVariable> _explicitNullValueEnvironmentVariables = default!;
 #endif
         /// <summary>GPUCount is the number of GPUs allocated to each replica in this deployment</summary>
-        public int? GpuCount { get; set; }
+        public int? GpuCount { get => _explicitNullValueGpuCount; set { _explicitNullValueGpuCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gpu_count"); else _explicitNullProperties?.Remove("gpu_count"); } }
+        private int? _explicitNullValueGpuCount = default!;
         /// <summary>GPUType specifies the type of GPU requested (if any) for this deployment</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItemGpuType? GpuType { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItemGpuType? GpuType { get => _explicitNullValueGpuType; set { _explicitNullValueGpuType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gpu_type"); else _explicitNullProperties?.Remove("gpu_type"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItemGpuType? _explicitNullValueGpuType = default!;
         /// <summary>HealthCheckPath is the HTTP path used for health checks of the application</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? HealthCheckPath { get; set; }
+        public string? HealthCheckPath { get => _explicitNullValueHealthCheckPath; set { _explicitNullValueHealthCheckPath = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("health_check_path"); else _explicitNullProperties?.Remove("health_check_path"); } }
+        private string? _explicitNullValueHealthCheckPath = default!;
 #nullable restore
 #else
-        public string HealthCheckPath { get; set; }
+        public string HealthCheckPath { get => _explicitNullValueHealthCheckPath; set { _explicitNullValueHealthCheckPath = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("health_check_path"); else _explicitNullProperties?.Remove("health_check_path"); } }
+        private string _explicitNullValueHealthCheckPath = default!;
 #endif
         /// <summary>ID is the unique identifier of the deployment</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Id { get; set; }
+        public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string? _explicitNullValueId = default!;
 #nullable restore
 #else
-        public string Id { get; set; }
+        public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string _explicitNullValueId = default!;
 #endif
         /// <summary>Image specifies the container image used for this deployment</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Image { get; set; }
+        public string? Image { get => _explicitNullValueImage; set { _explicitNullValueImage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("image"); else _explicitNullProperties?.Remove("image"); } }
+        private string? _explicitNullValueImage = default!;
 #nullable restore
 #else
-        public string Image { get; set; }
+        public string Image { get => _explicitNullValueImage; set { _explicitNullValueImage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("image"); else _explicitNullProperties?.Remove("image"); } }
+        private string _explicitNullValueImage = default!;
 #endif
         /// <summary>MaxReplicas is the maximum number of replicas to run for this deployment</summary>
-        public int? MaxReplicas { get; set; }
+        public int? MaxReplicas { get => _explicitNullValueMaxReplicas; set { _explicitNullValueMaxReplicas = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_replicas"); else _explicitNullProperties?.Remove("max_replicas"); } }
+        private int? _explicitNullValueMaxReplicas = default!;
         /// <summary>Memory is the amount of memory allocated to each replica in GiB (fractional value is allowed)</summary>
-        public double? Memory { get; set; }
+        public double? Memory { get => _explicitNullValueMemory; set { _explicitNullValueMemory = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("memory"); else _explicitNullProperties?.Remove("memory"); } }
+        private double? _explicitNullValueMemory = default!;
         /// <summary>MinReplicas is the minimum number of replicas to run for this deployment</summary>
-        public int? MinReplicas { get; set; }
+        public int? MinReplicas { get => _explicitNullValueMinReplicas; set { _explicitNullValueMinReplicas = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("min_replicas"); else _explicitNullProperties?.Remove("min_replicas"); } }
+        private int? _explicitNullValueMinReplicas = default!;
         /// <summary>Model weights mounted into this deployment, including the pinned revisions.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Together.OpenApiClient.Models.ModelMount>? ModelMounts { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.ModelMount>? ModelMounts { get => _explicitNullValueModelMounts; set { _explicitNullValueModelMounts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_mounts"); else _explicitNullProperties?.Remove("model_mounts"); } }
+        private List<global::Soenneker.Together.OpenApiClient.Models.ModelMount>? _explicitNullValueModelMounts = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Together.OpenApiClient.Models.ModelMount> ModelMounts { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.ModelMount> ModelMounts { get => _explicitNullValueModelMounts; set { _explicitNullValueModelMounts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_mounts"); else _explicitNullProperties?.Remove("model_mounts"); } }
+        private List<global::Soenneker.Together.OpenApiClient.Models.ModelMount> _explicitNullValueModelMounts = default!;
 #endif
         /// <summary>Name is the name of the deployment</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>The object type, which is always `deployment`.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.DeploymentObject? Object { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeploymentObject? Object { get => _explicitNullValueObject; set { _explicitNullValueObject = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("object"); else _explicitNullProperties?.Remove("object"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.DeploymentObject? _explicitNullValueObject = default!;
         /// <summary>Port is the container port that the deployment exposes</summary>
-        public int? Port { get; set; }
+        public int? Port { get => _explicitNullValuePort; set { _explicitNullValuePort = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("port"); else _explicitNullProperties?.Remove("port"); } }
+        private int? _explicitNullValuePort = default!;
         /// <summary>ReadyReplicas is the current number of replicas that are in the Ready state</summary>
-        public int? ReadyReplicas { get; set; }
+        public int? ReadyReplicas { get => _explicitNullValueReadyReplicas; set { _explicitNullValueReadyReplicas = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ready_replicas"); else _explicitNullProperties?.Remove("ready_replicas"); } }
+        private int? _explicitNullValueReadyReplicas = default!;
         /// <summary>ReplicaEvents is a mapping of replica names or IDs to their status events</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItemReplicaEventsProperty? ReplicaEvents { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItemReplicaEventsProperty? ReplicaEvents { get => _explicitNullValueReplicaEvents; set { _explicitNullValueReplicaEvents = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("replica_events"); else _explicitNullProperties?.Remove("replica_events"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItemReplicaEventsProperty? _explicitNullValueReplicaEvents = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItemReplicaEventsProperty ReplicaEvents { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItemReplicaEventsProperty ReplicaEvents { get => _explicitNullValueReplicaEvents; set { _explicitNullValueReplicaEvents = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("replica_events"); else _explicitNullProperties?.Remove("replica_events"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItemReplicaEventsProperty _explicitNullValueReplicaEvents = default!;
 #endif
         /// <summary>Status represents the overall status of the deployment (e.g., Updating, Scaling, Ready, Failed)</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItemStatus? Status { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItemStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItemStatus? _explicitNullValueStatus = default!;
         /// <summary>Storage is the amount of storage (in MB or units as defined by the platform) allocated to each replica</summary>
-        public int? Storage { get; set; }
+        public int? Storage { get => _explicitNullValueStorage; set { _explicitNullValueStorage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("storage"); else _explicitNullProperties?.Remove("storage"); } }
+        private int? _explicitNullValueStorage = default!;
         /// <summary>TerminationGracePeriodSeconds is the time in seconds to wait for graceful shutdown before forcefully terminating the replica</summary>
-        public int? TerminationGracePeriodSeconds { get; set; }
+        public int? TerminationGracePeriodSeconds { get => _explicitNullValueTerminationGracePeriodSeconds; set { _explicitNullValueTerminationGracePeriodSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("termination_grace_period_seconds"); else _explicitNullProperties?.Remove("termination_grace_period_seconds"); } }
+        private int? _explicitNullValueTerminationGracePeriodSeconds = default!;
         /// <summary>UpdatedAt is the ISO8601 timestamp when this deployment was last updated</summary>
-        public DateTimeOffset? UpdatedAt { get; set; }
+        public DateTimeOffset? UpdatedAt { get => _explicitNullValueUpdatedAt; set { _explicitNullValueUpdatedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("updated_at"); else _explicitNullProperties?.Remove("updated_at"); } }
+        private DateTimeOffset? _explicitNullValueUpdatedAt = default!;
         /// <summary>Volumes is a list of volume mounts for this deployment</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Together.OpenApiClient.Models.VolumeMount>? Volumes { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.VolumeMount>? Volumes { get => _explicitNullValueVolumes; set { _explicitNullValueVolumes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("volumes"); else _explicitNullProperties?.Remove("volumes"); } }
+        private List<global::Soenneker.Together.OpenApiClient.Models.VolumeMount>? _explicitNullValueVolumes = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Together.OpenApiClient.Models.VolumeMount> Volumes { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.VolumeMount> Volumes { get => _explicitNullValueVolumes; set { _explicitNullValueVolumes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("volumes"); else _explicitNullProperties?.Remove("volumes"); } }
+        private List<global::Soenneker.Together.OpenApiClient.Models.VolumeMount> _explicitNullValueVolumes = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItem"/> and sets the default values.
@@ -157,7 +232,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItem CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItem();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItem(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -232,6 +307,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteIntValue("termination_grace_period_seconds", TerminationGracePeriodSeconds);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.VolumeMount>("volumes", Volumes);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

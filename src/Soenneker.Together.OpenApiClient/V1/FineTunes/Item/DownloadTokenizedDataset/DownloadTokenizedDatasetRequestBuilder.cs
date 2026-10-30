@@ -53,6 +53,8 @@ namespace Soenneker.Together.OpenApiClient.V1.FineTunes.Item.DownloadTokenizedDa
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "404", global::Soenneker.Together.OpenApiClient.Models.ErrorData.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.FineTuneTokenizedDatasetRetrieveResponse>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.FineTuneTokenizedDatasetRetrieveResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

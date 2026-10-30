@@ -11,37 +11,62 @@ namespace Soenneker.Together.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class GpuClusterUpdateRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("add_ons") is { } nullNodeAddOns && nullNodeAddOns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AddOns = null;
+            if (parseNode.GetChildNode("cluster_config") is { } nullNodeClusterConfig && nullNodeClusterConfig.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClusterConfig = null;
+            if (parseNode.GetChildNode("cluster_type") is { } nullNodeClusterType && nullNodeClusterType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClusterType = null;
+            if (parseNode.GetChildNode("num_capacity_pool_gpus") is { } nullNodeNumCapacityPoolGpus && nullNodeNumCapacityPoolGpus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NumCapacityPoolGpus = null;
+            if (parseNode.GetChildNode("num_gpus") is { } nullNodeNumGpus && nullNodeNumGpus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NumGpus = null;
+            if (parseNode.GetChildNode("num_preemptible_gpus") is { } nullNodeNumPreemptibleGpus && nullNodeNumPreemptibleGpus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NumPreemptibleGpus = null;
+            if (parseNode.GetChildNode("num_reserved_gpus") is { } nullNodeNumReservedGpus && nullNodeNumReservedGpus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NumReservedGpus = null;
+            if (parseNode.GetChildNode("reservation_end_time") is { } nullNodeReservationEndTime && nullNodeReservationEndTime.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReservationEndTime = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Add-ons to update on the cluster. Each entry identifies an existing add-on by name and provides the new external config to merge.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Together.OpenApiClient.Models.AddOnUpdateRequest>? AddOns { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.AddOnUpdateRequest>? AddOns { get => _explicitNullValueAddOns; set { _explicitNullValueAddOns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("add_ons"); else _explicitNullProperties?.Remove("add_ons"); } }
+        private List<global::Soenneker.Together.OpenApiClient.Models.AddOnUpdateRequest>? _explicitNullValueAddOns = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Together.OpenApiClient.Models.AddOnUpdateRequest> AddOns { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.AddOnUpdateRequest> AddOns { get => _explicitNullValueAddOns; set { _explicitNullValueAddOns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("add_ons"); else _explicitNullProperties?.Remove("add_ons"); } }
+        private List<global::Soenneker.Together.OpenApiClient.Models.AddOnUpdateRequest> _explicitNullValueAddOns = default!;
 #endif
         /// <summary>The cluster_config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.InstanceClusterConfig? ClusterConfig { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.InstanceClusterConfig? ClusterConfig { get => _explicitNullValueClusterConfig; set { _explicitNullValueClusterConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cluster_config"); else _explicitNullProperties?.Remove("cluster_config"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.InstanceClusterConfig? _explicitNullValueClusterConfig = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.InstanceClusterConfig ClusterConfig { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.InstanceClusterConfig ClusterConfig { get => _explicitNullValueClusterConfig; set { _explicitNullValueClusterConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cluster_config"); else _explicitNullProperties?.Remove("cluster_config"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.InstanceClusterConfig _explicitNullValueClusterConfig = default!;
 #endif
         /// <summary>Type of cluster to update.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.GpuClusterUpdateRequestClusterType? ClusterType { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.GpuClusterUpdateRequestClusterType? ClusterType { get => _explicitNullValueClusterType; set { _explicitNullValueClusterType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cluster_type"); else _explicitNullProperties?.Remove("cluster_type"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.GpuClusterUpdateRequestClusterType? _explicitNullValueClusterType = default!;
         /// <summary>Number of GPUs to draw from the cluster&apos;s capacity pool. Only valid for clusters created with a capacity_pool_id. Must be a multiple of 8 and not exceed num_gpus. When omitted, the current value is preserved.</summary>
-        public int? NumCapacityPoolGpus { get; set; }
+        public int? NumCapacityPoolGpus { get => _explicitNullValueNumCapacityPoolGpus; set { _explicitNullValueNumCapacityPoolGpus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("num_capacity_pool_gpus"); else _explicitNullProperties?.Remove("num_capacity_pool_gpus"); } }
+        private int? _explicitNullValueNumCapacityPoolGpus = default!;
         /// <summary>Target GPU count for the cluster. When omitted, the server keeps the current GPU count from cluster metadata (use for config-only or decommission-time-only updates).</summary>
-        public int? NumGpus { get; set; }
+        public int? NumGpus { get => _explicitNullValueNumGpus; set { _explicitNullValueNumGpus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("num_gpus"); else _explicitNullProperties?.Remove("num_gpus"); } }
+        private int? _explicitNullValueNumGpus = default!;
         /// <summary>Updated desired number of preemptible GPUs for the cluster. When omitted, the current value is preserved. Must be a multiple of 8.</summary>
-        public int? NumPreemptibleGpus { get; set; }
+        public int? NumPreemptibleGpus { get => _explicitNullValueNumPreemptibleGpus; set { _explicitNullValueNumPreemptibleGpus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("num_preemptible_gpus"); else _explicitNullProperties?.Remove("num_preemptible_gpus"); } }
+        private int? _explicitNullValueNumPreemptibleGpus = default!;
         /// <summary>Number of reserved GPUs to update to. This field is only applicable for clusters with RESERVED billing type.</summary>
-        public int? NumReservedGpus { get; set; }
+        public int? NumReservedGpus { get => _explicitNullValueNumReservedGpus; set { _explicitNullValueNumReservedGpus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("num_reserved_gpus"); else _explicitNullProperties?.Remove("num_reserved_gpus"); } }
+        private int? _explicitNullValueNumReservedGpus = default!;
         /// <summary>Timestamp at which the cluster should be decommissioned. Only accepted for prepaid clusters.</summary>
-        public DateTimeOffset? ReservationEndTime { get; set; }
+        public DateTimeOffset? ReservationEndTime { get => _explicitNullValueReservationEndTime; set { _explicitNullValueReservationEndTime = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reservation_end_time"); else _explicitNullProperties?.Remove("reservation_end_time"); } }
+        private DateTimeOffset? _explicitNullValueReservationEndTime = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.GpuClusterUpdateRequest"/> and sets the default values.
         /// </summary>
@@ -57,7 +82,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.GpuClusterUpdateRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.GpuClusterUpdateRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.GpuClusterUpdateRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -92,6 +117,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteIntValue("num_preemptible_gpus", NumPreemptibleGpus);
             writer.WriteIntValue("num_reserved_gpus", NumReservedGpus);
             writer.WriteDateTimeOffsetValue("reservation_end_time", ReservationEndTime);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

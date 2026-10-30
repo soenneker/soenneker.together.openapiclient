@@ -12,27 +12,47 @@ namespace Soenneker.Together.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RlMuonParams : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("adam") is { } nullNodeAdam && nullNodeAdam.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Adam = null;
+            if (parseNode.GetChildNode("grad_clip_norm") is { } nullNodeGradClipNorm && nullNodeGradClipNorm.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GradClipNorm = null;
+            if (parseNode.GetChildNode("learning_rate") is { } nullNodeLearningRate && nullNodeLearningRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LearningRate = null;
+            if (parseNode.GetChildNode("momentum") is { } nullNodeMomentum && nullNodeMomentum.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Momentum = null;
+            if (parseNode.GetChildNode("newton_schulz_steps") is { } nullNodeNewtonSchulzSteps && nullNodeNewtonSchulzSteps.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NewtonSchulzSteps = null;
+            if (parseNode.GetChildNode("weight_decay") is { } nullNodeWeightDecay && nullNodeWeightDecay.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WeightDecay = null;
+        }
+
         /// <summary>Per-step Adam optimizer overrides.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RlAdamParams? Adam { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlAdamParams? Adam { get => _explicitNullValueAdam; set { _explicitNullValueAdam = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("adam"); else _explicitNullProperties?.Remove("adam"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlAdamParams? _explicitNullValueAdam = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.RlAdamParams Adam { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlAdamParams Adam { get => _explicitNullValueAdam; set { _explicitNullValueAdam = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("adam"); else _explicitNullProperties?.Remove("adam"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlAdamParams _explicitNullValueAdam = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Maximum gradient norm for this step, gradients across all model parameters are clipped to this value. Set to 0 to disable gradient clipping. When unset, gradients are clipped to the session default (1.0).</summary>
-        public double? GradClipNorm { get; set; }
+        public double? GradClipNorm { get => _explicitNullValueGradClipNorm; set { _explicitNullValueGradClipNorm = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("grad_clip_norm"); else _explicitNullProperties?.Remove("grad_clip_norm"); } }
+        private double? _explicitNullValueGradClipNorm = default!;
         /// <summary>Learning rate for this Muon optimizer step.</summary>
-        public double? LearningRate { get; set; }
+        public double? LearningRate { get => _explicitNullValueLearningRate; set { _explicitNullValueLearningRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("learning_rate"); else _explicitNullProperties?.Remove("learning_rate"); } }
+        private double? _explicitNullValueLearningRate = default!;
         /// <summary>Momentum coefficient</summary>
-        public double? Momentum { get; set; }
+        public double? Momentum { get => _explicitNullValueMomentum; set { _explicitNullValueMomentum = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("momentum"); else _explicitNullProperties?.Remove("momentum"); } }
+        private double? _explicitNullValueMomentum = default!;
         /// <summary>Number of Newton-Schulz iterations</summary>
-        public int? NewtonSchulzSteps { get; set; }
+        public int? NewtonSchulzSteps { get => _explicitNullValueNewtonSchulzSteps; set { _explicitNullValueNewtonSchulzSteps = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("newton_schulz_steps"); else _explicitNullProperties?.Remove("newton_schulz_steps"); } }
+        private int? _explicitNullValueNewtonSchulzSteps = default!;
         /// <summary>Weight decay coefficient</summary>
-        public double? WeightDecay { get; set; }
+        public double? WeightDecay { get => _explicitNullValueWeightDecay; set { _explicitNullValueWeightDecay = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("weight_decay"); else _explicitNullProperties?.Remove("weight_decay"); } }
+        private double? _explicitNullValueWeightDecay = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlMuonParams"/> and sets the default values.
         /// </summary>
@@ -52,7 +72,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.RlMuonParams CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.RlMuonParams();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.RlMuonParams(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -83,6 +103,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteDoubleValue("momentum", Momentum);
             writer.WriteIntValue("newton_schulz_steps", NewtonSchulzSteps);
             writer.WriteDoubleValue("weight_decay", WeightDecay);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

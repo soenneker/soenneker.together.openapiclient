@@ -11,19 +11,31 @@ namespace Soenneker.Together.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class LrScheduler : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("lr_scheduler_args") is { } nullNodeLrSchedulerArgs && nullNodeLrSchedulerArgs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LrSchedulerArgs = null;
+            if (parseNode.GetChildNode("lr_scheduler_type") is { } nullNodeLrSchedulerType && nullNodeLrSchedulerType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LrSchedulerType = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The lr_scheduler_args property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.LrSchedulerLrSchedulerArgs? LrSchedulerArgs { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.LrSchedulerLrSchedulerArgs? LrSchedulerArgs { get => _explicitNullValueLrSchedulerArgs; set { _explicitNullValueLrSchedulerArgs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lr_scheduler_args"); else _explicitNullProperties?.Remove("lr_scheduler_args"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.LrSchedulerLrSchedulerArgs? _explicitNullValueLrSchedulerArgs = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.LrSchedulerLrSchedulerArgs LrSchedulerArgs { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.LrSchedulerLrSchedulerArgs LrSchedulerArgs { get => _explicitNullValueLrSchedulerArgs; set { _explicitNullValueLrSchedulerArgs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lr_scheduler_args"); else _explicitNullProperties?.Remove("lr_scheduler_args"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.LrSchedulerLrSchedulerArgs _explicitNullValueLrSchedulerArgs = default!;
 #endif
         /// <summary>The lr_scheduler_type property</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.LrSchedulerLrSchedulerType? LrSchedulerType { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.LrSchedulerLrSchedulerType? LrSchedulerType { get => _explicitNullValueLrSchedulerType; set { _explicitNullValueLrSchedulerType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lr_scheduler_type"); else _explicitNullProperties?.Remove("lr_scheduler_type"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.LrSchedulerLrSchedulerType? _explicitNullValueLrSchedulerType = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.LrScheduler"/> and sets the default values.
         /// </summary>
@@ -39,7 +51,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.LrScheduler CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.LrScheduler();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.LrScheduler(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -62,6 +74,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.LrSchedulerLrSchedulerArgs>("lr_scheduler_args", LrSchedulerArgs);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.LrSchedulerLrSchedulerType>("lr_scheduler_type", LrSchedulerType);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

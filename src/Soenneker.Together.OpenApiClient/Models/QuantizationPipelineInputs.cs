@@ -12,32 +12,48 @@ namespace Soenneker.Together.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class QuantizationPipelineInputs : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("calibration_file_id") is { } nullNodeCalibrationFileId && nullNodeCalibrationFileId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CalibrationFileId = null;
+            if (parseNode.GetChildNode("model_object_id") is { } nullNodeModelObjectId && nullNodeModelObjectId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModelObjectId = null;
+            if (parseNode.GetChildNode("model_revision_id") is { } nullNodeModelRevisionId && nullNodeModelRevisionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModelRevisionId = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Conversation dataset file ID to use for calibration. Upload it first with `POST /v1/files` using purpose `calibration` and file type `jsonl`. Each JSONL row must contain a `messages` array and may contain a `tools` array.When provided, the job draws half of the calibration corpus from this file and half from a general-text corpus. When omitted, the job calibrates on the general-text corpus only.The request is rejected unless the file exists in the request project, has finished uploading, has passed files API validation as a conversation dataset, is not empty, and is at most 64 MiB. A `fine-tune` purpose file is also accepted so a training file can be reused.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CalibrationFileId { get; set; }
+        public string? CalibrationFileId { get => _explicitNullValueCalibrationFileId; set { _explicitNullValueCalibrationFileId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("calibration_file_id"); else _explicitNullProperties?.Remove("calibration_file_id"); } }
+        private string? _explicitNullValueCalibrationFileId = default!;
 #nullable restore
 #else
-        public string CalibrationFileId { get; set; }
+        public string CalibrationFileId { get => _explicitNullValueCalibrationFileId; set { _explicitNullValueCalibrationFileId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("calibration_file_id"); else _explicitNullProperties?.Remove("calibration_file_id"); } }
+        private string _explicitNullValueCalibrationFileId = default!;
 #endif
         /// <summary>Model object ID of the model to prepare. It names the input model; it is not the `results.model_object_id` of a job, which names the model the job produced.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ModelObjectId { get; set; }
+        public string? ModelObjectId { get => _explicitNullValueModelObjectId; set { _explicitNullValueModelObjectId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_object_id"); else _explicitNullProperties?.Remove("model_object_id"); } }
+        private string? _explicitNullValueModelObjectId = default!;
 #nullable restore
 #else
-        public string ModelObjectId { get; set; }
+        public string ModelObjectId { get => _explicitNullValueModelObjectId; set { _explicitNullValueModelObjectId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_object_id"); else _explicitNullProperties?.Remove("model_object_id"); } }
+        private string _explicitNullValueModelObjectId = default!;
 #endif
         /// <summary>Revision ID of the model to prepare. Omit to use the model&apos;s current revision. Only valid with `model_object_id`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ModelRevisionId { get; set; }
+        public string? ModelRevisionId { get => _explicitNullValueModelRevisionId; set { _explicitNullValueModelRevisionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_revision_id"); else _explicitNullProperties?.Remove("model_revision_id"); } }
+        private string? _explicitNullValueModelRevisionId = default!;
 #nullable restore
 #else
-        public string ModelRevisionId { get; set; }
+        public string ModelRevisionId { get => _explicitNullValueModelRevisionId; set { _explicitNullValueModelRevisionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_revision_id"); else _explicitNullProperties?.Remove("model_revision_id"); } }
+        private string _explicitNullValueModelRevisionId = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.QuantizationPipelineInputs"/> and sets the default values.
@@ -54,7 +70,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.QuantizationPipelineInputs CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.QuantizationPipelineInputs();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.QuantizationPipelineInputs(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -79,6 +95,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteStringValue("calibration_file_id", CalibrationFileId);
             writer.WriteStringValue("model_object_id", ModelObjectId);
             writer.WriteStringValue("model_revision_id", ModelRevisionId);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

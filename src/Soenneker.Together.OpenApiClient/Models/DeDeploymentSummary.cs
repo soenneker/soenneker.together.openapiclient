@@ -12,7 +12,17 @@ namespace Soenneker.Together.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DeDeploymentSummary : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("model") is { } nullNodeModel && nullNodeModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Model = null;
+            if (parseNode.GetChildNode("modelId") is { } nullNodeModelId && nullNodeModelId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModelId = null;
+            if (parseNode.GetChildNode("trafficMode") is { } nullNodeTrafficMode && nullNodeTrafficMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TrafficMode = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Autoscaling configuration for the deployment.</summary>
@@ -48,18 +58,22 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Resource name of the served model in the form`projects/{projectId}/models/{modelId}/revisions/{revisionId}`.For public models, the model&apos;s owning project may differ from the deployment&apos;s project.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Model { get; set; }
+        public string? Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private string? _explicitNullValueModel = default!;
 #nullable restore
 #else
-        public string Model { get; set; }
+        public string Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private string _explicitNullValueModel = default!;
 #endif
         /// <summary>Deprecated. Use `model`. Model identifier being served.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ModelId { get; set; }
+        public string? ModelId { get => _explicitNullValueModelId; set { _explicitNullValueModelId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modelId"); else _explicitNullProperties?.Remove("modelId"); } }
+        private string? _explicitNullValueModelId = default!;
 #nullable restore
 #else
-        public string ModelId { get; set; }
+        public string ModelId { get => _explicitNullValueModelId; set { _explicitNullValueModelId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modelId"); else _explicitNullProperties?.Remove("modelId"); } }
+        private string _explicitNullValueModelId = default!;
 #endif
         /// <summary>Inference-addressable name in the fully-qualified form&quot;&lt;project_slug&gt;/&lt;endpoint_name&gt;/&lt;deployment_name&gt;&quot;. Pass it as the&quot;model&quot; field when calling the inference API to pin to this deployment.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -74,7 +88,8 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Current state of the deployment.</summary>
         public global::Soenneker.Together.OpenApiClient.Models.DeDeploymentSummaryState? State { get; private set; }
         /// <summary>Whether the deployment serves client-visible responses or only mirrored shadow traffic.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.DeDeploymentSummaryTrafficMode? TrafficMode { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeDeploymentSummaryTrafficMode? TrafficMode { get => _explicitNullValueTrafficMode; set { _explicitNullValueTrafficMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trafficMode"); else _explicitNullProperties?.Remove("trafficMode"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.DeDeploymentSummaryTrafficMode? _explicitNullValueTrafficMode = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.DeDeploymentSummary"/> and sets the default values.
         /// </summary>
@@ -90,7 +105,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.DeDeploymentSummary CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.DeDeploymentSummary();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.DeDeploymentSummary(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -124,6 +139,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteStringValue("model", Model);
             writer.WriteStringValue("modelId", ModelId);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeDeploymentSummaryTrafficMode>("trafficMode", TrafficMode);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -11,21 +11,40 @@ namespace Soenneker.Together.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class PostV1FineTunesEstimatePrice200ResponseOneOf1 : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("allowed_to_proceed") is { } nullNodeAllowedToProceed && nullNodeAllowedToProceed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowedToProceed = null;
+            if (parseNode.GetChildNode("estimated_eval_token_count") is { } nullNodeEstimatedEvalTokenCount && nullNodeEstimatedEvalTokenCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EstimatedEvalTokenCount = null;
+            if (parseNode.GetChildNode("estimated_total_price") is { } nullNodeEstimatedTotalPrice && nullNodeEstimatedTotalPrice.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EstimatedTotalPrice = null;
+            if (parseNode.GetChildNode("estimated_train_token_count") is { } nullNodeEstimatedTrainTokenCount && nullNodeEstimatedTrainTokenCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EstimatedTrainTokenCount = null;
+            if (parseNode.GetChildNode("estimation_available") is { } nullNodeEstimationAvailable && nullNodeEstimationAvailable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EstimationAvailable = null;
+            if (parseNode.GetChildNode("user_limit") is { } nullNodeUserLimit && nullNodeUserLimit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UserLimit = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether you are allowed to proceed with the fine-tuning job.</summary>
-        public bool? AllowedToProceed { get; set; }
+        public bool? AllowedToProceed { get => _explicitNullValueAllowedToProceed; set { _explicitNullValueAllowedToProceed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowed_to_proceed"); else _explicitNullProperties?.Remove("allowed_to_proceed"); } }
+        private bool? _explicitNullValueAllowedToProceed = default!;
         /// <summary>The estimated number of tokens for evaluation</summary>
-        public double? EstimatedEvalTokenCount { get; set; }
+        public double? EstimatedEvalTokenCount { get => _explicitNullValueEstimatedEvalTokenCount; set { _explicitNullValueEstimatedEvalTokenCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("estimated_eval_token_count"); else _explicitNullProperties?.Remove("estimated_eval_token_count"); } }
+        private double? _explicitNullValueEstimatedEvalTokenCount = default!;
         /// <summary>The price of the fine-tuning job</summary>
-        public double? EstimatedTotalPrice { get; set; }
+        public double? EstimatedTotalPrice { get => _explicitNullValueEstimatedTotalPrice; set { _explicitNullValueEstimatedTotalPrice = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("estimated_total_price"); else _explicitNullProperties?.Remove("estimated_total_price"); } }
+        private double? _explicitNullValueEstimatedTotalPrice = default!;
         /// <summary>The estimated number of tokens to be trained</summary>
-        public double? EstimatedTrainTokenCount { get; set; }
+        public double? EstimatedTrainTokenCount { get => _explicitNullValueEstimatedTrainTokenCount; set { _explicitNullValueEstimatedTrainTokenCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("estimated_train_token_count"); else _explicitNullProperties?.Remove("estimated_train_token_count"); } }
+        private double? _explicitNullValueEstimatedTrainTokenCount = default!;
         /// <summary>Whether price estimation is available for the requested fine-tune job.</summary>
-        public bool? EstimationAvailable { get; set; }
+        public bool? EstimationAvailable { get => _explicitNullValueEstimationAvailable; set { _explicitNullValueEstimationAvailable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("estimation_available"); else _explicitNullProperties?.Remove("estimation_available"); } }
+        private bool? _explicitNullValueEstimationAvailable = default!;
         /// <summary>Your credit limit in dollars.</summary>
-        public double? UserLimit { get; set; }
+        public double? UserLimit { get => _explicitNullValueUserLimit; set { _explicitNullValueUserLimit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_limit"); else _explicitNullProperties?.Remove("user_limit"); } }
+        private double? _explicitNullValueUserLimit = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.PostV1FineTunesEstimatePrice200ResponseOneOf1"/> and sets the default values.
         /// </summary>
@@ -41,7 +60,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.PostV1FineTunesEstimatePrice200ResponseOneOf1 CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.PostV1FineTunesEstimatePrice200ResponseOneOf1();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.PostV1FineTunesEstimatePrice200ResponseOneOf1(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -72,6 +91,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteDoubleValue("estimated_train_token_count", EstimatedTrainTokenCount);
             writer.WriteBoolValue("estimation_available", EstimationAvailable);
             writer.WriteDoubleValue("user_limit", UserLimit);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -12,47 +12,72 @@ namespace Soenneker.Together.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class FineTunePreviewRow : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("input_ids") is { } nullNodeInputIds && nullNodeInputIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InputIds = null;
+            if (parseNode.GetChildNode("labels") is { } nullNodeLabels && nullNodeLabels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Labels = null;
+            if (parseNode.GetChildNode("num_tokens") is { } nullNodeNumTokens && nullNodeNumTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NumTokens = null;
+            if (parseNode.GetChildNode("num_trained_tokens") is { } nullNodeNumTrainedTokens && nullNodeNumTrainedTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NumTrainedTokens = null;
+            if (parseNode.GetChildNode("tokens") is { } nullNodeTokens && nullNodeTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tokens = null;
+            if (parseNode.GetChildNode("trained_spans") is { } nullNodeTrainedSpans && nullNodeTrainedSpans.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TrainedSpans = null;
+            if (parseNode.GetChildNode("truncated") is { } nullNodeTruncated && nullNodeTruncated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Truncated = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Token IDs produced for the sampled row.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<int?>? InputIds { get; set; }
+        public List<int?>? InputIds { get => _explicitNullValueInputIds; set { _explicitNullValueInputIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_ids"); else _explicitNullProperties?.Remove("input_ids"); } }
+        private List<int?>? _explicitNullValueInputIds = default!;
 #nullable restore
 #else
-        public List<int?> InputIds { get; set; }
+        public List<int?> InputIds { get => _explicitNullValueInputIds; set { _explicitNullValueInputIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_ids"); else _explicitNullProperties?.Remove("input_ids"); } }
+        private List<int?> _explicitNullValueInputIds = default!;
 #endif
         /// <summary>Training labels for each token; masked tokens use -100.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<int?>? Labels { get; set; }
+        public List<int?>? Labels { get => _explicitNullValueLabels; set { _explicitNullValueLabels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("labels"); else _explicitNullProperties?.Remove("labels"); } }
+        private List<int?>? _explicitNullValueLabels = default!;
 #nullable restore
 #else
-        public List<int?> Labels { get; set; }
+        public List<int?> Labels { get => _explicitNullValueLabels; set { _explicitNullValueLabels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("labels"); else _explicitNullProperties?.Remove("labels"); } }
+        private List<int?> _explicitNullValueLabels = default!;
 #endif
         /// <summary>Total number of tokens in the preview row after truncation.</summary>
-        public int? NumTokens { get; set; }
+        public int? NumTokens { get => _explicitNullValueNumTokens; set { _explicitNullValueNumTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("num_tokens"); else _explicitNullProperties?.Remove("num_tokens"); } }
+        private int? _explicitNullValueNumTokens = default!;
         /// <summary>Number of tokens in the row that contribute to training loss.</summary>
-        public int? NumTrainedTokens { get; set; }
+        public int? NumTrainedTokens { get => _explicitNullValueNumTrainedTokens; set { _explicitNullValueNumTrainedTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("num_trained_tokens"); else _explicitNullProperties?.Remove("num_trained_tokens"); } }
+        private int? _explicitNullValueNumTrainedTokens = default!;
         /// <summary>Raw token strings produced for the sampled row.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Tokens { get; set; }
+        public List<string>? Tokens { get => _explicitNullValueTokens; set { _explicitNullValueTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tokens"); else _explicitNullProperties?.Remove("tokens"); } }
+        private List<string>? _explicitNullValueTokens = default!;
 #nullable restore
 #else
-        public List<string> Tokens { get; set; }
+        public List<string> Tokens { get => _explicitNullValueTokens; set { _explicitNullValueTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tokens"); else _explicitNullProperties?.Remove("tokens"); } }
+        private List<string> _explicitNullValueTokens = default!;
 #endif
         /// <summary>Half-open token index ranges that contribute to training loss.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? TrainedSpans { get; set; }
+        public UntypedNode? TrainedSpans { get => _explicitNullValueTrainedSpans; set { _explicitNullValueTrainedSpans = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trained_spans"); else _explicitNullProperties?.Remove("trained_spans"); } }
+        private UntypedNode? _explicitNullValueTrainedSpans = default!;
 #nullable restore
 #else
-        public UntypedNode TrainedSpans { get; set; }
+        public UntypedNode TrainedSpans { get => _explicitNullValueTrainedSpans; set { _explicitNullValueTrainedSpans = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trained_spans"); else _explicitNullProperties?.Remove("trained_spans"); } }
+        private UntypedNode _explicitNullValueTrainedSpans = default!;
 #endif
         /// <summary>Whether the row was truncated to the model maximum sequence length.</summary>
-        public bool? Truncated { get; set; }
+        public bool? Truncated { get => _explicitNullValueTruncated; set { _explicitNullValueTruncated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("truncated"); else _explicitNullProperties?.Remove("truncated"); } }
+        private bool? _explicitNullValueTruncated = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.FineTunePreviewRow"/> and sets the default values.
         /// </summary>
@@ -68,7 +93,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.FineTunePreviewRow CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.FineTunePreviewRow();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.FineTunePreviewRow(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -101,6 +126,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("tokens", Tokens);
             writer.WriteObjectValue<UntypedNode>("trained_spans", TrainedSpans);
             writer.WriteBoolValue("truncated", Truncated);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

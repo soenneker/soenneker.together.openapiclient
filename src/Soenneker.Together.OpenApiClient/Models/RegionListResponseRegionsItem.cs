@@ -11,32 +11,48 @@ namespace Soenneker.Together.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class RegionListResponseRegionsItem : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("driver_versions") is { } nullNodeDriverVersions && nullNodeDriverVersions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DriverVersions = null;
+            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("supported_instance_types") is { } nullNodeSupportedInstanceTypes && nullNodeSupportedInstanceTypes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SupportedInstanceTypes = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>List of supported identifiable cuda/nvidia driver versions pairs available in the region.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Together.OpenApiClient.Models.ClusterDriverVersionInfo>? DriverVersions { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.ClusterDriverVersionInfo>? DriverVersions { get => _explicitNullValueDriverVersions; set { _explicitNullValueDriverVersions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("driver_versions"); else _explicitNullProperties?.Remove("driver_versions"); } }
+        private List<global::Soenneker.Together.OpenApiClient.Models.ClusterDriverVersionInfo>? _explicitNullValueDriverVersions = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Together.OpenApiClient.Models.ClusterDriverVersionInfo> DriverVersions { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.ClusterDriverVersionInfo> DriverVersions { get => _explicitNullValueDriverVersions; set { _explicitNullValueDriverVersions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("driver_versions"); else _explicitNullProperties?.Remove("driver_versions"); } }
+        private List<global::Soenneker.Together.OpenApiClient.Models.ClusterDriverVersionInfo> _explicitNullValueDriverVersions = default!;
 #endif
         /// <summary>Identifiable name of the region.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>List of supported identifiable gpus available in the region.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? SupportedInstanceTypes { get; set; }
+        public List<string>? SupportedInstanceTypes { get => _explicitNullValueSupportedInstanceTypes; set { _explicitNullValueSupportedInstanceTypes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supported_instance_types"); else _explicitNullProperties?.Remove("supported_instance_types"); } }
+        private List<string>? _explicitNullValueSupportedInstanceTypes = default!;
 #nullable restore
 #else
-        public List<string> SupportedInstanceTypes { get; set; }
+        public List<string> SupportedInstanceTypes { get => _explicitNullValueSupportedInstanceTypes; set { _explicitNullValueSupportedInstanceTypes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supported_instance_types"); else _explicitNullProperties?.Remove("supported_instance_types"); } }
+        private List<string> _explicitNullValueSupportedInstanceTypes = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RegionListResponseRegionsItem"/> and sets the default values.
@@ -53,7 +69,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.RegionListResponseRegionsItem CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.RegionListResponseRegionsItem();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.RegionListResponseRegionsItem(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -78,6 +94,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.ClusterDriverVersionInfo>("driver_versions", DriverVersions);
             writer.WriteStringValue("name", Name);
             writer.WriteCollectionOfPrimitiveValues<string>("supported_instance_types", SupportedInstanceTypes);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

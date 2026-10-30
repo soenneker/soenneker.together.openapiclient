@@ -11,57 +11,87 @@ namespace Soenneker.Together.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class EvaluationModelRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("external_api_token") is { } nullNodeExternalApiToken && nullNodeExternalApiToken.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExternalApiToken = null;
+            if (parseNode.GetChildNode("external_base_url") is { } nullNodeExternalBaseUrl && nullNodeExternalBaseUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExternalBaseUrl = null;
+            if (parseNode.GetChildNode("input_template") is { } nullNodeInputTemplate && nullNodeInputTemplate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InputTemplate = null;
+            if (parseNode.GetChildNode("max_tokens") is { } nullNodeMaxTokens && nullNodeMaxTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxTokens = null;
+            if (parseNode.GetChildNode("model") is { } nullNodeModel && nullNodeModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Model = null;
+            if (parseNode.GetChildNode("model_source") is { } nullNodeModelSource && nullNodeModelSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModelSource = null;
+            if (parseNode.GetChildNode("num_workers") is { } nullNodeNumWorkers && nullNodeNumWorkers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NumWorkers = null;
+            if (parseNode.GetChildNode("system_template") is { } nullNodeSystemTemplate && nullNodeSystemTemplate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SystemTemplate = null;
+            if (parseNode.GetChildNode("temperature") is { } nullNodeTemperature && nullNodeTemperature.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Temperature = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Bearer/API token for the external model provider. Required when model_source is &apos;external&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ExternalApiToken { get; set; }
+        public string? ExternalApiToken { get => _explicitNullValueExternalApiToken; set { _explicitNullValueExternalApiToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("external_api_token"); else _explicitNullProperties?.Remove("external_api_token"); } }
+        private string? _explicitNullValueExternalApiToken = default!;
 #nullable restore
 #else
-        public string ExternalApiToken { get; set; }
+        public string ExternalApiToken { get => _explicitNullValueExternalApiToken; set { _explicitNullValueExternalApiToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("external_api_token"); else _explicitNullProperties?.Remove("external_api_token"); } }
+        private string _explicitNullValueExternalApiToken = default!;
 #endif
         /// <summary>Base URL of the external inference API. Must be OpenAI-compatible. Required when model_source is &apos;external&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ExternalBaseUrl { get; set; }
+        public string? ExternalBaseUrl { get => _explicitNullValueExternalBaseUrl; set { _explicitNullValueExternalBaseUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("external_base_url"); else _explicitNullProperties?.Remove("external_base_url"); } }
+        private string? _explicitNullValueExternalBaseUrl = default!;
 #nullable restore
 #else
-        public string ExternalBaseUrl { get; set; }
+        public string ExternalBaseUrl { get => _explicitNullValueExternalBaseUrl; set { _explicitNullValueExternalBaseUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("external_base_url"); else _explicitNullProperties?.Remove("external_base_url"); } }
+        private string _explicitNullValueExternalBaseUrl = default!;
 #endif
         /// <summary>User message template. Supports Jinja2 variables referencing dataset columns.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? InputTemplate { get; set; }
+        public string? InputTemplate { get => _explicitNullValueInputTemplate; set { _explicitNullValueInputTemplate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_template"); else _explicitNullProperties?.Remove("input_template"); } }
+        private string? _explicitNullValueInputTemplate = default!;
 #nullable restore
 #else
-        public string InputTemplate { get; set; }
+        public string InputTemplate { get => _explicitNullValueInputTemplate; set { _explicitNullValueInputTemplate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_template"); else _explicitNullProperties?.Remove("input_template"); } }
+        private string _explicitNullValueInputTemplate = default!;
 #endif
         /// <summary>Maximum number of tokens to generate.</summary>
-        public int? MaxTokens { get; set; }
+        public int? MaxTokens { get => _explicitNullValueMaxTokens; set { _explicitNullValueMaxTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_tokens"); else _explicitNullProperties?.Remove("max_tokens"); } }
+        private int? _explicitNullValueMaxTokens = default!;
         /// <summary>Name of the model to evaluate</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Model { get; set; }
+        public string? Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private string? _explicitNullValueModel = default!;
 #nullable restore
 #else
-        public string Model { get; set; }
+        public string Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private string _explicitNullValueModel = default!;
 #endif
         /// <summary>Source of the model inference: - `serverless`: Together&apos;s shared serverless inference API. Default concurrency: 25 workers. - `dedicated`: A Together dedicated deployment endpoint. Default concurrency: 5 workers  (minimum enforced even if num_workers is set lower). Authentication uses the requesting  user&apos;s Together API token automatically.- `external`: An external inference API (e.g. OpenAI, Anthropic, Google, OpenRouter).  Requires `external_api_token` and `external_base_url`. Default concurrency: 2 workers  for first-party APIs (OpenAI, Anthropic, Google), 20 for proxy/aggregator endpoints.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.EvaluationModelRequestModelSource? ModelSource { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.EvaluationModelRequestModelSource? ModelSource { get => _explicitNullValueModelSource; set { _explicitNullValueModelSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_source"); else _explicitNullProperties?.Remove("model_source"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.EvaluationModelRequestModelSource? _explicitNullValueModelSource = default!;
         /// <summary>Number of concurrent inference workers. Overrides the source-specific default (serverless: 25, dedicated: 5, external: 2–20). For dedicated endpoints the value is clamped to a minimum of 5 regardless of what is set here.</summary>
-        public int? NumWorkers { get; set; }
+        public int? NumWorkers { get => _explicitNullValueNumWorkers; set { _explicitNullValueNumWorkers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("num_workers"); else _explicitNullProperties?.Remove("num_workers"); } }
+        private int? _explicitNullValueNumWorkers = default!;
         /// <summary>System prompt template. Supports Jinja2 variables referencing dataset columns.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SystemTemplate { get; set; }
+        public string? SystemTemplate { get => _explicitNullValueSystemTemplate; set { _explicitNullValueSystemTemplate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("system_template"); else _explicitNullProperties?.Remove("system_template"); } }
+        private string? _explicitNullValueSystemTemplate = default!;
 #nullable restore
 #else
-        public string SystemTemplate { get; set; }
+        public string SystemTemplate { get => _explicitNullValueSystemTemplate; set { _explicitNullValueSystemTemplate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("system_template"); else _explicitNullProperties?.Remove("system_template"); } }
+        private string _explicitNullValueSystemTemplate = default!;
 #endif
         /// <summary>Sampling temperature for generation.</summary>
-        public double? Temperature { get; set; }
+        public double? Temperature { get => _explicitNullValueTemperature; set { _explicitNullValueTemperature = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("temperature"); else _explicitNullProperties?.Remove("temperature"); } }
+        private double? _explicitNullValueTemperature = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.EvaluationModelRequest"/> and sets the default values.
         /// </summary>
@@ -77,7 +107,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.EvaluationModelRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.EvaluationModelRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.EvaluationModelRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -114,6 +144,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteIntValue("num_workers", NumWorkers);
             writer.WriteStringValue("system_template", SystemTemplate);
             writer.WriteDoubleValue("temperature", Temperature);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

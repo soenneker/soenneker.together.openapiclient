@@ -12,42 +12,63 @@ namespace Soenneker.Together.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DeRequestMetrics : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("failedRequests") is { } nullNodeFailedRequests && nullNodeFailedRequests.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FailedRequests = null;
+            if (parseNode.GetChildNode("requestsByStatusCode") is { } nullNodeRequestsByStatusCode && nullNodeRequestsByStatusCode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequestsByStatusCode = null;
+            if (parseNode.GetChildNode("requestsPerSecond") is { } nullNodeRequestsPerSecond && nullNodeRequestsPerSecond.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequestsPerSecond = null;
+            if (parseNode.GetChildNode("successfulRequests") is { } nullNodeSuccessfulRequests && nullNodeSuccessfulRequests.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SuccessfulRequests = null;
+            if (parseNode.GetChildNode("totalRequests") is { } nullNodeTotalRequests && nullNodeTotalRequests.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalRequests = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Requests that failed during the time range.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FailedRequests { get; set; }
+        public string? FailedRequests { get => _explicitNullValueFailedRequests; set { _explicitNullValueFailedRequests = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failedRequests"); else _explicitNullProperties?.Remove("failedRequests"); } }
+        private string? _explicitNullValueFailedRequests = default!;
 #nullable restore
 #else
-        public string FailedRequests { get; set; }
+        public string FailedRequests { get => _explicitNullValueFailedRequests; set { _explicitNullValueFailedRequests = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failedRequests"); else _explicitNullProperties?.Remove("failedRequests"); } }
+        private string _explicitNullValueFailedRequests = default!;
 #endif
         /// <summary>Request counts keyed by HTTP status code.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.DeRequestMetricsRequestsByStatusCodeProperty? RequestsByStatusCode { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeRequestMetricsRequestsByStatusCodeProperty? RequestsByStatusCode { get => _explicitNullValueRequestsByStatusCode; set { _explicitNullValueRequestsByStatusCode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("requestsByStatusCode"); else _explicitNullProperties?.Remove("requestsByStatusCode"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.DeRequestMetricsRequestsByStatusCodeProperty? _explicitNullValueRequestsByStatusCode = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.DeRequestMetricsRequestsByStatusCodeProperty RequestsByStatusCode { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeRequestMetricsRequestsByStatusCodeProperty RequestsByStatusCode { get => _explicitNullValueRequestsByStatusCode; set { _explicitNullValueRequestsByStatusCode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("requestsByStatusCode"); else _explicitNullProperties?.Remove("requestsByStatusCode"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.DeRequestMetricsRequestsByStatusCodeProperty _explicitNullValueRequestsByStatusCode = default!;
 #endif
         /// <summary>Average requests per second over the time range.</summary>
-        public double? RequestsPerSecond { get; set; }
+        public double? RequestsPerSecond { get => _explicitNullValueRequestsPerSecond; set { _explicitNullValueRequestsPerSecond = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("requestsPerSecond"); else _explicitNullProperties?.Remove("requestsPerSecond"); } }
+        private double? _explicitNullValueRequestsPerSecond = default!;
         /// <summary>Requests completed successfully during the time range.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SuccessfulRequests { get; set; }
+        public string? SuccessfulRequests { get => _explicitNullValueSuccessfulRequests; set { _explicitNullValueSuccessfulRequests = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("successfulRequests"); else _explicitNullProperties?.Remove("successfulRequests"); } }
+        private string? _explicitNullValueSuccessfulRequests = default!;
 #nullable restore
 #else
-        public string SuccessfulRequests { get; set; }
+        public string SuccessfulRequests { get => _explicitNullValueSuccessfulRequests; set { _explicitNullValueSuccessfulRequests = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("successfulRequests"); else _explicitNullProperties?.Remove("successfulRequests"); } }
+        private string _explicitNullValueSuccessfulRequests = default!;
 #endif
         /// <summary>Total requests received during the time range.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TotalRequests { get; set; }
+        public string? TotalRequests { get => _explicitNullValueTotalRequests; set { _explicitNullValueTotalRequests = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("totalRequests"); else _explicitNullProperties?.Remove("totalRequests"); } }
+        private string? _explicitNullValueTotalRequests = default!;
 #nullable restore
 #else
-        public string TotalRequests { get; set; }
+        public string TotalRequests { get => _explicitNullValueTotalRequests; set { _explicitNullValueTotalRequests = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("totalRequests"); else _explicitNullProperties?.Remove("totalRequests"); } }
+        private string _explicitNullValueTotalRequests = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.DeRequestMetrics"/> and sets the default values.
@@ -64,7 +85,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.DeRequestMetrics CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.DeRequestMetrics();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.DeRequestMetrics(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -93,6 +114,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteDoubleValue("requestsPerSecond", RequestsPerSecond);
             writer.WriteStringValue("successfulRequests", SuccessfulRequests);
             writer.WriteStringValue("totalRequests", TotalRequests);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

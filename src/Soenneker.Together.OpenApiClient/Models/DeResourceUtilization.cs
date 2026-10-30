@@ -12,19 +12,36 @@ namespace Soenneker.Together.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DeResourceUtilization : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("cpuUtilization") is { } nullNodeCpuUtilization && nullNodeCpuUtilization.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CpuUtilization = null;
+            if (parseNode.GetChildNode("gpuMemoryUtilization") is { } nullNodeGpuMemoryUtilization && nullNodeGpuMemoryUtilization.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GpuMemoryUtilization = null;
+            if (parseNode.GetChildNode("gpuUtilization") is { } nullNodeGpuUtilization && nullNodeGpuUtilization.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GpuUtilization = null;
+            if (parseNode.GetChildNode("memoryUtilization") is { } nullNodeMemoryUtilization && nullNodeMemoryUtilization.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MemoryUtilization = null;
+            if (parseNode.GetChildNode("networkBandwidthMbps") is { } nullNodeNetworkBandwidthMbps && nullNodeNetworkBandwidthMbps.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NetworkBandwidthMbps = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Average CPU utilization across replicas, as a percentage.</summary>
-        public double? CpuUtilization { get; set; }
+        public double? CpuUtilization { get => _explicitNullValueCpuUtilization; set { _explicitNullValueCpuUtilization = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cpuUtilization"); else _explicitNullProperties?.Remove("cpuUtilization"); } }
+        private double? _explicitNullValueCpuUtilization = default!;
         /// <summary>Average GPU memory utilization across replicas, as a percentage.</summary>
-        public double? GpuMemoryUtilization { get; set; }
+        public double? GpuMemoryUtilization { get => _explicitNullValueGpuMemoryUtilization; set { _explicitNullValueGpuMemoryUtilization = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gpuMemoryUtilization"); else _explicitNullProperties?.Remove("gpuMemoryUtilization"); } }
+        private double? _explicitNullValueGpuMemoryUtilization = default!;
         /// <summary>Average GPU compute utilization across replicas, as a percentage.</summary>
-        public double? GpuUtilization { get; set; }
+        public double? GpuUtilization { get => _explicitNullValueGpuUtilization; set { _explicitNullValueGpuUtilization = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gpuUtilization"); else _explicitNullProperties?.Remove("gpuUtilization"); } }
+        private double? _explicitNullValueGpuUtilization = default!;
         /// <summary>Average system memory utilization across replicas, as a percentage.</summary>
-        public double? MemoryUtilization { get; set; }
+        public double? MemoryUtilization { get => _explicitNullValueMemoryUtilization; set { _explicitNullValueMemoryUtilization = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("memoryUtilization"); else _explicitNullProperties?.Remove("memoryUtilization"); } }
+        private double? _explicitNullValueMemoryUtilization = default!;
         /// <summary>Average network throughput across replicas, in megabits per second.</summary>
-        public double? NetworkBandwidthMbps { get; set; }
+        public double? NetworkBandwidthMbps { get => _explicitNullValueNetworkBandwidthMbps; set { _explicitNullValueNetworkBandwidthMbps = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("networkBandwidthMbps"); else _explicitNullProperties?.Remove("networkBandwidthMbps"); } }
+        private double? _explicitNullValueNetworkBandwidthMbps = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.DeResourceUtilization"/> and sets the default values.
         /// </summary>
@@ -40,7 +57,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.DeResourceUtilization CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.DeResourceUtilization();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.DeResourceUtilization(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -69,6 +86,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteDoubleValue("gpuUtilization", GpuUtilization);
             writer.WriteDoubleValue("memoryUtilization", MemoryUtilization);
             writer.WriteDoubleValue("networkBandwidthMbps", NetworkBandwidthMbps);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

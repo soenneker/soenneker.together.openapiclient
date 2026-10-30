@@ -40,6 +40,7 @@ namespace Soenneker.Together.OpenApiClient.V1.FineTunes.Preview
         /// <param name="body">Request body for previewing tokenized fine-tuning data.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.PostV1FineTunesPreview400ResponseError">When receiving a 400 status code</exception>
         /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.ErrorData">When receiving a 401 status code</exception>
         /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.ErrorData">When receiving a 404 status code</exception>
         /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.FineTunePreviewMessageError">When receiving a 500 status code</exception>
@@ -58,11 +59,14 @@ namespace Soenneker.Together.OpenApiClient.V1.FineTunes.Preview
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
+                { "400", global::Soenneker.Together.OpenApiClient.Models.PostV1FineTunesPreview400ResponseError.CreateFromDiscriminatorValue },
                 { "401", global::Soenneker.Together.OpenApiClient.Models.ErrorData.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.Together.OpenApiClient.Models.ErrorData.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Together.OpenApiClient.Models.FineTunePreviewMessageError.CreateFromDiscriminatorValue },
                 { "502", global::Soenneker.Together.OpenApiClient.Models.FineTunePreviewMessageError.CreateFromDiscriminatorValue },
                 { "503", global::Soenneker.Together.OpenApiClient.Models.FineTunePreviewDetailError.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.FineTunePreviewResponse>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.FineTunePreviewResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

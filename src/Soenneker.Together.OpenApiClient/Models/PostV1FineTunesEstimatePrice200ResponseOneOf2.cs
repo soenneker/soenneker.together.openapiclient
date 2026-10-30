@@ -11,13 +11,24 @@ namespace Soenneker.Together.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class PostV1FineTunesEstimatePrice200ResponseOneOf2 : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("estimation_available") is { } nullNodeEstimationAvailable && nullNodeEstimationAvailable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EstimationAvailable = null;
+            if (parseNode.GetChildNode("unavailable_reason") is { } nullNodeUnavailableReason && nullNodeUnavailableReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UnavailableReason = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether price estimation is available for the requested fine-tune job.</summary>
-        public bool? EstimationAvailable { get; set; }
+        public bool? EstimationAvailable { get => _explicitNullValueEstimationAvailable; set { _explicitNullValueEstimationAvailable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("estimation_available"); else _explicitNullProperties?.Remove("estimation_available"); } }
+        private bool? _explicitNullValueEstimationAvailable = default!;
         /// <summary>Reason price estimation is unavailable for the requested fine-tune job.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.PostV1FineTunesEstimatePrice200ResponseOneOf2UnavailableReason? UnavailableReason { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.PostV1FineTunesEstimatePrice200ResponseOneOf2UnavailableReason? UnavailableReason { get => _explicitNullValueUnavailableReason; set { _explicitNullValueUnavailableReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unavailable_reason"); else _explicitNullProperties?.Remove("unavailable_reason"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.PostV1FineTunesEstimatePrice200ResponseOneOf2UnavailableReason? _explicitNullValueUnavailableReason = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.PostV1FineTunesEstimatePrice200ResponseOneOf2"/> and sets the default values.
         /// </summary>
@@ -33,7 +44,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.PostV1FineTunesEstimatePrice200ResponseOneOf2 CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.PostV1FineTunesEstimatePrice200ResponseOneOf2();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.PostV1FineTunesEstimatePrice200ResponseOneOf2(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -56,6 +67,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("estimation_available", EstimationAvailable);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.PostV1FineTunesEstimatePrice200ResponseOneOf2UnavailableReason>("unavailable_reason", UnavailableReason);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -68,6 +68,8 @@ namespace Soenneker.Together.OpenApiClient.V1.Batches
             {
                 { "401", global::Soenneker.Together.OpenApiClient.Models.BatchErrorResponse.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Together.OpenApiClient.Models.BatchErrorResponse.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             var collectionResult = await RequestAdapter.SendCollectionAsync<global::Soenneker.Together.OpenApiClient.Models.BatchJob>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.BatchJob.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
             return collectionResult?.AsList();
@@ -100,6 +102,8 @@ namespace Soenneker.Together.OpenApiClient.V1.Batches
                 { "401", global::Soenneker.Together.OpenApiClient.Models.BatchErrorResponse.CreateFromDiscriminatorValue },
                 { "429", global::Soenneker.Together.OpenApiClient.Models.BatchErrorResponse.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Together.OpenApiClient.Models.BatchErrorResponse.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.BatchJobWithWarning>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.BatchJobWithWarning.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

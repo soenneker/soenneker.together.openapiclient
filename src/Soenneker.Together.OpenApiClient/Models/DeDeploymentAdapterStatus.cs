@@ -12,95 +12,143 @@ namespace Soenneker.Together.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DeDeploymentAdapterStatus : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("adapterModel") is { } nullNodeAdapterModel && nullNodeAdapterModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AdapterModel = null;
+            if (parseNode.GetChildNode("adapterModelId") is { } nullNodeAdapterModelId && nullNodeAdapterModelId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AdapterModelId = null;
+            if (parseNode.GetChildNode("adapterValid") is { } nullNodeAdapterValid && nullNodeAdapterValid.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AdapterValid = null;
+            if (parseNode.GetChildNode("adapterValidReason") is { } nullNodeAdapterValidReason && nullNodeAdapterValidReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AdapterValidReason = null;
+            if (parseNode.GetChildNode("clusterId") is { } nullNodeClusterId && nullNodeClusterId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClusterId = null;
+            if (parseNode.GetChildNode("failedPodCount") is { } nullNodeFailedPodCount && nullNodeFailedPodCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FailedPodCount = null;
+            if (parseNode.GetChildNode("loadedAt") is { } nullNodeLoadedAt && nullNodeLoadedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LoadedAt = null;
+            if (parseNode.GetChildNode("message") is { } nullNodeMessage && nullNodeMessage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Message = null;
+            if (parseNode.GetChildNode("readyPodCount") is { } nullNodeReadyPodCount && nullNodeReadyPodCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReadyPodCount = null;
+            if (parseNode.GetChildNode("realizedEtag") is { } nullNodeRealizedEtag && nullNodeRealizedEtag.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RealizedEtag = null;
+            if (parseNode.GetChildNode("realizedRevision") is { } nullNodeRealizedRevision && nullNodeRealizedRevision.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RealizedRevision = null;
+            if (parseNode.GetChildNode("realizedRevisionId") is { } nullNodeRealizedRevisionId && nullNodeRealizedRevisionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RealizedRevisionId = null;
+            if (parseNode.GetChildNode("reason") is { } nullNodeReason && nullNodeReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Reason = null;
+            if (parseNode.GetChildNode("state") is { } nullNodeState && nullNodeState.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) State = null;
+            if (parseNode.GetChildNode("totalPodCount") is { } nullNodeTotalPodCount && nullNodeTotalPodCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalPodCount = null;
+            if (parseNode.GetChildNode("updatedAt") is { } nullNodeUpdatedAt && nullNodeUpdatedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UpdatedAt = null;
+        }
+
         /// <summary>Resource name of the adapter model, using projects/{projectId}/models/{adapterModelId}.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AdapterModel { get; set; }
+        public string? AdapterModel { get => _explicitNullValueAdapterModel; set { _explicitNullValueAdapterModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("adapterModel"); else _explicitNullProperties?.Remove("adapterModel"); } }
+        private string? _explicitNullValueAdapterModel = default!;
 #nullable restore
 #else
-        public string AdapterModel { get; set; }
+        public string AdapterModel { get => _explicitNullValueAdapterModel; set { _explicitNullValueAdapterModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("adapterModel"); else _explicitNullProperties?.Remove("adapterModel"); } }
+        private string _explicitNullValueAdapterModel = default!;
 #endif
         /// <summary>Adapter model identifier for this status row.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AdapterModelId { get; set; }
+        public string? AdapterModelId { get => _explicitNullValueAdapterModelId; set { _explicitNullValueAdapterModelId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("adapterModelId"); else _explicitNullProperties?.Remove("adapterModelId"); } }
+        private string? _explicitNullValueAdapterModelId = default!;
 #nullable restore
 #else
-        public string AdapterModelId { get; set; }
+        public string AdapterModelId { get => _explicitNullValueAdapterModelId; set { _explicitNullValueAdapterModelId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("adapterModelId"); else _explicitNullProperties?.Remove("adapterModelId"); } }
+        private string _explicitNullValueAdapterModelId = default!;
 #endif
         /// <summary>Optional inference-probe verdict for this adapter on this cluster; absent until validation concludes.</summary>
-        public bool? AdapterValid { get; set; }
+        public bool? AdapterValid { get => _explicitNullValueAdapterValid; set { _explicitNullValueAdapterValid = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("adapterValid"); else _explicitNullProperties?.Remove("adapterValid"); } }
+        private bool? _explicitNullValueAdapterValid = default!;
         /// <summary>Human-readable probe rejection detail when adapterValid is false.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AdapterValidReason { get; set; }
+        public string? AdapterValidReason { get => _explicitNullValueAdapterValidReason; set { _explicitNullValueAdapterValidReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("adapterValidReason"); else _explicitNullProperties?.Remove("adapterValidReason"); } }
+        private string? _explicitNullValueAdapterValidReason = default!;
 #nullable restore
 #else
-        public string AdapterValidReason { get; set; }
+        public string AdapterValidReason { get => _explicitNullValueAdapterValidReason; set { _explicitNullValueAdapterValidReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("adapterValidReason"); else _explicitNullProperties?.Remove("adapterValidReason"); } }
+        private string _explicitNullValueAdapterValidReason = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Cluster reporting this adapter status.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ClusterId { get; set; }
+        public string? ClusterId { get => _explicitNullValueClusterId; set { _explicitNullValueClusterId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("clusterId"); else _explicitNullProperties?.Remove("clusterId"); } }
+        private string? _explicitNullValueClusterId = default!;
 #nullable restore
 #else
-        public string ClusterId { get; set; }
+        public string ClusterId { get => _explicitNullValueClusterId; set { _explicitNullValueClusterId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("clusterId"); else _explicitNullProperties?.Remove("clusterId"); } }
+        private string _explicitNullValueClusterId = default!;
 #endif
         /// <summary>Number of pods that failed to load the adapter.</summary>
-        public int? FailedPodCount { get; set; }
+        public int? FailedPodCount { get => _explicitNullValueFailedPodCount; set { _explicitNullValueFailedPodCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failedPodCount"); else _explicitNullProperties?.Remove("failedPodCount"); } }
+        private int? _explicitNullValueFailedPodCount = default!;
         /// <summary>Time when the adapter first reached READY in this cluster.</summary>
-        public DateTimeOffset? LoadedAt { get; set; }
+        public DateTimeOffset? LoadedAt { get => _explicitNullValueLoadedAt; set { _explicitNullValueLoadedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("loadedAt"); else _explicitNullProperties?.Remove("loadedAt"); } }
+        private DateTimeOffset? _explicitNullValueLoadedAt = default!;
         /// <summary>Human-readable details about the current adapter state.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Message { get; set; }
+        public string? Message { get => _explicitNullValueMessage; set { _explicitNullValueMessage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message"); else _explicitNullProperties?.Remove("message"); } }
+        private string? _explicitNullValueMessage = default!;
 #nullable restore
 #else
-        public string Message { get; set; }
+        public string Message { get => _explicitNullValueMessage; set { _explicitNullValueMessage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message"); else _explicitNullProperties?.Remove("message"); } }
+        private string _explicitNullValueMessage = default!;
 #endif
         /// <summary>Number of pods with the adapter ready to serve.</summary>
-        public int? ReadyPodCount { get; set; }
+        public int? ReadyPodCount { get => _explicitNullValueReadyPodCount; set { _explicitNullValueReadyPodCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("readyPodCount"); else _explicitNullProperties?.Remove("readyPodCount"); } }
+        private int? _explicitNullValueReadyPodCount = default!;
         /// <summary>Adapter row etag observed by the controller when it wrote this status.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RealizedEtag { get; set; }
+        public string? RealizedEtag { get => _explicitNullValueRealizedEtag; set { _explicitNullValueRealizedEtag = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("realizedEtag"); else _explicitNullProperties?.Remove("realizedEtag"); } }
+        private string? _explicitNullValueRealizedEtag = default!;
 #nullable restore
 #else
-        public string RealizedEtag { get; set; }
+        public string RealizedEtag { get => _explicitNullValueRealizedEtag; set { _explicitNullValueRealizedEtag = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("realizedEtag"); else _explicitNullProperties?.Remove("realizedEtag"); } }
+        private string _explicitNullValueRealizedEtag = default!;
 #endif
         /// <summary>Resource name of the adapter model revision currently loaded in this cluster, using projects/{projectId}/models/{adapterModelId}/revisions/{revisionId}.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RealizedRevision { get; set; }
+        public string? RealizedRevision { get => _explicitNullValueRealizedRevision; set { _explicitNullValueRealizedRevision = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("realizedRevision"); else _explicitNullProperties?.Remove("realizedRevision"); } }
+        private string? _explicitNullValueRealizedRevision = default!;
 #nullable restore
 #else
-        public string RealizedRevision { get; set; }
+        public string RealizedRevision { get => _explicitNullValueRealizedRevision; set { _explicitNullValueRealizedRevision = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("realizedRevision"); else _explicitNullProperties?.Remove("realizedRevision"); } }
+        private string _explicitNullValueRealizedRevision = default!;
 #endif
         /// <summary>Adapter revision currently loaded on pods in this cluster.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RealizedRevisionId { get; set; }
+        public string? RealizedRevisionId { get => _explicitNullValueRealizedRevisionId; set { _explicitNullValueRealizedRevisionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("realizedRevisionId"); else _explicitNullProperties?.Remove("realizedRevisionId"); } }
+        private string? _explicitNullValueRealizedRevisionId = default!;
 #nullable restore
 #else
-        public string RealizedRevisionId { get; set; }
+        public string RealizedRevisionId { get => _explicitNullValueRealizedRevisionId; set { _explicitNullValueRealizedRevisionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("realizedRevisionId"); else _explicitNullProperties?.Remove("realizedRevisionId"); } }
+        private string _explicitNullValueRealizedRevisionId = default!;
 #endif
         /// <summary>Stable reason code for the current adapter state.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Reason { get; set; }
+        public string? Reason { get => _explicitNullValueReason; set { _explicitNullValueReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reason"); else _explicitNullProperties?.Remove("reason"); } }
+        private string? _explicitNullValueReason = default!;
 #nullable restore
 #else
-        public string Reason { get; set; }
+        public string Reason { get => _explicitNullValueReason; set { _explicitNullValueReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reason"); else _explicitNullProperties?.Remove("reason"); } }
+        private string _explicitNullValueReason = default!;
 #endif
         /// <summary>Current adapter load state in this cluster.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.DeDeploymentAdapterStatusState? State { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeDeploymentAdapterStatusState? State { get => _explicitNullValueState; set { _explicitNullValueState = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("state"); else _explicitNullProperties?.Remove("state"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.DeDeploymentAdapterStatusState? _explicitNullValueState = default!;
         /// <summary>Total pods expected to report adapter load state.</summary>
-        public int? TotalPodCount { get; set; }
+        public int? TotalPodCount { get => _explicitNullValueTotalPodCount; set { _explicitNullValueTotalPodCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("totalPodCount"); else _explicitNullProperties?.Remove("totalPodCount"); } }
+        private int? _explicitNullValueTotalPodCount = default!;
         /// <summary>Time when this adapter status was last updated.</summary>
-        public DateTimeOffset? UpdatedAt { get; set; }
+        public DateTimeOffset? UpdatedAt { get => _explicitNullValueUpdatedAt; set { _explicitNullValueUpdatedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("updatedAt"); else _explicitNullProperties?.Remove("updatedAt"); } }
+        private DateTimeOffset? _explicitNullValueUpdatedAt = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.DeDeploymentAdapterStatus"/> and sets the default values.
         /// </summary>
@@ -116,7 +164,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.DeDeploymentAdapterStatus CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.DeDeploymentAdapterStatus();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.DeDeploymentAdapterStatus(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -167,6 +215,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeDeploymentAdapterStatusState>("state", State);
             writer.WriteIntValue("totalPodCount", TotalPodCount);
             writer.WriteDateTimeOffsetValue("updatedAt", UpdatedAt);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

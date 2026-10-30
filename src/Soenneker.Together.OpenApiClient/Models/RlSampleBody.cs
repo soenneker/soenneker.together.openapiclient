@@ -11,33 +11,54 @@ namespace Soenneker.Together.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class RlSampleBody : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("model_inputs") is { } nullNodeModelInputs && nullNodeModelInputs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModelInputs = null;
+            if (parseNode.GetChildNode("num_samples") is { } nullNodeNumSamples && nullNodeNumSamples.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NumSamples = null;
+            if (parseNode.GetChildNode("prompt_logprobs") is { } nullNodePromptLogprobs && nullNodePromptLogprobs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PromptLogprobs = null;
+            if (parseNode.GetChildNode("return_routed_experts") is { } nullNodeReturnRoutedExperts && nullNodeReturnRoutedExperts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReturnRoutedExperts = null;
+            if (parseNode.GetChildNode("sampling_params") is { } nullNodeSamplingParams && nullNodeSamplingParams.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SamplingParams = null;
+            if (parseNode.GetChildNode("topk_prompt_logprobs") is { } nullNodeTopkPromptLogprobs && nullNodeTopkPromptLogprobs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TopkPromptLogprobs = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Model inputs to sample from</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Together.OpenApiClient.Models.RlModelInput>? ModelInputs { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.RlModelInput>? ModelInputs { get => _explicitNullValueModelInputs; set { _explicitNullValueModelInputs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_inputs"); else _explicitNullProperties?.Remove("model_inputs"); } }
+        private List<global::Soenneker.Together.OpenApiClient.Models.RlModelInput>? _explicitNullValueModelInputs = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Together.OpenApiClient.Models.RlModelInput> ModelInputs { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.RlModelInput> ModelInputs { get => _explicitNullValueModelInputs; set { _explicitNullValueModelInputs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_inputs"); else _explicitNullProperties?.Remove("model_inputs"); } }
+        private List<global::Soenneker.Together.OpenApiClient.Models.RlModelInput> _explicitNullValueModelInputs = default!;
 #endif
         /// <summary>Number of completions to generate per prompt</summary>
-        public int? NumSamples { get; set; }
+        public int? NumSamples { get => _explicitNullValueNumSamples; set { _explicitNullValueNumSamples = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("num_samples"); else _explicitNullProperties?.Remove("num_samples"); } }
+        private int? _explicitNullValueNumSamples = default!;
         /// <summary>When true, also compute teacher-forced log-probabilities for the model input tokens and return them in `SampleResult.prompt_logprobs`.</summary>
-        public bool? PromptLogprobs { get; set; }
+        public bool? PromptLogprobs { get => _explicitNullValuePromptLogprobs; set { _explicitNullValuePromptLogprobs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prompt_logprobs"); else _explicitNullProperties?.Remove("prompt_logprobs"); } }
+        private bool? _explicitNullValuePromptLogprobs = default!;
         /// <summary>When true, enable reuse of the expert selections from sampled sequences during training. Only supported for mixture-of-experts models; ignored for other models.</summary>
-        public bool? ReturnRoutedExperts { get; set; }
+        public bool? ReturnRoutedExperts { get => _explicitNullValueReturnRoutedExperts; set { _explicitNullValueReturnRoutedExperts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("return_routed_experts"); else _explicitNullProperties?.Remove("return_routed_experts"); } }
+        private bool? _explicitNullValueReturnRoutedExperts = default!;
         /// <summary>The sampling_params property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RlSamplingParams? SamplingParams { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlSamplingParams? SamplingParams { get => _explicitNullValueSamplingParams; set { _explicitNullValueSamplingParams = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sampling_params"); else _explicitNullProperties?.Remove("sampling_params"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlSamplingParams? _explicitNullValueSamplingParams = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.RlSamplingParams SamplingParams { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.RlSamplingParams SamplingParams { get => _explicitNullValueSamplingParams; set { _explicitNullValueSamplingParams = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sampling_params"); else _explicitNullProperties?.Remove("sampling_params"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.RlSamplingParams _explicitNullValueSamplingParams = default!;
 #endif
         /// <summary>Number of most likely alternative tokens to return per model input token in `SampleResult.topk_prompt_logprobs`. 0 disables top-k prompt log-probabilities. Maximum 20.</summary>
-        public int? TopkPromptLogprobs { get; set; }
+        public int? TopkPromptLogprobs { get => _explicitNullValueTopkPromptLogprobs; set { _explicitNullValueTopkPromptLogprobs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("topk_prompt_logprobs"); else _explicitNullProperties?.Remove("topk_prompt_logprobs"); } }
+        private int? _explicitNullValueTopkPromptLogprobs = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlSampleBody"/> and sets the default values.
         /// </summary>
@@ -57,7 +78,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.RlSampleBody CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.RlSampleBody();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.RlSampleBody(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -88,6 +109,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteBoolValue("return_routed_experts", ReturnRoutedExperts);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlSamplingParams>("sampling_params", SamplingParams);
             writer.WriteIntValue("topk_prompt_logprobs", TopkPromptLogprobs);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

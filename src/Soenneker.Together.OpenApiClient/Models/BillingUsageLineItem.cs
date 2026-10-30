@@ -11,64 +11,92 @@ namespace Soenneker.Together.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class BillingUsageLineItem : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("applied_credit") is { } nullNodeAppliedCredit && nullNodeAppliedCredit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AppliedCredit = null;
+            if (parseNode.GetChildNode("attributes") is { } nullNodeAttributes && nullNodeAttributes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Attributes = null;
+            if (parseNode.GetChildNode("cost") is { } nullNodeCost && nullNodeCost.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Cost = null;
+            if (parseNode.GetChildNode("pricing_dimensions") is { } nullNodePricingDimensions && nullNodePricingDimensions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PricingDimensions = null;
+            if (parseNode.GetChildNode("product_name") is { } nullNodeProductName && nullNodeProductName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProductName = null;
+            if (parseNode.GetChildNode("quantity") is { } nullNodeQuantity && nullNodeQuantity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Quantity = null;
+            if (parseNode.GetChildNode("unit_price") is { } nullNodeUnitPrice && nullNodeUnitPrice.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UnitPrice = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Credit covering this usage. Omitted for uncovered usage.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.BillingUsageLineItemAppliedCredit? AppliedCredit { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.BillingUsageLineItemAppliedCredit? AppliedCredit { get => _explicitNullValueAppliedCredit; set { _explicitNullValueAppliedCredit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("applied_credit"); else _explicitNullProperties?.Remove("applied_credit"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.BillingUsageLineItemAppliedCredit? _explicitNullValueAppliedCredit = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.BillingUsageLineItemAppliedCredit AppliedCredit { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.BillingUsageLineItemAppliedCredit AppliedCredit { get => _explicitNullValueAppliedCredit; set { _explicitNullValueAppliedCredit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("applied_credit"); else _explicitNullProperties?.Remove("applied_credit"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.BillingUsageLineItemAppliedCredit _explicitNullValueAppliedCredit = default!;
 #endif
         /// <summary>Resource identifiers for attribution, varying by product.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.BillingUsageLineItemAttributesProperty? Attributes { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.BillingUsageLineItemAttributesProperty? Attributes { get => _explicitNullValueAttributes; set { _explicitNullValueAttributes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attributes"); else _explicitNullProperties?.Remove("attributes"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.BillingUsageLineItemAttributesProperty? _explicitNullValueAttributes = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.BillingUsageLineItemAttributesProperty Attributes { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.BillingUsageLineItemAttributesProperty Attributes { get => _explicitNullValueAttributes; set { _explicitNullValueAttributes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attributes"); else _explicitNullProperties?.Remove("attributes"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.BillingUsageLineItemAttributesProperty _explicitNullValueAttributes = default!;
 #endif
         /// <summary>Total cost for this line item in USD as a decimal string.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Cost { get; set; }
+        public string? Cost { get => _explicitNullValueCost; set { _explicitNullValueCost = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cost"); else _explicitNullProperties?.Remove("cost"); } }
+        private string? _explicitNullValueCost = default!;
 #nullable restore
 #else
-        public string Cost { get; set; }
+        public string Cost { get => _explicitNullValueCost; set { _explicitNullValueCost = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cost"); else _explicitNullProperties?.Remove("cost"); } }
+        private string _explicitNullValueCost = default!;
 #endif
         /// <summary>Rate-determining dimensions (varies by product). Passthrough from Metronome pricing group values.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.BillingUsageLineItemPricingDimensionsProperty? PricingDimensions { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.BillingUsageLineItemPricingDimensionsProperty? PricingDimensions { get => _explicitNullValuePricingDimensions; set { _explicitNullValuePricingDimensions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pricing_dimensions"); else _explicitNullProperties?.Remove("pricing_dimensions"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.BillingUsageLineItemPricingDimensionsProperty? _explicitNullValuePricingDimensions = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.BillingUsageLineItemPricingDimensionsProperty PricingDimensions { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.BillingUsageLineItemPricingDimensionsProperty PricingDimensions { get => _explicitNullValuePricingDimensions; set { _explicitNullValuePricingDimensions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pricing_dimensions"); else _explicitNullProperties?.Remove("pricing_dimensions"); } }
+        private global::Soenneker.Together.OpenApiClient.Models.BillingUsageLineItemPricingDimensionsProperty _explicitNullValuePricingDimensions = default!;
 #endif
         /// <summary>Metronome product name (e.g. &apos;Serverless Inference - Input Tokens&apos;).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ProductName { get; set; }
+        public string? ProductName { get => _explicitNullValueProductName; set { _explicitNullValueProductName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("product_name"); else _explicitNullProperties?.Remove("product_name"); } }
+        private string? _explicitNullValueProductName = default!;
 #nullable restore
 #else
-        public string ProductName { get; set; }
+        public string ProductName { get => _explicitNullValueProductName; set { _explicitNullValueProductName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("product_name"); else _explicitNullProperties?.Remove("product_name"); } }
+        private string _explicitNullValueProductName = default!;
 #endif
         /// <summary>Total usage for the window in the product&apos;s native unit (GPU-hours, tokens, ...) as a decimal string.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Quantity { get; set; }
+        public string? Quantity { get => _explicitNullValueQuantity; set { _explicitNullValueQuantity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quantity"); else _explicitNullProperties?.Remove("quantity"); } }
+        private string? _explicitNullValueQuantity = default!;
 #nullable restore
 #else
-        public string Quantity { get; set; }
+        public string Quantity { get => _explicitNullValueQuantity; set { _explicitNullValueQuantity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quantity"); else _explicitNullProperties?.Remove("quantity"); } }
+        private string _explicitNullValueQuantity = default!;
 #endif
         /// <summary>Per-unit price in USD as a decimal string.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? UnitPrice { get; set; }
+        public string? UnitPrice { get => _explicitNullValueUnitPrice; set { _explicitNullValueUnitPrice = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unit_price"); else _explicitNullProperties?.Remove("unit_price"); } }
+        private string? _explicitNullValueUnitPrice = default!;
 #nullable restore
 #else
-        public string UnitPrice { get; set; }
+        public string UnitPrice { get => _explicitNullValueUnitPrice; set { _explicitNullValueUnitPrice = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unit_price"); else _explicitNullProperties?.Remove("unit_price"); } }
+        private string _explicitNullValueUnitPrice = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.BillingUsageLineItem"/> and sets the default values.
@@ -85,7 +113,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.BillingUsageLineItem CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.BillingUsageLineItem();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.BillingUsageLineItem(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -118,6 +146,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteStringValue("product_name", ProductName);
             writer.WriteStringValue("quantity", Quantity);
             writer.WriteStringValue("unit_price", UnitPrice);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -8,26 +8,31 @@ using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.Together.OpenApiClient.Models.DeCreateDeploymentRequestPlacementMember1"/>, <see cref="global::Soenneker.Together.OpenApiClient.Models.DeCreateDeploymentRequestPlacementMember2"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.Together.OpenApiClient.Models.DeCreateDeploymentRequestPlacementOneOf1"/>, <see cref="global::Soenneker.Together.OpenApiClient.Models.DeCreateDeploymentRequestPlacementOneOf2"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DeCreateDeploymentRequestPlacement : IComposedTypeWrapper, IParsable
-    {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.DeCreateDeploymentRequestPlacementMember1"/></summary>
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.DeCreateDeploymentRequestPlacementOneOf1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.DeCreateDeploymentRequestPlacementMember1? DeCreateDeploymentRequestPlacementMember1 { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeCreateDeploymentRequestPlacementOneOf1? DeCreateDeploymentRequestPlacementOneOf1 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.DeCreateDeploymentRequestPlacementMember1 DeCreateDeploymentRequestPlacementMember1 { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeCreateDeploymentRequestPlacementOneOf1 DeCreateDeploymentRequestPlacementOneOf1 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.DeCreateDeploymentRequestPlacementMember2"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Together.OpenApiClient.Models.DeCreateDeploymentRequestPlacementOneOf2"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.DeCreateDeploymentRequestPlacementMember2? DeCreateDeploymentRequestPlacementMember2 { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeCreateDeploymentRequestPlacementOneOf2? DeCreateDeploymentRequestPlacementOneOf2 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.DeCreateDeploymentRequestPlacementMember2 DeCreateDeploymentRequestPlacementMember2 { get; set; }
+        public global::Soenneker.Together.OpenApiClient.Models.DeCreateDeploymentRequestPlacementOneOf2 DeCreateDeploymentRequestPlacementOneOf2 { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -39,7 +44,22 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.Together.OpenApiClient.Models.DeCreateDeploymentRequestPlacement();
-            return result;
+            if("DeCreateDeploymentRequestPlacementOneOf1".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("DeCreateDeploymentRequestPlacementOneOf2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("inline") != null))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("profile") != null))();
+            if (result.DeCreateDeploymentRequestPlacementOneOf1 == null && result.DeCreateDeploymentRequestPlacementOneOf2 == null && matchesUnionBranch0 && !matchesUnionBranch1) result.DeCreateDeploymentRequestPlacementOneOf1 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.DeCreateDeploymentRequestPlacementOneOf1(), parseNode);
+            if (result.DeCreateDeploymentRequestPlacementOneOf1 == null && result.DeCreateDeploymentRequestPlacementOneOf2 == null && matchesUnionBranch1 && !matchesUnionBranch0) result.DeCreateDeploymentRequestPlacementOneOf2 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.DeCreateDeploymentRequestPlacementOneOf2(), parseNode);
+            if (result.DeCreateDeploymentRequestPlacementOneOf1 == null && result.DeCreateDeploymentRequestPlacementOneOf2 == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -47,13 +67,13 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(DeCreateDeploymentRequestPlacementMember1 != null)
+            if(DeCreateDeploymentRequestPlacementOneOf1 != null)
             {
-                return DeCreateDeploymentRequestPlacementMember1.GetFieldDeserializers();
+                return DeCreateDeploymentRequestPlacementOneOf1.GetFieldDeserializers();
             }
-            else if(DeCreateDeploymentRequestPlacementMember2 != null)
+            else if(DeCreateDeploymentRequestPlacementOneOf2 != null)
             {
-                return DeCreateDeploymentRequestPlacementMember2.GetFieldDeserializers();
+                return DeCreateDeploymentRequestPlacementOneOf2.GetFieldDeserializers();
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -63,14 +83,21 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (DeCreateDeploymentRequestPlacementOneOf1 == null && DeCreateDeploymentRequestPlacementOneOf2 == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (DeCreateDeploymentRequestPlacementOneOf1 != null && DeCreateDeploymentRequestPlacementOneOf2 == null) { if (DeCreateDeploymentRequestPlacementOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DeCreateDeploymentRequestPlacementOneOf1); return; }
+            if (DeCreateDeploymentRequestPlacementOneOf2 != null && DeCreateDeploymentRequestPlacementOneOf1 == null) { if (DeCreateDeploymentRequestPlacementOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DeCreateDeploymentRequestPlacementOneOf2); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(DeCreateDeploymentRequestPlacementMember1 != null)
+            if(DeCreateDeploymentRequestPlacementOneOf1 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeCreateDeploymentRequestPlacementMember1>(null, DeCreateDeploymentRequestPlacementMember1);
+                if (DeCreateDeploymentRequestPlacementOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeCreateDeploymentRequestPlacementOneOf1>(null, DeCreateDeploymentRequestPlacementOneOf1);
             }
-            else if(DeCreateDeploymentRequestPlacementMember2 != null)
+            else if(DeCreateDeploymentRequestPlacementOneOf2 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeCreateDeploymentRequestPlacementMember2>(null, DeCreateDeploymentRequestPlacementMember2);
+                if (DeCreateDeploymentRequestPlacementOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeCreateDeploymentRequestPlacementOneOf2>(null, DeCreateDeploymentRequestPlacementOneOf2);
             }
         }
     }

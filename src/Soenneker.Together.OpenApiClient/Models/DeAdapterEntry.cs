@@ -12,64 +12,92 @@ namespace Soenneker.Together.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DeAdapterEntry : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("adapterModel") is { } nullNodeAdapterModel && nullNodeAdapterModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AdapterModel = null;
+            if (parseNode.GetChildNode("adapterModelId") is { } nullNodeAdapterModelId && nullNodeAdapterModelId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AdapterModelId = null;
+            if (parseNode.GetChildNode("desiredRevision") is { } nullNodeDesiredRevision && nullNodeDesiredRevision.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DesiredRevision = null;
+            if (parseNode.GetChildNode("desiredRevisionId") is { } nullNodeDesiredRevisionId && nullNodeDesiredRevisionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DesiredRevisionId = null;
+            if (parseNode.GetChildNode("etag") is { } nullNodeEtag && nullNodeEtag.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Etag = null;
+            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("perCluster") is { } nullNodePerCluster && nullNodePerCluster.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PerCluster = null;
+        }
+
         /// <summary>Resource name of the adapter model, using projects/{projectId}/models/{adapterModelId}.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AdapterModel { get; set; }
+        public string? AdapterModel { get => _explicitNullValueAdapterModel; set { _explicitNullValueAdapterModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("adapterModel"); else _explicitNullProperties?.Remove("adapterModel"); } }
+        private string? _explicitNullValueAdapterModel = default!;
 #nullable restore
 #else
-        public string AdapterModel { get; set; }
+        public string AdapterModel { get => _explicitNullValueAdapterModel; set { _explicitNullValueAdapterModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("adapterModel"); else _explicitNullProperties?.Remove("adapterModel"); } }
+        private string _explicitNullValueAdapterModel = default!;
 #endif
         /// <summary>Adapter model identifier attached to the deployment.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AdapterModelId { get; set; }
+        public string? AdapterModelId { get => _explicitNullValueAdapterModelId; set { _explicitNullValueAdapterModelId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("adapterModelId"); else _explicitNullProperties?.Remove("adapterModelId"); } }
+        private string? _explicitNullValueAdapterModelId = default!;
 #nullable restore
 #else
-        public string AdapterModelId { get; set; }
+        public string AdapterModelId { get => _explicitNullValueAdapterModelId; set { _explicitNullValueAdapterModelId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("adapterModelId"); else _explicitNullProperties?.Remove("adapterModelId"); } }
+        private string _explicitNullValueAdapterModelId = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Resource name of the adapter model revision pinned on the deployment, using projects/{projectId}/models/{adapterModelId}/revisions/{revisionId}.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DesiredRevision { get; set; }
+        public string? DesiredRevision { get => _explicitNullValueDesiredRevision; set { _explicitNullValueDesiredRevision = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("desiredRevision"); else _explicitNullProperties?.Remove("desiredRevision"); } }
+        private string? _explicitNullValueDesiredRevision = default!;
 #nullable restore
 #else
-        public string DesiredRevision { get; set; }
+        public string DesiredRevision { get => _explicitNullValueDesiredRevision; set { _explicitNullValueDesiredRevision = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("desiredRevision"); else _explicitNullProperties?.Remove("desiredRevision"); } }
+        private string _explicitNullValueDesiredRevision = default!;
 #endif
         /// <summary>Adapter revision pinned on the deployment.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DesiredRevisionId { get; set; }
+        public string? DesiredRevisionId { get => _explicitNullValueDesiredRevisionId; set { _explicitNullValueDesiredRevisionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("desiredRevisionId"); else _explicitNullProperties?.Remove("desiredRevisionId"); } }
+        private string? _explicitNullValueDesiredRevisionId = default!;
 #nullable restore
 #else
-        public string DesiredRevisionId { get; set; }
+        public string DesiredRevisionId { get => _explicitNullValueDesiredRevisionId; set { _explicitNullValueDesiredRevisionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("desiredRevisionId"); else _explicitNullProperties?.Remove("desiredRevisionId"); } }
+        private string _explicitNullValueDesiredRevisionId = default!;
 #endif
         /// <summary>Row-level etag required for UpdateAdapter and RemoveAdapter.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Etag { get; set; }
+        public string? Etag { get => _explicitNullValueEtag; set { _explicitNullValueEtag = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("etag"); else _explicitNullProperties?.Remove("etag"); } }
+        private string? _explicitNullValueEtag = default!;
 #nullable restore
 #else
-        public string Etag { get; set; }
+        public string Etag { get => _explicitNullValueEtag; set { _explicitNullValueEtag = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("etag"); else _explicitNullProperties?.Remove("etag"); } }
+        private string _explicitNullValueEtag = default!;
 #endif
         /// <summary>Adapter attachment `dad_` id used by get, update, and remove; stale ids never address a replacement after remove and re-add.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Id { get; set; }
+        public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string? _explicitNullValueId = default!;
 #nullable restore
 #else
-        public string Id { get; set; }
+        public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string _explicitNullValueId = default!;
 #endif
         /// <summary>Per-cluster adapter load state reported by the controller.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Together.OpenApiClient.Models.DeDeploymentAdapterStatus>? PerCluster { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.DeDeploymentAdapterStatus>? PerCluster { get => _explicitNullValuePerCluster; set { _explicitNullValuePerCluster = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("perCluster"); else _explicitNullProperties?.Remove("perCluster"); } }
+        private List<global::Soenneker.Together.OpenApiClient.Models.DeDeploymentAdapterStatus>? _explicitNullValuePerCluster = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Together.OpenApiClient.Models.DeDeploymentAdapterStatus> PerCluster { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.DeDeploymentAdapterStatus> PerCluster { get => _explicitNullValuePerCluster; set { _explicitNullValuePerCluster = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("perCluster"); else _explicitNullProperties?.Remove("perCluster"); } }
+        private List<global::Soenneker.Together.OpenApiClient.Models.DeDeploymentAdapterStatus> _explicitNullValuePerCluster = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.DeAdapterEntry"/> and sets the default values.
@@ -86,7 +114,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.DeAdapterEntry CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.DeAdapterEntry();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.DeAdapterEntry(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -119,6 +147,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteStringValue("etag", Etag);
             writer.WriteStringValue("id", Id);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.DeDeploymentAdapterStatus>("perCluster", PerCluster);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

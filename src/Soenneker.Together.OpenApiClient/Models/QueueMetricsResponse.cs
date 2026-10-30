@@ -12,15 +12,28 @@ namespace Soenneker.Together.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class QueueMetricsResponse : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("messages_running") is { } nullNodeMessagesRunning && nullNodeMessagesRunning.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MessagesRunning = null;
+            if (parseNode.GetChildNode("messages_waiting") is { } nullNodeMessagesWaiting && nullNodeMessagesWaiting.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MessagesWaiting = null;
+            if (parseNode.GetChildNode("total_jobs") is { } nullNodeTotalJobs && nullNodeTotalJobs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalJobs = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Number of jobs currently being processed</summary>
-        public int? MessagesRunning { get; set; }
+        public int? MessagesRunning { get => _explicitNullValueMessagesRunning; set { _explicitNullValueMessagesRunning = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("messages_running"); else _explicitNullProperties?.Remove("messages_running"); } }
+        private int? _explicitNullValueMessagesRunning = default!;
         /// <summary>Number of jobs waiting to be claimed by a worker</summary>
-        public int? MessagesWaiting { get; set; }
+        public int? MessagesWaiting { get => _explicitNullValueMessagesWaiting; set { _explicitNullValueMessagesWaiting = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("messages_waiting"); else _explicitNullProperties?.Remove("messages_waiting"); } }
+        private int? _explicitNullValueMessagesWaiting = default!;
         /// <summary>Total number of active jobs (waiting + running)</summary>
-        public int? TotalJobs { get; set; }
+        public int? TotalJobs { get => _explicitNullValueTotalJobs; set { _explicitNullValueTotalJobs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_jobs"); else _explicitNullProperties?.Remove("total_jobs"); } }
+        private int? _explicitNullValueTotalJobs = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.QueueMetricsResponse"/> and sets the default values.
         /// </summary>
@@ -36,7 +49,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.QueueMetricsResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.QueueMetricsResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.QueueMetricsResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -61,6 +74,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteIntValue("messages_running", MessagesRunning);
             writer.WriteIntValue("messages_waiting", MessagesWaiting);
             writer.WriteIntValue("total_jobs", TotalJobs);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

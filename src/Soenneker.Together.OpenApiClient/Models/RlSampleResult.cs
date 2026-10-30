@@ -12,40 +12,59 @@ namespace Soenneker.Together.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RlSampleResult : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("policy_segments") is { } nullNodePolicySegments && nullNodePolicySegments.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PolicySegments = null;
+            if (parseNode.GetChildNode("prompt_logprobs") is { } nullNodePromptLogprobs && nullNodePromptLogprobs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PromptLogprobs = null;
+            if (parseNode.GetChildNode("sequences") is { } nullNodeSequences && nullNodeSequences.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sequences = null;
+            if (parseNode.GetChildNode("topk_prompt_logprobs") is { } nullNodeTopkPromptLogprobs && nullNodeTopkPromptLogprobs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TopkPromptLogprobs = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Policy versions that produced these completions</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Together.OpenApiClient.Models.RlPolicyVersionSegment>? PolicySegments { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.RlPolicyVersionSegment>? PolicySegments { get => _explicitNullValuePolicySegments; set { _explicitNullValuePolicySegments = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("policy_segments"); else _explicitNullProperties?.Remove("policy_segments"); } }
+        private List<global::Soenneker.Together.OpenApiClient.Models.RlPolicyVersionSegment>? _explicitNullValuePolicySegments = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Together.OpenApiClient.Models.RlPolicyVersionSegment> PolicySegments { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.RlPolicyVersionSegment> PolicySegments { get => _explicitNullValuePolicySegments; set { _explicitNullValuePolicySegments = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("policy_segments"); else _explicitNullProperties?.Remove("policy_segments"); } }
+        private List<global::Soenneker.Together.OpenApiClient.Models.RlPolicyVersionSegment> _explicitNullValuePolicySegments = default!;
 #endif
         /// <summary>Teacher-forced log-probability of each model input token. Full prompt length; entry i corresponds to prompt token i. Entry 0 is always 0 as a placeholder: the first prompt token has no conditioning context, so it has no log-probability. Present only when prompt_logprobs was set on the request.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<double?>? PromptLogprobs { get; set; }
+        public List<double?>? PromptLogprobs { get => _explicitNullValuePromptLogprobs; set { _explicitNullValuePromptLogprobs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prompt_logprobs"); else _explicitNullProperties?.Remove("prompt_logprobs"); } }
+        private List<double?>? _explicitNullValuePromptLogprobs = default!;
 #nullable restore
 #else
-        public List<double?> PromptLogprobs { get; set; }
+        public List<double?> PromptLogprobs { get => _explicitNullValuePromptLogprobs; set { _explicitNullValuePromptLogprobs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prompt_logprobs"); else _explicitNullProperties?.Remove("prompt_logprobs"); } }
+        private List<double?> _explicitNullValuePromptLogprobs = default!;
 #endif
         /// <summary>Generated completions</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Together.OpenApiClient.Models.RlSampledSequence>? Sequences { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.RlSampledSequence>? Sequences { get => _explicitNullValueSequences; set { _explicitNullValueSequences = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sequences"); else _explicitNullProperties?.Remove("sequences"); } }
+        private List<global::Soenneker.Together.OpenApiClient.Models.RlSampledSequence>? _explicitNullValueSequences = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Together.OpenApiClient.Models.RlSampledSequence> Sequences { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.RlSampledSequence> Sequences { get => _explicitNullValueSequences; set { _explicitNullValueSequences = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sequences"); else _explicitNullProperties?.Remove("sequences"); } }
+        private List<global::Soenneker.Together.OpenApiClient.Models.RlSampledSequence> _explicitNullValueSequences = default!;
 #endif
         /// <summary>The most likely alternative tokens at each model input token, up to `topk_prompt_logprobs` per position. Full prompt length; entry i corresponds to prompt token i, and entry 0 is empty. Present only when topk_prompt_logprobs was set on the request.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Together.OpenApiClient.Models.RlPromptTopLogprobs>? TopkPromptLogprobs { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.RlPromptTopLogprobs>? TopkPromptLogprobs { get => _explicitNullValueTopkPromptLogprobs; set { _explicitNullValueTopkPromptLogprobs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("topk_prompt_logprobs"); else _explicitNullProperties?.Remove("topk_prompt_logprobs"); } }
+        private List<global::Soenneker.Together.OpenApiClient.Models.RlPromptTopLogprobs>? _explicitNullValueTopkPromptLogprobs = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Together.OpenApiClient.Models.RlPromptTopLogprobs> TopkPromptLogprobs { get; set; }
+        public List<global::Soenneker.Together.OpenApiClient.Models.RlPromptTopLogprobs> TopkPromptLogprobs { get => _explicitNullValueTopkPromptLogprobs; set { _explicitNullValueTopkPromptLogprobs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("topk_prompt_logprobs"); else _explicitNullProperties?.Remove("topk_prompt_logprobs"); } }
+        private List<global::Soenneker.Together.OpenApiClient.Models.RlPromptTopLogprobs> _explicitNullValueTopkPromptLogprobs = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlSampleResult"/> and sets the default values.
@@ -62,7 +81,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public static global::Soenneker.Together.OpenApiClient.Models.RlSampleResult CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Together.OpenApiClient.Models.RlSampleResult();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.RlSampleResult(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -89,6 +108,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<double?>("prompt_logprobs", PromptLogprobs);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RlSampledSequence>("sequences", Sequences);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RlPromptTopLogprobs>("topk_prompt_logprobs", TopkPromptLogprobs);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
