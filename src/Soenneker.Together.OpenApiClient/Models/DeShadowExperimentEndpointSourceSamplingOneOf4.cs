@@ -17,17 +17,18 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("adaptiveKeyBased") is { } nullNodeAdaptiveKeyBased && nullNodeAdaptiveKeyBased.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AdaptiveKeyBased = null;
+            if (parseNode.GetChildNode("adaptiveKeyBased") is null) { _explicitNullValueAdaptiveKeyBased = default!; _explicitNullProperties?.Remove("adaptiveKeyBased"); }
+            else if (parseNode.GetChildNode("adaptiveKeyBased") is { } nullNodeAdaptiveKeyBased && nullNodeAdaptiveKeyBased.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AdaptiveKeyBased = null;
         }
 
         /// <summary>Adaptive sticky-key sampling toward a target QPS.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentSamplingOneOf4AdaptiveKeyBased? AdaptiveKeyBased { get => _explicitNullValueAdaptiveKeyBased; set { _explicitNullValueAdaptiveKeyBased = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("adaptiveKeyBased"); else _explicitNullProperties?.Remove("adaptiveKeyBased"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentSamplingOneOf4AdaptiveKeyBased? AdaptiveKeyBased { get => _explicitNullValueAdaptiveKeyBased; set { _explicitNullValueAdaptiveKeyBased = value; AdditionalData?.Remove("adaptiveKeyBased"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("adaptiveKeyBased"); else _explicitNullProperties?.Remove("adaptiveKeyBased"); } }
         private global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentSamplingOneOf4AdaptiveKeyBased? _explicitNullValueAdaptiveKeyBased = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentSamplingOneOf4AdaptiveKeyBased AdaptiveKeyBased { get => _explicitNullValueAdaptiveKeyBased; set { _explicitNullValueAdaptiveKeyBased = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("adaptiveKeyBased"); else _explicitNullProperties?.Remove("adaptiveKeyBased"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentSamplingOneOf4AdaptiveKeyBased AdaptiveKeyBased { get => _explicitNullValueAdaptiveKeyBased; set { _explicitNullValueAdaptiveKeyBased = value; AdditionalData?.Remove("adaptiveKeyBased"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("adaptiveKeyBased"); else _explicitNullProperties?.Remove("adaptiveKeyBased"); } }
         private global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentSamplingOneOf4AdaptiveKeyBased _explicitNullValueAdaptiveKeyBased = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>

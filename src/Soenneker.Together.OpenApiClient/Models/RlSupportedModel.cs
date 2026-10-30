@@ -18,9 +18,12 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("base_model") is { } nullNodeBaseModel && nullNodeBaseModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaseModel = null;
-            if (parseNode.GetChildNode("compute_configs") is { } nullNodeComputeConfigs && nullNodeComputeConfigs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ComputeConfigs = null;
-            if (parseNode.GetChildNode("default_gpu_type") is { } nullNodeDefaultGpuType && nullNodeDefaultGpuType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultGpuType = null;
+            if (parseNode.GetChildNode("base_model") is null) { _explicitNullValueBaseModel = default!; _explicitNullProperties?.Remove("base_model"); }
+            else if (parseNode.GetChildNode("base_model") is { } nullNodeBaseModel && nullNodeBaseModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaseModel = null;
+            if (parseNode.GetChildNode("compute_configs") is null) { _explicitNullValueComputeConfigs = default!; _explicitNullProperties?.Remove("compute_configs"); }
+            else if (parseNode.GetChildNode("compute_configs") is { } nullNodeComputeConfigs && nullNodeComputeConfigs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ComputeConfigs = null;
+            if (parseNode.GetChildNode("default_gpu_type") is null) { _explicitNullValueDefaultGpuType = default!; _explicitNullProperties?.Remove("default_gpu_type"); }
+            else if (parseNode.GetChildNode("default_gpu_type") is { } nullNodeDefaultGpuType && nullNodeDefaultGpuType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultGpuType = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -28,25 +31,25 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Base model identifier to pass as base_model when creating a model resource</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BaseModel { get => _explicitNullValueBaseModel; set { _explicitNullValueBaseModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("base_model"); else _explicitNullProperties?.Remove("base_model"); } }
+        public string? BaseModel { get => _explicitNullValueBaseModel; set { _explicitNullValueBaseModel = value; AdditionalData?.Remove("base_model"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("base_model"); else _explicitNullProperties?.Remove("base_model"); } }
         private string? _explicitNullValueBaseModel = default!;
 #nullable restore
 #else
-        public string BaseModel { get => _explicitNullValueBaseModel; set { _explicitNullValueBaseModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("base_model"); else _explicitNullProperties?.Remove("base_model"); } }
+        public string BaseModel { get => _explicitNullValueBaseModel; set { _explicitNullValueBaseModel = value; AdditionalData?.Remove("base_model"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("base_model"); else _explicitNullProperties?.Remove("base_model"); } }
         private string _explicitNullValueBaseModel = default!;
 #endif
         /// <summary>Validated GPU configurations available for this base model.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Together.OpenApiClient.Models.RlSupportedModelComputeConfig>? ComputeConfigs { get => _explicitNullValueComputeConfigs; set { _explicitNullValueComputeConfigs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("compute_configs"); else _explicitNullProperties?.Remove("compute_configs"); } }
+        public List<global::Soenneker.Together.OpenApiClient.Models.RlSupportedModelComputeConfig>? ComputeConfigs { get => _explicitNullValueComputeConfigs; set { _explicitNullValueComputeConfigs = value; AdditionalData?.Remove("compute_configs"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("compute_configs"); else _explicitNullProperties?.Remove("compute_configs"); } }
         private List<global::Soenneker.Together.OpenApiClient.Models.RlSupportedModelComputeConfig>? _explicitNullValueComputeConfigs = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Together.OpenApiClient.Models.RlSupportedModelComputeConfig> ComputeConfigs { get => _explicitNullValueComputeConfigs; set { _explicitNullValueComputeConfigs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("compute_configs"); else _explicitNullProperties?.Remove("compute_configs"); } }
+        public List<global::Soenneker.Together.OpenApiClient.Models.RlSupportedModelComputeConfig> ComputeConfigs { get => _explicitNullValueComputeConfigs; set { _explicitNullValueComputeConfigs = value; AdditionalData?.Remove("compute_configs"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("compute_configs"); else _explicitNullProperties?.Remove("compute_configs"); } }
         private List<global::Soenneker.Together.OpenApiClient.Models.RlSupportedModelComputeConfig> _explicitNullValueComputeConfigs = default!;
 #endif
         /// <summary>GPU type used when model-resource creation omits gpu_type.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.B200SxmDefaultGpuType? DefaultGpuType { get => _explicitNullValueDefaultGpuType; set { _explicitNullValueDefaultGpuType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_gpu_type"); else _explicitNullProperties?.Remove("default_gpu_type"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.B200SxmDefaultGpuType? DefaultGpuType { get => _explicitNullValueDefaultGpuType; set { _explicitNullValueDefaultGpuType = value; AdditionalData?.Remove("default_gpu_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_gpu_type"); else _explicitNullProperties?.Remove("default_gpu_type"); } }
         private global::Soenneker.Together.OpenApiClient.Models.B200SxmDefaultGpuType? _explicitNullValueDefaultGpuType = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlSupportedModel"/> and sets the default values.
@@ -75,7 +78,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             {
                 { "base_model", n => { BaseModel = n.GetStringValue(); } },
                 { "compute_configs", n => { ComputeConfigs = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RlSupportedModelComputeConfig>(global::Soenneker.Together.OpenApiClient.Models.RlSupportedModelComputeConfig.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "default_gpu_type", n => { DefaultGpuType = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.B200SxmDefaultGpuType>(); } },
+                { "default_gpu_type", n => { var parsed = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.B200SxmDefaultGpuType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueDefaultGpuType = default; _explicitNullProperties?.Remove("default_gpu_type"); AdditionalData["default_gpu_type"] = unknown; } else { DefaultGpuType = parsed; AdditionalData.Remove("default_gpu_type"); } } },
             };
         }
         /// <summary>

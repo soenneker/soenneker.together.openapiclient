@@ -18,12 +18,18 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("architecture") is { } nullNodeArchitecture && nullNodeArchitecture.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Architecture = null;
-            if (parseNode.GetChildNode("contextLength") is { } nullNodeContextLength && nullNodeContextLength.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ContextLength = null;
-            if (parseNode.GetChildNode("draftSpeculatorType") is { } nullNodeDraftSpeculatorType && nullNodeDraftSpeculatorType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DraftSpeculatorType = null;
-            if (parseNode.GetChildNode("parameters") is { } nullNodeParameters && nullNodeParameters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Parameters = null;
-            if (parseNode.GetChildNode("speculatorMechanism") is { } nullNodeSpeculatorMechanism && nullNodeSpeculatorMechanism.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SpeculatorMechanism = null;
-            if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+            if (parseNode.GetChildNode("architecture") is null) { _explicitNullValueArchitecture = default!; _explicitNullProperties?.Remove("architecture"); }
+            else if (parseNode.GetChildNode("architecture") is { } nullNodeArchitecture && nullNodeArchitecture.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Architecture = null;
+            if (parseNode.GetChildNode("contextLength") is null) { _explicitNullValueContextLength = default!; _explicitNullProperties?.Remove("contextLength"); }
+            else if (parseNode.GetChildNode("contextLength") is { } nullNodeContextLength && nullNodeContextLength.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ContextLength = null;
+            if (parseNode.GetChildNode("draftSpeculatorType") is null) { _explicitNullValueDraftSpeculatorType = default!; _explicitNullProperties?.Remove("draftSpeculatorType"); }
+            else if (parseNode.GetChildNode("draftSpeculatorType") is { } nullNodeDraftSpeculatorType && nullNodeDraftSpeculatorType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DraftSpeculatorType = null;
+            if (parseNode.GetChildNode("parameters") is null) { _explicitNullValueParameters = default!; _explicitNullProperties?.Remove("parameters"); }
+            else if (parseNode.GetChildNode("parameters") is { } nullNodeParameters && nullNodeParameters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Parameters = null;
+            if (parseNode.GetChildNode("speculatorMechanism") is null) { _explicitNullValueSpeculatorMechanism = default!; _explicitNullProperties?.Remove("speculatorMechanism"); }
+            else if (parseNode.GetChildNode("speculatorMechanism") is { } nullNodeSpeculatorMechanism && nullNodeSpeculatorMechanism.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SpeculatorMechanism = null;
+            if (parseNode.GetChildNode("type") is null) { _explicitNullValueType = default!; _explicitNullProperties?.Remove("type"); }
+            else if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -31,41 +37,41 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Model architecture detected from the weight metadata.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Architecture { get => _explicitNullValueArchitecture; set { _explicitNullValueArchitecture = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("architecture"); else _explicitNullProperties?.Remove("architecture"); } }
+        public string? Architecture { get => _explicitNullValueArchitecture; set { _explicitNullValueArchitecture = value; AdditionalData?.Remove("architecture"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("architecture"); else _explicitNullProperties?.Remove("architecture"); } }
         private string? _explicitNullValueArchitecture = default!;
 #nullable restore
 #else
-        public string Architecture { get => _explicitNullValueArchitecture; set { _explicitNullValueArchitecture = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("architecture"); else _explicitNullProperties?.Remove("architecture"); } }
+        public string Architecture { get => _explicitNullValueArchitecture; set { _explicitNullValueArchitecture = value; AdditionalData?.Remove("architecture"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("architecture"); else _explicitNullProperties?.Remove("architecture"); } }
         private string _explicitNullValueArchitecture = default!;
 #endif
         /// <summary>Maximum context length reported by the model metadata.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ContextLength { get => _explicitNullValueContextLength; set { _explicitNullValueContextLength = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("contextLength"); else _explicitNullProperties?.Remove("contextLength"); } }
+        public string? ContextLength { get => _explicitNullValueContextLength; set { _explicitNullValueContextLength = value; AdditionalData?.Remove("contextLength"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("contextLength"); else _explicitNullProperties?.Remove("contextLength"); } }
         private string? _explicitNullValueContextLength = default!;
 #nullable restore
 #else
-        public string ContextLength { get => _explicitNullValueContextLength; set { _explicitNullValueContextLength = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("contextLength"); else _explicitNullProperties?.Remove("contextLength"); } }
+        public string ContextLength { get => _explicitNullValueContextLength; set { _explicitNullValueContextLength = value; AdditionalData?.Remove("contextLength"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("contextLength"); else _explicitNullProperties?.Remove("contextLength"); } }
         private string _explicitNullValueContextLength = default!;
 #endif
         /// <summary>Draft-model speculator family for draft speculative decoding.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.DeModelWeightsDraftSpeculatorType? DraftSpeculatorType { get => _explicitNullValueDraftSpeculatorType; set { _explicitNullValueDraftSpeculatorType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("draftSpeculatorType"); else _explicitNullProperties?.Remove("draftSpeculatorType"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.DeModelWeightsDraftSpeculatorType? DraftSpeculatorType { get => _explicitNullValueDraftSpeculatorType; set { _explicitNullValueDraftSpeculatorType = value; AdditionalData?.Remove("draftSpeculatorType"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("draftSpeculatorType"); else _explicitNullProperties?.Remove("draftSpeculatorType"); } }
         private global::Soenneker.Together.OpenApiClient.Models.DeModelWeightsDraftSpeculatorType? _explicitNullValueDraftSpeculatorType = default!;
         /// <summary>Model parameter count and precision breakdown.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.DeModelParameters? Parameters { get => _explicitNullValueParameters; set { _explicitNullValueParameters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("parameters"); else _explicitNullProperties?.Remove("parameters"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.DeModelParameters? Parameters { get => _explicitNullValueParameters; set { _explicitNullValueParameters = value; AdditionalData?.Remove("parameters"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("parameters"); else _explicitNullProperties?.Remove("parameters"); } }
         private global::Soenneker.Together.OpenApiClient.Models.DeModelParameters? _explicitNullValueParameters = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.DeModelParameters Parameters { get => _explicitNullValueParameters; set { _explicitNullValueParameters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("parameters"); else _explicitNullProperties?.Remove("parameters"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.DeModelParameters Parameters { get => _explicitNullValueParameters; set { _explicitNullValueParameters = value; AdditionalData?.Remove("parameters"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("parameters"); else _explicitNullProperties?.Remove("parameters"); } }
         private global::Soenneker.Together.OpenApiClient.Models.DeModelParameters _explicitNullValueParameters = default!;
 #endif
         /// <summary>Speculative decoding mechanism for speculator weights.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.DeModelWeightsSpeculatorMechanism? SpeculatorMechanism { get => _explicitNullValueSpeculatorMechanism; set { _explicitNullValueSpeculatorMechanism = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("speculatorMechanism"); else _explicitNullProperties?.Remove("speculatorMechanism"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.DeModelWeightsSpeculatorMechanism? SpeculatorMechanism { get => _explicitNullValueSpeculatorMechanism; set { _explicitNullValueSpeculatorMechanism = value; AdditionalData?.Remove("speculatorMechanism"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("speculatorMechanism"); else _explicitNullProperties?.Remove("speculatorMechanism"); } }
         private global::Soenneker.Together.OpenApiClient.Models.DeModelWeightsSpeculatorMechanism? _explicitNullValueSpeculatorMechanism = default!;
         /// <summary>Role of the weights: full model, speculative draft model, or LoRA adapter.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.DeModelWeightsType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.DeModelWeightsType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; AdditionalData?.Remove("type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
         private global::Soenneker.Together.OpenApiClient.Models.DeModelWeightsType? _explicitNullValueType = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.DeModelWeights"/> and sets the default values.
@@ -94,10 +100,10 @@ namespace Soenneker.Together.OpenApiClient.Models
             {
                 { "architecture", n => { Architecture = n.GetStringValue(); } },
                 { "contextLength", n => { ContextLength = n.GetStringValue(); } },
-                { "draftSpeculatorType", n => { DraftSpeculatorType = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeModelWeightsDraftSpeculatorType>(); } },
+                { "draftSpeculatorType", n => { var parsed = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeModelWeightsDraftSpeculatorType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueDraftSpeculatorType = default; _explicitNullProperties?.Remove("draftSpeculatorType"); AdditionalData["draftSpeculatorType"] = unknown; } else { DraftSpeculatorType = parsed; AdditionalData.Remove("draftSpeculatorType"); } } },
                 { "parameters", n => { Parameters = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeModelParameters>(global::Soenneker.Together.OpenApiClient.Models.DeModelParameters.CreateFromDiscriminatorValue); } },
-                { "speculatorMechanism", n => { SpeculatorMechanism = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeModelWeightsSpeculatorMechanism>(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeModelWeightsType>(); } },
+                { "speculatorMechanism", n => { var parsed = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeModelWeightsSpeculatorMechanism>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueSpeculatorMechanism = default; _explicitNullProperties?.Remove("speculatorMechanism"); AdditionalData["speculatorMechanism"] = unknown; } else { SpeculatorMechanism = parsed; AdditionalData.Remove("speculatorMechanism"); } } },
+                { "type", n => { var parsed = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeModelWeightsType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueType = default; _explicitNullProperties?.Remove("type"); AdditionalData["type"] = unknown; } else { Type = parsed; AdditionalData.Remove("type"); } } },
             };
         }
         /// <summary>

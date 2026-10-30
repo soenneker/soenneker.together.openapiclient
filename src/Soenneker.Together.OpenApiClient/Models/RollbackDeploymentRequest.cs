@@ -18,7 +18,8 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("revision_identifier") is { } nullNodeRevisionIdentifier && nullNodeRevisionIdentifier.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RevisionIdentifier = null;
+            if (parseNode.GetChildNode("revision_identifier") is null) { _explicitNullValueRevisionIdentifier = default!; _explicitNullProperties?.Remove("revision_identifier"); }
+            else if (parseNode.GetChildNode("revision_identifier") is { } nullNodeRevisionIdentifier && nullNodeRevisionIdentifier.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RevisionIdentifier = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,11 +27,11 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Revision number or revision ID to roll back to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RevisionIdentifier { get => _explicitNullValueRevisionIdentifier; set { _explicitNullValueRevisionIdentifier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("revision_identifier"); else _explicitNullProperties?.Remove("revision_identifier"); } }
+        public string? RevisionIdentifier { get => _explicitNullValueRevisionIdentifier; set { _explicitNullValueRevisionIdentifier = value; AdditionalData?.Remove("revision_identifier"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("revision_identifier"); else _explicitNullProperties?.Remove("revision_identifier"); } }
         private string? _explicitNullValueRevisionIdentifier = default!;
 #nullable restore
 #else
-        public string RevisionIdentifier { get => _explicitNullValueRevisionIdentifier; set { _explicitNullValueRevisionIdentifier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("revision_identifier"); else _explicitNullProperties?.Remove("revision_identifier"); } }
+        public string RevisionIdentifier { get => _explicitNullValueRevisionIdentifier; set { _explicitNullValueRevisionIdentifier = value; AdditionalData?.Remove("revision_identifier"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("revision_identifier"); else _explicitNullProperties?.Remove("revision_identifier"); } }
         private string _explicitNullValueRevisionIdentifier = default!;
 #endif
         /// <summary>

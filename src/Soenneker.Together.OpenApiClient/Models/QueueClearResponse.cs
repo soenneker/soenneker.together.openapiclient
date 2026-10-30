@@ -18,13 +18,14 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("canceled_count") is { } nullNodeCanceledCount && nullNodeCanceledCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CanceledCount = null;
+            if (parseNode.GetChildNode("canceled_count") is null) { _explicitNullValueCanceledCount = default!; _explicitNullProperties?.Remove("canceled_count"); }
+            else if (parseNode.GetChildNode("canceled_count") is { } nullNodeCanceledCount && nullNodeCanceledCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CanceledCount = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Number of pending jobs that were canceled</summary>
-        public int? CanceledCount { get => _explicitNullValueCanceledCount; set { _explicitNullValueCanceledCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("canceled_count"); else _explicitNullProperties?.Remove("canceled_count"); } }
+        public int? CanceledCount { get => _explicitNullValueCanceledCount; set { _explicitNullValueCanceledCount = value; AdditionalData?.Remove("canceled_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("canceled_count"); else _explicitNullProperties?.Remove("canceled_count"); } }
         private int? _explicitNullValueCanceledCount = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.QueueClearResponse"/> and sets the default values.

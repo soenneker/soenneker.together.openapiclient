@@ -18,7 +18,8 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("encoded_text") is { } nullNodeEncodedText && nullNodeEncodedText.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EncodedText = null;
+            if (parseNode.GetChildNode("encoded_text") is null) { _explicitNullValueEncodedText = default!; _explicitNullProperties?.Remove("encoded_text"); }
+            else if (parseNode.GetChildNode("encoded_text") is { } nullNodeEncodedText && nullNodeEncodedText.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EncodedText = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,11 +27,11 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Pre-tokenized text content for a model input chunk.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RlEncodedTextChunk? EncodedText { get => _explicitNullValueEncodedText; set { _explicitNullValueEncodedText = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("encoded_text"); else _explicitNullProperties?.Remove("encoded_text"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.RlEncodedTextChunk? EncodedText { get => _explicitNullValueEncodedText; set { _explicitNullValueEncodedText = value; AdditionalData?.Remove("encoded_text"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("encoded_text"); else _explicitNullProperties?.Remove("encoded_text"); } }
         private global::Soenneker.Together.OpenApiClient.Models.RlEncodedTextChunk? _explicitNullValueEncodedText = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.RlEncodedTextChunk EncodedText { get => _explicitNullValueEncodedText; set { _explicitNullValueEncodedText = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("encoded_text"); else _explicitNullProperties?.Remove("encoded_text"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.RlEncodedTextChunk EncodedText { get => _explicitNullValueEncodedText; set { _explicitNullValueEncodedText = value; AdditionalData?.Remove("encoded_text"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("encoded_text"); else _explicitNullProperties?.Remove("encoded_text"); } }
         private global::Soenneker.Together.OpenApiClient.Models.RlEncodedTextChunk _explicitNullValueEncodedText = default!;
 #endif
         /// <summary>

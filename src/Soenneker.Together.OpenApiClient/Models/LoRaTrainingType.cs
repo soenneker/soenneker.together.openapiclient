@@ -18,36 +18,41 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("lora_alpha") is { } nullNodeLoraAlpha && nullNodeLoraAlpha.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LoraAlpha = null;
-            if (parseNode.GetChildNode("lora_dropout") is { } nullNodeLoraDropout && nullNodeLoraDropout.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LoraDropout = null;
-            if (parseNode.GetChildNode("lora_r") is { } nullNodeLoraR && nullNodeLoraR.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LoraR = null;
-            if (parseNode.GetChildNode("lora_trainable_modules") is { } nullNodeLoraTrainableModules && nullNodeLoraTrainableModules.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LoraTrainableModules = null;
-            if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+            if (parseNode.GetChildNode("lora_alpha") is null) { _explicitNullValueLoraAlpha = default!; _explicitNullProperties?.Remove("lora_alpha"); }
+            else if (parseNode.GetChildNode("lora_alpha") is { } nullNodeLoraAlpha && nullNodeLoraAlpha.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LoraAlpha = null;
+            if (parseNode.GetChildNode("lora_dropout") is null) { _explicitNullValueLoraDropout = default!; _explicitNullProperties?.Remove("lora_dropout"); }
+            else if (parseNode.GetChildNode("lora_dropout") is { } nullNodeLoraDropout && nullNodeLoraDropout.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LoraDropout = null;
+            if (parseNode.GetChildNode("lora_r") is null) { _explicitNullValueLoraR = default!; _explicitNullProperties?.Remove("lora_r"); }
+            else if (parseNode.GetChildNode("lora_r") is { } nullNodeLoraR && nullNodeLoraR.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LoraR = null;
+            if (parseNode.GetChildNode("lora_trainable_modules") is null) { _explicitNullValueLoraTrainableModules = default!; _explicitNullProperties?.Remove("lora_trainable_modules"); }
+            else if (parseNode.GetChildNode("lora_trainable_modules") is { } nullNodeLoraTrainableModules && nullNodeLoraTrainableModules.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LoraTrainableModules = null;
+            if (parseNode.GetChildNode("type") is null) { _explicitNullValueType = default!; _explicitNullProperties?.Remove("type"); }
+            else if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Scaling factor applied to the LoRA adapter weights.</summary>
-        public int? LoraAlpha { get => _explicitNullValueLoraAlpha; set { _explicitNullValueLoraAlpha = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lora_alpha"); else _explicitNullProperties?.Remove("lora_alpha"); } }
+        public int? LoraAlpha { get => _explicitNullValueLoraAlpha; set { _explicitNullValueLoraAlpha = value; AdditionalData?.Remove("lora_alpha"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lora_alpha"); else _explicitNullProperties?.Remove("lora_alpha"); } }
         private int? _explicitNullValueLoraAlpha = default!;
         /// <summary>Dropout probability applied to LoRA adapter inputs.</summary>
-        public double? LoraDropout { get => _explicitNullValueLoraDropout; set { _explicitNullValueLoraDropout = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lora_dropout"); else _explicitNullProperties?.Remove("lora_dropout"); } }
+        public double? LoraDropout { get => _explicitNullValueLoraDropout; set { _explicitNullValueLoraDropout = value; AdditionalData?.Remove("lora_dropout"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lora_dropout"); else _explicitNullProperties?.Remove("lora_dropout"); } }
         private double? _explicitNullValueLoraDropout = default!;
         /// <summary>Rank of the LoRA adapter matrices.</summary>
-        public int? LoraR { get => _explicitNullValueLoraR; set { _explicitNullValueLoraR = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lora_r"); else _explicitNullProperties?.Remove("lora_r"); } }
+        public int? LoraR { get => _explicitNullValueLoraR; set { _explicitNullValueLoraR = value; AdditionalData?.Remove("lora_r"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lora_r"); else _explicitNullProperties?.Remove("lora_r"); } }
         private int? _explicitNullValueLoraR = default!;
         /// <summary>Comma-separated LoRA target modules. Use `all-linear` for model defaults; MoE expert modules (`w_up`, `w_gate`, `w_down`) can be combined with attention modules on compatible models. Fine-tuning jobs that target expert modules produce adapter-only output unless the selected model supports merged expert LoRA output.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LoraTrainableModules { get => _explicitNullValueLoraTrainableModules; set { _explicitNullValueLoraTrainableModules = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lora_trainable_modules"); else _explicitNullProperties?.Remove("lora_trainable_modules"); } }
+        public string? LoraTrainableModules { get => _explicitNullValueLoraTrainableModules; set { _explicitNullValueLoraTrainableModules = value; AdditionalData?.Remove("lora_trainable_modules"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lora_trainable_modules"); else _explicitNullProperties?.Remove("lora_trainable_modules"); } }
         private string? _explicitNullValueLoraTrainableModules = default!;
 #nullable restore
 #else
-        public string LoraTrainableModules { get => _explicitNullValueLoraTrainableModules; set { _explicitNullValueLoraTrainableModules = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lora_trainable_modules"); else _explicitNullProperties?.Remove("lora_trainable_modules"); } }
+        public string LoraTrainableModules { get => _explicitNullValueLoraTrainableModules; set { _explicitNullValueLoraTrainableModules = value; AdditionalData?.Remove("lora_trainable_modules"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lora_trainable_modules"); else _explicitNullProperties?.Remove("lora_trainable_modules"); } }
         private string _explicitNullValueLoraTrainableModules = default!;
 #endif
         /// <summary>Identifies this request as a LoRA fine-tune.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.LoraType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.LoraType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; AdditionalData?.Remove("type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
         private global::Soenneker.Together.OpenApiClient.Models.LoraType? _explicitNullValueType = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.LoRaTrainingType"/> and sets the default values.
@@ -80,7 +85,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "lora_dropout", n => { LoraDropout = n.GetDoubleValue(); } },
                 { "lora_r", n => { LoraR = n.GetIntValue(); } },
                 { "lora_trainable_modules", n => { LoraTrainableModules = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.LoraType>(); } },
+                { "type", n => { var parsed = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.LoraType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueType = default; _explicitNullProperties?.Remove("type"); AdditionalData["type"] = unknown; } else { Type = parsed; AdditionalData.Remove("type"); } } },
             };
         }
         /// <summary>

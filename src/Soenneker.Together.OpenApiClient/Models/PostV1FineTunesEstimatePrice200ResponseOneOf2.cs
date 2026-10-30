@@ -17,17 +17,19 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("estimation_available") is { } nullNodeEstimationAvailable && nullNodeEstimationAvailable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EstimationAvailable = null;
-            if (parseNode.GetChildNode("unavailable_reason") is { } nullNodeUnavailableReason && nullNodeUnavailableReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UnavailableReason = null;
+            if (parseNode.GetChildNode("estimation_available") is null) { _explicitNullValueEstimationAvailable = default!; _explicitNullProperties?.Remove("estimation_available"); }
+            else if (parseNode.GetChildNode("estimation_available") is { } nullNodeEstimationAvailable && nullNodeEstimationAvailable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EstimationAvailable = null;
+            if (parseNode.GetChildNode("unavailable_reason") is null) { _explicitNullValueUnavailableReason = default!; _explicitNullProperties?.Remove("unavailable_reason"); }
+            else if (parseNode.GetChildNode("unavailable_reason") is { } nullNodeUnavailableReason && nullNodeUnavailableReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UnavailableReason = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether price estimation is available for the requested fine-tune job.</summary>
-        public bool? EstimationAvailable { get => _explicitNullValueEstimationAvailable; set { _explicitNullValueEstimationAvailable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("estimation_available"); else _explicitNullProperties?.Remove("estimation_available"); } }
+        public bool? EstimationAvailable { get => _explicitNullValueEstimationAvailable; set { _explicitNullValueEstimationAvailable = value; AdditionalData?.Remove("estimation_available"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("estimation_available"); else _explicitNullProperties?.Remove("estimation_available"); } }
         private bool? _explicitNullValueEstimationAvailable = default!;
         /// <summary>Reason price estimation is unavailable for the requested fine-tune job.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.PostV1FineTunesEstimatePrice200ResponseOneOf2UnavailableReason? UnavailableReason { get => _explicitNullValueUnavailableReason; set { _explicitNullValueUnavailableReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unavailable_reason"); else _explicitNullProperties?.Remove("unavailable_reason"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.PostV1FineTunesEstimatePrice200ResponseOneOf2UnavailableReason? UnavailableReason { get => _explicitNullValueUnavailableReason; set { _explicitNullValueUnavailableReason = value; AdditionalData?.Remove("unavailable_reason"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unavailable_reason"); else _explicitNullProperties?.Remove("unavailable_reason"); } }
         private global::Soenneker.Together.OpenApiClient.Models.PostV1FineTunesEstimatePrice200ResponseOneOf2UnavailableReason? _explicitNullValueUnavailableReason = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.PostV1FineTunesEstimatePrice200ResponseOneOf2"/> and sets the default values.
@@ -55,7 +57,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "estimation_available", n => { EstimationAvailable = n.GetBoolValue(); } },
-                { "unavailable_reason", n => { UnavailableReason = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.PostV1FineTunesEstimatePrice200ResponseOneOf2UnavailableReason>(); } },
+                { "unavailable_reason", n => { var parsed = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.PostV1FineTunesEstimatePrice200ResponseOneOf2UnavailableReason>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueUnavailableReason = default; _explicitNullProperties?.Remove("unavailable_reason"); AdditionalData["unavailable_reason"] = unknown; } else { UnavailableReason = parsed; AdditionalData.Remove("unavailable_reason"); } } },
             };
         }
         /// <summary>

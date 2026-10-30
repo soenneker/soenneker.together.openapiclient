@@ -17,17 +17,19 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("phase") is { } nullNodePhase && nullNodePhase.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Phase = null;
-            if (parseNode.GetChildNode("transition_time") is { } nullNodeTransitionTime && nullNodeTransitionTime.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TransitionTime = null;
+            if (parseNode.GetChildNode("phase") is null) { _explicitNullValuePhase = default!; _explicitNullProperties?.Remove("phase"); }
+            else if (parseNode.GetChildNode("phase") is { } nullNodePhase && nullNodePhase.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Phase = null;
+            if (parseNode.GetChildNode("transition_time") is null) { _explicitNullValueTransitionTime = default!; _explicitNullProperties?.Remove("transition_time"); }
+            else if (parseNode.GetChildNode("transition_time") is { } nullNodeTransitionTime && nullNodeTransitionTime.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TransitionTime = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Cluster phase.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.ClusterPhaseTransitionPhase? Phase { get => _explicitNullValuePhase; set { _explicitNullValuePhase = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("phase"); else _explicitNullProperties?.Remove("phase"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.ClusterPhaseTransitionPhase? Phase { get => _explicitNullValuePhase; set { _explicitNullValuePhase = value; AdditionalData?.Remove("phase"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("phase"); else _explicitNullProperties?.Remove("phase"); } }
         private global::Soenneker.Together.OpenApiClient.Models.ClusterPhaseTransitionPhase? _explicitNullValuePhase = default!;
         /// <summary>Timestamp when the phase transition occurred.</summary>
-        public DateTimeOffset? TransitionTime { get => _explicitNullValueTransitionTime; set { _explicitNullValueTransitionTime = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("transition_time"); else _explicitNullProperties?.Remove("transition_time"); } }
+        public DateTimeOffset? TransitionTime { get => _explicitNullValueTransitionTime; set { _explicitNullValueTransitionTime = value; AdditionalData?.Remove("transition_time"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("transition_time"); else _explicitNullProperties?.Remove("transition_time"); } }
         private DateTimeOffset? _explicitNullValueTransitionTime = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.ClusterPhaseTransition"/> and sets the default values.
@@ -54,7 +56,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "phase", n => { Phase = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.ClusterPhaseTransitionPhase>(); } },
+                { "phase", n => { var parsed = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.ClusterPhaseTransitionPhase>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValuePhase = default; _explicitNullProperties?.Remove("phase"); AdditionalData["phase"] = unknown; } else { Phase = parsed; AdditionalData.Remove("phase"); } } },
                 { "transition_time", n => { TransitionTime = n.GetDateTimeOffsetValue(); } },
             };
         }

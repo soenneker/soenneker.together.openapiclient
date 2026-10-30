@@ -18,10 +18,14 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("engineType") is { } nullNodeEngineType && nullNodeEngineType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EngineType = null;
-            if (parseNode.GetChildNode("engineVersion") is { } nullNodeEngineVersion && nullNodeEngineVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EngineVersion = null;
-            if (parseNode.GetChildNode("functionCallingSupported") is { } nullNodeFunctionCallingSupported && nullNodeFunctionCallingSupported.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FunctionCallingSupported = null;
-            if (parseNode.GetChildNode("structuredOutputSupported") is { } nullNodeStructuredOutputSupported && nullNodeStructuredOutputSupported.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StructuredOutputSupported = null;
+            if (parseNode.GetChildNode("engineType") is null) { _explicitNullValueEngineType = default!; _explicitNullProperties?.Remove("engineType"); }
+            else if (parseNode.GetChildNode("engineType") is { } nullNodeEngineType && nullNodeEngineType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EngineType = null;
+            if (parseNode.GetChildNode("engineVersion") is null) { _explicitNullValueEngineVersion = default!; _explicitNullProperties?.Remove("engineVersion"); }
+            else if (parseNode.GetChildNode("engineVersion") is { } nullNodeEngineVersion && nullNodeEngineVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EngineVersion = null;
+            if (parseNode.GetChildNode("functionCallingSupported") is null) { _explicitNullValueFunctionCallingSupported = default!; _explicitNullProperties?.Remove("functionCallingSupported"); }
+            else if (parseNode.GetChildNode("functionCallingSupported") is { } nullNodeFunctionCallingSupported && nullNodeFunctionCallingSupported.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FunctionCallingSupported = null;
+            if (parseNode.GetChildNode("structuredOutputSupported") is null) { _explicitNullValueStructuredOutputSupported = default!; _explicitNullProperties?.Remove("structuredOutputSupported"); }
+            else if (parseNode.GetChildNode("structuredOutputSupported") is { } nullNodeStructuredOutputSupported && nullNodeStructuredOutputSupported.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StructuredOutputSupported = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -29,28 +33,28 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Serving engine, such as `vllm`, `trtllm`, or `sglang`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EngineType { get => _explicitNullValueEngineType; set { _explicitNullValueEngineType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("engineType"); else _explicitNullProperties?.Remove("engineType"); } }
+        public string? EngineType { get => _explicitNullValueEngineType; set { _explicitNullValueEngineType = value; AdditionalData?.Remove("engineType"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("engineType"); else _explicitNullProperties?.Remove("engineType"); } }
         private string? _explicitNullValueEngineType = default!;
 #nullable restore
 #else
-        public string EngineType { get => _explicitNullValueEngineType; set { _explicitNullValueEngineType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("engineType"); else _explicitNullProperties?.Remove("engineType"); } }
+        public string EngineType { get => _explicitNullValueEngineType; set { _explicitNullValueEngineType = value; AdditionalData?.Remove("engineType"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("engineType"); else _explicitNullProperties?.Remove("engineType"); } }
         private string _explicitNullValueEngineType = default!;
 #endif
         /// <summary>Version of the serving engine.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EngineVersion { get => _explicitNullValueEngineVersion; set { _explicitNullValueEngineVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("engineVersion"); else _explicitNullProperties?.Remove("engineVersion"); } }
+        public string? EngineVersion { get => _explicitNullValueEngineVersion; set { _explicitNullValueEngineVersion = value; AdditionalData?.Remove("engineVersion"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("engineVersion"); else _explicitNullProperties?.Remove("engineVersion"); } }
         private string? _explicitNullValueEngineVersion = default!;
 #nullable restore
 #else
-        public string EngineVersion { get => _explicitNullValueEngineVersion; set { _explicitNullValueEngineVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("engineVersion"); else _explicitNullProperties?.Remove("engineVersion"); } }
+        public string EngineVersion { get => _explicitNullValueEngineVersion; set { _explicitNullValueEngineVersion = value; AdditionalData?.Remove("engineVersion"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("engineVersion"); else _explicitNullProperties?.Remove("engineVersion"); } }
         private string _explicitNullValueEngineVersion = default!;
 #endif
         /// <summary>Whether the runtime accepts tool and function-calling requests.</summary>
-        public bool? FunctionCallingSupported { get => _explicitNullValueFunctionCallingSupported; set { _explicitNullValueFunctionCallingSupported = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("functionCallingSupported"); else _explicitNullProperties?.Remove("functionCallingSupported"); } }
+        public bool? FunctionCallingSupported { get => _explicitNullValueFunctionCallingSupported; set { _explicitNullValueFunctionCallingSupported = value; AdditionalData?.Remove("functionCallingSupported"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("functionCallingSupported"); else _explicitNullProperties?.Remove("functionCallingSupported"); } }
         private bool? _explicitNullValueFunctionCallingSupported = default!;
         /// <summary>Whether the runtime can constrain generation to a structured output schema.</summary>
-        public bool? StructuredOutputSupported { get => _explicitNullValueStructuredOutputSupported; set { _explicitNullValueStructuredOutputSupported = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("structuredOutputSupported"); else _explicitNullProperties?.Remove("structuredOutputSupported"); } }
+        public bool? StructuredOutputSupported { get => _explicitNullValueStructuredOutputSupported; set { _explicitNullValueStructuredOutputSupported = value; AdditionalData?.Remove("structuredOutputSupported"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("structuredOutputSupported"); else _explicitNullProperties?.Remove("structuredOutputSupported"); } }
         private bool? _explicitNullValueStructuredOutputSupported = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.DeDeploymentRuntimeInfo"/> and sets the default values.

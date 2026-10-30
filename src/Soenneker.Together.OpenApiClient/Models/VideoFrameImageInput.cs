@@ -17,8 +17,10 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("frame") is { } nullNodeFrame && nullNodeFrame.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Frame = null;
-            if (parseNode.GetChildNode("input_image") is { } nullNodeInputImage && nullNodeInputImage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InputImage = null;
+            if (parseNode.GetChildNode("frame") is null) { _explicitNullValueFrame = default!; _explicitNullProperties?.Remove("frame"); }
+            else if (parseNode.GetChildNode("frame") is { } nullNodeFrame && nullNodeFrame.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Frame = null;
+            if (parseNode.GetChildNode("input_image") is null) { _explicitNullValueInputImage = default!; _explicitNullProperties?.Remove("input_image"); }
+            else if (parseNode.GetChildNode("input_image") is { } nullNodeInputImage && nullNodeInputImage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InputImage = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,21 +28,21 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Optional param to specify where to insert the frame. If this is omitted, the following heuristics are applied:- frame_images size is one, frame is first.- If size is two, frames are first and last.- If size is larger, frames are first, last and evenly spaced between.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.VideoFrameImageInputFrame? Frame { get => _explicitNullValueFrame; set { _explicitNullValueFrame = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("frame"); else _explicitNullProperties?.Remove("frame"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.VideoFrameImageInputFrame? Frame { get => _explicitNullValueFrame; set { _explicitNullValueFrame = value; AdditionalData?.Remove("frame"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("frame"); else _explicitNullProperties?.Remove("frame"); } }
         private global::Soenneker.Together.OpenApiClient.Models.VideoFrameImageInputFrame? _explicitNullValueFrame = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.VideoFrameImageInputFrame Frame { get => _explicitNullValueFrame; set { _explicitNullValueFrame = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("frame"); else _explicitNullProperties?.Remove("frame"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.VideoFrameImageInputFrame Frame { get => _explicitNullValueFrame; set { _explicitNullValueFrame = value; AdditionalData?.Remove("frame"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("frame"); else _explicitNullProperties?.Remove("frame"); } }
         private global::Soenneker.Together.OpenApiClient.Models.VideoFrameImageInputFrame _explicitNullValueFrame = default!;
 #endif
         /// <summary>URL path to hosted image that is used for a frame</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? InputImage { get => _explicitNullValueInputImage; set { _explicitNullValueInputImage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_image"); else _explicitNullProperties?.Remove("input_image"); } }
+        public string? InputImage { get => _explicitNullValueInputImage; set { _explicitNullValueInputImage = value; AdditionalData?.Remove("input_image"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_image"); else _explicitNullProperties?.Remove("input_image"); } }
         private string? _explicitNullValueInputImage = default!;
 #nullable restore
 #else
-        public string InputImage { get => _explicitNullValueInputImage; set { _explicitNullValueInputImage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_image"); else _explicitNullProperties?.Remove("input_image"); } }
+        public string InputImage { get => _explicitNullValueInputImage; set { _explicitNullValueInputImage = value; AdditionalData?.Remove("input_image"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_image"); else _explicitNullProperties?.Remove("input_image"); } }
         private string _explicitNullValueInputImage = default!;
 #endif
         /// <summary>

@@ -18,13 +18,14 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("scaling_strategy") is { } nullNodeScalingStrategy && nullNodeScalingStrategy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScalingStrategy = null;
+            if (parseNode.GetChildNode("scaling_strategy") is null) { _explicitNullValueScalingStrategy = default!; _explicitNullProperties?.Remove("scaling_strategy"); }
+            else if (parseNode.GetChildNode("scaling_strategy") is { } nullNodeScalingStrategy && nullNodeScalingStrategy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScalingStrategy = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The scaling_strategy property</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.RlMuonScalingStrategy? ScalingStrategy { get => _explicitNullValueScalingStrategy; set { _explicitNullValueScalingStrategy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scaling_strategy"); else _explicitNullProperties?.Remove("scaling_strategy"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.RlMuonScalingStrategy? ScalingStrategy { get => _explicitNullValueScalingStrategy; set { _explicitNullValueScalingStrategy = value; AdditionalData?.Remove("scaling_strategy"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scaling_strategy"); else _explicitNullProperties?.Remove("scaling_strategy"); } }
         private global::Soenneker.Together.OpenApiClient.Models.RlMuonScalingStrategy? _explicitNullValueScalingStrategy = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlMuonConfig"/> and sets the default values.
@@ -51,7 +52,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "scaling_strategy", n => { ScalingStrategy = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlMuonScalingStrategy>(); } },
+                { "scaling_strategy", n => { var parsed = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlMuonScalingStrategy>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueScalingStrategy = default; _explicitNullProperties?.Remove("scaling_strategy"); AdditionalData["scaling_strategy"] = unknown; } else { ScalingStrategy = parsed; AdditionalData.Remove("scaling_strategy"); } } },
             };
         }
         /// <summary>

@@ -18,17 +18,19 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("estimate_available") is { } nullNodeEstimateAvailable && nullNodeEstimateAvailable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EstimateAvailable = null;
-            if (parseNode.GetChildNode("seconds_remaining") is { } nullNodeSecondsRemaining && nullNodeSecondsRemaining.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SecondsRemaining = null;
+            if (parseNode.GetChildNode("estimate_available") is null) { _explicitNullValueEstimateAvailable = default!; _explicitNullProperties?.Remove("estimate_available"); }
+            else if (parseNode.GetChildNode("estimate_available") is { } nullNodeEstimateAvailable && nullNodeEstimateAvailable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EstimateAvailable = null;
+            if (parseNode.GetChildNode("seconds_remaining") is null) { _explicitNullValueSecondsRemaining = default!; _explicitNullProperties?.Remove("seconds_remaining"); }
+            else if (parseNode.GetChildNode("seconds_remaining") is { } nullNodeSecondsRemaining && nullNodeSecondsRemaining.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SecondsRemaining = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether time estimate is available</summary>
-        public bool? EstimateAvailable { get => _explicitNullValueEstimateAvailable; set { _explicitNullValueEstimateAvailable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("estimate_available"); else _explicitNullProperties?.Remove("estimate_available"); } }
+        public bool? EstimateAvailable { get => _explicitNullValueEstimateAvailable; set { _explicitNullValueEstimateAvailable = value; AdditionalData?.Remove("estimate_available"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("estimate_available"); else _explicitNullProperties?.Remove("estimate_available"); } }
         private bool? _explicitNullValueEstimateAvailable = default!;
         /// <summary>Estimated time remaining in seconds for the fine-tuning job to next state</summary>
-        public int? SecondsRemaining { get => _explicitNullValueSecondsRemaining; set { _explicitNullValueSecondsRemaining = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("seconds_remaining"); else _explicitNullProperties?.Remove("seconds_remaining"); } }
+        public int? SecondsRemaining { get => _explicitNullValueSecondsRemaining; set { _explicitNullValueSecondsRemaining = value; AdditionalData?.Remove("seconds_remaining"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("seconds_remaining"); else _explicitNullProperties?.Remove("seconds_remaining"); } }
         private int? _explicitNullValueSecondsRemaining = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.FineTuneProgress"/> and sets the default values.

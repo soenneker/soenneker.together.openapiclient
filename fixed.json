@@ -19967,7 +19967,7 @@
           "tokens": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/RlSampledSequenceTokensItem"
+              "$ref": "#/components/schemas/RlEncodedTextChunkTokensItem"
             },
             "description": "Generated token IDs",
             "example": [
@@ -20823,7 +20823,7 @@
             "example": "123e4567-e89b-12d3-a456-426614174000"
           },
           "step": {
-            "$ref": "#/components/schemas/RlInferenceCheckpointStep"
+            "$ref": "#/components/schemas/RlCheckpointStep"
           },
           "created_at": {
             "type": "string",
@@ -20883,7 +20883,7 @@
             "example": "123e4567-e89b-12d3-a456-426614174000"
           },
           "step": {
-            "$ref": "#/components/schemas/RlTrainingCheckpointStep"
+            "$ref": "#/components/schemas/RlCheckpointStep"
           },
           "created_at": {
             "type": "string",
@@ -23887,7 +23887,10 @@
         "type": "object",
         "properties": {
           "model": {
-            "$ref": "#/components/schemas/AudioSpeechRequestModel"
+            "type": "string",
+            "x-client-inline-scalar": true,
+            "description": "The name of the model to query.\u003Cbr\u003E \u003Cbr\u003E [See all of Together AI\u0027s chat models](https://docs.together.ai/docs/serverless-models#audio-models) The current supported tts models are: - cartesia/sonic - hexgrad/Kokoro-82M - canopylabs/orpheus-3b-0.1-ft\n",
+            "example": "canopylabs/orpheus-3b-0.1-ft"
           },
           "input": {
             "type": "string",
@@ -24160,7 +24163,7 @@
         "type": "object",
         "properties": {
           "file": {
-            "$ref": "#/components/schemas/AudioTranslationRequestFile"
+            "$ref": "#/components/schemas/AudioTranscriptionRequestFile"
           },
           "model": {
             "$ref": "#/components/schemas/OpenaiWhisperLargeV3Model"
@@ -26669,7 +26672,7 @@
             "$ref": "#/components/schemas/EvaluationCompareParametersModelA"
           },
           "model_b": {
-            "$ref": "#/components/schemas/EvaluationCompareParametersModelB"
+            "$ref": "#/components/schemas/EvaluationCompareParametersModelA"
           },
           "input_data_file_path": {
             "type": "string",
@@ -30203,9 +30206,6 @@
         "type": "string",
         "anyOf": [
           {
-            "$ref": "#/components/schemas/RerankRequestModelAnyOf1"
-          },
-          {
             "type": "string"
           }
         ],
@@ -30234,9 +30234,6 @@
         "type": "string",
         "anyOf": [
           {
-            "$ref": "#/components/schemas/CompletionRequestModelAnyOf1"
-          },
-          {
             "type": "string"
           }
         ],
@@ -30246,9 +30243,6 @@
       "CompletionRequestSafetyModel": {
         "type": "string",
         "anyOf": [
-          {
-            "$ref": "#/components/schemas/CompletionRequestSafetyModelAnyOf1"
-          },
           {
             "type": "string"
           }
@@ -30414,14 +30408,8 @@
         ]
       },
       "AudioSpeechRequestModel": {
-        "anyOf": [
-          {
-            "$ref": "#/components/schemas/AudioSpeechRequestModelAnyOf1"
-          },
-          {
-            "type": "string"
-          }
-        ],
+        "type": "string",
+        "x-client-inline-scalar": true,
         "description": "The name of the model to query.\u003Cbr\u003E \u003Cbr\u003E [See all of Together AI\u0027s chat models](https://docs.together.ai/docs/serverless-models#audio-models) The current supported tts models are: - cartesia/sonic - hexgrad/Kokoro-82M - canopylabs/orpheus-3b-0.1-ft\n",
         "example": "canopylabs/orpheus-3b-0.1-ft"
       },
@@ -30492,9 +30480,6 @@
       "EmbeddingsRequestModel": {
         "type": "string",
         "anyOf": [
-          {
-            "$ref": "#/components/schemas/EmbeddingsRequestModelAnyOf1"
-          },
           {
             "type": "string"
           }
@@ -32358,7 +32343,7 @@
             "description": "The Weights \u0026 Biases entity for your run."
           },
           "training_method": {
-            "$ref": "#/components/schemas/PostV1FineTunesRequestTrainingMethod"
+            "$ref": "#/components/schemas/PostV1FineTunesEstimatePriceRequestTrainingMethod"
           },
           "training_type": {
             "$ref": "#/components/schemas/PostV1FineTunesRequestTrainingType"
@@ -32782,9 +32767,6 @@
         "type": "string",
         "anyOf": [
           {
-            "$ref": "#/components/schemas/PostV1ImagesGenerationsRequestModelAnyOf1"
-          },
-          {
             "type": "string"
           }
         ],
@@ -33160,11 +33142,11 @@
         }
       },
       "ListObject": {
-        "const": null,
         "enum": [
           "list"
         ],
         "description": "Object type. Always \u0060list\u0060.",
+        "x-client-original-const": "list",
         "x-ms-enum": {
           "name": "ListObject",
           "modelAsString": false,
@@ -33177,12 +33159,12 @@
         }
       },
       "VisibilityPublicVisibility": {
-        "const": null,
         "enum": [
           "VISIBILITY_PUBLIC"
         ],
         "type": "string",
         "description": "Public visibility of the endpoint.",
+        "x-client-original-const": "VISIBILITY_PUBLIC",
         "x-ms-enum": {
           "name": "VisibilityPublicVisibility",
           "modelAsString": false,
@@ -33195,11 +33177,11 @@
         }
       },
       "DeListEndpointsResponseObject": {
-        "const": null,
         "enum": [
           "list"
         ],
         "description": "Object type. Always \u0060list\u0060.",
+        "x-client-original-const": "list",
         "x-ms-enum": {
           "name": "DeListEndpointsResponseObject",
           "modelAsString": false,
@@ -33376,10 +33358,10 @@
         }
       },
       "DeListFilesResponseObject": {
-        "const": null,
         "enum": [
           "list"
         ],
+        "x-client-original-const": "list",
         "x-ms-enum": {
           "name": "DeListFilesResponseObject",
           "modelAsString": false,
@@ -33392,11 +33374,11 @@
         }
       },
       "DeListInferenceInstanceTypesResponseObject": {
-        "const": null,
         "enum": [
           "list"
         ],
         "description": "Object type. Always \u0060list\u0060.",
+        "x-client-original-const": "list",
         "x-ms-enum": {
           "name": "DeListInferenceInstanceTypesResponseObject",
           "modelAsString": false,
@@ -33409,11 +33391,11 @@
         }
       },
       "DeListRemoteUploadsResponseObject": {
-        "const": null,
         "enum": [
           "list"
         ],
         "description": "Object type. Always \u0060list\u0060.",
+        "x-client-original-const": "list",
         "x-ms-enum": {
           "name": "DeListRemoteUploadsResponseObject",
           "modelAsString": false,
@@ -33426,11 +33408,11 @@
         }
       },
       "DeListPlacementProfilesResponseObject": {
-        "const": null,
         "enum": [
           "list"
         ],
         "description": "Object type. Always \u0060list\u0060.",
+        "x-client-original-const": "list",
         "x-ms-enum": {
           "name": "DeListPlacementProfilesResponseObject",
           "modelAsString": false,
@@ -33443,11 +33425,11 @@
         }
       },
       "DeListRemoteUploadEventsResponseObject": {
-        "const": null,
         "enum": [
           "list"
         ],
         "description": "Object type. Always \u0060list\u0060.",
+        "x-client-original-const": "list",
         "x-ms-enum": {
           "name": "DeListRemoteUploadEventsResponseObject",
           "modelAsString": false,
@@ -33520,11 +33502,11 @@
         }
       },
       "DeListAdaptersResponseObject": {
-        "const": null,
         "enum": [
           "list"
         ],
         "description": "Object type. Always \u0060list\u0060.",
+        "x-client-original-const": "list",
         "x-ms-enum": {
           "name": "DeListAdaptersResponseObject",
           "modelAsString": false,
@@ -33537,11 +33519,11 @@
         }
       },
       "DeListRolloutsResponseObject": {
-        "const": null,
         "enum": [
           "list"
         ],
         "description": "Object type. Always \u0060list\u0060.",
+        "x-client-original-const": "list",
         "x-ms-enum": {
           "name": "DeListRolloutsResponseObject",
           "modelAsString": false,
@@ -34065,11 +34047,11 @@
         }
       },
       "DeListModelsResponseObject": {
-        "const": null,
         "enum": [
           "list"
         ],
         "description": "Object type. Always \u0060list\u0060.",
+        "x-client-original-const": "list",
         "x-ms-enum": {
           "name": "DeListModelsResponseObject",
           "modelAsString": false,
@@ -34082,11 +34064,11 @@
         }
       },
       "DeListSupportedModelsResponseObject": {
-        "const": null,
         "enum": [
           "list"
         ],
         "description": "Object type. Always \u0060list\u0060.",
+        "x-client-original-const": "list",
         "x-ms-enum": {
           "name": "DeListSupportedModelsResponseObject",
           "modelAsString": false,
@@ -34313,11 +34295,11 @@
         }
       },
       "DeListEndpointEventsResponseObject": {
-        "const": null,
         "enum": [
           "list"
         ],
         "description": "Object type. Always \u0060list\u0060.",
+        "x-client-original-const": "list",
         "x-ms-enum": {
           "name": "DeListEndpointEventsResponseObject",
           "modelAsString": false,
@@ -34330,11 +34312,11 @@
         }
       },
       "DeListRevisionsResponseObject": {
-        "const": null,
         "enum": [
           "list"
         ],
         "description": "Object type. Always \u0060list\u0060.",
+        "x-client-original-const": "list",
         "x-ms-enum": {
           "name": "DeListRevisionsResponseObject",
           "modelAsString": false,
@@ -34347,11 +34329,11 @@
         }
       },
       "DeListProjectConfigsResponseObject": {
-        "const": null,
         "enum": [
           "list"
         ],
         "description": "Object type. Always \u0060list\u0060.",
+        "x-client-original-const": "list",
         "x-ms-enum": {
           "name": "DeListProjectConfigsResponseObject",
           "modelAsString": false,
@@ -34364,11 +34346,11 @@
         }
       },
       "DeListDeploymentsResponseObject": {
-        "const": null,
         "enum": [
           "list"
         ],
         "description": "Object type. Always \u0060list\u0060.",
+        "x-client-original-const": "list",
         "x-ms-enum": {
           "name": "DeListDeploymentsResponseObject",
           "modelAsString": false,
@@ -34381,11 +34363,11 @@
         }
       },
       "DeListAbExperimentsResponseObject": {
-        "const": null,
         "enum": [
           "list"
         ],
         "description": "Object type. Always \u0060list\u0060.",
+        "x-client-original-const": "list",
         "x-ms-enum": {
           "name": "DeListAbExperimentsResponseObject",
           "modelAsString": false,
@@ -34398,11 +34380,11 @@
         }
       },
       "DeListShadowExperimentsResponseObject": {
-        "const": null,
         "enum": [
           "list"
         ],
         "description": "Object type. Always \u0060list\u0060.",
+        "x-client-original-const": "list",
         "x-ms-enum": {
           "name": "DeListShadowExperimentsResponseObject",
           "modelAsString": false,
@@ -34415,11 +34397,11 @@
         }
       },
       "DeListShadowExperimentTargetsResponseObject": {
-        "const": null,
         "enum": [
           "list"
         ],
         "description": "Object type. Always \u0060list\u0060.",
+        "x-client-original-const": "list",
         "x-ms-enum": {
           "name": "DeListShadowExperimentTargetsResponseObject",
           "modelAsString": false,
@@ -35877,11 +35859,11 @@
         }
       },
       "RerankObject": {
-        "const": null,
         "enum": [
           "rerank"
         ],
         "description": "The object type, which is always \u0060rerank\u0060.",
+        "x-client-original-const": "rerank",
         "x-ms-enum": {
           "name": "RerankObject",
           "modelAsString": false,
@@ -35894,11 +35876,11 @@
         }
       },
       "TextCompletionObject": {
-        "const": null,
         "enum": [
           "text.completion"
         ],
         "description": "The object type, which is always \u0060text.completion\u0060.",
+        "x-client-original-const": "text.completion",
         "x-ms-enum": {
           "name": "TextCompletionObject",
           "modelAsString": false,
@@ -35911,11 +35893,11 @@
         }
       },
       "CompletionChunkObject": {
-        "const": null,
         "enum": [
           "completion.chunk"
         ],
         "description": "The object type, which is always \u0060completion.chunk\u0060.",
+        "x-client-original-const": "completion.chunk",
         "x-ms-enum": {
           "name": "CompletionChunkObject",
           "modelAsString": false,
@@ -35982,10 +35964,10 @@
         }
       },
       "HipaaCompliance": {
-        "const": null,
         "enum": [
           "hipaa"
         ],
+        "x-client-original-const": "hipaa",
         "x-ms-enum": {
           "name": "HipaaCompliance",
           "modelAsString": false,
@@ -36128,11 +36110,11 @@
         }
       },
       "ChatCompletionObject": {
-        "const": null,
         "enum": [
           "chat.completion"
         ],
         "description": "The object type, which is always \u0060chat.completion\u0060.",
+        "x-client-original-const": "chat.completion",
         "x-ms-enum": {
           "name": "ChatCompletionObject",
           "modelAsString": false,
@@ -36145,11 +36127,11 @@
         }
       },
       "ChatCompletionChunkObject": {
-        "const": null,
         "enum": [
           "chat.completion.chunk"
         ],
         "description": "The object type, which is always \u0060chat.completion.chunk\u0060.",
+        "x-client-original-const": "chat.completion.chunk",
         "x-ms-enum": {
           "name": "ChatCompletionChunkObject",
           "modelAsString": false,
@@ -36294,11 +36276,11 @@
         }
       },
       "AudioTtsChunkObject": {
-        "const": null,
         "enum": [
           "audio.tts.chunk"
         ],
         "description": "The object type, which is always \u0060audio.tts.chunk\u0060.",
+        "x-client-original-const": "audio.tts.chunk",
         "x-ms-enum": {
           "name": "AudioTtsChunkObject",
           "modelAsString": false,
@@ -36328,11 +36310,11 @@
         }
       },
       "EmbeddingsResponseObject": {
-        "const": null,
         "enum": [
           "list"
         ],
         "description": "The object type, which is always \u0060list\u0060.",
+        "x-client-original-const": "list",
         "x-ms-enum": {
           "name": "EmbeddingsResponseObject",
           "modelAsString": false,
@@ -36345,11 +36327,11 @@
         }
       },
       "ImageResponseObject": {
-        "const": null,
         "enum": [
           "list"
         ],
         "description": "The object type, which is always \u0060list\u0060.",
+        "x-client-original-const": "list",
         "x-ms-enum": {
           "name": "ImageResponseObject",
           "modelAsString": false,
@@ -36394,11 +36376,11 @@
         }
       },
       "FileObject": {
-        "const": null,
         "enum": [
           "file"
         ],
         "description": "The object type, which is always \u0060file\u0060.",
+        "x-client-original-const": "file",
         "x-ms-enum": {
           "name": "FileObject",
           "modelAsString": false,
@@ -36472,11 +36454,11 @@
         }
       },
       "FineTuneEventObject": {
-        "const": null,
         "enum": [
           "fine-tune-event"
         ],
         "description": "The object type, which is always \u0060fine-tune-event\u0060.",
+        "x-client-original-const": "fine-tune-event",
         "x-ms-enum": {
           "name": "FineTuneEventObject",
           "modelAsString": false,
@@ -36511,12 +36493,12 @@
         }
       },
       "ShapingObject": {
-        "const": null,
         "enum": [
           "shaping"
         ],
         "type": "string",
         "description": "Object type, always \u0060shaping\u0060.",
+        "x-client-original-const": "shaping",
         "x-ms-enum": {
           "name": "ShapingObject",
           "modelAsString": false,
@@ -36586,12 +36568,12 @@
         }
       },
       "EventsListObject": {
-        "const": null,
         "enum": [
           "list"
         ],
         "type": "string",
         "description": "Object type, always \u0060list\u0060.",
+        "x-client-original-const": "list",
         "x-ms-enum": {
           "name": "EventsListObject",
           "modelAsString": false,
@@ -36604,12 +36586,12 @@
         }
       },
       "ShapingJobsListObject": {
-        "const": null,
         "enum": [
           "list"
         ],
         "type": "string",
         "description": "Object type, always \u0060list\u0060.",
+        "x-client-original-const": "list",
         "x-ms-enum": {
           "name": "ShapingJobsListObject",
           "modelAsString": false,
@@ -36886,11 +36868,11 @@
         }
       },
       "VideoObject": {
-        "const": null,
         "enum": [
           "video"
         ],
         "description": "The object type, which is always video.",
+        "x-client-original-const": "video",
         "x-ms-enum": {
           "name": "VideoObject",
           "modelAsString": false,
@@ -36957,11 +36939,11 @@
         }
       },
       "DeploymentListResponseObject": {
-        "const": null,
         "enum": [
           "list"
         ],
         "description": "The object type, which is always \u0060list\u0060.",
+        "x-client-original-const": "list",
         "x-ms-enum": {
           "name": "DeploymentListResponseObject",
           "modelAsString": false,
@@ -37028,11 +37010,11 @@
         }
       },
       "DeploymentObject": {
-        "const": null,
         "enum": [
           "deployment"
         ],
         "description": "The object type, which is always \u0060deployment\u0060.",
+        "x-client-original-const": "deployment",
         "x-ms-enum": {
           "name": "DeploymentObject",
           "modelAsString": false,
@@ -37045,11 +37027,11 @@
         }
       },
       "RevisionObject": {
-        "const": null,
         "enum": [
           "revision"
         ],
         "description": "The object type, which is always \u0060revision\u0060.",
+        "x-client-original-const": "revision",
         "x-ms-enum": {
           "name": "RevisionObject",
           "modelAsString": false,
@@ -37084,11 +37066,11 @@
         }
       },
       "RevisionEventObject": {
-        "const": null,
         "enum": [
           "revision_event"
         ],
         "description": "The object type, which is always \u0060revision_event\u0060.",
+        "x-client-original-const": "revision_event",
         "x-ms-enum": {
           "name": "RevisionEventObject",
           "modelAsString": false,
@@ -37133,11 +37115,11 @@
         }
       },
       "RevisionEventListResponseObject": {
-        "const": null,
         "enum": [
           "list"
         ],
         "description": "The object type, which is always \u0060list\u0060.",
+        "x-client-original-const": "list",
         "x-ms-enum": {
           "name": "RevisionEventListResponseObject",
           "modelAsString": false,
@@ -37189,11 +37171,11 @@
         "example": "CustomMetric"
       },
       "ListSecretsResponseObject": {
-        "const": null,
         "enum": [
           "list"
         ],
         "description": "The object type, which is always \u0060list\u0060.",
+        "x-client-original-const": "list",
         "x-ms-enum": {
           "name": "ListSecretsResponseObject",
           "modelAsString": false,
@@ -37206,11 +37188,11 @@
         }
       },
       "ListVolumesResponseObject": {
-        "const": null,
         "enum": [
           "list"
         ],
         "description": "The object type, which is always \u0060list\u0060.",
+        "x-client-original-const": "list",
         "x-ms-enum": {
           "name": "ListVolumesResponseObject",
           "modelAsString": false,
@@ -37223,11 +37205,11 @@
         }
       },
       "SecretObject": {
-        "const": null,
         "enum": [
           "secret"
         ],
         "description": "The object type, which is always \u0060secret\u0060.",
+        "x-client-original-const": "secret",
         "x-ms-enum": {
           "name": "SecretObject",
           "modelAsString": false,
@@ -37471,11 +37453,11 @@
         }
       },
       "ListProjectsResponseObject": {
-        "const": null,
         "enum": [
           "list"
         ],
         "description": "Object type. Always \u0060list\u0060.",
+        "x-client-original-const": "list",
         "x-ms-enum": {
           "name": "ListProjectsResponseObject",
           "modelAsString": false,
@@ -37488,11 +37470,11 @@
         }
       },
       "BillingUsageReportObject": {
-        "const": null,
         "enum": [
           "list"
         ],
         "type": "string",
+        "x-client-original-const": "list",
         "x-ms-enum": {
           "name": "BillingUsageReportObject",
           "modelAsString": false,
@@ -37505,11 +37487,11 @@
         }
       },
       "UsdCurrency": {
-        "const": null,
         "enum": [
           "USD"
         ],
         "type": "string",
+        "x-client-original-const": "USD",
         "x-ms-enum": {
           "name": "UsdCurrency",
           "modelAsString": false,
@@ -38009,11 +37991,11 @@
         }
       },
       "EmbeddingObject": {
-        "const": null,
         "enum": [
           "embedding"
         ],
         "description": "The object type, which is always \u0060embedding\u0060.",
+        "x-client-original-const": "embedding",
         "x-ms-enum": {
           "name": "EmbeddingObject",
           "modelAsString": false,

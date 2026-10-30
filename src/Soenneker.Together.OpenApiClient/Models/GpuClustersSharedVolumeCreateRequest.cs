@@ -18,12 +18,18 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("instance_cluster_id") is { } nullNodeInstanceClusterId && nullNodeInstanceClusterId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InstanceClusterId = null;
-            if (parseNode.GetChildNode("is_lifecycle_independent") is { } nullNodeIsLifecycleIndependent && nullNodeIsLifecycleIndependent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsLifecycleIndependent = null;
-            if (parseNode.GetChildNode("project_id") is { } nullNodeProjectId && nullNodeProjectId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProjectId = null;
-            if (parseNode.GetChildNode("region") is { } nullNodeRegion && nullNodeRegion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Region = null;
-            if (parseNode.GetChildNode("size_tib") is { } nullNodeSizeTib && nullNodeSizeTib.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SizeTib = null;
-            if (parseNode.GetChildNode("volume_name") is { } nullNodeVolumeName && nullNodeVolumeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VolumeName = null;
+            if (parseNode.GetChildNode("instance_cluster_id") is null) { _explicitNullValueInstanceClusterId = default!; _explicitNullProperties?.Remove("instance_cluster_id"); }
+            else if (parseNode.GetChildNode("instance_cluster_id") is { } nullNodeInstanceClusterId && nullNodeInstanceClusterId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InstanceClusterId = null;
+            if (parseNode.GetChildNode("is_lifecycle_independent") is null) { _explicitNullValueIsLifecycleIndependent = default!; _explicitNullProperties?.Remove("is_lifecycle_independent"); }
+            else if (parseNode.GetChildNode("is_lifecycle_independent") is { } nullNodeIsLifecycleIndependent && nullNodeIsLifecycleIndependent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsLifecycleIndependent = null;
+            if (parseNode.GetChildNode("project_id") is null) { _explicitNullValueProjectId = default!; _explicitNullProperties?.Remove("project_id"); }
+            else if (parseNode.GetChildNode("project_id") is { } nullNodeProjectId && nullNodeProjectId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProjectId = null;
+            if (parseNode.GetChildNode("region") is null) { _explicitNullValueRegion = default!; _explicitNullProperties?.Remove("region"); }
+            else if (parseNode.GetChildNode("region") is { } nullNodeRegion && nullNodeRegion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Region = null;
+            if (parseNode.GetChildNode("size_tib") is null) { _explicitNullValueSizeTib = default!; _explicitNullProperties?.Remove("size_tib"); }
+            else if (parseNode.GetChildNode("size_tib") is { } nullNodeSizeTib && nullNodeSizeTib.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SizeTib = null;
+            if (parseNode.GetChildNode("volume_name") is null) { _explicitNullValueVolumeName = default!; _explicitNullProperties?.Remove("volume_name"); }
+            else if (parseNode.GetChildNode("volume_name") is { } nullNodeVolumeName && nullNodeVolumeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VolumeName = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -31,47 +37,47 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Cluster ID to place the volume on the same infrastructure as that GPU cluster.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? InstanceClusterId { get => _explicitNullValueInstanceClusterId; set { _explicitNullValueInstanceClusterId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("instance_cluster_id"); else _explicitNullProperties?.Remove("instance_cluster_id"); } }
+        public string? InstanceClusterId { get => _explicitNullValueInstanceClusterId; set { _explicitNullValueInstanceClusterId = value; AdditionalData?.Remove("instance_cluster_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("instance_cluster_id"); else _explicitNullProperties?.Remove("instance_cluster_id"); } }
         private string? _explicitNullValueInstanceClusterId = default!;
 #nullable restore
 #else
-        public string InstanceClusterId { get => _explicitNullValueInstanceClusterId; set { _explicitNullValueInstanceClusterId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("instance_cluster_id"); else _explicitNullProperties?.Remove("instance_cluster_id"); } }
+        public string InstanceClusterId { get => _explicitNullValueInstanceClusterId; set { _explicitNullValueInstanceClusterId = value; AdditionalData?.Remove("instance_cluster_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("instance_cluster_id"); else _explicitNullProperties?.Remove("instance_cluster_id"); } }
         private string _explicitNullValueInstanceClusterId = default!;
 #endif
         /// <summary>When true, the shared volume is not deleted when the cluster is decommissioned.</summary>
-        public bool? IsLifecycleIndependent { get => _explicitNullValueIsLifecycleIndependent; set { _explicitNullValueIsLifecycleIndependent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_lifecycle_independent"); else _explicitNullProperties?.Remove("is_lifecycle_independent"); } }
+        public bool? IsLifecycleIndependent { get => _explicitNullValueIsLifecycleIndependent; set { _explicitNullValueIsLifecycleIndependent = value; AdditionalData?.Remove("is_lifecycle_independent"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_lifecycle_independent"); else _explicitNullProperties?.Remove("is_lifecycle_independent"); } }
         private bool? _explicitNullValueIsLifecycleIndependent = default!;
         /// <summary>Project ID that will own the volume. When omitted, the caller&apos;s default project is used.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ProjectId { get => _explicitNullValueProjectId; set { _explicitNullValueProjectId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("project_id"); else _explicitNullProperties?.Remove("project_id"); } }
+        public string? ProjectId { get => _explicitNullValueProjectId; set { _explicitNullValueProjectId = value; AdditionalData?.Remove("project_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("project_id"); else _explicitNullProperties?.Remove("project_id"); } }
         private string? _explicitNullValueProjectId = default!;
 #nullable restore
 #else
-        public string ProjectId { get => _explicitNullValueProjectId; set { _explicitNullValueProjectId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("project_id"); else _explicitNullProperties?.Remove("project_id"); } }
+        public string ProjectId { get => _explicitNullValueProjectId; set { _explicitNullValueProjectId = value; AdditionalData?.Remove("project_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("project_id"); else _explicitNullProperties?.Remove("project_id"); } }
         private string _explicitNullValueProjectId = default!;
 #endif
         /// <summary>Region name. Usable regions can be found from `clusters.list_regions()`</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Region { get => _explicitNullValueRegion; set { _explicitNullValueRegion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("region"); else _explicitNullProperties?.Remove("region"); } }
+        public string? Region { get => _explicitNullValueRegion; set { _explicitNullValueRegion = value; AdditionalData?.Remove("region"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("region"); else _explicitNullProperties?.Remove("region"); } }
         private string? _explicitNullValueRegion = default!;
 #nullable restore
 #else
-        public string Region { get => _explicitNullValueRegion; set { _explicitNullValueRegion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("region"); else _explicitNullProperties?.Remove("region"); } }
+        public string Region { get => _explicitNullValueRegion; set { _explicitNullValueRegion = value; AdditionalData?.Remove("region"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("region"); else _explicitNullProperties?.Remove("region"); } }
         private string _explicitNullValueRegion = default!;
 #endif
         /// <summary>Volume size in whole tebibytes (TiB).</summary>
-        public int? SizeTib { get => _explicitNullValueSizeTib; set { _explicitNullValueSizeTib = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("size_tib"); else _explicitNullProperties?.Remove("size_tib"); } }
+        public int? SizeTib { get => _explicitNullValueSizeTib; set { _explicitNullValueSizeTib = value; AdditionalData?.Remove("size_tib"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("size_tib"); else _explicitNullProperties?.Remove("size_tib"); } }
         private int? _explicitNullValueSizeTib = default!;
         /// <summary>User provided name of the volume.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? VolumeName { get => _explicitNullValueVolumeName; set { _explicitNullValueVolumeName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("volume_name"); else _explicitNullProperties?.Remove("volume_name"); } }
+        public string? VolumeName { get => _explicitNullValueVolumeName; set { _explicitNullValueVolumeName = value; AdditionalData?.Remove("volume_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("volume_name"); else _explicitNullProperties?.Remove("volume_name"); } }
         private string? _explicitNullValueVolumeName = default!;
 #nullable restore
 #else
-        public string VolumeName { get => _explicitNullValueVolumeName; set { _explicitNullValueVolumeName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("volume_name"); else _explicitNullProperties?.Remove("volume_name"); } }
+        public string VolumeName { get => _explicitNullValueVolumeName; set { _explicitNullValueVolumeName = value; AdditionalData?.Remove("volume_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("volume_name"); else _explicitNullProperties?.Remove("volume_name"); } }
         private string _explicitNullValueVolumeName = default!;
 #endif
         /// <summary>

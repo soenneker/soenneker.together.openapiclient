@@ -18,21 +18,24 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("messages_running") is { } nullNodeMessagesRunning && nullNodeMessagesRunning.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MessagesRunning = null;
-            if (parseNode.GetChildNode("messages_waiting") is { } nullNodeMessagesWaiting && nullNodeMessagesWaiting.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MessagesWaiting = null;
-            if (parseNode.GetChildNode("total_jobs") is { } nullNodeTotalJobs && nullNodeTotalJobs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalJobs = null;
+            if (parseNode.GetChildNode("messages_running") is null) { _explicitNullValueMessagesRunning = default!; _explicitNullProperties?.Remove("messages_running"); }
+            else if (parseNode.GetChildNode("messages_running") is { } nullNodeMessagesRunning && nullNodeMessagesRunning.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MessagesRunning = null;
+            if (parseNode.GetChildNode("messages_waiting") is null) { _explicitNullValueMessagesWaiting = default!; _explicitNullProperties?.Remove("messages_waiting"); }
+            else if (parseNode.GetChildNode("messages_waiting") is { } nullNodeMessagesWaiting && nullNodeMessagesWaiting.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MessagesWaiting = null;
+            if (parseNode.GetChildNode("total_jobs") is null) { _explicitNullValueTotalJobs = default!; _explicitNullProperties?.Remove("total_jobs"); }
+            else if (parseNode.GetChildNode("total_jobs") is { } nullNodeTotalJobs && nullNodeTotalJobs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalJobs = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Number of jobs currently being processed</summary>
-        public int? MessagesRunning { get => _explicitNullValueMessagesRunning; set { _explicitNullValueMessagesRunning = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("messages_running"); else _explicitNullProperties?.Remove("messages_running"); } }
+        public int? MessagesRunning { get => _explicitNullValueMessagesRunning; set { _explicitNullValueMessagesRunning = value; AdditionalData?.Remove("messages_running"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("messages_running"); else _explicitNullProperties?.Remove("messages_running"); } }
         private int? _explicitNullValueMessagesRunning = default!;
         /// <summary>Number of jobs waiting to be claimed by a worker</summary>
-        public int? MessagesWaiting { get => _explicitNullValueMessagesWaiting; set { _explicitNullValueMessagesWaiting = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("messages_waiting"); else _explicitNullProperties?.Remove("messages_waiting"); } }
+        public int? MessagesWaiting { get => _explicitNullValueMessagesWaiting; set { _explicitNullValueMessagesWaiting = value; AdditionalData?.Remove("messages_waiting"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("messages_waiting"); else _explicitNullProperties?.Remove("messages_waiting"); } }
         private int? _explicitNullValueMessagesWaiting = default!;
         /// <summary>Total number of active jobs (waiting + running)</summary>
-        public int? TotalJobs { get => _explicitNullValueTotalJobs; set { _explicitNullValueTotalJobs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_jobs"); else _explicitNullProperties?.Remove("total_jobs"); } }
+        public int? TotalJobs { get => _explicitNullValueTotalJobs; set { _explicitNullValueTotalJobs = value; AdditionalData?.Remove("total_jobs"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_jobs"); else _explicitNullProperties?.Remove("total_jobs"); } }
         private int? _explicitNullValueTotalJobs = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.QueueMetricsResponse"/> and sets the default values.

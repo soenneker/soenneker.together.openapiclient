@@ -18,53 +18,59 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
-            if (parseNode.GetChildNode("percentile") is { } nullNodePercentile && nullNodePercentile.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Percentile = null;
-            if (parseNode.GetChildNode("regressionCheck") is { } nullNodeRegressionCheck && nullNodeRegressionCheck.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RegressionCheck = null;
-            if (parseNode.GetChildNode("stat") is { } nullNodeStat && nullNodeStat.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Stat = null;
-            if (parseNode.GetChildNode("thresholdCheck") is { } nullNodeThresholdCheck && nullNodeThresholdCheck.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ThresholdCheck = null;
-            if (parseNode.GetChildNode("window") is { } nullNodeWindow && nullNodeWindow.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Window = null;
+            if (parseNode.GetChildNode("name") is null) { _explicitNullValueName = default!; _explicitNullProperties?.Remove("name"); }
+            else if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("percentile") is null) { _explicitNullValuePercentile = default!; _explicitNullProperties?.Remove("percentile"); }
+            else if (parseNode.GetChildNode("percentile") is { } nullNodePercentile && nullNodePercentile.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Percentile = null;
+            if (parseNode.GetChildNode("regressionCheck") is null) { _explicitNullValueRegressionCheck = default!; _explicitNullProperties?.Remove("regressionCheck"); }
+            else if (parseNode.GetChildNode("regressionCheck") is { } nullNodeRegressionCheck && nullNodeRegressionCheck.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RegressionCheck = null;
+            if (parseNode.GetChildNode("stat") is null) { _explicitNullValueStat = default!; _explicitNullProperties?.Remove("stat"); }
+            else if (parseNode.GetChildNode("stat") is { } nullNodeStat && nullNodeStat.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Stat = null;
+            if (parseNode.GetChildNode("thresholdCheck") is null) { _explicitNullValueThresholdCheck = default!; _explicitNullProperties?.Remove("thresholdCheck"); }
+            else if (parseNode.GetChildNode("thresholdCheck") is { } nullNodeThresholdCheck && nullNodeThresholdCheck.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ThresholdCheck = null;
+            if (parseNode.GetChildNode("window") is null) { _explicitNullValueWindow = default!; _explicitNullProperties?.Remove("window"); }
+            else if (parseNode.GetChildNode("window") is { } nullNodeWindow && nullNodeWindow.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Window = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Required catalogue key for the metric to gate on. `serving_latency` is retired.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.DeMetricRuleName? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.DeMetricRuleName? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private global::Soenneker.Together.OpenApiClient.Models.DeMetricRuleName? _explicitNullValueName = default!;
         /// <summary>Percentile value, such as 99. Set only when stat is METRIC_STAT_TYPE_PERCENTILE.</summary>
-        public int? Percentile { get => _explicitNullValuePercentile; set { _explicitNullValuePercentile = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("percentile"); else _explicitNullProperties?.Remove("percentile"); } }
+        public int? Percentile { get => _explicitNullValuePercentile; set { _explicitNullValuePercentile = value; AdditionalData?.Remove("percentile"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("percentile"); else _explicitNullProperties?.Remove("percentile"); } }
         private int? _explicitNullValuePercentile = default!;
         /// <summary>Regression evaluation criteria. Mutually exclusive with thresholdCheck.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.DeMetricRuleRegressionCheck? RegressionCheck { get => _explicitNullValueRegressionCheck; set { _explicitNullValueRegressionCheck = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("regressionCheck"); else _explicitNullProperties?.Remove("regressionCheck"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.DeMetricRuleRegressionCheck? RegressionCheck { get => _explicitNullValueRegressionCheck; set { _explicitNullValueRegressionCheck = value; AdditionalData?.Remove("regressionCheck"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("regressionCheck"); else _explicitNullProperties?.Remove("regressionCheck"); } }
         private global::Soenneker.Together.OpenApiClient.Models.DeMetricRuleRegressionCheck? _explicitNullValueRegressionCheck = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.DeMetricRuleRegressionCheck RegressionCheck { get => _explicitNullValueRegressionCheck; set { _explicitNullValueRegressionCheck = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("regressionCheck"); else _explicitNullProperties?.Remove("regressionCheck"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.DeMetricRuleRegressionCheck RegressionCheck { get => _explicitNullValueRegressionCheck; set { _explicitNullValueRegressionCheck = value; AdditionalData?.Remove("regressionCheck"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("regressionCheck"); else _explicitNullProperties?.Remove("regressionCheck"); } }
         private global::Soenneker.Together.OpenApiClient.Models.DeMetricRuleRegressionCheck _explicitNullValueRegressionCheck = default!;
 #endif
         /// <summary>Aggregation used for the metric. Optional for router_error_rate and inflight_requests; omitted values default to METRIC_STAT_TYPE_AVG. Required for router_latency, where AVG or PERCENTILE may be used.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.DeMetricRuleStat? Stat { get => _explicitNullValueStat; set { _explicitNullValueStat = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stat"); else _explicitNullProperties?.Remove("stat"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.DeMetricRuleStat? Stat { get => _explicitNullValueStat; set { _explicitNullValueStat = value; AdditionalData?.Remove("stat"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stat"); else _explicitNullProperties?.Remove("stat"); } }
         private global::Soenneker.Together.OpenApiClient.Models.DeMetricRuleStat? _explicitNullValueStat = default!;
         /// <summary>Threshold evaluation criteria. Mutually exclusive with regressionCheck.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.DeMetricRuleThresholdCheck? ThresholdCheck { get => _explicitNullValueThresholdCheck; set { _explicitNullValueThresholdCheck = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thresholdCheck"); else _explicitNullProperties?.Remove("thresholdCheck"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.DeMetricRuleThresholdCheck? ThresholdCheck { get => _explicitNullValueThresholdCheck; set { _explicitNullValueThresholdCheck = value; AdditionalData?.Remove("thresholdCheck"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thresholdCheck"); else _explicitNullProperties?.Remove("thresholdCheck"); } }
         private global::Soenneker.Together.OpenApiClient.Models.DeMetricRuleThresholdCheck? _explicitNullValueThresholdCheck = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.DeMetricRuleThresholdCheck ThresholdCheck { get => _explicitNullValueThresholdCheck; set { _explicitNullValueThresholdCheck = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thresholdCheck"); else _explicitNullProperties?.Remove("thresholdCheck"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.DeMetricRuleThresholdCheck ThresholdCheck { get => _explicitNullValueThresholdCheck; set { _explicitNullValueThresholdCheck = value; AdditionalData?.Remove("thresholdCheck"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thresholdCheck"); else _explicitNullProperties?.Remove("thresholdCheck"); } }
         private global::Soenneker.Together.OpenApiClient.Models.DeMetricRuleThresholdCheck _explicitNullValueThresholdCheck = default!;
 #endif
         /// <summary>Optional query window for the metric. Defaults to the step soak duration.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Window { get => _explicitNullValueWindow; set { _explicitNullValueWindow = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("window"); else _explicitNullProperties?.Remove("window"); } }
+        public string? Window { get => _explicitNullValueWindow; set { _explicitNullValueWindow = value; AdditionalData?.Remove("window"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("window"); else _explicitNullProperties?.Remove("window"); } }
         private string? _explicitNullValueWindow = default!;
 #nullable restore
 #else
-        public string Window { get => _explicitNullValueWindow; set { _explicitNullValueWindow = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("window"); else _explicitNullProperties?.Remove("window"); } }
+        public string Window { get => _explicitNullValueWindow; set { _explicitNullValueWindow = value; AdditionalData?.Remove("window"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("window"); else _explicitNullProperties?.Remove("window"); } }
         private string _explicitNullValueWindow = default!;
 #endif
         /// <summary>
@@ -92,10 +98,10 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "name", n => { Name = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeMetricRuleName>(); } },
+                { "name", n => { var parsed = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeMetricRuleName>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueName = default; _explicitNullProperties?.Remove("name"); AdditionalData["name"] = unknown; } else { Name = parsed; AdditionalData.Remove("name"); } } },
                 { "percentile", n => { Percentile = n.GetIntValue(); } },
                 { "regressionCheck", n => { RegressionCheck = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeMetricRuleRegressionCheck>(global::Soenneker.Together.OpenApiClient.Models.DeMetricRuleRegressionCheck.CreateFromDiscriminatorValue); } },
-                { "stat", n => { Stat = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeMetricRuleStat>(); } },
+                { "stat", n => { var parsed = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeMetricRuleStat>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueStat = default; _explicitNullProperties?.Remove("stat"); AdditionalData["stat"] = unknown; } else { Stat = parsed; AdditionalData.Remove("stat"); } } },
                 { "thresholdCheck", n => { ThresholdCheck = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeMetricRuleThresholdCheck>(global::Soenneker.Together.OpenApiClient.Models.DeMetricRuleThresholdCheck.CreateFromDiscriminatorValue); } },
                 { "window", n => { Window = n.GetStringValue(); } },
             };

@@ -18,28 +18,31 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("decodingSpeedTps") is { } nullNodeDecodingSpeedTps && nullNodeDecodingSpeedTps.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DecodingSpeedTps = null;
-            if (parseNode.GetChildNode("maxContextLength") is { } nullNodeMaxContextLength && nullNodeMaxContextLength.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxContextLength = null;
-            if (parseNode.GetChildNode("timeToFirstTokenMs") is { } nullNodeTimeToFirstTokenMs && nullNodeTimeToFirstTokenMs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TimeToFirstTokenMs = null;
+            if (parseNode.GetChildNode("decodingSpeedTps") is null) { _explicitNullValueDecodingSpeedTps = default!; _explicitNullProperties?.Remove("decodingSpeedTps"); }
+            else if (parseNode.GetChildNode("decodingSpeedTps") is { } nullNodeDecodingSpeedTps && nullNodeDecodingSpeedTps.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DecodingSpeedTps = null;
+            if (parseNode.GetChildNode("maxContextLength") is null) { _explicitNullValueMaxContextLength = default!; _explicitNullProperties?.Remove("maxContextLength"); }
+            else if (parseNode.GetChildNode("maxContextLength") is { } nullNodeMaxContextLength && nullNodeMaxContextLength.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxContextLength = null;
+            if (parseNode.GetChildNode("timeToFirstTokenMs") is null) { _explicitNullValueTimeToFirstTokenMs = default!; _explicitNullProperties?.Remove("timeToFirstTokenMs"); }
+            else if (parseNode.GetChildNode("timeToFirstTokenMs") is { } nullNodeTimeToFirstTokenMs && nullNodeTimeToFirstTokenMs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TimeToFirstTokenMs = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Decoding throughput in tokens per second.</summary>
-        public double? DecodingSpeedTps { get => _explicitNullValueDecodingSpeedTps; set { _explicitNullValueDecodingSpeedTps = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("decodingSpeedTps"); else _explicitNullProperties?.Remove("decodingSpeedTps"); } }
+        public double? DecodingSpeedTps { get => _explicitNullValueDecodingSpeedTps; set { _explicitNullValueDecodingSpeedTps = value; AdditionalData?.Remove("decodingSpeedTps"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("decodingSpeedTps"); else _explicitNullProperties?.Remove("decodingSpeedTps"); } }
         private double? _explicitNullValueDecodingSpeedTps = default!;
         /// <summary>Maximum context length supported by the profile.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MaxContextLength { get => _explicitNullValueMaxContextLength; set { _explicitNullValueMaxContextLength = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maxContextLength"); else _explicitNullProperties?.Remove("maxContextLength"); } }
+        public string? MaxContextLength { get => _explicitNullValueMaxContextLength; set { _explicitNullValueMaxContextLength = value; AdditionalData?.Remove("maxContextLength"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maxContextLength"); else _explicitNullProperties?.Remove("maxContextLength"); } }
         private string? _explicitNullValueMaxContextLength = default!;
 #nullable restore
 #else
-        public string MaxContextLength { get => _explicitNullValueMaxContextLength; set { _explicitNullValueMaxContextLength = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maxContextLength"); else _explicitNullProperties?.Remove("maxContextLength"); } }
+        public string MaxContextLength { get => _explicitNullValueMaxContextLength; set { _explicitNullValueMaxContextLength = value; AdditionalData?.Remove("maxContextLength"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maxContextLength"); else _explicitNullProperties?.Remove("maxContextLength"); } }
         private string _explicitNullValueMaxContextLength = default!;
 #endif
         /// <summary>Time to first token in milliseconds.</summary>
-        public int? TimeToFirstTokenMs { get => _explicitNullValueTimeToFirstTokenMs; set { _explicitNullValueTimeToFirstTokenMs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timeToFirstTokenMs"); else _explicitNullProperties?.Remove("timeToFirstTokenMs"); } }
+        public int? TimeToFirstTokenMs { get => _explicitNullValueTimeToFirstTokenMs; set { _explicitNullValueTimeToFirstTokenMs = value; AdditionalData?.Remove("timeToFirstTokenMs"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timeToFirstTokenMs"); else _explicitNullProperties?.Remove("timeToFirstTokenMs"); } }
         private int? _explicitNullValueTimeToFirstTokenMs = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelPerformanceBenchmarks"/> and sets the default values.

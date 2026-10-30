@@ -17,17 +17,18 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("adaptiveUniform") is { } nullNodeAdaptiveUniform && nullNodeAdaptiveUniform.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AdaptiveUniform = null;
+            if (parseNode.GetChildNode("adaptiveUniform") is null) { _explicitNullValueAdaptiveUniform = default!; _explicitNullProperties?.Remove("adaptiveUniform"); }
+            else if (parseNode.GetChildNode("adaptiveUniform") is { } nullNodeAdaptiveUniform && nullNodeAdaptiveUniform.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AdaptiveUniform = null;
         }
 
         /// <summary>Adaptive random sampling toward a target QPS.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentSamplingResponseOneOf3AdaptiveUniform? AdaptiveUniform { get => _explicitNullValueAdaptiveUniform; set { _explicitNullValueAdaptiveUniform = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("adaptiveUniform"); else _explicitNullProperties?.Remove("adaptiveUniform"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentSamplingResponseOneOf3AdaptiveUniform? AdaptiveUniform { get => _explicitNullValueAdaptiveUniform; set { _explicitNullValueAdaptiveUniform = value; AdditionalData?.Remove("adaptiveUniform"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("adaptiveUniform"); else _explicitNullProperties?.Remove("adaptiveUniform"); } }
         private global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentSamplingResponseOneOf3AdaptiveUniform? _explicitNullValueAdaptiveUniform = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentSamplingResponseOneOf3AdaptiveUniform AdaptiveUniform { get => _explicitNullValueAdaptiveUniform; set { _explicitNullValueAdaptiveUniform = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("adaptiveUniform"); else _explicitNullProperties?.Remove("adaptiveUniform"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentSamplingResponseOneOf3AdaptiveUniform AdaptiveUniform { get => _explicitNullValueAdaptiveUniform; set { _explicitNullValueAdaptiveUniform = value; AdditionalData?.Remove("adaptiveUniform"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("adaptiveUniform"); else _explicitNullProperties?.Remove("adaptiveUniform"); } }
         private global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentSamplingResponseOneOf3AdaptiveUniform _explicitNullValueAdaptiveUniform = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>

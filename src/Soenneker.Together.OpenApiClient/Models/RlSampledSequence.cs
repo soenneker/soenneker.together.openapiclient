@@ -18,11 +18,16 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("logprobs") is { } nullNodeLogprobs && nullNodeLogprobs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Logprobs = null;
-            if (parseNode.GetChildNode("prompt_cache_hit_tokens") is { } nullNodePromptCacheHitTokens && nullNodePromptCacheHitTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PromptCacheHitTokens = null;
-            if (parseNode.GetChildNode("routed_experts_key") is { } nullNodeRoutedExpertsKey && nullNodeRoutedExpertsKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RoutedExpertsKey = null;
-            if (parseNode.GetChildNode("stop_reason") is { } nullNodeStopReason && nullNodeStopReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StopReason = null;
-            if (parseNode.GetChildNode("tokens") is { } nullNodeTokens && nullNodeTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tokens = null;
+            if (parseNode.GetChildNode("logprobs") is null) { _explicitNullValueLogprobs = default!; _explicitNullProperties?.Remove("logprobs"); }
+            else if (parseNode.GetChildNode("logprobs") is { } nullNodeLogprobs && nullNodeLogprobs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Logprobs = null;
+            if (parseNode.GetChildNode("prompt_cache_hit_tokens") is null) { _explicitNullValuePromptCacheHitTokens = default!; _explicitNullProperties?.Remove("prompt_cache_hit_tokens"); }
+            else if (parseNode.GetChildNode("prompt_cache_hit_tokens") is { } nullNodePromptCacheHitTokens && nullNodePromptCacheHitTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PromptCacheHitTokens = null;
+            if (parseNode.GetChildNode("routed_experts_key") is null) { _explicitNullValueRoutedExpertsKey = default!; _explicitNullProperties?.Remove("routed_experts_key"); }
+            else if (parseNode.GetChildNode("routed_experts_key") is { } nullNodeRoutedExpertsKey && nullNodeRoutedExpertsKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RoutedExpertsKey = null;
+            if (parseNode.GetChildNode("stop_reason") is null) { _explicitNullValueStopReason = default!; _explicitNullProperties?.Remove("stop_reason"); }
+            else if (parseNode.GetChildNode("stop_reason") is { } nullNodeStopReason && nullNodeStopReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StopReason = null;
+            if (parseNode.GetChildNode("tokens") is null) { _explicitNullValueTokens = default!; _explicitNullProperties?.Remove("tokens"); }
+            else if (parseNode.GetChildNode("tokens") is { } nullNodeTokens && nullNodeTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tokens = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -30,37 +35,37 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Log probabilities for each generated token</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<double?>? Logprobs { get => _explicitNullValueLogprobs; set { _explicitNullValueLogprobs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("logprobs"); else _explicitNullProperties?.Remove("logprobs"); } }
+        public List<double?>? Logprobs { get => _explicitNullValueLogprobs; set { _explicitNullValueLogprobs = value; AdditionalData?.Remove("logprobs"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("logprobs"); else _explicitNullProperties?.Remove("logprobs"); } }
         private List<double?>? _explicitNullValueLogprobs = default!;
 #nullable restore
 #else
-        public List<double?> Logprobs { get => _explicitNullValueLogprobs; set { _explicitNullValueLogprobs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("logprobs"); else _explicitNullProperties?.Remove("logprobs"); } }
+        public List<double?> Logprobs { get => _explicitNullValueLogprobs; set { _explicitNullValueLogprobs = value; AdditionalData?.Remove("logprobs"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("logprobs"); else _explicitNullProperties?.Remove("logprobs"); } }
         private List<double?> _explicitNullValueLogprobs = default!;
 #endif
         /// <summary>Number of model input tokens served from the prefix cache while generating this sequence.</summary>
-        public int? PromptCacheHitTokens { get => _explicitNullValuePromptCacheHitTokens; set { _explicitNullValuePromptCacheHitTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prompt_cache_hit_tokens"); else _explicitNullProperties?.Remove("prompt_cache_hit_tokens"); } }
+        public int? PromptCacheHitTokens { get => _explicitNullValuePromptCacheHitTokens; set { _explicitNullValuePromptCacheHitTokens = value; AdditionalData?.Remove("prompt_cache_hit_tokens"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prompt_cache_hit_tokens"); else _explicitNullProperties?.Remove("prompt_cache_hit_tokens"); } }
         private int? _explicitNullValuePromptCacheHitTokens = default!;
         /// <summary>Opaque key for reusing this sequence&apos;s expert selections during training. Pass it unchanged with the corresponding training sample. Absent for non-mixture-of-experts models or when `return_routed_experts` is disabled.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RoutedExpertsKey { get => _explicitNullValueRoutedExpertsKey; set { _explicitNullValueRoutedExpertsKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("routed_experts_key"); else _explicitNullProperties?.Remove("routed_experts_key"); } }
+        public string? RoutedExpertsKey { get => _explicitNullValueRoutedExpertsKey; set { _explicitNullValueRoutedExpertsKey = value; AdditionalData?.Remove("routed_experts_key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("routed_experts_key"); else _explicitNullProperties?.Remove("routed_experts_key"); } }
         private string? _explicitNullValueRoutedExpertsKey = default!;
 #nullable restore
 #else
-        public string RoutedExpertsKey { get => _explicitNullValueRoutedExpertsKey; set { _explicitNullValueRoutedExpertsKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("routed_experts_key"); else _explicitNullProperties?.Remove("routed_experts_key"); } }
+        public string RoutedExpertsKey { get => _explicitNullValueRoutedExpertsKey; set { _explicitNullValueRoutedExpertsKey = value; AdditionalData?.Remove("routed_experts_key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("routed_experts_key"); else _explicitNullProperties?.Remove("routed_experts_key"); } }
         private string _explicitNullValueRoutedExpertsKey = default!;
 #endif
         /// <summary>Reason generation stopped.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.RlStopReason? StopReason { get => _explicitNullValueStopReason; set { _explicitNullValueStopReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stop_reason"); else _explicitNullProperties?.Remove("stop_reason"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.RlStopReason? StopReason { get => _explicitNullValueStopReason; set { _explicitNullValueStopReason = value; AdditionalData?.Remove("stop_reason"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stop_reason"); else _explicitNullProperties?.Remove("stop_reason"); } }
         private global::Soenneker.Together.OpenApiClient.Models.RlStopReason? _explicitNullValueStopReason = default!;
         /// <summary>Generated token IDs</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>? Tokens { get => _explicitNullValueTokens; set { _explicitNullValueTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tokens"); else _explicitNullProperties?.Remove("tokens"); } }
+        public List<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>? Tokens { get => _explicitNullValueTokens; set { _explicitNullValueTokens = value; AdditionalData?.Remove("tokens"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tokens"); else _explicitNullProperties?.Remove("tokens"); } }
         private List<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>? _explicitNullValueTokens = default!;
 #nullable restore
 #else
-        public List<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode> Tokens { get => _explicitNullValueTokens; set { _explicitNullValueTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tokens"); else _explicitNullProperties?.Remove("tokens"); } }
+        public List<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode> Tokens { get => _explicitNullValueTokens; set { _explicitNullValueTokens = value; AdditionalData?.Remove("tokens"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tokens"); else _explicitNullProperties?.Remove("tokens"); } }
         private List<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode> _explicitNullValueTokens = default!;
 #endif
         /// <summary>
@@ -91,7 +96,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "logprobs", n => { Logprobs = n.GetCollectionOfPrimitiveValues<double?>()?.AsList(); } },
                 { "prompt_cache_hit_tokens", n => { PromptCacheHitTokens = n.GetIntValue(); } },
                 { "routed_experts_key", n => { RoutedExpertsKey = n.GetStringValue(); } },
-                { "stop_reason", n => { StopReason = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlStopReason>(); } },
+                { "stop_reason", n => { var parsed = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlStopReason>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueStopReason = default; _explicitNullProperties?.Remove("stop_reason"); AdditionalData["stop_reason"] = unknown; } else { StopReason = parsed; AdditionalData.Remove("stop_reason"); } } },
                 { "tokens", n => { Tokens = n.GetCollectionOfObjectValues<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }

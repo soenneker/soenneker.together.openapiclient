@@ -18,23 +18,25 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("errorRate") is { } nullNodeErrorRate && nullNodeErrorRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ErrorRate = null;
-            if (parseNode.GetChildNode("errorsByType") is { } nullNodeErrorsByType && nullNodeErrorsByType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ErrorsByType = null;
+            if (parseNode.GetChildNode("errorRate") is null) { _explicitNullValueErrorRate = default!; _explicitNullProperties?.Remove("errorRate"); }
+            else if (parseNode.GetChildNode("errorRate") is { } nullNodeErrorRate && nullNodeErrorRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ErrorRate = null;
+            if (parseNode.GetChildNode("errorsByType") is null) { _explicitNullValueErrorsByType = default!; _explicitNullProperties?.Remove("errorsByType"); }
+            else if (parseNode.GetChildNode("errorsByType") is { } nullNodeErrorsByType && nullNodeErrorsByType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ErrorsByType = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Percentage in [0, 100].</summary>
-        public double? ErrorRate { get => _explicitNullValueErrorRate; set { _explicitNullValueErrorRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("errorRate"); else _explicitNullProperties?.Remove("errorRate"); } }
+        public double? ErrorRate { get => _explicitNullValueErrorRate; set { _explicitNullValueErrorRate = value; AdditionalData?.Remove("errorRate"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("errorRate"); else _explicitNullProperties?.Remove("errorRate"); } }
         private double? _explicitNullValueErrorRate = default!;
         /// <summary>Counts of errors keyed by error type (e.g. HTTP status code or error kind).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.DeErrorMetricsErrorsByTypeProperty? ErrorsByType { get => _explicitNullValueErrorsByType; set { _explicitNullValueErrorsByType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("errorsByType"); else _explicitNullProperties?.Remove("errorsByType"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.DeErrorMetricsErrorsByTypeProperty? ErrorsByType { get => _explicitNullValueErrorsByType; set { _explicitNullValueErrorsByType = value; AdditionalData?.Remove("errorsByType"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("errorsByType"); else _explicitNullProperties?.Remove("errorsByType"); } }
         private global::Soenneker.Together.OpenApiClient.Models.DeErrorMetricsErrorsByTypeProperty? _explicitNullValueErrorsByType = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.DeErrorMetricsErrorsByTypeProperty ErrorsByType { get => _explicitNullValueErrorsByType; set { _explicitNullValueErrorsByType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("errorsByType"); else _explicitNullProperties?.Remove("errorsByType"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.DeErrorMetricsErrorsByTypeProperty ErrorsByType { get => _explicitNullValueErrorsByType; set { _explicitNullValueErrorsByType = value; AdditionalData?.Remove("errorsByType"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("errorsByType"); else _explicitNullProperties?.Remove("errorsByType"); } }
         private global::Soenneker.Together.OpenApiClient.Models.DeErrorMetricsErrorsByTypeProperty _explicitNullValueErrorsByType = default!;
 #endif
         /// <summary>

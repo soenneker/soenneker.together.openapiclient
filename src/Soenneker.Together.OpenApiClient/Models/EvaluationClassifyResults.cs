@@ -17,46 +17,52 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("generation_fail_count") is { } nullNodeGenerationFailCount && nullNodeGenerationFailCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GenerationFailCount = null;
-            if (parseNode.GetChildNode("invalid_label_count") is { } nullNodeInvalidLabelCount && nullNodeInvalidLabelCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InvalidLabelCount = null;
-            if (parseNode.GetChildNode("judge_fail_count") is { } nullNodeJudgeFailCount && nullNodeJudgeFailCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) JudgeFailCount = null;
-            if (parseNode.GetChildNode("label_counts") is { } nullNodeLabelCounts && nullNodeLabelCounts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LabelCounts = null;
-            if (parseNode.GetChildNode("pass_percentage") is { } nullNodePassPercentage && nullNodePassPercentage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PassPercentage = null;
-            if (parseNode.GetChildNode("result_file_id") is { } nullNodeResultFileId && nullNodeResultFileId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResultFileId = null;
+            if (parseNode.GetChildNode("generation_fail_count") is null) { _explicitNullValueGenerationFailCount = default!; _explicitNullProperties?.Remove("generation_fail_count"); }
+            else if (parseNode.GetChildNode("generation_fail_count") is { } nullNodeGenerationFailCount && nullNodeGenerationFailCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GenerationFailCount = null;
+            if (parseNode.GetChildNode("invalid_label_count") is null) { _explicitNullValueInvalidLabelCount = default!; _explicitNullProperties?.Remove("invalid_label_count"); }
+            else if (parseNode.GetChildNode("invalid_label_count") is { } nullNodeInvalidLabelCount && nullNodeInvalidLabelCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InvalidLabelCount = null;
+            if (parseNode.GetChildNode("judge_fail_count") is null) { _explicitNullValueJudgeFailCount = default!; _explicitNullProperties?.Remove("judge_fail_count"); }
+            else if (parseNode.GetChildNode("judge_fail_count") is { } nullNodeJudgeFailCount && nullNodeJudgeFailCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) JudgeFailCount = null;
+            if (parseNode.GetChildNode("label_counts") is null) { _explicitNullValueLabelCounts = default!; _explicitNullProperties?.Remove("label_counts"); }
+            else if (parseNode.GetChildNode("label_counts") is { } nullNodeLabelCounts && nullNodeLabelCounts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LabelCounts = null;
+            if (parseNode.GetChildNode("pass_percentage") is null) { _explicitNullValuePassPercentage = default!; _explicitNullProperties?.Remove("pass_percentage"); }
+            else if (parseNode.GetChildNode("pass_percentage") is { } nullNodePassPercentage && nullNodePassPercentage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PassPercentage = null;
+            if (parseNode.GetChildNode("result_file_id") is null) { _explicitNullValueResultFileId = default!; _explicitNullProperties?.Remove("result_file_id"); }
+            else if (parseNode.GetChildNode("result_file_id") is { } nullNodeResultFileId && nullNodeResultFileId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResultFileId = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Number of failed generations.</summary>
-        public double? GenerationFailCount { get => _explicitNullValueGenerationFailCount; set { _explicitNullValueGenerationFailCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("generation_fail_count"); else _explicitNullProperties?.Remove("generation_fail_count"); } }
+        public double? GenerationFailCount { get => _explicitNullValueGenerationFailCount; set { _explicitNullValueGenerationFailCount = value; AdditionalData?.Remove("generation_fail_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("generation_fail_count"); else _explicitNullProperties?.Remove("generation_fail_count"); } }
         private double? _explicitNullValueGenerationFailCount = default!;
         /// <summary>Number of invalid labels</summary>
-        public double? InvalidLabelCount { get => _explicitNullValueInvalidLabelCount; set { _explicitNullValueInvalidLabelCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("invalid_label_count"); else _explicitNullProperties?.Remove("invalid_label_count"); } }
+        public double? InvalidLabelCount { get => _explicitNullValueInvalidLabelCount; set { _explicitNullValueInvalidLabelCount = value; AdditionalData?.Remove("invalid_label_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("invalid_label_count"); else _explicitNullProperties?.Remove("invalid_label_count"); } }
         private double? _explicitNullValueInvalidLabelCount = default!;
         /// <summary>Number of failed judge generations</summary>
-        public double? JudgeFailCount { get => _explicitNullValueJudgeFailCount; set { _explicitNullValueJudgeFailCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("judge_fail_count"); else _explicitNullProperties?.Remove("judge_fail_count"); } }
+        public double? JudgeFailCount { get => _explicitNullValueJudgeFailCount; set { _explicitNullValueJudgeFailCount = value; AdditionalData?.Remove("judge_fail_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("judge_fail_count"); else _explicitNullProperties?.Remove("judge_fail_count"); } }
         private double? _explicitNullValueJudgeFailCount = default!;
         /// <summary>JSON string representing label counts</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LabelCounts { get => _explicitNullValueLabelCounts; set { _explicitNullValueLabelCounts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("label_counts"); else _explicitNullProperties?.Remove("label_counts"); } }
+        public string? LabelCounts { get => _explicitNullValueLabelCounts; set { _explicitNullValueLabelCounts = value; AdditionalData?.Remove("label_counts"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("label_counts"); else _explicitNullProperties?.Remove("label_counts"); } }
         private string? _explicitNullValueLabelCounts = default!;
 #nullable restore
 #else
-        public string LabelCounts { get => _explicitNullValueLabelCounts; set { _explicitNullValueLabelCounts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("label_counts"); else _explicitNullProperties?.Remove("label_counts"); } }
+        public string LabelCounts { get => _explicitNullValueLabelCounts; set { _explicitNullValueLabelCounts = value; AdditionalData?.Remove("label_counts"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("label_counts"); else _explicitNullProperties?.Remove("label_counts"); } }
         private string _explicitNullValueLabelCounts = default!;
 #endif
         /// <summary>Pecentage of pass labels.</summary>
-        public double? PassPercentage { get => _explicitNullValuePassPercentage; set { _explicitNullValuePassPercentage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pass_percentage"); else _explicitNullProperties?.Remove("pass_percentage"); } }
+        public double? PassPercentage { get => _explicitNullValuePassPercentage; set { _explicitNullValuePassPercentage = value; AdditionalData?.Remove("pass_percentage"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pass_percentage"); else _explicitNullProperties?.Remove("pass_percentage"); } }
         private double? _explicitNullValuePassPercentage = default!;
         /// <summary>Data File ID</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ResultFileId { get => _explicitNullValueResultFileId; set { _explicitNullValueResultFileId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("result_file_id"); else _explicitNullProperties?.Remove("result_file_id"); } }
+        public string? ResultFileId { get => _explicitNullValueResultFileId; set { _explicitNullValueResultFileId = value; AdditionalData?.Remove("result_file_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("result_file_id"); else _explicitNullProperties?.Remove("result_file_id"); } }
         private string? _explicitNullValueResultFileId = default!;
 #nullable restore
 #else
-        public string ResultFileId { get => _explicitNullValueResultFileId; set { _explicitNullValueResultFileId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("result_file_id"); else _explicitNullProperties?.Remove("result_file_id"); } }
+        public string ResultFileId { get => _explicitNullValueResultFileId; set { _explicitNullValueResultFileId = value; AdditionalData?.Remove("result_file_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("result_file_id"); else _explicitNullProperties?.Remove("result_file_id"); } }
         private string _explicitNullValueResultFileId = default!;
 #endif
         /// <summary>

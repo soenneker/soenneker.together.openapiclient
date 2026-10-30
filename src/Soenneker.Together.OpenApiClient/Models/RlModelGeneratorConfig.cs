@@ -18,23 +18,25 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("context_length") is { } nullNodeContextLength && nullNodeContextLength.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ContextLength = null;
-            if (parseNode.GetChildNode("sampling_defaults") is { } nullNodeSamplingDefaults && nullNodeSamplingDefaults.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SamplingDefaults = null;
+            if (parseNode.GetChildNode("context_length") is null) { _explicitNullValueContextLength = default!; _explicitNullProperties?.Remove("context_length"); }
+            else if (parseNode.GetChildNode("context_length") is { } nullNodeContextLength && nullNodeContextLength.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ContextLength = null;
+            if (parseNode.GetChildNode("sampling_defaults") is null) { _explicitNullValueSamplingDefaults = default!; _explicitNullProperties?.Remove("sampling_defaults"); }
+            else if (parseNode.GetChildNode("sampling_defaults") is { } nullNodeSamplingDefaults && nullNodeSamplingDefaults.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SamplingDefaults = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Maximum tokens in a single inference request (prompt + completion)</summary>
-        public int? ContextLength { get => _explicitNullValueContextLength; set { _explicitNullValueContextLength = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("context_length"); else _explicitNullProperties?.Remove("context_length"); } }
+        public int? ContextLength { get => _explicitNullValueContextLength; set { _explicitNullValueContextLength = value; AdditionalData?.Remove("context_length"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("context_length"); else _explicitNullProperties?.Remove("context_length"); } }
         private int? _explicitNullValueContextLength = default!;
         /// <summary>Default sampling parameters used for a Sample request.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RlModelSamplingDefaults? SamplingDefaults { get => _explicitNullValueSamplingDefaults; set { _explicitNullValueSamplingDefaults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sampling_defaults"); else _explicitNullProperties?.Remove("sampling_defaults"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.RlModelSamplingDefaults? SamplingDefaults { get => _explicitNullValueSamplingDefaults; set { _explicitNullValueSamplingDefaults = value; AdditionalData?.Remove("sampling_defaults"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sampling_defaults"); else _explicitNullProperties?.Remove("sampling_defaults"); } }
         private global::Soenneker.Together.OpenApiClient.Models.RlModelSamplingDefaults? _explicitNullValueSamplingDefaults = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.RlModelSamplingDefaults SamplingDefaults { get => _explicitNullValueSamplingDefaults; set { _explicitNullValueSamplingDefaults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sampling_defaults"); else _explicitNullProperties?.Remove("sampling_defaults"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.RlModelSamplingDefaults SamplingDefaults { get => _explicitNullValueSamplingDefaults; set { _explicitNullValueSamplingDefaults = value; AdditionalData?.Remove("sampling_defaults"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sampling_defaults"); else _explicitNullProperties?.Remove("sampling_defaults"); } }
         private global::Soenneker.Together.OpenApiClient.Models.RlModelSamplingDefaults _explicitNullValueSamplingDefaults = default!;
 #endif
         /// <summary>

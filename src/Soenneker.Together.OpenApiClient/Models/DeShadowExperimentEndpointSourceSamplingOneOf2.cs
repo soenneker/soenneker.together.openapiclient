@@ -17,7 +17,8 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("keyBased") is { } nullNodeKeyBased && nullNodeKeyBased.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) KeyBased = null;
+            if (parseNode.GetChildNode("keyBased") is null) { _explicitNullValueKeyBased = default!; _explicitNullProperties?.Remove("keyBased"); }
+            else if (parseNode.GetChildNode("keyBased") is { } nullNodeKeyBased && nullNodeKeyBased.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) KeyBased = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Fixed sampling by a sticky request key.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentSamplingOneOf2KeyBased? KeyBased { get => _explicitNullValueKeyBased; set { _explicitNullValueKeyBased = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("keyBased"); else _explicitNullProperties?.Remove("keyBased"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentSamplingOneOf2KeyBased? KeyBased { get => _explicitNullValueKeyBased; set { _explicitNullValueKeyBased = value; AdditionalData?.Remove("keyBased"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("keyBased"); else _explicitNullProperties?.Remove("keyBased"); } }
         private global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentSamplingOneOf2KeyBased? _explicitNullValueKeyBased = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentSamplingOneOf2KeyBased KeyBased { get => _explicitNullValueKeyBased; set { _explicitNullValueKeyBased = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("keyBased"); else _explicitNullProperties?.Remove("keyBased"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentSamplingOneOf2KeyBased KeyBased { get => _explicitNullValueKeyBased; set { _explicitNullValueKeyBased = value; AdditionalData?.Remove("keyBased"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("keyBased"); else _explicitNullProperties?.Remove("keyBased"); } }
         private global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentSamplingOneOf2KeyBased _explicitNullValueKeyBased = default!;
 #endif
         /// <summary>

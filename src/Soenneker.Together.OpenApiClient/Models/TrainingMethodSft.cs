@@ -17,23 +17,25 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("method") is { } nullNodeMethod && nullNodeMethod.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Method = null;
-            if (parseNode.GetChildNode("train_on_inputs") is { } nullNodeTrainOnInputs && nullNodeTrainOnInputs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TrainOnInputs = null;
+            if (parseNode.GetChildNode("method") is null) { _explicitNullValueMethod = default!; _explicitNullProperties?.Remove("method"); }
+            else if (parseNode.GetChildNode("method") is { } nullNodeMethod && nullNodeMethod.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Method = null;
+            if (parseNode.GetChildNode("train_on_inputs") is null) { _explicitNullValueTrainOnInputs = default!; _explicitNullProperties?.Remove("train_on_inputs"); }
+            else if (parseNode.GetChildNode("train_on_inputs") is { } nullNodeTrainOnInputs && nullNodeTrainOnInputs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TrainOnInputs = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The method property</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.SftMethod? Method { get => _explicitNullValueMethod; set { _explicitNullValueMethod = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("method"); else _explicitNullProperties?.Remove("method"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.SftMethod? Method { get => _explicitNullValueMethod; set { _explicitNullValueMethod = value; AdditionalData?.Remove("method"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("method"); else _explicitNullProperties?.Remove("method"); } }
         private global::Soenneker.Together.OpenApiClient.Models.SftMethod? _explicitNullValueMethod = default!;
         /// <summary>Whether to mask user messages in conversational data or prompts in instruction data.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.TrainingMethodSftTrainOnInputs? TrainOnInputs { get => _explicitNullValueTrainOnInputs; set { _explicitNullValueTrainOnInputs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("train_on_inputs"); else _explicitNullProperties?.Remove("train_on_inputs"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.TrainingMethodSftTrainOnInputs? TrainOnInputs { get => _explicitNullValueTrainOnInputs; set { _explicitNullValueTrainOnInputs = value; AdditionalData?.Remove("train_on_inputs"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("train_on_inputs"); else _explicitNullProperties?.Remove("train_on_inputs"); } }
         private global::Soenneker.Together.OpenApiClient.Models.TrainingMethodSftTrainOnInputs? _explicitNullValueTrainOnInputs = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.TrainingMethodSftTrainOnInputs TrainOnInputs { get => _explicitNullValueTrainOnInputs; set { _explicitNullValueTrainOnInputs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("train_on_inputs"); else _explicitNullProperties?.Remove("train_on_inputs"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.TrainingMethodSftTrainOnInputs TrainOnInputs { get => _explicitNullValueTrainOnInputs; set { _explicitNullValueTrainOnInputs = value; AdditionalData?.Remove("train_on_inputs"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("train_on_inputs"); else _explicitNullProperties?.Remove("train_on_inputs"); } }
         private global::Soenneker.Together.OpenApiClient.Models.TrainingMethodSftTrainOnInputs _explicitNullValueTrainOnInputs = default!;
 #endif
         /// <summary>
@@ -61,7 +63,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "method", n => { Method = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.SftMethod>(); } },
+                { "method", n => { var parsed = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.SftMethod>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueMethod = default; _explicitNullProperties?.Remove("method"); AdditionalData["method"] = unknown; } else { Method = parsed; AdditionalData.Remove("method"); } } },
                 { "train_on_inputs", n => { TrainOnInputs = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.TrainingMethodSftTrainOnInputs>(global::Soenneker.Together.OpenApiClient.Models.TrainingMethodSftTrainOnInputs.CreateFromDiscriminatorValue); } },
             };
         }

@@ -18,21 +18,24 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("max_batch_size") is { } nullNodeMaxBatchSize && nullNodeMaxBatchSize.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxBatchSize = null;
-            if (parseNode.GetChildNode("max_rank") is { } nullNodeMaxRank && nullNodeMaxRank.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxRank = null;
-            if (parseNode.GetChildNode("max_seq_length") is { } nullNodeMaxSeqLength && nullNodeMaxSeqLength.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxSeqLength = null;
+            if (parseNode.GetChildNode("max_batch_size") is null) { _explicitNullValueMaxBatchSize = default!; _explicitNullProperties?.Remove("max_batch_size"); }
+            else if (parseNode.GetChildNode("max_batch_size") is { } nullNodeMaxBatchSize && nullNodeMaxBatchSize.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxBatchSize = null;
+            if (parseNode.GetChildNode("max_rank") is null) { _explicitNullValueMaxRank = default!; _explicitNullProperties?.Remove("max_rank"); }
+            else if (parseNode.GetChildNode("max_rank") is { } nullNodeMaxRank && nullNodeMaxRank.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxRank = null;
+            if (parseNode.GetChildNode("max_seq_length") is null) { _explicitNullValueMaxSeqLength = default!; _explicitNullProperties?.Remove("max_seq_length"); }
+            else if (parseNode.GetChildNode("max_seq_length") is { } nullNodeMaxSeqLength && nullNodeMaxSeqLength.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxSeqLength = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Maximum global batch size accepted by a forward-backward step</summary>
-        public int? MaxBatchSize { get => _explicitNullValueMaxBatchSize; set { _explicitNullValueMaxBatchSize = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_batch_size"); else _explicitNullProperties?.Remove("max_batch_size"); } }
+        public int? MaxBatchSize { get => _explicitNullValueMaxBatchSize; set { _explicitNullValueMaxBatchSize = value; AdditionalData?.Remove("max_batch_size"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_batch_size"); else _explicitNullProperties?.Remove("max_batch_size"); } }
         private int? _explicitNullValueMaxBatchSize = default!;
         /// <summary>Maximum LoRA rank</summary>
-        public int? MaxRank { get => _explicitNullValueMaxRank; set { _explicitNullValueMaxRank = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_rank"); else _explicitNullProperties?.Remove("max_rank"); } }
+        public int? MaxRank { get => _explicitNullValueMaxRank; set { _explicitNullValueMaxRank = value; AdditionalData?.Remove("max_rank"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_rank"); else _explicitNullProperties?.Remove("max_rank"); } }
         private int? _explicitNullValueMaxRank = default!;
         /// <summary>Maximum sequence length in tokens</summary>
-        public int? MaxSeqLength { get => _explicitNullValueMaxSeqLength; set { _explicitNullValueMaxSeqLength = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_seq_length"); else _explicitNullProperties?.Remove("max_seq_length"); } }
+        public int? MaxSeqLength { get => _explicitNullValueMaxSeqLength; set { _explicitNullValueMaxSeqLength = value; AdditionalData?.Remove("max_seq_length"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_seq_length"); else _explicitNullProperties?.Remove("max_seq_length"); } }
         private int? _explicitNullValueMaxSeqLength = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlModelLoraModeConfig"/> and sets the default values.

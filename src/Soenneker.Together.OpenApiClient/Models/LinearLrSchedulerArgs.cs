@@ -17,13 +17,14 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("min_lr_ratio") is { } nullNodeMinLrRatio && nullNodeMinLrRatio.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MinLrRatio = null;
+            if (parseNode.GetChildNode("min_lr_ratio") is null) { _explicitNullValueMinLrRatio = default!; _explicitNullProperties?.Remove("min_lr_ratio"); }
+            else if (parseNode.GetChildNode("min_lr_ratio") is { } nullNodeMinLrRatio && nullNodeMinLrRatio.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MinLrRatio = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The ratio of the final learning rate to the peak learning rate</summary>
-        public double? MinLrRatio { get => _explicitNullValueMinLrRatio; set { _explicitNullValueMinLrRatio = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("min_lr_ratio"); else _explicitNullProperties?.Remove("min_lr_ratio"); } }
+        public double? MinLrRatio { get => _explicitNullValueMinLrRatio; set { _explicitNullValueMinLrRatio = value; AdditionalData?.Remove("min_lr_ratio"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("min_lr_ratio"); else _explicitNullProperties?.Remove("min_lr_ratio"); } }
         private double? _explicitNullValueMinLrRatio = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.LinearLrSchedulerArgs"/> and sets the default values.

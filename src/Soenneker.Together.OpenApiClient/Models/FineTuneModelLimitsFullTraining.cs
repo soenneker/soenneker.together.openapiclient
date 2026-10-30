@@ -18,21 +18,24 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("max_batch_size") is { } nullNodeMaxBatchSize && nullNodeMaxBatchSize.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxBatchSize = null;
-            if (parseNode.GetChildNode("max_batch_size_dpo") is { } nullNodeMaxBatchSizeDpo && nullNodeMaxBatchSizeDpo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxBatchSizeDpo = null;
-            if (parseNode.GetChildNode("min_batch_size") is { } nullNodeMinBatchSize && nullNodeMinBatchSize.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MinBatchSize = null;
+            if (parseNode.GetChildNode("max_batch_size") is null) { _explicitNullValueMaxBatchSize = default!; _explicitNullProperties?.Remove("max_batch_size"); }
+            else if (parseNode.GetChildNode("max_batch_size") is { } nullNodeMaxBatchSize && nullNodeMaxBatchSize.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxBatchSize = null;
+            if (parseNode.GetChildNode("max_batch_size_dpo") is null) { _explicitNullValueMaxBatchSizeDpo = default!; _explicitNullProperties?.Remove("max_batch_size_dpo"); }
+            else if (parseNode.GetChildNode("max_batch_size_dpo") is { } nullNodeMaxBatchSizeDpo && nullNodeMaxBatchSizeDpo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxBatchSizeDpo = null;
+            if (parseNode.GetChildNode("min_batch_size") is null) { _explicitNullValueMinBatchSize = default!; _explicitNullProperties?.Remove("min_batch_size"); }
+            else if (parseNode.GetChildNode("min_batch_size") is { } nullNodeMinBatchSize && nullNodeMinBatchSize.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MinBatchSize = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Maximum batch size for SFT full training.</summary>
-        public int? MaxBatchSize { get => _explicitNullValueMaxBatchSize; set { _explicitNullValueMaxBatchSize = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_batch_size"); else _explicitNullProperties?.Remove("max_batch_size"); } }
+        public int? MaxBatchSize { get => _explicitNullValueMaxBatchSize; set { _explicitNullValueMaxBatchSize = value; AdditionalData?.Remove("max_batch_size"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_batch_size"); else _explicitNullProperties?.Remove("max_batch_size"); } }
         private int? _explicitNullValueMaxBatchSize = default!;
         /// <summary>Maximum batch size for DPO full training.</summary>
-        public int? MaxBatchSizeDpo { get => _explicitNullValueMaxBatchSizeDpo; set { _explicitNullValueMaxBatchSizeDpo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_batch_size_dpo"); else _explicitNullProperties?.Remove("max_batch_size_dpo"); } }
+        public int? MaxBatchSizeDpo { get => _explicitNullValueMaxBatchSizeDpo; set { _explicitNullValueMaxBatchSizeDpo = value; AdditionalData?.Remove("max_batch_size_dpo"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_batch_size_dpo"); else _explicitNullProperties?.Remove("max_batch_size_dpo"); } }
         private int? _explicitNullValueMaxBatchSizeDpo = default!;
         /// <summary>Minimum batch size for full training.</summary>
-        public int? MinBatchSize { get => _explicitNullValueMinBatchSize; set { _explicitNullValueMinBatchSize = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("min_batch_size"); else _explicitNullProperties?.Remove("min_batch_size"); } }
+        public int? MinBatchSize { get => _explicitNullValueMinBatchSize; set { _explicitNullValueMinBatchSize = value; AdditionalData?.Remove("min_batch_size"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("min_batch_size"); else _explicitNullProperties?.Remove("min_batch_size"); } }
         private int? _explicitNullValueMinBatchSize = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.FineTuneModelLimitsFullTraining"/> and sets the default values.

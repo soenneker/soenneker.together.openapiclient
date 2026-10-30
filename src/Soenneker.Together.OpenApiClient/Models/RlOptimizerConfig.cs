@@ -18,18 +18,20 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("adam") is { } nullNodeAdam && nullNodeAdam.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Adam = null;
-            if (parseNode.GetChildNode("muon") is { } nullNodeMuon && nullNodeMuon.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Muon = null;
+            if (parseNode.GetChildNode("adam") is null) { _explicitNullValueAdam = default!; _explicitNullProperties?.Remove("adam"); }
+            else if (parseNode.GetChildNode("adam") is { } nullNodeAdam && nullNodeAdam.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Adam = null;
+            if (parseNode.GetChildNode("muon") is null) { _explicitNullValueMuon = default!; _explicitNullProperties?.Remove("muon"); }
+            else if (parseNode.GetChildNode("muon") is { } nullNodeMuon && nullNodeMuon.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Muon = null;
         }
 
         /// <summary>Adam optimizer configuration</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RlAdamConfig? Adam { get => _explicitNullValueAdam; set { _explicitNullValueAdam = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("adam"); else _explicitNullProperties?.Remove("adam"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.RlAdamConfig? Adam { get => _explicitNullValueAdam; set { _explicitNullValueAdam = value; AdditionalData?.Remove("adam"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("adam"); else _explicitNullProperties?.Remove("adam"); } }
         private global::Soenneker.Together.OpenApiClient.Models.RlAdamConfig? _explicitNullValueAdam = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.RlAdamConfig Adam { get => _explicitNullValueAdam; set { _explicitNullValueAdam = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("adam"); else _explicitNullProperties?.Remove("adam"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.RlAdamConfig Adam { get => _explicitNullValueAdam; set { _explicitNullValueAdam = value; AdditionalData?.Remove("adam"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("adam"); else _explicitNullProperties?.Remove("adam"); } }
         private global::Soenneker.Together.OpenApiClient.Models.RlAdamConfig _explicitNullValueAdam = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -37,11 +39,11 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Advanced configuration for the Muon optimizer.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RlMuonConfig? Muon { get => _explicitNullValueMuon; set { _explicitNullValueMuon = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("muon"); else _explicitNullProperties?.Remove("muon"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.RlMuonConfig? Muon { get => _explicitNullValueMuon; set { _explicitNullValueMuon = value; AdditionalData?.Remove("muon"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("muon"); else _explicitNullProperties?.Remove("muon"); } }
         private global::Soenneker.Together.OpenApiClient.Models.RlMuonConfig? _explicitNullValueMuon = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.RlMuonConfig Muon { get => _explicitNullValueMuon; set { _explicitNullValueMuon = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("muon"); else _explicitNullProperties?.Remove("muon"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.RlMuonConfig Muon { get => _explicitNullValueMuon; set { _explicitNullValueMuon = value; AdditionalData?.Remove("muon"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("muon"); else _explicitNullProperties?.Remove("muon"); } }
         private global::Soenneker.Together.OpenApiClient.Models.RlMuonConfig _explicitNullValueMuon = default!;
 #endif
         /// <summary>

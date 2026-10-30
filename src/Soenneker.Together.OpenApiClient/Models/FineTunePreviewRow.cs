@@ -18,13 +18,20 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("input_ids") is { } nullNodeInputIds && nullNodeInputIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InputIds = null;
-            if (parseNode.GetChildNode("labels") is { } nullNodeLabels && nullNodeLabels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Labels = null;
-            if (parseNode.GetChildNode("num_tokens") is { } nullNodeNumTokens && nullNodeNumTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NumTokens = null;
-            if (parseNode.GetChildNode("num_trained_tokens") is { } nullNodeNumTrainedTokens && nullNodeNumTrainedTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NumTrainedTokens = null;
-            if (parseNode.GetChildNode("tokens") is { } nullNodeTokens && nullNodeTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tokens = null;
-            if (parseNode.GetChildNode("trained_spans") is { } nullNodeTrainedSpans && nullNodeTrainedSpans.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TrainedSpans = null;
-            if (parseNode.GetChildNode("truncated") is { } nullNodeTruncated && nullNodeTruncated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Truncated = null;
+            if (parseNode.GetChildNode("input_ids") is null) { _explicitNullValueInputIds = default!; _explicitNullProperties?.Remove("input_ids"); }
+            else if (parseNode.GetChildNode("input_ids") is { } nullNodeInputIds && nullNodeInputIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InputIds = null;
+            if (parseNode.GetChildNode("labels") is null) { _explicitNullValueLabels = default!; _explicitNullProperties?.Remove("labels"); }
+            else if (parseNode.GetChildNode("labels") is { } nullNodeLabels && nullNodeLabels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Labels = null;
+            if (parseNode.GetChildNode("num_tokens") is null) { _explicitNullValueNumTokens = default!; _explicitNullProperties?.Remove("num_tokens"); }
+            else if (parseNode.GetChildNode("num_tokens") is { } nullNodeNumTokens && nullNodeNumTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NumTokens = null;
+            if (parseNode.GetChildNode("num_trained_tokens") is null) { _explicitNullValueNumTrainedTokens = default!; _explicitNullProperties?.Remove("num_trained_tokens"); }
+            else if (parseNode.GetChildNode("num_trained_tokens") is { } nullNodeNumTrainedTokens && nullNodeNumTrainedTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NumTrainedTokens = null;
+            if (parseNode.GetChildNode("tokens") is null) { _explicitNullValueTokens = default!; _explicitNullProperties?.Remove("tokens"); }
+            else if (parseNode.GetChildNode("tokens") is { } nullNodeTokens && nullNodeTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tokens = null;
+            if (parseNode.GetChildNode("trained_spans") is null) { _explicitNullValueTrainedSpans = default!; _explicitNullProperties?.Remove("trained_spans"); }
+            else if (parseNode.GetChildNode("trained_spans") is { } nullNodeTrainedSpans && nullNodeTrainedSpans.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TrainedSpans = null;
+            if (parseNode.GetChildNode("truncated") is null) { _explicitNullValueTruncated = default!; _explicitNullProperties?.Remove("truncated"); }
+            else if (parseNode.GetChildNode("truncated") is { } nullNodeTruncated && nullNodeTruncated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Truncated = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -32,51 +39,51 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Token IDs produced for the sampled row.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<int?>? InputIds { get => _explicitNullValueInputIds; set { _explicitNullValueInputIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_ids"); else _explicitNullProperties?.Remove("input_ids"); } }
+        public List<int?>? InputIds { get => _explicitNullValueInputIds; set { _explicitNullValueInputIds = value; AdditionalData?.Remove("input_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_ids"); else _explicitNullProperties?.Remove("input_ids"); } }
         private List<int?>? _explicitNullValueInputIds = default!;
 #nullable restore
 #else
-        public List<int?> InputIds { get => _explicitNullValueInputIds; set { _explicitNullValueInputIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_ids"); else _explicitNullProperties?.Remove("input_ids"); } }
+        public List<int?> InputIds { get => _explicitNullValueInputIds; set { _explicitNullValueInputIds = value; AdditionalData?.Remove("input_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_ids"); else _explicitNullProperties?.Remove("input_ids"); } }
         private List<int?> _explicitNullValueInputIds = default!;
 #endif
         /// <summary>Training labels for each token; masked tokens use -100.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<int?>? Labels { get => _explicitNullValueLabels; set { _explicitNullValueLabels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("labels"); else _explicitNullProperties?.Remove("labels"); } }
+        public List<int?>? Labels { get => _explicitNullValueLabels; set { _explicitNullValueLabels = value; AdditionalData?.Remove("labels"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("labels"); else _explicitNullProperties?.Remove("labels"); } }
         private List<int?>? _explicitNullValueLabels = default!;
 #nullable restore
 #else
-        public List<int?> Labels { get => _explicitNullValueLabels; set { _explicitNullValueLabels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("labels"); else _explicitNullProperties?.Remove("labels"); } }
+        public List<int?> Labels { get => _explicitNullValueLabels; set { _explicitNullValueLabels = value; AdditionalData?.Remove("labels"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("labels"); else _explicitNullProperties?.Remove("labels"); } }
         private List<int?> _explicitNullValueLabels = default!;
 #endif
         /// <summary>Total number of tokens in the preview row after truncation.</summary>
-        public int? NumTokens { get => _explicitNullValueNumTokens; set { _explicitNullValueNumTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("num_tokens"); else _explicitNullProperties?.Remove("num_tokens"); } }
+        public int? NumTokens { get => _explicitNullValueNumTokens; set { _explicitNullValueNumTokens = value; AdditionalData?.Remove("num_tokens"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("num_tokens"); else _explicitNullProperties?.Remove("num_tokens"); } }
         private int? _explicitNullValueNumTokens = default!;
         /// <summary>Number of tokens in the row that contribute to training loss.</summary>
-        public int? NumTrainedTokens { get => _explicitNullValueNumTrainedTokens; set { _explicitNullValueNumTrainedTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("num_trained_tokens"); else _explicitNullProperties?.Remove("num_trained_tokens"); } }
+        public int? NumTrainedTokens { get => _explicitNullValueNumTrainedTokens; set { _explicitNullValueNumTrainedTokens = value; AdditionalData?.Remove("num_trained_tokens"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("num_trained_tokens"); else _explicitNullProperties?.Remove("num_trained_tokens"); } }
         private int? _explicitNullValueNumTrainedTokens = default!;
         /// <summary>Raw token strings produced for the sampled row.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Tokens { get => _explicitNullValueTokens; set { _explicitNullValueTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tokens"); else _explicitNullProperties?.Remove("tokens"); } }
+        public List<string>? Tokens { get => _explicitNullValueTokens; set { _explicitNullValueTokens = value; AdditionalData?.Remove("tokens"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tokens"); else _explicitNullProperties?.Remove("tokens"); } }
         private List<string>? _explicitNullValueTokens = default!;
 #nullable restore
 #else
-        public List<string> Tokens { get => _explicitNullValueTokens; set { _explicitNullValueTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tokens"); else _explicitNullProperties?.Remove("tokens"); } }
+        public List<string> Tokens { get => _explicitNullValueTokens; set { _explicitNullValueTokens = value; AdditionalData?.Remove("tokens"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tokens"); else _explicitNullProperties?.Remove("tokens"); } }
         private List<string> _explicitNullValueTokens = default!;
 #endif
         /// <summary>Half-open token index ranges that contribute to training loss.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? TrainedSpans { get => _explicitNullValueTrainedSpans; set { _explicitNullValueTrainedSpans = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trained_spans"); else _explicitNullProperties?.Remove("trained_spans"); } }
+        public UntypedNode? TrainedSpans { get => _explicitNullValueTrainedSpans; set { _explicitNullValueTrainedSpans = value; AdditionalData?.Remove("trained_spans"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trained_spans"); else _explicitNullProperties?.Remove("trained_spans"); } }
         private UntypedNode? _explicitNullValueTrainedSpans = default!;
 #nullable restore
 #else
-        public UntypedNode TrainedSpans { get => _explicitNullValueTrainedSpans; set { _explicitNullValueTrainedSpans = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trained_spans"); else _explicitNullProperties?.Remove("trained_spans"); } }
+        public UntypedNode TrainedSpans { get => _explicitNullValueTrainedSpans; set { _explicitNullValueTrainedSpans = value; AdditionalData?.Remove("trained_spans"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trained_spans"); else _explicitNullProperties?.Remove("trained_spans"); } }
         private UntypedNode _explicitNullValueTrainedSpans = default!;
 #endif
         /// <summary>Whether the row was truncated to the model maximum sequence length.</summary>
-        public bool? Truncated { get => _explicitNullValueTruncated; set { _explicitNullValueTruncated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("truncated"); else _explicitNullProperties?.Remove("truncated"); } }
+        public bool? Truncated { get => _explicitNullValueTruncated; set { _explicitNullValueTruncated = value; AdditionalData?.Remove("truncated"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("truncated"); else _explicitNullProperties?.Remove("truncated"); } }
         private bool? _explicitNullValueTruncated = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.FineTunePreviewRow"/> and sets the default values.

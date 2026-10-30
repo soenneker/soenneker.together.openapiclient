@@ -18,13 +18,14 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("hipaa") is { } nullNodeHipaa && nullNodeHipaa.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Hipaa = null;
+            if (parseNode.GetChildNode("hipaa") is null) { _explicitNullValueHipaa = default!; _explicitNullProperties?.Remove("hipaa"); }
+            else if (parseNode.GetChildNode("hipaa") is { } nullNodeHipaa && nullNodeHipaa.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Hipaa = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Restrict placement to HIPAA-attested clusters.</summary>
-        public bool? Hipaa { get => _explicitNullValueHipaa; set { _explicitNullValueHipaa = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hipaa"); else _explicitNullProperties?.Remove("hipaa"); } }
+        public bool? Hipaa { get => _explicitNullValueHipaa; set { _explicitNullValueHipaa = value; AdditionalData?.Remove("hipaa"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hipaa"); else _explicitNullProperties?.Remove("hipaa"); } }
         private bool? _explicitNullValueHipaa = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.DeComplianceAvailabilityPolicy"/> and sets the default values.

@@ -18,13 +18,14 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("weight_sync_type") is { } nullNodeWeightSyncType && nullNodeWeightSyncType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WeightSyncType = null;
+            if (parseNode.GetChildNode("weight_sync_type") is null) { _explicitNullValueWeightSyncType = default!; _explicitNullProperties?.Remove("weight_sync_type"); }
+            else if (parseNode.GetChildNode("weight_sync_type") is { } nullNodeWeightSyncType && nullNodeWeightSyncType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WeightSyncType = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>How updated policy parameters are made available for sampling. SYNCHRONOUS waits for the policy update before returning; BACKGROUND_PUBLISH returns after scheduling the update; PIPELINE overlaps the update with in-flight sampling when possible.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.RlWeightSyncType? WeightSyncType { get => _explicitNullValueWeightSyncType; set { _explicitNullValueWeightSyncType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("weight_sync_type"); else _explicitNullProperties?.Remove("weight_sync_type"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.RlWeightSyncType? WeightSyncType { get => _explicitNullValueWeightSyncType; set { _explicitNullValueWeightSyncType = value; AdditionalData?.Remove("weight_sync_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("weight_sync_type"); else _explicitNullProperties?.Remove("weight_sync_type"); } }
         private global::Soenneker.Together.OpenApiClient.Models.RlWeightSyncType? _explicitNullValueWeightSyncType = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlWeightsSyncBody"/> and sets the default values.
@@ -51,7 +52,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "weight_sync_type", n => { WeightSyncType = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlWeightSyncType>(); } },
+                { "weight_sync_type", n => { var parsed = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlWeightSyncType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueWeightSyncType = default; _explicitNullProperties?.Remove("weight_sync_type"); AdditionalData["weight_sync_type"] = unknown; } else { WeightSyncType = parsed; AdditionalData.Remove("weight_sync_type"); } } },
             };
         }
         /// <summary>

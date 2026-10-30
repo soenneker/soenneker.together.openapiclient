@@ -18,7 +18,8 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("wandb") is { } nullNodeWandb && nullNodeWandb.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Wandb = null;
+            if (parseNode.GetChildNode("wandb") is null) { _explicitNullValueWandb = default!; _explicitNullProperties?.Remove("wandb"); }
+            else if (parseNode.GetChildNode("wandb") is { } nullNodeWandb && nullNodeWandb.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Wandb = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,11 +27,11 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Details that associate a training session with a Weights &amp; Biases run</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RlWandbMetadata? Wandb { get => _explicitNullValueWandb; set { _explicitNullValueWandb = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("wandb"); else _explicitNullProperties?.Remove("wandb"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.RlWandbMetadata? Wandb { get => _explicitNullValueWandb; set { _explicitNullValueWandb = value; AdditionalData?.Remove("wandb"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("wandb"); else _explicitNullProperties?.Remove("wandb"); } }
         private global::Soenneker.Together.OpenApiClient.Models.RlWandbMetadata? _explicitNullValueWandb = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.RlWandbMetadata Wandb { get => _explicitNullValueWandb; set { _explicitNullValueWandb = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("wandb"); else _explicitNullProperties?.Remove("wandb"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.RlWandbMetadata Wandb { get => _explicitNullValueWandb; set { _explicitNullValueWandb = value; AdditionalData?.Remove("wandb"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("wandb"); else _explicitNullProperties?.Remove("wandb"); } }
         private global::Soenneker.Together.OpenApiClient.Models.RlWandbMetadata _explicitNullValueWandb = default!;
 #endif
         /// <summary>

@@ -17,7 +17,8 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("uniform") is { } nullNodeUniform && nullNodeUniform.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Uniform = null;
+            if (parseNode.GetChildNode("uniform") is null) { _explicitNullValueUniform = default!; _explicitNullProperties?.Remove("uniform"); }
+            else if (parseNode.GetChildNode("uniform") is { } nullNodeUniform && nullNodeUniform.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Uniform = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Fixed random request sampling.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentSamplingResponseOneOf1Uniform? Uniform { get => _explicitNullValueUniform; set { _explicitNullValueUniform = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("uniform"); else _explicitNullProperties?.Remove("uniform"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentSamplingResponseOneOf1Uniform? Uniform { get => _explicitNullValueUniform; set { _explicitNullValueUniform = value; AdditionalData?.Remove("uniform"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("uniform"); else _explicitNullProperties?.Remove("uniform"); } }
         private global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentSamplingResponseOneOf1Uniform? _explicitNullValueUniform = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentSamplingResponseOneOf1Uniform Uniform { get => _explicitNullValueUniform; set { _explicitNullValueUniform = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("uniform"); else _explicitNullProperties?.Remove("uniform"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentSamplingResponseOneOf1Uniform Uniform { get => _explicitNullValueUniform; set { _explicitNullValueUniform = value; AdditionalData?.Remove("uniform"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("uniform"); else _explicitNullProperties?.Remove("uniform"); } }
         private global::Soenneker.Together.OpenApiClient.Models.DeShadowExperimentSamplingResponseOneOf1Uniform _explicitNullValueUniform = default!;
 #endif
         /// <summary>

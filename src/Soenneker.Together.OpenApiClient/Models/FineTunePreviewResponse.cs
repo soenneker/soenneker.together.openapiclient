@@ -18,43 +18,48 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("dataset_format") is { } nullNodeDatasetFormat && nullNodeDatasetFormat.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DatasetFormat = null;
-            if (parseNode.GetChildNode("max_seq_length") is { } nullNodeMaxSeqLength && nullNodeMaxSeqLength.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxSeqLength = null;
-            if (parseNode.GetChildNode("model") is { } nullNodeModel && nullNodeModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Model = null;
-            if (parseNode.GetChildNode("rows") is { } nullNodeRows && nullNodeRows.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Rows = null;
-            if (parseNode.GetChildNode("train_on_inputs") is { } nullNodeTrainOnInputs && nullNodeTrainOnInputs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TrainOnInputs = null;
+            if (parseNode.GetChildNode("dataset_format") is null) { _explicitNullValueDatasetFormat = default!; _explicitNullProperties?.Remove("dataset_format"); }
+            else if (parseNode.GetChildNode("dataset_format") is { } nullNodeDatasetFormat && nullNodeDatasetFormat.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DatasetFormat = null;
+            if (parseNode.GetChildNode("max_seq_length") is null) { _explicitNullValueMaxSeqLength = default!; _explicitNullProperties?.Remove("max_seq_length"); }
+            else if (parseNode.GetChildNode("max_seq_length") is { } nullNodeMaxSeqLength && nullNodeMaxSeqLength.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxSeqLength = null;
+            if (parseNode.GetChildNode("model") is null) { _explicitNullValueModel = default!; _explicitNullProperties?.Remove("model"); }
+            else if (parseNode.GetChildNode("model") is { } nullNodeModel && nullNodeModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Model = null;
+            if (parseNode.GetChildNode("rows") is null) { _explicitNullValueRows = default!; _explicitNullProperties?.Remove("rows"); }
+            else if (parseNode.GetChildNode("rows") is { } nullNodeRows && nullNodeRows.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Rows = null;
+            if (parseNode.GetChildNode("train_on_inputs") is null) { _explicitNullValueTrainOnInputs = default!; _explicitNullProperties?.Remove("train_on_inputs"); }
+            else if (parseNode.GetChildNode("train_on_inputs") is { } nullNodeTrainOnInputs && nullNodeTrainOnInputs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TrainOnInputs = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Detected SFT dataset format for the sampled rows.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.FineTunePreviewResponseDatasetFormat? DatasetFormat { get => _explicitNullValueDatasetFormat; set { _explicitNullValueDatasetFormat = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dataset_format"); else _explicitNullProperties?.Remove("dataset_format"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.FineTunePreviewResponseDatasetFormat? DatasetFormat { get => _explicitNullValueDatasetFormat; set { _explicitNullValueDatasetFormat = value; AdditionalData?.Remove("dataset_format"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dataset_format"); else _explicitNullProperties?.Remove("dataset_format"); } }
         private global::Soenneker.Together.OpenApiClient.Models.FineTunePreviewResponseDatasetFormat? _explicitNullValueDatasetFormat = default!;
         /// <summary>Maximum sequence length configured for the requested model.</summary>
-        public int? MaxSeqLength { get => _explicitNullValueMaxSeqLength; set { _explicitNullValueMaxSeqLength = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_seq_length"); else _explicitNullProperties?.Remove("max_seq_length"); } }
+        public int? MaxSeqLength { get => _explicitNullValueMaxSeqLength; set { _explicitNullValueMaxSeqLength = value; AdditionalData?.Remove("max_seq_length"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_seq_length"); else _explicitNullProperties?.Remove("max_seq_length"); } }
         private int? _explicitNullValueMaxSeqLength = default!;
         /// <summary>Name of the base model used to tokenize the sampled rows.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        public string? Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; AdditionalData?.Remove("model"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
         private string? _explicitNullValueModel = default!;
 #nullable restore
 #else
-        public string Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        public string Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; AdditionalData?.Remove("model"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
         private string _explicitNullValueModel = default!;
 #endif
         /// <summary>Tokenized preview rows, in the same order as the sampled training file rows.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Together.OpenApiClient.Models.FineTunePreviewRow>? Rows { get => _explicitNullValueRows; set { _explicitNullValueRows = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rows"); else _explicitNullProperties?.Remove("rows"); } }
+        public List<global::Soenneker.Together.OpenApiClient.Models.FineTunePreviewRow>? Rows { get => _explicitNullValueRows; set { _explicitNullValueRows = value; AdditionalData?.Remove("rows"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rows"); else _explicitNullProperties?.Remove("rows"); } }
         private List<global::Soenneker.Together.OpenApiClient.Models.FineTunePreviewRow>? _explicitNullValueRows = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Together.OpenApiClient.Models.FineTunePreviewRow> Rows { get => _explicitNullValueRows; set { _explicitNullValueRows = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rows"); else _explicitNullProperties?.Remove("rows"); } }
+        public List<global::Soenneker.Together.OpenApiClient.Models.FineTunePreviewRow> Rows { get => _explicitNullValueRows; set { _explicitNullValueRows = value; AdditionalData?.Remove("rows"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rows"); else _explicitNullProperties?.Remove("rows"); } }
         private List<global::Soenneker.Together.OpenApiClient.Models.FineTunePreviewRow> _explicitNullValueRows = default!;
 #endif
         /// <summary>Whether prompt or user-message tokens contribute to training loss.</summary>
-        public bool? TrainOnInputs { get => _explicitNullValueTrainOnInputs; set { _explicitNullValueTrainOnInputs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("train_on_inputs"); else _explicitNullProperties?.Remove("train_on_inputs"); } }
+        public bool? TrainOnInputs { get => _explicitNullValueTrainOnInputs; set { _explicitNullValueTrainOnInputs = value; AdditionalData?.Remove("train_on_inputs"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("train_on_inputs"); else _explicitNullProperties?.Remove("train_on_inputs"); } }
         private bool? _explicitNullValueTrainOnInputs = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.FineTunePreviewResponse"/> and sets the default values.
@@ -81,7 +86,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "dataset_format", n => { DatasetFormat = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.FineTunePreviewResponseDatasetFormat>(); } },
+                { "dataset_format", n => { var parsed = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.FineTunePreviewResponseDatasetFormat>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueDatasetFormat = default; _explicitNullProperties?.Remove("dataset_format"); AdditionalData["dataset_format"] = unknown; } else { DatasetFormat = parsed; AdditionalData.Remove("dataset_format"); } } },
                 { "max_seq_length", n => { MaxSeqLength = n.GetIntValue(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
                 { "rows", n => { Rows = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.FineTunePreviewRow>(global::Soenneker.Together.OpenApiClient.Models.FineTunePreviewRow.CreateFromDiscriminatorValue)?.AsList(); } },

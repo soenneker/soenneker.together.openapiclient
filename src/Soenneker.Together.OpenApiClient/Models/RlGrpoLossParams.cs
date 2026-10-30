@@ -17,29 +17,34 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("agg_type") is { } nullNodeAggType && nullNodeAggType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AggType = null;
-            if (parseNode.GetChildNode("beta") is { } nullNodeBeta && nullNodeBeta.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Beta = null;
-            if (parseNode.GetChildNode("clip_high_threshold") is { } nullNodeClipHighThreshold && nullNodeClipHighThreshold.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClipHighThreshold = null;
-            if (parseNode.GetChildNode("clip_low_threshold") is { } nullNodeClipLowThreshold && nullNodeClipLowThreshold.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClipLowThreshold = null;
-            if (parseNode.GetChildNode("ratio_type") is { } nullNodeRatioType && nullNodeRatioType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RatioType = null;
+            if (parseNode.GetChildNode("agg_type") is null) { _explicitNullValueAggType = default!; _explicitNullProperties?.Remove("agg_type"); }
+            else if (parseNode.GetChildNode("agg_type") is { } nullNodeAggType && nullNodeAggType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AggType = null;
+            if (parseNode.GetChildNode("beta") is null) { _explicitNullValueBeta = default!; _explicitNullProperties?.Remove("beta"); }
+            else if (parseNode.GetChildNode("beta") is { } nullNodeBeta && nullNodeBeta.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Beta = null;
+            if (parseNode.GetChildNode("clip_high_threshold") is null) { _explicitNullValueClipHighThreshold = default!; _explicitNullProperties?.Remove("clip_high_threshold"); }
+            else if (parseNode.GetChildNode("clip_high_threshold") is { } nullNodeClipHighThreshold && nullNodeClipHighThreshold.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClipHighThreshold = null;
+            if (parseNode.GetChildNode("clip_low_threshold") is null) { _explicitNullValueClipLowThreshold = default!; _explicitNullProperties?.Remove("clip_low_threshold"); }
+            else if (parseNode.GetChildNode("clip_low_threshold") is { } nullNodeClipLowThreshold && nullNodeClipLowThreshold.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClipLowThreshold = null;
+            if (parseNode.GetChildNode("ratio_type") is null) { _explicitNullValueRatioType = default!; _explicitNullProperties?.Remove("ratio_type"); }
+            else if (parseNode.GetChildNode("ratio_type") is { } nullNodeRatioType && nullNodeRatioType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RatioType = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The agg_type property</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.RlGrpoLossAggregationType? AggType { get => _explicitNullValueAggType; set { _explicitNullValueAggType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agg_type"); else _explicitNullProperties?.Remove("agg_type"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.RlGrpoLossAggregationType? AggType { get => _explicitNullValueAggType; set { _explicitNullValueAggType = value; AdditionalData?.Remove("agg_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agg_type"); else _explicitNullProperties?.Remove("agg_type"); } }
         private global::Soenneker.Together.OpenApiClient.Models.RlGrpoLossAggregationType? _explicitNullValueAggType = default!;
         /// <summary>KL penalty coefficient</summary>
-        public double? Beta { get => _explicitNullValueBeta; set { _explicitNullValueBeta = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("beta"); else _explicitNullProperties?.Remove("beta"); } }
+        public double? Beta { get => _explicitNullValueBeta; set { _explicitNullValueBeta = value; AdditionalData?.Remove("beta"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("beta"); else _explicitNullProperties?.Remove("beta"); } }
         private double? _explicitNullValueBeta = default!;
         /// <summary>Upper clip threshold for the importance-sampling ratio. The ratio is clamped to this bound; tighter clipping makes policy updates more conservative. Must be &gt;= 1.</summary>
-        public float? ClipHighThreshold { get => _explicitNullValueClipHighThreshold; set { _explicitNullValueClipHighThreshold = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("clip_high_threshold"); else _explicitNullProperties?.Remove("clip_high_threshold"); } }
+        public float? ClipHighThreshold { get => _explicitNullValueClipHighThreshold; set { _explicitNullValueClipHighThreshold = value; AdditionalData?.Remove("clip_high_threshold"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("clip_high_threshold"); else _explicitNullProperties?.Remove("clip_high_threshold"); } }
         private float? _explicitNullValueClipHighThreshold = default!;
         /// <summary>Lower clip threshold for the importance-sampling ratio. The ratio is clamped to this bound; tighter clipping makes policy updates more conservative. Must be &lt;= 1.</summary>
-        public float? ClipLowThreshold { get => _explicitNullValueClipLowThreshold; set { _explicitNullValueClipLowThreshold = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("clip_low_threshold"); else _explicitNullProperties?.Remove("clip_low_threshold"); } }
+        public float? ClipLowThreshold { get => _explicitNullValueClipLowThreshold; set { _explicitNullValueClipLowThreshold = value; AdditionalData?.Remove("clip_low_threshold"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("clip_low_threshold"); else _explicitNullProperties?.Remove("clip_low_threshold"); } }
         private float? _explicitNullValueClipLowThreshold = default!;
         /// <summary>Controls whether GRPO loss uses token-level or sequence-level importance ratios.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.RlGrpoLossRatioType? RatioType { get => _explicitNullValueRatioType; set { _explicitNullValueRatioType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ratio_type"); else _explicitNullProperties?.Remove("ratio_type"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.RlGrpoLossRatioType? RatioType { get => _explicitNullValueRatioType; set { _explicitNullValueRatioType = value; AdditionalData?.Remove("ratio_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ratio_type"); else _explicitNullProperties?.Remove("ratio_type"); } }
         private global::Soenneker.Together.OpenApiClient.Models.RlGrpoLossRatioType? _explicitNullValueRatioType = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlGrpoLossParams"/> and sets the default values.
@@ -69,11 +74,11 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "agg_type", n => { AggType = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlGrpoLossAggregationType>(); } },
+                { "agg_type", n => { var parsed = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlGrpoLossAggregationType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueAggType = default; _explicitNullProperties?.Remove("agg_type"); AdditionalData["agg_type"] = unknown; } else { AggType = parsed; AdditionalData.Remove("agg_type"); } } },
                 { "beta", n => { Beta = n.GetDoubleValue(); } },
                 { "clip_high_threshold", n => { ClipHighThreshold = n.GetFloatValue(); } },
                 { "clip_low_threshold", n => { ClipLowThreshold = n.GetFloatValue(); } },
-                { "ratio_type", n => { RatioType = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlGrpoLossRatioType>(); } },
+                { "ratio_type", n => { var parsed = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlGrpoLossRatioType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueRatioType = default; _explicitNullProperties?.Remove("ratio_type"); AdditionalData["ratio_type"] = unknown; } else { RatioType = parsed; AdditionalData.Remove("ratio_type"); } } },
             };
         }
         /// <summary>

@@ -18,8 +18,10 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("policies") is { } nullNodePolicies && nullNodePolicies.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Policies = null;
-            if (parseNode.GetChildNode("selectPolicy") is { } nullNodeSelectPolicy && nullNodeSelectPolicy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SelectPolicy = null;
+            if (parseNode.GetChildNode("policies") is null) { _explicitNullValuePolicies = default!; _explicitNullProperties?.Remove("policies"); }
+            else if (parseNode.GetChildNode("policies") is { } nullNodePolicies && nullNodePolicies.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Policies = null;
+            if (parseNode.GetChildNode("selectPolicy") is null) { _explicitNullValueSelectPolicy = default!; _explicitNullProperties?.Remove("selectPolicy"); }
+            else if (parseNode.GetChildNode("selectPolicy") is { } nullNodeSelectPolicy && nullNodeSelectPolicy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SelectPolicy = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,15 +29,15 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Non-empty lists replace the existing policies. To clear policies, include`autoscaling.scaleDown.policies` or `autoscaling.scaleUp.policies` in the update maskand supply an empty scaling rules object or `policies: []`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Together.OpenApiClient.Models.DeScalingPolicy>? Policies { get => _explicitNullValuePolicies; set { _explicitNullValuePolicies = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("policies"); else _explicitNullProperties?.Remove("policies"); } }
+        public List<global::Soenneker.Together.OpenApiClient.Models.DeScalingPolicy>? Policies { get => _explicitNullValuePolicies; set { _explicitNullValuePolicies = value; AdditionalData?.Remove("policies"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("policies"); else _explicitNullProperties?.Remove("policies"); } }
         private List<global::Soenneker.Together.OpenApiClient.Models.DeScalingPolicy>? _explicitNullValuePolicies = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Together.OpenApiClient.Models.DeScalingPolicy> Policies { get => _explicitNullValuePolicies; set { _explicitNullValuePolicies = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("policies"); else _explicitNullProperties?.Remove("policies"); } }
+        public List<global::Soenneker.Together.OpenApiClient.Models.DeScalingPolicy> Policies { get => _explicitNullValuePolicies; set { _explicitNullValuePolicies = value; AdditionalData?.Remove("policies"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("policies"); else _explicitNullProperties?.Remove("policies"); } }
         private List<global::Soenneker.Together.OpenApiClient.Models.DeScalingPolicy> _explicitNullValuePolicies = default!;
 #endif
         /// <summary>`SCALING_POLICY_SELECT_MIN` chooses the policy allowing the smallest replica change;`SCALING_POLICY_SELECT_MAX` chooses the largest. These are caps, not guaranteed changes.`SCALING_POLICY_SELECT_DISABLED` holds this direction steady while replica bounds still apply.Omitted preserves the existing selector on update. When no selector is configured,authored policies use MAX; with no policies configured, the platform defaults apply.To reset the selector, include `autoscaling.scaleDown.selectPolicy` or`autoscaling.scaleUp.selectPolicy` in the update mask and omit `selectPolicy`.Clear both policies and `selectPolicy` to restore inherited defaults.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.DeScalingRulesSelectPolicy? SelectPolicy { get => _explicitNullValueSelectPolicy; set { _explicitNullValueSelectPolicy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("selectPolicy"); else _explicitNullProperties?.Remove("selectPolicy"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.DeScalingRulesSelectPolicy? SelectPolicy { get => _explicitNullValueSelectPolicy; set { _explicitNullValueSelectPolicy = value; AdditionalData?.Remove("selectPolicy"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("selectPolicy"); else _explicitNullProperties?.Remove("selectPolicy"); } }
         private global::Soenneker.Together.OpenApiClient.Models.DeScalingRulesSelectPolicy? _explicitNullValueSelectPolicy = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.DeAutoscalingScaleDown"/> and sets the default values.
@@ -63,7 +65,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "policies", n => { Policies = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.DeScalingPolicy>(global::Soenneker.Together.OpenApiClient.Models.DeScalingPolicy.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "selectPolicy", n => { SelectPolicy = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeScalingRulesSelectPolicy>(); } },
+                { "selectPolicy", n => { var parsed = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeScalingRulesSelectPolicy>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueSelectPolicy = default; _explicitNullProperties?.Remove("selectPolicy"); AdditionalData["selectPolicy"] = unknown; } else { SelectPolicy = parsed; AdditionalData.Remove("selectPolicy"); } } },
             };
         }
         /// <summary>

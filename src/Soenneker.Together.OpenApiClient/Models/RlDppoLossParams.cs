@@ -18,17 +18,19 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("delta_high") is { } nullNodeDeltaHigh && nullNodeDeltaHigh.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeltaHigh = null;
-            if (parseNode.GetChildNode("delta_low") is { } nullNodeDeltaLow && nullNodeDeltaLow.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeltaLow = null;
+            if (parseNode.GetChildNode("delta_high") is null) { _explicitNullValueDeltaHigh = default!; _explicitNullProperties?.Remove("delta_high"); }
+            else if (parseNode.GetChildNode("delta_high") is { } nullNodeDeltaHigh && nullNodeDeltaHigh.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeltaHigh = null;
+            if (parseNode.GetChildNode("delta_low") is null) { _explicitNullValueDeltaLow = default!; _explicitNullProperties?.Remove("delta_low"); }
+            else if (parseNode.GetChildNode("delta_low") is { } nullNodeDeltaLow && nullNodeDeltaLow.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeltaLow = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Probability-change limit for tokens with positive advantage. Measured in probability space, not log-probability space. Must be in [0, 1]. Defaults to 0.15.</summary>
-        public float? DeltaHigh { get => _explicitNullValueDeltaHigh; set { _explicitNullValueDeltaHigh = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("delta_high"); else _explicitNullProperties?.Remove("delta_high"); } }
+        public float? DeltaHigh { get => _explicitNullValueDeltaHigh; set { _explicitNullValueDeltaHigh = value; AdditionalData?.Remove("delta_high"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("delta_high"); else _explicitNullProperties?.Remove("delta_high"); } }
         private float? _explicitNullValueDeltaHigh = default!;
         /// <summary>Probability-change limit for tokens with negative advantage. Measured in probability space, not log-probability space. Must be in [0, 1]. Defaults to 0.15.</summary>
-        public float? DeltaLow { get => _explicitNullValueDeltaLow; set { _explicitNullValueDeltaLow = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("delta_low"); else _explicitNullProperties?.Remove("delta_low"); } }
+        public float? DeltaLow { get => _explicitNullValueDeltaLow; set { _explicitNullValueDeltaLow = value; AdditionalData?.Remove("delta_low"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("delta_low"); else _explicitNullProperties?.Remove("delta_low"); } }
         private float? _explicitNullValueDeltaLow = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlDppoLossParams"/> and sets the default values.

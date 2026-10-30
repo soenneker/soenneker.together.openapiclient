@@ -54,10 +54,14 @@ namespace Soenneker.Together.OpenApiClient.Models
             }
             
             var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
-            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("inline") != null))();
-            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("profile") != null))();
-            if (result.DeDeploymentPlacementOneOf1 == null && result.DeDeploymentPlacementOneOf2 == null && matchesUnionBranch0 && !matchesUnionBranch1) result.DeDeploymentPlacementOneOf1 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.DeDeploymentPlacementOneOf1(), parseNode);
-            if (result.DeDeploymentPlacementOneOf1 == null && result.DeDeploymentPlacementOneOf2 == null && matchesUnionBranch1 && !matchesUnionBranch0) result.DeDeploymentPlacementOneOf2 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.DeDeploymentPlacementOneOf2(), parseNode);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && (shapeMembers1.ContainsKey("inline") && (!shapeMembers1.ContainsKey("inline") || (((shapeMembers1["inline"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (shapeMembers1["inline"] is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject2 || (shapeObject2.GetValue() is var shapeMembers3 && ((!shapeMembers3.ContainsKey("regions") || (((shapeMembers3["regions"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray)))) && (!shapeMembers3.ContainsKey("constraint") || (((shapeMembers3["constraint"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers3["constraint"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal6 && "ENFORCEMENT_REQUIRED".Equals(literal6.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers3["constraint"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal7 && "ENFORCEMENT_PREFERRED".Equals(literal7.GetValue(), global::System.StringComparison.Ordinal))))) && (!shapeMembers3.ContainsKey("compliancePolicy") || (((shapeMembers3["compliancePolicy"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (shapeMembers3["compliancePolicy"] is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject10 || (shapeObject10.GetValue() is var shapeMembers11 && ((!shapeMembers11.ContainsKey("hipaa") || (((shapeMembers11["hipaa"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))))))))))))))))))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && (shapeMembers1.ContainsKey("profile") && (!shapeMembers1.ContainsKey("profile") || (((shapeMembers1["profile"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))))))))();
+            int matchingUnionBranches = 0;
+            if (matchesUnionBranch0) matchingUnionBranches++;
+            if (matchesUnionBranch1) matchingUnionBranches++;
+            bool noSelectedUnionBranch = result.DeDeploymentPlacementOneOf1 == null && result.DeDeploymentPlacementOneOf2 == null;
+            if (noSelectedUnionBranch && matchesUnionBranch0 && matchingUnionBranches == 1) result.DeDeploymentPlacementOneOf1 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.DeDeploymentPlacementOneOf1(), parseNode);
+            if (noSelectedUnionBranch && matchesUnionBranch1 && matchingUnionBranches == 1) result.DeDeploymentPlacementOneOf2 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Together.OpenApiClient.Models.DeDeploymentPlacementOneOf2(), parseNode);
             if (result.DeDeploymentPlacementOneOf1 == null && result.DeDeploymentPlacementOneOf2 == null) result.UnrecognizedValue = unionPayload;
 return result;
         }
@@ -67,6 +71,8 @@ return result;
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
+            if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawFields) { var fields = new global::System.Collections.Generic.Dictionary<string, global::System.Action<IParseNode>>(); foreach (var entry in rawFields.GetValue()) fields[entry.Key] = _ => { }; return fields; }
+
             if(DeDeploymentPlacementOneOf1 != null)
             {
                 return DeDeploymentPlacementOneOf1.GetFieldDeserializers();
@@ -85,8 +91,11 @@ return result;
         {
             if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
             if (DeDeploymentPlacementOneOf1 == null && DeDeploymentPlacementOneOf2 == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
-            if (DeDeploymentPlacementOneOf1 != null && DeDeploymentPlacementOneOf2 == null) { if (DeDeploymentPlacementOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DeDeploymentPlacementOneOf1); return; }
-            if (DeDeploymentPlacementOneOf2 != null && DeDeploymentPlacementOneOf1 == null) { if (DeDeploymentPlacementOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DeDeploymentPlacementOneOf2); return; }
+            int selectedUnionBranches = 0;
+            if (DeDeploymentPlacementOneOf1 != null) selectedUnionBranches++;
+            if (DeDeploymentPlacementOneOf2 != null) selectedUnionBranches++;
+            if (DeDeploymentPlacementOneOf1 != null && selectedUnionBranches == 1) { if (DeDeploymentPlacementOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DeDeploymentPlacementOneOf1); return; }
+            if (DeDeploymentPlacementOneOf2 != null && selectedUnionBranches == 1) { if (DeDeploymentPlacementOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DeDeploymentPlacementOneOf2); return; }
 
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             if(DeDeploymentPlacementOneOf1 != null)

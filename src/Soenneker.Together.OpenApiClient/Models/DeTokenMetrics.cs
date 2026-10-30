@@ -18,38 +18,42 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("avgInputTokens") is { } nullNodeAvgInputTokens && nullNodeAvgInputTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AvgInputTokens = null;
-            if (parseNode.GetChildNode("avgOutputTokens") is { } nullNodeAvgOutputTokens && nullNodeAvgOutputTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AvgOutputTokens = null;
-            if (parseNode.GetChildNode("totalInputTokens") is { } nullNodeTotalInputTokens && nullNodeTotalInputTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalInputTokens = null;
-            if (parseNode.GetChildNode("totalOutputTokens") is { } nullNodeTotalOutputTokens && nullNodeTotalOutputTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalOutputTokens = null;
+            if (parseNode.GetChildNode("avgInputTokens") is null) { _explicitNullValueAvgInputTokens = default!; _explicitNullProperties?.Remove("avgInputTokens"); }
+            else if (parseNode.GetChildNode("avgInputTokens") is { } nullNodeAvgInputTokens && nullNodeAvgInputTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AvgInputTokens = null;
+            if (parseNode.GetChildNode("avgOutputTokens") is null) { _explicitNullValueAvgOutputTokens = default!; _explicitNullProperties?.Remove("avgOutputTokens"); }
+            else if (parseNode.GetChildNode("avgOutputTokens") is { } nullNodeAvgOutputTokens && nullNodeAvgOutputTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AvgOutputTokens = null;
+            if (parseNode.GetChildNode("totalInputTokens") is null) { _explicitNullValueTotalInputTokens = default!; _explicitNullProperties?.Remove("totalInputTokens"); }
+            else if (parseNode.GetChildNode("totalInputTokens") is { } nullNodeTotalInputTokens && nullNodeTotalInputTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalInputTokens = null;
+            if (parseNode.GetChildNode("totalOutputTokens") is null) { _explicitNullValueTotalOutputTokens = default!; _explicitNullProperties?.Remove("totalOutputTokens"); }
+            else if (parseNode.GetChildNode("totalOutputTokens") is { } nullNodeTotalOutputTokens && nullNodeTotalOutputTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalOutputTokens = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Average input tokens per request.</summary>
-        public double? AvgInputTokens { get => _explicitNullValueAvgInputTokens; set { _explicitNullValueAvgInputTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("avgInputTokens"); else _explicitNullProperties?.Remove("avgInputTokens"); } }
+        public double? AvgInputTokens { get => _explicitNullValueAvgInputTokens; set { _explicitNullValueAvgInputTokens = value; AdditionalData?.Remove("avgInputTokens"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("avgInputTokens"); else _explicitNullProperties?.Remove("avgInputTokens"); } }
         private double? _explicitNullValueAvgInputTokens = default!;
         /// <summary>Average output tokens per request.</summary>
-        public double? AvgOutputTokens { get => _explicitNullValueAvgOutputTokens; set { _explicitNullValueAvgOutputTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("avgOutputTokens"); else _explicitNullProperties?.Remove("avgOutputTokens"); } }
+        public double? AvgOutputTokens { get => _explicitNullValueAvgOutputTokens; set { _explicitNullValueAvgOutputTokens = value; AdditionalData?.Remove("avgOutputTokens"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("avgOutputTokens"); else _explicitNullProperties?.Remove("avgOutputTokens"); } }
         private double? _explicitNullValueAvgOutputTokens = default!;
         /// <summary>Total input tokens processed during the time range.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TotalInputTokens { get => _explicitNullValueTotalInputTokens; set { _explicitNullValueTotalInputTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("totalInputTokens"); else _explicitNullProperties?.Remove("totalInputTokens"); } }
+        public string? TotalInputTokens { get => _explicitNullValueTotalInputTokens; set { _explicitNullValueTotalInputTokens = value; AdditionalData?.Remove("totalInputTokens"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("totalInputTokens"); else _explicitNullProperties?.Remove("totalInputTokens"); } }
         private string? _explicitNullValueTotalInputTokens = default!;
 #nullable restore
 #else
-        public string TotalInputTokens { get => _explicitNullValueTotalInputTokens; set { _explicitNullValueTotalInputTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("totalInputTokens"); else _explicitNullProperties?.Remove("totalInputTokens"); } }
+        public string TotalInputTokens { get => _explicitNullValueTotalInputTokens; set { _explicitNullValueTotalInputTokens = value; AdditionalData?.Remove("totalInputTokens"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("totalInputTokens"); else _explicitNullProperties?.Remove("totalInputTokens"); } }
         private string _explicitNullValueTotalInputTokens = default!;
 #endif
         /// <summary>Total output tokens generated during the time range.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TotalOutputTokens { get => _explicitNullValueTotalOutputTokens; set { _explicitNullValueTotalOutputTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("totalOutputTokens"); else _explicitNullProperties?.Remove("totalOutputTokens"); } }
+        public string? TotalOutputTokens { get => _explicitNullValueTotalOutputTokens; set { _explicitNullValueTotalOutputTokens = value; AdditionalData?.Remove("totalOutputTokens"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("totalOutputTokens"); else _explicitNullProperties?.Remove("totalOutputTokens"); } }
         private string? _explicitNullValueTotalOutputTokens = default!;
 #nullable restore
 #else
-        public string TotalOutputTokens { get => _explicitNullValueTotalOutputTokens; set { _explicitNullValueTotalOutputTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("totalOutputTokens"); else _explicitNullProperties?.Remove("totalOutputTokens"); } }
+        public string TotalOutputTokens { get => _explicitNullValueTotalOutputTokens; set { _explicitNullValueTotalOutputTokens = value; AdditionalData?.Remove("totalOutputTokens"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("totalOutputTokens"); else _explicitNullProperties?.Remove("totalOutputTokens"); } }
         private string _explicitNullValueTotalOutputTokens = default!;
 #endif
         /// <summary>

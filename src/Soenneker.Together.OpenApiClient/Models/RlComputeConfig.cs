@@ -18,17 +18,19 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("gpu_type") is { } nullNodeGpuType && nullNodeGpuType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GpuType = null;
-            if (parseNode.GetChildNode("num_generator_replicas") is { } nullNodeNumGeneratorReplicas && nullNodeNumGeneratorReplicas.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NumGeneratorReplicas = null;
+            if (parseNode.GetChildNode("gpu_type") is null) { _explicitNullValueGpuType = default!; _explicitNullProperties?.Remove("gpu_type"); }
+            else if (parseNode.GetChildNode("gpu_type") is { } nullNodeGpuType && nullNodeGpuType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GpuType = null;
+            if (parseNode.GetChildNode("num_generator_replicas") is null) { _explicitNullValueNumGeneratorReplicas = default!; _explicitNullProperties?.Remove("num_generator_replicas"); }
+            else if (parseNode.GetChildNode("num_generator_replicas") is { } nullNodeNumGeneratorReplicas && nullNodeNumGeneratorReplicas.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NumGeneratorReplicas = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>GPU type selected for this resource.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.RlComputeConfigGpuType? GpuType { get => _explicitNullValueGpuType; set { _explicitNullValueGpuType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gpu_type"); else _explicitNullProperties?.Remove("gpu_type"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.RlComputeConfigGpuType? GpuType { get => _explicitNullValueGpuType; set { _explicitNullValueGpuType = value; AdditionalData?.Remove("gpu_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gpu_type"); else _explicitNullProperties?.Remove("gpu_type"); } }
         private global::Soenneker.Together.OpenApiClient.Models.RlComputeConfigGpuType? _explicitNullValueGpuType = default!;
         /// <summary>Number of generator replicas. 0 means the resource runs the trainer only, with no generator.</summary>
-        public int? NumGeneratorReplicas { get => _explicitNullValueNumGeneratorReplicas; set { _explicitNullValueNumGeneratorReplicas = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("num_generator_replicas"); else _explicitNullProperties?.Remove("num_generator_replicas"); } }
+        public int? NumGeneratorReplicas { get => _explicitNullValueNumGeneratorReplicas; set { _explicitNullValueNumGeneratorReplicas = value; AdditionalData?.Remove("num_generator_replicas"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("num_generator_replicas"); else _explicitNullProperties?.Remove("num_generator_replicas"); } }
         private int? _explicitNullValueNumGeneratorReplicas = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlComputeConfig"/> and sets the default values.
@@ -55,7 +57,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "gpu_type", n => { GpuType = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlComputeConfigGpuType>(); } },
+                { "gpu_type", n => { var parsed = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlComputeConfigGpuType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueGpuType = default; _explicitNullProperties?.Remove("gpu_type"); AdditionalData["gpu_type"] = unknown; } else { GpuType = parsed; AdditionalData.Remove("gpu_type"); } } },
                 { "num_generator_replicas", n => { NumGeneratorReplicas = n.GetIntValue(); } },
             };
         }

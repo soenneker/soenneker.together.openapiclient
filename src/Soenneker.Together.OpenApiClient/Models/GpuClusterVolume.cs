@@ -17,45 +17,49 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("size_tib") is { } nullNodeSizeTib && nullNodeSizeTib.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SizeTib = null;
-            if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
-            if (parseNode.GetChildNode("volume_id") is { } nullNodeVolumeId && nullNodeVolumeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VolumeId = null;
-            if (parseNode.GetChildNode("volume_name") is { } nullNodeVolumeName && nullNodeVolumeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VolumeName = null;
+            if (parseNode.GetChildNode("size_tib") is null) { _explicitNullValueSizeTib = default!; _explicitNullProperties?.Remove("size_tib"); }
+            else if (parseNode.GetChildNode("size_tib") is { } nullNodeSizeTib && nullNodeSizeTib.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SizeTib = null;
+            if (parseNode.GetChildNode("status") is null) { _explicitNullValueStatus = default!; _explicitNullProperties?.Remove("status"); }
+            else if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
+            if (parseNode.GetChildNode("volume_id") is null) { _explicitNullValueVolumeId = default!; _explicitNullProperties?.Remove("volume_id"); }
+            else if (parseNode.GetChildNode("volume_id") is { } nullNodeVolumeId && nullNodeVolumeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VolumeId = null;
+            if (parseNode.GetChildNode("volume_name") is null) { _explicitNullValueVolumeName = default!; _explicitNullProperties?.Remove("volume_name"); }
+            else if (parseNode.GetChildNode("volume_name") is { } nullNodeVolumeName && nullNodeVolumeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VolumeName = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Size of the volume in TiB.</summary>
-        public int? SizeTib { get => _explicitNullValueSizeTib; set { _explicitNullValueSizeTib = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("size_tib"); else _explicitNullProperties?.Remove("size_tib"); } }
+        public int? SizeTib { get => _explicitNullValueSizeTib; set { _explicitNullValueSizeTib = value; AdditionalData?.Remove("size_tib"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("size_tib"); else _explicitNullProperties?.Remove("size_tib"); } }
         private int? _explicitNullValueSizeTib = default!;
         /// <summary>Current status of the volume.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        public string? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
         private string? _explicitNullValueStatus = default!;
 #nullable restore
 #else
-        public string Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        public string Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
         private string _explicitNullValueStatus = default!;
 #endif
         /// <summary>ID of the volume.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? VolumeId { get => _explicitNullValueVolumeId; set { _explicitNullValueVolumeId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("volume_id"); else _explicitNullProperties?.Remove("volume_id"); } }
+        public string? VolumeId { get => _explicitNullValueVolumeId; set { _explicitNullValueVolumeId = value; AdditionalData?.Remove("volume_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("volume_id"); else _explicitNullProperties?.Remove("volume_id"); } }
         private string? _explicitNullValueVolumeId = default!;
 #nullable restore
 #else
-        public string VolumeId { get => _explicitNullValueVolumeId; set { _explicitNullValueVolumeId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("volume_id"); else _explicitNullProperties?.Remove("volume_id"); } }
+        public string VolumeId { get => _explicitNullValueVolumeId; set { _explicitNullValueVolumeId = value; AdditionalData?.Remove("volume_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("volume_id"); else _explicitNullProperties?.Remove("volume_id"); } }
         private string _explicitNullValueVolumeId = default!;
 #endif
         /// <summary>User provided name of the volume.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? VolumeName { get => _explicitNullValueVolumeName; set { _explicitNullValueVolumeName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("volume_name"); else _explicitNullProperties?.Remove("volume_name"); } }
+        public string? VolumeName { get => _explicitNullValueVolumeName; set { _explicitNullValueVolumeName = value; AdditionalData?.Remove("volume_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("volume_name"); else _explicitNullProperties?.Remove("volume_name"); } }
         private string? _explicitNullValueVolumeName = default!;
 #nullable restore
 #else
-        public string VolumeName { get => _explicitNullValueVolumeName; set { _explicitNullValueVolumeName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("volume_name"); else _explicitNullProperties?.Remove("volume_name"); } }
+        public string VolumeName { get => _explicitNullValueVolumeName; set { _explicitNullValueVolumeName = value; AdditionalData?.Remove("volume_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("volume_name"); else _explicitNullProperties?.Remove("volume_name"); } }
         private string _explicitNullValueVolumeName = default!;
 #endif
         /// <summary>

@@ -17,7 +17,8 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("inline") is { } nullNodeInline && nullNodeInline.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Inline = null;
+            if (parseNode.GetChildNode("inline") is null) { _explicitNullValueInline = default!; _explicitNullProperties?.Remove("inline"); }
+            else if (parseNode.GetChildNode("inline") is { } nullNodeInline && nullNodeInline.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Inline = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Inline placement parameters evaluated at deploy time.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.DePlacementOneOf1Inline? Inline { get => _explicitNullValueInline; set { _explicitNullValueInline = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inline"); else _explicitNullProperties?.Remove("inline"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.DePlacementOneOf1Inline? Inline { get => _explicitNullValueInline; set { _explicitNullValueInline = value; AdditionalData?.Remove("inline"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inline"); else _explicitNullProperties?.Remove("inline"); } }
         private global::Soenneker.Together.OpenApiClient.Models.DePlacementOneOf1Inline? _explicitNullValueInline = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.DePlacementOneOf1Inline Inline { get => _explicitNullValueInline; set { _explicitNullValueInline = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inline"); else _explicitNullProperties?.Remove("inline"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.DePlacementOneOf1Inline Inline { get => _explicitNullValueInline; set { _explicitNullValueInline = value; AdditionalData?.Remove("inline"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inline"); else _explicitNullProperties?.Remove("inline"); } }
         private global::Soenneker.Together.OpenApiClient.Models.DePlacementOneOf1Inline _explicitNullValueInline = default!;
 #endif
         /// <summary>

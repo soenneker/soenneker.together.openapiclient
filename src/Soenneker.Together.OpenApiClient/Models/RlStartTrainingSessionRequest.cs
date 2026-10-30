@@ -17,12 +17,18 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("display_name") is { } nullNodeDisplayName && nullNodeDisplayName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DisplayName = null;
-            if (parseNode.GetChildNode("load_optimizer") is { } nullNodeLoadOptimizer && nullNodeLoadOptimizer.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LoadOptimizer = null;
-            if (parseNode.GetChildNode("lora_config") is { } nullNodeLoraConfig && nullNodeLoraConfig.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LoraConfig = null;
-            if (parseNode.GetChildNode("metadata") is { } nullNodeMetadata && nullNodeMetadata.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Metadata = null;
-            if (parseNode.GetChildNode("model_resources_id") is { } nullNodeModelResourcesId && nullNodeModelResourcesId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModelResourcesId = null;
-            if (parseNode.GetChildNode("resume_from_checkpoint_id") is { } nullNodeResumeFromCheckpointId && nullNodeResumeFromCheckpointId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResumeFromCheckpointId = null;
+            if (parseNode.GetChildNode("display_name") is null) { _explicitNullValueDisplayName = default!; _explicitNullProperties?.Remove("display_name"); }
+            else if (parseNode.GetChildNode("display_name") is { } nullNodeDisplayName && nullNodeDisplayName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DisplayName = null;
+            if (parseNode.GetChildNode("load_optimizer") is null) { _explicitNullValueLoadOptimizer = default!; _explicitNullProperties?.Remove("load_optimizer"); }
+            else if (parseNode.GetChildNode("load_optimizer") is { } nullNodeLoadOptimizer && nullNodeLoadOptimizer.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LoadOptimizer = null;
+            if (parseNode.GetChildNode("lora_config") is null) { _explicitNullValueLoraConfig = default!; _explicitNullProperties?.Remove("lora_config"); }
+            else if (parseNode.GetChildNode("lora_config") is { } nullNodeLoraConfig && nullNodeLoraConfig.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LoraConfig = null;
+            if (parseNode.GetChildNode("metadata") is null) { _explicitNullValueMetadata = default!; _explicitNullProperties?.Remove("metadata"); }
+            else if (parseNode.GetChildNode("metadata") is { } nullNodeMetadata && nullNodeMetadata.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Metadata = null;
+            if (parseNode.GetChildNode("model_resources_id") is null) { _explicitNullValueModelResourcesId = default!; _explicitNullProperties?.Remove("model_resources_id"); }
+            else if (parseNode.GetChildNode("model_resources_id") is { } nullNodeModelResourcesId && nullNodeModelResourcesId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModelResourcesId = null;
+            if (parseNode.GetChildNode("resume_from_checkpoint_id") is null) { _explicitNullValueResumeFromCheckpointId = default!; _explicitNullProperties?.Remove("resume_from_checkpoint_id"); }
+            else if (parseNode.GetChildNode("resume_from_checkpoint_id") is { } nullNodeResumeFromCheckpointId && nullNodeResumeFromCheckpointId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResumeFromCheckpointId = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -30,54 +36,54 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Optional display name used to identify the training session</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DisplayName { get => _explicitNullValueDisplayName; set { _explicitNullValueDisplayName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("display_name"); else _explicitNullProperties?.Remove("display_name"); } }
+        public string? DisplayName { get => _explicitNullValueDisplayName; set { _explicitNullValueDisplayName = value; AdditionalData?.Remove("display_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("display_name"); else _explicitNullProperties?.Remove("display_name"); } }
         private string? _explicitNullValueDisplayName = default!;
 #nullable restore
 #else
-        public string DisplayName { get => _explicitNullValueDisplayName; set { _explicitNullValueDisplayName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("display_name"); else _explicitNullProperties?.Remove("display_name"); } }
+        public string DisplayName { get => _explicitNullValueDisplayName; set { _explicitNullValueDisplayName = value; AdditionalData?.Remove("display_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("display_name"); else _explicitNullProperties?.Remove("display_name"); } }
         private string _explicitNullValueDisplayName = default!;
 #endif
         /// <summary>Whether to restore optimizer state and step from a training checkpoint. Omitted or true restores them; false loads weights only with a fresh optimizer and step 0. Not valid for inference checkpoints, which have no optimizer state.</summary>
-        public bool? LoadOptimizer { get => _explicitNullValueLoadOptimizer; set { _explicitNullValueLoadOptimizer = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("load_optimizer"); else _explicitNullProperties?.Remove("load_optimizer"); } }
+        public bool? LoadOptimizer { get => _explicitNullValueLoadOptimizer; set { _explicitNullValueLoadOptimizer = value; AdditionalData?.Remove("load_optimizer"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("load_optimizer"); else _explicitNullProperties?.Remove("load_optimizer"); } }
         private bool? _explicitNullValueLoadOptimizer = default!;
         /// <summary>LoRA adapter configuration</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RlLoraConfig? LoraConfig { get => _explicitNullValueLoraConfig; set { _explicitNullValueLoraConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lora_config"); else _explicitNullProperties?.Remove("lora_config"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.RlLoraConfig? LoraConfig { get => _explicitNullValueLoraConfig; set { _explicitNullValueLoraConfig = value; AdditionalData?.Remove("lora_config"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lora_config"); else _explicitNullProperties?.Remove("lora_config"); } }
         private global::Soenneker.Together.OpenApiClient.Models.RlLoraConfig? _explicitNullValueLoraConfig = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.RlLoraConfig LoraConfig { get => _explicitNullValueLoraConfig; set { _explicitNullValueLoraConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lora_config"); else _explicitNullProperties?.Remove("lora_config"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.RlLoraConfig LoraConfig { get => _explicitNullValueLoraConfig; set { _explicitNullValueLoraConfig = value; AdditionalData?.Remove("lora_config"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lora_config"); else _explicitNullProperties?.Remove("lora_config"); } }
         private global::Soenneker.Together.OpenApiClient.Models.RlLoraConfig _explicitNullValueLoraConfig = default!;
 #endif
         /// <summary>Auxiliary metadata associated with a training session</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionMetadata? Metadata { get => _explicitNullValueMetadata; set { _explicitNullValueMetadata = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metadata"); else _explicitNullProperties?.Remove("metadata"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionMetadata? Metadata { get => _explicitNullValueMetadata; set { _explicitNullValueMetadata = value; AdditionalData?.Remove("metadata"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metadata"); else _explicitNullProperties?.Remove("metadata"); } }
         private global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionMetadata? _explicitNullValueMetadata = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionMetadata Metadata { get => _explicitNullValueMetadata; set { _explicitNullValueMetadata = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metadata"); else _explicitNullProperties?.Remove("metadata"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionMetadata Metadata { get => _explicitNullValueMetadata; set { _explicitNullValueMetadata = value; AdditionalData?.Remove("metadata"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metadata"); else _explicitNullProperties?.Remove("metadata"); } }
         private global::Soenneker.Together.OpenApiClient.Models.RlTrainingSessionMetadata _explicitNullValueMetadata = default!;
 #endif
         /// <summary>ID of the model resource to use for this training session.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ModelResourcesId { get => _explicitNullValueModelResourcesId; set { _explicitNullValueModelResourcesId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_resources_id"); else _explicitNullProperties?.Remove("model_resources_id"); } }
+        public string? ModelResourcesId { get => _explicitNullValueModelResourcesId; set { _explicitNullValueModelResourcesId = value; AdditionalData?.Remove("model_resources_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_resources_id"); else _explicitNullProperties?.Remove("model_resources_id"); } }
         private string? _explicitNullValueModelResourcesId = default!;
 #nullable restore
 #else
-        public string ModelResourcesId { get => _explicitNullValueModelResourcesId; set { _explicitNullValueModelResourcesId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_resources_id"); else _explicitNullProperties?.Remove("model_resources_id"); } }
+        public string ModelResourcesId { get => _explicitNullValueModelResourcesId; set { _explicitNullValueModelResourcesId = value; AdditionalData?.Remove("model_resources_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_resources_id"); else _explicitNullProperties?.Remove("model_resources_id"); } }
         private string _explicitNullValueModelResourcesId = default!;
 #endif
         /// <summary>Checkpoint ID to resume from. LoRA training checkpoints may resume on another model resource with compatible base-model weights. Full-weight training checkpoints require the original base model.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ResumeFromCheckpointId { get => _explicitNullValueResumeFromCheckpointId; set { _explicitNullValueResumeFromCheckpointId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resume_from_checkpoint_id"); else _explicitNullProperties?.Remove("resume_from_checkpoint_id"); } }
+        public string? ResumeFromCheckpointId { get => _explicitNullValueResumeFromCheckpointId; set { _explicitNullValueResumeFromCheckpointId = value; AdditionalData?.Remove("resume_from_checkpoint_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resume_from_checkpoint_id"); else _explicitNullProperties?.Remove("resume_from_checkpoint_id"); } }
         private string? _explicitNullValueResumeFromCheckpointId = default!;
 #nullable restore
 #else
-        public string ResumeFromCheckpointId { get => _explicitNullValueResumeFromCheckpointId; set { _explicitNullValueResumeFromCheckpointId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resume_from_checkpoint_id"); else _explicitNullProperties?.Remove("resume_from_checkpoint_id"); } }
+        public string ResumeFromCheckpointId { get => _explicitNullValueResumeFromCheckpointId; set { _explicitNullValueResumeFromCheckpointId = value; AdditionalData?.Remove("resume_from_checkpoint_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resume_from_checkpoint_id"); else _explicitNullProperties?.Remove("resume_from_checkpoint_id"); } }
         private string _explicitNullValueResumeFromCheckpointId = default!;
 #endif
         /// <summary>

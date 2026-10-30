@@ -18,12 +18,18 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("audio_inputs") is { } nullNodeAudioInputs && nullNodeAudioInputs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AudioInputs = null;
-            if (parseNode.GetChildNode("frame_images") is { } nullNodeFrameImages && nullNodeFrameImages.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FrameImages = null;
-            if (parseNode.GetChildNode("frame_videos") is { } nullNodeFrameVideos && nullNodeFrameVideos.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FrameVideos = null;
-            if (parseNode.GetChildNode("reference_images") is { } nullNodeReferenceImages && nullNodeReferenceImages.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReferenceImages = null;
-            if (parseNode.GetChildNode("reference_videos") is { } nullNodeReferenceVideos && nullNodeReferenceVideos.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReferenceVideos = null;
-            if (parseNode.GetChildNode("source_video") is { } nullNodeSourceVideo && nullNodeSourceVideo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceVideo = null;
+            if (parseNode.GetChildNode("audio_inputs") is null) { _explicitNullValueAudioInputs = default!; _explicitNullProperties?.Remove("audio_inputs"); }
+            else if (parseNode.GetChildNode("audio_inputs") is { } nullNodeAudioInputs && nullNodeAudioInputs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AudioInputs = null;
+            if (parseNode.GetChildNode("frame_images") is null) { _explicitNullValueFrameImages = default!; _explicitNullProperties?.Remove("frame_images"); }
+            else if (parseNode.GetChildNode("frame_images") is { } nullNodeFrameImages && nullNodeFrameImages.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FrameImages = null;
+            if (parseNode.GetChildNode("frame_videos") is null) { _explicitNullValueFrameVideos = default!; _explicitNullProperties?.Remove("frame_videos"); }
+            else if (parseNode.GetChildNode("frame_videos") is { } nullNodeFrameVideos && nullNodeFrameVideos.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FrameVideos = null;
+            if (parseNode.GetChildNode("reference_images") is null) { _explicitNullValueReferenceImages = default!; _explicitNullProperties?.Remove("reference_images"); }
+            else if (parseNode.GetChildNode("reference_images") is { } nullNodeReferenceImages && nullNodeReferenceImages.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReferenceImages = null;
+            if (parseNode.GetChildNode("reference_videos") is null) { _explicitNullValueReferenceVideos = default!; _explicitNullProperties?.Remove("reference_videos"); }
+            else if (parseNode.GetChildNode("reference_videos") is { } nullNodeReferenceVideos && nullNodeReferenceVideos.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReferenceVideos = null;
+            if (parseNode.GetChildNode("source_video") is null) { _explicitNullValueSourceVideo = default!; _explicitNullProperties?.Remove("source_video"); }
+            else if (parseNode.GetChildNode("source_video") is { } nullNodeSourceVideo && nullNodeSourceVideo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceVideo = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -31,61 +37,61 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Array of audio inputs. Each element accepts a URL string or an object with an &quot;audio&quot; key.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>? AudioInputs { get => _explicitNullValueAudioInputs; set { _explicitNullValueAudioInputs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("audio_inputs"); else _explicitNullProperties?.Remove("audio_inputs"); } }
+        public List<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>? AudioInputs { get => _explicitNullValueAudioInputs; set { _explicitNullValueAudioInputs = value; AdditionalData?.Remove("audio_inputs"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("audio_inputs"); else _explicitNullProperties?.Remove("audio_inputs"); } }
         private List<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>? _explicitNullValueAudioInputs = default!;
 #nullable restore
 #else
-        public List<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode> AudioInputs { get => _explicitNullValueAudioInputs; set { _explicitNullValueAudioInputs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("audio_inputs"); else _explicitNullProperties?.Remove("audio_inputs"); } }
+        public List<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode> AudioInputs { get => _explicitNullValueAudioInputs; set { _explicitNullValueAudioInputs = value; AdditionalData?.Remove("audio_inputs"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("audio_inputs"); else _explicitNullProperties?.Remove("audio_inputs"); } }
         private List<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode> _explicitNullValueAudioInputs = default!;
 #endif
         /// <summary>Array of images to guide video generation at specific timeline positions.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Together.OpenApiClient.Models.VideoFrameImageInput>? FrameImages { get => _explicitNullValueFrameImages; set { _explicitNullValueFrameImages = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("frame_images"); else _explicitNullProperties?.Remove("frame_images"); } }
+        public List<global::Soenneker.Together.OpenApiClient.Models.VideoFrameImageInput>? FrameImages { get => _explicitNullValueFrameImages; set { _explicitNullValueFrameImages = value; AdditionalData?.Remove("frame_images"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("frame_images"); else _explicitNullProperties?.Remove("frame_images"); } }
         private List<global::Soenneker.Together.OpenApiClient.Models.VideoFrameImageInput>? _explicitNullValueFrameImages = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Together.OpenApiClient.Models.VideoFrameImageInput> FrameImages { get => _explicitNullValueFrameImages; set { _explicitNullValueFrameImages = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("frame_images"); else _explicitNullProperties?.Remove("frame_images"); } }
+        public List<global::Soenneker.Together.OpenApiClient.Models.VideoFrameImageInput> FrameImages { get => _explicitNullValueFrameImages; set { _explicitNullValueFrameImages = value; AdditionalData?.Remove("frame_images"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("frame_images"); else _explicitNullProperties?.Remove("frame_images"); } }
         private List<global::Soenneker.Together.OpenApiClient.Models.VideoFrameImageInput> _explicitNullValueFrameImages = default!;
 #endif
         /// <summary>Array of video clips to use as starting clips.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Together.OpenApiClient.Models.VideoRef>? FrameVideos { get => _explicitNullValueFrameVideos; set { _explicitNullValueFrameVideos = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("frame_videos"); else _explicitNullProperties?.Remove("frame_videos"); } }
+        public List<global::Soenneker.Together.OpenApiClient.Models.VideoRef>? FrameVideos { get => _explicitNullValueFrameVideos; set { _explicitNullValueFrameVideos = value; AdditionalData?.Remove("frame_videos"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("frame_videos"); else _explicitNullProperties?.Remove("frame_videos"); } }
         private List<global::Soenneker.Together.OpenApiClient.Models.VideoRef>? _explicitNullValueFrameVideos = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Together.OpenApiClient.Models.VideoRef> FrameVideos { get => _explicitNullValueFrameVideos; set { _explicitNullValueFrameVideos = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("frame_videos"); else _explicitNullProperties?.Remove("frame_videos"); } }
+        public List<global::Soenneker.Together.OpenApiClient.Models.VideoRef> FrameVideos { get => _explicitNullValueFrameVideos; set { _explicitNullValueFrameVideos = value; AdditionalData?.Remove("frame_videos"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("frame_videos"); else _explicitNullProperties?.Remove("frame_videos"); } }
         private List<global::Soenneker.Together.OpenApiClient.Models.VideoRef> _explicitNullValueFrameVideos = default!;
 #endif
         /// <summary>Array of image URLs that guide the general appearance across the video.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? ReferenceImages { get => _explicitNullValueReferenceImages; set { _explicitNullValueReferenceImages = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reference_images"); else _explicitNullProperties?.Remove("reference_images"); } }
+        public List<string>? ReferenceImages { get => _explicitNullValueReferenceImages; set { _explicitNullValueReferenceImages = value; AdditionalData?.Remove("reference_images"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reference_images"); else _explicitNullProperties?.Remove("reference_images"); } }
         private List<string>? _explicitNullValueReferenceImages = default!;
 #nullable restore
 #else
-        public List<string> ReferenceImages { get => _explicitNullValueReferenceImages; set { _explicitNullValueReferenceImages = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reference_images"); else _explicitNullProperties?.Remove("reference_images"); } }
+        public List<string> ReferenceImages { get => _explicitNullValueReferenceImages; set { _explicitNullValueReferenceImages = value; AdditionalData?.Remove("reference_images"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reference_images"); else _explicitNullProperties?.Remove("reference_images"); } }
         private List<string> _explicitNullValueReferenceImages = default!;
 #endif
         /// <summary>Array of reference videos.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Together.OpenApiClient.Models.VideoRef>? ReferenceVideos { get => _explicitNullValueReferenceVideos; set { _explicitNullValueReferenceVideos = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reference_videos"); else _explicitNullProperties?.Remove("reference_videos"); } }
+        public List<global::Soenneker.Together.OpenApiClient.Models.VideoRef>? ReferenceVideos { get => _explicitNullValueReferenceVideos; set { _explicitNullValueReferenceVideos = value; AdditionalData?.Remove("reference_videos"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reference_videos"); else _explicitNullProperties?.Remove("reference_videos"); } }
         private List<global::Soenneker.Together.OpenApiClient.Models.VideoRef>? _explicitNullValueReferenceVideos = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Together.OpenApiClient.Models.VideoRef> ReferenceVideos { get => _explicitNullValueReferenceVideos; set { _explicitNullValueReferenceVideos = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reference_videos"); else _explicitNullProperties?.Remove("reference_videos"); } }
+        public List<global::Soenneker.Together.OpenApiClient.Models.VideoRef> ReferenceVideos { get => _explicitNullValueReferenceVideos; set { _explicitNullValueReferenceVideos = value; AdditionalData?.Remove("reference_videos"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reference_videos"); else _explicitNullProperties?.Remove("reference_videos"); } }
         private List<global::Soenneker.Together.OpenApiClient.Models.VideoRef> _explicitNullValueReferenceVideos = default!;
 #endif
         /// <summary>Source video to edit. Accepts a URL string or an object with a &quot;video&quot; key.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.VideoMediaSourceVideo? SourceVideo { get => _explicitNullValueSourceVideo; set { _explicitNullValueSourceVideo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_video"); else _explicitNullProperties?.Remove("source_video"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.VideoMediaSourceVideo? SourceVideo { get => _explicitNullValueSourceVideo; set { _explicitNullValueSourceVideo = value; AdditionalData?.Remove("source_video"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_video"); else _explicitNullProperties?.Remove("source_video"); } }
         private global::Soenneker.Together.OpenApiClient.Models.VideoMediaSourceVideo? _explicitNullValueSourceVideo = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.VideoMediaSourceVideo SourceVideo { get => _explicitNullValueSourceVideo; set { _explicitNullValueSourceVideo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_video"); else _explicitNullProperties?.Remove("source_video"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.VideoMediaSourceVideo SourceVideo { get => _explicitNullValueSourceVideo; set { _explicitNullValueSourceVideo = value; AdditionalData?.Remove("source_video"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_video"); else _explicitNullProperties?.Remove("source_video"); } }
         private global::Soenneker.Together.OpenApiClient.Models.VideoMediaSourceVideo _explicitNullValueSourceVideo = default!;
 #endif
         /// <summary>

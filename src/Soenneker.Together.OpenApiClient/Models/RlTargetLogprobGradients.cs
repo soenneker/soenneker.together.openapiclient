@@ -18,8 +18,10 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("data") is { } nullNodeData && nullNodeData.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Data = null;
-            if (parseNode.GetChildNode("dtype") is { } nullNodeDtype && nullNodeDtype.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Dtype = null;
+            if (parseNode.GetChildNode("data") is null) { _explicitNullValueData = default!; _explicitNullProperties?.Remove("data"); }
+            else if (parseNode.GetChildNode("data") is { } nullNodeData && nullNodeData.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Data = null;
+            if (parseNode.GetChildNode("dtype") is null) { _explicitNullValueDtype = default!; _explicitNullProperties?.Remove("dtype"); }
+            else if (parseNode.GetChildNode("dtype") is { } nullNodeDtype && nullNodeDtype.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Dtype = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,15 +29,15 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Float array of per-token gradients (d loss / d log p)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<double?>? Data { get => _explicitNullValueData; set { _explicitNullValueData = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data"); else _explicitNullProperties?.Remove("data"); } }
+        public List<double?>? Data { get => _explicitNullValueData; set { _explicitNullValueData = value; AdditionalData?.Remove("data"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data"); else _explicitNullProperties?.Remove("data"); } }
         private List<double?>? _explicitNullValueData = default!;
 #nullable restore
 #else
-        public List<double?> Data { get => _explicitNullValueData; set { _explicitNullValueData = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data"); else _explicitNullProperties?.Remove("data"); } }
+        public List<double?> Data { get => _explicitNullValueData; set { _explicitNullValueData = value; AdditionalData?.Remove("data"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data"); else _explicitNullProperties?.Remove("data"); } }
         private List<double?> _explicitNullValueData = default!;
 #endif
         /// <summary>The dtype property</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.RlDType? Dtype { get => _explicitNullValueDtype; set { _explicitNullValueDtype = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dtype"); else _explicitNullProperties?.Remove("dtype"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.RlDType? Dtype { get => _explicitNullValueDtype; set { _explicitNullValueDtype = value; AdditionalData?.Remove("dtype"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dtype"); else _explicitNullProperties?.Remove("dtype"); } }
         private global::Soenneker.Together.OpenApiClient.Models.RlDType? _explicitNullValueDtype = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlTargetLogprobGradients"/> and sets the default values.
@@ -63,7 +65,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "data", n => { Data = n.GetCollectionOfPrimitiveValues<double?>()?.AsList(); } },
-                { "dtype", n => { Dtype = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlDType>(); } },
+                { "dtype", n => { var parsed = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.RlDType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueDtype = default; _explicitNullProperties?.Remove("dtype"); AdditionalData["dtype"] = unknown; } else { Dtype = parsed; AdditionalData.Remove("dtype"); } } },
             };
         }
         /// <summary>

@@ -18,13 +18,20 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("controller_epilog") is { } nullNodeControllerEpilog && nullNodeControllerEpilog.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ControllerEpilog = null;
-            if (parseNode.GetChildNode("controller_prolog") is { } nullNodeControllerProlog && nullNodeControllerProlog.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ControllerProlog = null;
-            if (parseNode.GetChildNode("extra_slurm_conf") is { } nullNodeExtraSlurmConf && nullNodeExtraSlurmConf.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExtraSlurmConf = null;
-            if (parseNode.GetChildNode("login_init_script") is { } nullNodeLoginInitScript && nullNodeLoginInitScript.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LoginInitScript = null;
-            if (parseNode.GetChildNode("nodeset_init_script") is { } nullNodeNodesetInitScript && nullNodeNodesetInitScript.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NodesetInitScript = null;
-            if (parseNode.GetChildNode("worker_epilog") is { } nullNodeWorkerEpilog && nullNodeWorkerEpilog.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WorkerEpilog = null;
-            if (parseNode.GetChildNode("worker_prolog") is { } nullNodeWorkerProlog && nullNodeWorkerProlog.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WorkerProlog = null;
+            if (parseNode.GetChildNode("controller_epilog") is null) { _explicitNullValueControllerEpilog = default!; _explicitNullProperties?.Remove("controller_epilog"); }
+            else if (parseNode.GetChildNode("controller_epilog") is { } nullNodeControllerEpilog && nullNodeControllerEpilog.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ControllerEpilog = null;
+            if (parseNode.GetChildNode("controller_prolog") is null) { _explicitNullValueControllerProlog = default!; _explicitNullProperties?.Remove("controller_prolog"); }
+            else if (parseNode.GetChildNode("controller_prolog") is { } nullNodeControllerProlog && nullNodeControllerProlog.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ControllerProlog = null;
+            if (parseNode.GetChildNode("extra_slurm_conf") is null) { _explicitNullValueExtraSlurmConf = default!; _explicitNullProperties?.Remove("extra_slurm_conf"); }
+            else if (parseNode.GetChildNode("extra_slurm_conf") is { } nullNodeExtraSlurmConf && nullNodeExtraSlurmConf.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExtraSlurmConf = null;
+            if (parseNode.GetChildNode("login_init_script") is null) { _explicitNullValueLoginInitScript = default!; _explicitNullProperties?.Remove("login_init_script"); }
+            else if (parseNode.GetChildNode("login_init_script") is { } nullNodeLoginInitScript && nullNodeLoginInitScript.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LoginInitScript = null;
+            if (parseNode.GetChildNode("nodeset_init_script") is null) { _explicitNullValueNodesetInitScript = default!; _explicitNullProperties?.Remove("nodeset_init_script"); }
+            else if (parseNode.GetChildNode("nodeset_init_script") is { } nullNodeNodesetInitScript && nullNodeNodesetInitScript.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NodesetInitScript = null;
+            if (parseNode.GetChildNode("worker_epilog") is null) { _explicitNullValueWorkerEpilog = default!; _explicitNullProperties?.Remove("worker_epilog"); }
+            else if (parseNode.GetChildNode("worker_epilog") is { } nullNodeWorkerEpilog && nullNodeWorkerEpilog.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WorkerEpilog = null;
+            if (parseNode.GetChildNode("worker_prolog") is null) { _explicitNullValueWorkerProlog = default!; _explicitNullProperties?.Remove("worker_prolog"); }
+            else if (parseNode.GetChildNode("worker_prolog") is { } nullNodeWorkerProlog && nullNodeWorkerProlog.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WorkerProlog = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -32,71 +39,71 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Slurm controller epilog script.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ControllerEpilog { get => _explicitNullValueControllerEpilog; set { _explicitNullValueControllerEpilog = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("controller_epilog"); else _explicitNullProperties?.Remove("controller_epilog"); } }
+        public string? ControllerEpilog { get => _explicitNullValueControllerEpilog; set { _explicitNullValueControllerEpilog = value; AdditionalData?.Remove("controller_epilog"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("controller_epilog"); else _explicitNullProperties?.Remove("controller_epilog"); } }
         private string? _explicitNullValueControllerEpilog = default!;
 #nullable restore
 #else
-        public string ControllerEpilog { get => _explicitNullValueControllerEpilog; set { _explicitNullValueControllerEpilog = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("controller_epilog"); else _explicitNullProperties?.Remove("controller_epilog"); } }
+        public string ControllerEpilog { get => _explicitNullValueControllerEpilog; set { _explicitNullValueControllerEpilog = value; AdditionalData?.Remove("controller_epilog"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("controller_epilog"); else _explicitNullProperties?.Remove("controller_epilog"); } }
         private string _explicitNullValueControllerEpilog = default!;
 #endif
         /// <summary>Slurm controller prolog script.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ControllerProlog { get => _explicitNullValueControllerProlog; set { _explicitNullValueControllerProlog = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("controller_prolog"); else _explicitNullProperties?.Remove("controller_prolog"); } }
+        public string? ControllerProlog { get => _explicitNullValueControllerProlog; set { _explicitNullValueControllerProlog = value; AdditionalData?.Remove("controller_prolog"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("controller_prolog"); else _explicitNullProperties?.Remove("controller_prolog"); } }
         private string? _explicitNullValueControllerProlog = default!;
 #nullable restore
 #else
-        public string ControllerProlog { get => _explicitNullValueControllerProlog; set { _explicitNullValueControllerProlog = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("controller_prolog"); else _explicitNullProperties?.Remove("controller_prolog"); } }
+        public string ControllerProlog { get => _explicitNullValueControllerProlog; set { _explicitNullValueControllerProlog = value; AdditionalData?.Remove("controller_prolog"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("controller_prolog"); else _explicitNullProperties?.Remove("controller_prolog"); } }
         private string _explicitNullValueControllerProlog = default!;
 #endif
         /// <summary>Additional slurm.conf fragments.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ExtraSlurmConf { get => _explicitNullValueExtraSlurmConf; set { _explicitNullValueExtraSlurmConf = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("extra_slurm_conf"); else _explicitNullProperties?.Remove("extra_slurm_conf"); } }
+        public string? ExtraSlurmConf { get => _explicitNullValueExtraSlurmConf; set { _explicitNullValueExtraSlurmConf = value; AdditionalData?.Remove("extra_slurm_conf"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("extra_slurm_conf"); else _explicitNullProperties?.Remove("extra_slurm_conf"); } }
         private string? _explicitNullValueExtraSlurmConf = default!;
 #nullable restore
 #else
-        public string ExtraSlurmConf { get => _explicitNullValueExtraSlurmConf; set { _explicitNullValueExtraSlurmConf = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("extra_slurm_conf"); else _explicitNullProperties?.Remove("extra_slurm_conf"); } }
+        public string ExtraSlurmConf { get => _explicitNullValueExtraSlurmConf; set { _explicitNullValueExtraSlurmConf = value; AdditionalData?.Remove("extra_slurm_conf"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("extra_slurm_conf"); else _explicitNullProperties?.Remove("extra_slurm_conf"); } }
         private string _explicitNullValueExtraSlurmConf = default!;
 #endif
         /// <summary>Script run on Slurm login node init.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LoginInitScript { get => _explicitNullValueLoginInitScript; set { _explicitNullValueLoginInitScript = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("login_init_script"); else _explicitNullProperties?.Remove("login_init_script"); } }
+        public string? LoginInitScript { get => _explicitNullValueLoginInitScript; set { _explicitNullValueLoginInitScript = value; AdditionalData?.Remove("login_init_script"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("login_init_script"); else _explicitNullProperties?.Remove("login_init_script"); } }
         private string? _explicitNullValueLoginInitScript = default!;
 #nullable restore
 #else
-        public string LoginInitScript { get => _explicitNullValueLoginInitScript; set { _explicitNullValueLoginInitScript = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("login_init_script"); else _explicitNullProperties?.Remove("login_init_script"); } }
+        public string LoginInitScript { get => _explicitNullValueLoginInitScript; set { _explicitNullValueLoginInitScript = value; AdditionalData?.Remove("login_init_script"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("login_init_script"); else _explicitNullProperties?.Remove("login_init_script"); } }
         private string _explicitNullValueLoginInitScript = default!;
 #endif
         /// <summary>Script run on Slurm nodeset init.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? NodesetInitScript { get => _explicitNullValueNodesetInitScript; set { _explicitNullValueNodesetInitScript = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nodeset_init_script"); else _explicitNullProperties?.Remove("nodeset_init_script"); } }
+        public string? NodesetInitScript { get => _explicitNullValueNodesetInitScript; set { _explicitNullValueNodesetInitScript = value; AdditionalData?.Remove("nodeset_init_script"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nodeset_init_script"); else _explicitNullProperties?.Remove("nodeset_init_script"); } }
         private string? _explicitNullValueNodesetInitScript = default!;
 #nullable restore
 #else
-        public string NodesetInitScript { get => _explicitNullValueNodesetInitScript; set { _explicitNullValueNodesetInitScript = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nodeset_init_script"); else _explicitNullProperties?.Remove("nodeset_init_script"); } }
+        public string NodesetInitScript { get => _explicitNullValueNodesetInitScript; set { _explicitNullValueNodesetInitScript = value; AdditionalData?.Remove("nodeset_init_script"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nodeset_init_script"); else _explicitNullProperties?.Remove("nodeset_init_script"); } }
         private string _explicitNullValueNodesetInitScript = default!;
 #endif
         /// <summary>Slurm worker node epilog script.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? WorkerEpilog { get => _explicitNullValueWorkerEpilog; set { _explicitNullValueWorkerEpilog = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("worker_epilog"); else _explicitNullProperties?.Remove("worker_epilog"); } }
+        public string? WorkerEpilog { get => _explicitNullValueWorkerEpilog; set { _explicitNullValueWorkerEpilog = value; AdditionalData?.Remove("worker_epilog"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("worker_epilog"); else _explicitNullProperties?.Remove("worker_epilog"); } }
         private string? _explicitNullValueWorkerEpilog = default!;
 #nullable restore
 #else
-        public string WorkerEpilog { get => _explicitNullValueWorkerEpilog; set { _explicitNullValueWorkerEpilog = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("worker_epilog"); else _explicitNullProperties?.Remove("worker_epilog"); } }
+        public string WorkerEpilog { get => _explicitNullValueWorkerEpilog; set { _explicitNullValueWorkerEpilog = value; AdditionalData?.Remove("worker_epilog"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("worker_epilog"); else _explicitNullProperties?.Remove("worker_epilog"); } }
         private string _explicitNullValueWorkerEpilog = default!;
 #endif
         /// <summary>Slurm worker node prolog script.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? WorkerProlog { get => _explicitNullValueWorkerProlog; set { _explicitNullValueWorkerProlog = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("worker_prolog"); else _explicitNullProperties?.Remove("worker_prolog"); } }
+        public string? WorkerProlog { get => _explicitNullValueWorkerProlog; set { _explicitNullValueWorkerProlog = value; AdditionalData?.Remove("worker_prolog"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("worker_prolog"); else _explicitNullProperties?.Remove("worker_prolog"); } }
         private string? _explicitNullValueWorkerProlog = default!;
 #nullable restore
 #else
-        public string WorkerProlog { get => _explicitNullValueWorkerProlog; set { _explicitNullValueWorkerProlog = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("worker_prolog"); else _explicitNullProperties?.Remove("worker_prolog"); } }
+        public string WorkerProlog { get => _explicitNullValueWorkerProlog; set { _explicitNullValueWorkerProlog = value; AdditionalData?.Remove("worker_prolog"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("worker_prolog"); else _explicitNullProperties?.Remove("worker_prolog"); } }
         private string _explicitNullValueWorkerProlog = default!;
 #endif
         /// <summary>

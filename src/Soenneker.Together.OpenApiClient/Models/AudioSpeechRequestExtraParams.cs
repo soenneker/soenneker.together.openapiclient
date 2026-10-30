@@ -18,7 +18,8 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("pronunciation_dict") is { } nullNodePronunciationDict && nullNodePronunciationDict.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PronunciationDict = null;
+            if (parseNode.GetChildNode("pronunciation_dict") is null) { _explicitNullValuePronunciationDict = default!; _explicitNullProperties?.Remove("pronunciation_dict"); }
+            else if (parseNode.GetChildNode("pronunciation_dict") is { } nullNodePronunciationDict && nullNodePronunciationDict.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PronunciationDict = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,11 +27,11 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>A list of pronunciation rules for specific characters or symbols. Each entry uses the format `&quot;&lt;source&gt;/&lt;replacement&gt;&quot;` (e.g., `[&quot;omg/oh my god&quot;]`) to override how the model pronounces matching tokens.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? PronunciationDict { get => _explicitNullValuePronunciationDict; set { _explicitNullValuePronunciationDict = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pronunciation_dict"); else _explicitNullProperties?.Remove("pronunciation_dict"); } }
+        public List<string>? PronunciationDict { get => _explicitNullValuePronunciationDict; set { _explicitNullValuePronunciationDict = value; AdditionalData?.Remove("pronunciation_dict"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pronunciation_dict"); else _explicitNullProperties?.Remove("pronunciation_dict"); } }
         private List<string>? _explicitNullValuePronunciationDict = default!;
 #nullable restore
 #else
-        public List<string> PronunciationDict { get => _explicitNullValuePronunciationDict; set { _explicitNullValuePronunciationDict = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pronunciation_dict"); else _explicitNullProperties?.Remove("pronunciation_dict"); } }
+        public List<string> PronunciationDict { get => _explicitNullValuePronunciationDict; set { _explicitNullValuePronunciationDict = value; AdditionalData?.Remove("pronunciation_dict"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pronunciation_dict"); else _explicitNullProperties?.Remove("pronunciation_dict"); } }
         private List<string> _explicitNullValuePronunciationDict = default!;
 #endif
         /// <summary>

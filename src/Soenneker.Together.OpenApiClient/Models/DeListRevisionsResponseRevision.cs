@@ -18,43 +18,48 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("createdAt") is { } nullNodeCreatedAt && nullNodeCreatedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreatedAt = null;
-            if (parseNode.GetChildNode("lastValidatedAt") is { } nullNodeLastValidatedAt && nullNodeLastValidatedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastValidatedAt = null;
-            if (parseNode.GetChildNode("revisionId") is { } nullNodeRevisionId && nullNodeRevisionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RevisionId = null;
-            if (parseNode.GetChildNode("validationErrors") is { } nullNodeValidationErrors && nullNodeValidationErrors.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ValidationErrors = null;
-            if (parseNode.GetChildNode("validationStatus") is { } nullNodeValidationStatus && nullNodeValidationStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ValidationStatus = null;
+            if (parseNode.GetChildNode("createdAt") is null) { _explicitNullValueCreatedAt = default!; _explicitNullProperties?.Remove("createdAt"); }
+            else if (parseNode.GetChildNode("createdAt") is { } nullNodeCreatedAt && nullNodeCreatedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreatedAt = null;
+            if (parseNode.GetChildNode("lastValidatedAt") is null) { _explicitNullValueLastValidatedAt = default!; _explicitNullProperties?.Remove("lastValidatedAt"); }
+            else if (parseNode.GetChildNode("lastValidatedAt") is { } nullNodeLastValidatedAt && nullNodeLastValidatedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastValidatedAt = null;
+            if (parseNode.GetChildNode("revisionId") is null) { _explicitNullValueRevisionId = default!; _explicitNullProperties?.Remove("revisionId"); }
+            else if (parseNode.GetChildNode("revisionId") is { } nullNodeRevisionId && nullNodeRevisionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RevisionId = null;
+            if (parseNode.GetChildNode("validationErrors") is null) { _explicitNullValueValidationErrors = default!; _explicitNullProperties?.Remove("validationErrors"); }
+            else if (parseNode.GetChildNode("validationErrors") is { } nullNodeValidationErrors && nullNodeValidationErrors.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ValidationErrors = null;
+            if (parseNode.GetChildNode("validationStatus") is null) { _explicitNullValueValidationStatus = default!; _explicitNullProperties?.Remove("validationStatus"); }
+            else if (parseNode.GetChildNode("validationStatus") is { } nullNodeValidationStatus && nullNodeValidationStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ValidationStatus = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Timestamp when the revision was created.</summary>
-        public DateTimeOffset? CreatedAt { get => _explicitNullValueCreatedAt; set { _explicitNullValueCreatedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("createdAt"); else _explicitNullProperties?.Remove("createdAt"); } }
+        public DateTimeOffset? CreatedAt { get => _explicitNullValueCreatedAt; set { _explicitNullValueCreatedAt = value; AdditionalData?.Remove("createdAt"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("createdAt"); else _explicitNullProperties?.Remove("createdAt"); } }
         private DateTimeOffset? _explicitNullValueCreatedAt = default!;
         /// <summary>Timestamp when validation most recently ran for the revision.</summary>
-        public DateTimeOffset? LastValidatedAt { get => _explicitNullValueLastValidatedAt; set { _explicitNullValueLastValidatedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lastValidatedAt"); else _explicitNullProperties?.Remove("lastValidatedAt"); } }
+        public DateTimeOffset? LastValidatedAt { get => _explicitNullValueLastValidatedAt; set { _explicitNullValueLastValidatedAt = value; AdditionalData?.Remove("lastValidatedAt"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lastValidatedAt"); else _explicitNullProperties?.Remove("lastValidatedAt"); } }
         private DateTimeOffset? _explicitNullValueLastValidatedAt = default!;
         /// <summary>Revision identifier.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RevisionId { get => _explicitNullValueRevisionId; set { _explicitNullValueRevisionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("revisionId"); else _explicitNullProperties?.Remove("revisionId"); } }
+        public string? RevisionId { get => _explicitNullValueRevisionId; set { _explicitNullValueRevisionId = value; AdditionalData?.Remove("revisionId"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("revisionId"); else _explicitNullProperties?.Remove("revisionId"); } }
         private string? _explicitNullValueRevisionId = default!;
 #nullable restore
 #else
-        public string RevisionId { get => _explicitNullValueRevisionId; set { _explicitNullValueRevisionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("revisionId"); else _explicitNullProperties?.Remove("revisionId"); } }
+        public string RevisionId { get => _explicitNullValueRevisionId; set { _explicitNullValueRevisionId = value; AdditionalData?.Remove("revisionId"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("revisionId"); else _explicitNullProperties?.Remove("revisionId"); } }
         private string _explicitNullValueRevisionId = default!;
 #endif
         /// <summary>Validation errors reported for the revision.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Together.OpenApiClient.Models.DeRevisionValidationError>? ValidationErrors { get => _explicitNullValueValidationErrors; set { _explicitNullValueValidationErrors = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("validationErrors"); else _explicitNullProperties?.Remove("validationErrors"); } }
+        public List<global::Soenneker.Together.OpenApiClient.Models.DeRevisionValidationError>? ValidationErrors { get => _explicitNullValueValidationErrors; set { _explicitNullValueValidationErrors = value; AdditionalData?.Remove("validationErrors"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("validationErrors"); else _explicitNullProperties?.Remove("validationErrors"); } }
         private List<global::Soenneker.Together.OpenApiClient.Models.DeRevisionValidationError>? _explicitNullValueValidationErrors = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Together.OpenApiClient.Models.DeRevisionValidationError> ValidationErrors { get => _explicitNullValueValidationErrors; set { _explicitNullValueValidationErrors = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("validationErrors"); else _explicitNullProperties?.Remove("validationErrors"); } }
+        public List<global::Soenneker.Together.OpenApiClient.Models.DeRevisionValidationError> ValidationErrors { get => _explicitNullValueValidationErrors; set { _explicitNullValueValidationErrors = value; AdditionalData?.Remove("validationErrors"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("validationErrors"); else _explicitNullProperties?.Remove("validationErrors"); } }
         private List<global::Soenneker.Together.OpenApiClient.Models.DeRevisionValidationError> _explicitNullValueValidationErrors = default!;
 #endif
         /// <summary>Current validation status for the revision.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.DeListRevisionsResponseRevisionValidationStatus? ValidationStatus { get => _explicitNullValueValidationStatus; set { _explicitNullValueValidationStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("validationStatus"); else _explicitNullProperties?.Remove("validationStatus"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.DeListRevisionsResponseRevisionValidationStatus? ValidationStatus { get => _explicitNullValueValidationStatus; set { _explicitNullValueValidationStatus = value; AdditionalData?.Remove("validationStatus"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("validationStatus"); else _explicitNullProperties?.Remove("validationStatus"); } }
         private global::Soenneker.Together.OpenApiClient.Models.DeListRevisionsResponseRevisionValidationStatus? _explicitNullValueValidationStatus = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.DeListRevisionsResponseRevision"/> and sets the default values.
@@ -85,7 +90,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "lastValidatedAt", n => { LastValidatedAt = n.GetDateTimeOffsetValue(); } },
                 { "revisionId", n => { RevisionId = n.GetStringValue(); } },
                 { "validationErrors", n => { ValidationErrors = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.DeRevisionValidationError>(global::Soenneker.Together.OpenApiClient.Models.DeRevisionValidationError.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "validationStatus", n => { ValidationStatus = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeListRevisionsResponseRevisionValidationStatus>(); } },
+                { "validationStatus", n => { var parsed = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeListRevisionsResponseRevisionValidationStatus>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueValidationStatus = default; _explicitNullProperties?.Remove("validationStatus"); AdditionalData["validationStatus"] = unknown; } else { ValidationStatus = parsed; AdditionalData.Remove("validationStatus"); } } },
             };
         }
         /// <summary>

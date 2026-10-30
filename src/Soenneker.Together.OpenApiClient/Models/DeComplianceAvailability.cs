@@ -18,8 +18,10 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("headroom") is { } nullNodeHeadroom && nullNodeHeadroom.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Headroom = null;
-            if (parseNode.GetChildNode("policy") is { } nullNodePolicy && nullNodePolicy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Policy = null;
+            if (parseNode.GetChildNode("headroom") is null) { _explicitNullValueHeadroom = default!; _explicitNullProperties?.Remove("headroom"); }
+            else if (parseNode.GetChildNode("headroom") is { } nullNodeHeadroom && nullNodeHeadroom.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Headroom = null;
+            if (parseNode.GetChildNode("policy") is null) { _explicitNullValuePolicy = default!; _explicitNullProperties?.Remove("policy"); }
+            else if (parseNode.GetChildNode("policy") is { } nullNodePolicy && nullNodePolicy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Policy = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,21 +29,21 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Best-effort replica headroom on clusters certified for at least this policy.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.DeComplianceAvailabilityHeadroom? Headroom { get => _explicitNullValueHeadroom; set { _explicitNullValueHeadroom = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("headroom"); else _explicitNullProperties?.Remove("headroom"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.DeComplianceAvailabilityHeadroom? Headroom { get => _explicitNullValueHeadroom; set { _explicitNullValueHeadroom = value; AdditionalData?.Remove("headroom"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("headroom"); else _explicitNullProperties?.Remove("headroom"); } }
         private global::Soenneker.Together.OpenApiClient.Models.DeComplianceAvailabilityHeadroom? _explicitNullValueHeadroom = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.DeComplianceAvailabilityHeadroom Headroom { get => _explicitNullValueHeadroom; set { _explicitNullValueHeadroom = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("headroom"); else _explicitNullProperties?.Remove("headroom"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.DeComplianceAvailabilityHeadroom Headroom { get => _explicitNullValueHeadroom; set { _explicitNullValueHeadroom = value; AdditionalData?.Remove("headroom"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("headroom"); else _explicitNullProperties?.Remove("headroom"); } }
         private global::Soenneker.Together.OpenApiClient.Models.DeComplianceAvailabilityHeadroom _explicitNullValueHeadroom = default!;
 #endif
         /// <summary>Compliance regimes certified by the clusters counted in this entry.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.DeComplianceAvailabilityPolicy? Policy { get => _explicitNullValuePolicy; set { _explicitNullValuePolicy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("policy"); else _explicitNullProperties?.Remove("policy"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.DeComplianceAvailabilityPolicy? Policy { get => _explicitNullValuePolicy; set { _explicitNullValuePolicy = value; AdditionalData?.Remove("policy"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("policy"); else _explicitNullProperties?.Remove("policy"); } }
         private global::Soenneker.Together.OpenApiClient.Models.DeComplianceAvailabilityPolicy? _explicitNullValuePolicy = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.DeComplianceAvailabilityPolicy Policy { get => _explicitNullValuePolicy; set { _explicitNullValuePolicy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("policy"); else _explicitNullProperties?.Remove("policy"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.DeComplianceAvailabilityPolicy Policy { get => _explicitNullValuePolicy; set { _explicitNullValuePolicy = value; AdditionalData?.Remove("policy"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("policy"); else _explicitNullProperties?.Remove("policy"); } }
         private global::Soenneker.Together.OpenApiClient.Models.DeComplianceAvailabilityPolicy _explicitNullValuePolicy = default!;
 #endif
         /// <summary>

@@ -18,18 +18,20 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("adam_params") is { } nullNodeAdamParams && nullNodeAdamParams.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AdamParams = null;
-            if (parseNode.GetChildNode("muon_params") is { } nullNodeMuonParams && nullNodeMuonParams.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MuonParams = null;
+            if (parseNode.GetChildNode("adam_params") is null) { _explicitNullValueAdamParams = default!; _explicitNullProperties?.Remove("adam_params"); }
+            else if (parseNode.GetChildNode("adam_params") is { } nullNodeAdamParams && nullNodeAdamParams.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AdamParams = null;
+            if (parseNode.GetChildNode("muon_params") is null) { _explicitNullValueMuonParams = default!; _explicitNullProperties?.Remove("muon_params"); }
+            else if (parseNode.GetChildNode("muon_params") is { } nullNodeMuonParams && nullNodeMuonParams.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MuonParams = null;
         }
 
         /// <summary>Per-step Adam optimizer overrides.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RlAdamParams? AdamParams { get => _explicitNullValueAdamParams; set { _explicitNullValueAdamParams = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("adam_params"); else _explicitNullProperties?.Remove("adam_params"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.RlAdamParams? AdamParams { get => _explicitNullValueAdamParams; set { _explicitNullValueAdamParams = value; AdditionalData?.Remove("adam_params"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("adam_params"); else _explicitNullProperties?.Remove("adam_params"); } }
         private global::Soenneker.Together.OpenApiClient.Models.RlAdamParams? _explicitNullValueAdamParams = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.RlAdamParams AdamParams { get => _explicitNullValueAdamParams; set { _explicitNullValueAdamParams = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("adam_params"); else _explicitNullProperties?.Remove("adam_params"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.RlAdamParams AdamParams { get => _explicitNullValueAdamParams; set { _explicitNullValueAdamParams = value; AdditionalData?.Remove("adam_params"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("adam_params"); else _explicitNullProperties?.Remove("adam_params"); } }
         private global::Soenneker.Together.OpenApiClient.Models.RlAdamParams _explicitNullValueAdamParams = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -37,11 +39,11 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Per-step Muon optimizer overrides</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RlMuonParams? MuonParams { get => _explicitNullValueMuonParams; set { _explicitNullValueMuonParams = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("muon_params"); else _explicitNullProperties?.Remove("muon_params"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.RlMuonParams? MuonParams { get => _explicitNullValueMuonParams; set { _explicitNullValueMuonParams = value; AdditionalData?.Remove("muon_params"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("muon_params"); else _explicitNullProperties?.Remove("muon_params"); } }
         private global::Soenneker.Together.OpenApiClient.Models.RlMuonParams? _explicitNullValueMuonParams = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.RlMuonParams MuonParams { get => _explicitNullValueMuonParams; set { _explicitNullValueMuonParams = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("muon_params"); else _explicitNullProperties?.Remove("muon_params"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.RlMuonParams MuonParams { get => _explicitNullValueMuonParams; set { _explicitNullValueMuonParams = value; AdditionalData?.Remove("muon_params"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("muon_params"); else _explicitNullProperties?.Remove("muon_params"); } }
         private global::Soenneker.Together.OpenApiClient.Models.RlMuonParams _explicitNullValueMuonParams = default!;
 #endif
         /// <summary>

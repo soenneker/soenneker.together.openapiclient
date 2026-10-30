@@ -18,9 +18,12 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("compliancePolicy") is { } nullNodeCompliancePolicy && nullNodeCompliancePolicy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CompliancePolicy = null;
-            if (parseNode.GetChildNode("constraint") is { } nullNodeConstraint && nullNodeConstraint.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Constraint = null;
-            if (parseNode.GetChildNode("regions") is { } nullNodeRegions && nullNodeRegions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Regions = null;
+            if (parseNode.GetChildNode("compliancePolicy") is null) { _explicitNullValueCompliancePolicy = default!; _explicitNullProperties?.Remove("compliancePolicy"); }
+            else if (parseNode.GetChildNode("compliancePolicy") is { } nullNodeCompliancePolicy && nullNodeCompliancePolicy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CompliancePolicy = null;
+            if (parseNode.GetChildNode("constraint") is null) { _explicitNullValueConstraint = default!; _explicitNullProperties?.Remove("constraint"); }
+            else if (parseNode.GetChildNode("constraint") is { } nullNodeConstraint && nullNodeConstraint.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Constraint = null;
+            if (parseNode.GetChildNode("regions") is null) { _explicitNullValueRegions = default!; _explicitNullProperties?.Remove("regions"); }
+            else if (parseNode.GetChildNode("regions") is { } nullNodeRegions && nullNodeRegions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Regions = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -28,24 +31,24 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Compliance regimes required for clusters that run the deployment.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.DeInlinePlacementCompliancePolicy? CompliancePolicy { get => _explicitNullValueCompliancePolicy; set { _explicitNullValueCompliancePolicy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("compliancePolicy"); else _explicitNullProperties?.Remove("compliancePolicy"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.DeInlinePlacementCompliancePolicy? CompliancePolicy { get => _explicitNullValueCompliancePolicy; set { _explicitNullValueCompliancePolicy = value; AdditionalData?.Remove("compliancePolicy"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("compliancePolicy"); else _explicitNullProperties?.Remove("compliancePolicy"); } }
         private global::Soenneker.Together.OpenApiClient.Models.DeInlinePlacementCompliancePolicy? _explicitNullValueCompliancePolicy = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.DeInlinePlacementCompliancePolicy CompliancePolicy { get => _explicitNullValueCompliancePolicy; set { _explicitNullValueCompliancePolicy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("compliancePolicy"); else _explicitNullProperties?.Remove("compliancePolicy"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.DeInlinePlacementCompliancePolicy CompliancePolicy { get => _explicitNullValueCompliancePolicy; set { _explicitNullValueCompliancePolicy = value; AdditionalData?.Remove("compliancePolicy"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("compliancePolicy"); else _explicitNullProperties?.Remove("compliancePolicy"); } }
         private global::Soenneker.Together.OpenApiClient.Models.DeInlinePlacementCompliancePolicy _explicitNullValueCompliancePolicy = default!;
 #endif
         /// <summary>How strictly the regions list is enforced.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.DeInlinePlacementConstraint? Constraint { get => _explicitNullValueConstraint; set { _explicitNullValueConstraint = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("constraint"); else _explicitNullProperties?.Remove("constraint"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.DeInlinePlacementConstraint? Constraint { get => _explicitNullValueConstraint; set { _explicitNullValueConstraint = value; AdditionalData?.Remove("constraint"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("constraint"); else _explicitNullProperties?.Remove("constraint"); } }
         private global::Soenneker.Together.OpenApiClient.Models.DeInlinePlacementConstraint? _explicitNullValueConstraint = default!;
         /// <summary>Regions where the deployment is allowed to run. Multiple regions allow best-effort replica spreading.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Regions { get => _explicitNullValueRegions; set { _explicitNullValueRegions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("regions"); else _explicitNullProperties?.Remove("regions"); } }
+        public List<string>? Regions { get => _explicitNullValueRegions; set { _explicitNullValueRegions = value; AdditionalData?.Remove("regions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("regions"); else _explicitNullProperties?.Remove("regions"); } }
         private List<string>? _explicitNullValueRegions = default!;
 #nullable restore
 #else
-        public List<string> Regions { get => _explicitNullValueRegions; set { _explicitNullValueRegions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("regions"); else _explicitNullProperties?.Remove("regions"); } }
+        public List<string> Regions { get => _explicitNullValueRegions; set { _explicitNullValueRegions = value; AdditionalData?.Remove("regions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("regions"); else _explicitNullProperties?.Remove("regions"); } }
         private List<string> _explicitNullValueRegions = default!;
 #endif
         /// <summary>
@@ -74,7 +77,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "compliancePolicy", n => { CompliancePolicy = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeInlinePlacementCompliancePolicy>(global::Soenneker.Together.OpenApiClient.Models.DeInlinePlacementCompliancePolicy.CreateFromDiscriminatorValue); } },
-                { "constraint", n => { Constraint = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeInlinePlacementConstraint>(); } },
+                { "constraint", n => { var parsed = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeInlinePlacementConstraint>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueConstraint = default; _explicitNullProperties?.Remove("constraint"); AdditionalData["constraint"] = unknown; } else { Constraint = parsed; AdditionalData.Remove("constraint"); } } },
                 { "regions", n => { Regions = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
         }

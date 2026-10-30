@@ -17,13 +17,20 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("ca_cert") is { } nullNodeCaCert && nullNodeCaCert.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CaCert = null;
-            if (parseNode.GetChildNode("client_id") is { } nullNodeClientId && nullNodeClientId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClientId = null;
-            if (parseNode.GetChildNode("group_claim") is { } nullNodeGroupClaim && nullNodeGroupClaim.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GroupClaim = null;
-            if (parseNode.GetChildNode("group_prefix") is { } nullNodeGroupPrefix && nullNodeGroupPrefix.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GroupPrefix = null;
-            if (parseNode.GetChildNode("issuer_url") is { } nullNodeIssuerUrl && nullNodeIssuerUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IssuerUrl = null;
-            if (parseNode.GetChildNode("username_claim") is { } nullNodeUsernameClaim && nullNodeUsernameClaim.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UsernameClaim = null;
-            if (parseNode.GetChildNode("username_prefix") is { } nullNodeUsernamePrefix && nullNodeUsernamePrefix.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UsernamePrefix = null;
+            if (parseNode.GetChildNode("ca_cert") is null) { _explicitNullValueCaCert = default!; _explicitNullProperties?.Remove("ca_cert"); }
+            else if (parseNode.GetChildNode("ca_cert") is { } nullNodeCaCert && nullNodeCaCert.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CaCert = null;
+            if (parseNode.GetChildNode("client_id") is null) { _explicitNullValueClientId = default!; _explicitNullProperties?.Remove("client_id"); }
+            else if (parseNode.GetChildNode("client_id") is { } nullNodeClientId && nullNodeClientId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClientId = null;
+            if (parseNode.GetChildNode("group_claim") is null) { _explicitNullValueGroupClaim = default!; _explicitNullProperties?.Remove("group_claim"); }
+            else if (parseNode.GetChildNode("group_claim") is { } nullNodeGroupClaim && nullNodeGroupClaim.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GroupClaim = null;
+            if (parseNode.GetChildNode("group_prefix") is null) { _explicitNullValueGroupPrefix = default!; _explicitNullProperties?.Remove("group_prefix"); }
+            else if (parseNode.GetChildNode("group_prefix") is { } nullNodeGroupPrefix && nullNodeGroupPrefix.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GroupPrefix = null;
+            if (parseNode.GetChildNode("issuer_url") is null) { _explicitNullValueIssuerUrl = default!; _explicitNullProperties?.Remove("issuer_url"); }
+            else if (parseNode.GetChildNode("issuer_url") is { } nullNodeIssuerUrl && nullNodeIssuerUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IssuerUrl = null;
+            if (parseNode.GetChildNode("username_claim") is null) { _explicitNullValueUsernameClaim = default!; _explicitNullProperties?.Remove("username_claim"); }
+            else if (parseNode.GetChildNode("username_claim") is { } nullNodeUsernameClaim && nullNodeUsernameClaim.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UsernameClaim = null;
+            if (parseNode.GetChildNode("username_prefix") is null) { _explicitNullValueUsernamePrefix = default!; _explicitNullProperties?.Remove("username_prefix"); }
+            else if (parseNode.GetChildNode("username_prefix") is { } nullNodeUsernamePrefix && nullNodeUsernamePrefix.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UsernamePrefix = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -31,71 +38,71 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>CA certificate in PEM format to validate the OIDC issuer&apos;s TLS certificate. This field is optional but recommended if the issuer uses a private CA or self-signed certificate.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CaCert { get => _explicitNullValueCaCert; set { _explicitNullValueCaCert = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ca_cert"); else _explicitNullProperties?.Remove("ca_cert"); } }
+        public string? CaCert { get => _explicitNullValueCaCert; set { _explicitNullValueCaCert = value; AdditionalData?.Remove("ca_cert"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ca_cert"); else _explicitNullProperties?.Remove("ca_cert"); } }
         private string? _explicitNullValueCaCert = default!;
 #nullable restore
 #else
-        public string CaCert { get => _explicitNullValueCaCert; set { _explicitNullValueCaCert = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ca_cert"); else _explicitNullProperties?.Remove("ca_cert"); } }
+        public string CaCert { get => _explicitNullValueCaCert; set { _explicitNullValueCaCert = value; AdditionalData?.Remove("ca_cert"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ca_cert"); else _explicitNullProperties?.Remove("ca_cert"); } }
         private string _explicitNullValueCaCert = default!;
 #endif
         /// <summary>OIDC client ID for authentication.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ClientId { get => _explicitNullValueClientId; set { _explicitNullValueClientId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("client_id"); else _explicitNullProperties?.Remove("client_id"); } }
+        public string? ClientId { get => _explicitNullValueClientId; set { _explicitNullValueClientId = value; AdditionalData?.Remove("client_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("client_id"); else _explicitNullProperties?.Remove("client_id"); } }
         private string? _explicitNullValueClientId = default!;
 #nullable restore
 #else
-        public string ClientId { get => _explicitNullValueClientId; set { _explicitNullValueClientId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("client_id"); else _explicitNullProperties?.Remove("client_id"); } }
+        public string ClientId { get => _explicitNullValueClientId; set { _explicitNullValueClientId = value; AdditionalData?.Remove("client_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("client_id"); else _explicitNullProperties?.Remove("client_id"); } }
         private string _explicitNullValueClientId = default!;
 #endif
         /// <summary>JWT claim to use for user groups. For example, &apos;groups&apos;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? GroupClaim { get => _explicitNullValueGroupClaim; set { _explicitNullValueGroupClaim = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("group_claim"); else _explicitNullProperties?.Remove("group_claim"); } }
+        public string? GroupClaim { get => _explicitNullValueGroupClaim; set { _explicitNullValueGroupClaim = value; AdditionalData?.Remove("group_claim"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("group_claim"); else _explicitNullProperties?.Remove("group_claim"); } }
         private string? _explicitNullValueGroupClaim = default!;
 #nullable restore
 #else
-        public string GroupClaim { get => _explicitNullValueGroupClaim; set { _explicitNullValueGroupClaim = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("group_claim"); else _explicitNullProperties?.Remove("group_claim"); } }
+        public string GroupClaim { get => _explicitNullValueGroupClaim; set { _explicitNullValueGroupClaim = value; AdditionalData?.Remove("group_claim"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("group_claim"); else _explicitNullProperties?.Remove("group_claim"); } }
         private string _explicitNullValueGroupClaim = default!;
 #endif
         /// <summary>Prefix to add to the group claim to form the final group name. For example, &apos;oidc:&apos;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? GroupPrefix { get => _explicitNullValueGroupPrefix; set { _explicitNullValueGroupPrefix = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("group_prefix"); else _explicitNullProperties?.Remove("group_prefix"); } }
+        public string? GroupPrefix { get => _explicitNullValueGroupPrefix; set { _explicitNullValueGroupPrefix = value; AdditionalData?.Remove("group_prefix"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("group_prefix"); else _explicitNullProperties?.Remove("group_prefix"); } }
         private string? _explicitNullValueGroupPrefix = default!;
 #nullable restore
 #else
-        public string GroupPrefix { get => _explicitNullValueGroupPrefix; set { _explicitNullValueGroupPrefix = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("group_prefix"); else _explicitNullProperties?.Remove("group_prefix"); } }
+        public string GroupPrefix { get => _explicitNullValueGroupPrefix; set { _explicitNullValueGroupPrefix = value; AdditionalData?.Remove("group_prefix"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("group_prefix"); else _explicitNullProperties?.Remove("group_prefix"); } }
         private string _explicitNullValueGroupPrefix = default!;
 #endif
         /// <summary>OIDC issuer URL for authentication. For example, https://accounts.google.com</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? IssuerUrl { get => _explicitNullValueIssuerUrl; set { _explicitNullValueIssuerUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("issuer_url"); else _explicitNullProperties?.Remove("issuer_url"); } }
+        public string? IssuerUrl { get => _explicitNullValueIssuerUrl; set { _explicitNullValueIssuerUrl = value; AdditionalData?.Remove("issuer_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("issuer_url"); else _explicitNullProperties?.Remove("issuer_url"); } }
         private string? _explicitNullValueIssuerUrl = default!;
 #nullable restore
 #else
-        public string IssuerUrl { get => _explicitNullValueIssuerUrl; set { _explicitNullValueIssuerUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("issuer_url"); else _explicitNullProperties?.Remove("issuer_url"); } }
+        public string IssuerUrl { get => _explicitNullValueIssuerUrl; set { _explicitNullValueIssuerUrl = value; AdditionalData?.Remove("issuer_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("issuer_url"); else _explicitNullProperties?.Remove("issuer_url"); } }
         private string _explicitNullValueIssuerUrl = default!;
 #endif
         /// <summary>JWT claim to use as the username. For example, &apos;sub&apos; or &apos;email&apos;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? UsernameClaim { get => _explicitNullValueUsernameClaim; set { _explicitNullValueUsernameClaim = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("username_claim"); else _explicitNullProperties?.Remove("username_claim"); } }
+        public string? UsernameClaim { get => _explicitNullValueUsernameClaim; set { _explicitNullValueUsernameClaim = value; AdditionalData?.Remove("username_claim"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("username_claim"); else _explicitNullProperties?.Remove("username_claim"); } }
         private string? _explicitNullValueUsernameClaim = default!;
 #nullable restore
 #else
-        public string UsernameClaim { get => _explicitNullValueUsernameClaim; set { _explicitNullValueUsernameClaim = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("username_claim"); else _explicitNullProperties?.Remove("username_claim"); } }
+        public string UsernameClaim { get => _explicitNullValueUsernameClaim; set { _explicitNullValueUsernameClaim = value; AdditionalData?.Remove("username_claim"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("username_claim"); else _explicitNullProperties?.Remove("username_claim"); } }
         private string _explicitNullValueUsernameClaim = default!;
 #endif
         /// <summary>Prefix to add to the username claim to form the final username. For example, &apos;oidc:&apos;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? UsernamePrefix { get => _explicitNullValueUsernamePrefix; set { _explicitNullValueUsernamePrefix = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("username_prefix"); else _explicitNullProperties?.Remove("username_prefix"); } }
+        public string? UsernamePrefix { get => _explicitNullValueUsernamePrefix; set { _explicitNullValueUsernamePrefix = value; AdditionalData?.Remove("username_prefix"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("username_prefix"); else _explicitNullProperties?.Remove("username_prefix"); } }
         private string? _explicitNullValueUsernamePrefix = default!;
 #nullable restore
 #else
-        public string UsernamePrefix { get => _explicitNullValueUsernamePrefix; set { _explicitNullValueUsernamePrefix = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("username_prefix"); else _explicitNullProperties?.Remove("username_prefix"); } }
+        public string UsernamePrefix { get => _explicitNullValueUsernamePrefix; set { _explicitNullValueUsernamePrefix = value; AdditionalData?.Remove("username_prefix"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("username_prefix"); else _explicitNullProperties?.Remove("username_prefix"); } }
         private string _explicitNullValueUsernamePrefix = default!;
 #endif
         /// <summary>

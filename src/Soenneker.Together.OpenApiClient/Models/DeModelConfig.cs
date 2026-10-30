@@ -18,13 +18,20 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("certifications") is { } nullNodeCertifications && nullNodeCertifications.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Certifications = null;
-            if (parseNode.GetChildNode("draftModel") is { } nullNodeDraftModel && nullNodeDraftModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DraftModel = null;
-            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
-            if (parseNode.GetChildNode("projectId") is { } nullNodeProjectId && nullNodeProjectId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProjectId = null;
-            if (parseNode.GetChildNode("referenceModel") is { } nullNodeReferenceModel && nullNodeReferenceModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReferenceModel = null;
-            if (parseNode.GetChildNode("referenceModelId") is { } nullNodeReferenceModelId && nullNodeReferenceModelId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReferenceModelId = null;
-            if (parseNode.GetChildNode("selectors") is { } nullNodeSelectors && nullNodeSelectors.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Selectors = null;
+            if (parseNode.GetChildNode("certifications") is null) { _explicitNullValueCertifications = default!; _explicitNullProperties?.Remove("certifications"); }
+            else if (parseNode.GetChildNode("certifications") is { } nullNodeCertifications && nullNodeCertifications.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Certifications = null;
+            if (parseNode.GetChildNode("draftModel") is null) { _explicitNullValueDraftModel = default!; _explicitNullProperties?.Remove("draftModel"); }
+            else if (parseNode.GetChildNode("draftModel") is { } nullNodeDraftModel && nullNodeDraftModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DraftModel = null;
+            if (parseNode.GetChildNode("id") is null) { _explicitNullValueId = default!; _explicitNullProperties?.Remove("id"); }
+            else if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("projectId") is null) { _explicitNullValueProjectId = default!; _explicitNullProperties?.Remove("projectId"); }
+            else if (parseNode.GetChildNode("projectId") is { } nullNodeProjectId && nullNodeProjectId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProjectId = null;
+            if (parseNode.GetChildNode("referenceModel") is null) { _explicitNullValueReferenceModel = default!; _explicitNullProperties?.Remove("referenceModel"); }
+            else if (parseNode.GetChildNode("referenceModel") is { } nullNodeReferenceModel && nullNodeReferenceModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReferenceModel = null;
+            if (parseNode.GetChildNode("referenceModelId") is null) { _explicitNullValueReferenceModelId = default!; _explicitNullProperties?.Remove("referenceModelId"); }
+            else if (parseNode.GetChildNode("referenceModelId") is { } nullNodeReferenceModelId && nullNodeReferenceModelId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReferenceModelId = null;
+            if (parseNode.GetChildNode("selectors") is null) { _explicitNullValueSelectors = default!; _explicitNullProperties?.Remove("selectors"); }
+            else if (parseNode.GetChildNode("selectors") is { } nullNodeSelectors && nullNodeSelectors.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Selectors = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -32,71 +39,71 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Model, hardware, and runtime combinations certified for this config revision.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Together.OpenApiClient.Models.DeCertification>? Certifications { get => _explicitNullValueCertifications; set { _explicitNullValueCertifications = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("certifications"); else _explicitNullProperties?.Remove("certifications"); } }
+        public List<global::Soenneker.Together.OpenApiClient.Models.DeCertification>? Certifications { get => _explicitNullValueCertifications; set { _explicitNullValueCertifications = value; AdditionalData?.Remove("certifications"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("certifications"); else _explicitNullProperties?.Remove("certifications"); } }
         private List<global::Soenneker.Together.OpenApiClient.Models.DeCertification>? _explicitNullValueCertifications = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Together.OpenApiClient.Models.DeCertification> Certifications { get => _explicitNullValueCertifications; set { _explicitNullValueCertifications = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("certifications"); else _explicitNullProperties?.Remove("certifications"); } }
+        public List<global::Soenneker.Together.OpenApiClient.Models.DeCertification> Certifications { get => _explicitNullValueCertifications; set { _explicitNullValueCertifications = value; AdditionalData?.Remove("certifications"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("certifications"); else _explicitNullProperties?.Remove("certifications"); } }
         private List<global::Soenneker.Together.OpenApiClient.Models.DeCertification> _explicitNullValueCertifications = default!;
 #endif
         /// <summary>Resource name of the draft model, using `projects/{draftProject}/models/{modelId}`; empty when speculative decoding is not enabled.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DraftModel { get => _explicitNullValueDraftModel; set { _explicitNullValueDraftModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("draftModel"); else _explicitNullProperties?.Remove("draftModel"); } }
+        public string? DraftModel { get => _explicitNullValueDraftModel; set { _explicitNullValueDraftModel = value; AdditionalData?.Remove("draftModel"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("draftModel"); else _explicitNullProperties?.Remove("draftModel"); } }
         private string? _explicitNullValueDraftModel = default!;
 #nullable restore
 #else
-        public string DraftModel { get => _explicitNullValueDraftModel; set { _explicitNullValueDraftModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("draftModel"); else _explicitNullProperties?.Remove("draftModel"); } }
+        public string DraftModel { get => _explicitNullValueDraftModel; set { _explicitNullValueDraftModel = value; AdditionalData?.Remove("draftModel"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("draftModel"); else _explicitNullProperties?.Remove("draftModel"); } }
         private string _explicitNullValueDraftModel = default!;
 #endif
         /// <summary>Config revision identifier.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
         private string? _explicitNullValueId = default!;
 #nullable restore
 #else
-        public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
         private string _explicitNullValueId = default!;
 #endif
         /// <summary>ID of the project that owns the config revision. Public configs may be owned by a different project than the deployment.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ProjectId { get => _explicitNullValueProjectId; set { _explicitNullValueProjectId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("projectId"); else _explicitNullProperties?.Remove("projectId"); } }
+        public string? ProjectId { get => _explicitNullValueProjectId; set { _explicitNullValueProjectId = value; AdditionalData?.Remove("projectId"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("projectId"); else _explicitNullProperties?.Remove("projectId"); } }
         private string? _explicitNullValueProjectId = default!;
 #nullable restore
 #else
-        public string ProjectId { get => _explicitNullValueProjectId; set { _explicitNullValueProjectId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("projectId"); else _explicitNullProperties?.Remove("projectId"); } }
+        public string ProjectId { get => _explicitNullValueProjectId; set { _explicitNullValueProjectId = value; AdditionalData?.Remove("projectId"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("projectId"); else _explicitNullProperties?.Remove("projectId"); } }
         private string _explicitNullValueProjectId = default!;
 #endif
         /// <summary>Resource name of the referenced model, using `projects/{modelProject}/models/{modelId}`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ReferenceModel { get => _explicitNullValueReferenceModel; set { _explicitNullValueReferenceModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("referenceModel"); else _explicitNullProperties?.Remove("referenceModel"); } }
+        public string? ReferenceModel { get => _explicitNullValueReferenceModel; set { _explicitNullValueReferenceModel = value; AdditionalData?.Remove("referenceModel"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("referenceModel"); else _explicitNullProperties?.Remove("referenceModel"); } }
         private string? _explicitNullValueReferenceModel = default!;
 #nullable restore
 #else
-        public string ReferenceModel { get => _explicitNullValueReferenceModel; set { _explicitNullValueReferenceModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("referenceModel"); else _explicitNullProperties?.Remove("referenceModel"); } }
+        public string ReferenceModel { get => _explicitNullValueReferenceModel; set { _explicitNullValueReferenceModel = value; AdditionalData?.Remove("referenceModel"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("referenceModel"); else _explicitNullProperties?.Remove("referenceModel"); } }
         private string _explicitNullValueReferenceModel = default!;
 #endif
         /// <summary>Deprecated. Use `referenceModel`. Reference model identifier.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ReferenceModelId { get => _explicitNullValueReferenceModelId; set { _explicitNullValueReferenceModelId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("referenceModelId"); else _explicitNullProperties?.Remove("referenceModelId"); } }
+        public string? ReferenceModelId { get => _explicitNullValueReferenceModelId; set { _explicitNullValueReferenceModelId = value; AdditionalData?.Remove("referenceModelId"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("referenceModelId"); else _explicitNullProperties?.Remove("referenceModelId"); } }
         private string? _explicitNullValueReferenceModelId = default!;
 #nullable restore
 #else
-        public string ReferenceModelId { get => _explicitNullValueReferenceModelId; set { _explicitNullValueReferenceModelId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("referenceModelId"); else _explicitNullProperties?.Remove("referenceModelId"); } }
+        public string ReferenceModelId { get => _explicitNullValueReferenceModelId; set { _explicitNullValueReferenceModelId = value; AdditionalData?.Remove("referenceModelId"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("referenceModelId"); else _explicitNullProperties?.Remove("referenceModelId"); } }
         private string _explicitNullValueReferenceModelId = default!;
 #endif
         /// <summary>Hardware and runtime selectors used to place and configure replicas.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Together.OpenApiClient.Models.DeSelector>? Selectors { get => _explicitNullValueSelectors; set { _explicitNullValueSelectors = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("selectors"); else _explicitNullProperties?.Remove("selectors"); } }
+        public List<global::Soenneker.Together.OpenApiClient.Models.DeSelector>? Selectors { get => _explicitNullValueSelectors; set { _explicitNullValueSelectors = value; AdditionalData?.Remove("selectors"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("selectors"); else _explicitNullProperties?.Remove("selectors"); } }
         private List<global::Soenneker.Together.OpenApiClient.Models.DeSelector>? _explicitNullValueSelectors = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Together.OpenApiClient.Models.DeSelector> Selectors { get => _explicitNullValueSelectors; set { _explicitNullValueSelectors = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("selectors"); else _explicitNullProperties?.Remove("selectors"); } }
+        public List<global::Soenneker.Together.OpenApiClient.Models.DeSelector> Selectors { get => _explicitNullValueSelectors; set { _explicitNullValueSelectors = value; AdditionalData?.Remove("selectors"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("selectors"); else _explicitNullProperties?.Remove("selectors"); } }
         private List<global::Soenneker.Together.OpenApiClient.Models.DeSelector> _explicitNullValueSelectors = default!;
 #endif
         /// <summary>

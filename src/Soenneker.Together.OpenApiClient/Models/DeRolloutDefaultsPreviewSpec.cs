@@ -18,14 +18,22 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("blueGreen") is { } nullNodeBlueGreen && nullNodeBlueGreen.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BlueGreen = null;
-            if (parseNode.GetChildNode("canary") is { } nullNodeCanary && nullNodeCanary.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Canary = null;
-            if (parseNode.GetChildNode("finalSourceReplicas") is { } nullNodeFinalSourceReplicas && nullNodeFinalSourceReplicas.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FinalSourceReplicas = null;
-            if (parseNode.GetChildNode("finalTargetReplicas") is { } nullNodeFinalTargetReplicas && nullNodeFinalTargetReplicas.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FinalTargetReplicas = null;
-            if (parseNode.GetChildNode("metrics") is { } nullNodeMetrics && nullNodeMetrics.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Metrics = null;
-            if (parseNode.GetChildNode("rolling") is { } nullNodeRolling && nullNodeRolling.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Rolling = null;
-            if (parseNode.GetChildNode("sourceDeploymentId") is { } nullNodeSourceDeploymentId && nullNodeSourceDeploymentId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceDeploymentId = null;
-            if (parseNode.GetChildNode("targetDeploymentId") is { } nullNodeTargetDeploymentId && nullNodeTargetDeploymentId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TargetDeploymentId = null;
+            if (parseNode.GetChildNode("blueGreen") is null) { _explicitNullValueBlueGreen = default!; _explicitNullProperties?.Remove("blueGreen"); }
+            else if (parseNode.GetChildNode("blueGreen") is { } nullNodeBlueGreen && nullNodeBlueGreen.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BlueGreen = null;
+            if (parseNode.GetChildNode("canary") is null) { _explicitNullValueCanary = default!; _explicitNullProperties?.Remove("canary"); }
+            else if (parseNode.GetChildNode("canary") is { } nullNodeCanary && nullNodeCanary.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Canary = null;
+            if (parseNode.GetChildNode("finalSourceReplicas") is null) { _explicitNullValueFinalSourceReplicas = default!; _explicitNullProperties?.Remove("finalSourceReplicas"); }
+            else if (parseNode.GetChildNode("finalSourceReplicas") is { } nullNodeFinalSourceReplicas && nullNodeFinalSourceReplicas.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FinalSourceReplicas = null;
+            if (parseNode.GetChildNode("finalTargetReplicas") is null) { _explicitNullValueFinalTargetReplicas = default!; _explicitNullProperties?.Remove("finalTargetReplicas"); }
+            else if (parseNode.GetChildNode("finalTargetReplicas") is { } nullNodeFinalTargetReplicas && nullNodeFinalTargetReplicas.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FinalTargetReplicas = null;
+            if (parseNode.GetChildNode("metrics") is null) { _explicitNullValueMetrics = default!; _explicitNullProperties?.Remove("metrics"); }
+            else if (parseNode.GetChildNode("metrics") is { } nullNodeMetrics && nullNodeMetrics.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Metrics = null;
+            if (parseNode.GetChildNode("rolling") is null) { _explicitNullValueRolling = default!; _explicitNullProperties?.Remove("rolling"); }
+            else if (parseNode.GetChildNode("rolling") is { } nullNodeRolling && nullNodeRolling.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Rolling = null;
+            if (parseNode.GetChildNode("sourceDeploymentId") is null) { _explicitNullValueSourceDeploymentId = default!; _explicitNullProperties?.Remove("sourceDeploymentId"); }
+            else if (parseNode.GetChildNode("sourceDeploymentId") is { } nullNodeSourceDeploymentId && nullNodeSourceDeploymentId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceDeploymentId = null;
+            if (parseNode.GetChildNode("targetDeploymentId") is null) { _explicitNullValueTargetDeploymentId = default!; _explicitNullProperties?.Remove("targetDeploymentId"); }
+            else if (parseNode.GetChildNode("targetDeploymentId") is { } nullNodeTargetDeploymentId && nullNodeTargetDeploymentId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TargetDeploymentId = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -33,67 +41,67 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Blue-green rollout strategy configuration. Mutually exclusive with canary and rolling.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.DeCreateRolloutRequestBlueGreen? BlueGreen { get => _explicitNullValueBlueGreen; set { _explicitNullValueBlueGreen = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("blueGreen"); else _explicitNullProperties?.Remove("blueGreen"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.DeCreateRolloutRequestBlueGreen? BlueGreen { get => _explicitNullValueBlueGreen; set { _explicitNullValueBlueGreen = value; AdditionalData?.Remove("blueGreen"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("blueGreen"); else _explicitNullProperties?.Remove("blueGreen"); } }
         private global::Soenneker.Together.OpenApiClient.Models.DeCreateRolloutRequestBlueGreen? _explicitNullValueBlueGreen = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.DeCreateRolloutRequestBlueGreen BlueGreen { get => _explicitNullValueBlueGreen; set { _explicitNullValueBlueGreen = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("blueGreen"); else _explicitNullProperties?.Remove("blueGreen"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.DeCreateRolloutRequestBlueGreen BlueGreen { get => _explicitNullValueBlueGreen; set { _explicitNullValueBlueGreen = value; AdditionalData?.Remove("blueGreen"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("blueGreen"); else _explicitNullProperties?.Remove("blueGreen"); } }
         private global::Soenneker.Together.OpenApiClient.Models.DeCreateRolloutRequestBlueGreen _explicitNullValueBlueGreen = default!;
 #endif
         /// <summary>Canary rollout strategy configuration. Mutually exclusive with blueGreen and rolling.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.DeCreateRolloutRequestCanary? Canary { get => _explicitNullValueCanary; set { _explicitNullValueCanary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("canary"); else _explicitNullProperties?.Remove("canary"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.DeCreateRolloutRequestCanary? Canary { get => _explicitNullValueCanary; set { _explicitNullValueCanary = value; AdditionalData?.Remove("canary"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("canary"); else _explicitNullProperties?.Remove("canary"); } }
         private global::Soenneker.Together.OpenApiClient.Models.DeCreateRolloutRequestCanary? _explicitNullValueCanary = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.DeCreateRolloutRequestCanary Canary { get => _explicitNullValueCanary; set { _explicitNullValueCanary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("canary"); else _explicitNullProperties?.Remove("canary"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.DeCreateRolloutRequestCanary Canary { get => _explicitNullValueCanary; set { _explicitNullValueCanary = value; AdditionalData?.Remove("canary"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("canary"); else _explicitNullProperties?.Remove("canary"); } }
         private global::Soenneker.Together.OpenApiClient.Models.DeCreateRolloutRequestCanary _explicitNullValueCanary = default!;
 #endif
         /// <summary>Optional final replica count for the source deployment. Defaults to 0, which drains and stops the source.</summary>
-        public int? FinalSourceReplicas { get => _explicitNullValueFinalSourceReplicas; set { _explicitNullValueFinalSourceReplicas = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("finalSourceReplicas"); else _explicitNullProperties?.Remove("finalSourceReplicas"); } }
+        public int? FinalSourceReplicas { get => _explicitNullValueFinalSourceReplicas; set { _explicitNullValueFinalSourceReplicas = value; AdditionalData?.Remove("finalSourceReplicas"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("finalSourceReplicas"); else _explicitNullProperties?.Remove("finalSourceReplicas"); } }
         private int? _explicitNullValueFinalSourceReplicas = default!;
         /// <summary>Optional target replica floor at completion. Must be at least 1 when set; defaults to the source deployment&apos;s replica count at create time, or to the source and target deployments&apos; combined replica count when both already stand in the endpoint traffic split after a cancel. The completed target&apos;s autoscaling max lands at the landing ceiling, max(this value, the source max, the target&apos;s own max); the rollout may lift the target max at first wake, at the first step that needs it, or at completion unless an operator changes max mid-run. The lifted ceiling remains after completion, and PreviewRolloutDefaults reports a coming lift as ROLLOUT_WILL_RAISE_TARGET_MAX. A pre-existing target whose own autoscaling min is higher keeps that floor, reported as FINAL_BELOW_INHERITED_MIN. A target that starts stopped lands exactly at this value; if the source min was higher, PreviewRolloutDefaults reports FINAL_BELOW_SOURCE_MIN.</summary>
-        public int? FinalTargetReplicas { get => _explicitNullValueFinalTargetReplicas; set { _explicitNullValueFinalTargetReplicas = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("finalTargetReplicas"); else _explicitNullProperties?.Remove("finalTargetReplicas"); } }
+        public int? FinalTargetReplicas { get => _explicitNullValueFinalTargetReplicas; set { _explicitNullValueFinalTargetReplicas = value; AdditionalData?.Remove("finalTargetReplicas"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("finalTargetReplicas"); else _explicitNullProperties?.Remove("finalTargetReplicas"); } }
         private int? _explicitNullValueFinalTargetReplicas = default!;
         /// <summary>Optional metric gates evaluated after each step&apos;s soak. Canary only; rejected on rolling and blue-green rollouts.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Together.OpenApiClient.Models.DeMetricRule>? Metrics { get => _explicitNullValueMetrics; set { _explicitNullValueMetrics = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metrics"); else _explicitNullProperties?.Remove("metrics"); } }
+        public List<global::Soenneker.Together.OpenApiClient.Models.DeMetricRule>? Metrics { get => _explicitNullValueMetrics; set { _explicitNullValueMetrics = value; AdditionalData?.Remove("metrics"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metrics"); else _explicitNullProperties?.Remove("metrics"); } }
         private List<global::Soenneker.Together.OpenApiClient.Models.DeMetricRule>? _explicitNullValueMetrics = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Together.OpenApiClient.Models.DeMetricRule> Metrics { get => _explicitNullValueMetrics; set { _explicitNullValueMetrics = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metrics"); else _explicitNullProperties?.Remove("metrics"); } }
+        public List<global::Soenneker.Together.OpenApiClient.Models.DeMetricRule> Metrics { get => _explicitNullValueMetrics; set { _explicitNullValueMetrics = value; AdditionalData?.Remove("metrics"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metrics"); else _explicitNullProperties?.Remove("metrics"); } }
         private List<global::Soenneker.Together.OpenApiClient.Models.DeMetricRule> _explicitNullValueMetrics = default!;
 #endif
         /// <summary>Rolling rollout strategy configuration. Mutually exclusive with canary and blueGreen.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.DeCreateRolloutRequestRolling? Rolling { get => _explicitNullValueRolling; set { _explicitNullValueRolling = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rolling"); else _explicitNullProperties?.Remove("rolling"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.DeCreateRolloutRequestRolling? Rolling { get => _explicitNullValueRolling; set { _explicitNullValueRolling = value; AdditionalData?.Remove("rolling"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rolling"); else _explicitNullProperties?.Remove("rolling"); } }
         private global::Soenneker.Together.OpenApiClient.Models.DeCreateRolloutRequestRolling? _explicitNullValueRolling = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.DeCreateRolloutRequestRolling Rolling { get => _explicitNullValueRolling; set { _explicitNullValueRolling = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rolling"); else _explicitNullProperties?.Remove("rolling"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.DeCreateRolloutRequestRolling Rolling { get => _explicitNullValueRolling; set { _explicitNullValueRolling = value; AdditionalData?.Remove("rolling"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rolling"); else _explicitNullProperties?.Remove("rolling"); } }
         private global::Soenneker.Together.OpenApiClient.Models.DeCreateRolloutRequestRolling _explicitNullValueRolling = default!;
 #endif
         /// <summary>Deployment that traffic shifts away from.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SourceDeploymentId { get => _explicitNullValueSourceDeploymentId; set { _explicitNullValueSourceDeploymentId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sourceDeploymentId"); else _explicitNullProperties?.Remove("sourceDeploymentId"); } }
+        public string? SourceDeploymentId { get => _explicitNullValueSourceDeploymentId; set { _explicitNullValueSourceDeploymentId = value; AdditionalData?.Remove("sourceDeploymentId"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sourceDeploymentId"); else _explicitNullProperties?.Remove("sourceDeploymentId"); } }
         private string? _explicitNullValueSourceDeploymentId = default!;
 #nullable restore
 #else
-        public string SourceDeploymentId { get => _explicitNullValueSourceDeploymentId; set { _explicitNullValueSourceDeploymentId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sourceDeploymentId"); else _explicitNullProperties?.Remove("sourceDeploymentId"); } }
+        public string SourceDeploymentId { get => _explicitNullValueSourceDeploymentId; set { _explicitNullValueSourceDeploymentId = value; AdditionalData?.Remove("sourceDeploymentId"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sourceDeploymentId"); else _explicitNullProperties?.Remove("sourceDeploymentId"); } }
         private string _explicitNullValueSourceDeploymentId = default!;
 #endif
         /// <summary>Deployment that traffic shifts toward.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TargetDeploymentId { get => _explicitNullValueTargetDeploymentId; set { _explicitNullValueTargetDeploymentId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("targetDeploymentId"); else _explicitNullProperties?.Remove("targetDeploymentId"); } }
+        public string? TargetDeploymentId { get => _explicitNullValueTargetDeploymentId; set { _explicitNullValueTargetDeploymentId = value; AdditionalData?.Remove("targetDeploymentId"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("targetDeploymentId"); else _explicitNullProperties?.Remove("targetDeploymentId"); } }
         private string? _explicitNullValueTargetDeploymentId = default!;
 #nullable restore
 #else
-        public string TargetDeploymentId { get => _explicitNullValueTargetDeploymentId; set { _explicitNullValueTargetDeploymentId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("targetDeploymentId"); else _explicitNullProperties?.Remove("targetDeploymentId"); } }
+        public string TargetDeploymentId { get => _explicitNullValueTargetDeploymentId; set { _explicitNullValueTargetDeploymentId = value; AdditionalData?.Remove("targetDeploymentId"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("targetDeploymentId"); else _explicitNullProperties?.Remove("targetDeploymentId"); } }
         private string _explicitNullValueTargetDeploymentId = default!;
 #endif
         /// <summary>

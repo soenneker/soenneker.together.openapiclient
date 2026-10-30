@@ -18,17 +18,19 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("direction") is { } nullNodeDirection && nullNodeDirection.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Direction = null;
-            if (parseNode.GetChildNode("maxRegressionPercent") is { } nullNodeMaxRegressionPercent && nullNodeMaxRegressionPercent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxRegressionPercent = null;
+            if (parseNode.GetChildNode("direction") is null) { _explicitNullValueDirection = default!; _explicitNullProperties?.Remove("direction"); }
+            else if (parseNode.GetChildNode("direction") is { } nullNodeDirection && nullNodeDirection.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Direction = null;
+            if (parseNode.GetChildNode("maxRegressionPercent") is null) { _explicitNullValueMaxRegressionPercent = default!; _explicitNullProperties?.Remove("maxRegressionPercent"); }
+            else if (parseNode.GetChildNode("maxRegressionPercent") is { } nullNodeMaxRegressionPercent && nullNodeMaxRegressionPercent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxRegressionPercent = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Required direction that indicates whether higher or lower metric values are worse.</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.DeRegressionCheckDirection? Direction { get => _explicitNullValueDirection; set { _explicitNullValueDirection = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("direction"); else _explicitNullProperties?.Remove("direction"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.DeRegressionCheckDirection? Direction { get => _explicitNullValueDirection; set { _explicitNullValueDirection = value; AdditionalData?.Remove("direction"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("direction"); else _explicitNullProperties?.Remove("direction"); } }
         private global::Soenneker.Together.OpenApiClient.Models.DeRegressionCheckDirection? _explicitNullValueDirection = default!;
         /// <summary>Finite maximum allowed regression percentage, greater than or equal to 0. Omitting this value is read as 0. A value of 0 is the strictest budget; any regression fails, and exactly-at-budget passes.</summary>
-        public double? MaxRegressionPercent { get => _explicitNullValueMaxRegressionPercent; set { _explicitNullValueMaxRegressionPercent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maxRegressionPercent"); else _explicitNullProperties?.Remove("maxRegressionPercent"); } }
+        public double? MaxRegressionPercent { get => _explicitNullValueMaxRegressionPercent; set { _explicitNullValueMaxRegressionPercent = value; AdditionalData?.Remove("maxRegressionPercent"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maxRegressionPercent"); else _explicitNullProperties?.Remove("maxRegressionPercent"); } }
         private double? _explicitNullValueMaxRegressionPercent = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.DeMetricRuleRegressionCheck"/> and sets the default values.
@@ -55,7 +57,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "direction", n => { Direction = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeRegressionCheckDirection>(); } },
+                { "direction", n => { var parsed = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeRegressionCheckDirection>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueDirection = default; _explicitNullProperties?.Remove("direction"); AdditionalData["direction"] = unknown; } else { Direction = parsed; AdditionalData.Remove("direction"); } } },
                 { "maxRegressionPercent", n => { MaxRegressionPercent = n.GetDoubleValue(); } },
             };
         }

@@ -18,10 +18,14 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("applied_weights_version") is { } nullNodeAppliedWeightsVersion && nullNodeAppliedWeightsVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AppliedWeightsVersion = null;
-            if (parseNode.GetChildNode("pending_publish") is { } nullNodePendingPublish && nullNodePendingPublish.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PendingPublish = null;
-            if (parseNode.GetChildNode("target_weights_version") is { } nullNodeTargetWeightsVersion && nullNodeTargetWeightsVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TargetWeightsVersion = null;
-            if (parseNode.GetChildNode("trainer_step") is { } nullNodeTrainerStep && nullNodeTrainerStep.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TrainerStep = null;
+            if (parseNode.GetChildNode("applied_weights_version") is null) { _explicitNullValueAppliedWeightsVersion = default!; _explicitNullProperties?.Remove("applied_weights_version"); }
+            else if (parseNode.GetChildNode("applied_weights_version") is { } nullNodeAppliedWeightsVersion && nullNodeAppliedWeightsVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AppliedWeightsVersion = null;
+            if (parseNode.GetChildNode("pending_publish") is null) { _explicitNullValuePendingPublish = default!; _explicitNullProperties?.Remove("pending_publish"); }
+            else if (parseNode.GetChildNode("pending_publish") is { } nullNodePendingPublish && nullNodePendingPublish.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PendingPublish = null;
+            if (parseNode.GetChildNode("target_weights_version") is null) { _explicitNullValueTargetWeightsVersion = default!; _explicitNullProperties?.Remove("target_weights_version"); }
+            else if (parseNode.GetChildNode("target_weights_version") is { } nullNodeTargetWeightsVersion && nullNodeTargetWeightsVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TargetWeightsVersion = null;
+            if (parseNode.GetChildNode("trainer_step") is null) { _explicitNullValueTrainerStep = default!; _explicitNullProperties?.Remove("trainer_step"); }
+            else if (parseNode.GetChildNode("trainer_step") is { } nullNodeTrainerStep && nullNodeTrainerStep.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TrainerStep = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -29,34 +33,34 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Policy version successfully applied to the generator for this session.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RlSessionPolicyStateAppliedWeightsVersion? AppliedWeightsVersion { get => _explicitNullValueAppliedWeightsVersion; set { _explicitNullValueAppliedWeightsVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("applied_weights_version"); else _explicitNullProperties?.Remove("applied_weights_version"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.RlSessionPolicyStateAppliedWeightsVersion? AppliedWeightsVersion { get => _explicitNullValueAppliedWeightsVersion; set { _explicitNullValueAppliedWeightsVersion = value; AdditionalData?.Remove("applied_weights_version"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("applied_weights_version"); else _explicitNullProperties?.Remove("applied_weights_version"); } }
         private global::Soenneker.Together.OpenApiClient.Models.RlSessionPolicyStateAppliedWeightsVersion? _explicitNullValueAppliedWeightsVersion = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.RlSessionPolicyStateAppliedWeightsVersion AppliedWeightsVersion { get => _explicitNullValueAppliedWeightsVersion; set { _explicitNullValueAppliedWeightsVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("applied_weights_version"); else _explicitNullProperties?.Remove("applied_weights_version"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.RlSessionPolicyStateAppliedWeightsVersion AppliedWeightsVersion { get => _explicitNullValueAppliedWeightsVersion; set { _explicitNullValueAppliedWeightsVersion = value; AdditionalData?.Remove("applied_weights_version"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("applied_weights_version"); else _explicitNullProperties?.Remove("applied_weights_version"); } }
         private global::Soenneker.Together.OpenApiClient.Models.RlSessionPolicyStateAppliedWeightsVersion _explicitNullValueAppliedWeightsVersion = default!;
 #endif
         /// <summary>True when a generator publish has been requested but has not finished.</summary>
-        public bool? PendingPublish { get => _explicitNullValuePendingPublish; set { _explicitNullValuePendingPublish = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pending_publish"); else _explicitNullProperties?.Remove("pending_publish"); } }
+        public bool? PendingPublish { get => _explicitNullValuePendingPublish; set { _explicitNullValuePendingPublish = value; AdditionalData?.Remove("pending_publish"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pending_publish"); else _explicitNullProperties?.Remove("pending_publish"); } }
         private bool? _explicitNullValuePendingPublish = default!;
         /// <summary>Policy version promised to the generator by the latest weights-sync.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RlSessionPolicyStateTargetWeightsVersion? TargetWeightsVersion { get => _explicitNullValueTargetWeightsVersion; set { _explicitNullValueTargetWeightsVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_weights_version"); else _explicitNullProperties?.Remove("target_weights_version"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.RlSessionPolicyStateTargetWeightsVersion? TargetWeightsVersion { get => _explicitNullValueTargetWeightsVersion; set { _explicitNullValueTargetWeightsVersion = value; AdditionalData?.Remove("target_weights_version"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_weights_version"); else _explicitNullProperties?.Remove("target_weights_version"); } }
         private global::Soenneker.Together.OpenApiClient.Models.RlSessionPolicyStateTargetWeightsVersion? _explicitNullValueTargetWeightsVersion = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.RlSessionPolicyStateTargetWeightsVersion TargetWeightsVersion { get => _explicitNullValueTargetWeightsVersion; set { _explicitNullValueTargetWeightsVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_weights_version"); else _explicitNullProperties?.Remove("target_weights_version"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.RlSessionPolicyStateTargetWeightsVersion TargetWeightsVersion { get => _explicitNullValueTargetWeightsVersion; set { _explicitNullValueTargetWeightsVersion = value; AdditionalData?.Remove("target_weights_version"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_weights_version"); else _explicitNullProperties?.Remove("target_weights_version"); } }
         private global::Soenneker.Together.OpenApiClient.Models.RlSessionPolicyStateTargetWeightsVersion _explicitNullValueTargetWeightsVersion = default!;
 #endif
         /// <summary>Policy version produced by the last completed optimizer step. Distinct from `TrainingSession.step`, which is the durable optimizer-step counter.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.RlSessionPolicyStateTrainerStep? TrainerStep { get => _explicitNullValueTrainerStep; set { _explicitNullValueTrainerStep = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trainer_step"); else _explicitNullProperties?.Remove("trainer_step"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.RlSessionPolicyStateTrainerStep? TrainerStep { get => _explicitNullValueTrainerStep; set { _explicitNullValueTrainerStep = value; AdditionalData?.Remove("trainer_step"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trainer_step"); else _explicitNullProperties?.Remove("trainer_step"); } }
         private global::Soenneker.Together.OpenApiClient.Models.RlSessionPolicyStateTrainerStep? _explicitNullValueTrainerStep = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.RlSessionPolicyStateTrainerStep TrainerStep { get => _explicitNullValueTrainerStep; set { _explicitNullValueTrainerStep = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trainer_step"); else _explicitNullProperties?.Remove("trainer_step"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.RlSessionPolicyStateTrainerStep TrainerStep { get => _explicitNullValueTrainerStep; set { _explicitNullValueTrainerStep = value; AdditionalData?.Remove("trainer_step"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trainer_step"); else _explicitNullProperties?.Remove("trainer_step"); } }
         private global::Soenneker.Together.OpenApiClient.Models.RlSessionPolicyStateTrainerStep _explicitNullValueTrainerStep = default!;
 #endif
         /// <summary>

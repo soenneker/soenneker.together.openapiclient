@@ -17,17 +17,19 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("clip_high_threshold") is { } nullNodeClipHighThreshold && nullNodeClipHighThreshold.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClipHighThreshold = null;
-            if (parseNode.GetChildNode("clip_low_threshold") is { } nullNodeClipLowThreshold && nullNodeClipLowThreshold.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClipLowThreshold = null;
+            if (parseNode.GetChildNode("clip_high_threshold") is null) { _explicitNullValueClipHighThreshold = default!; _explicitNullProperties?.Remove("clip_high_threshold"); }
+            else if (parseNode.GetChildNode("clip_high_threshold") is { } nullNodeClipHighThreshold && nullNodeClipHighThreshold.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClipHighThreshold = null;
+            if (parseNode.GetChildNode("clip_low_threshold") is null) { _explicitNullValueClipLowThreshold = default!; _explicitNullProperties?.Remove("clip_low_threshold"); }
+            else if (parseNode.GetChildNode("clip_low_threshold") is { } nullNodeClipLowThreshold && nullNodeClipLowThreshold.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClipLowThreshold = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Upper bound for clipping the importance-sampling ratio.</summary>
-        public float? ClipHighThreshold { get => _explicitNullValueClipHighThreshold; set { _explicitNullValueClipHighThreshold = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("clip_high_threshold"); else _explicitNullProperties?.Remove("clip_high_threshold"); } }
+        public float? ClipHighThreshold { get => _explicitNullValueClipHighThreshold; set { _explicitNullValueClipHighThreshold = value; AdditionalData?.Remove("clip_high_threshold"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("clip_high_threshold"); else _explicitNullProperties?.Remove("clip_high_threshold"); } }
         private float? _explicitNullValueClipHighThreshold = default!;
         /// <summary>Lower bound for clipping the importance-sampling ratio.</summary>
-        public float? ClipLowThreshold { get => _explicitNullValueClipLowThreshold; set { _explicitNullValueClipLowThreshold = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("clip_low_threshold"); else _explicitNullProperties?.Remove("clip_low_threshold"); } }
+        public float? ClipLowThreshold { get => _explicitNullValueClipLowThreshold; set { _explicitNullValueClipLowThreshold = value; AdditionalData?.Remove("clip_low_threshold"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("clip_low_threshold"); else _explicitNullProperties?.Remove("clip_low_threshold"); } }
         private float? _explicitNullValueClipLowThreshold = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlCispoLossParams"/> and sets the default values.

@@ -17,33 +17,39 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("dpo_beta") is { } nullNodeDpoBeta && nullNodeDpoBeta.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DpoBeta = null;
-            if (parseNode.GetChildNode("dpo_normalize_logratios_by_length") is { } nullNodeDpoNormalizeLogratiosByLength && nullNodeDpoNormalizeLogratiosByLength.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DpoNormalizeLogratiosByLength = null;
-            if (parseNode.GetChildNode("dpo_reference_free") is { } nullNodeDpoReferenceFree && nullNodeDpoReferenceFree.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DpoReferenceFree = null;
-            if (parseNode.GetChildNode("method") is { } nullNodeMethod && nullNodeMethod.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Method = null;
-            if (parseNode.GetChildNode("rpo_alpha") is { } nullNodeRpoAlpha && nullNodeRpoAlpha.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RpoAlpha = null;
-            if (parseNode.GetChildNode("simpo_gamma") is { } nullNodeSimpoGamma && nullNodeSimpoGamma.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SimpoGamma = null;
+            if (parseNode.GetChildNode("dpo_beta") is null) { _explicitNullValueDpoBeta = default!; _explicitNullProperties?.Remove("dpo_beta"); }
+            else if (parseNode.GetChildNode("dpo_beta") is { } nullNodeDpoBeta && nullNodeDpoBeta.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DpoBeta = null;
+            if (parseNode.GetChildNode("dpo_normalize_logratios_by_length") is null) { _explicitNullValueDpoNormalizeLogratiosByLength = default!; _explicitNullProperties?.Remove("dpo_normalize_logratios_by_length"); }
+            else if (parseNode.GetChildNode("dpo_normalize_logratios_by_length") is { } nullNodeDpoNormalizeLogratiosByLength && nullNodeDpoNormalizeLogratiosByLength.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DpoNormalizeLogratiosByLength = null;
+            if (parseNode.GetChildNode("dpo_reference_free") is null) { _explicitNullValueDpoReferenceFree = default!; _explicitNullProperties?.Remove("dpo_reference_free"); }
+            else if (parseNode.GetChildNode("dpo_reference_free") is { } nullNodeDpoReferenceFree && nullNodeDpoReferenceFree.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DpoReferenceFree = null;
+            if (parseNode.GetChildNode("method") is null) { _explicitNullValueMethod = default!; _explicitNullProperties?.Remove("method"); }
+            else if (parseNode.GetChildNode("method") is { } nullNodeMethod && nullNodeMethod.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Method = null;
+            if (parseNode.GetChildNode("rpo_alpha") is null) { _explicitNullValueRpoAlpha = default!; _explicitNullProperties?.Remove("rpo_alpha"); }
+            else if (parseNode.GetChildNode("rpo_alpha") is { } nullNodeRpoAlpha && nullNodeRpoAlpha.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RpoAlpha = null;
+            if (parseNode.GetChildNode("simpo_gamma") is null) { _explicitNullValueSimpoGamma = default!; _explicitNullProperties?.Remove("simpo_gamma"); }
+            else if (parseNode.GetChildNode("simpo_gamma") is { } nullNodeSimpoGamma && nullNodeSimpoGamma.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SimpoGamma = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The dpo_beta property</summary>
-        public double? DpoBeta { get => _explicitNullValueDpoBeta; set { _explicitNullValueDpoBeta = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dpo_beta"); else _explicitNullProperties?.Remove("dpo_beta"); } }
+        public double? DpoBeta { get => _explicitNullValueDpoBeta; set { _explicitNullValueDpoBeta = value; AdditionalData?.Remove("dpo_beta"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dpo_beta"); else _explicitNullProperties?.Remove("dpo_beta"); } }
         private double? _explicitNullValueDpoBeta = default!;
         /// <summary>The dpo_normalize_logratios_by_length property</summary>
-        public bool? DpoNormalizeLogratiosByLength { get => _explicitNullValueDpoNormalizeLogratiosByLength; set { _explicitNullValueDpoNormalizeLogratiosByLength = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dpo_normalize_logratios_by_length"); else _explicitNullProperties?.Remove("dpo_normalize_logratios_by_length"); } }
+        public bool? DpoNormalizeLogratiosByLength { get => _explicitNullValueDpoNormalizeLogratiosByLength; set { _explicitNullValueDpoNormalizeLogratiosByLength = value; AdditionalData?.Remove("dpo_normalize_logratios_by_length"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dpo_normalize_logratios_by_length"); else _explicitNullProperties?.Remove("dpo_normalize_logratios_by_length"); } }
         private bool? _explicitNullValueDpoNormalizeLogratiosByLength = default!;
         /// <summary>The dpo_reference_free property</summary>
-        public bool? DpoReferenceFree { get => _explicitNullValueDpoReferenceFree; set { _explicitNullValueDpoReferenceFree = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dpo_reference_free"); else _explicitNullProperties?.Remove("dpo_reference_free"); } }
+        public bool? DpoReferenceFree { get => _explicitNullValueDpoReferenceFree; set { _explicitNullValueDpoReferenceFree = value; AdditionalData?.Remove("dpo_reference_free"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dpo_reference_free"); else _explicitNullProperties?.Remove("dpo_reference_free"); } }
         private bool? _explicitNullValueDpoReferenceFree = default!;
         /// <summary>The method property</summary>
-        public global::Soenneker.Together.OpenApiClient.Models.DpoMethod? Method { get => _explicitNullValueMethod; set { _explicitNullValueMethod = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("method"); else _explicitNullProperties?.Remove("method"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.DpoMethod? Method { get => _explicitNullValueMethod; set { _explicitNullValueMethod = value; AdditionalData?.Remove("method"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("method"); else _explicitNullProperties?.Remove("method"); } }
         private global::Soenneker.Together.OpenApiClient.Models.DpoMethod? _explicitNullValueMethod = default!;
         /// <summary>The rpo_alpha property</summary>
-        public double? RpoAlpha { get => _explicitNullValueRpoAlpha; set { _explicitNullValueRpoAlpha = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rpo_alpha"); else _explicitNullProperties?.Remove("rpo_alpha"); } }
+        public double? RpoAlpha { get => _explicitNullValueRpoAlpha; set { _explicitNullValueRpoAlpha = value; AdditionalData?.Remove("rpo_alpha"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rpo_alpha"); else _explicitNullProperties?.Remove("rpo_alpha"); } }
         private double? _explicitNullValueRpoAlpha = default!;
         /// <summary>The simpo_gamma property</summary>
-        public double? SimpoGamma { get => _explicitNullValueSimpoGamma; set { _explicitNullValueSimpoGamma = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("simpo_gamma"); else _explicitNullProperties?.Remove("simpo_gamma"); } }
+        public double? SimpoGamma { get => _explicitNullValueSimpoGamma; set { _explicitNullValueSimpoGamma = value; AdditionalData?.Remove("simpo_gamma"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("simpo_gamma"); else _explicitNullProperties?.Remove("simpo_gamma"); } }
         private double? _explicitNullValueSimpoGamma = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.TrainingMethodDpo"/> and sets the default values.
@@ -78,7 +84,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "dpo_beta", n => { DpoBeta = n.GetDoubleValue(); } },
                 { "dpo_normalize_logratios_by_length", n => { DpoNormalizeLogratiosByLength = n.GetBoolValue(); } },
                 { "dpo_reference_free", n => { DpoReferenceFree = n.GetBoolValue(); } },
-                { "method", n => { Method = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DpoMethod>(); } },
+                { "method", n => { var parsed = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DpoMethod>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueMethod = default; _explicitNullProperties?.Remove("method"); AdditionalData["method"] = unknown; } else { Method = parsed; AdditionalData.Remove("method"); } } },
                 { "rpo_alpha", n => { RpoAlpha = n.GetDoubleValue(); } },
                 { "simpo_gamma", n => { SimpoGamma = n.GetDoubleValue(); } },
             };

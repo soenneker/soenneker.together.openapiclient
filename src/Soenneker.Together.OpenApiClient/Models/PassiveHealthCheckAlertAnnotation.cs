@@ -18,8 +18,10 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("slurm_node_unavailable") is { } nullNodeSlurmNodeUnavailable && nullNodeSlurmNodeUnavailable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SlurmNodeUnavailable = null;
-            if (parseNode.GetChildNode("xid") is { } nullNodeXid && nullNodeXid.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Xid = null;
+            if (parseNode.GetChildNode("slurm_node_unavailable") is null) { _explicitNullValueSlurmNodeUnavailable = default!; _explicitNullProperties?.Remove("slurm_node_unavailable"); }
+            else if (parseNode.GetChildNode("slurm_node_unavailable") is { } nullNodeSlurmNodeUnavailable && nullNodeSlurmNodeUnavailable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SlurmNodeUnavailable = null;
+            if (parseNode.GetChildNode("xid") is null) { _explicitNullValueXid = default!; _explicitNullProperties?.Remove("xid"); }
+            else if (parseNode.GetChildNode("xid") is { } nullNodeXid && nullNodeXid.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Xid = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -35,11 +37,11 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Slurm node details when the alert was caused by unavailable Slurm nodes.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.PhcAnnotationSlurmNodeUnavailable? SlurmNodeUnavailable { get => _explicitNullValueSlurmNodeUnavailable; set { _explicitNullValueSlurmNodeUnavailable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slurm_node_unavailable"); else _explicitNullProperties?.Remove("slurm_node_unavailable"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.PhcAnnotationSlurmNodeUnavailable? SlurmNodeUnavailable { get => _explicitNullValueSlurmNodeUnavailable; set { _explicitNullValueSlurmNodeUnavailable = value; AdditionalData?.Remove("slurm_node_unavailable"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slurm_node_unavailable"); else _explicitNullProperties?.Remove("slurm_node_unavailable"); } }
         private global::Soenneker.Together.OpenApiClient.Models.PhcAnnotationSlurmNodeUnavailable? _explicitNullValueSlurmNodeUnavailable = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.PhcAnnotationSlurmNodeUnavailable SlurmNodeUnavailable { get => _explicitNullValueSlurmNodeUnavailable; set { _explicitNullValueSlurmNodeUnavailable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slurm_node_unavailable"); else _explicitNullProperties?.Remove("slurm_node_unavailable"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.PhcAnnotationSlurmNodeUnavailable SlurmNodeUnavailable { get => _explicitNullValueSlurmNodeUnavailable; set { _explicitNullValueSlurmNodeUnavailable = value; AdditionalData?.Remove("slurm_node_unavailable"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slurm_node_unavailable"); else _explicitNullProperties?.Remove("slurm_node_unavailable"); } }
         private global::Soenneker.Together.OpenApiClient.Models.PhcAnnotationSlurmNodeUnavailable _explicitNullValueSlurmNodeUnavailable = default!;
 #endif
         /// <summary>Per-firing summary line parsed from the evidence annotation.</summary>
@@ -61,11 +63,11 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Xid-specific details when the alert was caused by NVIDIA Xid errors.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.PhcAnnotationXid? Xid { get => _explicitNullValueXid; set { _explicitNullValueXid = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("xid"); else _explicitNullProperties?.Remove("xid"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.PhcAnnotationXid? Xid { get => _explicitNullValueXid; set { _explicitNullValueXid = value; AdditionalData?.Remove("xid"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("xid"); else _explicitNullProperties?.Remove("xid"); } }
         private global::Soenneker.Together.OpenApiClient.Models.PhcAnnotationXid? _explicitNullValueXid = default!;
 #nullable restore
 #else
-        public global::Soenneker.Together.OpenApiClient.Models.PhcAnnotationXid Xid { get => _explicitNullValueXid; set { _explicitNullValueXid = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("xid"); else _explicitNullProperties?.Remove("xid"); } }
+        public global::Soenneker.Together.OpenApiClient.Models.PhcAnnotationXid Xid { get => _explicitNullValueXid; set { _explicitNullValueXid = value; AdditionalData?.Remove("xid"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("xid"); else _explicitNullProperties?.Remove("xid"); } }
         private global::Soenneker.Together.OpenApiClient.Models.PhcAnnotationXid _explicitNullValueXid = default!;
 #endif
         /// <summary>

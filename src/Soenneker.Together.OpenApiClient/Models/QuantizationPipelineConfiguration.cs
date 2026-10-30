@@ -18,13 +18,20 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("base_model_name") is { } nullNodeBaseModelName && nullNodeBaseModelName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaseModelName = null;
-            if (parseNode.GetChildNode("base_object_id") is { } nullNodeBaseObjectId && nullNodeBaseObjectId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaseObjectId = null;
-            if (parseNode.GetChildNode("base_revision_id") is { } nullNodeBaseRevisionId && nullNodeBaseRevisionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaseRevisionId = null;
-            if (parseNode.GetChildNode("model_name") is { } nullNodeModelName && nullNodeModelName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModelName = null;
-            if (parseNode.GetChildNode("model_project_id") is { } nullNodeModelProjectId && nullNodeModelProjectId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModelProjectId = null;
-            if (parseNode.GetChildNode("model_revision_id") is { } nullNodeModelRevisionId && nullNodeModelRevisionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModelRevisionId = null;
-            if (parseNode.GetChildNode("user_id") is { } nullNodeUserId && nullNodeUserId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UserId = null;
+            if (parseNode.GetChildNode("base_model_name") is null) { _explicitNullValueBaseModelName = default!; _explicitNullProperties?.Remove("base_model_name"); }
+            else if (parseNode.GetChildNode("base_model_name") is { } nullNodeBaseModelName && nullNodeBaseModelName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaseModelName = null;
+            if (parseNode.GetChildNode("base_object_id") is null) { _explicitNullValueBaseObjectId = default!; _explicitNullProperties?.Remove("base_object_id"); }
+            else if (parseNode.GetChildNode("base_object_id") is { } nullNodeBaseObjectId && nullNodeBaseObjectId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaseObjectId = null;
+            if (parseNode.GetChildNode("base_revision_id") is null) { _explicitNullValueBaseRevisionId = default!; _explicitNullProperties?.Remove("base_revision_id"); }
+            else if (parseNode.GetChildNode("base_revision_id") is { } nullNodeBaseRevisionId && nullNodeBaseRevisionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaseRevisionId = null;
+            if (parseNode.GetChildNode("model_name") is null) { _explicitNullValueModelName = default!; _explicitNullProperties?.Remove("model_name"); }
+            else if (parseNode.GetChildNode("model_name") is { } nullNodeModelName && nullNodeModelName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModelName = null;
+            if (parseNode.GetChildNode("model_project_id") is null) { _explicitNullValueModelProjectId = default!; _explicitNullProperties?.Remove("model_project_id"); }
+            else if (parseNode.GetChildNode("model_project_id") is { } nullNodeModelProjectId && nullNodeModelProjectId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModelProjectId = null;
+            if (parseNode.GetChildNode("model_revision_id") is null) { _explicitNullValueModelRevisionId = default!; _explicitNullProperties?.Remove("model_revision_id"); }
+            else if (parseNode.GetChildNode("model_revision_id") is { } nullNodeModelRevisionId && nullNodeModelRevisionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModelRevisionId = null;
+            if (parseNode.GetChildNode("user_id") is null) { _explicitNullValueUserId = default!; _explicitNullProperties?.Remove("user_id"); }
+            else if (parseNode.GetChildNode("user_id") is { } nullNodeUserId && nullNodeUserId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UserId = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -32,71 +39,71 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Qualified name of the base model.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BaseModelName { get => _explicitNullValueBaseModelName; set { _explicitNullValueBaseModelName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("base_model_name"); else _explicitNullProperties?.Remove("base_model_name"); } }
+        public string? BaseModelName { get => _explicitNullValueBaseModelName; set { _explicitNullValueBaseModelName = value; AdditionalData?.Remove("base_model_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("base_model_name"); else _explicitNullProperties?.Remove("base_model_name"); } }
         private string? _explicitNullValueBaseModelName = default!;
 #nullable restore
 #else
-        public string BaseModelName { get => _explicitNullValueBaseModelName; set { _explicitNullValueBaseModelName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("base_model_name"); else _explicitNullProperties?.Remove("base_model_name"); } }
+        public string BaseModelName { get => _explicitNullValueBaseModelName; set { _explicitNullValueBaseModelName = value; AdditionalData?.Remove("base_model_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("base_model_name"); else _explicitNullProperties?.Remove("base_model_name"); } }
         private string _explicitNullValueBaseModelName = default!;
 #endif
         /// <summary>Model object ID of the base model the prepared model was fine-tuned from.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BaseObjectId { get => _explicitNullValueBaseObjectId; set { _explicitNullValueBaseObjectId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("base_object_id"); else _explicitNullProperties?.Remove("base_object_id"); } }
+        public string? BaseObjectId { get => _explicitNullValueBaseObjectId; set { _explicitNullValueBaseObjectId = value; AdditionalData?.Remove("base_object_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("base_object_id"); else _explicitNullProperties?.Remove("base_object_id"); } }
         private string? _explicitNullValueBaseObjectId = default!;
 #nullable restore
 #else
-        public string BaseObjectId { get => _explicitNullValueBaseObjectId; set { _explicitNullValueBaseObjectId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("base_object_id"); else _explicitNullProperties?.Remove("base_object_id"); } }
+        public string BaseObjectId { get => _explicitNullValueBaseObjectId; set { _explicitNullValueBaseObjectId = value; AdditionalData?.Remove("base_object_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("base_object_id"); else _explicitNullProperties?.Remove("base_object_id"); } }
         private string _explicitNullValueBaseObjectId = default!;
 #endif
         /// <summary>Revision ID of that base model.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BaseRevisionId { get => _explicitNullValueBaseRevisionId; set { _explicitNullValueBaseRevisionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("base_revision_id"); else _explicitNullProperties?.Remove("base_revision_id"); } }
+        public string? BaseRevisionId { get => _explicitNullValueBaseRevisionId; set { _explicitNullValueBaseRevisionId = value; AdditionalData?.Remove("base_revision_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("base_revision_id"); else _explicitNullProperties?.Remove("base_revision_id"); } }
         private string? _explicitNullValueBaseRevisionId = default!;
 #nullable restore
 #else
-        public string BaseRevisionId { get => _explicitNullValueBaseRevisionId; set { _explicitNullValueBaseRevisionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("base_revision_id"); else _explicitNullProperties?.Remove("base_revision_id"); } }
+        public string BaseRevisionId { get => _explicitNullValueBaseRevisionId; set { _explicitNullValueBaseRevisionId = value; AdditionalData?.Remove("base_revision_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("base_revision_id"); else _explicitNullProperties?.Remove("base_revision_id"); } }
         private string _explicitNullValueBaseRevisionId = default!;
 #endif
         /// <summary>Qualified name of the model, which the produced model is named after.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ModelName { get => _explicitNullValueModelName; set { _explicitNullValueModelName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_name"); else _explicitNullProperties?.Remove("model_name"); } }
+        public string? ModelName { get => _explicitNullValueModelName; set { _explicitNullValueModelName = value; AdditionalData?.Remove("model_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_name"); else _explicitNullProperties?.Remove("model_name"); } }
         private string? _explicitNullValueModelName = default!;
 #nullable restore
 #else
-        public string ModelName { get => _explicitNullValueModelName; set { _explicitNullValueModelName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_name"); else _explicitNullProperties?.Remove("model_name"); } }
+        public string ModelName { get => _explicitNullValueModelName; set { _explicitNullValueModelName = value; AdditionalData?.Remove("model_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_name"); else _explicitNullProperties?.Remove("model_name"); } }
         private string _explicitNullValueModelName = default!;
 #endif
         /// <summary>Project the model belongs to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ModelProjectId { get => _explicitNullValueModelProjectId; set { _explicitNullValueModelProjectId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_project_id"); else _explicitNullProperties?.Remove("model_project_id"); } }
+        public string? ModelProjectId { get => _explicitNullValueModelProjectId; set { _explicitNullValueModelProjectId = value; AdditionalData?.Remove("model_project_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_project_id"); else _explicitNullProperties?.Remove("model_project_id"); } }
         private string? _explicitNullValueModelProjectId = default!;
 #nullable restore
 #else
-        public string ModelProjectId { get => _explicitNullValueModelProjectId; set { _explicitNullValueModelProjectId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_project_id"); else _explicitNullProperties?.Remove("model_project_id"); } }
+        public string ModelProjectId { get => _explicitNullValueModelProjectId; set { _explicitNullValueModelProjectId = value; AdditionalData?.Remove("model_project_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_project_id"); else _explicitNullProperties?.Remove("model_project_id"); } }
         private string _explicitNullValueModelProjectId = default!;
 #endif
         /// <summary>Revision of the model selected for preparation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ModelRevisionId { get => _explicitNullValueModelRevisionId; set { _explicitNullValueModelRevisionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_revision_id"); else _explicitNullProperties?.Remove("model_revision_id"); } }
+        public string? ModelRevisionId { get => _explicitNullValueModelRevisionId; set { _explicitNullValueModelRevisionId = value; AdditionalData?.Remove("model_revision_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_revision_id"); else _explicitNullProperties?.Remove("model_revision_id"); } }
         private string? _explicitNullValueModelRevisionId = default!;
 #nullable restore
 #else
-        public string ModelRevisionId { get => _explicitNullValueModelRevisionId; set { _explicitNullValueModelRevisionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_revision_id"); else _explicitNullProperties?.Remove("model_revision_id"); } }
+        public string ModelRevisionId { get => _explicitNullValueModelRevisionId; set { _explicitNullValueModelRevisionId = value; AdditionalData?.Remove("model_revision_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_revision_id"); else _explicitNullProperties?.Remove("model_revision_id"); } }
         private string _explicitNullValueModelRevisionId = default!;
 #endif
         /// <summary>User whose scope is used to fetch the model weights.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? UserId { get => _explicitNullValueUserId; set { _explicitNullValueUserId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_id"); else _explicitNullProperties?.Remove("user_id"); } }
+        public string? UserId { get => _explicitNullValueUserId; set { _explicitNullValueUserId = value; AdditionalData?.Remove("user_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_id"); else _explicitNullProperties?.Remove("user_id"); } }
         private string? _explicitNullValueUserId = default!;
 #nullable restore
 #else
-        public string UserId { get => _explicitNullValueUserId; set { _explicitNullValueUserId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_id"); else _explicitNullProperties?.Remove("user_id"); } }
+        public string UserId { get => _explicitNullValueUserId; set { _explicitNullValueUserId = value; AdditionalData?.Remove("user_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_id"); else _explicitNullProperties?.Remove("user_id"); } }
         private string _explicitNullValueUserId = default!;
 #endif
         /// <summary>
