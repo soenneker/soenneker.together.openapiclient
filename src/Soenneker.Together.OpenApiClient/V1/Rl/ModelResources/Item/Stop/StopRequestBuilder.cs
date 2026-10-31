@@ -70,7 +70,7 @@ namespace Soenneker.Together.OpenApiClient.V1.Rl.ModelResources.Item.Stop
         public RequestInformation ToPostRequestInformation(Action<RequestConfiguration<global::Soenneker.Together.OpenApiClient.V1.Rl.ModelResources.Item.Stop.StopRequestBuilder.StopRequestBuilderPostQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.POST, global::Soenneker.OpenApi.Generated.OpenApiServiceRoutes.Resolve(UrlTemplate, RequestAdapter.BaseUrl, "https://api.together.ai", "/v1/rl/model-resources/{modelResourcesId}/stop", PathParameters.ContainsKey("request-raw-url")), PathParameters);
+            var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;

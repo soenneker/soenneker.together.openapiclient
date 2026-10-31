@@ -65,7 +65,7 @@ namespace Soenneker.Together.OpenApiClient.V1.Finetune.Download
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Together.OpenApiClient.V1.Finetune.Download.DownloadRequestBuilder.DownloadRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.GET, global::Soenneker.OpenApi.Generated.OpenApiServiceRoutes.Resolve(UrlTemplate, RequestAdapter.BaseUrl, "https://api.together.ai", "/v1/finetune/download", PathParameters.ContainsKey("request-raw-url")), PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/octet-stream");
             return requestInfo;

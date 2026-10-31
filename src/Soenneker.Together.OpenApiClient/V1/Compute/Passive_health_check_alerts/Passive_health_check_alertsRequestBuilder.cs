@@ -65,7 +65,7 @@ namespace Soenneker.Together.OpenApiClient.V1.Compute.Passive_health_check_alert
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Together.OpenApiClient.V1.Compute.Passive_health_check_alerts.Passive_health_check_alertsRequestBuilder.Passive_health_check_alertsRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.GET, global::Soenneker.OpenApi.Generated.OpenApiServiceRoutes.Resolve(UrlTemplate, RequestAdapter.BaseUrl, "https://api.together.ai", "/v1/compute/passive_health_check_alerts", PathParameters.ContainsKey("request-raw-url")), PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;

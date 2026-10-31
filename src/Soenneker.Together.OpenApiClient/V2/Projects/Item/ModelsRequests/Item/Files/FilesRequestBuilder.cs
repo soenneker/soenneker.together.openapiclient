@@ -70,7 +70,7 @@ namespace Soenneker.Together.OpenApiClient.V2.Projects.Item.ModelsRequests.Item.
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Together.OpenApiClient.V2.Projects.Item.ModelsRequests.Item.Files.FilesRequestBuilder.FilesRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.GET, global::Soenneker.OpenApi.Generated.OpenApiServiceRoutes.Resolve(UrlTemplate, RequestAdapter.BaseUrl, "https://api.together.ai", "/v2/projects/{projectId}/models/{id}/files", PathParameters.ContainsKey("request-raw-url")), PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
