@@ -7469,19 +7469,13 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string",
-                  "format": "binary"
-                },
-                "x-client-original-success-schema": {
                   "$ref": "#/components/schemas/ChatCompletionResponse"
                 }
-              },
+              }
+            },
+            "x-client-original-non-json-content": {
               "text/event-stream": {
                 "schema": {
-                  "type": "string",
-                  "format": "binary"
-                },
-                "x-client-original-success-schema": {
                   "$ref": "#/components/schemas/ChatCompletionStream"
                 }
               }
@@ -7600,19 +7594,13 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string",
-                  "format": "binary"
-                },
-                "x-client-original-success-schema": {
                   "$ref": "#/components/schemas/CompletionResponse"
                 }
-              },
+              }
+            },
+            "x-client-original-non-json-content": {
               "text/event-stream": {
                 "schema": {
-                  "type": "string",
-                  "format": "binary"
-                },
-                "x-client-original-success-schema": {
                   "$ref": "#/components/schemas/CompletionStream"
                 }
               }
@@ -10744,6 +10732,17 @@
                 }
               }
             }
+          },
+          "200": {
+            "description": "Job created (potentially with warnings)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BatchJobWithWarning"
+                }
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         },
         "security": [
