@@ -39,9 +39,9 @@ namespace Soenneker.Together.OpenApiClient.V1.Deployments.Item.Revisions.Item
         /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.RevisionDetailResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.GetV1DeploymentsByIdRevisionsByRevisionIdentifier400ResponseSchema">When receiving a 400 status code</exception>
-        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.GetV1DeploymentsByIdRevisionsByRevisionIdentifier404ResponseSchema">When receiving a 404 status code</exception>
-        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.GetV1DeploymentsByIdRevisionsByRevisionIdentifier500ResponseSchema">When receiving a 500 status code</exception>
+        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.GetV1DeploymentsByIdRevisionsByRevisionIdentifier400ResponseSchemaError">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.GetV1DeploymentsByIdRevisionsByRevisionIdentifier404ResponseSchemaError">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.GetV1DeploymentsByIdRevisionsByRevisionIdentifier500ResponseSchemaError">When receiving a 500 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Together.OpenApiClient.Models.RevisionDetailResponse?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -54,9 +54,9 @@ namespace Soenneker.Together.OpenApiClient.V1.Deployments.Item.Revisions.Item
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Soenneker.Together.OpenApiClient.Models.GetV1DeploymentsByIdRevisionsByRevisionIdentifier400ResponseSchema.CreateFromDiscriminatorValue },
-                { "404", global::Soenneker.Together.OpenApiClient.Models.GetV1DeploymentsByIdRevisionsByRevisionIdentifier404ResponseSchema.CreateFromDiscriminatorValue },
-                { "500", global::Soenneker.Together.OpenApiClient.Models.GetV1DeploymentsByIdRevisionsByRevisionIdentifier500ResponseSchema.CreateFromDiscriminatorValue },
+                { "400", global::Soenneker.Together.OpenApiClient.Models.GetV1DeploymentsByIdRevisionsByRevisionIdentifier400ResponseSchemaError.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.Together.OpenApiClient.Models.GetV1DeploymentsByIdRevisionsByRevisionIdentifier404ResponseSchemaError.CreateFromDiscriminatorValue },
+                { "500", global::Soenneker.Together.OpenApiClient.Models.GetV1DeploymentsByIdRevisionsByRevisionIdentifier500ResponseSchemaError.CreateFromDiscriminatorValue },
                 { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
                 { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
