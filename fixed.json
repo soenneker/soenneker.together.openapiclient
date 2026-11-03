@@ -5029,17 +5029,17 @@
           {
             "lang": "Python",
             "label": "Together AI SDK (Python)",
-            "source": "from together import Together\n\nclient = Together()\nidentity = client.whoami()\nif identity.type != \u0022project_api_key\u0022:\n    raise RuntimeError(\u0022TOGETHER_API_KEY must be a project API key\u0022)\nproject_id = identity.project.id\n\n# The SDK has no dedicated method for this endpoint yet, so call it with\n# the client\u0027s generic GET helper.\nurl = (\n    f\u0022https://api.together.ai/v2/projects/{project_id}\u0022\n    \u0022/models/ml_abc123/revisions/rv_abc123\u0022\n)\nrevision = client.get(url, cast_to=object)\nprint(revision)\n"
+            "source": "from together import Together\n\nclient = Together()\nidentity = client.whoami()\nif identity.type != \u0022project_api_key\u0022:\n    raise RuntimeError(\u0022TOGETHER_API_KEY must be a project API key\u0022)\nproject_id = identity.project.id\n\n# The SDK has no dedicated method for this endpoint yet, so call it with\n# the client\u0027s generic GET helper.\nrevision = client.get(\n    f\u0022/v2/projects/{project_id}/models/ml_abc123/revisions/rv_abc123\u0022,\n    cast_to=object,\n)\nprint(revision)\n"
           },
           {
             "lang": "TypeScript",
             "label": "Together AI SDK (TypeScript)",
-            "source": "import Together from \u0022together-ai\u0022;\n\nconst client = new Together();\nconst identity = await client.whoami();\nif (identity.type !== \u0022project_api_key\u0022) {\n  throw new Error(\u0022TOGETHER_API_KEY must be a project API key\u0022);\n}\nconst projectId = identity.project.id;\n\n// The SDK has no dedicated method for this endpoint yet, so call it with\n// the client\u0027s generic GET helper.\nconst revision = await client.get(\n  \u0060https://api.together.ai/v2/projects/${projectId}/models/ml_abc123/revisions/rv_abc123\u0060,\n);\nconsole.log(revision);\n"
+            "source": "import Together from \u0022together-ai\u0022;\n\nconst client = new Together();\nconst identity = await client.whoami();\nif (identity.type !== \u0022project_api_key\u0022) {\n  throw new Error(\u0022TOGETHER_API_KEY must be a project API key\u0022);\n}\nconst projectId = identity.project.id;\n\n// The SDK has no dedicated method for this endpoint yet, so call it with\n// the client\u0027s generic GET helper.\nconst revision = await client.get(\n  \u0060/v2/projects/${projectId}/models/ml_abc123/revisions/rv_abc123\u0060,\n);\nconsole.log(revision);\n"
           },
           {
             "lang": "JavaScript",
             "label": "Together AI SDK (JavaScript)",
-            "source": "import Together from \u0022together-ai\u0022;\n\nconst client = new Together();\nconst identity = await client.whoami();\nif (identity.type !== \u0022project_api_key\u0022) {\n  throw new Error(\u0022TOGETHER_API_KEY must be a project API key\u0022);\n}\nconst projectId = identity.project.id;\n\n// The SDK has no dedicated method for this endpoint yet, so call it with\n// the client\u0027s generic GET helper.\nconst revision = await client.get(\n  \u0060https://api.together.ai/v2/projects/${projectId}/models/ml_abc123/revisions/rv_abc123\u0060,\n);\nconsole.log(revision);\n"
+            "source": "import Together from \u0022together-ai\u0022;\n\nconst client = new Together();\nconst identity = await client.whoami();\nif (identity.type !== \u0022project_api_key\u0022) {\n  throw new Error(\u0022TOGETHER_API_KEY must be a project API key\u0022);\n}\nconst projectId = identity.project.id;\n\n// The SDK has no dedicated method for this endpoint yet, so call it with\n// the client\u0027s generic GET helper.\nconst revision = await client.get(\n  \u0060/v2/projects/${projectId}/models/ml_abc123/revisions/rv_abc123\u0060,\n);\nconsole.log(revision);\n"
           }
         ]
       }
@@ -6916,17 +6916,17 @@
           {
             "lang": "Python",
             "label": "Together AI SDK (Python)",
-            "source": "from together import Together\n\nclient = Together()\n\n# The SDK has no dedicated method for this endpoint yet, so call it with\n# the client\u0027s generic GET helper.\nsigned = client.get(\u0022/deployments/storage/model.tar.gz/url\u0022, cast_to=object)\nprint(signed)\n"
+            "source": "from together import Together\n\nclient = Together()\n\n# The SDK has no dedicated method for this endpoint yet, so call it with\n# the client\u0027s generic GET helper.\nsigned = client.get(\u0022/v1/deployments/storage/model.tar.gz/url\u0022, cast_to=object)\nprint(signed)\n"
           },
           {
             "lang": "TypeScript",
             "label": "Together AI SDK (TypeScript)",
-            "source": "import Together from \u0022together-ai\u0022;\n\nconst client = new Together();\n\n// The SDK has no dedicated method for this endpoint yet, so call it with\n// the client\u0027s generic GET helper.\nconst signed = await client.get(\u0022/deployments/storage/model.tar.gz/url\u0022);\nconsole.log(signed);\n"
+            "source": "import Together from \u0022together-ai\u0022;\n\nconst client = new Together();\n\n// The SDK has no dedicated method for this endpoint yet, so call it with\n// the client\u0027s generic GET helper.\nconst signed = await client.get(\u0022/v1/deployments/storage/model.tar.gz/url\u0022);\nconsole.log(signed);\n"
           },
           {
             "lang": "JavaScript",
             "label": "Together AI SDK (JavaScript)",
-            "source": "import Together from \u0022together-ai\u0022;\n\nconst client = new Together();\n\n// The SDK has no dedicated method for this endpoint yet, so call it with\n// the client\u0027s generic GET helper.\nconst signed = await client.get(\u0022/deployments/storage/model.tar.gz/url\u0022);\nconsole.log(signed);\n"
+            "source": "import Together from \u0022together-ai\u0022;\n\nconst client = new Together();\n\n// The SDK has no dedicated method for this endpoint yet, so call it with\n// the client\u0027s generic GET helper.\nconst signed = await client.get(\u0022/v1/deployments/storage/model.tar.gz/url\u0022);\nconsole.log(signed);\n"
           }
         ]
       }
@@ -9008,17 +9008,17 @@
           {
             "lang": "Python",
             "label": "Together AI SDK (Python)",
-            "source": "from together import Together\n\nclient = Together()\n\n# The SDK has no dedicated method for this endpoint yet, so call it with\n# the client\u0027s generic GET helper.\nmodels = client.get(\u0022/fine-tunes/models/supported\u0022, cast_to=object)\nprint(models)\n"
+            "source": "from together import Together\n\nclient = Together()\n\n# The SDK has no dedicated method for this endpoint yet, so call it with\n# the client\u0027s generic GET helper.\nmodels = client.get(\u0022/v1/fine-tunes/models/supported\u0022, cast_to=object)\nprint(models)\n"
           },
           {
             "lang": "TypeScript",
             "label": "Together AI SDK (TypeScript)",
-            "source": "import Together from \u0022together-ai\u0022;\n\nconst client = new Together();\n\n// The SDK has no dedicated method for this endpoint yet, so call it with\n// the client\u0027s generic GET helper.\nconst models = await client.get(\u0022/fine-tunes/models/supported\u0022);\nconsole.log(models);\n"
+            "source": "import Together from \u0022together-ai\u0022;\n\nconst client = new Together();\n\n// The SDK has no dedicated method for this endpoint yet, so call it with\n// the client\u0027s generic GET helper.\nconst models = await client.get(\u0022/v1/fine-tunes/models/supported\u0022);\nconsole.log(models);\n"
           },
           {
             "lang": "JavaScript",
             "label": "Together AI SDK (JavaScript)",
-            "source": "import Together from \u0022together-ai\u0022;\n\nconst client = new Together();\n\n// The SDK has no dedicated method for this endpoint yet, so call it with\n// the client\u0027s generic GET helper.\nconst models = await client.get(\u0022/fine-tunes/models/supported\u0022);\nconsole.log(models);\n"
+            "source": "import Together from \u0022together-ai\u0022;\n\nconst client = new Together();\n\n// The SDK has no dedicated method for this endpoint yet, so call it with\n// the client\u0027s generic GET helper.\nconst models = await client.get(\u0022/v1/fine-tunes/models/supported\u0022);\nconsole.log(models);\n"
           },
           {
             "lang": "Shell",
@@ -9237,6 +9237,11 @@
             "lang": "Python",
             "label": "Together AI SDK (Python)",
             "source": "from together import Together\n\nclient = Together()\n\njob = client.post_training.prepare_for_fp4_inference.create(\n    inputs={\n        \u0022model_object_id\u0022: \u0022ml_abc123\u0022,\n        \u0022model_revision_id\u0022: \u0022rv_abc123\u0022,\n    },\n)\nprint(job.id, job.status)\n"
+          },
+          {
+            "lang": "Shell",
+            "label": "cURL",
+            "source": "curl -X POST \u0022https://api.together.ai/v1/shaping/prepare-for-fp4-inference\u0022 \\\n     -H \u0022Authorization: Bearer $TOGETHER_API_KEY\u0022 \\\n     -H \u0022Content-Type: application/json\u0022 \\\n     -d \u0027{\n       \u0022inputs\u0022: {\n         \u0022model_object_id\u0022: \u0022ml_abc123\u0022,\n         \u0022model_revision_id\u0022: \u0022rv_abc123\u0022\n       }\n     }\u0027\n"
           }
         ]
       }
@@ -9316,6 +9321,11 @@
             "lang": "Python",
             "label": "Together AI SDK (Python)",
             "source": "from together import Together\n\nclient = Together()\n\nestimate = client.post_training.prepare_for_fp4_inference.estimate_cost(\n    inputs={\n        \u0022model_object_id\u0022: \u0022ml_abc123\u0022,\n        \u0022model_revision_id\u0022: \u0022rv_abc123\u0022,\n    },\n)\nprint(estimate.price_usd, estimate.time_hours, estimate.allowed_to_proceed)\n"
+          },
+          {
+            "lang": "Shell",
+            "label": "cURL",
+            "source": "curl -X POST \u0022https://api.together.ai/v1/shaping/prepare-for-fp4-inference/estimate\u0022 \\\n     -H \u0022Authorization: Bearer $TOGETHER_API_KEY\u0022 \\\n     -H \u0022Content-Type: application/json\u0022 \\\n     -d \u0027{\n       \u0022inputs\u0022: {\n         \u0022model_object_id\u0022: \u0022ml_abc123\u0022,\n         \u0022model_revision_id\u0022: \u0022rv_abc123\u0022\n       }\n     }\u0027\n"
           }
         ]
       }
@@ -11203,17 +11213,17 @@
           {
             "lang": "Python",
             "label": "Together AI SDK (Python)",
-            "source": "from together import Together\n\nclient = Together()\n\n# The SDK has no dedicated method for this endpoint yet, so call it with\n# the client\u0027s generic GET helper.\nmodels = client.get(\n    \u0022/evaluation/model-list\u0022,\n    cast_to=object,\n    options={\u0022params\u0022: {\u0022model_source\u0022: \u0022serverless\u0022}},\n)\nprint(models)\n"
+            "source": "from together import Together\n\nclient = Together()\n\n# The SDK has no dedicated method for this endpoint yet, so call it with\n# the client\u0027s generic GET helper.\nmodels = client.get(\n    \u0022/v1/evaluation/model-list\u0022,\n    cast_to=object,\n    options={\u0022params\u0022: {\u0022model_source\u0022: \u0022serverless\u0022}},\n)\nprint(models)\n"
           },
           {
             "lang": "TypeScript",
             "label": "Together AI SDK (TypeScript)",
-            "source": "import Together from \u0022together-ai\u0022;\n\nconst client = new Together();\n\n// The SDK has no dedicated method for this endpoint yet, so call it with\n// the client\u0027s generic GET helper.\nconst models = await client.get(\u0022/evaluation/model-list\u0022, {\n  query: { model_source: \u0022serverless\u0022 },\n});\nconsole.log(models);\n"
+            "source": "import Together from \u0022together-ai\u0022;\n\nconst client = new Together();\n\n// The SDK has no dedicated method for this endpoint yet, so call it with\n// the client\u0027s generic GET helper.\nconst models = await client.get(\u0022/v1/evaluation/model-list\u0022, {\n  query: { model_source: \u0022serverless\u0022 },\n});\nconsole.log(models);\n"
           },
           {
             "lang": "JavaScript",
             "label": "Together AI SDK (JavaScript)",
-            "source": "import Together from \u0022together-ai\u0022;\n\nconst client = new Together();\n\n// The SDK has no dedicated method for this endpoint yet, so call it with\n// the client\u0027s generic GET helper.\nconst models = await client.get(\u0022/evaluation/model-list\u0022, {\n  query: { model_source: \u0022serverless\u0022 },\n});\nconsole.log(models);\n"
+            "source": "import Together from \u0022together-ai\u0022;\n\nconst client = new Together();\n\n// The SDK has no dedicated method for this endpoint yet, so call it with\n// the client\u0027s generic GET helper.\nconst models = await client.get(\u0022/v1/evaluation/model-list\u0022, {\n  query: { model_source: \u0022serverless\u0022 },\n});\nconsole.log(models);\n"
           }
         ]
       }
@@ -14713,17 +14723,17 @@
           {
             "lang": "Python",
             "label": "Together AI SDK (Python)",
-            "source": "from together import Together\n\nclient = Together()\n\n# The SDK has no dedicated method for this endpoint yet, so call it with\n# the client\u0027s generic GET helper.\nusage = client.get(\n    \u0022/billing/usage\u0022,\n    cast_to=object,\n    options={\u0022params\u0022: {\u0022month\u0022: \u00222026-06\u0022, \u0022granularity\u0022: \u0022day\u0022}},\n)\nprint(usage)\n"
+            "source": "from together import Together\n\nclient = Together()\n\n# The SDK has no dedicated method for this endpoint yet, so call it with\n# the client\u0027s generic GET helper.\nusage = client.get(\n    \u0022/v1/billing/usage\u0022,\n    cast_to=object,\n    options={\u0022params\u0022: {\u0022month\u0022: \u00222026-06\u0022, \u0022granularity\u0022: \u0022day\u0022}},\n)\nprint(usage)\n"
           },
           {
             "lang": "TypeScript",
             "label": "Together AI SDK (TypeScript)",
-            "source": "import Together from \u0022together-ai\u0022;\n\nconst client = new Together();\n\n// The SDK has no dedicated method for this endpoint yet, so call it with\n// the client\u0027s generic GET helper.\nconst usage = await client.get(\u0022/billing/usage\u0022, {\n  query: { month: \u00222026-06\u0022, granularity: \u0022day\u0022 },\n});\nconsole.log(usage);\n"
+            "source": "import Together from \u0022together-ai\u0022;\n\nconst client = new Together();\n\n// The SDK has no dedicated method for this endpoint yet, so call it with\n// the client\u0027s generic GET helper.\nconst usage = await client.get(\u0022/v1/billing/usage\u0022, {\n  query: { month: \u00222026-06\u0022, granularity: \u0022day\u0022 },\n});\nconsole.log(usage);\n"
           },
           {
             "lang": "JavaScript",
             "label": "Together AI SDK (JavaScript)",
-            "source": "import Together from \u0022together-ai\u0022;\n\nconst client = new Together();\n\n// The SDK has no dedicated method for this endpoint yet, so call it with\n// the client\u0027s generic GET helper.\nconst usage = await client.get(\u0022/billing/usage\u0022, {\n  query: { month: \u00222026-06\u0022, granularity: \u0022day\u0022 },\n});\nconsole.log(usage);\n"
+            "source": "import Together from \u0022together-ai\u0022;\n\nconst client = new Together();\n\n// The SDK has no dedicated method for this endpoint yet, so call it with\n// the client\u0027s generic GET helper.\nconst usage = await client.get(\u0022/v1/billing/usage\u0022, {\n  query: { month: \u00222026-06\u0022, granularity: \u0022day\u0022 },\n});\nconsole.log(usage);\n"
           },
           {
             "lang": "Shell",
