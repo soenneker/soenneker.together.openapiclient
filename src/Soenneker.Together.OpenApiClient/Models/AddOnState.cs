@@ -26,8 +26,6 @@ namespace Soenneker.Together.OpenApiClient.Models
             else if (parseNode.GetChildNode("ingress") is { } nullNodeIngress && nullNodeIngress.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Ingress = null;
             if (parseNode.GetChildNode("slurm_web") is null) { _explicitNullValueSlurmWeb = default!; _explicitNullProperties?.Remove("slurm_web"); }
             else if (parseNode.GetChildNode("slurm_web") is { } nullNodeSlurmWeb && nullNodeSlurmWeb.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SlurmWeb = null;
-            if (parseNode.GetChildNode("torchpass") is null) { _explicitNullValueTorchpass = default!; _explicitNullProperties?.Remove("torchpass"); }
-            else if (parseNode.GetChildNode("torchpass") is { } nullNodeTorchpass && nullNodeTorchpass.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Torchpass = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -72,16 +70,6 @@ namespace Soenneker.Together.OpenApiClient.Models
         public global::Soenneker.Together.OpenApiClient.Models.SlurmWebState SlurmWeb { get => _explicitNullValueSlurmWeb; set { _explicitNullValueSlurmWeb = value; AdditionalData?.Remove("slurm_web"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slurm_web"); else _explicitNullProperties?.Remove("slurm_web"); } }
         private global::Soenneker.Together.OpenApiClient.Models.SlurmWebState _explicitNullValueSlurmWeb = default!;
 #endif
-        /// <summary>State for the Model Aware TorchPass add-on.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Together.OpenApiClient.Models.TorchpassState? Torchpass { get => _explicitNullValueTorchpass; set { _explicitNullValueTorchpass = value; AdditionalData?.Remove("torchpass"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("torchpass"); else _explicitNullProperties?.Remove("torchpass"); } }
-        private global::Soenneker.Together.OpenApiClient.Models.TorchpassState? _explicitNullValueTorchpass = default!;
-#nullable restore
-#else
-        public global::Soenneker.Together.OpenApiClient.Models.TorchpassState Torchpass { get => _explicitNullValueTorchpass; set { _explicitNullValueTorchpass = value; AdditionalData?.Remove("torchpass"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("torchpass"); else _explicitNullProperties?.Remove("torchpass"); } }
-        private global::Soenneker.Together.OpenApiClient.Models.TorchpassState _explicitNullValueTorchpass = default!;
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.AddOnState"/> and sets the default values.
         /// </summary>
@@ -111,7 +99,6 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "headlamp", n => { Headlamp = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.HeadlampState>(global::Soenneker.Together.OpenApiClient.Models.HeadlampState.CreateFromDiscriminatorValue); } },
                 { "ingress", n => { Ingress = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.IngressState>(global::Soenneker.Together.OpenApiClient.Models.IngressState.CreateFromDiscriminatorValue); } },
                 { "slurm_web", n => { SlurmWeb = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.SlurmWebState>(global::Soenneker.Together.OpenApiClient.Models.SlurmWebState.CreateFromDiscriminatorValue); } },
-                { "torchpass", n => { Torchpass = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.TorchpassState>(global::Soenneker.Together.OpenApiClient.Models.TorchpassState.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -125,7 +112,6 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.HeadlampState>("headlamp", Headlamp);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.IngressState>("ingress", Ingress);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.SlurmWebState>("slurm_web", SlurmWeb);
-            writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.TorchpassState>("torchpass", Torchpass);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

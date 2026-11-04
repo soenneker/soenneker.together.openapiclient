@@ -9826,6 +9826,11 @@
             "source": "import asyncio\nimport websockets\nimport json\nimport base64\nimport os\n\nasync def generate_speech():\n    api_key = os.environ.get(\u0022TOGETHER_API_KEY\u0022)\n    url = \u0022wss://api.together.ai/v1/audio/speech/websocket?model=hexgrad/Kokoro-82M\u0026voice=af_heart\u0022\n\n    headers = {\n        \u0022Authorization\u0022: f\u0022Bearer {api_key}\u0022\n    }\n\n    async with websockets.connect(url, additional_headers=headers) as ws:\n        # Wait for session created\n        session_msg = await ws.recv()\n        session_data = json.loads(session_msg)\n        if session_data.get(\u0022type\u0022) != \u0022session.created\u0022:\n            print(f\u0022Failed to start session: {session_data}\u0022)\n            return\n        print(f\u0022Session created: {session_data[\u0027session\u0027][\u0027id\u0027]}\u0022)\n\n        # Send text for TTS\n        text_chunks = [\n            \u0022Hello, this is a test.\u0022,\n            \u0022This is the second sentence.\u0022,\n            \u0022And this is the final one.\u0022\n        ]\n\n        async def send_text():\n            for chunk in text_chunks:\n                await ws.send(json.dumps({\n                    \u0022type\u0022: \u0022input_text_buffer.append\u0022,\n                    \u0022text\u0022: chunk\n                }))\n                await asyncio.sleep(0.5)  # Simulate typing\n\n            # Commit to process any remaining text\n            await ws.send(json.dumps({\n                \u0022type\u0022: \u0022input_text_buffer.commit\u0022\n            }))\n\n        async def receive_audio():\n            audio_data = bytearray()\n            async for message in ws:\n                data = json.loads(message)\n\n                if data[\u0022type\u0022] == \u0022conversation.item.input_text.received\u0022:\n                    print(f\u0022Text received: {data[\u0027text\u0027]}\u0022)\n                elif data[\u0022type\u0022] == \u0022conversation.item.audio_output.delta\u0022:\n                    # Decode base64 audio chunk\n                    audio_chunk = base64.b64decode(data[\u0027delta\u0027])\n                    audio_data.extend(audio_chunk)\n                    print(f\u0022Received audio chunk for item {data[\u0027item_id\u0027]}\u0022)\n                elif data[\u0022type\u0022] == \u0022conversation.item.audio_output.done\u0022:\n                    print(f\u0022Audio generation complete for item {data[\u0027item_id\u0027]}\u0022)\n                    break\n                elif data[\u0022type\u0022] == \u0022conversation.item.tts.failed\u0022:\n                    error = data.get(\u0022error\u0022, {})\n                    print(f\u0022Error: {error.get(\u0027message\u0027)}\u0022)\n                    break\n\n            # Save the raw PCM samples to a file\n            with open(\u0022output.pcm\u0022, \u0022wb\u0022) as f:\n                f.write(audio_data)\n            print(\u0022Audio saved to output.pcm\u0022)\n\n        # Run send and receive concurrently\n        await asyncio.gather(send_text(), receive_audio())\n\nasyncio.run(generate_speech())\n"
           },
           {
+            "lang": "TypeScript",
+            "label": "TypeScript WebSocket Client",
+            "source": "import WebSocket from \u0027ws\u0027;\nimport fs from \u0027fs\u0027;\n\nconst apiKey = process.env.TOGETHER_API_KEY;\nconst url = \u0027wss://api.together.ai/v1/audio/speech/websocket?model=hexgrad/Kokoro-82M\u0026voice=af_heart\u0027;\n\nconst ws = new WebSocket(url, {\n  headers: {\n    \u0027Authorization\u0027: \u0060Bearer ${apiKey}\u0060\n  }\n});\n\nconst audioData: Buffer[] = [];\n\nws.on(\u0027open\u0027, () =\u003E {\n  console.log(\u0027WebSocket connection established!\u0027);\n});\n\nws.on(\u0027message\u0027, (data) =\u003E {\n  const message = JSON.parse(data.toString());\n\n  if (message.type === \u0027session.created\u0027) {\n    console.log(\u0060Session created: ${message.session.id}\u0060);\n\n    // Send text chunks\n    const textChunks = [\n      \u0022Hello, this is a test.\u0022,\n      \u0022This is the second sentence.\u0022,\n      \u0022And this is the final one.\u0022\n    ];\n\n    textChunks.forEach((text, index) =\u003E {\n      setTimeout(() =\u003E {\n        ws.send(JSON.stringify({\n          type: \u0027input_text_buffer.append\u0027,\n          text: text\n        }));\n      }, index * 500);\n    });\n\n    // Commit after all chunks\n    setTimeout(() =\u003E {\n      ws.send(JSON.stringify({\n        type: \u0027input_text_buffer.commit\u0027\n      }));\n    }, textChunks.length * 500 \u002B 100);\n\n  } else if (message.type === \u0027conversation.item.input_text.received\u0027) {\n    console.log(\u0060Text received: ${message.text}\u0060);\n  } else if (message.type === \u0027conversation.item.audio_output.delta\u0027) {\n    // Decode base64 audio chunk\n    const audioChunk = Buffer.from(message.delta, \u0027base64\u0027);\n    audioData.push(audioChunk);\n    console.log(\u0060Received audio chunk for item ${message.item_id}\u0060);\n  } else if (message.type === \u0027conversation.item.audio_output.done\u0027) {\n    console.log(\u0060Audio generation complete for item ${message.item_id}\u0060);\n    ws.close();\n  } else if (message.type === \u0027conversation.item.tts.failed\u0027) {\n    const errorMessage = message.error?.message ?? \u0027Unknown error\u0027;\n    console.error(\u0060Error: ${errorMessage}\u0060);\n    ws.close();\n  }\n});\n\nws.on(\u0027close\u0027, () =\u003E {\n  // Save the raw PCM samples to a file\n  if (audioData.length \u003E 0) {\n    const completeAudio = Buffer.concat(audioData);\n    fs.writeFileSync(\u0027output.pcm\u0027, completeAudio);\n    console.log(\u0027Audio saved to output.pcm\u0027);\n  }\n});\n\nws.on(\u0027error\u0027, (error) =\u003E {\n  console.error(\u0027WebSocket error:\u0027, error);\n});\n"
+          },
+          {
             "lang": "JavaScript",
             "label": "Node.js WebSocket Client",
             "source": "import WebSocket from \u0027ws\u0027;\nimport fs from \u0027fs\u0027;\n\nconst apiKey = process.env.TOGETHER_API_KEY;\nconst url = \u0027wss://api.together.ai/v1/audio/speech/websocket?model=hexgrad/Kokoro-82M\u0026voice=af_heart\u0027;\n\nconst ws = new WebSocket(url, {\n  headers: {\n    \u0027Authorization\u0027: \u0060Bearer ${apiKey}\u0060\n  }\n});\n\nconst audioData = [];\n\nws.on(\u0027open\u0027, () =\u003E {\n  console.log(\u0027WebSocket connection established!\u0027);\n});\n\nws.on(\u0027message\u0027, (data) =\u003E {\n  const message = JSON.parse(data.toString());\n\n  if (message.type === \u0027session.created\u0027) {\n    console.log(\u0060Session created: ${message.session.id}\u0060);\n\n    // Send text chunks\n    const textChunks = [\n      \u0022Hello, this is a test.\u0022,\n      \u0022This is the second sentence.\u0022,\n      \u0022And this is the final one.\u0022\n    ];\n\n    textChunks.forEach((text, index) =\u003E {\n      setTimeout(() =\u003E {\n        ws.send(JSON.stringify({\n          type: \u0027input_text_buffer.append\u0027,\n          text: text\n        }));\n      }, index * 500);\n    });\n\n    // Commit after all chunks\n    setTimeout(() =\u003E {\n      ws.send(JSON.stringify({\n        type: \u0027input_text_buffer.commit\u0027\n      }));\n    }, textChunks.length * 500 \u002B 100);\n\n  } else if (message.type === \u0027conversation.item.input_text.received\u0027) {\n    console.log(\u0060Text received: ${message.text}\u0060);\n  } else if (message.type === \u0027conversation.item.audio_output.delta\u0027) {\n    // Decode base64 audio chunk\n    const audioChunk = Buffer.from(message.delta, \u0027base64\u0027);\n    audioData.push(audioChunk);\n    console.log(\u0060Received audio chunk for item ${message.item_id}\u0060);\n  } else if (message.type === \u0027conversation.item.audio_output.done\u0027) {\n    console.log(\u0060Audio generation complete for item ${message.item_id}\u0060);\n    ws.close();\n  } else if (message.type === \u0027conversation.item.tts.failed\u0027) {\n    const errorMessage = message.error?.message ?? \u0027Unknown error\u0027;\n    console.error(\u0060Error: ${errorMessage}\u0060);\n    ws.close();\n  }\n});\n\nws.on(\u0027close\u0027, () =\u003E {\n  // Save the raw PCM samples to a file\n  if (audioData.length \u003E 0) {\n    const completeAudio = Buffer.concat(audioData);\n    fs.writeFileSync(\u0027output.pcm\u0027, completeAudio);\n    console.log(\u0027Audio saved to output.pcm\u0027);\n  }\n});\n\nws.on(\u0027error\u0027, (error) =\u003E {\n  console.error(\u0027WebSocket error:\u0027, error);\n});\n"
@@ -11404,6 +11409,11 @@
             "lang": "Python",
             "label": "Python WebSocket Client",
             "source": "import asyncio\nimport websockets\nimport json\nimport base64\nimport os\n\nasync def transcribe_audio():\n    api_key = os.environ.get(\u0022TOGETHER_API_KEY\u0022)\n    url = \u0022wss://api.together.ai/v1/realtime?model=openai/whisper-large-v3\u0026input_audio_format=pcm_s16le_16000\u0022\n\n    headers = {\n        \u0022Authorization\u0022: f\u0022Bearer {api_key}\u0022\n    }\n\n    async with websockets.connect(url, additional_headers=headers) as ws:\n        # audio.wav must be 16 kHz, 16-bit mono PCM to match input_audio_format\n        with open(\u0022audio.wav\u0022, \u0022rb\u0022) as f:\n            audio_data = f.read()\n\n        # Send audio in chunks with delay to simulate real-time\n        chunk_size = 8192\n        bytes_per_second = 16000 * 2  # 16kHz * 2 bytes (16-bit)\n        delay_per_chunk = chunk_size / bytes_per_second\n\n        for i in range(0, len(audio_data), chunk_size):\n            chunk = audio_data[i:i\u002Bchunk_size]\n            base64_chunk = base64.b64encode(chunk).decode(\u0027utf-8\u0027)\n            await ws.send(json.dumps({\n                \u0022type\u0022: \u0022input_audio_buffer.append\u0022,\n                \u0022audio\u0022: base64_chunk\n            }))\n            # Simulate real-time streaming\n            if i \u002B chunk_size \u003C len(audio_data):\n                await asyncio.sleep(delay_per_chunk)\n\n        # Commit the audio buffer\n        await ws.send(json.dumps({\n            \u0022type\u0022: \u0022input_audio_buffer.commit\u0022\n        }))\n\n        # Receive transcription results\n        async for message in ws:\n            data = json.loads(message)\n            if data[\u0022type\u0022] == \u0022conversation.item.input_audio_transcription.delta\u0022:\n                print(f\u0022Partial: {data[\u0027delta\u0027]}\u0022)\n            elif data[\u0022type\u0022] == \u0022conversation.item.input_audio_transcription.completed\u0022:\n                print(f\u0022Final: {data[\u0027transcript\u0027]}\u0022)\n                break\n            elif data[\u0022type\u0022] == \u0022conversation.item.input_audio_transcription.failed\u0022:\n                error = data.get(\u0022error\u0022, {})\n                print(f\u0022Error: {error.get(\u0027message\u0027)}\u0022)\n                break\n\nasyncio.run(transcribe_audio())\n"
+          },
+          {
+            "lang": "TypeScript",
+            "label": "TypeScript WebSocket Client",
+            "source": "import WebSocket from \u0027ws\u0027;\nimport fs from \u0027fs\u0027;\n\nconst apiKey = process.env.TOGETHER_API_KEY;\nconst url = \u0027wss://api.together.ai/v1/realtime?model=openai/whisper-large-v3\u0026input_audio_format=pcm_s16le_16000\u0027;\n\nconst ws = new WebSocket(url, {\n  headers: {\n    \u0027Authorization\u0027: \u0060Bearer ${apiKey}\u0060\n  }\n});\n\nws.on(\u0027open\u0027, async () =\u003E {\n  console.log(\u0027WebSocket connection established!\u0027);\n\n  // audio.wav must be 16 kHz, 16-bit mono PCM to match input_audio_format\n  const audioData = fs.readFileSync(\u0027audio.wav\u0027);\n\n  // Send audio in chunks with delay to simulate real-time\n  const chunkSize = 8192;\n  const bytesPerSecond = 16000 * 2;  // 16kHz * 2 bytes (16-bit)\n  const delayPerChunk = (chunkSize / bytesPerSecond) * 1000;  // Convert to ms\n\n  for (let i = 0; i \u003C audioData.length; i \u002B= chunkSize) {\n    const chunk = audioData.slice(i, i \u002B chunkSize);\n    const base64Chunk = chunk.toString(\u0027base64\u0027);\n    ws.send(JSON.stringify({\n      type: \u0027input_audio_buffer.append\u0027,\n      audio: base64Chunk\n    }));\n\n    // Simulate real-time streaming\n    if (i \u002B chunkSize \u003C audioData.length) {\n      await new Promise(resolve =\u003E setTimeout(resolve, delayPerChunk));\n    }\n  }\n\n  // Commit audio buffer\n  ws.send(JSON.stringify({\n    type: \u0027input_audio_buffer.commit\u0027\n  }));\n});\n\nws.on(\u0027message\u0027, (data) =\u003E {\n  const message = JSON.parse(data.toString());\n\n  if (message.type === \u0027conversation.item.input_audio_transcription.delta\u0027) {\n    console.log(\u0060Partial: ${message.delta}\u0060);\n  } else if (message.type === \u0027conversation.item.input_audio_transcription.completed\u0027) {\n    console.log(\u0060Final: ${message.transcript}\u0060);\n    ws.close();\n  } else if (message.type === \u0027conversation.item.input_audio_transcription.failed\u0027) {\n    const errorMessage = message.error?.message ?? message.message ?? \u0027Unknown error\u0027;\n    console.error(\u0060Error: ${errorMessage}\u0060);\n    ws.close();\n  }\n});\n\nws.on(\u0027error\u0027, (error) =\u003E {\n  console.error(\u0027WebSocket error:\u0027, error);\n});\n"
           },
           {
             "lang": "JavaScript",
@@ -21163,10 +21173,6 @@
           "ingress": {
             "$ref": "#/components/schemas/IngressConfig"
           },
-          "torchpass": {
-            "description": "Configuration for the Model Aware TorchPass add-on.",
-            "$ref": "#/components/schemas/TorchpassConfig"
-          },
           "slurm_web": {
             "description": "Configuration for the Slurm Web add-on.",
             "$ref": "#/components/schemas/SlurmWebConfig"
@@ -21191,7 +21197,7 @@
           },
           "add_on_type": {
             "type": "string",
-            "description": "Type of add-on. Valid values: \u0027dashboard\u0027, \u0027ingress\u0027, \u0027torchpass\u0027."
+            "description": "Type of add-on. Valid values: \u0027dashboard\u0027, \u0027ingress\u0027"
           },
           "config": {
             "description": "Configuration for a cluster add-on.",
@@ -21233,10 +21239,6 @@
           },
           "ingress": {
             "$ref": "#/components/schemas/IngressState"
-          },
-          "torchpass": {
-            "description": "State for the Model Aware TorchPass add-on.",
-            "$ref": "#/components/schemas/TorchpassState"
           },
           "slurm_web": {
             "description": "State for the Slurm Web add-on.",
@@ -21300,7 +21302,7 @@
           },
           "add_on_type": {
             "type": "string",
-            "description": "Type of add-on. Valid values: \u0027dashboard\u0027, \u0027ingress\u0027, \u0027torchpass\u0027, \u0027headlamp\u0027."
+            "description": "Type of add-on. Valid values: \u0027dashboard\u0027, \u0027ingress\u0027, \u0027headlamp\u0027."
           },
           "config": {
             "description": "Configuration for a cluster add-on.",
@@ -21412,22 +21414,6 @@
       "IngressState": {
         "type": "object",
         "additionalProperties": false,
-        "x-stainless-empty-object": true
-      },
-      "TorchpassConfig": {
-        "type": "object",
-        "properties": {
-          "enabled": {
-            "type": "boolean",
-            "description": "Whether to enable the Model Aware TorchPass add-on."
-          }
-        },
-        "description": "Configuration for the Model Aware TorchPass cluster add-on."
-      },
-      "TorchpassState": {
-        "type": "object",
-        "additionalProperties": false,
-        "description": "Runtime state for the Model Aware TorchPass cluster add-on.",
         "x-stainless-empty-object": true
       },
       "SlurmWebConfig": {
@@ -24735,7 +24721,7 @@
           },
           "lora_trainable_modules": {
             "type": "string",
-            "description": "Comma-separated LoRA target modules. Use \u0060all-linear\u0060 for model defaults; MoE expert modules (\u0060w_up\u0060, \u0060w_gate\u0060, \u0060w_down\u0060) can be combined with attention modules on compatible models. Fine-tuning jobs that target expert modules produce adapter-only output unless the selected model supports merged expert LoRA output.",
+            "description": "Comma-separated LoRA target modules. Use \u0060all-linear\u0060 for model defaults; MoE expert modules (\u0060w_up\u0060, \u0060w_gate\u0060, \u0060w_down\u0060) can be combined with attention modules on compatible models.",
             "default": "all-linear"
           }
         },
@@ -37147,7 +37133,7 @@
               },
               "lora_trainable_modules": {
                 "type": "string",
-                "description": "Comma-separated LoRA target modules. Use \u0060all-linear\u0060 for model defaults; MoE expert modules (\u0060w_up\u0060, \u0060w_gate\u0060, \u0060w_down\u0060) can be combined with attention modules on compatible models. Fine-tuning jobs that target expert modules produce adapter-only output unless the selected model supports merged expert LoRA output.",
+                "description": "Comma-separated LoRA target modules. Use \u0060all-linear\u0060 for model defaults; MoE expert modules (\u0060w_up\u0060, \u0060w_gate\u0060, \u0060w_down\u0060) can be combined with attention modules on compatible models.",
                 "default": "all-linear"
               }
             },

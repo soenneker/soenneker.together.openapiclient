@@ -41,7 +41,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Rank of the LoRA adapter matrices.</summary>
         public int? LoraR { get => _explicitNullValueLoraR; set { _explicitNullValueLoraR = value; AdditionalData?.Remove("lora_r"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lora_r"); else _explicitNullProperties?.Remove("lora_r"); } }
         private int? _explicitNullValueLoraR = default!;
-        /// <summary>Comma-separated LoRA target modules. Use `all-linear` for model defaults; MoE expert modules (`w_up`, `w_gate`, `w_down`) can be combined with attention modules on compatible models. Fine-tuning jobs that target expert modules produce adapter-only output unless the selected model supports merged expert LoRA output.</summary>
+        /// <summary>Comma-separated LoRA target modules. Use `all-linear` for model defaults; MoE expert modules (`w_up`, `w_gate`, `w_down`) can be combined with attention modules on compatible models.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? LoraTrainableModules { get => _explicitNullValueLoraTrainableModules; set { _explicitNullValueLoraTrainableModules = value; AdditionalData?.Remove("lora_trainable_modules"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lora_trainable_modules"); else _explicitNullProperties?.Remove("lora_trainable_modules"); } }
