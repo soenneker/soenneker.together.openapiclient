@@ -56,6 +56,8 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string BaseModelId { get => _explicitNullValueBaseModelId; set { _explicitNullValueBaseModelId = value; AdditionalData?.Remove("baseModelId"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseModelId"); else _explicitNullProperties?.Remove("baseModelId"); } }
         private string _explicitNullValueBaseModelId = default!;
 #endif
+        /// <summary>Output only. Timestamp when the model was created.</summary>
+        public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>Human-readable description of the model and its intended use.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -106,6 +108,8 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string ProjectId { get => _explicitNullValueProjectId; set { _explicitNullValueProjectId = value; AdditionalData?.Remove("projectId"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("projectId"); else _explicitNullProperties?.Remove("projectId"); } }
         private string _explicitNullValueProjectId = default!;
 #endif
+        /// <summary>Output only. Timestamp when the model was last updated.</summary>
+        public DateTimeOffset? UpdatedAt { get; private set; }
         /// <summary>Who can discover the model. `VISIBILITY_PRIVATE` restricts it to the project; `VISIBILITY_INTERNAL` shares it with the organization.</summary>
         public global::Soenneker.Together.OpenApiClient.Models.DeModelVisibility? Visibility { get => _explicitNullValueVisibility; set { _explicitNullValueVisibility = value; AdditionalData?.Remove("visibility"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("visibility"); else _explicitNullProperties?.Remove("visibility"); } }
         private global::Soenneker.Together.OpenApiClient.Models.DeModelVisibility? _explicitNullValueVisibility = default!;
@@ -146,11 +150,13 @@ namespace Soenneker.Together.OpenApiClient.Models
             {
                 { "baseModel", n => { BaseModel = n.GetStringValue(); } },
                 { "baseModelId", n => { BaseModelId = n.GetStringValue(); } },
+                { "createdAt", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "organizationId", n => { OrganizationId = n.GetStringValue(); } },
                 { "projectId", n => { ProjectId = n.GetStringValue(); } },
+                { "updatedAt", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "visibility", n => { var parsed = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeModelVisibility>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueVisibility = default; _explicitNullProperties?.Remove("visibility"); AdditionalData["visibility"] = unknown; } else { Visibility = parsed; AdditionalData.Remove("visibility"); } } },
                 { "weights", n => { Weights = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeModelWeights>(global::Soenneker.Together.OpenApiClient.Models.DeModelWeights.CreateFromDiscriminatorValue); } },
             };

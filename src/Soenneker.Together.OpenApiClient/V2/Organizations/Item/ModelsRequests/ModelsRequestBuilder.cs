@@ -4,6 +4,7 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.Together.OpenApiClient.Models;
+using Soenneker.Together.OpenApiClient.V2.Organizations.Item.ModelsRequests.Item;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -17,12 +18,24 @@ namespace Soenneker.Together.OpenApiClient.V2.Organizations.Item.ModelsRequests
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ModelsRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>Gets an item from the Soenneker.Together.OpenApiClient.v2.organizations.item.modelsRequests.item collection</summary>
+        /// <param name="position">Unique identifier of the item</param>
+        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.V2.Organizations.Item.ModelsRequests.Item.WithModelItemRequestBuilder"/></returns>
+        public global::Soenneker.Together.OpenApiClient.V2.Organizations.Item.ModelsRequests.Item.WithModelItemRequestBuilder this[string position]
+        {
+            get
+            {
+                var urlTplParams = new Dictionary<string, object>(PathParameters);
+                urlTplParams.Add("modelId", position);
+                return new global::Soenneker.Together.OpenApiClient.V2.Organizations.Item.ModelsRequests.Item.WithModelItemRequestBuilder(urlTplParams, RequestAdapter);
+            }
+        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.V2.Organizations.Item.ModelsRequests.ModelsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ModelsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/organizations/{organizationId}/models{?after*,limit*}", pathParameters)
+        public ModelsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/organizations/{organizationId}/models{?after*,limit*,orderBy*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +43,7 @@ namespace Soenneker.Together.OpenApiClient.V2.Organizations.Item.ModelsRequests
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ModelsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/organizations/{organizationId}/models{?after*,limit*}", rawUrl)
+        public ModelsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/organizations/{organizationId}/models{?after*,limit*,orderBy*}", rawUrl)
         {
         }
         /// <summary>
@@ -107,6 +120,19 @@ namespace Soenneker.Together.OpenApiClient.V2.Organizations.Item.ModelsRequests
             [QueryParameter("limit")]
             public int? Limit { get; set; }
             #pragma warning restore CS1591
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            #pragma warning disable CS1591
+            [QueryParameter("orderBy")]
+            public string? OrderBy { get; set; }
+            #pragma warning restore CS1591
+#nullable restore
+#else
+            #pragma warning disable CS1591
+            [QueryParameter("orderBy")]
+            public string OrderBy { get; set; }
+            #pragma warning restore CS1591
+#endif
         }
     }
 }
