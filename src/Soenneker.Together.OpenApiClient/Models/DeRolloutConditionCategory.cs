@@ -59,5 +59,9 @@ namespace Soenneker.Together.OpenApiClient.Models
         #pragma warning disable CS1591
         RolloutFailureCategoryEntitlementLapsed,
         #pragma warning restore CS1591
+        [EnumMember(Value = "ROLLOUT_FAILURE_CATEGORY_SURGE_BUDGET")]
+        #pragma warning disable CS1591
+        RolloutFailureCategorySurgeBudget,
+        #pragma warning restore CS1591
     }
 }

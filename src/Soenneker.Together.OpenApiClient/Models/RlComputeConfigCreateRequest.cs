@@ -22,6 +22,8 @@ namespace Soenneker.Together.OpenApiClient.Models
             else if (parseNode.GetChildNode("gpu_type") is { } nullNodeGpuType && nullNodeGpuType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GpuType = null;
             if (parseNode.GetChildNode("num_generator_replicas") is null) { _explicitNullValueNumGeneratorReplicas = default!; _explicitNullProperties?.Remove("num_generator_replicas"); }
             else if (parseNode.GetChildNode("num_generator_replicas") is { } nullNodeNumGeneratorReplicas && nullNodeNumGeneratorReplicas.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NumGeneratorReplicas = null;
+            if (parseNode.GetChildNode("num_trainer_replicas") is null) { _explicitNullValueNumTrainerReplicas = default!; _explicitNullProperties?.Remove("num_trainer_replicas"); }
+            else if (parseNode.GetChildNode("num_trainer_replicas") is { } nullNodeNumTrainerReplicas && nullNodeNumTrainerReplicas.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NumTrainerReplicas = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -32,6 +34,9 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>Number of generator replicas. 0 runs the trainer only, with no generator.</summary>
         public int? NumGeneratorReplicas { get => _explicitNullValueNumGeneratorReplicas; set { _explicitNullValueNumGeneratorReplicas = value; AdditionalData?.Remove("num_generator_replicas"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("num_generator_replicas"); else _explicitNullProperties?.Remove("num_generator_replicas"); } }
         private int? _explicitNullValueNumGeneratorReplicas = default!;
+        /// <summary>Number of trainers: 0 or 1. Omit to use 1. Each trainer can use multiple GPUs. With 0, at least one generator replica is required, optimizer_config is not allowed, and sessions must resume from an inference checkpoint for sampling only.</summary>
+        public int? NumTrainerReplicas { get => _explicitNullValueNumTrainerReplicas; set { _explicitNullValueNumTrainerReplicas = value; AdditionalData?.Remove("num_trainer_replicas"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("num_trainer_replicas"); else _explicitNullProperties?.Remove("num_trainer_replicas"); } }
+        private int? _explicitNullValueNumTrainerReplicas = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.RlComputeConfigCreateRequest"/> and sets the default values.
         /// </summary>
@@ -39,6 +44,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         {
             AdditionalData = new Dictionary<string, object>();
             NumGeneratorReplicas = 1;
+            NumTrainerReplicas = 1;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -60,6 +66,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             {
                 { "gpu_type", n => { var parsed = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.B200SxmGpuType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueGpuType = default; _explicitNullProperties?.Remove("gpu_type"); AdditionalData["gpu_type"] = unknown; } else { GpuType = parsed; AdditionalData.Remove("gpu_type"); } } },
                 { "num_generator_replicas", n => { NumGeneratorReplicas = n.GetIntValue(); } },
+                { "num_trainer_replicas", n => { NumTrainerReplicas = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -71,6 +78,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.B200SxmGpuType>("gpu_type", GpuType);
             writer.WriteIntValue("num_generator_replicas", NumGeneratorReplicas);
+            writer.WriteIntValue("num_trainer_replicas", NumTrainerReplicas);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

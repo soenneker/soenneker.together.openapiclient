@@ -54,6 +54,10 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string Id { get; private set; }
 #endif
+        /// <summary>Output only. The maxSurge the rollout was created with. Absent when it was not set.</summary>
+        public int? MaxSurge { get; private set; }
+        /// <summary>The maxUnavailable the rollout was created with. Absent when it was not set.</summary>
+        public int? MaxUnavailable { get; private set; }
         /// <summary>Output only. Why and when the rollout was paused. Set while a pause is pending or effective (PAUSING, PAUSED, or SYSTEM_PAUSED) and cleared after resume or abort; while PAUSING, pausedAt records when the pause was requested.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -124,6 +128,8 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "endpointId", n => { EndpointId = n.GetStringValue(); } },
                 { "etag", n => { Etag = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
+                { "maxSurge", n => { MaxSurge = n.GetIntValue(); } },
+                { "maxUnavailable", n => { MaxUnavailable = n.GetIntValue(); } },
                 { "pauseInfo", n => { PauseInfo = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeRolloutPauseInfo>(global::Soenneker.Together.OpenApiClient.Models.DeRolloutPauseInfo.CreateFromDiscriminatorValue); } },
                 { "sourceDeploymentId", n => { SourceDeploymentId = n.GetStringValue(); } },
                 { "startedAt", n => { StartedAt = n.GetDateTimeOffsetValue(); } },

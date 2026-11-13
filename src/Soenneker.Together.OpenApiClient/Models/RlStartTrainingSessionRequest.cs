@@ -76,7 +76,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string ModelResourcesId { get => _explicitNullValueModelResourcesId; set { _explicitNullValueModelResourcesId = value; AdditionalData?.Remove("model_resources_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_resources_id"); else _explicitNullProperties?.Remove("model_resources_id"); } }
         private string _explicitNullValueModelResourcesId = default!;
 #endif
-        /// <summary>Checkpoint ID to resume from. LoRA training checkpoints may resume on another model resource with compatible base-model weights. Full-weight training checkpoints require the original base model.</summary>
+        /// <summary>Checkpoint ID to resume from. LoRA training checkpoints may resume on another model resource with compatible base-model weights. Full-weight training checkpoints require the original base model. Required for generator-only resources, which accept inference checkpoints only.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ResumeFromCheckpointId { get => _explicitNullValueResumeFromCheckpointId; set { _explicitNullValueResumeFromCheckpointId = value; AdditionalData?.Remove("resume_from_checkpoint_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resume_from_checkpoint_id"); else _explicitNullProperties?.Remove("resume_from_checkpoint_id"); } }

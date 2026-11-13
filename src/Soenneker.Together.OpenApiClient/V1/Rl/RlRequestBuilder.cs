@@ -4,6 +4,7 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.Together.OpenApiClient.V1.Rl.Checkpoints;
 using Soenneker.Together.OpenApiClient.V1.Rl.ModelResources;
+using Soenneker.Together.OpenApiClient.V1.Rl.Rollouts;
 using Soenneker.Together.OpenApiClient.V1.Rl.SupportedModels;
 using Soenneker.Together.OpenApiClient.V1.Rl.TrainingSessions;
 using System.Collections.Generic;
@@ -27,6 +28,11 @@ namespace Soenneker.Together.OpenApiClient.V1.Rl
         public global::Soenneker.Together.OpenApiClient.V1.Rl.ModelResources.ModelResourcesRequestBuilder ModelResources
         {
             get => new global::Soenneker.Together.OpenApiClient.V1.Rl.ModelResources.ModelResourcesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The rollouts property</summary>
+        public global::Soenneker.Together.OpenApiClient.V1.Rl.Rollouts.RolloutsRequestBuilder Rollouts
+        {
+            get => new global::Soenneker.Together.OpenApiClient.V1.Rl.Rollouts.RolloutsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The supportedModels property</summary>
         public global::Soenneker.Together.OpenApiClient.V1.Rl.SupportedModels.SupportedModelsRequestBuilder SupportedModels
