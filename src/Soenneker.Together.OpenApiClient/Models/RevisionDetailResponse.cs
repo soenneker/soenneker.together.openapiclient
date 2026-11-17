@@ -48,10 +48,14 @@ namespace Soenneker.Together.OpenApiClient.Models
             else if (parseNode.GetChildNode("min_replicas") is { } nullNodeMinReplicas && nullNodeMinReplicas.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MinReplicas = null;
             if (parseNode.GetChildNode("object") is null) { _explicitNullValueObject = default!; _explicitNullProperties?.Remove("object"); }
             else if (parseNode.GetChildNode("object") is { } nullNodeObject && nullNodeObject.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Object = null;
+            if (parseNode.GetChildNode("placement_group") is null) { _explicitNullValuePlacementGroup = default!; _explicitNullProperties?.Remove("placement_group"); }
+            else if (parseNode.GetChildNode("placement_group") is { } nullNodePlacementGroup && nullNodePlacementGroup.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PlacementGroup = null;
             if (parseNode.GetChildNode("port") is null) { _explicitNullValuePort = default!; _explicitNullProperties?.Remove("port"); }
             else if (parseNode.GetChildNode("port") is { } nullNodePort && nullNodePort.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Port = null;
             if (parseNode.GetChildNode("protocol") is null) { _explicitNullValueProtocol = default!; _explicitNullProperties?.Remove("protocol"); }
             else if (parseNode.GetChildNode("protocol") is { } nullNodeProtocol && nullNodeProtocol.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Protocol = null;
+            if (parseNode.GetChildNode("regions") is null) { _explicitNullValueRegions = default!; _explicitNullProperties?.Remove("regions"); }
+            else if (parseNode.GetChildNode("regions") is { } nullNodeRegions && nullNodeRegions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Regions = null;
             if (parseNode.GetChildNode("revision_id") is null) { _explicitNullValueRevisionId = default!; _explicitNullProperties?.Remove("revision_id"); }
             else if (parseNode.GetChildNode("revision_id") is { } nullNodeRevisionId && nullNodeRevisionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RevisionId = null;
             if (parseNode.GetChildNode("storage") is null) { _explicitNullValueStorage = default!; _explicitNullProperties?.Remove("storage"); }
@@ -158,6 +162,16 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>The object type, which is always `revision`.</summary>
         public global::Soenneker.Together.OpenApiClient.Models.RevisionObject? Object { get => _explicitNullValueObject; set { _explicitNullValueObject = value; AdditionalData?.Remove("object"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("object"); else _explicitNullProperties?.Remove("object"); } }
         private global::Soenneker.Together.OpenApiClient.Models.RevisionObject? _explicitNullValueObject = default!;
+        /// <summary>Placement group this revision co-locates into. Empty when the revision is not in a group.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? PlacementGroup { get => _explicitNullValuePlacementGroup; set { _explicitNullValuePlacementGroup = value; AdditionalData?.Remove("placement_group"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("placement_group"); else _explicitNullProperties?.Remove("placement_group"); } }
+        private string? _explicitNullValuePlacementGroup = default!;
+#nullable restore
+#else
+        public string PlacementGroup { get => _explicitNullValuePlacementGroup; set { _explicitNullValuePlacementGroup = value; AdditionalData?.Remove("placement_group"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("placement_group"); else _explicitNullProperties?.Remove("placement_group"); } }
+        private string _explicitNullValuePlacementGroup = default!;
+#endif
         /// <summary>Container port exposed by this revision.</summary>
         public int? Port { get => _explicitNullValuePort; set { _explicitNullValuePort = value; AdditionalData?.Remove("port"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("port"); else _explicitNullProperties?.Remove("port"); } }
         private int? _explicitNullValuePort = default!;
@@ -170,6 +184,16 @@ namespace Soenneker.Together.OpenApiClient.Models
 #else
         public string Protocol { get => _explicitNullValueProtocol; set { _explicitNullValueProtocol = value; AdditionalData?.Remove("protocol"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("protocol"); else _explicitNullProperties?.Remove("protocol"); } }
         private string _explicitNullValueProtocol = default!;
+#endif
+        /// <summary>Regions this revision is confined to (exact region or a prefix family like &quot;us-east&quot;). Empty means any region.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? Regions { get => _explicitNullValueRegions; set { _explicitNullValueRegions = value; AdditionalData?.Remove("regions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("regions"); else _explicitNullProperties?.Remove("regions"); } }
+        private List<string>? _explicitNullValueRegions = default!;
+#nullable restore
+#else
+        public List<string> Regions { get => _explicitNullValueRegions; set { _explicitNullValueRegions = value; AdditionalData?.Remove("regions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("regions"); else _explicitNullProperties?.Remove("regions"); } }
+        private List<string> _explicitNullValueRegions = default!;
 #endif
         /// <summary>Unique revision identifier.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -237,8 +261,10 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "memory", n => { Memory = n.GetDoubleValue(); } },
                 { "min_replicas", n => { MinReplicas = n.GetIntValue(); } },
                 { "object", n => { var parsed = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.RevisionObject>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueObject = default; _explicitNullProperties?.Remove("object"); AdditionalData["object"] = unknown; } else { Object = parsed; AdditionalData.Remove("object"); } } },
+                { "placement_group", n => { PlacementGroup = n.GetStringValue(); } },
                 { "port", n => { Port = n.GetIntValue(); } },
                 { "protocol", n => { Protocol = n.GetStringValue(); } },
+                { "regions", n => { Regions = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "revision_id", n => { RevisionId = n.GetStringValue(); } },
                 { "storage", n => { Storage = n.GetIntValue(); } },
                 { "termination_grace_period_seconds", n => { TerminationGracePeriodSeconds = n.GetIntValue(); } },
@@ -267,8 +293,10 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteDoubleValue("memory", Memory);
             writer.WriteIntValue("min_replicas", MinReplicas);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.RevisionObject>("object", Object);
+            writer.WriteStringValue("placement_group", PlacementGroup);
             writer.WriteIntValue("port", Port);
             writer.WriteStringValue("protocol", Protocol);
+            writer.WriteCollectionOfPrimitiveValues<string>("regions", Regions);
             writer.WriteStringValue("revision_id", RevisionId);
             writer.WriteIntValue("storage", Storage);
             writer.WriteIntValue("termination_grace_period_seconds", TerminationGracePeriodSeconds);

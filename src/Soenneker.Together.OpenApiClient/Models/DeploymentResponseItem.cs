@@ -57,10 +57,14 @@ namespace Soenneker.Together.OpenApiClient.Models
             else if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
             if (parseNode.GetChildNode("object") is null) { _explicitNullValueObject = default!; _explicitNullProperties?.Remove("object"); }
             else if (parseNode.GetChildNode("object") is { } nullNodeObject && nullNodeObject.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Object = null;
+            if (parseNode.GetChildNode("placement_group") is null) { _explicitNullValuePlacementGroup = default!; _explicitNullProperties?.Remove("placement_group"); }
+            else if (parseNode.GetChildNode("placement_group") is { } nullNodePlacementGroup && nullNodePlacementGroup.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PlacementGroup = null;
             if (parseNode.GetChildNode("port") is null) { _explicitNullValuePort = default!; _explicitNullProperties?.Remove("port"); }
             else if (parseNode.GetChildNode("port") is { } nullNodePort && nullNodePort.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Port = null;
             if (parseNode.GetChildNode("ready_replicas") is null) { _explicitNullValueReadyReplicas = default!; _explicitNullProperties?.Remove("ready_replicas"); }
             else if (parseNode.GetChildNode("ready_replicas") is { } nullNodeReadyReplicas && nullNodeReadyReplicas.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReadyReplicas = null;
+            if (parseNode.GetChildNode("regions") is null) { _explicitNullValueRegions = default!; _explicitNullProperties?.Remove("regions"); }
+            else if (parseNode.GetChildNode("regions") is { } nullNodeRegions && nullNodeRegions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Regions = null;
             if (parseNode.GetChildNode("replica_events") is null) { _explicitNullValueReplicaEvents = default!; _explicitNullProperties?.Remove("replica_events"); }
             else if (parseNode.GetChildNode("replica_events") is { } nullNodeReplicaEvents && nullNodeReplicaEvents.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReplicaEvents = null;
             if (parseNode.GetChildNode("status") is null) { _explicitNullValueStatus = default!; _explicitNullProperties?.Remove("status"); }
@@ -207,12 +211,32 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>The object type, which is always `deployment`.</summary>
         public global::Soenneker.Together.OpenApiClient.Models.DeploymentObject? Object { get => _explicitNullValueObject; set { _explicitNullValueObject = value; AdditionalData?.Remove("object"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("object"); else _explicitNullProperties?.Remove("object"); } }
         private global::Soenneker.Together.OpenApiClient.Models.DeploymentObject? _explicitNullValueObject = default!;
+        /// <summary>PlacementGroup co-locates deployments that share this value onto one cluster. Empty when the deployment is not in a group</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? PlacementGroup { get => _explicitNullValuePlacementGroup; set { _explicitNullValuePlacementGroup = value; AdditionalData?.Remove("placement_group"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("placement_group"); else _explicitNullProperties?.Remove("placement_group"); } }
+        private string? _explicitNullValuePlacementGroup = default!;
+#nullable restore
+#else
+        public string PlacementGroup { get => _explicitNullValuePlacementGroup; set { _explicitNullValuePlacementGroup = value; AdditionalData?.Remove("placement_group"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("placement_group"); else _explicitNullProperties?.Remove("placement_group"); } }
+        private string _explicitNullValuePlacementGroup = default!;
+#endif
         /// <summary>Port is the container port that the deployment exposes</summary>
         public int? Port { get => _explicitNullValuePort; set { _explicitNullValuePort = value; AdditionalData?.Remove("port"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("port"); else _explicitNullProperties?.Remove("port"); } }
         private int? _explicitNullValuePort = default!;
         /// <summary>ReadyReplicas is the current number of replicas that are in the Ready state</summary>
         public int? ReadyReplicas { get => _explicitNullValueReadyReplicas; set { _explicitNullValueReadyReplicas = value; AdditionalData?.Remove("ready_replicas"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ready_replicas"); else _explicitNullProperties?.Remove("ready_replicas"); } }
         private int? _explicitNullValueReadyReplicas = default!;
+        /// <summary>Regions confines the deployment to clusters in these regions (exact region or a prefix family like &quot;us-east&quot;). Empty means any region</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? Regions { get => _explicitNullValueRegions; set { _explicitNullValueRegions = value; AdditionalData?.Remove("regions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("regions"); else _explicitNullProperties?.Remove("regions"); } }
+        private List<string>? _explicitNullValueRegions = default!;
+#nullable restore
+#else
+        public List<string> Regions { get => _explicitNullValueRegions; set { _explicitNullValueRegions = value; AdditionalData?.Remove("regions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("regions"); else _explicitNullProperties?.Remove("regions"); } }
+        private List<string> _explicitNullValueRegions = default!;
+#endif
         /// <summary>ReplicaEvents is a mapping of replica names or IDs to their status events</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -290,8 +314,10 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "model_mounts", n => { ModelMounts = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.ModelMount>(global::Soenneker.Together.OpenApiClient.Models.ModelMount.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "object", n => { var parsed = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeploymentObject>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueObject = default; _explicitNullProperties?.Remove("object"); AdditionalData["object"] = unknown; } else { Object = parsed; AdditionalData.Remove("object"); } } },
+                { "placement_group", n => { PlacementGroup = n.GetStringValue(); } },
                 { "port", n => { Port = n.GetIntValue(); } },
                 { "ready_replicas", n => { ReadyReplicas = n.GetIntValue(); } },
+                { "regions", n => { Regions = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "replica_events", n => { ReplicaEvents = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItemReplicaEventsProperty>(global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItemReplicaEventsProperty.CreateFromDiscriminatorValue); } },
                 { "status", n => { var parsed = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItemStatus>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueStatus = default; _explicitNullProperties?.Remove("status"); AdditionalData["status"] = unknown; } else { Status = parsed; AdditionalData.Remove("status"); } } },
                 { "storage", n => { Storage = n.GetIntValue(); } },
@@ -327,8 +353,10 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.ModelMount>("model_mounts", ModelMounts);
             writer.WriteStringValue("name", Name);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeploymentObject>("object", Object);
+            writer.WriteStringValue("placement_group", PlacementGroup);
             writer.WriteIntValue("port", Port);
             writer.WriteIntValue("ready_replicas", ReadyReplicas);
+            writer.WriteCollectionOfPrimitiveValues<string>("regions", Regions);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItemReplicaEventsProperty>("replica_events", ReplicaEvents);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItemStatus>("status", Status);
             writer.WriteIntValue("storage", Storage);

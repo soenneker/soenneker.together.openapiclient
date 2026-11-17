@@ -11154,24 +11154,7 @@
               }
             }
           }
-        },
-        "x-codeSamples": [
-          {
-            "lang": "Python",
-            "label": "Together AI SDK (Python)",
-            "source": "from together import Together\nimport os\n\nclient = Together(\n    api_key=os.environ.get(\u0022TOGETHER_API_KEY\u0022),\n)\n\nresponse = client.evals.create(\n    type=\u0022classify\u0022,\n    parameters={\n        \u0022judge\u0022: {\n            \u0022model\u0022: \u0022openai/gpt-oss-120b\u0022,\n            \u0022model_source\u0022: \u0022serverless\u0022,\n            \u0022system_template\u0022: \u0022You are an expert evaluator...\u0022,\n        },\n        \u0022input_data_file_path\u0022: \u0022\u003CFILE_ID\u003E\u0022,\n        \u0022labels\u0022: [\u0022good\u0022, \u0022bad\u0022],\n        \u0022pass_labels\u0022: [\u0022good\u0022],\n        \u0022model_to_evaluate\u0022: \u0022Qwen/Qwen3.5-9B\u0022,\n    },\n)\n\nprint(response.workflow_id)\n"
-          },
-          {
-            "lang": "TypeScript",
-            "label": "Together AI SDK (TypeScript)",
-            "source": "import Together from \u0022together-ai\u0022;\n\nconst client = new Together({\n  apiKey: process.env.TOGETHER_API_KEY,\n});\n\nconst response = await client.evals.create({\n  type: \u0027classify\u0027,\n  parameters: {\n    judge: {\n      model: \u0027openai/gpt-oss-120b\u0027,\n      model_source: \u0027serverless\u0027,\n      system_template: \u0027You are an expert evaluator...\u0027,\n    },\n    input_data_file_path: \u0027\u003CFILE_ID\u003E\u0027,\n    labels: [\u0027good\u0027, \u0027bad\u0027],\n    pass_labels: [\u0027good\u0027],\n    model_to_evaluate: \u0027Qwen/Qwen3.5-9B\u0027,\n  },\n});\n\nconsole.log(response.workflow_id);\n"
-          },
-          {
-            "lang": "JavaScript",
-            "label": "Together AI SDK (JavaScript)",
-            "source": "import Together from \u0022together-ai\u0022;\n\nconst client = new Together({\n  apiKey: process.env.TOGETHER_API_KEY,\n});\n\nconst response = await client.evals.create({\n  type: \u0027classify\u0027,\n  parameters: {\n    judge: {\n      model: \u0027openai/gpt-oss-120b\u0027,\n      model_source: \u0027serverless\u0027,\n      system_template: \u0027You are an expert evaluator...\u0027,\n    },\n    input_data_file_path: \u0027\u003CFILE_ID\u003E\u0027,\n    labels: [\u0027good\u0027, \u0027bad\u0027],\n    pass_labels: [\u0027good\u0027],\n    model_to_evaluate: \u0027Qwen/Qwen3.5-9B\u0027,\n  },\n});\n\nconsole.log(response.workflow_id);\n"
-          }
-        ]
+        }
       },
       "get": {
         "tags": [
@@ -11229,24 +11212,7 @@
               }
             }
           }
-        },
-        "x-codeSamples": [
-          {
-            "lang": "Python",
-            "label": "Together AI SDK (Python)",
-            "source": "from together import Together\nimport os\n\nclient = Together(\n    api_key=os.environ.get(\u0022TOGETHER_API_KEY\u0022),\n)\n\nresponse = client.evals.list()\n\nfor job in response:\n    print(job.workflow_id)\n"
-          },
-          {
-            "lang": "TypeScript",
-            "label": "Together AI SDK (TypeScript)",
-            "source": "import Together from \u0022together-ai\u0022;\n\nconst client = new Together({\n  apiKey: process.env.TOGETHER_API_KEY,\n});\n\nconst response = await client.evals.list();\n\nfor (const job of response) {\n  console.log(job.workflow_id);\n}\n"
-          },
-          {
-            "lang": "JavaScript",
-            "label": "Together AI SDK (JavaScript)",
-            "source": "import Together from \u0022together-ai\u0022;\n\nconst client = new Together({\n  apiKey: process.env.TOGETHER_API_KEY,\n});\n\nconst response = await client.evals.list();\n\nfor (const job of response) {\n  console.log(job.workflow_id);\n}\n"
-          }
-        ]
+        }
       }
     },
     "/v1/evaluation/model-list": {
@@ -11298,24 +11264,7 @@
               }
             }
           }
-        },
-        "x-codeSamples": [
-          {
-            "lang": "Python",
-            "label": "Together AI SDK (Python)",
-            "source": "from together import Together\n\nclient = Together()\n\n# The SDK has no dedicated method for this endpoint yet, so call it with\n# the client\u0027s generic GET helper.\nmodels = client.get(\n    \u0022/v1/evaluation/model-list\u0022,\n    cast_to=object,\n    options={\u0022params\u0022: {\u0022model_source\u0022: \u0022serverless\u0022}},\n)\nprint(models)\n"
-          },
-          {
-            "lang": "TypeScript",
-            "label": "Together AI SDK (TypeScript)",
-            "source": "import Together from \u0022together-ai\u0022;\n\nconst client = new Together();\n\n// The SDK has no dedicated method for this endpoint yet, so call it with\n// the client\u0027s generic GET helper.\nconst models = await client.get(\u0022/v1/evaluation/model-list\u0022, {\n  query: { model_source: \u0022serverless\u0022 },\n});\nconsole.log(models);\n"
-          },
-          {
-            "lang": "JavaScript",
-            "label": "Together AI SDK (JavaScript)",
-            "source": "import Together from \u0022together-ai\u0022;\n\nconst client = new Together();\n\n// The SDK has no dedicated method for this endpoint yet, so call it with\n// the client\u0027s generic GET helper.\nconst models = await client.get(\u0022/v1/evaluation/model-list\u0022, {\n  query: { model_source: \u0022serverless\u0022 },\n});\nconsole.log(models);\n"
-          }
-        ]
+        }
       }
     },
     "/v1/evaluation/{id}": {
@@ -11367,24 +11316,7 @@
               }
             }
           }
-        },
-        "x-codeSamples": [
-          {
-            "lang": "Python",
-            "label": "Together AI SDK (Python)",
-            "source": "from together import Together\nimport os\n\nclient = Together(\n    api_key=os.environ.get(\u0022TOGETHER_API_KEY\u0022),\n)\n\nresponse = client.evals.retrieve(\u0027\u003CEVALUATION_ID\u003E\u0027)\n\nprint(response)\n"
-          },
-          {
-            "lang": "TypeScript",
-            "label": "Together AI SDK (TypeScript)",
-            "source": "import Together from \u0022together-ai\u0022;\n\nconst client = new Together({\n  apiKey: process.env.TOGETHER_API_KEY,\n});\n\nconst response = await client.evals.retrieve(\u0027\u003CEVALUATION_ID\u003E\u0027);\n\nconsole.log(response);\n"
-          },
-          {
-            "lang": "JavaScript",
-            "label": "Together AI SDK (JavaScript)",
-            "source": "import Together from \u0022together-ai\u0022;\n\nconst client = new Together({\n  apiKey: process.env.TOGETHER_API_KEY,\n});\n\nconst response = await client.evals.retrieve(\u0027\u003CEVALUATION_ID\u003E\u0027);\n\nconsole.log(response);\n"
-          }
-        ]
+        }
       }
     },
     "/v1/evaluation/{id}/status": {
@@ -11436,24 +11368,7 @@
               }
             }
           }
-        },
-        "x-codeSamples": [
-          {
-            "lang": "Python",
-            "label": "Together AI SDK (Python)",
-            "source": "from together import Together\nimport os\n\nclient = Together(\n    api_key=os.environ.get(\u0022TOGETHER_API_KEY\u0022),\n)\n\nresponse = client.evals.status(\u0027\u003CEVALUATION_ID\u003E\u0027)\n\nprint(response.status)\nprint(response.results)\n"
-          },
-          {
-            "lang": "TypeScript",
-            "label": "Together AI SDK (TypeScript)",
-            "source": "import Together from \u0022together-ai\u0022;\n\nconst client = new Together({\n  apiKey: process.env.TOGETHER_API_KEY,\n});\n\nconst response = await client.evals.status(\u0027\u003CEVALUATION_ID\u003E\u0027);\n\nconsole.log(response.status);\nconsole.log(response.results);\n"
-          },
-          {
-            "lang": "JavaScript",
-            "label": "Together AI SDK (JavaScript)",
-            "source": "import Together from \u0022together-ai\u0022;\n\nconst client = new Together({\n  apiKey: process.env.TOGETHER_API_KEY,\n});\n\nconst response = await client.evals.status(\u0027\u003CEVALUATION_ID\u003E\u0027);\n\nconsole.log(response.status);\nconsole.log(response.results);\n"
-          }
-        ]
+        }
       }
     },
     "/v1/realtime": {
@@ -26116,11 +26031,22 @@
             "type": "string",
             "description": "Name is the unique identifier for your deployment. Must contain lowercase letters, numbers, or hyphens, start with a lowercase letter or number, and be 4-63 characters. It cannot be changed."
           },
+          "placement_group": {
+            "type": "string",
+            "description": "PlacementGroup co-locates deployments that share this value onto one cluster, so in-cluster traffic between them stays local. A member that cannot co-locate stays pending. Leave empty for no group"
+          },
           "port": {
             "maximum": 65535,
             "minimum": 1,
             "type": "integer",
             "description": "Port is the container port your application listens on (e.g., 8080 for web servers). Required if your application serves traffic"
+          },
+          "regions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Regions confines the deployment to clusters in these regions. Each entry is an exact region or a prefix family like \u0022us-east\u0022 that matches every \u0022us-east-*\u0022. A deployment that cannot place in any of them stays pending. Empty means any region"
           },
           "storage": {
             "maximum": 400,
@@ -26315,6 +26241,10 @@
           "object": {
             "$ref": "#/components/schemas/DeploymentObject"
           },
+          "placement_group": {
+            "type": "string",
+            "description": "PlacementGroup co-locates deployments that share this value onto one cluster. Empty when the deployment is not in a group"
+          },
           "port": {
             "type": "integer",
             "description": "Port is the container port that the deployment exposes"
@@ -26322,6 +26252,13 @@
           "ready_replicas": {
             "type": "integer",
             "description": "ReadyReplicas is the current number of replicas that are in the Ready state"
+          },
+          "regions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Regions confines the deployment to clusters in these regions (exact region or a prefix family like \u0022us-east\u0022). Empty means any region"
           },
           "replica_events": {
             "$ref": "#/components/schemas/DeploymentResponseItemReplicaEventsProperty"
@@ -26394,6 +26331,10 @@
             "type": "integer",
             "description": "Maximum number of replicas configured for this revision."
           },
+          "placement_group": {
+            "type": "string",
+            "description": "Placement group this revision co-locates into. Empty when the revision is not in a group."
+          },
           "port": {
             "type": "integer",
             "description": "Container port exposed by this revision."
@@ -26401,6 +26342,13 @@
           "protocol": {
             "type": "string",
             "description": "Network protocol served by the deployment revision."
+          },
+          "regions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Regions this revision is confined to (exact region or a prefix family like \u0022us-east\u0022). Empty means any region."
           },
           "capacity_type": {
             "$ref": "#/components/schemas/RevisionDetailResponseCapacityType"
@@ -26849,11 +26797,22 @@
             "type": "string",
             "description": "Name is the new unique identifier for your deployment. Must contain only alphanumeric characters, underscores, or hyphens (1-100 characters)"
           },
+          "placement_group": {
+            "type": "string",
+            "description": "PlacementGroup co-locates deployments that share this value onto one cluster. A member that cannot co-locate stays pending. Send an empty string to clear the group; omit to leave it unchanged"
+          },
           "port": {
             "maximum": 65535,
             "minimum": 1,
             "type": "integer",
             "description": "Port is the container port your application listens on (e.g., 8080 for web servers)"
+          },
+          "regions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Regions confines the deployment to clusters in these regions (exact region or a prefix family like \u0022us-east\u0022). Send an empty array to clear the region pin; omit to leave it unchanged"
           },
           "storage": {
             "maximum": 400,
