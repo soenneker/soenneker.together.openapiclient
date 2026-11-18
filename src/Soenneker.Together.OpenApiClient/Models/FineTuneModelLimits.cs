@@ -151,7 +151,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(17)
             {
                 { "default_gradient_accumulation_steps", n => { DefaultGradientAccumulationSteps = n.GetIntValue(); } },
                 { "full_training", n => { FullTraining = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.FineTuneModelLimitsFullTraining>(global::Soenneker.Together.OpenApiClient.Models.FineTuneModelLimitsFullTraining.CreateFromDiscriminatorValue); } },

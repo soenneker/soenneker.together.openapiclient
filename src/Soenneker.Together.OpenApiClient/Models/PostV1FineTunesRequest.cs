@@ -359,7 +359,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(34)
             {
                 { "batch_size", n => { BatchSize = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.PostV1FineTunesRequestBatchSize>(global::Soenneker.Together.OpenApiClient.Models.PostV1FineTunesRequestBatchSize.CreateFromDiscriminatorValue); } },
                 { "early_stopping_enabled", n => { EarlyStoppingEnabled = n.GetBoolValue(); } },

@@ -256,7 +256,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(27)
             {
                 { "chat_template_kwargs", n => { ChatTemplateKwargs = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestChatTemplateKwargsProperty>(global::Soenneker.Together.OpenApiClient.Models.ChatCompletionRequestChatTemplateKwargsProperty.CreateFromDiscriminatorValue); } },
                 { "compliance", n => { var parsed = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.HipaaCompliance>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueCompliance = default; _explicitNullProperties?.Remove("compliance"); AdditionalData["compliance"] = unknown; } else { Compliance = parsed; AdditionalData.Remove("compliance"); } } },

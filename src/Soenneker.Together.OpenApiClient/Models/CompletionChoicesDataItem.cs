@@ -78,7 +78,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(4)
             {
                 { "finish_reason", n => { var parsed = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.FinishReason>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueFinishReason = default; _explicitNullProperties?.Remove("finish_reason"); AdditionalData["finish_reason"] = unknown; } else { FinishReason = parsed; AdditionalData.Remove("finish_reason"); } } },
                 { "logprobs", n => { Logprobs = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.LogprobsPart>(global::Soenneker.Together.OpenApiClient.Models.LogprobsPart.CreateFromDiscriminatorValue); } },

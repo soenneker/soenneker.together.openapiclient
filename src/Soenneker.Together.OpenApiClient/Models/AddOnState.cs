@@ -93,7 +93,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(4)
             {
                 { "dashboard", n => { Dashboard = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.DashboardState>(global::Soenneker.Together.OpenApiClient.Models.DashboardState.CreateFromDiscriminatorValue); } },
                 { "headlamp", n => { Headlamp = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.HeadlampState>(global::Soenneker.Together.OpenApiClient.Models.HeadlampState.CreateFromDiscriminatorValue); } },

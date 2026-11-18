@@ -92,7 +92,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(6)
             {
                 { "model_inputs", n => { ModelInputs = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.RlModelInput>(global::Soenneker.Together.OpenApiClient.Models.RlModelInput.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "num_samples", n => { NumSamples = n.GetIntValue(); } },

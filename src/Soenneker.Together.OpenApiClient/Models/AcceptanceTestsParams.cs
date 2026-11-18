@@ -85,7 +85,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(8)
             {
                 { "dcgm_diag_level", n => { var parsed = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.AcceptanceTestsParamsDcgmDiagLevel>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueDcgmDiagLevel = default; _explicitNullProperties?.Remove("dcgm_diag_level"); AdditionalData["dcgm_diag_level"] = unknown; } else { DcgmDiagLevel = parsed; AdditionalData.Remove("dcgm_diag_level"); } } },
                 { "dcgm_diag_skipped", n => { DcgmDiagSkipped = n.GetBoolValue(); } },

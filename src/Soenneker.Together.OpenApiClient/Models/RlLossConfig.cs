@@ -121,7 +121,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(7)
             {
                 { "cispo_params", n => { CispoParams = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlCispoLossParams>(global::Soenneker.Together.OpenApiClient.Models.RlCispoLossParams.CreateFromDiscriminatorValue); } },
                 { "cross_entropy_params", n => { CrossEntropyParams = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.RlCrossEntropyLossParams>(global::Soenneker.Together.OpenApiClient.Models.RlCrossEntropyLossParams.CreateFromDiscriminatorValue); } },

@@ -117,7 +117,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(6)
             {
                 { "audio_inputs", n => { AudioInputs = n.GetCollectionOfObjectValues<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "frame_images", n => { FrameImages = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.VideoFrameImageInput>(global::Soenneker.Together.OpenApiClient.Models.VideoFrameImageInput.CreateFromDiscriminatorValue)?.AsList(); } },

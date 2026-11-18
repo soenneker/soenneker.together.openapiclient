@@ -84,7 +84,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(5)
             {
                 { "dataset_format", n => { var parsed = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.FineTunePreviewResponseDatasetFormat>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueDatasetFormat = default; _explicitNullProperties?.Remove("dataset_format"); AdditionalData["dataset_format"] = unknown; } else { DatasetFormat = parsed; AdditionalData.Remove("dataset_format"); } } },
                 { "max_seq_length", n => { MaxSeqLength = n.GetIntValue(); } },

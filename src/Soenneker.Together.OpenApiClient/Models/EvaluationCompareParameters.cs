@@ -98,7 +98,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(5)
             {
                 { "disable_position_bias_correction", n => { DisablePositionBiasCorrection = n.GetBoolValue(); } },
                 { "input_data_file_path", n => { InputDataFilePath = n.GetStringValue(); } },

@@ -91,7 +91,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(5)
             {
                 { "condition", n => { Condition = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeRolloutStatusCondition>(global::Soenneker.Together.OpenApiClient.Models.DeRolloutStatusCondition.CreateFromDiscriminatorValue); } },
                 { "conditions", n => { Conditions = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.DeRolloutCondition>(global::Soenneker.Together.OpenApiClient.Models.DeRolloutCondition.CreateFromDiscriminatorValue)?.AsList(); } },

@@ -164,7 +164,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(20)
             {
                 { "active_health_check_run_id", n => { ActiveHealthCheckRunId = n.GetStringValue(); } },
                 { "cluster_id", n => { ClusterId = n.GetStringValue(); } },

@@ -121,7 +121,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(11)
             {
                 { "estimatedEffectiveSteps", n => { EstimatedEffectiveSteps = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.DeRolloutStep>(global::Soenneker.Together.OpenApiClient.Models.DeRolloutStep.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "estimatedSeedPercent", n => { EstimatedSeedPercent = n.GetIntValue(); } },

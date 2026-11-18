@@ -166,7 +166,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(15)
             {
                 { "disable_safety_checker", n => { DisableSafetyChecker = n.GetBoolValue(); } },
                 { "guidance_scale", n => { GuidanceScale = n.GetDoubleValue(); } },

@@ -103,7 +103,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(6)
             {
                 { "data", n => { Data = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.DeListFilesResponseFile>(global::Soenneker.Together.OpenApiClient.Models.DeListFilesResponseFile.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "next_cursor", n => { NextCursor = n.GetStringValue(); } },

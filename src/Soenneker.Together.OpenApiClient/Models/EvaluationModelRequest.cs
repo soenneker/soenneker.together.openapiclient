@@ -124,7 +124,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(9)
             {
                 { "external_api_token", n => { ExternalApiToken = n.GetStringValue(); } },
                 { "external_base_url", n => { ExternalBaseUrl = n.GetStringValue(); } },

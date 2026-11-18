@@ -96,7 +96,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(6)
             {
                 { "name", n => { var parsed = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeMetricRuleName>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueName = default; _explicitNullProperties?.Remove("name"); AdditionalData["name"] = unknown; } else { Name = parsed; AdditionalData.Remove("name"); } } },
                 { "percentile", n => { Percentile = n.GetIntValue(); } },

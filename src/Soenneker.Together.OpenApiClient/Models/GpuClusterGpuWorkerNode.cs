@@ -228,7 +228,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(20)
             {
                 { "auto_remediation_enabled", n => { AutoRemediationEnabled = n.GetBoolValue(); } },
                 { "deleted_at", n => { DeletedAt = n.GetDateTimeOffsetValue(); } },

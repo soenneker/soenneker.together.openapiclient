@@ -108,7 +108,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(7)
             {
                 { "input_ids", n => { InputIds = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
                 { "labels", n => { Labels = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },

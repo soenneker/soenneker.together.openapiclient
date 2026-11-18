@@ -132,7 +132,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(9)
             {
                 { "certificationType", n => { var parsed = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeCertificationCertificationType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueCertificationType = default; _explicitNullProperties?.Remove("certificationType"); AdditionalData["certificationType"] = unknown; } else { CertificationType = parsed; AdditionalData.Remove("certificationType"); } } },
                 { "certifiedAt", n => { CertifiedAt = n.GetDateTimeOffsetValue(); } },

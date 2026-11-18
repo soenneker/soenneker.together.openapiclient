@@ -12243,7 +12243,14 @@
               }
             }
           }
-        }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "Python",
+            "label": "Together AI SDK (Python)",
+            "source": "from together import Together\n\nclient = Together()\n\nestimate = client.post_training.rollouts.estimate(\n    base_model=\u0022Qwen/Qwen3.5-9B\u0022,\n    episodes=1024,\n    concurrency=64,\n    prompt_tokens=2000,\n    turns=4,\n    added_tokens_per_turn=1500,\n    generated_tokens_per_turn=500,\n    compute_config={\u0022gpu_type\u0022: \u0022B200-SXM\u0022, \u0022num_generator_replicas\u0022: 1},\n)\nprint(estimate.wall_seconds, estimate.estimated_price, estimate.currency)\n"
+          }
+        ]
       }
     },
     "/v1/rl/training-sessions": {

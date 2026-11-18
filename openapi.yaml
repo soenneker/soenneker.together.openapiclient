@@ -13841,6 +13841,25 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorData'
+      x-codeSamples:
+        - lang: Python
+          label: Together AI SDK (Python)
+          source: |
+            from together import Together
+
+            client = Together()
+
+            estimate = client.post_training.rollouts.estimate(
+                base_model="Qwen/Qwen3.5-9B",
+                episodes=1024,
+                concurrency=64,
+                prompt_tokens=2000,
+                turns=4,
+                added_tokens_per_turn=1500,
+                generated_tokens_per_turn=500,
+                compute_config={"gpu_type": "B200-SXM", "num_generator_replicas": 1},
+            )
+            print(estimate.wall_seconds, estimate.estimated_price, estimate.currency)
   /v1/rl/training-sessions:
     get:
       summary: List training sessions

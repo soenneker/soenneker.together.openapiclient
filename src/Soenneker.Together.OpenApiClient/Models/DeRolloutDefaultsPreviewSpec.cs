@@ -137,7 +137,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(10)
             {
                 { "blueGreen", n => { BlueGreen = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeCreateRolloutRequestBlueGreen>(global::Soenneker.Together.OpenApiClient.Models.DeCreateRolloutRequestBlueGreen.CreateFromDiscriminatorValue); } },
                 { "canary", n => { Canary = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeCreateRolloutRequestCanary>(global::Soenneker.Together.OpenApiClient.Models.DeCreateRolloutRequestCanary.CreateFromDiscriminatorValue); } },
