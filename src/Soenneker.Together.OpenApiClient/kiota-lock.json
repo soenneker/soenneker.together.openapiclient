@@ -2,7 +2,7 @@
   "descriptionHash": "6B2D1B0528C6DA9A8F289EFA53DA6E56AF9D7766ECD944780CDF77D68A94A885C59E05A1A3E59A33C2295CC160F66DEB37333102AADB2A77E71E46E477DFAE15",
   "descriptionLocation": "../../fixed.json",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.38.0",
+  "kiotaVersion": "1.39.0",
   "clientClassName": "TogetherOpenApiClient",
   "typeAccessModifier": "Public",
   "clientNamespaceName": "Soenneker.Together.OpenApiClient",
