@@ -47,6 +47,8 @@ namespace Soenneker.Together.OpenApiClient.Models
             else if (parseNode.GetChildNode("min_replicas") is { } nullNodeMinReplicas && nullNodeMinReplicas.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MinReplicas = null;
             if (parseNode.GetChildNode("model_mounts") is null) { _explicitNullValueModelMounts = default!; _explicitNullProperties?.Remove("model_mounts"); }
             else if (parseNode.GetChildNode("model_mounts") is { } nullNodeModelMounts && nullNodeModelMounts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModelMounts = null;
+            if (parseNode.GetChildNode("model_name") is null) { _explicitNullValueModelName = default!; _explicitNullProperties?.Remove("model_name"); }
+            else if (parseNode.GetChildNode("model_name") is { } nullNodeModelName && nullNodeModelName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModelName = null;
             if (parseNode.GetChildNode("name") is null) { _explicitNullValueName = default!; _explicitNullProperties?.Remove("name"); }
             else if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
             if (parseNode.GetChildNode("placement_group") is null) { _explicitNullValuePlacementGroup = default!; _explicitNullProperties?.Remove("placement_group"); }
@@ -59,6 +61,8 @@ namespace Soenneker.Together.OpenApiClient.Models
             else if (parseNode.GetChildNode("storage") is { } nullNodeStorage && nullNodeStorage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Storage = null;
             if (parseNode.GetChildNode("termination_grace_period_seconds") is null) { _explicitNullValueTerminationGracePeriodSeconds = default!; _explicitNullProperties?.Remove("termination_grace_period_seconds"); }
             else if (parseNode.GetChildNode("termination_grace_period_seconds") is { } nullNodeTerminationGracePeriodSeconds && nullNodeTerminationGracePeriodSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TerminationGracePeriodSeconds = null;
+            if (parseNode.GetChildNode("traffic_weight") is null) { _explicitNullValueTrafficWeight = default!; _explicitNullProperties?.Remove("traffic_weight"); }
+            else if (parseNode.GetChildNode("traffic_weight") is { } nullNodeTrafficWeight && nullNodeTrafficWeight.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TrafficWeight = null;
             if (parseNode.GetChildNode("volumes") is null) { _explicitNullValueVolumes = default!; _explicitNullProperties?.Remove("volumes"); }
             else if (parseNode.GetChildNode("volumes") is { } nullNodeVolumes && nullNodeVolumes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Volumes = null;
         }
@@ -166,7 +170,17 @@ namespace Soenneker.Together.OpenApiClient.Models
         public List<global::Soenneker.Together.OpenApiClient.Models.ModelMount> ModelMounts { get => _explicitNullValueModelMounts; set { _explicitNullValueModelMounts = value; AdditionalData?.Remove("model_mounts"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_mounts"); else _explicitNullProperties?.Remove("model_mounts"); } }
         private List<global::Soenneker.Together.OpenApiClient.Models.ModelMount> _explicitNullValueModelMounts = default!;
 #endif
-        /// <summary>Name is the new unique identifier for your deployment. Must contain only alphanumeric characters, underscores, or hyphens (1-100 characters)</summary>
+        /// <summary>ModelName changes the model this deployment handles traffic for. Can be omitted. Send the deployment name to reset it</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ModelName { get => _explicitNullValueModelName; set { _explicitNullValueModelName = value; AdditionalData?.Remove("model_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_name"); else _explicitNullProperties?.Remove("model_name"); } }
+        private string? _explicitNullValueModelName = default!;
+#nullable restore
+#else
+        public string ModelName { get => _explicitNullValueModelName; set { _explicitNullValueModelName = value; AdditionalData?.Remove("model_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_name"); else _explicitNullProperties?.Remove("model_name"); } }
+        private string _explicitNullValueModelName = default!;
+#endif
+        /// <summary>Name is the deployment&apos;s current name. Deployment names cannot be changed after creation</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
@@ -205,6 +219,9 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>TerminationGracePeriodSeconds is the time in seconds to wait for graceful shutdown before forcefully terminating the replica</summary>
         public int? TerminationGracePeriodSeconds { get => _explicitNullValueTerminationGracePeriodSeconds; set { _explicitNullValueTerminationGracePeriodSeconds = value; AdditionalData?.Remove("termination_grace_period_seconds"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("termination_grace_period_seconds"); else _explicitNullProperties?.Remove("termination_grace_period_seconds"); } }
         private int? _explicitNullValueTerminationGracePeriodSeconds = default!;
+        /// <summary>TrafficWeight is the deployment&apos;s share of its model&apos;s traffic, relative to the other deployments of that model.</summary>
+        public int? TrafficWeight { get => _explicitNullValueTrafficWeight; set { _explicitNullValueTrafficWeight = value; AdditionalData?.Remove("traffic_weight"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("traffic_weight"); else _explicitNullProperties?.Remove("traffic_weight"); } }
+        private int? _explicitNullValueTrafficWeight = default!;
         /// <summary>Volumes is a list of volume mounts to attach to the container. Replaces all existing volumes.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -238,7 +255,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>(22)
+            return new Dictionary<string, Action<IParseNode>>(24)
             {
                 { "args", n => { Args = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "autoscaling", n => { Autoscaling = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.UpdateDeploymentRequestAutoscaling>(global::Soenneker.Together.OpenApiClient.Models.UpdateDeploymentRequestAutoscaling.CreateFromDiscriminatorValue); } },
@@ -255,12 +272,14 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "memory", n => { Memory = n.GetDoubleValue(); } },
                 { "min_replicas", n => { MinReplicas = n.GetIntValue(); } },
                 { "model_mounts", n => { ModelMounts = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.ModelMount>(global::Soenneker.Together.OpenApiClient.Models.ModelMount.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "model_name", n => { ModelName = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "placement_group", n => { PlacementGroup = n.GetStringValue(); } },
                 { "port", n => { Port = n.GetIntValue(); } },
                 { "regions", n => { Regions = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "storage", n => { Storage = n.GetIntValue(); } },
                 { "termination_grace_period_seconds", n => { TerminationGracePeriodSeconds = n.GetIntValue(); } },
+                { "traffic_weight", n => { TrafficWeight = n.GetIntValue(); } },
                 { "volumes", n => { Volumes = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.VolumeMount>(global::Soenneker.Together.OpenApiClient.Models.VolumeMount.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
@@ -286,12 +305,14 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteDoubleValue("memory", Memory);
             writer.WriteIntValue("min_replicas", MinReplicas);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.ModelMount>("model_mounts", ModelMounts);
+            writer.WriteStringValue("model_name", ModelName);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("placement_group", PlacementGroup);
             writer.WriteIntValue("port", Port);
             writer.WriteCollectionOfPrimitiveValues<string>("regions", Regions);
             writer.WriteIntValue("storage", Storage);
             writer.WriteIntValue("termination_grace_period_seconds", TerminationGracePeriodSeconds);
+            writer.WriteIntValue("traffic_weight", TrafficWeight);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.VolumeMount>("volumes", Volumes);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

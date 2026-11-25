@@ -75,6 +75,7 @@ namespace Soenneker.Together.OpenApiClient.V1
             get => new global::Soenneker.Together.OpenApiClient.V1.Embeddings.EmbeddingsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The evaluation property</summary>
+        [Obsolete("")]
         public global::Soenneker.Together.OpenApiClient.V1.Evaluation.EvaluationRequestBuilder Evaluation
         {
             get => new global::Soenneker.Together.OpenApiClient.V1.Evaluation.EvaluationRequestBuilder(PathParameters, RequestAdapter);

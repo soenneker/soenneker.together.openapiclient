@@ -24,6 +24,8 @@ namespace Soenneker.Together.OpenApiClient.Models
             else if (parseNode.GetChildNode("created_at") is { } nullNodeCreatedAt && nullNodeCreatedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreatedAt = null;
             if (parseNode.GetChildNode("error") is null) { _explicitNullValueError = default!; _explicitNullProperties?.Remove("error"); }
             else if (parseNode.GetChildNode("error") is { } nullNodeError && nullNodeError.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Error = null;
+            if (parseNode.GetChildNode("estimated_done_at") is null) { _explicitNullValueEstimatedDoneAt = default!; _explicitNullProperties?.Remove("estimated_done_at"); }
+            else if (parseNode.GetChildNode("estimated_done_at") is { } nullNodeEstimatedDoneAt && nullNodeEstimatedDoneAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EstimatedDoneAt = null;
             if (parseNode.GetChildNode("id") is null) { _explicitNullValueId = default!; _explicitNullProperties?.Remove("id"); }
             else if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
             if (parseNode.GetChildNode("model") is null) { _explicitNullValueModel = default!; _explicitNullProperties?.Remove("model"); }
@@ -58,6 +60,9 @@ namespace Soenneker.Together.OpenApiClient.Models
         public global::Soenneker.Together.OpenApiClient.Models.VideoJobError Error { get => _explicitNullValueError; set { _explicitNullValueError = value; AdditionalData?.Remove("error"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error"); else _explicitNullProperties?.Remove("error"); } }
         private global::Soenneker.Together.OpenApiClient.Models.VideoJobError _explicitNullValueError = default!;
 #endif
+        /// <summary>Estimated Unix timestamp (seconds) for when the job is expected to finish. This is an estimate, not a guarantee. It is only returned when creating a video and an estimate is available.</summary>
+        public double? EstimatedDoneAt { get => _explicitNullValueEstimatedDoneAt; set { _explicitNullValueEstimatedDoneAt = value; AdditionalData?.Remove("estimated_done_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("estimated_done_at"); else _explicitNullProperties?.Remove("estimated_done_at"); } }
+        private double? _explicitNullValueEstimatedDoneAt = default!;
         /// <summary>Unique identifier for the video job.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -137,11 +142,12 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>(10)
+            return new Dictionary<string, Action<IParseNode>>(11)
             {
                 { "completed_at", n => { CompletedAt = n.GetDoubleValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDoubleValue(); } },
                 { "error", n => { Error = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.VideoJobError>(global::Soenneker.Together.OpenApiClient.Models.VideoJobError.CreateFromDiscriminatorValue); } },
+                { "estimated_done_at", n => { EstimatedDoneAt = n.GetDoubleValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
                 { "object", n => { var parsed = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.VideoObject>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueObject = default; _explicitNullProperties?.Remove("object"); AdditionalData["object"] = unknown; } else { Object = parsed; AdditionalData.Remove("object"); } } },
@@ -161,6 +167,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteDoubleValue("completed_at", CompletedAt);
             writer.WriteDoubleValue("created_at", CreatedAt);
             writer.WriteObjectValue<global::Soenneker.Together.OpenApiClient.Models.VideoJobError>("error", Error);
+            writer.WriteDoubleValue("estimated_done_at", EstimatedDoneAt);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("model", Model);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.VideoObject>("object", Object);

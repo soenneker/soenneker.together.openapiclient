@@ -298,6 +298,14 @@ namespace Soenneker.Together.OpenApiClient.Models
         public List<string> Tags { get => _explicitNullValueTags; set { _explicitNullValueTags = value; AdditionalData?.Remove("tags"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tags"); else _explicitNullProperties?.Remove("tags"); } }
         private List<string> _explicitNullValueTags = default!;
 #endif
+        /// <summary>Serverless prices for usage not measured in tokens, such as minutes of transcribed audio or characters of synthesized speech, ordered by unit then tier. Empty when none are curated; a model priced the same on every tier lists only `PRICING_TIER_STANDARD`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelUnitPrice>? UnitPrices { get; private set; }
+#nullable restore
+#else
+        public List<global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelUnitPrice> UnitPrices { get; private set; }
+#endif
         /// <summary>Timestamp when the catalog entry was last updated.</summary>
         public DateTimeOffset? UpdatedAt { get => _explicitNullValueUpdatedAt; set { _explicitNullValueUpdatedAt = value; AdditionalData?.Remove("updatedAt"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("updatedAt"); else _explicitNullProperties?.Remove("updatedAt"); } }
         private DateTimeOffset? _explicitNullValueUpdatedAt = default!;
@@ -324,7 +332,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>(25)
+            return new Dictionary<string, Action<IParseNode>>(26)
             {
                 { "architecture", n => { Architecture = n.GetStringValue(); } },
                 { "baseModel", n => { BaseModel = n.GetStringValue(); } },
@@ -350,6 +358,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "serverlessEndpoint", n => { ServerlessEndpoint = n.GetStringValue(); } },
                 { "status", n => { var parsed = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelStatus>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueStatus = default; _explicitNullProperties?.Remove("status"); AdditionalData["status"] = unknown; } else { Status = parsed; AdditionalData.Remove("status"); } } },
                 { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "unitPrices", n => { UnitPrices = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelUnitPrice>(global::Soenneker.Together.OpenApiClient.Models.DeSupportedModelUnitPrice.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "updatedAt", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
         }

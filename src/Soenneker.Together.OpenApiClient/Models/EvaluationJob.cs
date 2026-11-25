@@ -7,6 +7,7 @@ using System.IO;
 using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
+    [Obsolete("")]
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
     public partial class EvaluationJob : IAdditionalDataHolder, IParsable
@@ -39,10 +40,10 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>When the job was created</summary>
+        /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get => _explicitNullValueCreatedAt; set { _explicitNullValueCreatedAt = value; AdditionalData?.Remove("created_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_at"); else _explicitNullProperties?.Remove("created_at"); } }
         private DateTimeOffset? _explicitNullValueCreatedAt = default!;
-        /// <summary>ID of the job owner (admin only)</summary>
+        /// <summary>The owner_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? OwnerId { get => _explicitNullValueOwnerId; set { _explicitNullValueOwnerId = value; AdditionalData?.Remove("owner_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("owner_id"); else _explicitNullProperties?.Remove("owner_id"); } }
@@ -52,7 +53,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string OwnerId { get => _explicitNullValueOwnerId; set { _explicitNullValueOwnerId = value; AdditionalData?.Remove("owner_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("owner_id"); else _explicitNullProperties?.Remove("owner_id"); } }
         private string _explicitNullValueOwnerId = default!;
 #endif
-        /// <summary>The parameters used for this evaluation</summary>
+        /// <summary>The parameters property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Together.OpenApiClient.Models.EvaluationJobParametersProperty? Parameters { get => _explicitNullValueParameters; set { _explicitNullValueParameters = value; AdditionalData?.Remove("parameters"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("parameters"); else _explicitNullProperties?.Remove("parameters"); } }
@@ -62,7 +63,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public global::Soenneker.Together.OpenApiClient.Models.EvaluationJobParametersProperty Parameters { get => _explicitNullValueParameters; set { _explicitNullValueParameters = value; AdditionalData?.Remove("parameters"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("parameters"); else _explicitNullProperties?.Remove("parameters"); } }
         private global::Soenneker.Together.OpenApiClient.Models.EvaluationJobParametersProperty _explicitNullValueParameters = default!;
 #endif
-        /// <summary>Results of the evaluation (when completed)</summary>
+        /// <summary>The results property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Together.OpenApiClient.Models.EvaluationJobResults? Results { get => _explicitNullValueResults; set { _explicitNullValueResults = value; AdditionalData?.Remove("results"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("results"); else _explicitNullProperties?.Remove("results"); } }
@@ -72,10 +73,10 @@ namespace Soenneker.Together.OpenApiClient.Models
         public global::Soenneker.Together.OpenApiClient.Models.EvaluationJobResults Results { get => _explicitNullValueResults; set { _explicitNullValueResults = value; AdditionalData?.Remove("results"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("results"); else _explicitNullProperties?.Remove("results"); } }
         private global::Soenneker.Together.OpenApiClient.Models.EvaluationJobResults _explicitNullValueResults = default!;
 #endif
-        /// <summary>Current status of the job</summary>
+        /// <summary>The status property</summary>
         public global::Soenneker.Together.OpenApiClient.Models.EvaluationJobStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
         private global::Soenneker.Together.OpenApiClient.Models.EvaluationJobStatus? _explicitNullValueStatus = default!;
-        /// <summary>History of status updates (admin only)</summary>
+        /// <summary>The status_updates property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Together.OpenApiClient.Models.EvaluationJobStatusUpdate>? StatusUpdates { get => _explicitNullValueStatusUpdates; set { _explicitNullValueStatusUpdates = value; AdditionalData?.Remove("status_updates"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status_updates"); else _explicitNullProperties?.Remove("status_updates"); } }
@@ -85,13 +86,13 @@ namespace Soenneker.Together.OpenApiClient.Models
         public List<global::Soenneker.Together.OpenApiClient.Models.EvaluationJobStatusUpdate> StatusUpdates { get => _explicitNullValueStatusUpdates; set { _explicitNullValueStatusUpdates = value; AdditionalData?.Remove("status_updates"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status_updates"); else _explicitNullProperties?.Remove("status_updates"); } }
         private List<global::Soenneker.Together.OpenApiClient.Models.EvaluationJobStatusUpdate> _explicitNullValueStatusUpdates = default!;
 #endif
-        /// <summary>The type of evaluation</summary>
+        /// <summary>The type property</summary>
         public global::Soenneker.Together.OpenApiClient.Models.EvaluationJobType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; AdditionalData?.Remove("type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
         private global::Soenneker.Together.OpenApiClient.Models.EvaluationJobType? _explicitNullValueType = default!;
-        /// <summary>When the job was last updated</summary>
+        /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get => _explicitNullValueUpdatedAt; set { _explicitNullValueUpdatedAt = value; AdditionalData?.Remove("updated_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("updated_at"); else _explicitNullProperties?.Remove("updated_at"); } }
         private DateTimeOffset? _explicitNullValueUpdatedAt = default!;
-        /// <summary>The evaluation job ID</summary>
+        /// <summary>The workflow_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? WorkflowId { get => _explicitNullValueWorkflowId; set { _explicitNullValueWorkflowId = value; AdditionalData?.Remove("workflow_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("workflow_id"); else _explicitNullProperties?.Remove("workflow_id"); } }

@@ -33,38 +33,32 @@ namespace Soenneker.Together.OpenApiClient.V1.Evaluation.ModelList
         public ModelListRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v1/evaluation/model-list{?model_source*}", rawUrl)
         {
         }
-        /// <summary>
-        /// Get model list
-        /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.GetModelList200Response"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.GetV1EvaluationModelList200Response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.ErrorData">When receiving a 400 status code</exception>
-        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.ErrorData">When receiving a 500 status code</exception>
+        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.ErrorData">When receiving a 410 status code</exception>
+        [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Together.OpenApiClient.Models.GetModelList200Response?> GetAsync(Action<RequestConfiguration<global::Soenneker.Together.OpenApiClient.V1.Evaluation.ModelList.ModelListRequestBuilder.ModelListRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Together.OpenApiClient.Models.GetV1EvaluationModelList200Response?> GetAsync(Action<RequestConfiguration<global::Soenneker.Together.OpenApiClient.V1.Evaluation.ModelList.ModelListRequestBuilder.ModelListRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Together.OpenApiClient.Models.GetModelList200Response> GetAsync(Action<RequestConfiguration<global::Soenneker.Together.OpenApiClient.V1.Evaluation.ModelList.ModelListRequestBuilder.ModelListRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Together.OpenApiClient.Models.GetV1EvaluationModelList200Response> GetAsync(Action<RequestConfiguration<global::Soenneker.Together.OpenApiClient.V1.Evaluation.ModelList.ModelListRequestBuilder.ModelListRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Soenneker.Together.OpenApiClient.Models.ErrorData.CreateFromDiscriminatorValue },
-                { "500", global::Soenneker.Together.OpenApiClient.Models.ErrorData.CreateFromDiscriminatorValue },
+                { "410", global::Soenneker.Together.OpenApiClient.Models.ErrorData.CreateFromDiscriminatorValue },
                 { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
                 { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.GetModelList200Response>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.GetModelList200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.GetV1EvaluationModelList200Response>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.GetV1EvaluationModelList200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
-        /// <summary>
-        /// Get model list
-        /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Together.OpenApiClient.V1.Evaluation.ModelList.ModelListRequestBuilder.ModelListRequestBuilderGetQueryParameters>>? requestConfiguration = default)
@@ -84,15 +78,15 @@ namespace Soenneker.Together.OpenApiClient.V1.Evaluation.ModelList
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.V1.Evaluation.ModelList.ModelListRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
+        [Obsolete("")]
         public global::Soenneker.Together.OpenApiClient.V1.Evaluation.ModelList.ModelListRequestBuilder WithUrl(string rawUrl)
         {
             return new global::Soenneker.Together.OpenApiClient.V1.Evaluation.ModelList.ModelListRequestBuilder(rawUrl, RequestAdapter);
         }
-        /// <summary>
-        /// Get model list
-        /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        #pragma warning disable CS1591
         public partial class ModelListRequestBuilderGetQueryParameters 
+        #pragma warning restore CS1591
         {
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

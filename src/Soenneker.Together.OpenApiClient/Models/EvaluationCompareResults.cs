@@ -7,6 +7,7 @@ using System.IO;
 using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
+    [Obsolete("")]
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
     public partial class EvaluationCompareResults : IAdditionalDataHolder, IParsable
@@ -33,19 +34,19 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Number of samples where model A was judged the winner</summary>
+        /// <summary>The A_wins property</summary>
         public int? AWins { get => _explicitNullValueAWins; set { _explicitNullValueAWins = value; AdditionalData?.Remove("A_wins"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("A_wins"); else _explicitNullProperties?.Remove("A_wins"); } }
         private int? _explicitNullValueAWins = default!;
-        /// <summary>Number of samples where model B was judged the winner</summary>
+        /// <summary>The B_wins property</summary>
         public int? BWins { get => _explicitNullValueBWins; set { _explicitNullValueBWins = value; AdditionalData?.Remove("B_wins"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("B_wins"); else _explicitNullProperties?.Remove("B_wins"); } }
         private int? _explicitNullValueBWins = default!;
-        /// <summary>Number of generation failures across model A and model B.</summary>
+        /// <summary>The generation_fail_count property</summary>
         public double? GenerationFailCount { get => _explicitNullValueGenerationFailCount; set { _explicitNullValueGenerationFailCount = value; AdditionalData?.Remove("generation_fail_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("generation_fail_count"); else _explicitNullProperties?.Remove("generation_fail_count"); } }
         private double? _explicitNullValueGenerationFailCount = default!;
-        /// <summary>Number of judge inference failures. In the default two-pass mode (disable_position_bias_correction=false) this is the combined failure count from both the original-order and flipped-order judge passes.</summary>
+        /// <summary>The judge_fail_count property</summary>
         public double? JudgeFailCount { get => _explicitNullValueJudgeFailCount; set { _explicitNullValueJudgeFailCount = value; AdditionalData?.Remove("judge_fail_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("judge_fail_count"); else _explicitNullProperties?.Remove("judge_fail_count"); } }
         private double? _explicitNullValueJudgeFailCount = default!;
-        /// <summary>File ID of the detailed output file. Each row contains the original input fields plus judge outputs. In two-pass mode the file includes both original-order and flipped-order judge fields; in single-pass mode (disable_position_bias_correction=true) only original-order fields are present.</summary>
+        /// <summary>The result_file_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ResultFileId { get => _explicitNullValueResultFileId; set { _explicitNullValueResultFileId = value; AdditionalData?.Remove("result_file_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("result_file_id"); else _explicitNullProperties?.Remove("result_file_id"); } }
@@ -55,7 +56,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string ResultFileId { get => _explicitNullValueResultFileId; set { _explicitNullValueResultFileId = value; AdditionalData?.Remove("result_file_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("result_file_id"); else _explicitNullProperties?.Remove("result_file_id"); } }
         private string _explicitNullValueResultFileId = default!;
 #endif
-        /// <summary>Number of samples that resulted in a tie score</summary>
+        /// <summary>The Ties property</summary>
         public int? Ties { get => _explicitNullValueTies; set { _explicitNullValueTies = value; AdditionalData?.Remove("Ties"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("Ties"); else _explicitNullProperties?.Remove("Ties"); } }
         private int? _explicitNullValueTies = default!;
         /// <summary>

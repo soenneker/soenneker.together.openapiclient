@@ -7,6 +7,7 @@ using System.IO;
 using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
+    [Obsolete("")]
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
     public partial class EvaluationJudgeModelConfig : IAdditionalDataHolder, IParsable
@@ -37,7 +38,7 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Bearer/API token for the external judge model provider. Required when model_source is &apos;external&apos;.</summary>
+        /// <summary>The external_api_token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ExternalApiToken { get => _explicitNullValueExternalApiToken; set { _explicitNullValueExternalApiToken = value; AdditionalData?.Remove("external_api_token"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("external_api_token"); else _explicitNullProperties?.Remove("external_api_token"); } }
@@ -47,7 +48,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string ExternalApiToken { get => _explicitNullValueExternalApiToken; set { _explicitNullValueExternalApiToken = value; AdditionalData?.Remove("external_api_token"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("external_api_token"); else _explicitNullProperties?.Remove("external_api_token"); } }
         private string _explicitNullValueExternalApiToken = default!;
 #endif
-        /// <summary>Base URL of the external inference API for the judge. Must be OpenAI-compatible. Required when model_source is &apos;external&apos;.</summary>
+        /// <summary>The external_base_url property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ExternalBaseUrl { get => _explicitNullValueExternalBaseUrl; set { _explicitNullValueExternalBaseUrl = value; AdditionalData?.Remove("external_base_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("external_base_url"); else _explicitNullProperties?.Remove("external_base_url"); } }
@@ -57,10 +58,10 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string ExternalBaseUrl { get => _explicitNullValueExternalBaseUrl; set { _explicitNullValueExternalBaseUrl = value; AdditionalData?.Remove("external_base_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("external_base_url"); else _explicitNullProperties?.Remove("external_base_url"); } }
         private string _explicitNullValueExternalBaseUrl = default!;
 #endif
-        /// <summary>Maximum number of tokens the judge model may generate. Defaults to 32768 if omitted. Set higher for reasoning judges (e.g. o-series, Gemini) that spend tokens on internal chain-of-thought before emitting the verdict JSON.</summary>
+        /// <summary>The max_tokens property</summary>
         public int? MaxTokens { get => _explicitNullValueMaxTokens; set { _explicitNullValueMaxTokens = value; AdditionalData?.Remove("max_tokens"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_tokens"); else _explicitNullProperties?.Remove("max_tokens"); } }
         private int? _explicitNullValueMaxTokens = default!;
-        /// <summary>Name of the judge model</summary>
+        /// <summary>The model property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; AdditionalData?.Remove("model"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
@@ -70,13 +71,13 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; AdditionalData?.Remove("model"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
         private string _explicitNullValueModel = default!;
 #endif
-        /// <summary>Source of the judge model inference: - `serverless`: Together&apos;s shared serverless inference API. Default concurrency: 25 workers. - `dedicated`: A Together dedicated deployment endpoint. Default concurrency: 5 workers  (minimum enforced even if num_workers is set lower).- `external`: An external inference API (e.g. OpenAI, Anthropic, Google, OpenRouter).  Requires `external_api_token` and `external_base_url`. Default concurrency: 2 workers  for first-party APIs, 20 for proxy/aggregator endpoints.</summary>
+        /// <summary>The model_source property</summary>
         public global::Soenneker.Together.OpenApiClient.Models.EvaluationJudgeModelConfigModelSource? ModelSource { get => _explicitNullValueModelSource; set { _explicitNullValueModelSource = value; AdditionalData?.Remove("model_source"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_source"); else _explicitNullProperties?.Remove("model_source"); } }
         private global::Soenneker.Together.OpenApiClient.Models.EvaluationJudgeModelConfigModelSource? _explicitNullValueModelSource = default!;
-        /// <summary>Number of concurrent inference workers for the judge. Overrides the source-specific default (serverless: 25, dedicated: 5, external: 2–20). For dedicated endpoints the value is clamped to a minimum of 5 regardless of what is set here.</summary>
+        /// <summary>The num_workers property</summary>
         public int? NumWorkers { get => _explicitNullValueNumWorkers; set { _explicitNullValueNumWorkers = value; AdditionalData?.Remove("num_workers"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("num_workers"); else _explicitNullProperties?.Remove("num_workers"); } }
         private int? _explicitNullValueNumWorkers = default!;
-        /// <summary>System prompt template for the judge</summary>
+        /// <summary>The system_template property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? SystemTemplate { get => _explicitNullValueSystemTemplate; set { _explicitNullValueSystemTemplate = value; AdditionalData?.Remove("system_template"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("system_template"); else _explicitNullProperties?.Remove("system_template"); } }
@@ -86,7 +87,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string SystemTemplate { get => _explicitNullValueSystemTemplate; set { _explicitNullValueSystemTemplate = value; AdditionalData?.Remove("system_template"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("system_template"); else _explicitNullProperties?.Remove("system_template"); } }
         private string _explicitNullValueSystemTemplate = default!;
 #endif
-        /// <summary>Sampling temperature for the judge model. Defaults to 0.05 if omitted.</summary>
+        /// <summary>The temperature property</summary>
         public double? Temperature { get => _explicitNullValueTemperature; set { _explicitNullValueTemperature = value; AdditionalData?.Remove("temperature"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("temperature"); else _explicitNullProperties?.Remove("temperature"); } }
         private double? _explicitNullValueTemperature = default!;
         /// <summary>

@@ -3,9 +3,10 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
-    /// <summary>Initial status of the job</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public enum PendingStatus
+    #pragma warning restore CS1591
     {
         [EnumMember(Value = "pending")]
         #pragma warning disable CS1591

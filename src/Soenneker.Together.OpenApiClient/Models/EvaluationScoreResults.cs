@@ -7,6 +7,7 @@ using System.IO;
 using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
+    [Obsolete("")]
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
     public partial class EvaluationScoreResults : IAdditionalDataHolder, IParsable
@@ -43,19 +44,19 @@ namespace Soenneker.Together.OpenApiClient.Models
         public global::Soenneker.Together.OpenApiClient.Models.EvaluationScoreResultsAggregatedScores AggregatedScores { get => _explicitNullValueAggregatedScores; set { _explicitNullValueAggregatedScores = value; AdditionalData?.Remove("aggregated_scores"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("aggregated_scores"); else _explicitNullProperties?.Remove("aggregated_scores"); } }
         private global::Soenneker.Together.OpenApiClient.Models.EvaluationScoreResultsAggregatedScores _explicitNullValueAggregatedScores = default!;
 #endif
-        /// <summary>number of failed samples generated from model</summary>
+        /// <summary>The failed_samples property</summary>
         public double? FailedSamples { get => _explicitNullValueFailedSamples; set { _explicitNullValueFailedSamples = value; AdditionalData?.Remove("failed_samples"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failed_samples"); else _explicitNullProperties?.Remove("failed_samples"); } }
         private double? _explicitNullValueFailedSamples = default!;
-        /// <summary>Number of failed generations.</summary>
+        /// <summary>The generation_fail_count property</summary>
         public double? GenerationFailCount { get => _explicitNullValueGenerationFailCount; set { _explicitNullValueGenerationFailCount = value; AdditionalData?.Remove("generation_fail_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("generation_fail_count"); else _explicitNullProperties?.Remove("generation_fail_count"); } }
         private double? _explicitNullValueGenerationFailCount = default!;
-        /// <summary>number of invalid scores generated from model</summary>
+        /// <summary>The invalid_score_count property</summary>
         public double? InvalidScoreCount { get => _explicitNullValueInvalidScoreCount; set { _explicitNullValueInvalidScoreCount = value; AdditionalData?.Remove("invalid_score_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("invalid_score_count"); else _explicitNullProperties?.Remove("invalid_score_count"); } }
         private double? _explicitNullValueInvalidScoreCount = default!;
-        /// <summary>Number of failed judge generations</summary>
+        /// <summary>The judge_fail_count property</summary>
         public double? JudgeFailCount { get => _explicitNullValueJudgeFailCount; set { _explicitNullValueJudgeFailCount = value; AdditionalData?.Remove("judge_fail_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("judge_fail_count"); else _explicitNullProperties?.Remove("judge_fail_count"); } }
         private double? _explicitNullValueJudgeFailCount = default!;
-        /// <summary>Data File ID</summary>
+        /// <summary>The result_file_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ResultFileId { get => _explicitNullValueResultFileId; set { _explicitNullValueResultFileId = value; AdditionalData?.Remove("result_file_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("result_file_id"); else _explicitNullProperties?.Remove("result_file_id"); } }

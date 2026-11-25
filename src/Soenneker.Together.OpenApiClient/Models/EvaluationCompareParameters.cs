@@ -7,6 +7,7 @@ using System.IO;
 using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
+    [Obsolete("")]
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
     public partial class EvaluationCompareParameters : IAdditionalDataHolder, IParsable
@@ -31,10 +32,10 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>When false (default), the judge runs twice per sample: once with model A&apos;s response first (original order) and once with model B&apos;s response first (flipped order). The two verdicts are reconciled to cancel out position bias. When true, only the original-order pass is run, halving judge cost and latency at the expense of position-bias correction. The result file will not contain flipped-order judge fields when this is true.</summary>
+        /// <summary>The disable_position_bias_correction property</summary>
         public bool? DisablePositionBiasCorrection { get => _explicitNullValueDisablePositionBiasCorrection; set { _explicitNullValueDisablePositionBiasCorrection = value; AdditionalData?.Remove("disable_position_bias_correction"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("disable_position_bias_correction"); else _explicitNullProperties?.Remove("disable_position_bias_correction"); } }
         private bool? _explicitNullValueDisablePositionBiasCorrection = default!;
-        /// <summary>Data file ID</summary>
+        /// <summary>The input_data_file_path property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? InputDataFilePath { get => _explicitNullValueInputDataFilePath; set { _explicitNullValueInputDataFilePath = value; AdditionalData?.Remove("input_data_file_path"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_data_file_path"); else _explicitNullProperties?.Remove("input_data_file_path"); } }
@@ -45,6 +46,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         private string _explicitNullValueInputDataFilePath = default!;
 #endif
         /// <summary>The judge property</summary>
+        [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Together.OpenApiClient.Models.EvaluationJudgeModelConfig? Judge { get => _explicitNullValueJudge; set { _explicitNullValueJudge = value; AdditionalData?.Remove("judge"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("judge"); else _explicitNullProperties?.Remove("judge"); } }
@@ -54,7 +56,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public global::Soenneker.Together.OpenApiClient.Models.EvaluationJudgeModelConfig Judge { get => _explicitNullValueJudge; set { _explicitNullValueJudge = value; AdditionalData?.Remove("judge"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("judge"); else _explicitNullProperties?.Remove("judge"); } }
         private global::Soenneker.Together.OpenApiClient.Models.EvaluationJudgeModelConfig _explicitNullValueJudge = default!;
 #endif
-        /// <summary>Either an EvaluationModelRequest for generation or a string column name from the dataset (when responses are pre-generated). When both model_a and model_b are EvaluationModelRequest objects, their inference runs execute in parallel to reduce total wall-clock time.</summary>
+        /// <summary>The model_a property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Together.OpenApiClient.Models.EvaluationCompareParametersModelA? ModelA { get => _explicitNullValueModelA; set { _explicitNullValueModelA = value; AdditionalData?.Remove("model_a"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_a"); else _explicitNullProperties?.Remove("model_a"); } }
@@ -64,7 +66,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public global::Soenneker.Together.OpenApiClient.Models.EvaluationCompareParametersModelA ModelA { get => _explicitNullValueModelA; set { _explicitNullValueModelA = value; AdditionalData?.Remove("model_a"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_a"); else _explicitNullProperties?.Remove("model_a"); } }
         private global::Soenneker.Together.OpenApiClient.Models.EvaluationCompareParametersModelA _explicitNullValueModelA = default!;
 #endif
-        /// <summary>Either an EvaluationModelRequest for generation or a string column name from the dataset (when responses are pre-generated). When both model_a and model_b are EvaluationModelRequest objects, their inference runs execute in parallel to reduce total wall-clock time.</summary>
+        /// <summary>The model_b property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Together.OpenApiClient.Models.EvaluationCompareParametersModelA? ModelB { get => _explicitNullValueModelB; set { _explicitNullValueModelB = value; AdditionalData?.Remove("model_b"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_b"); else _explicitNullProperties?.Remove("model_b"); } }

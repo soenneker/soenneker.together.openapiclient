@@ -3,9 +3,10 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
-    /// <summary>The status of the evaluation job</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum GetEvaluationJobStatusAndResults200ResponseStatus
+    #pragma warning disable CS1591
+    public enum GetV1EvaluationByIdStatus200ResponseStatus
+    #pragma warning restore CS1591
     {
         [EnumMember(Value = "completed")]
         #pragma warning disable CS1591

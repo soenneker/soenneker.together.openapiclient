@@ -53,6 +53,8 @@ namespace Soenneker.Together.OpenApiClient.Models
             else if (parseNode.GetChildNode("min_replicas") is { } nullNodeMinReplicas && nullNodeMinReplicas.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MinReplicas = null;
             if (parseNode.GetChildNode("model_mounts") is null) { _explicitNullValueModelMounts = default!; _explicitNullProperties?.Remove("model_mounts"); }
             else if (parseNode.GetChildNode("model_mounts") is { } nullNodeModelMounts && nullNodeModelMounts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModelMounts = null;
+            if (parseNode.GetChildNode("model_name") is null) { _explicitNullValueModelName = default!; _explicitNullProperties?.Remove("model_name"); }
+            else if (parseNode.GetChildNode("model_name") is { } nullNodeModelName && nullNodeModelName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModelName = null;
             if (parseNode.GetChildNode("name") is null) { _explicitNullValueName = default!; _explicitNullProperties?.Remove("name"); }
             else if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
             if (parseNode.GetChildNode("object") is null) { _explicitNullValueObject = default!; _explicitNullProperties?.Remove("object"); }
@@ -73,6 +75,8 @@ namespace Soenneker.Together.OpenApiClient.Models
             else if (parseNode.GetChildNode("storage") is { } nullNodeStorage && nullNodeStorage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Storage = null;
             if (parseNode.GetChildNode("termination_grace_period_seconds") is null) { _explicitNullValueTerminationGracePeriodSeconds = default!; _explicitNullProperties?.Remove("termination_grace_period_seconds"); }
             else if (parseNode.GetChildNode("termination_grace_period_seconds") is { } nullNodeTerminationGracePeriodSeconds && nullNodeTerminationGracePeriodSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TerminationGracePeriodSeconds = null;
+            if (parseNode.GetChildNode("traffic_weight") is null) { _explicitNullValueTrafficWeight = default!; _explicitNullProperties?.Remove("traffic_weight"); }
+            else if (parseNode.GetChildNode("traffic_weight") is { } nullNodeTrafficWeight && nullNodeTrafficWeight.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TrafficWeight = null;
             if (parseNode.GetChildNode("updated_at") is null) { _explicitNullValueUpdatedAt = default!; _explicitNullProperties?.Remove("updated_at"); }
             else if (parseNode.GetChildNode("updated_at") is { } nullNodeUpdatedAt && nullNodeUpdatedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UpdatedAt = null;
             if (parseNode.GetChildNode("volumes") is null) { _explicitNullValueVolumes = default!; _explicitNullProperties?.Remove("volumes"); }
@@ -198,6 +202,16 @@ namespace Soenneker.Together.OpenApiClient.Models
         public List<global::Soenneker.Together.OpenApiClient.Models.ModelMount> ModelMounts { get => _explicitNullValueModelMounts; set { _explicitNullValueModelMounts = value; AdditionalData?.Remove("model_mounts"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_mounts"); else _explicitNullProperties?.Remove("model_mounts"); } }
         private List<global::Soenneker.Together.OpenApiClient.Models.ModelMount> _explicitNullValueModelMounts = default!;
 #endif
+        /// <summary>ModelName is the model the deployment handles traffic for. Equals name unless set</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ModelName { get => _explicitNullValueModelName; set { _explicitNullValueModelName = value; AdditionalData?.Remove("model_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_name"); else _explicitNullProperties?.Remove("model_name"); } }
+        private string? _explicitNullValueModelName = default!;
+#nullable restore
+#else
+        public string ModelName { get => _explicitNullValueModelName; set { _explicitNullValueModelName = value; AdditionalData?.Remove("model_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_name"); else _explicitNullProperties?.Remove("model_name"); } }
+        private string _explicitNullValueModelName = default!;
+#endif
         /// <summary>Name is the name of the deployment</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -256,6 +270,9 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>TerminationGracePeriodSeconds is the time in seconds to wait for graceful shutdown before forcefully terminating the replica</summary>
         public int? TerminationGracePeriodSeconds { get => _explicitNullValueTerminationGracePeriodSeconds; set { _explicitNullValueTerminationGracePeriodSeconds = value; AdditionalData?.Remove("termination_grace_period_seconds"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("termination_grace_period_seconds"); else _explicitNullProperties?.Remove("termination_grace_period_seconds"); } }
         private int? _explicitNullValueTerminationGracePeriodSeconds = default!;
+        /// <summary>TrafficWeight is the deployment&apos;s share of its model&apos;s traffic, relative to the other deployments of that model</summary>
+        public int? TrafficWeight { get => _explicitNullValueTrafficWeight; set { _explicitNullValueTrafficWeight = value; AdditionalData?.Remove("traffic_weight"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("traffic_weight"); else _explicitNullProperties?.Remove("traffic_weight"); } }
+        private int? _explicitNullValueTrafficWeight = default!;
         /// <summary>UpdatedAt is the ISO8601 timestamp when this deployment was last updated</summary>
         public DateTimeOffset? UpdatedAt { get => _explicitNullValueUpdatedAt; set { _explicitNullValueUpdatedAt = value; AdditionalData?.Remove("updated_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("updated_at"); else _explicitNullProperties?.Remove("updated_at"); } }
         private DateTimeOffset? _explicitNullValueUpdatedAt = default!;
@@ -292,7 +309,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>(30)
+            return new Dictionary<string, Action<IParseNode>>(32)
             {
                 { "args", n => { Args = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "autoscaling", n => { Autoscaling = n.GetObjectValue<global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItemAutoscaling>(global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItemAutoscaling.CreateFromDiscriminatorValue); } },
@@ -312,6 +329,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "memory", n => { Memory = n.GetDoubleValue(); } },
                 { "min_replicas", n => { MinReplicas = n.GetIntValue(); } },
                 { "model_mounts", n => { ModelMounts = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.ModelMount>(global::Soenneker.Together.OpenApiClient.Models.ModelMount.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "model_name", n => { ModelName = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "object", n => { var parsed = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeploymentObject>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueObject = default; _explicitNullProperties?.Remove("object"); AdditionalData["object"] = unknown; } else { Object = parsed; AdditionalData.Remove("object"); } } },
                 { "placement_group", n => { PlacementGroup = n.GetStringValue(); } },
@@ -322,6 +340,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "status", n => { var parsed = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItemStatus>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueStatus = default; _explicitNullProperties?.Remove("status"); AdditionalData["status"] = unknown; } else { Status = parsed; AdditionalData.Remove("status"); } } },
                 { "storage", n => { Storage = n.GetIntValue(); } },
                 { "termination_grace_period_seconds", n => { TerminationGracePeriodSeconds = n.GetIntValue(); } },
+                { "traffic_weight", n => { TrafficWeight = n.GetIntValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "volumes", n => { Volumes = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.VolumeMount>(global::Soenneker.Together.OpenApiClient.Models.VolumeMount.CreateFromDiscriminatorValue)?.AsList(); } },
             };
@@ -351,6 +370,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteDoubleValue("memory", Memory);
             writer.WriteIntValue("min_replicas", MinReplicas);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.ModelMount>("model_mounts", ModelMounts);
+            writer.WriteStringValue("model_name", ModelName);
             writer.WriteStringValue("name", Name);
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeploymentObject>("object", Object);
             writer.WriteStringValue("placement_group", PlacementGroup);
@@ -361,6 +381,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeploymentResponseItemStatus>("status", Status);
             writer.WriteIntValue("storage", Storage);
             writer.WriteIntValue("termination_grace_period_seconds", TerminationGracePeriodSeconds);
+            writer.WriteIntValue("traffic_weight", TrafficWeight);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.VolumeMount>("volumes", Volumes);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);

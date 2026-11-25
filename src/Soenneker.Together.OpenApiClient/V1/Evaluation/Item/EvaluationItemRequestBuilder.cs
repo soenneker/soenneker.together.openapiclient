@@ -19,6 +19,7 @@ namespace Soenneker.Together.OpenApiClient.V1.Evaluation.Item
     public partial class EvaluationItemRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The status property</summary>
+        [Obsolete("")]
         public global::Soenneker.Together.OpenApiClient.V1.Evaluation.Item.Status.StatusRequestBuilder Status
         {
             get => new global::Soenneker.Together.OpenApiClient.V1.Evaluation.Item.Status.StatusRequestBuilder(PathParameters, RequestAdapter);
@@ -39,14 +40,11 @@ namespace Soenneker.Together.OpenApiClient.V1.Evaluation.Item
         public EvaluationItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v1/evaluation/{id}", rawUrl)
         {
         }
-        /// <summary>
-        /// Get evaluation job details
-        /// </summary>
         /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.EvaluationJob"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.ErrorData">When receiving a 404 status code</exception>
-        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.ErrorData">When receiving a 500 status code</exception>
+        /// <exception cref="global::Soenneker.Together.OpenApiClient.Models.ErrorData">When receiving a 410 status code</exception>
+        [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Together.OpenApiClient.Models.EvaluationJob?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -59,18 +57,15 @@ namespace Soenneker.Together.OpenApiClient.V1.Evaluation.Item
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "404", global::Soenneker.Together.OpenApiClient.Models.ErrorData.CreateFromDiscriminatorValue },
-                { "500", global::Soenneker.Together.OpenApiClient.Models.ErrorData.CreateFromDiscriminatorValue },
+                { "410", global::Soenneker.Together.OpenApiClient.Models.ErrorData.CreateFromDiscriminatorValue },
                 { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
                 { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Together.OpenApiClient.Models.EvaluationJob>(requestInfo, global::Soenneker.Together.OpenApiClient.Models.EvaluationJob.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
-        /// <summary>
-        /// Get evaluation job details
-        /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
@@ -90,6 +85,7 @@ namespace Soenneker.Together.OpenApiClient.V1.Evaluation.Item
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.V1.Evaluation.Item.EvaluationItemRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
+        [Obsolete("")]
         public global::Soenneker.Together.OpenApiClient.V1.Evaluation.Item.EvaluationItemRequestBuilder WithUrl(string rawUrl)
         {
             return new global::Soenneker.Together.OpenApiClient.V1.Evaluation.Item.EvaluationItemRequestBuilder(rawUrl, RequestAdapter);

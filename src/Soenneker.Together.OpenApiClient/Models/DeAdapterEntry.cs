@@ -96,7 +96,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
         private string _explicitNullValueId = default!;
 #endif
-        /// <summary>Per-cluster adapter load state reported by the controller.</summary>
+        /// <summary>Per-cluster adapter load state reported by the controller for the clusters the deployment is placed on. Empty while the deployment is stopped or being torn down, and briefly after AddAdapter.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Together.OpenApiClient.Models.DeDeploymentAdapterStatus>? PerCluster { get => _explicitNullValuePerCluster; set { _explicitNullValuePerCluster = value; AdditionalData?.Remove("perCluster"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("perCluster"); else _explicitNullProperties?.Remove("perCluster"); } }
@@ -106,6 +106,8 @@ namespace Soenneker.Together.OpenApiClient.Models
         public List<global::Soenneker.Together.OpenApiClient.Models.DeDeploymentAdapterStatus> PerCluster { get => _explicitNullValuePerCluster; set { _explicitNullValuePerCluster = value; AdditionalData?.Remove("perCluster"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("perCluster"); else _explicitNullProperties?.Remove("perCluster"); } }
         private List<global::Soenneker.Together.OpenApiClient.Models.DeDeploymentAdapterStatus> _explicitNullValuePerCluster = default!;
 #endif
+        /// <summary>Whether the adapter can serve requests right now. INACTIVE means the deployment is stopped, scaled to zero, or being torn down; LOADING means a placed cluster has not finished loading it; READY means every placed cluster serves it; FAILED means a placed cluster failed to load it.</summary>
+        public global::Soenneker.Together.OpenApiClient.Models.DeAdapterEntryServingState? ServingState { get; private set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Together.OpenApiClient.Models.DeAdapterEntry"/> and sets the default values.
         /// </summary>
@@ -129,7 +131,7 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>(7)
+            return new Dictionary<string, Action<IParseNode>>(8)
             {
                 { "adapterModel", n => { AdapterModel = n.GetStringValue(); } },
                 { "adapterModelId", n => { AdapterModelId = n.GetStringValue(); } },
@@ -138,6 +140,7 @@ namespace Soenneker.Together.OpenApiClient.Models
                 { "etag", n => { Etag = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "perCluster", n => { PerCluster = n.GetCollectionOfObjectValues<global::Soenneker.Together.OpenApiClient.Models.DeDeploymentAdapterStatus>(global::Soenneker.Together.OpenApiClient.Models.DeDeploymentAdapterStatus.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "servingState", n => { ServingState = n.GetEnumValue<global::Soenneker.Together.OpenApiClient.Models.DeAdapterEntryServingState>(); } },
             };
         }
         /// <summary>

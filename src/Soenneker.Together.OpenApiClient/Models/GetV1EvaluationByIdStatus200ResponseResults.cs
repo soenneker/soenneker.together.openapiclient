@@ -11,7 +11,7 @@ namespace Soenneker.Together.OpenApiClient.Models
     /// Composed type wrapper for classes <see cref="global::Soenneker.Together.OpenApiClient.Models.EvaluationClassifyResults"/>, <see cref="global::Soenneker.Together.OpenApiClient.Models.EvaluationCompareResults"/>, <see cref="global::Soenneker.Together.OpenApiClient.Models.EvaluationScoreResults"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class GetEvaluationJobStatusAndResults200ResponseResults : IComposedTypeWrapper, IParsable
+    public partial class GetV1EvaluationByIdStatus200ResponseResults : IComposedTypeWrapper, IParsable
     , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
         // Preserve ambiguous union payloads without inventing a discriminator.
         /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
@@ -45,13 +45,13 @@ namespace Soenneker.Together.OpenApiClient.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.GetEvaluationJobStatusAndResults200ResponseResults"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Together.OpenApiClient.Models.GetV1EvaluationByIdStatus200ResponseResults"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Together.OpenApiClient.Models.GetEvaluationJobStatusAndResults200ResponseResults CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Together.OpenApiClient.Models.GetV1EvaluationByIdStatus200ResponseResults CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-            var result = new global::Soenneker.Together.OpenApiClient.Models.GetEvaluationJobStatusAndResults200ResponseResults();
+            var result = new global::Soenneker.Together.OpenApiClient.Models.GetV1EvaluationByIdStatus200ResponseResults();
             if("EvaluationClassifyResults".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 
@@ -66,7 +66,7 @@ namespace Soenneker.Together.OpenApiClient.Models
             }
             
             var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
-            var unionBranchMatches = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject ? new bool?[] { global::Soenneker.OpenApi.Generated.OpenApiUnionMatchers.MatchSchema2247(unionPayload), global::Soenneker.OpenApi.Generated.OpenApiUnionMatchers.MatchSchema2358(unionPayload), global::Soenneker.OpenApi.Generated.OpenApiUnionMatchers.MatchSchema2265(unionPayload) } : null;
+            var unionBranchMatches = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject ? new bool?[] { global::Soenneker.OpenApi.Generated.OpenApiUnionMatchers.MatchSchema2274(unionPayload), global::Soenneker.OpenApi.Generated.OpenApiUnionMatchers.MatchSchema2385(unionPayload), global::Soenneker.OpenApi.Generated.OpenApiUnionMatchers.MatchSchema2292(unionPayload) } : null;
             bool? matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject ? unionBranchMatches![0] : (bool?)false;
             bool? matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject ? unionBranchMatches![1] : (bool?)false;
             bool? matchesUnionBranch2 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject ? unionBranchMatches![2] : (bool?)false;

@@ -7,6 +7,7 @@ using System.IO;
 using System;
 namespace Soenneker.Together.OpenApiClient.Models
 {
+    [Obsolete("")]
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
     public partial class EvaluationClassifyResults : IAdditionalDataHolder, IParsable
@@ -33,16 +34,16 @@ namespace Soenneker.Together.OpenApiClient.Models
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Number of failed generations.</summary>
+        /// <summary>The generation_fail_count property</summary>
         public double? GenerationFailCount { get => _explicitNullValueGenerationFailCount; set { _explicitNullValueGenerationFailCount = value; AdditionalData?.Remove("generation_fail_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("generation_fail_count"); else _explicitNullProperties?.Remove("generation_fail_count"); } }
         private double? _explicitNullValueGenerationFailCount = default!;
-        /// <summary>Number of invalid labels</summary>
+        /// <summary>The invalid_label_count property</summary>
         public double? InvalidLabelCount { get => _explicitNullValueInvalidLabelCount; set { _explicitNullValueInvalidLabelCount = value; AdditionalData?.Remove("invalid_label_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("invalid_label_count"); else _explicitNullProperties?.Remove("invalid_label_count"); } }
         private double? _explicitNullValueInvalidLabelCount = default!;
-        /// <summary>Number of failed judge generations</summary>
+        /// <summary>The judge_fail_count property</summary>
         public double? JudgeFailCount { get => _explicitNullValueJudgeFailCount; set { _explicitNullValueJudgeFailCount = value; AdditionalData?.Remove("judge_fail_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("judge_fail_count"); else _explicitNullProperties?.Remove("judge_fail_count"); } }
         private double? _explicitNullValueJudgeFailCount = default!;
-        /// <summary>JSON string representing label counts</summary>
+        /// <summary>The label_counts property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? LabelCounts { get => _explicitNullValueLabelCounts; set { _explicitNullValueLabelCounts = value; AdditionalData?.Remove("label_counts"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("label_counts"); else _explicitNullProperties?.Remove("label_counts"); } }
@@ -52,10 +53,10 @@ namespace Soenneker.Together.OpenApiClient.Models
         public string LabelCounts { get => _explicitNullValueLabelCounts; set { _explicitNullValueLabelCounts = value; AdditionalData?.Remove("label_counts"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("label_counts"); else _explicitNullProperties?.Remove("label_counts"); } }
         private string _explicitNullValueLabelCounts = default!;
 #endif
-        /// <summary>Pecentage of pass labels.</summary>
+        /// <summary>The pass_percentage property</summary>
         public double? PassPercentage { get => _explicitNullValuePassPercentage; set { _explicitNullValuePassPercentage = value; AdditionalData?.Remove("pass_percentage"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pass_percentage"); else _explicitNullProperties?.Remove("pass_percentage"); } }
         private double? _explicitNullValuePassPercentage = default!;
-        /// <summary>Data File ID</summary>
+        /// <summary>The result_file_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ResultFileId { get => _explicitNullValueResultFileId; set { _explicitNullValueResultFileId = value; AdditionalData?.Remove("result_file_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("result_file_id"); else _explicitNullProperties?.Remove("result_file_id"); } }

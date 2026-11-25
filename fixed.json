@@ -11108,11 +11108,7 @@
     },
     "/v1/evaluation": {
       "post": {
-        "tags": [
-          "evaluation"
-        ],
-        "summary": "Create an evaluation job",
-        "operationId": "CreateEvaluationJob",
+        "operationId": "PostV1Evaluation",
         "requestBody": {
           "content": {
             "application/json": {
@@ -11125,7 +11121,7 @@
         },
         "responses": {
           "200": {
-            "description": "Evaluation job created successfully",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -11134,18 +11130,8 @@
               }
             }
           },
-          "400": {
-            "description": "Invalid request format",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorData"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Failed to create evaluation job",
+          "410": {
+            "description": "Gone",
             "content": {
               "application/json": {
                 "schema": {
@@ -11154,21 +11140,17 @@
               }
             }
           }
-        }
+        },
+        "deprecated": true
       },
       "get": {
-        "tags": [
-          "evaluation"
-        ],
-        "summary": "Get all evaluation jobs",
-        "operationId": "GetAllEvaluationJobs",
+        "operationId": "GetV1Evaluation",
         "parameters": [
           {
             "name": "status",
             "in": "query",
             "schema": {
-              "type": "string",
-              "description": "Filter evaluation jobs by status"
+              "type": "string"
             }
           },
           {
@@ -11176,34 +11158,23 @@
             "in": "query",
             "schema": {
               "type": "integer",
-              "description": "Limit the number of results",
               "default": 10
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "evaluation jobs retrieved successfully",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetAllEvaluationJobs200ResponseSchema"
+                  "$ref": "#/components/schemas/GetV1Evaluation200ResponseSchema"
                 }
               }
             }
           },
-          "400": {
-            "description": "Invalid request format",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorData"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Error retrieving jobs from manager",
+          "410": {
+            "description": "Gone",
             "content": {
               "application/json": {
                 "schema": {
@@ -11212,50 +11183,36 @@
               }
             }
           }
-        }
+        },
+        "deprecated": true
       }
     },
     "/v1/evaluation/model-list": {
       "get": {
-        "tags": [
-          "evaluation"
-        ],
-        "summary": "Get model list",
-        "operationId": "GetModelList",
+        "operationId": "GetV1EvaluationModelList",
         "parameters": [
           {
             "name": "model_source",
             "in": "query",
             "schema": {
               "type": "string",
-              "description": "Filter models by source",
               "default": "all"
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "Model list retrieved successfully",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetModelList200Response"
+                  "$ref": "#/components/schemas/GetV1EvaluationModelList200Response"
                 }
               }
             }
           },
-          "400": {
-            "description": "Invalid request format",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorData"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Error retrieving model list",
+          "410": {
+            "description": "Gone",
             "content": {
               "application/json": {
                 "schema": {
@@ -11264,30 +11221,26 @@
               }
             }
           }
-        }
+        },
+        "deprecated": true
       }
     },
     "/v1/evaluation/{id}": {
       "get": {
-        "tags": [
-          "evaluation"
-        ],
-        "summary": "Get evaluation job details",
-        "operationId": "GetEvaluationJobDetails",
+        "operationId": "GetV1EvaluationById",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "description": "The ID of the evaluation job to retrieve"
+              "type": "string"
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "Evaluation job details retrieved successfully",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -11296,18 +11249,8 @@
               }
             }
           },
-          "404": {
-            "description": "Evaluation job not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorData"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Failed to get evaluation job",
+          "410": {
+            "description": "Gone",
             "content": {
               "application/json": {
                 "schema": {
@@ -11316,50 +11259,36 @@
               }
             }
           }
-        }
+        },
+        "deprecated": true
       }
     },
     "/v1/evaluation/{id}/status": {
       "get": {
-        "tags": [
-          "evaluation"
-        ],
-        "summary": "Get evaluation job status and results",
-        "operationId": "GetEvaluationJobStatusAndResults",
+        "operationId": "GetV1EvaluationByIdStatus",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "description": "The ID of the evaluation job to get the status of"
+              "type": "string"
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "Evaluation job status and results retrieved successfully",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetEvaluationJobStatusAndResults200Response"
+                  "$ref": "#/components/schemas/GetV1EvaluationByIdStatus200Response"
                 }
               }
             }
           },
-          "404": {
-            "description": "Evaluation job not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorData"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Failed to get evaluation job",
+          "410": {
+            "description": "Gone",
             "content": {
               "application/json": {
                 "schema": {
@@ -11368,7 +11297,8 @@
               }
             }
           }
-        }
+        },
+        "deprecated": true
       }
     },
     "/v1/realtime": {
@@ -14543,6 +14473,66 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/WhoamiResponse"
+                },
+                "examples": {
+                  "project_api_key": {
+                    "summary": "Project API key",
+                    "value": {
+                      "type": "project_api_key",
+                      "api_key": {
+                        "id": "key_CTnK8fQyRz3uVbW6aHd2M"
+                      },
+                      "organization": {
+                        "id": "org_CWx4pLm9sTe7YjN2kQa5B",
+                        "name": "Acme"
+                      },
+                      "project": {
+                        "id": "proj_CczF9KYFantA84sNYDTJd",
+                        "name": "Acme Production",
+                        "slug": "acme-production-4821"
+                      }
+                    }
+                  },
+                  "user_jwt": {
+                    "summary": "User JWT",
+                    "value": {
+                      "type": "user_jwt",
+                      "user": {
+                        "id": "user_CKfewYkQBpaEmN7wuQS3W"
+                      }
+                    }
+                  },
+                  "user_org_jwt": {
+                    "summary": "User organization JWT",
+                    "value": {
+                      "type": "user_org_jwt",
+                      "user": {
+                        "id": "user_CKfewYkQBpaEmN7wuQS3W"
+                      },
+                      "organization": {
+                        "id": "org_CWx4pLm9sTe7YjN2kQa5B",
+                        "name": "Acme"
+                      }
+                    }
+                  },
+                  "user_org_project_jwt": {
+                    "summary": "User organization project JWT",
+                    "value": {
+                      "type": "user_org_project_jwt",
+                      "user": {
+                        "id": "user_CKfewYkQBpaEmN7wuQS3W"
+                      },
+                      "organization": {
+                        "id": "org_CWx4pLm9sTe7YjN2kQa5B",
+                        "name": "Acme"
+                      },
+                      "project": {
+                        "id": "proj_CczF9KYFantA84sNYDTJd",
+                        "name": "Acme Production",
+                        "slug": "acme-production-4821"
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -15548,7 +15538,8 @@
           "desiredRevisionId",
           "perCluster",
           "etag",
-          "id"
+          "id",
+          "servingState"
         ],
         "type": "object",
         "properties": {
@@ -15565,7 +15556,7 @@
             "items": {
               "$ref": "#/components/schemas/DeDeploymentAdapterStatus"
             },
-            "description": "Per-cluster adapter load state reported by the controller."
+            "description": "Per-cluster adapter load state reported by the controller for the clusters the deployment is placed on. Empty while the deployment is stopped or being torn down, and briefly after AddAdapter."
           },
           "etag": {
             "type": "string",
@@ -15582,6 +15573,9 @@
           "id": {
             "type": "string",
             "description": "Adapter attachment \u0060dad_\u0060 id used by get, update, and remove; stale ids never address a replacement after remove and re-add."
+          },
+          "servingState": {
+            "$ref": "#/components/schemas/DeAdapterEntryServingState"
           }
         },
         "description": "Adapter attached to a deployment with desired revision and observed load state."
@@ -16507,6 +16501,28 @@
         },
         "description": "Serverless token pricing for a supported model."
       },
+      "DeSupportedModelUnitPrice": {
+        "required": [
+          "unit",
+          "tier",
+          "priceUsd"
+        ],
+        "type": "object",
+        "properties": {
+          "unit": {
+            "$ref": "#/components/schemas/DeSupportedModelUnitPriceUnit"
+          },
+          "tier": {
+            "$ref": "#/components/schemas/DeSupportedModelUnitPriceTier"
+          },
+          "priceUsd": {
+            "type": "number",
+            "description": "Price in USD per one unit.",
+            "format": "double"
+          }
+        },
+        "description": "Serverless display price in USD per one non-token unit on one request tier."
+      },
       "DeSupportedModel": {
         "required": [
           "id",
@@ -16614,6 +16630,14 @@
           },
           "pricing": {
             "$ref": "#/components/schemas/DeSupportedModelPricing"
+          },
+          "unitPrices": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DeSupportedModelUnitPrice"
+            },
+            "description": "Serverless prices for usage not measured in tokens, such as minutes of transcribed audio or characters of synthesized speech, ordered by unit then tier. Empty when none are curated; a model priced the same on every tier lists only \u0060PRICING_TIER_STANDARD\u0060.",
+            "readOnly": true
           },
           "familyId": {
             "type": "string",
@@ -20717,8 +20741,7 @@
           },
           "duration_days": {
             "type": "integer",
-            "description": "Duration in days to keep the cluster running.",
-            "x-stainless-terraform-configurability": "computed"
+            "description": "Duration in days to keep the cluster running."
           },
           "shared_volume": {
             "$ref": "#/components/schemas/GpuClustersSharedVolumeCreateRequest"
@@ -20845,8 +20868,7 @@
           },
           "duration_days": {
             "type": "integer",
-            "description": "Duration in days to keep the cluster running.",
-            "x-stainless-terraform-configurability": "computed"
+            "description": "Duration in days to keep the cluster running."
           },
           "shared_volume": {
             "$ref": "#/components/schemas/GpuClustersSharedVolumeCreateRequest"
@@ -25254,7 +25276,8 @@
           "parameters": {
             "$ref": "#/components/schemas/EvaluationTypedRequestParameters"
           }
-        }
+        },
+        "deprecated": true
       },
       "EvaluationClassifyParameters": {
         "required": [
@@ -25273,33 +25296,23 @@
             "type": "array",
             "items": {
               "type": "string"
-            },
-            "description": "List of possible classification labels",
-            "example": [
-              "yes",
-              "no"
-            ]
+            }
           },
           "pass_labels": {
             "minItems": 1,
             "type": "array",
             "items": {
               "type": "string"
-            },
-            "description": "List of labels that are considered passing",
-            "example": [
-              "yes"
-            ]
+            }
           },
           "model_to_evaluate": {
             "$ref": "#/components/schemas/EvaluationModelOrString"
           },
           "input_data_file_path": {
-            "type": "string",
-            "description": "Data file ID",
-            "example": "file-1234-aefd"
+            "type": "string"
           }
-        }
+        },
+        "deprecated": true
       },
       "EvaluationScoreParameters": {
         "required": [
@@ -25315,29 +25328,22 @@
             "$ref": "#/components/schemas/EvaluationJudgeModelConfig"
           },
           "min_score": {
-            "type": "number",
-            "description": "Minimum possible score",
-            "example": 0
+            "type": "number"
           },
           "max_score": {
-            "type": "number",
-            "description": "Maximum possible score",
-            "example": 10
+            "type": "number"
           },
           "pass_threshold": {
-            "type": "number",
-            "description": "Score threshold for passing",
-            "example": 7
+            "type": "number"
           },
           "model_to_evaluate": {
             "$ref": "#/components/schemas/EvaluationModelOrString"
           },
           "input_data_file_path": {
-            "type": "string",
-            "description": "Data file ID",
-            "example": "file-01234567890123456789"
+            "type": "string"
           }
-        }
+        },
+        "deprecated": true
       },
       "EvaluationCompareParameters": {
         "required": [
@@ -25356,16 +25362,14 @@
             "$ref": "#/components/schemas/EvaluationCompareParametersModelA"
           },
           "input_data_file_path": {
-            "type": "string",
-            "description": "Data file ID",
-            "example": "file-01234567890123456789"
+            "type": "string"
           },
           "disable_position_bias_correction": {
             "type": "boolean",
-            "description": "When false (default), the judge runs twice per sample: once with model A\u0027s response first (original order) and once with model B\u0027s response first (flipped order). The two verdicts are reconciled to cancel out position bias. When true, only the original-order pass is run, halving judge cost and latency at the expense of position-bias correction. The result file will not contain flipped-order judge fields when this is true.\n",
             "default": false
           }
-        }
+        },
+        "deprecated": true
       },
       "EvaluationJudgeModelConfig": {
         "required": [
@@ -25376,57 +25380,46 @@
         "type": "object",
         "properties": {
           "model": {
-            "type": "string",
-            "description": "Name of the judge model",
-            "example": "Qwen/Qwen3.5-9B"
+            "type": "string"
           },
           "system_template": {
-            "type": "string",
-            "description": "System prompt template for the judge",
-            "example": "Imagine you are a helpful assistant"
+            "type": "string"
           },
           "model_source": {
             "$ref": "#/components/schemas/EvaluationJudgeModelConfigModelSource"
           },
           "external_api_token": {
-            "type": "string",
-            "description": "Bearer/API token for the external judge model provider. Required when model_source is \u0027external\u0027."
+            "type": "string"
           },
           "external_base_url": {
-            "type": "string",
-            "description": "Base URL of the external inference API for the judge. Must be OpenAI-compatible. Required when model_source is \u0027external\u0027."
+            "type": "string"
           },
           "num_workers": {
             "minimum": 1,
-            "type": "integer",
-            "description": "Number of concurrent inference workers for the judge. Overrides the source-specific default (serverless: 25, dedicated: 5, external: 2\u201320). For dedicated endpoints the value is clamped to a minimum of 5 regardless of what is set here.\n",
-            "example": 5
+            "type": "integer"
           },
           "max_tokens": {
             "minimum": 1,
-            "type": "integer",
-            "description": "Maximum number of tokens the judge model may generate. Defaults to 32768 if omitted. Set higher for reasoning judges (e.g. o-series, Gemini) that spend tokens on internal chain-of-thought before emitting the verdict JSON.",
-            "example": 8192
+            "type": "integer"
           },
           "temperature": {
             "maximum": 2,
             "minimum": 0,
-            "type": "number",
-            "description": "Sampling temperature for the judge model. Defaults to 0.05 if omitted.",
-            "example": 0
+            "type": "number"
           }
-        }
+        },
+        "deprecated": true
       },
       "EvaluationModelOrString": {
         "oneOf": [
           {
-            "type": "string",
-            "description": "Column name in the input dataset containing pre-generated responses"
+            "type": "string"
           },
           {
             "$ref": "#/components/schemas/EvaluationModelRequest"
           }
-        ]
+        ],
+        "deprecated": true
       },
       "EvaluationModelRequest": {
         "required": [
@@ -25440,79 +25433,62 @@
         "type": "object",
         "properties": {
           "model": {
-            "type": "string",
-            "description": "Name of the model to evaluate",
-            "example": "Qwen/Qwen3.5-9B"
+            "type": "string"
           },
           "max_tokens": {
             "minimum": 1,
-            "type": "integer",
-            "description": "Maximum number of tokens to generate.",
-            "example": 512
+            "type": "integer"
           },
           "temperature": {
             "maximum": 2,
             "minimum": 0,
-            "type": "number",
-            "description": "Sampling temperature for generation.",
-            "example": 0.7
+            "type": "number"
           },
           "system_template": {
-            "type": "string",
-            "description": "System prompt template. Supports Jinja2 variables referencing dataset columns.",
-            "example": "You are a helpful assistant."
+            "type": "string"
           },
           "input_template": {
-            "type": "string",
-            "description": "User message template. Supports Jinja2 variables referencing dataset columns.",
-            "example": "Please answer the following question: {{ question }}"
+            "type": "string"
           },
           "model_source": {
             "$ref": "#/components/schemas/EvaluationModelRequestModelSource"
           },
           "external_api_token": {
-            "type": "string",
-            "description": "Bearer/API token for the external model provider. Required when model_source is \u0027external\u0027."
+            "type": "string"
           },
           "external_base_url": {
-            "type": "string",
-            "description": "Base URL of the external inference API. Must be OpenAI-compatible. Required when model_source is \u0027external\u0027."
+            "type": "string"
           },
           "num_workers": {
             "minimum": 1,
-            "type": "integer",
-            "description": "Number of concurrent inference workers. Overrides the source-specific default (serverless: 25, dedicated: 5, external: 2\u201320). For dedicated endpoints the value is clamped to a minimum of 5 regardless of what is set here.\n",
-            "example": 5
+            "type": "integer"
           }
-        }
+        },
+        "deprecated": true
       },
       "EvaluationResponse": {
         "type": "object",
         "properties": {
           "workflow_id": {
-            "type": "string",
-            "description": "The ID of the created evaluation job",
-            "example": "eval-1234-1244513"
+            "type": "string"
           },
           "status": {
             "$ref": "#/components/schemas/PendingStatus"
           }
-        }
+        },
+        "deprecated": true
       },
       "EvaluationJob": {
         "type": "object",
         "properties": {
           "workflow_id": {
-            "type": "string",
-            "description": "The evaluation job ID",
-            "example": "eval-1234aedf"
+            "type": "string"
           },
           "type": {
             "$ref": "#/components/schemas/EvaluationJobType"
           },
           "owner_id": {
-            "type": "string",
-            "description": "ID of the job owner (admin only)"
+            "type": "string"
           },
           "status": {
             "$ref": "#/components/schemas/EvaluationJobStatus"
@@ -25521,49 +25497,40 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/EvaluationJobStatusUpdate"
-            },
-            "description": "History of status updates (admin only)"
+            }
           },
           "parameters": {
             "$ref": "#/components/schemas/EvaluationJobParametersProperty"
           },
           "created_at": {
             "type": "string",
-            "description": "When the job was created",
-            "format": "date-time",
-            "example": "2025-07-23T17:10:04.837888Z"
+            "format": "date-time"
           },
           "updated_at": {
             "type": "string",
-            "description": "When the job was last updated",
-            "format": "date-time",
-            "example": "2025-07-23T17:10:04.837888Z"
+            "format": "date-time"
           },
           "results": {
             "$ref": "#/components/schemas/EvaluationJobResults"
           }
-        }
+        },
+        "deprecated": true
       },
       "EvaluationJobStatusUpdate": {
         "type": "object",
         "properties": {
           "status": {
-            "type": "string",
-            "description": "The status at this update",
-            "example": "pending"
+            "type": "string"
           },
           "message": {
-            "type": "string",
-            "description": "Additional message for this update",
-            "example": "Job is pending evaluation"
+            "type": "string"
           },
           "timestamp": {
             "type": "string",
-            "description": "When this update occurred",
-            "format": "date-time",
-            "example": "2025-07-23T17:10:04.837888Z"
+            "format": "date-time"
           }
-        }
+        },
+        "deprecated": true
       },
       "EvaluationClassifyResults": {
         "type": "object",
@@ -25572,45 +25539,34 @@
             "type": [
               "null",
               "number"
-            ],
-            "description": "Number of failed generations.",
-            "example": 0
+            ]
           },
           "judge_fail_count": {
             "type": [
               "null",
               "number"
-            ],
-            "description": "Number of failed judge generations",
-            "example": 0
+            ]
           },
           "invalid_label_count": {
             "type": [
               "null",
               "number"
-            ],
-            "description": "Number of invalid labels",
-            "example": 0
+            ]
           },
           "result_file_id": {
-            "type": "string",
-            "description": "Data File ID",
-            "example": "file-1234-aefd"
+            "type": "string"
           },
           "pass_percentage": {
             "type": [
               "null",
               "number"
-            ],
-            "description": "Pecentage of pass labels.",
-            "example": 10
+            ]
           },
           "label_counts": {
-            "type": "string",
-            "description": "JSON string representing label counts",
-            "example": "{\u0022yes\u0022: 10, \u0022no\u0022: 0}"
+            "type": "string"
           }
-        }
+        },
+        "deprecated": true
       },
       "EvaluationScoreResults": {
         "type": "object",
@@ -25622,69 +25578,55 @@
             "type": [
               "null",
               "number"
-            ],
-            "description": "Number of failed generations.",
-            "example": 0
+            ]
           },
           "judge_fail_count": {
             "type": [
               "null",
               "number"
-            ],
-            "description": "Number of failed judge generations",
-            "example": 0
+            ]
           },
           "invalid_score_count": {
-            "type": "number",
-            "description": "number of invalid scores generated from model"
+            "type": "number"
           },
           "failed_samples": {
-            "type": "number",
-            "description": "number of failed samples generated from model"
+            "type": "number"
           },
           "result_file_id": {
-            "type": "string",
-            "description": "Data File ID",
-            "example": "file-1234-aefd"
+            "type": "string"
           }
-        }
+        },
+        "deprecated": true
       },
       "EvaluationCompareResults": {
         "type": "object",
         "properties": {
           "A_wins": {
-            "type": "integer",
-            "description": "Number of samples where model A was judged the winner"
+            "type": "integer"
           },
           "B_wins": {
-            "type": "integer",
-            "description": "Number of samples where model B was judged the winner"
+            "type": "integer"
           },
           "Ties": {
-            "type": "integer",
-            "description": "Number of samples that resulted in a tie score"
+            "type": "integer"
           },
           "generation_fail_count": {
             "type": [
               "null",
               "number"
-            ],
-            "description": "Number of generation failures across model A and model B.",
-            "example": 0
+            ]
           },
           "judge_fail_count": {
             "type": [
               "null",
               "number"
-            ],
-            "description": "Number of judge inference failures. In the default two-pass mode (disable_position_bias_correction=false) this is the combined failure count from both the original-order and flipped-order judge passes.\n",
-            "example": 0
+            ]
           },
           "result_file_id": {
-            "type": "string",
-            "description": "File ID of the detailed output file. Each row contains the original input fields plus judge outputs. In two-pass mode the file includes both original-order and flipped-order judge fields; in single-pass mode (disable_position_bias_correction=true) only original-order fields are present.\n"
+            "type": "string"
           }
-        }
+        },
+        "deprecated": true
       },
       "CreateVideoBody": {
         "title": "Create video request",
@@ -25928,6 +25870,10 @@
             "type": "number",
             "description": "Unix timestamp (seconds) for when the job completed, if finished."
           },
+          "estimated_done_at": {
+            "type": "number",
+            "description": "Estimated Unix timestamp (seconds) for when the job is expected to finish. This is an estimate, not a guarantee. It is only returned when creating a video and an estimate is available."
+          },
           "size": {
             "type": "string",
             "description": "The resolution of the generated video."
@@ -26032,6 +25978,12 @@
             },
             "description": "Model weights to preload from Together\u0027s model registry into the container. At most one mount is supported, and it cannot be used with volumes."
           },
+          "model_name": {
+            "maxLength": 31,
+            "minLength": 4,
+            "type": "string",
+            "description": "ModelName is the model this deployment handles traffic for. Defaults to name of the deployment. A value used by one project as a deployment or model name is unavailable to other projects; within a project, any number of deployments may share a model name"
+          },
           "name": {
             "maxLength": 63,
             "minLength": 4,
@@ -26063,6 +26015,13 @@
           "termination_grace_period_seconds": {
             "type": "integer",
             "description": "TerminationGracePeriodSeconds is the time in seconds to wait for graceful shutdown before forcefully terminating the replica"
+          },
+          "traffic_weight": {
+            "maximum": 10000,
+            "minimum": 0,
+            "type": "integer",
+            "description": "TrafficWeight is the deployment\u0027s share of its model\u0027s traffic, relative to the other deployments of that model.",
+            "default": 100
           },
           "volumes": {
             "type": "array",
@@ -26241,6 +26200,10 @@
             },
             "description": "Model weights mounted into this deployment, including the pinned revisions."
           },
+          "model_name": {
+            "type": "string",
+            "description": "ModelName is the model the deployment handles traffic for. Equals name unless set"
+          },
           "name": {
             "type": "string",
             "description": "Name is the name of the deployment"
@@ -26280,6 +26243,10 @@
           "termination_grace_period_seconds": {
             "type": "integer",
             "description": "TerminationGracePeriodSeconds is the time in seconds to wait for graceful shutdown before forcefully terminating the replica"
+          },
+          "traffic_weight": {
+            "type": "integer",
+            "description": "TrafficWeight is the deployment\u0027s share of its model\u0027s traffic, relative to the other deployments of that model"
           },
           "updated_at": {
             "type": "string",
@@ -26798,11 +26765,17 @@
             },
             "description": "Replacement model weights to mount into the deployment. At most one mount is supported, and it cannot be used with volumes."
           },
+          "model_name": {
+            "maxLength": 31,
+            "minLength": 4,
+            "type": "string",
+            "description": "ModelName changes the model this deployment handles traffic for. Can be omitted. Send the deployment name to reset it"
+          },
           "name": {
             "maxLength": 100,
             "minLength": 1,
             "type": "string",
-            "description": "Name is the new unique identifier for your deployment. Must contain only alphanumeric characters, underscores, or hyphens (1-100 characters)"
+            "description": "Name is the deployment\u0027s current name. Deployment names cannot be changed after creation"
           },
           "placement_group": {
             "type": "string",
@@ -26829,6 +26802,12 @@
           "termination_grace_period_seconds": {
             "type": "integer",
             "description": "TerminationGracePeriodSeconds is the time in seconds to wait for graceful shutdown before forcefully terminating the replica"
+          },
+          "traffic_weight": {
+            "maximum": 10000,
+            "minimum": 0,
+            "type": "integer",
+            "description": "TrafficWeight is the deployment\u0027s share of its model\u0027s traffic, relative to the other deployments of that model."
           },
           "volumes": {
             "type": "array",
@@ -29187,8 +29166,7 @@
           {
             "$ref": "#/components/schemas/EvaluationCompareParameters"
           }
-        ],
-        "description": "Type-specific parameters for the evaluation"
+        ]
       },
       "EvaluationCompareParametersModelA": {
         "oneOf": [
@@ -29196,11 +29174,9 @@
             "$ref": "#/components/schemas/EvaluationModelRequest"
           },
           {
-            "type": "string",
-            "description": "Column name in the input data containing pre-generated responses"
+            "type": "string"
           }
-        ],
-        "description": "Either an EvaluationModelRequest for generation or a string column name from the dataset (when responses are pre-generated). When both model_a and model_b are EvaluationModelRequest objects, their inference runs execute in parallel to reduce total wall-clock time.\n"
+        ]
       },
       "EvaluationJobResults": {
         "type": [
@@ -29220,8 +29196,7 @@
           {
             "$ref": "#/components/schemas/EvaluationJobResultsOneOf4"
           }
-        ],
-        "description": "Results of the evaluation (when completed)"
+        ]
       },
       "VideoFrameImageInputFrame": {
         "anyOf": [
@@ -30486,26 +30461,25 @@
           }
         }
       },
-      "GetModelList200Response": {
+      "GetV1EvaluationModelList200Response": {
         "type": "object",
         "properties": {
           "model_list": {
             "type": "array",
             "items": {
-              "type": "string",
-              "description": "The name of the model"
+              "type": "string"
             }
           }
         }
       },
-      "GetEvaluationJobStatusAndResults200Response": {
+      "GetV1EvaluationByIdStatus200Response": {
         "type": "object",
         "properties": {
           "status": {
-            "$ref": "#/components/schemas/GetEvaluationJobStatusAndResults200ResponseStatus"
+            "$ref": "#/components/schemas/GetV1EvaluationByIdStatus200ResponseStatus"
           },
           "results": {
-            "$ref": "#/components/schemas/GetEvaluationJobStatusAndResults200ResponseResults"
+            "$ref": "#/components/schemas/GetV1EvaluationByIdStatus200ResponseResults"
           }
         }
       },
@@ -30703,7 +30677,7 @@
           "$ref": "#/components/schemas/BatchJob"
         }
       },
-      "GetAllEvaluationJobs200ResponseSchema": {
+      "GetV1Evaluation200ResponseSchema": {
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/EvaluationJob"
@@ -30841,7 +30815,7 @@
         },
         "x-stainless-variantName": "UnavailableEstimate"
       },
-      "GetEvaluationJobStatusAndResults200ResponseResults": {
+      "GetV1EvaluationByIdStatus200ResponseResults": {
         "oneOf": [
           {
             "$ref": "#/components/schemas/EvaluationClassifyResults"
@@ -30852,8 +30826,7 @@
           {
             "$ref": "#/components/schemas/EvaluationCompareResults"
           }
-        ],
-        "description": "The results of the evaluation job"
+        ]
       },
       "DeTimeSeriesDataPointValuesProperty": {
         "type": "object",
@@ -30944,8 +30917,7 @@
         "additional_properties": true
       },
       "EvaluationJobParametersProperty": {
-        "type": "object",
-        "description": "The parameters used for this evaluation"
+        "type": "object"
       },
       "DeploymentResponseItemReplicaEventsProperty": {
         "type": "object",
@@ -31378,6 +31350,39 @@
             {
               "value": "TRAFFIC_MODE_SHADOW",
               "name": "TrafficModeShadow"
+            }
+          ]
+        }
+      },
+      "DeAdapterEntryServingState": {
+        "enum": [
+          "ADAPTER_SERVING_STATE_INACTIVE",
+          "ADAPTER_SERVING_STATE_LOADING",
+          "ADAPTER_SERVING_STATE_READY",
+          "ADAPTER_SERVING_STATE_FAILED"
+        ],
+        "type": "string",
+        "description": "Whether the adapter can serve requests right now. INACTIVE means the deployment is stopped, scaled to zero, or being torn down; LOADING means a placed cluster has not finished loading it; READY means every placed cluster serves it; FAILED means a placed cluster failed to load it.",
+        "readOnly": true,
+        "x-ms-enum": {
+          "name": "DeAdapterEntryServingState",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "ADAPTER_SERVING_STATE_INACTIVE",
+              "name": "AdapterServingStateInactive"
+            },
+            {
+              "value": "ADAPTER_SERVING_STATE_LOADING",
+              "name": "AdapterServingStateLoading"
+            },
+            {
+              "value": "ADAPTER_SERVING_STATE_READY",
+              "name": "AdapterServingStateReady"
+            },
+            {
+              "value": "ADAPTER_SERVING_STATE_FAILED",
+              "name": "AdapterServingStateFailed"
             }
           ]
         }
@@ -32026,6 +32031,55 @@
             {
               "value": "ADAPTER_MODE_DISABLED",
               "name": "AdapterModeDisabled"
+            }
+          ]
+        }
+      },
+      "DeSupportedModelUnitPriceUnit": {
+        "enum": [
+          "PRICING_UNIT_AUDIO_MINUTE",
+          "PRICING_UNIT_MILLION_CHARACTERS"
+        ],
+        "type": "string",
+        "description": "Billing unit, either one minute of input audio (speech-to-text) or one million input characters (text-to-speech).",
+        "x-ms-enum": {
+          "name": "DeSupportedModelUnitPriceUnit",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "PRICING_UNIT_AUDIO_MINUTE",
+              "name": "PricingUnitAudioMinute"
+            },
+            {
+              "value": "PRICING_UNIT_MILLION_CHARACTERS",
+              "name": "PricingUnitMillionCharacters"
+            }
+          ]
+        }
+      },
+      "DeSupportedModelUnitPriceTier": {
+        "enum": [
+          "PRICING_TIER_STANDARD",
+          "PRICING_TIER_BATCH",
+          "PRICING_TIER_REALTIME"
+        ],
+        "type": "string",
+        "description": "Request tier the price applies to, such as synchronous HTTP, batch, or streaming realtime sessions.",
+        "x-ms-enum": {
+          "name": "DeSupportedModelUnitPriceTier",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "PRICING_TIER_STANDARD",
+              "name": "PricingTierStandard"
+            },
+            {
+              "value": "PRICING_TIER_BATCH",
+              "name": "PricingTierBatch"
+            },
+            {
+              "value": "PRICING_TIER_REALTIME",
+              "name": "PricingTierRealtime"
             }
           ]
         }
@@ -33044,7 +33098,6 @@
         ],
         "type": "string",
         "description": "RESERVED billing types allow you to specify the duration of the cluster reservation via the duration_days field.\nON_DEMAND billing types will give you ownership of the cluster until you delete it.\nSCHEDULED_CAPACITY billing types allow you to reserve capacity for a scheduled time window. You must specify the reservation_start_time and reservation_end_time with this request.\n",
-        "x-stainless-terraform-configurability": "computed",
         "x-ms-enum": {
           "name": "GpuClusterCreateRequestNvidiaVersionBillingType",
           "modelAsString": false,
@@ -34429,8 +34482,6 @@
           "compare"
         ],
         "type": "string",
-        "description": "The type of evaluation to perform",
-        "example": "classify",
         "x-ms-enum": {
           "name": "EvaluationTypedRequestType",
           "modelAsString": false,
@@ -34457,7 +34508,6 @@
           "external"
         ],
         "type": "string",
-        "description": "Source of the judge model inference: - \u0060serverless\u0060: Together\u0027s shared serverless inference API. Default concurrency: 25 workers. - \u0060dedicated\u0060: A Together dedicated deployment endpoint. Default concurrency: 5 workers\n  (minimum enforced even if num_workers is set lower).\n- \u0060external\u0060: An external inference API (e.g. OpenAI, Anthropic, Google, OpenRouter).\n  Requires \u0060external_api_token\u0060 and \u0060external_base_url\u0060. Default concurrency: 2 workers\n  for first-party APIs, 20 for proxy/aggregator endpoints.\n",
         "x-ms-enum": {
           "name": "EvaluationJudgeModelConfigModelSource",
           "modelAsString": false,
@@ -34484,7 +34534,6 @@
           "external"
         ],
         "type": "string",
-        "description": "Source of the model inference: - \u0060serverless\u0060: Together\u0027s shared serverless inference API. Default concurrency: 25 workers. - \u0060dedicated\u0060: A Together dedicated deployment endpoint. Default concurrency: 5 workers\n  (minimum enforced even if num_workers is set lower). Authentication uses the requesting\n  user\u0027s Together API token automatically.\n- \u0060external\u0060: An external inference API (e.g. OpenAI, Anthropic, Google, OpenRouter).\n  Requires \u0060external_api_token\u0060 and \u0060external_base_url\u0060. Default concurrency: 2 workers\n  for first-party APIs (OpenAI, Anthropic, Google), 20 for proxy/aggregator endpoints.\n",
         "x-ms-enum": {
           "name": "EvaluationModelRequestModelSource",
           "modelAsString": false,
@@ -34509,7 +34558,6 @@
           "pending"
         ],
         "type": "string",
-        "description": "Initial status of the job",
         "x-ms-enum": {
           "name": "PendingStatus",
           "modelAsString": false,
@@ -34528,8 +34576,6 @@
           "compare"
         ],
         "type": "string",
-        "description": "The type of evaluation",
-        "example": "classify",
         "x-ms-enum": {
           "name": "EvaluationJobType",
           "modelAsString": false,
@@ -34559,8 +34605,6 @@
           "user_error"
         ],
         "type": "string",
-        "description": "Current status of the job",
-        "example": "completed",
         "x-ms-enum": {
           "name": "EvaluationJobStatus",
           "modelAsString": false,
@@ -35528,7 +35572,7 @@
           ]
         }
       },
-      "GetEvaluationJobStatusAndResults200ResponseStatus": {
+      "GetV1EvaluationByIdStatus200ResponseStatus": {
         "enum": [
           "completed",
           "error",
@@ -35538,9 +35582,8 @@
           "pending"
         ],
         "type": "string",
-        "description": "The status of the evaluation job",
         "x-ms-enum": {
-          "name": "GetEvaluationJobStatusAndResults200ResponseStatus",
+          "name": "GetV1EvaluationByIdStatus200ResponseStatus",
           "modelAsString": false,
           "values": [
             {
@@ -38293,8 +38336,7 @@
         },
         "duration_days": {
           "type": "integer",
-          "description": "Duration in days to keep the cluster running.",
-          "x-stainless-terraform-configurability": "computed"
+          "description": "Duration in days to keep the cluster running."
         },
         "shared_volume": {
           "$ref": "#/components/schemas/GpuClustersSharedVolumeCreateRequest"
@@ -39585,11 +39627,9 @@
           "$ref": "#/components/schemas/EvaluationModelRequest"
         },
         {
-          "type": "string",
-          "description": "Column name in the input data containing pre-generated responses"
+          "type": "string"
         }
-      ],
-      "description": "Either an EvaluationModelRequest for generation or a string column name from the dataset (when responses are pre-generated). When both model_a and model_b are EvaluationModelRequest objects, their inference runs execute in parallel to reduce total wall-clock time.\n"
+      ]
     },
     "DeTimeSeriesDataPointValues": {
       "type": "object",
@@ -39796,8 +39836,7 @@
       }
     },
     "EvaluationJobParameters": {
-      "type": "object",
-      "description": "The parameters used for this evaluation"
+      "type": "object"
     },
     "DeploymentResponseItemReplicaEvents": {
       "type": "object",
@@ -40109,7 +40148,7 @@
         "$ref": "#/components/schemas/BatchJob"
       }
     },
-    "GetAllEvaluationJobs200Response": {
+    "GetV1Evaluation200Response": {
       "type": "array",
       "items": {
         "$ref": "#/components/schemas/EvaluationJob"
